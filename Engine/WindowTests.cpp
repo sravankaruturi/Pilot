@@ -8,8 +8,9 @@ protected:
 	Window window = Window(800, 600, "Test");
 };
 
-TEST_F(WindowTests, CheckInitialization)
+TEST_F(WindowTests, CheckGLFWInitialisation)
 {
-	EXPECT_EQ(window.GetWidth(), 800);
-	EXPECT_EQ(window.GetHeight(), 600);
+	EXPECT_TRUE(window.IsGlfwInit());
+	EXPECT_TRUE(window.IsGladInit());
+	EXPECT_FALSE(window.GetWindow() == nullptr);
 }
