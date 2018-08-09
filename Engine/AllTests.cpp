@@ -62,8 +62,9 @@ TEST_F(AllTests, TextureFileBeingRead)
 
 TEST_F(AllTests, AssetManagerShaderLoading)
 {
-	asmngr.LoadShaders();
+	const auto loaded = asmngr.LoadShaders();
 
+	EXPECT_TRUE(loaded);
 	EXPECT_TRUE(asmngr.shaders.find("good_test") != asmngr.shaders.end());
 	EXPECT_TRUE(asmngr.shaders.find("failing_test") != asmngr.shaders.end());
 }
@@ -73,8 +74,9 @@ TEST_F(AllTests, AssetManagerTextureLoading)
 
 	EXPECT_FALSE(asmngr.IsTextureLoaded("awesomeface"));
 
-	asmngr.LoadTextures();
+	const auto loaded = asmngr.LoadTextures();
 
+	EXPECT_TRUE(loaded);
 	EXPECT_TRUE(asmngr.textures.find("awesomeface") != asmngr.textures.end());
 	EXPECT_TRUE(asmngr.IsTextureLoaded("awesomeface"));
 

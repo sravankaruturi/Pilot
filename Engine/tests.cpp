@@ -12,6 +12,9 @@ int main(int argc, char ** argv)
 	testing::InitGoogleTest(&argc, argv);
 	int test_value = RUN_ALL_TESTS();
 
+	std::cout << "Press Return to Close" << std::endl;
+	getchar();
+
 
 #if !TESTING_ONLY
 

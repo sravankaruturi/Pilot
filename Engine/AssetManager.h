@@ -89,7 +89,7 @@ namespace piolot
 		/**
 		* \brief Loads all the shaders from the Shader Directory.
 		*/
-		void LoadShaders()
+		bool LoadShaders()
 		{
 			// Load all the shaders in the directory and compile them.
 			for (auto& p : std::experimental::filesystem::directory_iterator(shaderDir))
@@ -98,46 +98,63 @@ namespace piolot
 				std::string extension = p.path().extension().generic_string();
 				if (".vert" != extension)
 				{
+					if (".frag" != extension)
+					{
+						// Extensions should be Vert or Frag.
+						return false;
+					}
 					continue;
 				}
 
-				std::string file_name = p.path().filename().generic_string();
-
-				// Important: This only works if the file extension is .vert.
-				for (auto i = 0; i < 5; i++)
-					file_name.pop_back();
-
-				// *. Get the key for the Map.
-				// *. Check if the Shader already exists and skip if it does log the anamoly.
-				if (this->shaders.count(file_name))
+				try
 				{
-					continue;
-				}
+					std::string file_name = p.path().filename().generic_string();
 
-				// *. Get the second file as well.
-				// *. Create the Shader and load it in the map.
-				this->shaders.insert_or_assign(file_name, DBG_NEW GLShader(p.path().generic_string().c_str(), (shaderDir + std::string("/") + file_name + std::string(".frag")).c_str()));
+					// Important: This only works if the file extension is .vert.
+					for (auto i = 0; i < 5; i++)
+						file_name.pop_back();
+
+					// *. Get the key for the Map.
+					// *. Check if the Shader already exists and skip if it does log the anamoly.
+					if (this->shaders.count(file_name))
+					{
+						continue;
+					}
+
+					// *. Get the second file as well.
+					// *. Create the Shader and load it in the map.
+					this->shaders.insert_or_assign(file_name, DBG_NEW GLShader(p.path().generic_string().c_str(), (shaderDir + std::string("/") + file_name + std::string(".frag")).c_str()));
+				}catch(...)
+				{
+					return false;
+				}
 
 			}
+			return true;
 		}
 
 		/**
 		* \brief Loads all the Textures from the Texture Directory.
 		*/
-		void LoadTextures()
+		bool LoadTextures()
 		{
-			/*this->textures.insert_or_assign(std::string("test"), new GLTexture((texture_dir + std::string("/wall.jpg")).c_str()));*/
 			for (auto& p : std::experimental::filesystem::directory_iterator(textureDir))
 			{
-				std::string file_name = p.path().filename().generic_string();
-				while (file_name.back() != '.')
+				try
 				{
+					std::string file_name = p.path().filename().generic_string();
+					while (file_name.back() != '.')
+					{
+						file_name.pop_back();
+					}
 					file_name.pop_back();
+
+					this->textures.insert_or_assign(file_name, DBG_NEW Texture(p.path().generic_string()));
+				}catch(...)
+				{
+					return false;
 				}
-				file_name.pop_back();
-
-				this->textures.insert_or_assign(file_name, DBG_NEW Texture(p.path().generic_string()));
-
+				return true;
 			}
 		}
 
