@@ -3,6 +3,8 @@
 #include "Window.h"
 #include "AssetManager.h"
 #include "Mesh.h"
+#include "Camera.h"
+#include <glm/gtc/matrix_transform.inl>
 
 #define TESTING_ONLY	0
 
@@ -13,12 +15,18 @@ int main(int argc, char ** argv)
 	int test_value = RUN_ALL_TESTS();
 
 	std::cout << "Press Return to Continue" << std::endl;
-	getchar();
+	const int c = getchar();
+	if ( c == 32)
+	{
+		return 0;
+	}
 
 
 #if !TESTING_ONLY
 
 	Window window = Window(800, 600, "Vermin");
+
+	piolot::Camera camera = piolot::Camera(glm::vec3(0, 0, 0), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0));
 
 	piolot::AssetManager asmngr;
 
@@ -59,15 +67,31 @@ int main(int argc, char ** argv)
 
 	std::vector<piolot::Texture *> textures;
 	textures.push_back(&awesomefacetexture);
+
+	glm::mat4 model_matrix = glm::mat4(1.0);
+	// Any thing beyond -1 in the model matrix is messed up because of the Near and Far clip Planes.
+	model_matrix = glm::translate(model_matrix, glm::vec3(0, 0, -1));
+
+	right_shader.setMat4("model", model_matrix);
+
+	float time = glfwGetTime();
+	float deltaTime = 0;
 	
 	while(!glfwWindowShouldClose(window.GetWindow()))
 	{
 		
+		deltaTime = glfwGetTime() - time;
+		time = glfwGetTime();
+
 		window.HandleInput();
+
+		camera.ProcessKeyboard(piolot::Camera::rightside, deltaTime);
 		
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		right_shader.setMat4("model", model_matrix);
+		right_shader.setMat4("view", camera.GetViewMatrix());
 		mesh.Render(&right_shader, textures);
 
 		glfwSwapBuffers(window.GetWindow());

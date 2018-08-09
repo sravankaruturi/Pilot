@@ -121,16 +121,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="external_files\glad\glad.c" />
     <ClCompile Include="GLShader.cpp" />
     <ClCompile Include="AllTests.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="CameraTests.cpp" />
     <ClCompile Include="tests.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="FolderLocations.h" />
     <ClInclude Include="GLShader.h" />
     <ClInclude Include="Mesh.h" />
