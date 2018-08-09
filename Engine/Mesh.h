@@ -66,14 +66,20 @@ namespace piolot
 		unsigned int vertexCount;
 		unsigned int indexCount;
 
+		unsigned int openglErrorFlag;
+
 	public:
+		unsigned int GetOpenglErrorFlag() const
+		{
+			return openglErrorFlag;
+		}
 
 		// A Couple of rules for the DataStructure. All the attributes should be size of 3. You have to pack them like that.
 		explicit Mesh(void * _dataPointer, size_t _dataStructureSize, unsigned int _vertexCount);
 
 		Mesh(void * _dataPointer, size_t _dataStructureSize, unsigned int _vertexCount, std::vector<unsigned int> _indices);
 
-		void Render(GLShader * _shader, std::vector<Texture *> _textures) const;
+		void Render(GLShader * _shader, std::vector<Texture *> _textures);
 	};
 
 }

@@ -45,10 +45,20 @@ int main(int argc, char ** argv)
 		VertexDataTestGood(glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.5f, 1.0f, 0.0f))
 	};
 
+	const std::string awesomefacetexturepath = TEXTURE_FOLDER + std::string("awesomeface.png");
+	piolot::Texture awesomefacetexture = piolot::Texture(awesomefacetexturepath);
+
+	std::vector<unsigned int> indices = { 0, 1, 2 };
+	//piolot::Mesh mesh((void *)&vertices[0], sizeof(VertexDataTestGood), 3, indices);
 	piolot::Mesh mesh((void *)&vertices[0], sizeof(VertexDataTestGood), 3);
+	
+	std::string test_vert_file_2 = SHADER_FOLDER + std::string("good_test.vert");
+	std::string test_frag_file_2 = SHADER_FOLDER + std::string("good_test.frag");
+
+	piolot::GLShader right_shader = piolot::GLShader(test_vert_file_2.c_str(), test_frag_file_2.c_str());
 
 	std::vector<piolot::Texture *> textures;
-	textures.push_back(asmngr.textures.at("container"));
+	textures.push_back(&awesomefacetexture);
 	
 	while(!glfwWindowShouldClose(window.GetWindow()))
 	{
@@ -58,7 +68,7 @@ int main(int argc, char ** argv)
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		mesh.Render(asmngr.shaders.at("good_test"), textures);
+		mesh.Render(&right_shader, textures);
 
 		glfwSwapBuffers(window.GetWindow());
 		glfwPollEvents();

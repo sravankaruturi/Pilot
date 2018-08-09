@@ -15,7 +15,12 @@ protected:
 
 	const std::string awesomefacetexturepath = TEXTURE_FOLDER + std::string("awesomeface.png");
 
-	Texture texture = Texture(awesomefacetexturepath);
+	Texture awesomeFaceTexture = Texture(awesomefacetexturepath);
+
+	std::string test_vert_file_2 = SHADER_FOLDER + std::string("good_test.vert");
+	std::string test_frag_file_2 = SHADER_FOLDER + std::string("good_test.frag");
+
+	GLShader right_shader = GLShader(test_vert_file_2.c_str(), test_frag_file_2.c_str());
 
 	AssetManager asmngr;
 
@@ -69,12 +74,8 @@ TEST_F(AllTests, CompileErrorsShowing)
 
 	std::string test_vert_file_1 = SHADER_FOLDER + std::string("failing_test.vert");
 	std::string test_frag_file_1 = SHADER_FOLDER + std::string("failing_test.frag");
-
-	std::string test_vert_file_2 = SHADER_FOLDER + std::string("good_test.vert");
-	std::string test_frag_file_2 = SHADER_FOLDER + std::string("good_test.frag");
-
+	
 	GLShader wrong_shader = GLShader(test_vert_file_1.c_str(), test_frag_file_1.c_str());
-	GLShader right_shader = GLShader(test_vert_file_2.c_str(), test_frag_file_2.c_str());
 
 	EXPECT_FALSE(wrong_shader.compileStatus);
 	EXPECT_TRUE(right_shader.compileStatus);
@@ -82,7 +83,7 @@ TEST_F(AllTests, CompileErrorsShowing)
 
 TEST_F(AllTests, TextureFileBeingRead)
 {
-	EXPECT_TRUE(texture.IsLoaded());
+	EXPECT_TRUE(awesomeFaceTexture.IsLoaded());
 }
 
 TEST_F(AllTests, AssetManagerShaderLoading)
@@ -109,10 +110,10 @@ TEST_F(AllTests, AssetManagerTextureLoading)
 	EXPECT_FALSE(asmngr.IsTextureLoaded("awesomefaec"));
 
 	// Try adding texture to the same thing. It should return false.
-	EXPECT_FALSE(asmngr.AddToTextures("awesomeface", &texture));
+	EXPECT_FALSE(asmngr.AddToTextures("awesomeface", &awesomeFaceTexture));
 }
 
-TEST_F(AllTests, MeshInitializer)
+TEST_F(AllTests, MeshInitializerAndRender)
 {
 	Mesh mesh((void *)&vertices[0], sizeof(VertexDataTestGood), 3);
 
@@ -130,9 +131,19 @@ TEST_F(AllTests, MeshInitializer)
 
 	EXPECT_FLOAT_EQ(0.5f, buffer_value);
 
+	// Make sure no OpenGL Errors took Place.
+	EXPECT_EQ(0, mesh.GetOpenglErrorFlag());
+
+	std::vector<Texture *> textures;
+	textures.push_back(&awesomeFaceTexture);
+	mesh.Render(&right_shader, textures);
+
+	// Make sure no OpenGL Errors took Place.
+	EXPECT_EQ(0, mesh.GetOpenglErrorFlag());
+
 }
 
-TEST_F(AllTests, MeshInitializerIndices)
+TEST_F(AllTests, MeshInitializerIndicesAndRender)
 {
 	std::vector<unsigned int> indices = { 0, 1, 2 };
 
@@ -161,5 +172,15 @@ TEST_F(AllTests, MeshInitializerIndices)
 	buffer_value = *((unsigned int *)testing_buffer_data);
 	EXPECT_EQ(0, buffer_value);
 	delete testing_buffer_data;
+
+	// Make sure no OpenGL Errors took Place.
+	EXPECT_EQ(0, mesh.GetOpenglErrorFlag());
+
+	std::vector<Texture *> textures;
+	textures.push_back(&awesomeFaceTexture);
+	mesh.Render(&right_shader, textures);
+
+	// Make sure no OpenGL Errors took Place.
+	EXPECT_EQ(0, mesh.GetOpenglErrorFlag());
 
 }

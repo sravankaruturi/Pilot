@@ -7,38 +7,14 @@ namespace piolot
 
 	class GLShader;
 
-	//template <typename VertexDataTemplate>
-	//Mesh::Mesh(std::vector<VertexDataTemplate> _vertices, std::vector<unsigned> _indices)
-	//{
-
-	//	usingIndexBuffer = true;
-	//	indexCount = _indices.size();
-	//	vertexCount = _vertices.size();
-
-	//	glGenVertexArrays(1, &VAO);
-	//	glGenBuffers(1, &VBO);
-	//	glGenBuffers(1, &EBO);
-
-	//	glBindVertexArray(VAO);
-
-	//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	//	glBufferData(GL_ARRAY_BUFFER, sizeof(VertexDataTemplate) * _vertices.size(), &_vertices[0], GL_STATIC_DRAW);
-
-	//	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	//	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * _indices.size(), &_indices[0], GL_FALSE);
-
-	//	for (auto i = 0; i < sizeof(VertexDataTemplate) / 3 * sizeof(float); i++)
-	//	{
-	//		glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, sizeof(VertexDataTemplate), (void *)(3 * i * sizeof(float)));
-	//		glEnableVertexAttribArray(i);
-	//	}
-
-	//}
-
-	void Mesh::Render(GLShader* _shader, std::vector<Texture*> _textures) const
+	void Mesh::Render(GLShader* _shader, std::vector<Texture*> _textures)
 	{
 
+		openglErrorFlag = glGetError();
+
 		_shader->use();
+
+		openglErrorFlag = glGetError();
 
 		auto i = 0;
 		for ( const auto it : _textures)
@@ -49,8 +25,12 @@ namespace piolot
 			i++;
 		}
 
+		openglErrorFlag = glGetError();
+
 		glBindVertexArray(VAO);
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+		openglErrorFlag = glGetError();
 
 		if ( usingIndexBuffer )
 		{
@@ -60,6 +40,10 @@ namespace piolot
 		{
 			glDrawArrays(GL_TRIANGLES, 0, vertexCount);
 		}
+
+		openglErrorFlag = glGetError();
+		// TODO: Why???
+		//std::cout << openglErrorFlag << std::endl;
 	}
 
 	Mesh::Mesh(void * _dataPointer, size_t _dataStructureSize, unsigned int _vertexCount)
@@ -86,10 +70,13 @@ namespace piolot
 			vertexAttribCounter += 1;
 		}
 
+		openglErrorFlag = glGetError();
+
 	}
 
 	Mesh::Mesh(void* _dataPointer, size_t _dataStructureSize, unsigned _vertexCount, std::vector<unsigned> _indices)
 	{
+
 		usingIndexBuffer = true;
 		indexCount = _indices.size();
 		vertexCount = _vertexCount;
@@ -104,7 +91,7 @@ namespace piolot
 		glBufferData(GL_ARRAY_BUFFER, _dataStructureSize * _vertexCount, _dataPointer, GL_STATIC_DRAW);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * _indices.size(), &_indices[0], GL_FALSE);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * _indices.size(), &_indices[0], GL_STATIC_DRAW);
 
 		for (auto i = 0; i < _dataStructureSize / (3 * sizeof(float)); i++)
 		{
@@ -112,5 +99,7 @@ namespace piolot
 			glEnableVertexAttribArray(i);
 			vertexAttribCounter += 1;
 		}
+
+		openglErrorFlag = glGetError();
 	}
 }
