@@ -154,8 +154,8 @@ namespace piolot
 				{
 					return false;
 				}
-				return true;
 			}
+			return true;
 		}
 
 		/**

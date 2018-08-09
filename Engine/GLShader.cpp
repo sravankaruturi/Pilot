@@ -76,6 +76,7 @@ bool GLShader::CheckCompileErrors(unsigned _shaderId, std::string _type)
 		{
 			glGetShaderInfoLog(_shaderId, 1024, NULL, infoLog);
 			std::string out = "ERROR::SHADER_COMPILATION_ERROR of type: ";
+			std::string out = "ERROR::SHADER_COMPILATION_ERROR of type: " + _type;
 		}
 	}
 	else

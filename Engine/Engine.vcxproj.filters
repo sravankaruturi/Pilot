@@ -16,6 +16,9 @@
     <Filter Include="Tests">
       <UniqueIdentifier>{fdd0dae2-8ffb-48f8-a626-2ca7c67ad5c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{db7b7cfb-5090-4788-8ddb-803ac780a17c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="tests.cpp">
@@ -55,11 +58,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="failing_test.vert">
-      <Filter>Tests</Filter>
+    <None Include="Shaders\good_test.frag">
+      <Filter>Shaders</Filter>
     </None>
-    <None Include="failing_test.frag">
-      <Filter>Tests</Filter>
+    <None Include="Shaders\good_test.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\failing_test.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\failing_test.vert">
+      <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -136,8 +136,10 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="failing_test.frag" />
-    <None Include="failing_test.vert" />
+    <None Include="Shaders\failing_test.frag" />
+    <None Include="Shaders\failing_test.vert" />
+    <None Include="Shaders\good_test.frag" />
+    <None Include="Shaders\good_test.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
