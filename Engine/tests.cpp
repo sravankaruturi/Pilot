@@ -3,8 +3,9 @@
 #include "Window.h"
 #include "GLShader.h"
 #include "FolderLocations.h"
+#include "AssetManager.h"
 
-#define TESTING_ONLY	1
+#define TESTING_ONLY	0
 
 int main(int argc, char ** argv)
 {
@@ -12,7 +13,7 @@ int main(int argc, char ** argv)
 	testing::InitGoogleTest(&argc, argv);
 	int test_value = RUN_ALL_TESTS();
 
-	std::cout << "Press Return to Close" << std::endl;
+	std::cout << "Press Return to Continue" << std::endl;
 	getchar();
 
 
@@ -20,7 +21,9 @@ int main(int argc, char ** argv)
 
 	Window window = Window(800, 600, "Vermin");
 
-	GLShader shader = GLShader((SHADER_FOLDER + std::string("good_test.vert")).c_str(), (SHADER_FOLDER + std::string("good_test.frag")).c_str());
+	piolot::AssetManager asmngr;
+
+	asmngr.LoadShaders();
 
 	float vertices[] = {
 		// positions         // colors
@@ -28,6 +31,8 @@ int main(int argc, char ** argv)
 		-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,  // bottom left
 		0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f   // top 
 	};
+
+	asmngr.shaders.at("good_test")->use();
 
 	unsigned int VBO, VAO;
 	glGenVertexArrays(1, &VAO);
@@ -54,7 +59,7 @@ int main(int argc, char ** argv)
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// render the triangle
-		shader.use();
+		asmngr.shaders.at("good_test");
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 
