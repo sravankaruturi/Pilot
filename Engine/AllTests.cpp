@@ -1,8 +1,9 @@
 #include "AssetManager.h"
 #include "Window.h"
-
 #include <gtest/gtest.h>
+#include "Mesh.h"
 
+using namespace piolot;
 
 class AllTests : public ::testing::Test
 {
@@ -13,9 +14,26 @@ protected:
 	Window window = Window(800, 600, "Test");
 
 	const std::string awesomefacetexturepath = TEXTURE_FOLDER + std::string("awesomeface.png");
-	piolot::Texture texture = piolot::Texture(awesomefacetexturepath);
 
-	piolot::AssetManager asmngr;
+	Texture texture = Texture(awesomefacetexturepath);
+
+	AssetManager asmngr;
+
+public:
+
+	struct VertexDataTestGood
+	{
+		glm::vec3 position;
+		glm::vec3 colour;
+		glm::vec3 texCoord;	// Note all the things have to be a vec3.
+
+		VertexDataTestGood(glm::vec3 _position, glm::vec3 _colour, glm::vec3 _texCoord)
+			: position(_position), colour(_colour), texCoord(_texCoord)
+		{
+			
+		}
+
+	};
 
 };
 
@@ -24,6 +42,7 @@ TEST_F(AllTests, CheckGLFWInitialisation)
 	EXPECT_TRUE(window.IsGlfwInit());
 	EXPECT_TRUE(window.IsGladInit());
 	EXPECT_FALSE(window.GetWindow() == nullptr);
+
 }
 
 TEST_F(AllTests, CheckIfKeysAreInitToInActive)
@@ -85,4 +104,20 @@ TEST_F(AllTests, AssetManagerTextureLoading)
 
 	// Try adding texture to the same thing. It should return false.
 	EXPECT_FALSE(asmngr.AddToTextures("awesomeface", &texture));
+}
+
+TEST_F(AllTests, MeshInitializer)
+{
+	
+	std::vector<VertexDataTestGood> vertices = {
+		VertexDataTestGood(glm::vec3(0.5f, -0.5f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(-0.5f, -0.5f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.5f, 1.0f, 0.0f))
+	};
+
+	Mesh mesh((void *)&vertices[0], sizeof(VertexDataTestGood), 3);
+
+	EXPECT_FALSE(mesh.IsUsingIndexBuffer());
+	EXPECT_EQ(3, mesh.GetVertexAttribCounter());
+
 }
