@@ -129,6 +129,62 @@ public:
 
 	void HandleInput() const;
 
+	bool IsKeyPressed(unsigned int _keyCode) const
+	{
+		// TODO: Log this.
+		if (_keyCode >= MAX_KEYS) {
+			return false;
+		}
+
+		return (keys[_keyCode] == key_pressed);
+	}
+
+	bool IsKeyPressedAndReleased(unsigned int _keyCode) const
+	{
+		// TODO: Log this.
+		if (_keyCode >= MAX_KEYS) {
+			return false;
+		}
+
+		return (keys[_keyCode] == key_released);
+	}
+
+	bool IsKeyHeld(unsigned int _keyCode) const
+	{
+		return  (_keyCode >= MAX_KEYS) ? false : (keys[_keyCode] == key_held);
+	}
+
+	bool IsMouseButtonPressed(unsigned int _button) const
+	{
+		// TODO: Log this.
+		if (_button >= MAX_BUTTONS) {
+			return false;
+		}
+
+		return (mouseButtons[_button] == key_pressed);
+	}
+
+	/* TODO: Implement this function later on */
+	//bool IsMouseButtonPressedAndReleased(unsigned int _button) const
+	//{
+	//	// TODO: Log this.
+	//	if (_button >= MAX_BUTTONS) {
+	//		return false;
+	//	}
+
+	//	return (mouseButtons[_button] == key_released);
+	//}
+
+	/**
+	* \brief Function to get the Mouse Position, to a couple of variables.
+	* \param x The Reference to Set the X Position to.
+	* \param y The reference to set the Y Position to.
+	*/
+	void GetMousePosition(double& x, double& y) const
+	{
+		x = mouseX;
+		y = mouseY;
+	}
 
 private:
 

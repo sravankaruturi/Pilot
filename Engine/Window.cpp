@@ -62,7 +62,7 @@ void Window::UpdateFrameSize()
 void Window::HandleInput() const
 {
 
-	if ( glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	if ( IsKeyPressedAndReleased(GLFW_KEY_ESCAPE))
 	{
 		glfwSetWindowShouldClose(window, true);
 	}
