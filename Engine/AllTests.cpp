@@ -176,11 +176,4 @@ TEST_F(AllTests, MeshInitializerIndicesAndRender)
 	// Make sure no OpenGL Errors took Place.
 	EXPECT_EQ(0, mesh.GetOpenglErrorFlag());
 
-	std::vector<Texture *> textures;
-	textures.push_back(&awesomeFaceTexture);
-	mesh.Render(&right_shader, textures);
-
-	// Make sure no OpenGL Errors took Place.
-	EXPECT_EQ(0, mesh.GetOpenglErrorFlag());
-
 }
