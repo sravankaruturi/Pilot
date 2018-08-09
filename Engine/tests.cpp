@@ -4,13 +4,13 @@
 #include "GLShader.h"
 #include "FolderLocations.h"
 
-#define TESTING_ONLY	0
+#define TESTING_ONLY	1
 
 int main(int argc, char ** argv)
 {
 	
-	/*testing::InitGoogleTest(&argc, argv);
-	int test_value = RUN_ALL_TESTS();*/
+	testing::InitGoogleTest(&argc, argv);
+	int test_value = RUN_ALL_TESTS();
 
 	////getchar();
 	//
