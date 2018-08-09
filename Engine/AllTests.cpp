@@ -120,4 +120,15 @@ TEST_F(AllTests, MeshInitializer)
 	EXPECT_FALSE(mesh.IsUsingIndexBuffer());
 	EXPECT_EQ(3, mesh.GetVertexAttribCounter());
 
+	// Make sure that the Data copied to the buffer matches the Data in the vertices.
+	void * testing_buffer_data;
+	testing_buffer_data = malloc(sizeof(vertices));
+	memset(testing_buffer_data, 0, sizeof(vertices));
+	glGetBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), testing_buffer_data);
+
+	// Now we check if the first float value is equal to the one we put in.
+	float buffer_value = *((float *)testing_buffer_data);
+
+	EXPECT_FLOAT_EQ(0.5f, buffer_value);
+
 }
