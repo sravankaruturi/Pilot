@@ -127,6 +127,8 @@ public:
 	*/
 	double mouseOffsetY{ 0.0 };
 
+	void HandleInput() const;
+
 
 private:
 

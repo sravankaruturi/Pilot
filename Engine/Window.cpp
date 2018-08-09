@@ -1,4 +1,5 @@
 ﻿#include "Window.h"
+#include <iostream>
 
 void window_resize(GLFWwindow * _window, int _width, int _height);
 void key_callback(GLFWwindow * _window, int _key, int scancode, int action, int mods);
@@ -38,12 +39,13 @@ Window::Window(unsigned width, unsigned height, const std::string& title): width
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
 		isGladInit = false;
+		std::cout << "Failed to initialize GLAD" << std::endl;
 	}else
 	{
 		isGladInit = true;
 	}
 
-	glEnable(GL_DEPTH_TEST);
+	//glEnable(GL_DEPTH_TEST);
 
 }
 
@@ -55,6 +57,16 @@ Window::~Window()
 void Window::UpdateFrameSize()
 {
 	glfwGetFramebufferSize(this->window, &this->width, &this->height);
+}
+
+void Window::HandleInput() const
+{
+
+	if ( glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(window, true);
+	}
+
 }
 
 void Window::CleanUp()
