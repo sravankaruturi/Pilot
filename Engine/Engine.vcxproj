@@ -123,14 +123,15 @@
   <ItemGroup>
     <ClCompile Include="external_files\glad\glad.c" />
     <ClCompile Include="GLShader.cpp" />
-    <ClCompile Include="GLShaderTests.cpp" />
+    <ClCompile Include="AllTests.cpp" />
     <ClCompile Include="tests.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Window.cpp" />
-    <ClCompile Include="WindowTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FolderLocations.h" />
     <ClInclude Include="GLShader.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

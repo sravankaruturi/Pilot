@@ -12,8 +12,6 @@ int main(int argc, char ** argv)
 	testing::InitGoogleTest(&argc, argv);
 	int test_value = RUN_ALL_TESTS();
 
-	////getchar();
-	//
 
 #if !TESTING_ONLY
 
