@@ -35,6 +35,12 @@ public:
 
 	};
 
+	std::vector<VertexDataTestGood> vertices = {
+		VertexDataTestGood(glm::vec3(0.5f, -0.5f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(-0.5f, -0.5f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.5f, 1.0f, 0.0f))
+	};
+
 };
 
 TEST_F(AllTests, CheckGLFWInitialisation)
@@ -108,13 +114,6 @@ TEST_F(AllTests, AssetManagerTextureLoading)
 
 TEST_F(AllTests, MeshInitializer)
 {
-	
-	std::vector<VertexDataTestGood> vertices = {
-		VertexDataTestGood(glm::vec3(0.5f, -0.5f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f)),
-		VertexDataTestGood(glm::vec3(-0.5f, -0.5f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f)),
-		VertexDataTestGood(glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.5f, 1.0f, 0.0f))
-	};
-
 	Mesh mesh((void *)&vertices[0], sizeof(VertexDataTestGood), 3);
 
 	EXPECT_FALSE(mesh.IsUsingIndexBuffer());
@@ -130,5 +129,37 @@ TEST_F(AllTests, MeshInitializer)
 	float buffer_value = *((float *)testing_buffer_data);
 
 	EXPECT_FLOAT_EQ(0.5f, buffer_value);
+
+}
+
+TEST_F(AllTests, MeshInitializerIndices)
+{
+	std::vector<unsigned int> indices = { 0, 1, 2 };
+
+	Mesh mesh((void *)&vertices[0], sizeof(VertexDataTestGood), 3, indices);
+
+	EXPECT_TRUE(mesh.IsUsingIndexBuffer());
+	EXPECT_EQ(3, mesh.GetVertexAttribCounter());
+
+	// Make sure that the Data copied to the buffer matches the Data in the vertices.
+	void * testing_buffer_data;
+	testing_buffer_data = malloc(sizeof(vertices));
+	memset(testing_buffer_data, 0, sizeof(vertices));
+	glGetBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), testing_buffer_data);
+
+	// Now we check if the first float value is equal to the one we put in.
+	float buffer_value = *((float *)testing_buffer_data);
+	EXPECT_FLOAT_EQ(0.5f, buffer_value);
+	delete testing_buffer_data;
+
+	// Make sure that the Data copied to the buffer matches the Data in the Indices
+	testing_buffer_data = malloc(sizeof(indices));
+	memset(testing_buffer_data, 0, sizeof(indices));
+	glGetBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, sizeof(indices), testing_buffer_data);
+
+	// Now we check if the first float value is equal to the one we put in.
+	buffer_value = *((unsigned int *)testing_buffer_data);
+	EXPECT_EQ(0, buffer_value);
+	delete testing_buffer_data;
 
 }

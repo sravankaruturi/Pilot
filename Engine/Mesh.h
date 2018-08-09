@@ -71,7 +71,7 @@ namespace piolot
 		// A Couple of rules for the DataStructure. All the attributes should be size of 3. You have to pack them like that.
 		explicit Mesh(void * _dataPointer, size_t _dataStructureSize, unsigned int _vertexCount);
 
-		//Mesh(std::vector<VertexDataTemplate> _vertices, std::vector<unsigned int> _indices);
+		Mesh(void * _dataPointer, size_t _dataStructureSize, unsigned int _vertexCount, std::vector<unsigned int> _indices);
 
 		void Render(GLShader * _shader, std::vector<Texture *> _textures) const;
 	};
