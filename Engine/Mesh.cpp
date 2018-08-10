@@ -10,11 +10,8 @@ namespace piolot
 	void Mesh::Render(GLShader* _shader, std::vector<Texture*> _textures)
 	{
 
-		openglErrorFlag = glGetError();
-
 		_shader->use();
 
-		openglErrorFlag = glGetError();
 
 		auto i = 0;
 		for ( const auto it : _textures)
@@ -25,8 +22,6 @@ namespace piolot
 			i++;
 		}
 
-		openglErrorFlag = glGetError();
-
 		glBindVertexArray(VAO);
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
@@ -35,10 +30,11 @@ namespace piolot
 		if ( usingIndexBuffer )
 		{
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-			glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
+			PE_GL(glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0));
 		}else
 		{
-			glDrawArrays(GL_TRIANGLES, 0, vertexCount);
+			//PE_GL(glDrawArrays(GL_TRIANGLES, 0, vertexCount));
+			PE_GL(glDrawArrays(GL_ELEMENT_ARRAY_BUFFER, 0, vertexCount));
 		}
 
 		openglErrorFlag = glGetError();

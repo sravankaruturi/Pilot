@@ -145,6 +145,9 @@ TEST_F(AllTests, MeshInitializerAndRender)
 
 TEST_F(AllTests, MeshInitializerIndicesAndRender)
 {
+
+	/* https://www.youtube.com/watch?v=FBbPWSOQ0-w&index=10&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2 OpenGL GL GetError Might return an arbitrary error if you do not make sure it is set to NO_ERRORS first?? WTF? */
+
 	std::vector<unsigned int> indices = { 0, 1, 2 };
 
 	Mesh mesh((void *)&vertices[0], sizeof(VertexDataTestGood), 3, indices);
@@ -161,7 +164,7 @@ TEST_F(AllTests, MeshInitializerIndicesAndRender)
 	// Now we check if the first float value is equal to the one we put in.
 	float buffer_value = *((float *)testing_buffer_data);
 	EXPECT_FLOAT_EQ(0.5f, buffer_value);
-	delete testing_buffer_data;
+	free(testing_buffer_data);
 
 	// Make sure that the Data copied to the buffer matches the Data in the Indices
 	testing_buffer_data = malloc(sizeof(indices));
@@ -171,7 +174,7 @@ TEST_F(AllTests, MeshInitializerIndicesAndRender)
 	// Now we check if the first float value is equal to the one we put in.
 	buffer_value = *((unsigned int *)testing_buffer_data);
 	EXPECT_EQ(0, buffer_value);
-	delete testing_buffer_data;
+	free(testing_buffer_data);
 
 	// Make sure no OpenGL Errors took Place.
 	EXPECT_EQ(0, mesh.GetOpenglErrorFlag());

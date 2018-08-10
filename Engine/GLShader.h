@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include <glad/glad.h>
+#include "PE_GL.h"
 #include <string>
 #include <fstream>
 #include <sstream>
