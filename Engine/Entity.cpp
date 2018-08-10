@@ -10,10 +10,11 @@ namespace piolot
 	{
 		glm::mat4 model_matrix(1.0f);
 		model_matrix = glm::translate(model_matrix, position);
-		model_matrix = glm::rotate(model_matrix, rotation.x, glm::vec3(1, 0, 0));
-		model_matrix = glm::rotate(model_matrix, rotation.y, glm::vec3(0, 1, 0));
-		model_matrix = glm::rotate(model_matrix, rotation.z, glm::vec3(0, 0, 1));
+		model_matrix = glm::rotate(model_matrix, glm::radians(rotation.x), glm::vec3(1, 0, 0));
+		model_matrix = glm::rotate(model_matrix, glm::radians(rotation.y), glm::vec3(0, 1, 0));
+		model_matrix = glm::rotate(model_matrix, glm::radians(rotation.z), glm::vec3(0, 0, 1));
 		model_matrix = glm::scale(model_matrix, scale);
+		modelMatrix = model_matrix;
 	}
 
 	Entity::Entity(const std::string& _objectPath, const std::string& _shaderName)
@@ -36,6 +37,7 @@ namespace piolot
 		if ( matrixDirty)
 		{
 			UpdateMatrices();
+			matrixDirty = false;
 		}
 	}
 

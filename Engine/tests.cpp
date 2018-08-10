@@ -30,6 +30,8 @@ int main(int argc, char ** argv)
 	{
 		return 0;
 	}
+
+
 #endif
 
 
@@ -50,7 +52,8 @@ int main(int argc, char ** argv)
 		piolot::Entity nanosuit("cube/cube.obj", "good_test");
 		piolot::Entity nanosuit2("cube/cube.obj", "good_test");
 
-		//nanosuit2.SetPosition(glm::vec3(3, 0, 0));
+		nanosuit2.SetPosition(glm::vec3(3, 0, 0));
+		nanosuit2.SetRotation(glm::vec3(0, 0, 45.0f));
 		
 
 		glm::mat4 projection_matrix = glm::perspective(45.0f, float(window.GetWidth()) / window.GetHeight(), 0.1f, 100.0f);
@@ -100,11 +103,16 @@ int main(int argc, char ** argv)
 			nanosuit.Update(deltaTime);
 			nanosuit2.Update(deltaTime);
 
-
 			ASMGR.shaders.at("good_test")->use();
+			ASMGR.shaders.at("good_test")->setMat4("model", nanosuit.GetModelMatrix());
 			ASMGR.shaders.at("good_test")->setMat4("view", camera.GetViewMatrix());
 			ASMGR.shaders.at("good_test")->setMat4("projection", projection_matrix);
 			nanosuit.Render();
+
+			ASMGR.shaders.at("good_test")->use();
+			ASMGR.shaders.at("good_test")->setMat4("model", nanosuit2.GetModelMatrix());
+			ASMGR.shaders.at("good_test")->setMat4("view", camera.GetViewMatrix());
+			ASMGR.shaders.at("good_test")->setMat4("projection", projection_matrix);
 			nanosuit2.Render();
 
 
