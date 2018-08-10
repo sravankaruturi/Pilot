@@ -45,7 +45,7 @@ Window::Window(unsigned width, unsigned height, const std::string& title): width
 		isGladInit = true;
 	}
 
-	//glEnable(GL_DEPTH_TEST);
+	glEnable(GL_DEPTH_TEST);
 
 }
 
@@ -67,6 +67,60 @@ void Window::HandleInput() const
 		glfwSetWindowShouldClose(window, true);
 	}
 
+}
+
+void Window::Update(const float _deltatime)
+{
+	// Swap Buffers
+	glfwSwapBuffers(window);
+
+	/**/
+	// పాతవన్నీ ఒకచోట దాచుకొని మళ్ళీ చూడు
+	for (auto i = 0; i < MAX_KEYS; i++)
+	{
+		prevKeys[i] = keys[i];
+	}
+	for (auto i = 0; i < MAX_BUTTONS; i++)
+	{
+		prevMouseButtons[i] = mouseButtons[i];
+	}
+
+	prevMouseX = mouseX;
+	prevMouseY = mouseY;
+
+	// Poll events
+	glfwPollEvents();
+
+	for (auto i = 0; i < MAX_KEYS; i++)
+	{
+		if ((prevKeys[i] == key_released) && (keys[i] == key_released))
+		{
+			keys[i] = key_inactive;
+		}
+	}
+
+	for (auto i = 0; i < MAX_BUTTONS; i++)
+	{
+		if ((prevMouseButtons[i] == key_released) && (mouseButtons[i] == key_released))
+		{
+			mouseButtons[i] = key_inactive;
+		}
+	}
+
+	/* This banks on the fact that to get to 0.0 and 0.0 again would be pretty hard. */
+	if (prevMouseX + prevMouseY < std::numeric_limits<float>::epsilon())
+	{
+		mouseOffsetX = 0;
+		mouseOffsetY = 0;
+	}
+	else
+	{
+		mouseOffsetX = mouseX - prevMouseX;
+		// Since the MouseCursor Pos in OpenGl is Inverted.
+		mouseOffsetY = -1 * (mouseY - prevMouseY);
+	}
+
+	auto error = glGetError();
 }
 
 void Window::CleanUp()

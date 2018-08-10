@@ -1,12 +1,13 @@
 ﻿#pragma once
 #include <glm/detail/type_vec3.hpp>
 #include <glm/mat4x4.hpp>
+#include <glad/glad.h>
 
 namespace piolot
 {
 
 	const float default_camera_speed = 2.0f;
-	const float default_camera_mouse_sensitivity = 1.0f;
+	const float default_camera_mouse_sensitivity = 1.0f / 128;
 
 	class Camera
 	{
@@ -113,6 +114,7 @@ namespace piolot
 		};
 
 		void ProcessKeyboard(camera_movement _direction, float _deltaTime);
+		void ProcessMouseMovement(float _xoffset, float _yoffset);
 
 	private:
 		void UpdateVectors();

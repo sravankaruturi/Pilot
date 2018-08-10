@@ -36,11 +36,10 @@ int main(int argc, char ** argv)
 	struct VertexDataTestGood
 	{
 		glm::vec3 position;
-		glm::vec3 colour;
 		glm::vec3 texCoord;	// Note all the things have to be a vec3.
 
-		VertexDataTestGood(glm::vec3 _position, glm::vec3 _colour, glm::vec3 _texCoord)
-			: position(_position), colour(_colour), texCoord(_texCoord)
+		VertexDataTestGood(glm::vec3 _position, glm::vec3 _texCoord)
+			: position(_position),  texCoord(_texCoord)
 		{
 
 		}
@@ -48,17 +47,55 @@ int main(int argc, char ** argv)
 	};
 
 	std::vector<VertexDataTestGood> vertices = {
-		VertexDataTestGood(glm::vec3(0.5f, -0.5f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f)),
-		VertexDataTestGood(glm::vec3(-0.5f, -0.5f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f)),
-		VertexDataTestGood(glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.5f, 1.0f, 0.0f))
+		VertexDataTestGood(glm::vec3(-0.5f, -0.5f, -0.5f),	glm::vec3(0.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f, -0.5f, -0.5f),	glm::vec3(1.0f, 0.0f,0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f,  0.5f, -0.5f),	glm::vec3(1.0f, 1.0f,0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f,  0.5f, -0.5f),	glm::vec3(1.0f, 1.0f,0.0f)),
+		VertexDataTestGood(glm::vec3(-0.5f,  0.5f, -0.5f),	glm::vec3(0.0f, 1.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(-0.5f, -0.5f, -0.5f),	glm::vec3(0.0f, 0.0f, 0.0f)),
+
+		VertexDataTestGood(glm::vec3(-0.5f, -0.5f,  0.5f),	glm::vec3(0.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f, -0.5f,  0.5f),	glm::vec3(1.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f,  0.5f,  0.5f),	glm::vec3(1.0f, 1.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f,  0.5f,  0.5f),	glm::vec3(1.0f, 1.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(-0.5f,  0.5f,  0.5f),	glm::vec3(0.0f, 1.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(-0.5f, -0.5f,  0.5f),	glm::vec3(0.0f, 0.0f, 0.0f)),
+
+		VertexDataTestGood(glm::vec3(-0.5f,  0.5f,  0.5f),	glm::vec3(1.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(-0.5f,  0.5f, -0.5f),	glm::vec3(1.0f, 1.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(-0.5f, -0.5f, -0.5f),	glm::vec3(0.0f, 1.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(-0.5f, -0.5f, -0.5f),	glm::vec3(0.0f, 1.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(-0.5f, -0.5f,  0.5f),	glm::vec3(0.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(-0.5f,  0.5f,  0.5f),	glm::vec3(1.0f, 0.0f, 0.0f)),
+
+		VertexDataTestGood(glm::vec3(0.5f,  0.5f,  0.5f),	glm::vec3(1.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f,  0.5f, -0.5f),	glm::vec3(1.0f, 1.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f, -0.5f, -0.5f),	glm::vec3(0.0f, 1.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f, -0.5f, -0.5f),	glm::vec3(0.0f, 1.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f, -0.5f,  0.5f),	glm::vec3(0.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f,  0.5f,  0.5f),	glm::vec3(1.0f, 0.0f, 0.0f)),
+
+		VertexDataTestGood(glm::vec3(-0.5f, -0.5f, -0.5f),	glm::vec3(0.0f, 1.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f, -0.5f, -0.5f),	glm::vec3(1.0f, 1.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f, -0.5f,  0.5f),	glm::vec3(1.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f, -0.5f,  0.5f),	glm::vec3(1.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(-0.5f, -0.5f,  0.5f),	glm::vec3(0.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(-0.5f, -0.5f, -0.5f),	glm::vec3(0.0f, 1.0f, 0.0f)),
+
+		VertexDataTestGood(glm::vec3(-0.5f,  0.5f, -0.5f),	glm::vec3(0.0f, 1.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f,  0.5f, -0.5f),	glm::vec3(1.0f, 1.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f,  0.5f,  0.5f),	glm::vec3(1.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(0.5f,  0.5f,  0.5f),	glm::vec3(1.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(-0.5f,  0.5f,  0.5f),	glm::vec3(0.0f, 0.0f, 0.0f)),
+		VertexDataTestGood(glm::vec3(-0.5f,  0.5f, -0.5f),	glm::vec3(0.0f, 1.0f, 0.0f)),
 	};
 
-	const std::string awesomefacetexturepath = TEXTURE_FOLDER + std::string("awesomeface.png");
+	const std::string awesomefacetexturepath = TEXTURE_FOLDER + std::string("container.jpg");
 	piolot::Texture awesomefacetexture = piolot::Texture(awesomefacetexturepath);
 
 	std::vector<unsigned int> indices = { 0, 1, 2 };
 	//piolot::Mesh mesh((void *)&vertices[0], sizeof(VertexDataTestGood), 3, indices);
-	piolot::Mesh mesh((void *)&vertices[0], sizeof(VertexDataTestGood), 3);
+	piolot::Mesh mesh((void *)&vertices[0], sizeof(VertexDataTestGood), 36);
 	
 	std::string test_vert_file_2 = SHADER_FOLDER + std::string("good_test.vert");
 	std::string test_frag_file_2 = SHADER_FOLDER + std::string("good_test.frag");
@@ -72,7 +109,10 @@ int main(int argc, char ** argv)
 	// Any thing beyond -1 in the model matrix is messed up because of the Near and Far clip Planes.
 	model_matrix = glm::translate(model_matrix, glm::vec3(0, 0, -1));
 
+	glm::mat4 projection_matrix = glm::perspective(45.0f, float(window.GetWidth()) / window.GetHeight(), 0.1f, 100.0f);
+
 	right_shader.setMat4("model", model_matrix);
+	right_shader.setMat4("projection", projection_matrix);
 
 	float time = glfwGetTime();
 	float deltaTime = 0;
@@ -85,17 +125,39 @@ int main(int argc, char ** argv)
 
 		window.HandleInput();
 
-		camera.ProcessKeyboard(piolot::Camera::rightside, deltaTime);
+		{
+			if ( window.IsKeyPressedOrHeld(GLFW_KEY_W))
+			{
+				camera.ProcessKeyboard(piolot::Camera::forward, deltaTime);
+			}
+
+			if (window.IsKeyPressedOrHeld(GLFW_KEY_S))
+			{
+				camera.ProcessKeyboard(piolot::Camera::back, deltaTime);
+			}
+
+			if (window.IsKeyPressedOrHeld(GLFW_KEY_A))
+			{
+				camera.ProcessKeyboard(piolot::Camera::leftside, deltaTime);
+			}
+
+			if (window.IsKeyPressedOrHeld(GLFW_KEY_D))
+			{
+				camera.ProcessKeyboard(piolot::Camera::rightside, deltaTime);
+			}
+
+			camera.ProcessMouseMovement(window.mouseOffsetX, window.mouseOffsetY);
+		}
 		
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		right_shader.setMat4("model", model_matrix);
 		right_shader.setMat4("view", camera.GetViewMatrix());
+		right_shader.setMat4("projection", projection_matrix);
 		mesh.Render(&right_shader, textures);
 
-		glfwSwapBuffers(window.GetWindow());
-		glfwPollEvents();
+		window.Update(deltaTime);
 	}
 
 

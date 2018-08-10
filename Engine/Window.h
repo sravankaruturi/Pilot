@@ -149,6 +149,11 @@ public:
 		return (keys[_keyCode] == key_released);
 	}
 
+	bool IsKeyPressedOrHeld(const unsigned int _keycode) const
+	{
+		return IsKeyPressed(_keycode) || IsKeyHeld(_keycode);
+	}
+
 	bool IsKeyHeld(unsigned int _keyCode) const
 	{
 		return  (_keyCode >= MAX_KEYS) ? false : (keys[_keyCode] == key_held);
@@ -185,6 +190,9 @@ public:
 		x = mouseX;
 		y = mouseY;
 	}
+
+	// TODO: Write Unit Tests for This..
+	void Update(const float _deltatime);
 
 private:
 

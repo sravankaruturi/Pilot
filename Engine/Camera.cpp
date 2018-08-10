@@ -25,6 +25,18 @@ namespace piolot
 		UpdateMatrices();
 	}
 
+	void Camera::ProcessMouseMovement(float _xoffset, float _yoffset)
+	{
+		_xoffset *= mouseSensitivity;
+		_yoffset *= mouseSensitivity;
+
+		front += _xoffset * right;
+		front += _yoffset * up;
+
+		UpdateVectors();
+
+	}
+
 	void Camera::UpdateVectors()
 	{
 
