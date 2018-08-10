@@ -34,15 +34,7 @@ namespace piolot
 			return instance;
 		}
 
-		/**
-		* \brief Default Constructor.
-		*/
-		//AssetManager() = default;
-
-		/**
-		* \brief Destructor. Deletes all the Shaders and Textures stored here.
-		*/
-		~AssetManager()
+		void ClearAllData()
 		{
 			for (auto it : textures)
 			{
@@ -54,17 +46,30 @@ namespace piolot
 				delete it.second;
 			}
 
-			//for (auto vectorOfRenderables : meshes)
-			//{
-			//	for (GLRenderable* eachRenderable : vectorOfRenderables.second)
-			//	{
-			//		// TODO: This is not an error since we have a properly defined constructor. 
-			//		// @see https://stackoverflow.com/questions/4325154/delete-objects-of-incomplete-type#4325223
-			//		// This is because of the Forward Declaration.
-			//		// One way to fix this would be to move the implementaion of the singleton to its C++ file and then include the Header for GLRenderable.
-			//		delete eachRenderable;
-			//	}
-			//}
+			for (auto it: objects)
+			{
+				// This is not an error since we have a properly defined destructor. 
+				// @see https://stackoverflow.com/questions/4325154/delete-objects-of-incomplete-type#4325223
+				// This is because of the Forward Declaration.
+				delete it.second;
+			}
+
+			textures.clear();
+			shaders.clear();
+			objects.clear();
+		}
+
+		/**
+		* \brief Default Constructor.
+		*/
+		//AssetManager() = default;
+
+		/**
+		* \brief Destructor. Deletes all the Shaders and Textures stored here.
+		*/
+		~AssetManager()
+		{
+			ClearAllData();
 		}
 
 		/**
