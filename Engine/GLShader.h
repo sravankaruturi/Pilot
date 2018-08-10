@@ -46,7 +46,7 @@ namespace piolot
 		*/
 		void use()
 		{
-			glUseProgram(shaderId);
+			PE_GL(glUseProgram(shaderId));
 		}
 
 
@@ -57,7 +57,7 @@ namespace piolot
 		*/
 		void setBool(const std::string &_name, bool _value) const
 		{
-			glUniform1i(glGetUniformLocation(shaderId, _name.c_str()), (int)_value);
+			PE_GL(glUniform1i(glGetUniformLocation(shaderId, _name.c_str()), (int)_value));
 		}
 
 		/**
@@ -67,7 +67,7 @@ namespace piolot
 		*/
 		void setInt(const std::string &_name, int _value) const
 		{
-			glUniform1i(glGetUniformLocation(shaderId, _name.c_str()), _value);
+			PE_GL(glUniform1i(glGetUniformLocation(shaderId, _name.c_str()), _value));
 		}
 
 		/**
@@ -77,12 +77,7 @@ namespace piolot
 		*/
 		void setFloat(const std::string &_name, float _value) const
 		{
-			auto error = glGetError();
-			GLuint test = glGetUniformLocation(shaderId, _name.c_str());
-			error = glGetError();
-			/* This is where the issue is.. */
-			glUniform1f(test, _value);
-			error = glGetError();
+			PE_GL(glUniform1f(glGetUniformLocation(shaderId, _name.c_str()), _value));
 		}
 
 		/**
@@ -92,7 +87,7 @@ namespace piolot
 		*/
 		void setVec3(const std::string &_name, const glm::vec3 &_value) const
 		{
-			glUniform3fv(glGetUniformLocation(shaderId, _name.c_str()), 1, &_value[0]);
+			PE_GL(glUniform3fv(glGetUniformLocation(shaderId, _name.c_str()), 1, &_value[0]));
 		}
 
 		/**
@@ -104,7 +99,7 @@ namespace piolot
 		*/
 		void setVec3(const std::string &_name, float _x, float _y, float _z) const
 		{
-			glUniform3f(glGetUniformLocation(shaderId, _name.c_str()), _x, _y, _z);
+			PE_GL(glUniform3f(glGetUniformLocation(shaderId, _name.c_str()), _x, _y, _z));
 		}
 
 		/**
@@ -114,7 +109,7 @@ namespace piolot
 		*/
 		void setMat4(const std::string &_name, const glm::mat4 &_mat) const
 		{
-			glUniformMatrix4fv(glGetUniformLocation(shaderId, _name.c_str()), 1, GL_FALSE, &_mat[0][0]);
+			PE_GL(glUniformMatrix4fv(glGetUniformLocation(shaderId, _name.c_str()), 1, GL_FALSE, &_mat[0][0]));
 		}
 
 		/**
