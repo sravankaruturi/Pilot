@@ -12,11 +12,13 @@
 #include <glm/gtc/matrix_transform.inl>
 #include "Entity.h"
 
-#define TESTING_ONLY	0
+#define TESTING_ONLY			0
+#define DISABLE_UNIT_TESTS		0
 
 int main(int argc, char ** argv)
 {
 
+#if !DISABLE_UNIT_TESTS
 	/*_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);*/
 
 	testing::InitGoogleTest(&argc, argv);
@@ -28,6 +30,7 @@ int main(int argc, char ** argv)
 	{
 		return 0;
 	}
+#endif
 
 
 #if !TESTING_ONLY
@@ -44,7 +47,7 @@ int main(int argc, char ** argv)
 		ASMGR.LoadShaders();
 		ASMGR.LoadTextures();
 
-		piolot::Entity nanosuit("nanosuit/nanosuit.obj", "good_test");
+		piolot::Entity nanosuit("cube/cube.obj", "good_test");
 
 		glm::mat4 projection_matrix = glm::perspective(45.0f, float(window.GetWidth()) / window.GetHeight(), 0.1f, 100.0f);
 

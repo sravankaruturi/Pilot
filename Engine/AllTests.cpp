@@ -23,8 +23,6 @@ protected:
 
 	GLShader right_shader = GLShader(test_vert_file_2.c_str(), test_frag_file_2.c_str());
 
-	AssetManager asmngr = ASMGR;
-
 public:
 
 	struct VertexDataTestGood
@@ -87,35 +85,9 @@ TEST_F(AllTests, TextureFileBeingRead)
 	EXPECT_TRUE(awesomeFaceTexture.IsLoaded());
 }
 
-TEST_F(AllTests, AssetManagerShaderLoading)
-{
-	const auto loaded = asmngr.LoadShaders();
-
-	EXPECT_TRUE(loaded);
-	EXPECT_TRUE(asmngr.shaders.find("good_test") != asmngr.shaders.end());
-	EXPECT_TRUE(asmngr.shaders.find("failing_test") != asmngr.shaders.end());
-}
-
-TEST_F(AllTests, AssetManagerTextureLoading)
+TEST_F(AllTests, MeshInitializer)
 {
 
-	EXPECT_FALSE(asmngr.IsTextureLoaded("awesomeface"));
-
-	const auto loaded = asmngr.LoadTextures();
-
-	EXPECT_TRUE(loaded);
-	EXPECT_TRUE(asmngr.textures.find("awesomeface") != asmngr.textures.end());
-	EXPECT_TRUE(asmngr.IsTextureLoaded("awesomeface"));
-
-	// Intentionally spelt wrong.
-	EXPECT_FALSE(asmngr.IsTextureLoaded("awesomefaec"));
-
-	// Try adding texture to the same thing. It should return false.
-	EXPECT_FALSE(asmngr.AddToTextures("awesomeface", &awesomeFaceTexture));
-}
-
-TEST_F(AllTests, MeshInitializerAndRender)
-{
 	Mesh mesh((void *)&vertices[0], sizeof(VertexDataTestGood), 3);
 
 	EXPECT_FALSE(mesh.IsUsingIndexBuffer());
@@ -135,16 +107,9 @@ TEST_F(AllTests, MeshInitializerAndRender)
 	// Make sure no OpenGL Errors took Place.
 	EXPECT_EQ(0, mesh.GetOpenglErrorFlag());
 
-	std::vector<Texture *> textures;
-	textures.push_back(&awesomeFaceTexture);
-	mesh.Render("good_test");
-
-	// Make sure no OpenGL Errors took Place.
-	EXPECT_EQ(0, mesh.GetOpenglErrorFlag());
-
 }
 
-TEST_F(AllTests, MeshInitializerIndicesAndRender)
+TEST_F(AllTests, MeshInitializerIndices)
 {
 
 	/* https://www.youtube.com/watch?v=FBbPWSOQ0-w&index=10&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2 OpenGL GL GetError Might return an arbitrary error if you do not make sure it is set to NO_ERRORS first?? WTF? */
@@ -177,15 +142,12 @@ TEST_F(AllTests, MeshInitializerIndicesAndRender)
 	EXPECT_EQ(0, buffer_value);
 	free(testing_buffer_data);
 
-	// Make sure no OpenGL Errors took Place.
-	EXPECT_EQ(0, mesh.GetOpenglErrorFlag());
-
 }
 
-//TEST_F(AllTests, EntityConstructorCheck)
-//{
-//	
-//	Entity entity("nanosuit/nanosuit.obj", "good_test");
-//	EXPECT_STREQ("nanosuit", entity.GetObjectName().c_str());
-//
-//}
+TEST_F(AllTests, EntityConstructorCheck)
+{
+	
+	Entity entity("cube/cube.obj", "good_test");
+	EXPECT_STREQ("cube", entity.GetObjectName().c_str());
+
+}
