@@ -57,7 +57,7 @@ namespace piolot
 		std::string directory;
 		std::string objectName;
 
-		std::vector<Mesh> meshes;
+		std::vector<Mesh *> meshes;
 
 	public:
 		const std::string& GetObjectName() const
@@ -66,13 +66,13 @@ namespace piolot
 		}
 
 		explicit Object(const std::string& _objectPath);
-		~Object() = default;
+		~Object();
 
 		void Render(std::string shaderName);
 
 	private:
-		void ProcessNode(aiNode *_node, const aiScene *_scene, std::vector<Mesh>& _renderables);
-		Mesh ProcessMesh(aiMesh * _mesh, const aiScene * _scene);
+		void ProcessNode(aiNode *_node, const aiScene *_scene, std::vector<Mesh*>& _meshes);
+		Mesh * ProcessMesh(aiMesh * _mesh, const aiScene * _scene);
 		std::vector<std::string> LoadMaterialTextures(aiMaterial* _mat, aiTextureType _type);
 	};
 }

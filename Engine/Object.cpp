@@ -34,17 +34,25 @@ namespace piolot
 
 	}
 
-	void Object::Render(std::string _shaderName)
+	Object::~Object()
 	{
-		// Set any object wide uniforms here. Like Hightlight colour os something.
-
-		for ( Mesh mesh : meshes)
+		for ( auto mesh : meshes)
 		{
-			mesh.Render(_shaderName);
+			delete mesh;
 		}
 	}
 
-	void Object::ProcessNode(aiNode* _node, const aiScene* _scene, std::vector<Mesh>& meshes)
+	void Object::Render(const std::string _shaderName)
+	{
+		// Set any object wide uniforms here. Like Hightlight colour os something.
+
+		for ( Mesh * mesh : meshes)
+		{
+			mesh->Render(_shaderName);
+		}
+	}
+
+	void Object::ProcessNode(aiNode* _node, const aiScene* _scene, std::vector<Mesh *>& meshes)
 	{
 		/* Process each mesh at the current Node */
 		for (auto i = 0; i < _node->mNumMeshes; i++)
@@ -62,7 +70,7 @@ namespace piolot
 		}
 	}
 
-	Mesh Object::ProcessMesh(aiMesh* _mesh, const aiScene* _scene)
+	Mesh * Object::ProcessMesh(aiMesh* _mesh, const aiScene* _scene)
 	{
 		std::vector<VertexData> vertices;
 		std::vector<unsigned int> indices;
@@ -129,8 +137,8 @@ namespace piolot
 		std::vector<std::string> heightMaps = LoadMaterialTextures(material, aiTextureType_AMBIENT);
 		textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
-		auto return_renderable = Mesh(&vertices[0], sizeof(VertexData), vertices.size(), indices);
-		return_renderable.SetTextureNames(textures);
+		auto return_renderable = DBG_NEW Mesh(&vertices[0], sizeof(VertexData), vertices.size(), indices);
+		return_renderable->SetTextureNames(textures);
 
 		return return_renderable;
 

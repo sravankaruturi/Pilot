@@ -10,9 +10,9 @@
 #define PE_ASSERT(x) if (!(x)) __debugbreak()
 
 /* Check this. */
-#if _DEBUG
+#if 1
 #define PE_EXPECT(x) if (!(x)) __debugbreak()
-#elif
+#else
 #define PE_EXPECT(x) x
 #endif
 

@@ -28,16 +28,18 @@ namespace piolot
 			i++;
 		}
 
-		PE_GL(glBindVertexArray(VAO));
-		PE_GL(glBindBuffer(GL_ARRAY_BUFFER, VBO));
+		PE_GL(glBindVertexArray(this->VAO));
+		PE_GL(glBindBuffer(GL_ARRAY_BUFFER, this->VBO));
 
 		if ( usingIndexBuffer )
 		{
 			PE_GL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO));
 			PE_GL(glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0));
+			PE_GL(glBindVertexArray(0));
 		}else
 		{
 			PE_GL(glDrawArrays(GL_TRIANGLES, 0, vertexCount));
+			PE_GL(glBindVertexArray(0));
 		}
 	}
 

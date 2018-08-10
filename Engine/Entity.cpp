@@ -2,9 +2,20 @@
 #include "Object.h"
 #include "FolderLocations.h"
 #include "AssetManager.h"
+#include <glm/gtc/matrix_transform.inl>
 
 namespace piolot
 {
+	void Entity::UpdateMatrices()
+	{
+		glm::mat4 model_matrix(1.0f);
+		model_matrix = glm::translate(model_matrix, position);
+		model_matrix = glm::rotate(model_matrix, rotation.x, glm::vec3(1, 0, 0));
+		model_matrix = glm::rotate(model_matrix, rotation.y, glm::vec3(0, 1, 0));
+		model_matrix = glm::rotate(model_matrix, rotation.z, glm::vec3(0, 0, 1));
+		model_matrix = glm::scale(model_matrix, scale);
+	}
+
 	Entity::Entity(const std::string& _objectPath, const std::string& _shaderName)
 		:shaderName(_shaderName)
 	{
@@ -22,7 +33,10 @@ namespace piolot
 
 	void Entity::Update(float _deltaTime)
 	{
-		
+		if ( matrixDirty)
+		{
+			UpdateMatrices();
+		}
 	}
 
 	void Entity::Render()
@@ -33,9 +47,10 @@ namespace piolot
 		// Set the Model Matrix.
 		ASMGR.shaders.at(shaderName)->setMat4("model", modelMatrix);
 
-		const auto object = ASMGR.objects.at(objectName);
+		// Render
+		ASMGR.objects.at(objectName)->Render(shaderName);
 		// Render.
-		object->Render(shaderName);
+		//object->Render(shaderName);
 		
 	}
 }
