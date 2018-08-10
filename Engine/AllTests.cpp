@@ -2,6 +2,7 @@
 #include "Window.h"
 #include <gtest/gtest.h>
 #include "Mesh.h"
+#include "Entity.h"
 
 using namespace piolot;
 
@@ -22,7 +23,7 @@ protected:
 
 	GLShader right_shader = GLShader(test_vert_file_2.c_str(), test_frag_file_2.c_str());
 
-	AssetManager asmngr;
+	AssetManager asmngr = ASMGR;
 
 public:
 
@@ -136,7 +137,7 @@ TEST_F(AllTests, MeshInitializerAndRender)
 
 	std::vector<Texture *> textures;
 	textures.push_back(&awesomeFaceTexture);
-	mesh.Render(&right_shader, textures);
+	mesh.Render("good_test");
 
 	// Make sure no OpenGL Errors took Place.
 	EXPECT_EQ(0, mesh.GetOpenglErrorFlag());
@@ -180,3 +181,11 @@ TEST_F(AllTests, MeshInitializerIndicesAndRender)
 	EXPECT_EQ(0, mesh.GetOpenglErrorFlag());
 
 }
+
+//TEST_F(AllTests, EntityConstructorCheck)
+//{
+//	
+//	Entity entity("nanosuit/nanosuit.obj", "good_test");
+//	EXPECT_STREQ("nanosuit", entity.GetObjectName().c_str());
+//
+//}

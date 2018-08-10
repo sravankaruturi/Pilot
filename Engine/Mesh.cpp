@@ -1,23 +1,30 @@
 ﻿#include "Mesh.h"
 #include "Texture.h"
 #include "GLShader.h"
+#include "AssetManager.h"
 
 namespace piolot
 {
 
-	class GLShader;
-
-	void Mesh::Render(GLShader* _shader, std::vector<Texture*> _textures)
+	void Mesh::Render(const std::string& _shaderName)
 	{
+		if ( textureNames.size() != texturePointers.size())
+		{
+			texturePointers.clear();
+			for ( auto it : textureNames)
+			{
+				texturePointers.push_back(ASMGR.textures.at(it));
+			}
+		}
 
-		_shader->use();
+		ASMGR.shaders.at(_shaderName)->use();
 
 		auto i = 0;
-		for ( const auto it : _textures)
+		for ( const auto it : texturePointers)
 		{
 			PE_GL(glActiveTexture(GL_TEXTURE0 + i));
 			PE_GL(glBindTexture(GL_TEXTURE_2D, it->GetTextureId()));
-			_shader->setInt("texture" + std::to_string(i), i);
+			ASMGR.shaders.at(_shaderName)->setInt("texture" + std::to_string(i), i);
 			i++;
 		}
 

@@ -32,7 +32,7 @@ static bool pe_gl_log_error(const char * _functionName, const char * _fileName, 
 {
 	while ( GLenum error = glGetError())
 	{
-		std::cout << "OpenGL Error: [" << error << "] at " << _functionName << " in " << _fileName << ":" << _line << std::endl;
+		std::cout << "OpenGL Error: [" << std::hex << error << std::dec << "] at " << _functionName << " in " << _fileName << ":" << _line << std::endl;
 		return false;
 	}
 	return true;

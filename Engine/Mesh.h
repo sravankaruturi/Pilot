@@ -22,7 +22,22 @@ namespace piolot
 		// For Debugging Purposes.
 		unsigned int vertexAttribCounter = 0;
 
+		std::vector<std::string> textureNames;
+
+		// Just because it is expesive to look up textures from the names every frame.
+		std::vector<Texture *> texturePointers;
+
 	public:
+		const std::vector<std::string>& GetTextureNames() const
+		{
+			return textureNames;
+		}
+
+		void SetTextureNames(const std::vector<std::string>& _basicStrings)
+		{
+			textureNames = _basicStrings;
+		}
+
 		unsigned GetVertexAttribCounter() const
 		{
 			return vertexAttribCounter;
@@ -79,7 +94,7 @@ namespace piolot
 
 		Mesh(void * _dataPointer, size_t _dataStructureSize, unsigned int _vertexCount, std::vector<unsigned int> _indices);
 
-		void Render(GLShader * _shader, std::vector<Texture *> _textures);
+		void Render(const std::string& _shaderName);
 	};
 
 }

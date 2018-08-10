@@ -14,26 +14,30 @@
 #define DBG_NEW new
 #endif
 
+#define ASMGR piolot::AssetManager::getInstance()
+
 namespace piolot
 {
+
+	class Object;
 
 	class AssetManager
 	{
 	public:
-		///**
-		//* \brief Returns the instance of the Singleton.
-		//* \return The reference to the static object, instance.
-		//*/
-		//static AssetManager& getInstance()
-		//{
-		//	static AssetManager    instance; // Guaranteed to be destroyed and Instantiated on first use.
-		//	return instance;
-		//}
+		/**
+		* \brief Returns the instance of the Singleton.
+		* \return The reference to the static object, instance.
+		*/
+		static AssetManager& getInstance()
+		{
+			static AssetManager    instance; // Guaranteed to be destroyed and Instantiated on first use.
+			return instance;
+		}
 
 		/**
 		* \brief Default Constructor.
 		*/
-		AssetManager() = default;
+		//AssetManager() = default;
 
 		/**
 		* \brief Destructor. Deletes all the Shaders and Textures stored here.
@@ -75,7 +79,7 @@ namespace piolot
 		/**
 		* \brief A Map of all the Renderables loaded.
 		*/
-		/*std::map<std::string, std::vector<GLRenderable *>> meshes;*/
+		std::map<std::string, Object *> objects;
 
 		/**
 		* \brief The Shader Directory from where all the shaders are loaded.
@@ -168,15 +172,15 @@ namespace piolot
 			return (!(textures.find(_key) == textures.end()));
 		}
 
-		///**
-		//* \brief Returns if the mesh is loaded.
-		//* \param _key Key
-		//* \return True if we find the mesh with the key.
-		//*/
-		//bool IsMeshLoaded(std::string _key)
-		//{
-		//	return (!(meshes.find(_key) == meshes.end()));
-		//}
+		/**
+		* \brief Returns if the mesh is loaded.
+		* \param _key Key
+		* \return True if we find the mesh with the key.
+		*/
+		bool IsObjectLoaded(std::string _key)
+		{
+			return (!(objects.find(_key) == objects.end()));
+		}
 
 		/**
 		* \brief Add a texture to the exisiting map.

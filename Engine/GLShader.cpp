@@ -1,4 +1,7 @@
 ﻿#include "GLShader.h"
+#include <fstream>
+#include <sstream>
+#include <iostream>
 
 namespace piolot
 {

@@ -2,10 +2,8 @@
 
 #include "PE_GL.h"
 #include <string>
-#include <fstream>
-#include <sstream>
-#include <iostream>
 #include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 namespace piolot
 {
@@ -109,7 +107,8 @@ namespace piolot
 		*/
 		void setMat4(const std::string &_name, const glm::mat4 &_mat) const
 		{
-			PE_GL(glUniformMatrix4fv(glGetUniformLocation(shaderId, _name.c_str()), 1, GL_FALSE, &_mat[0][0]));
+			PE_GL(const auto location = glGetUniformLocation(shaderId, _name.c_str()));
+			PE_GL(glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(_mat)));
 		}
 
 		/**
