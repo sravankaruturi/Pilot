@@ -69,11 +69,150 @@ namespace piolot
 		PE_GL(glEnableVertexAttribArray(0));
 	}
 
-	bool BoundingBox::CheckForCollisionWithRay(glm::vec3 RayOrigin, glm::vec3 RayDirection) const
+	bool BoundingBox::CheckForCollisionWithRay(const glm::mat4 _modelMatrix, const glm::vec3 _rayOrigin, const glm::vec3 _rayDirection, float& _intersectionDistance) const
 	{
 
-		// Logic Goes Here.
+		// @see http://www.opengl-tutorial.org/miscellaneous/clicking-on-objects/picking-with-custom-ray-obb-function/
+		// @see https://github.com/opengl-tutorials/ogl/tree/master/misc05_picking
+		// @see https://github.com/opengl-tutorials/ogl/blob/master/misc05_picking/misc05_picking_custom.cpp
+		// TODO: Read this again, as you were quite confused the first time around.
 
+		float tMin = 0.0f;
+		float tMax = 100000.0f;
+
+		glm::vec3 obbposition_worldspace(_modelMatrix[3].x, _modelMatrix[3].y, _modelMatrix[3].z);
+		glm::vec3 delta = obbposition_worldspace - _rayOrigin;
+
+		// Testing the intersection with the 2 planes perpendicular to the OBB's X Axes
+		{
+			const glm::vec3 obb_xaxis(_modelMatrix[0].x, _modelMatrix[0].y, _modelMatrix[0].z);
+			float e = glm::dot(obb_xaxis, delta);
+			float f = glm::dot(_rayDirection, obb_xaxis);
+
+			// The ray is not paraller to the XAxis of the OBB.
+			if ( glm::abs(f) > 0.001f )
+			{
+				float t1 = (e + minimumPoint.x) / f;
+				float t2 = (e + maximumPoint.x) / f;
+
+				if ( t1 > t2)
+				{
+					// Swap them
+					float w = t1;
+					t1 = t2;
+					t2 = w;
+				}
+
+				if ( t2 < tMax)
+				{
+					tMax = t2;
+				}
+
+				if ( t1 > tMin)
+				{
+					tMin = t1;
+				}
+
+				if ( tMax < tMin)
+				{
+					return false;
+				}
+
+			}else
+			{
+				if ( -e + minimumPoint.x > 0.0f || -e + maximumPoint.x < 0.0f)
+				{
+					return false;
+				}
+			}
+
+		}
+
+		{
+			const glm::vec3 obb_yaxis(_modelMatrix[1].x, _modelMatrix[1].y, _modelMatrix[1].z);
+
+			float e = glm::dot(obb_yaxis, delta);
+			float f = glm::dot(_rayDirection, obb_yaxis);
+
+			if ( glm::abs(f) > 0.001f)
+			{
+				float t1 = (e + minimumPoint.y) / f;
+				float t2 = (e + maximumPoint.y) / f;
+
+				if ( t1 > t2 )
+				{
+					float w = t1;
+					t1 = t2;
+					t2 = w;
+				}
+
+				if ( t2 < tMax)
+				{
+					tMax = t2;
+				}
+
+				if ( t1 > tMin)
+				{
+					tMin = t1;
+				}
+
+				if (tMin > tMax)
+				{
+					return false;
+				}
+			}else
+			{
+				if ( -e + minimumPoint.y > 0.0f || -e + maximumPoint.y < 0.0f)
+				{
+					return false;
+				}
+			}
+
+		}
+
+		// Test the intersection with the 2 planes perpendicular to the OBB's z axis.
+		{
+			const glm::vec3 obb_zaxis(_modelMatrix[2].x, _modelMatrix[2].y, _modelMatrix[2].z);
+
+			float e = glm::dot(obb_zaxis, delta);
+			float f = glm::dot(_rayDirection, obb_zaxis);
+
+			if ( glm::abs(f) > 0.001f)
+			{
+				float t1 = (e + minimumPoint.z) / f;
+				float t2 = (e + maximumPoint.z) / f;
+
+				if ( t1 > t2 )
+				{
+					float w = t1;
+					t1 = t2;
+					t2 = w;
+				}
+
+				if ( t2 < tMax)
+				{
+					tMax = t2;
+				}
+
+				if (t1 > tMin)
+				{
+					tMin = t1;
+				}
+
+				if ( tMin > tMax)
+				{
+					return false;
+				}
+			}else
+			{
+				if ( -e + minimumPoint.z > 0.0f || -e + maximumPoint.z < 0.0f)
+				{
+					return false;
+				}
+			}
+		}
+
+		_intersectionDistance = tMin;
 		return true;
 	}
 

@@ -120,16 +120,23 @@ int main(int argc, char ** argv)
 			}
 
 			{
+				float int_distance = 0;
 				// Do Ray Picking Here.
 				// For each Bounding Box, we check for the collision, and do what we want, as part of the Scene Update.
-				if ( nanosuit.GetBoundingBox().CheckForCollisionWithRay(camera.GetPosition(), mouse_pointer_ray))
+				if ( nanosuit.GetBoundingBox().CheckForCollisionWithRay(nanosuit.GetModelMatrix(), camera.GetPosition(), mouse_pointer_ray, int_distance))
 				{
 					nanosuit.SetSelectedInScene(true);
+				}else
+				{
+					nanosuit.SetSelectedInScene(false);
 				}
 
-				if (nanosuit2.GetBoundingBox().CheckForCollisionWithRay(camera.GetPosition(), mouse_pointer_ray))
+				if (nanosuit2.GetBoundingBox().CheckForCollisionWithRay(nanosuit2.GetModelMatrix(), camera.GetPosition(), mouse_pointer_ray, int_distance))
 				{
 					nanosuit2.SetSelectedInScene(true);
+				}else
+				{
+					nanosuit2.SetSelectedInScene(false);
 				}
 
 			}

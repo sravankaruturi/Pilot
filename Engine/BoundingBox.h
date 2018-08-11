@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <glm/detail/type_vec3.hpp>
 #include <vector>
+#include <glm/mat4x2.hpp>
 
 namespace piolot
 {
@@ -38,7 +39,7 @@ namespace piolot
 			return vertices.size();
 		}
 
-		bool CheckForCollisionWithRay(glm::vec3 RayOrigin, glm::vec3 RayDirection) const;
+		bool CheckForCollisionWithRay(const glm::mat4 _modelMatrix, const glm::vec3 _rayOrigin, const glm::vec3 _rayDirection, float& _intersectionDistance) const;
 
 		void Render(glm::vec3 _colour);
 
