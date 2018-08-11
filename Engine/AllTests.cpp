@@ -68,16 +68,23 @@ TEST_F(AllTests, CheckIfKeysAreInitToInActive)
 	}
 }
 
-TEST_F(AllTests, CompileErrorsShowing)
+TEST_F(AllTests, AssetManagerLoadingShadersProperly)
 {
 
-	std::string test_vert_file_1 = SHADER_FOLDER + std::string("failing_test.vert");
-	std::string test_frag_file_1 = SHADER_FOLDER + std::string("failing_test.frag");
-	
-	GLShader wrong_shader = GLShader(test_vert_file_1.c_str(), test_frag_file_1.c_str());
+	//std::string test_vert_file_1 = SHADER_FOLDER + std::string("failing_test.vert");
+	//std::string test_frag_file_1 = SHADER_FOLDER + std::string("failing_test.frag");
+	//
+	//GLShader wrong_shader = GLShader(test_vert_file_1.c_str(), test_frag_file_1.c_str());
 
-	EXPECT_FALSE(wrong_shader.compileStatus);
-	EXPECT_TRUE(right_shader.compileStatus);
+	//EXPECT_FALSE(wrong_shader.compileStatus);
+
+	ASMGR.LoadShaders();
+
+	for ( auto it : ASMGR.shaders)
+	{
+		EXPECT_TRUE(it.second->compileStatus);
+	}
+
 }
 
 TEST_F(AllTests, TextureFileBeingRead)

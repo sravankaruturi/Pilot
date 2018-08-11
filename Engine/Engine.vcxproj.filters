@@ -54,6 +54,12 @@
     <ClCompile Include="Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BoundingBoxTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="BoundingBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -89,18 +95,27 @@
     <ClInclude Include="Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BoundingBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\good_test.frag">
+    <None Include="Shaders\failing_test.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\failing_test.vert">
       <Filter>Shaders</Filter>
     </None>
     <None Include="Shaders\good_test.vert">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="Shaders\failing_test.frag">
+    <None Include="Shaders\good_test.frag">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="Shaders\failing_test.vert">
+    <None Include="Shaders\bbox.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\bbox.vert">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

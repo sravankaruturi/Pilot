@@ -80,6 +80,8 @@ namespace piolot
 			{
 				glGetShaderInfoLog(_shaderId, 1024, NULL, infoLog);
 				std::string out = "ERROR::SHADER_COMPILATION_ERROR of type: " + _type;
+				std::cout << out << std::endl;
+				std::cout << infoLog << std::endl;
 			}
 		}
 		else

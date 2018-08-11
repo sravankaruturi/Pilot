@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <string>
 #include <glm/mat4x4.hpp>
-
+#include "BoundingBox.h"
 
 namespace piolot
 {
@@ -10,6 +10,8 @@ namespace piolot
 
 	protected:
 		std::string shaderName;
+
+		BoundingBox boundingBox;
 
 	public:
 		const std::string& GetShaderName() const

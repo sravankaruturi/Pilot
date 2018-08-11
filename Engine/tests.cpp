@@ -45,7 +45,7 @@ int main(int argc, char ** argv)
 
 		Window window = Window(800, 600, "Vermin");
 
-		piolot::Camera camera = piolot::Camera(glm::vec3(0, 0, 0), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0));
+		piolot::Camera camera = piolot::Camera(glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0));
 
 		ASMGR.LoadShaders();
 		ASMGR.LoadTextures();
@@ -108,12 +108,22 @@ int main(int argc, char ** argv)
 			ASMGR.shaders.at("good_test")->setMat4("model", nanosuit.GetModelMatrix());
 			ASMGR.shaders.at("good_test")->setMat4("view", camera.GetViewMatrix());
 			ASMGR.shaders.at("good_test")->setMat4("projection", projection_matrix);
+
+			ASMGR.shaders.at("bbox")->use();
+			ASMGR.shaders.at("bbox")->setMat4("model", nanosuit.GetModelMatrix());
+			ASMGR.shaders.at("bbox")->setMat4("view", camera.GetViewMatrix());
+			ASMGR.shaders.at("bbox")->setMat4("projection", projection_matrix);
 			nanosuit.Render();
 
 			ASMGR.shaders.at("good_test")->use();
 			ASMGR.shaders.at("good_test")->setMat4("model", nanosuit2.GetModelMatrix());
 			ASMGR.shaders.at("good_test")->setMat4("view", camera.GetViewMatrix());
 			ASMGR.shaders.at("good_test")->setMat4("projection", projection_matrix);
+
+			ASMGR.shaders.at("bbox")->use();
+			ASMGR.shaders.at("bbox")->setMat4("model", nanosuit.GetModelMatrix());
+			ASMGR.shaders.at("bbox")->setMat4("view", camera.GetViewMatrix());
+			ASMGR.shaders.at("bbox")->setMat4("projection", projection_matrix);
 			nanosuit2.Render();
 
 

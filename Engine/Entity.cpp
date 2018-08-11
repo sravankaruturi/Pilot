@@ -18,7 +18,7 @@ namespace piolot
 	}
 
 	Entity::Entity(const std::string& _objectPath, const std::string& _shaderName)
-		:shaderName(_shaderName)
+		:shaderName(_shaderName), boundingBox(BoundingBox(glm::vec3(-1.5, -1.5f, -1.5f), glm::vec3(1.5f, 1.5f, 1.5f)))
 	{
 		Object * object = DBG_NEW Object(MDOEL_FOLDER + _objectPath);
 
@@ -30,6 +30,8 @@ namespace piolot
 		}
 		
 		modelMatrix = glm::mat4(1.0f);
+
+		boundingBox = BoundingBox(glm::vec3(-1.5, -1.5f, -1.5f), glm::vec3(1.5f, 1.5f, 1.5f));
 	}
 
 	void Entity::Update(float _deltaTime)
@@ -53,6 +55,10 @@ namespace piolot
 		ASMGR.objects.at(objectName)->Render(shaderName);
 		// Render.
 		//object->Render(shaderName);
+
+		ASMGR.shaders.at("bbox")->use();
+		ASMGR.shaders.at("bbox")->setMat4("model", modelMatrix);
+		boundingBox.Render(glm::vec3(1.0, 0.0, 0.0));
 		
 	}
 }
