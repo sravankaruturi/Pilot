@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "Camera.h"
+#include <glm/gtc/matrix_transform.inl>
 
 class CameraTests : public ::testing::Test
 {
@@ -101,4 +102,16 @@ TEST_F(CameraTests, CheckCameraMovement)
 	EXPECT_FLOAT_EQ(camera_position.x, 0);
 	EXPECT_FLOAT_EQ(camera_position.y, 0);
 	EXPECT_FLOAT_EQ(camera_position.z, -1 * c.GetMovementSpeed());
+}
+
+TEST_F(CameraTests, CheckMouseRayDirection)
+{
+	c.SetFront(glm::vec3(0, 0, -1));
+
+	glm::vec3 resultant_ray = c.GetMouseRayDirection(400, 300, 800, 600, glm::perspective(45.0f, 800.0f / 600.0f, 0.1f, 100.0f));
+
+	EXPECT_FLOAT_EQ(resultant_ray.x, 0);
+	EXPECT_FLOAT_EQ(resultant_ray.y, 0);
+	EXPECT_FLOAT_EQ(resultant_ray.z, -1);
+
 }

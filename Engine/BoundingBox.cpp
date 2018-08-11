@@ -69,6 +69,14 @@ namespace piolot
 		PE_GL(glEnableVertexAttribArray(0));
 	}
 
+	bool BoundingBox::CheckForCollisionWithRay(glm::vec3 RayOrigin, glm::vec3 RayDirection) const
+	{
+
+		// Logic Goes Here.
+
+		return true;
+	}
+
 	void BoundingBox::Render(glm::vec3 _colour)
 	{
 		ASMGR.shaders.at("bbox")->use();

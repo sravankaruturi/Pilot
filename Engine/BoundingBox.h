@@ -38,6 +38,8 @@ namespace piolot
 			return vertices.size();
 		}
 
+		bool CheckForCollisionWithRay(glm::vec3 RayOrigin, glm::vec3 RayDirection) const;
+
 		void Render(glm::vec3 _colour);
 
 	};

@@ -13,7 +13,24 @@ namespace piolot
 
 		BoundingBox boundingBox;
 
+		bool selectedInScene = false;
+
 	public:
+		bool IsSelectedInScene() const
+		{
+			return selectedInScene;
+		}
+
+		void SetSelectedInScene(bool _selectedInScene)
+		{
+			selectedInScene = _selectedInScene;
+		}
+
+		const BoundingBox& GetBoundingBox() const
+		{
+			return boundingBox;
+		}
+
 		const std::string& GetShaderName() const
 		{
 			return shaderName;

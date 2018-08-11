@@ -116,6 +116,8 @@ namespace piolot
 		void ProcessKeyboard(camera_movement _direction, float _deltaTime);
 		void ProcessMouseMovement(float _xoffset, float _yoffset);
 
+		glm::vec3 GetMouseRayDirection(float _mouseX, float _mouseY, int _windowWidth, int _windowHeight, glm::mat4 _projectionMatrix);
+
 	private:
 		void UpdateVectors();
 		void UpdateMatrices();

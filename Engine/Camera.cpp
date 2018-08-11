@@ -37,6 +37,31 @@ namespace piolot
 
 	}
 
+	glm::vec3 Camera::GetMouseRayDirection(float _mouseX, float _mouseY, int _windowWidth, int _windowHeight, glm::mat4 _projectionMatrix)
+	{
+
+		// Following the video at https://www.youtube.com/watch?v=DLKN0jExRIM
+
+		const float normalized_x = (2.0f * _mouseX) / _windowWidth - 1.0f;
+		const float normalized_y = 1.0f - (2.0f * _mouseY) / _windowHeight;
+
+		glm::vec4 clip_coordinates = glm::vec4(normalized_x, normalized_y, -1.0f, 0.f);
+
+		// Try using translate if multiplication does not work.
+		glm::vec4 eye_coordinates = glm::inverse(_projectionMatrix) * clip_coordinates;
+
+		eye_coordinates.z = -1.0f;
+		eye_coordinates.w = 0.0f;
+
+		glm::vec4 temp_word_coordinates = glm::inverse(viewMatrix) * eye_coordinates;
+
+		// For some reason all it returns is in negative.. to the way it should be. Are we missing something somewhere?
+		glm::vec3 world_coordinates = glm::vec3(temp_word_coordinates.x, temp_word_coordinates.y, temp_word_coordinates.z);
+		world_coordinates = glm::normalize(world_coordinates);
+
+		return world_coordinates;
+	}
+
 	void Camera::UpdateVectors()
 	{
 

@@ -58,7 +58,14 @@ namespace piolot
 
 		ASMGR.shaders.at("bbox")->use();
 		ASMGR.shaders.at("bbox")->setMat4("model", modelMatrix);
-		boundingBox.Render(glm::vec3(1.0, 0.0, 0.0));
+		if ( selectedInScene )
+		{
+			boundingBox.Render(glm::vec3(1.0, 1.0, 0.0));
+		}else
+		{
+			boundingBox.Render(glm::vec3(1.0, 0.0, 0.0));
+		}
+		
 		
 	}
 }

@@ -62,6 +62,8 @@ int main(int argc, char ** argv)
 		float time = glfwGetTime();
 		float deltaTime = 0;
 
+		glm::vec3 mouse_pointer_ray;
+
 		while (!glfwWindowShouldClose(window.GetWindow()))
 		{
 
@@ -95,6 +97,8 @@ int main(int argc, char ** argv)
 				{
 					camera.ProcessMouseMovement(window.mouseOffsetX, window.mouseOffsetY);
 				}
+
+				mouse_pointer_ray = camera.GetMouseRayDirection(window.mouseX, window.mouseY, window.GetWidth(), window.GetHeight(), projection_matrix);
 				
 			}
 
@@ -104,28 +108,34 @@ int main(int argc, char ** argv)
 			nanosuit.Update(deltaTime);
 			nanosuit2.Update(deltaTime);
 
-			ASMGR.shaders.at("good_test")->use();
-			ASMGR.shaders.at("good_test")->setMat4("model", nanosuit.GetModelMatrix());
-			ASMGR.shaders.at("good_test")->setMat4("view", camera.GetViewMatrix());
-			ASMGR.shaders.at("good_test")->setMat4("projection", projection_matrix);
 
-			ASMGR.shaders.at("bbox")->use();
-			ASMGR.shaders.at("bbox")->setMat4("model", nanosuit.GetModelMatrix());
-			ASMGR.shaders.at("bbox")->setMat4("view", camera.GetViewMatrix());
-			ASMGR.shaders.at("bbox")->setMat4("projection", projection_matrix);
-			nanosuit.Render();
+			{
+				// We set the View and Projection Matrices for all the Shaders that has them ( They all should have them ideally ).
+				for ( auto it : ASMGR.shaders)
+				{
+					it.second->use();
+					it.second->setMat4("view", camera.GetViewMatrix());
+					it.second->setMat4("projection", projection_matrix);
+				}
+			}
 
-			ASMGR.shaders.at("good_test")->use();
-			ASMGR.shaders.at("good_test")->setMat4("model", nanosuit2.GetModelMatrix());
-			ASMGR.shaders.at("good_test")->setMat4("view", camera.GetViewMatrix());
-			ASMGR.shaders.at("good_test")->setMat4("projection", projection_matrix);
+			{
+				// Do Ray Picking Here.
+				// For each Bounding Box, we check for the collision, and do what we want, as part of the Scene Update.
+				if ( nanosuit.GetBoundingBox().CheckForCollisionWithRay(camera.GetPosition(), mouse_pointer_ray))
+				{
+					nanosuit.SetSelectedInScene(true);
+				}
 
-			ASMGR.shaders.at("bbox")->use();
-			ASMGR.shaders.at("bbox")->setMat4("model", nanosuit.GetModelMatrix());
-			ASMGR.shaders.at("bbox")->setMat4("view", camera.GetViewMatrix());
-			ASMGR.shaders.at("bbox")->setMat4("projection", projection_matrix);
+				if (nanosuit2.GetBoundingBox().CheckForCollisionWithRay(camera.GetPosition(), mouse_pointer_ray))
+				{
+					nanosuit2.SetSelectedInScene(true);
+				}
+
+			}
+
+			nanosuit.Render();		
 			nanosuit2.Render();
-
 
 			window.Update(deltaTime);
 		}
