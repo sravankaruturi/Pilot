@@ -76,6 +76,7 @@ namespace piolot
 		// @see https://github.com/opengl-tutorials/ogl/tree/master/misc05_picking
 		// @see https://github.com/opengl-tutorials/ogl/blob/master/misc05_picking/misc05_picking_custom.cpp
 		// TODO: Read this again, as you were quite confused the first time around.
+		// The article linked above does not take into consideration, the scaling included in the model matrix.
 
 		float tMin = 0.0f;
 		float tMax = 100000.0f;

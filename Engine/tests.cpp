@@ -55,19 +55,21 @@ int main(int argc, char ** argv)
 
 		nanosuit2.SetPosition(glm::vec3(3, 0, 0));
 		nanosuit2.SetRotation(glm::vec3(0, 0, 45.0f));
+		nanosuit2.SetScale(glm::vec3(2, 1, 1));
 		
 
 		glm::mat4 projection_matrix = glm::perspective(45.0f, float(window.GetWidth()) / window.GetHeight(), 0.1f, 100.0f);
 
 		float time = glfwGetTime();
-		float deltaTime = 0;
+		float delta_time = 0;
 
 		glm::vec3 mouse_pointer_ray;
+		piolot::Entity * selected_entity = nullptr;
 
 		while (!glfwWindowShouldClose(window.GetWindow()))
 		{
 
-			deltaTime = glfwGetTime() - time;
+			delta_time = glfwGetTime() - time;
 			time = glfwGetTime();
 
 			window.HandleInput();
@@ -75,22 +77,22 @@ int main(int argc, char ** argv)
 			{
 				if (window.IsKeyPressedOrHeld(GLFW_KEY_W))
 				{
-					camera.ProcessKeyboard(piolot::Camera::forward, deltaTime);
+					camera.ProcessKeyboard(piolot::Camera::forward, delta_time);
 				}
 
 				if (window.IsKeyPressedOrHeld(GLFW_KEY_S))
 				{
-					camera.ProcessKeyboard(piolot::Camera::back, deltaTime);
+					camera.ProcessKeyboard(piolot::Camera::back, delta_time);
 				}
 
 				if (window.IsKeyPressedOrHeld(GLFW_KEY_A))
 				{
-					camera.ProcessKeyboard(piolot::Camera::leftside, deltaTime);
+					camera.ProcessKeyboard(piolot::Camera::leftside, delta_time);
 				}
 
 				if (window.IsKeyPressedOrHeld(GLFW_KEY_D))
 				{
-					camera.ProcessKeyboard(piolot::Camera::rightside, deltaTime);
+					camera.ProcessKeyboard(piolot::Camera::rightside, delta_time);
 				}
 
 				if (window.IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1))
@@ -105,8 +107,13 @@ int main(int argc, char ** argv)
 			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			nanosuit.Update(deltaTime);
-			nanosuit2.Update(deltaTime);
+			nanosuit.Update(delta_time);
+			nanosuit2.Update(delta_time);
+
+			std::vector<piolot::Entity *> entities = {
+				&nanosuit,
+				&nanosuit2
+			};
 
 
 			{
@@ -121,22 +128,29 @@ int main(int argc, char ** argv)
 
 			{
 				float int_distance = 0;
+				float min_int_distance = 10000.0f;
 				// Do Ray Picking Here.
 				// For each Bounding Box, we check for the collision, and do what we want, as part of the Scene Update.
-				if ( nanosuit.GetBoundingBox().CheckForCollisionWithRay(nanosuit.GetModelMatrix(), camera.GetPosition(), mouse_pointer_ray, int_distance))
+
+				// We reset this every frame.
+				selected_entity = nullptr;
+				// Loop through all Entities that can be selected.
+				for ( auto it : entities)
 				{
-					nanosuit.SetSelectedInScene(true);
-				}else
-				{
-					nanosuit.SetSelectedInScene(false);
+					if ( it->GetBoundingBox().CheckForCollisionWithRay(it->GetModelMatrix(), camera.GetPosition(), mouse_pointer_ray, int_distance))
+					{
+						if ( int_distance < min_int_distance)
+						{
+							min_int_distance = int_distance;
+							selected_entity = it;
+						}
+					}
+					it->SetSelectedInScene(false);
 				}
 
-				if (nanosuit2.GetBoundingBox().CheckForCollisionWithRay(nanosuit2.GetModelMatrix(), camera.GetPosition(), mouse_pointer_ray, int_distance))
+				if ( nullptr != selected_entity)
 				{
-					nanosuit2.SetSelectedInScene(true);
-				}else
-				{
-					nanosuit2.SetSelectedInScene(false);
+					selected_entity->SetSelectedInScene(true);
 				}
 
 			}
@@ -144,7 +158,7 @@ int main(int argc, char ** argv)
 			nanosuit.Render();		
 			nanosuit2.Render();
 
-			window.Update(deltaTime);
+			window.Update(delta_time);
 		}
 
 	}

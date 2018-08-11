@@ -18,8 +18,9 @@ namespace piolot
 	}
 
 	Entity::Entity(const std::string& _objectPath, const std::string& _shaderName)
-		:shaderName(_shaderName), boundingBox(BoundingBox(glm::vec3(-1.5, -1.5f, -1.5f), glm::vec3(1.5f, 1.5f, 1.5f)))
+		:shaderName(_shaderName), boundingBox(BoundingBox(glm::vec3(-1.0, -1.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f)))
 	{
+		// This allocation would be cleared from the Asset Manager.
 		Object * object = DBG_NEW Object(MDOEL_FOLDER + _objectPath);
 
 		objectName = object->GetObjectName();
@@ -31,7 +32,7 @@ namespace piolot
 		
 		modelMatrix = glm::mat4(1.0f);
 
-		boundingBox = BoundingBox(glm::vec3(-1.5, -1.5f, -1.5f), glm::vec3(1.5f, 1.5f, 1.5f));
+		//boundingBox = BoundingBox(glm::vec3(-1.5, -1.5f, -1.5f), glm::vec3(1.5f, 1.5f, 1.5f));
 	}
 
 	void Entity::Update(float _deltaTime)
@@ -57,7 +58,7 @@ namespace piolot
 		//object->Render(shaderName);
 
 		ASMGR.shaders.at("bbox")->use();
-		ASMGR.shaders.at("bbox")->setMat4("model", modelMatrix);
+		ASMGR.shaders.at("bbox")->setMat4("model", glm::scale(modelMatrix, glm::vec3(1.0001f, 1.0001f, 1.0001f)));
 		if ( selectedInScene )
 		{
 			boundingBox.Render(glm::vec3(1.0, 1.0, 0.0));

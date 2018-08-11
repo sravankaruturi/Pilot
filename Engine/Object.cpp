@@ -17,6 +17,8 @@ namespace piolot
 		if (ASMGR.IsObjectLoaded(objectName))
 		{
 			PE_LOG("File, " + objectName + " skipped loading");
+			// TODO: What happens when one accesses ther eturned pointer here?
+			//Object(*(ASMGR.objects.at(objectName)));
 			return;
 		}
 
