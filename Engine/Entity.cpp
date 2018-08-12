@@ -69,4 +69,10 @@ namespace piolot
 		
 		
 	}
+
+	bool Entity::CheckIfMouseOvered(const glm::vec3 _cameraPosition, const glm::vec3 _mouseRayDirection, float& _distance) const
+	{
+		// Checks if this entity is under the cursor. And updates the _distance to hold it.
+		return this->boundingBox.CheckForCollisionWithRay(this->modelMatrix, this->scale, _cameraPosition, _mouseRayDirection, _distance);
+	}
 }

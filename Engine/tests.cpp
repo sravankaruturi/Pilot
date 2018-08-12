@@ -12,7 +12,7 @@
 #include <glm/gtc/matrix_transform.inl>
 #include "Entity.h"
 
-#define TESTING_ONLY			1
+#define TESTING_ONLY			0
 #define DISABLE_UNIT_TESTS		0
 
 int main(int argc, char ** argv)
@@ -137,7 +137,7 @@ int main(int argc, char ** argv)
 				// Loop through all Entities that can be selected.
 				for ( auto it : entities)
 				{
-					if ( it->GetBoundingBox().CheckForCollisionWithRay(it->GetModelMatrix(), camera.GetPosition(), mouse_pointer_ray, int_distance))
+					if ( it->CheckIfMouseOvered(camera.GetPosition(), mouse_pointer_ray, min_int_distance))
 					{
 						if ( int_distance < min_int_distance)
 						{
