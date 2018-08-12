@@ -12,7 +12,7 @@
 #include <glm/gtc/matrix_transform.inl>
 #include "Entity.h"
 
-#define TESTING_ONLY			0
+#define TESTING_ONLY			1
 #define DISABLE_UNIT_TESTS		0
 
 int main(int argc, char ** argv)
