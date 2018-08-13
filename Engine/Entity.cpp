@@ -20,13 +20,13 @@ namespace piolot
 	Entity::Entity(const std::string& _objectPath, const std::string& _shaderName)
 		:shaderName(_shaderName), boundingBox(BoundingBox(glm::vec3(-1.0, -1.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f)))
 	{
-		// This allocation would be cleared from the Asset Manager.
-		std::shared_ptr<Object> object = std::make_shared<Object>(MDOEL_FOLDER + _objectPath);
-
-		objectName = object->GetObjectName();
+		
+		objectName = _objectPath.substr(_objectPath.find_last_of('/') + 1, _objectPath.find_last_of('.') - _objectPath.find_last_of('/') - 1);
 
 		if (!ASMGR.IsObjectLoaded(objectName))
 		{
+			// This allocation would be cleared from the Asset Manager.
+			std::shared_ptr<Object> object = std::make_shared<Object>(MODEL_FOLDER + _objectPath);
 			ASMGR.objects.insert_or_assign(objectName, object);
 		}
 		

@@ -1,8 +1,8 @@
-﻿#include "Object.h"
-#include <iostream>
-#include "assimp/postprocess.h"
+﻿#include <iostream>
 #include <vector>
 
+#include "assimp/postprocess.h"
+#include "Object.h"
 #include "AssetManager.h"
 #include "LoggingMacros.h"
 
@@ -17,8 +17,6 @@ namespace piolot
 		if (ASMGR.IsObjectLoaded(objectName))
 		{
 			PE_LOG("File, " + objectName + " skipped loading");
-			// TODO: What happens when one accesses ther eturned pointer here?
-			//Object(*(ASMGR.objects.at(objectName)));
 			return;
 		}
 
@@ -32,20 +30,18 @@ namespace piolot
 		}
 
 		// process ASSIMP's root node recursively
-		ProcessNode(scene->mRootNode, scene, meshes);
+		ProcessNode(scene->mRootNode, scene, GetMeshes());
 
 	}
 
 	Object::~Object()
-	{
-		
-	}
+	= default;
 
 	void Object::Render(const std::string _shaderName)
 	{
-		// Set any object wide uniforms here. Like Hightlight colour os something.
+		// Set any object wide uniforms here. Like Highlight colour os something.
 
-		for ( std::shared_ptr<Mesh> mesh : meshes)
+		for ( const std::shared_ptr<Mesh>& mesh : GetMeshes())
 		{
 			mesh->Render(_shaderName);
 		}

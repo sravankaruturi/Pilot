@@ -3,7 +3,6 @@
 #include <glm/mat4x4.hpp>
 #include "BoundingBox.h"
 #include <glm/detail/_vectorize.hpp>
-#include <glm/detail/_vectorize.hpp>
 
 namespace piolot
 {

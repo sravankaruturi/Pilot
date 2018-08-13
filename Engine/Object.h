@@ -71,6 +71,8 @@ namespace piolot
 
 		void Render(std::string shaderName);
 
+		std::vector<std::shared_ptr<piolot::Mesh>> GetMeshes() const { return meshes; }
+		void SetMeshes(std::vector<std::shared_ptr<piolot::Mesh>> val) { meshes = val; }
 	private:
 		void ProcessNode(aiNode *_node, const aiScene *_scene, std::vector<std::shared_ptr<Mesh>>& _meshes);
 		std::shared_ptr<Mesh> ProcessMesh(aiMesh * _mesh, const aiScene * _scene);

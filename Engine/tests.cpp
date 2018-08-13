@@ -11,15 +11,16 @@
 #include "Camera.h"
 #include <glm/gtc/matrix_transform.inl>
 #include "Entity.h"
+#include "Object.h"
 
 #define TESTING_ONLY			0
-#define DISABLE_UNIT_TESTS		0
+#define DISABLE_UNIT_TESTS		1
 
 int main(int argc, char ** argv)
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
 #if !DISABLE_UNIT_TESTS
-	/*_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);*/
 
 	testing::InitGoogleTest(&argc, argv);
 	int test_value = RUN_ALL_TESTS();
@@ -38,8 +39,8 @@ int main(int argc, char ** argv)
 
 #if !TESTING_ONLY
 
-	_CrtMemState memoryState = { 0 };
-	_CrtMemCheckpoint(&memoryState);
+	/*_CrtMemState memoryState = { 0 };
+	_CrtMemCheckpoint(&memoryState);*/
 
 	{
 
@@ -47,11 +48,15 @@ int main(int argc, char ** argv)
 
 		piolot::Camera camera = piolot::Camera(glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0));
 
-		ASMGR.LoadShaders();
-		ASMGR.LoadTextures();
+		//ASMGR.LoadShaders();
+		//ASMGR.LoadTextures();
 
+#if 0
 		piolot::Entity nanosuit("nanosuit/nanosuit.obj", "good_test");
 		piolot::Entity nanosuit2("cube/cube.obj", "good_test");
+
+		// TODO: Where are the meshes for all the objects going??
+		auto test = ASMGR.objects;
 
 		nanosuit2.SetPosition(glm::vec3(3, 0, 0));
 		nanosuit2.SetRotation(glm::vec3(0, 0, 45.0f));
@@ -142,7 +147,7 @@ int main(int argc, char ** argv)
 						if ( int_distance < min_int_distance)
 						{
 							min_int_distance = int_distance;
-							selected_entity = it;
+							selected_entity = &(*it);
 						}
 					}
 					it->SetSelectedInScene(false);
@@ -161,11 +166,17 @@ int main(int argc, char ** argv)
 			window.Update(delta_time);
 		}
 
+
+#endif
+		// Do delete all the memory allocated by now.
+		ASMGR.ClearAllData();
+
+		// So all the shaders are being deleted and stuff.
+		//PE_ASSERT(test.expired());
+
 	}
 
-	// Do delete all the memory allocated by now.
-
-	_CrtMemDumpAllObjectsSince(&memoryState);
+	//_CrtMemDumpAllObjectsSince(&memoryState);
 	return 0;
 #endif	
 
