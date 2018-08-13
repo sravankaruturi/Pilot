@@ -38,23 +38,20 @@ namespace piolot
 
 	Object::~Object()
 	{
-		for ( auto mesh : meshes)
-		{
-			delete mesh;
-		}
+		
 	}
 
 	void Object::Render(const std::string _shaderName)
 	{
 		// Set any object wide uniforms here. Like Hightlight colour os something.
 
-		for ( Mesh * mesh : meshes)
+		for ( std::shared_ptr<Mesh> mesh : meshes)
 		{
 			mesh->Render(_shaderName);
 		}
 	}
 
-	void Object::ProcessNode(aiNode* _node, const aiScene* _scene, std::vector<Mesh *>& meshes)
+	void Object::ProcessNode(aiNode* _node, const aiScene* _scene, std::vector<std::shared_ptr<Mesh>>& meshes)
 	{
 		/* Process each mesh at the current Node */
 		for (auto i = 0; i < _node->mNumMeshes; i++)
@@ -72,7 +69,7 @@ namespace piolot
 		}
 	}
 
-	Mesh * Object::ProcessMesh(aiMesh* _mesh, const aiScene* _scene)
+	std::shared_ptr<Mesh> Object::ProcessMesh(aiMesh* _mesh, const aiScene* _scene)
 	{
 		std::vector<VertexData> vertices;
 		std::vector<unsigned int> indices;
@@ -139,7 +136,7 @@ namespace piolot
 		std::vector<std::string> heightMaps = LoadMaterialTextures(material, aiTextureType_AMBIENT);
 		textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
-		auto return_renderable = DBG_NEW Mesh(&vertices[0], sizeof(VertexData), vertices.size(), indices);
+		std::shared_ptr<Mesh> return_renderable = std::make_shared<Mesh>(&vertices[0], sizeof(VertexData), vertices.size(), indices);
 		return_renderable->SetTextureNames(textures);
 
 		return return_renderable;
@@ -176,7 +173,7 @@ namespace piolot
 				filename = directory + '/' + filename;
 
 				/* Create a new Texture Object and push it on to the Asset Manager. */
-				Texture * t = DBG_NEW Texture(filename);
+				std::shared_ptr<Texture> t = std::make_shared<Texture>(filename);
 				if (ASMGR.AddToTextures(key, t))
 				{
 					textures.push_back(key);

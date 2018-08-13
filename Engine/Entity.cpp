@@ -21,7 +21,7 @@ namespace piolot
 		:shaderName(_shaderName), boundingBox(BoundingBox(glm::vec3(-1.0, -1.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f)))
 	{
 		// This allocation would be cleared from the Asset Manager.
-		Object * object = DBG_NEW Object(MDOEL_FOLDER + _objectPath);
+		std::shared_ptr<Object> object = std::make_shared<Object>(MDOEL_FOLDER + _objectPath);
 
 		objectName = object->GetObjectName();
 

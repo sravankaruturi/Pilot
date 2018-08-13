@@ -50,7 +50,7 @@ int main(int argc, char ** argv)
 		ASMGR.LoadShaders();
 		ASMGR.LoadTextures();
 
-		piolot::Entity nanosuit("cube/cube.obj", "good_test");
+		piolot::Entity nanosuit("nanosuit/nanosuit.obj", "good_test");
 		piolot::Entity nanosuit2("cube/cube.obj", "good_test");
 
 		nanosuit2.SetPosition(glm::vec3(3, 0, 0));

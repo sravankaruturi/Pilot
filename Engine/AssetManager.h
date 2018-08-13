@@ -1,9 +1,13 @@
 ﻿#pragma once
-#include "Texture.h"
+
+#include <memory>
 #include <map>
-#include "GLShader.h"
 #include <filesystem>
+
+#include "Texture.h"
+#include "GLShader.h"
 #include "FolderLocations.h"
+
 
 #ifdef _DEBUG
 /*@see https://msdn.microsoft.com/en-us/library/x98tx3cf.aspx */
@@ -36,23 +40,23 @@ namespace piolot
 
 		void ClearAllData()
 		{
-			for (auto it : textures)
-			{
-				delete it.second;
-			}
+			//for (auto it : textures)
+			//{
+			//	delete it.second;
+			//}
 
-			for (auto it : shaders)
-			{
-				delete it.second;
-			}
+			///*for (auto it : shaders)
+			//{
+			//	delete it.second;
+			//}*/
 
-			for (auto it: objects)
-			{
-				// This is not an error since we have a properly defined destructor. 
-				// @see https://stackoverflow.com/questions/4325154/delete-objects-of-incomplete-type#4325223
-				// This is because of the Forward Declaration.
-				delete it.second;
-			}
+			//for (auto it: objects)
+			//{
+			//	// This is not an error since we have a properly defined destructor. 
+			//	// @see https://stackoverflow.com/questions/4325154/delete-objects-of-incomplete-type#4325223
+			//	// This is because of the Forward Declaration.
+			//	delete it.second;
+			//}
 
 			textures.clear();
 			shaders.clear();
@@ -75,16 +79,16 @@ namespace piolot
 		/**
 		* \brief A Map of all the shaders that we load.
 		*/
-		std::map<std::string, GLShader *> shaders;
+		std::map<std::string, std::shared_ptr<GLShader>> shaders;
 		/**
 		* \brief A Map of all the textures that we load.
 		*/
-		std::map<std::string, Texture *> textures;
+		std::map<std::string, std::shared_ptr<Texture>> textures;
 
 		/**
 		* \brief A Map of all the Renderables loaded.
 		*/
-		std::map<std::string, Object *> objects;
+		std::map<std::string, std::shared_ptr<Object>> objects;
 
 		/**
 		* \brief The Shader Directory from where all the shaders are loaded.
@@ -132,7 +136,9 @@ namespace piolot
 
 					// *. Get the second file as well.
 					// *. Create the Shader and load it in the map.
-					this->shaders.insert_or_assign(file_name, DBG_NEW GLShader(p.path().generic_string().c_str(), (shaderDir + std::string("/") + file_name + std::string(".frag")).c_str()));
+					this->shaders.insert_or_assign(file_name, std::make_shared<GLShader>(
+						                               p.path().generic_string().c_str(),
+						                               (shaderDir + std::string("/") + file_name + std::string(".frag")).c_str()));
 				}catch(...)
 				{
 					return false;
@@ -158,7 +164,7 @@ namespace piolot
 					}
 					file_name.pop_back();
 
-					this->textures.insert_or_assign(file_name, DBG_NEW Texture(p.path().generic_string()));
+					this->textures.insert_or_assign(file_name, std::make_shared<Texture>(p.path().generic_string()));
 				}catch(...)
 				{
 					return false;
@@ -193,7 +199,7 @@ namespace piolot
 		* \param _texture The Texture to load and place.
 		* \return Returns true if the Texture is succesfully loaded. False if something occurs.
 		*/
-		bool AddToTextures(const std::string& _name, Texture * _texture)
+		bool AddToTextures(const std::string& _name, std::shared_ptr<Texture> _texture)
 		{
 			if (IsTextureLoaded(_name)) return false;
 

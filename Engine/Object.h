@@ -1,7 +1,8 @@
 ﻿#pragma once
 #include <string>
-#include "Mesh.h"
+//#include <memory>
 
+#include "Mesh.h"
 #include <assimp/scene.h>
 #include <assimp/Importer.hpp>
 #include <glm/detail/type_vec3.hpp>
@@ -57,7 +58,7 @@ namespace piolot
 		std::string directory;
 		std::string objectName;
 
-		std::vector<Mesh *> meshes;
+		std::vector<std::shared_ptr<Mesh>> meshes;
 
 	public:
 		const std::string& GetObjectName() const
@@ -71,8 +72,8 @@ namespace piolot
 		void Render(std::string shaderName);
 
 	private:
-		void ProcessNode(aiNode *_node, const aiScene *_scene, std::vector<Mesh*>& _meshes);
-		Mesh * ProcessMesh(aiMesh * _mesh, const aiScene * _scene);
+		void ProcessNode(aiNode *_node, const aiScene *_scene, std::vector<std::shared_ptr<Mesh>>& _meshes);
+		std::shared_ptr<Mesh> ProcessMesh(aiMesh * _mesh, const aiScene * _scene);
 		std::vector<std::string> LoadMaterialTextures(aiMaterial* _mat, aiTextureType _type);
 	};
 }

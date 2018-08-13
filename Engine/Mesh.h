@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <vector>
 #include <glad/glad.h>
+#include <memory>
 
 namespace piolot
 {
@@ -25,7 +26,7 @@ namespace piolot
 		std::vector<std::string> textureNames;
 
 		// Just because it is expesive to look up textures from the names every frame.
-		std::vector<Texture *> texturePointers;
+		std::vector<std::shared_ptr<Texture>> texturePointers;
 
 	public:
 		const std::vector<std::string>& GetTextureNames() const
