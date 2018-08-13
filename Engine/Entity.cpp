@@ -58,7 +58,7 @@ namespace piolot
 		//object->Render(shaderName);
 
 		ASMGR.shaders.at("bbox")->use();
-		ASMGR.shaders.at("bbox")->setMat4("model", glm::scale(modelMatrix, glm::vec3(1.0001f, 1.0001f, 1.0001f)));
+		ASMGR.shaders.at("bbox")->setMat4("model", glm::scale(modelMatrix, glm::vec3(1.001f, 1.001f, 1.001f)));
 		if ( selectedInScene )
 		{
 			boundingBox.Render(glm::vec3(1.0, 1.0, 0.0));
@@ -68,5 +68,11 @@ namespace piolot
 		}
 		
 		
+	}
+
+	bool Entity::CheckIfMouseOvered(const glm::vec3 _cameraPosition, const glm::vec3 _mouseRayDirection, float& _distance) const
+	{
+		// Checks if this entity is under the cursor. And updates the _distance to hold it.
+		return this->boundingBox.CheckForCollisionWithRay(this->modelMatrix, this->scale, _cameraPosition, _mouseRayDirection, _distance);
 	}
 }

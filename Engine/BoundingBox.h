@@ -39,7 +39,7 @@ namespace piolot
 			return vertices.size();
 		}
 
-		bool CheckForCollisionWithRay(const glm::mat4 _modelMatrix, const glm::vec3 _rayOrigin, const glm::vec3 _rayDirection, float& _intersectionDistance) const;
+		bool CheckForCollisionWithRay(const glm::mat4 _modelMatrix, const glm::vec3 _scale, const glm::vec3 _rayOrigin, const glm::vec3 _rayDirection, float& _intersectionDistance) const;
 
 		void Render(glm::vec3 _colour);
 

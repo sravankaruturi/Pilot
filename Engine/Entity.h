@@ -2,6 +2,8 @@
 #include <string>
 #include <glm/mat4x4.hpp>
 #include "BoundingBox.h"
+#include <glm/detail/_vectorize.hpp>
+#include <glm/detail/_vectorize.hpp>
 
 namespace piolot
 {
@@ -106,6 +108,8 @@ namespace piolot
 
 		void Update(float _deltaTime);
 		void Render();
+
+		bool CheckIfMouseOvered(const glm::vec3 _cameraPosition, const glm::vec3 _mouseRayDirection, float& _distance) const;
 
 	};
 }
