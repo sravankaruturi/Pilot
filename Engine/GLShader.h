@@ -5,6 +5,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <unordered_map>
+#include "LoggingManager.h"
 
 namespace piolot
 {
@@ -138,7 +139,7 @@ namespace piolot
 					uniformLocations[_name] = location;
 
 					if (location == -1) {
-						std::cout << "Uniform " << _name << " does not exist." << std::endl;
+						LOGGER.AddToLog("The Uniform, " + _name + " does not exist for the shader, " + shaderName, PE_LOG_WARN);
 					}
 
 					return location;

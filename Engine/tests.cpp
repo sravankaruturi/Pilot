@@ -12,7 +12,8 @@
 #include "Object.h"
 
 #include "TestScene.h"
-#include "external_files/ImGUI/imgui.h"
+
+#include "GUIHelpers.h"
 #include "external_files/ImGUI/imgui_impl_opengl3.h"
 #include "external_files/ImGUI/imgui_impl_glfw.h"
 
@@ -49,8 +50,6 @@ int main(int argc, char ** argv)
 
 		std::shared_ptr<Window> window = std::make_shared<Window>(1200, 900, "Vermin");
 
-		piolot::TestScene test_scene(window);
-
 		/* ImGui setup */
 		ImGui::CreateContext();
 
@@ -59,6 +58,12 @@ int main(int argc, char ** argv)
 
 		// Setup style
 		ImGui::StyleColorsDark();
+
+		bool display_logger = true;
+		piolot::ImGuiLog imgui_logger;
+		LOGGER.SetImGuiLogger(&imgui_logger);
+
+		piolot::TestScene test_scene(window);
 
 		float time = glfwGetTime();
 
@@ -125,9 +130,15 @@ int main(int argc, char ** argv)
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
 
+			ImGui::Checkbox("Show Log", &display_logger);
+
 			ImGui::Text("Wants Mouse Input : yes/no");
 			ImGui::Text( io.WantCaptureMouse ? "Yes" : "No" );
 			test_scene.OnImguiRender();
+
+			if (display_logger) {
+				imgui_logger.Draw("Test Logger", &display_logger);
+			}
 
 			ImGui::Render();
 			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

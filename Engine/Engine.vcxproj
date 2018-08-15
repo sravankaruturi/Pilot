@@ -161,7 +161,9 @@
     <ClInclude Include="FolderLocations.h" />
     <ClInclude Include="GLShader.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="GUIHelpers.h" />
     <ClInclude Include="LoggingMacros.h" />
+    <ClInclude Include="LoggingManager.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PE_GL.h" />

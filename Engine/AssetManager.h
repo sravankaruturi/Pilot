@@ -8,6 +8,8 @@
 #include "GLShader.h"
 #include "FolderLocations.h"
 
+#include "LoggingManager.h"
+
 
 #ifdef _DEBUG
 /*@see https://msdn.microsoft.com/en-us/library/x98tx3cf.aspx */
@@ -104,7 +106,7 @@ namespace piolot
 		*/
 		bool LoadShaders()
 		{
-			std::cout << "Loading Shaders.." << std::endl;
+			LOGGER.AddToLog("Loading Shaders...");
 			// Load all the shaders in the directory and compile them.
 			for (auto& p : std::experimental::filesystem::directory_iterator(shaderDir))
 			{
@@ -141,7 +143,7 @@ namespace piolot
 						                               p.path().generic_string().c_str(),
 						                               (shaderDir + std::string("/") + file_name + std::string(".frag")).c_str()));
 
-					std::cout << "Loaded " << file_name << " Shader." << std::endl;
+					LOGGER.AddToLog("Loaded " + file_name + " Shader.");
 
 				}catch(...)
 				{
@@ -150,7 +152,7 @@ namespace piolot
 
 			}
 
-			std::cout << "Loaded Shaders Succesfully.." << std::endl << std::endl;
+			LOGGER.AddToLog("Loaded Shaders Successfully. \n");
 
 			return true;
 		}
@@ -160,7 +162,7 @@ namespace piolot
 		*/
 		bool LoadTextures()
 		{
-			std::cout << "Loading Textures..." << std::endl;
+			LOGGER.AddToLog("Loading Textures..");
 			for (auto& p : std::experimental::filesystem::directory_iterator(textureDir))
 			{
 				std::string file_name;
@@ -178,10 +180,10 @@ namespace piolot
 				{
 					return false;
 				}
-				std::cout << "Loaded " << file_name << " Texture" << std::endl;
+				LOGGER.AddToLog("Loaded " + file_name + " Texture");
 			}
 
-			std::cout << "Loaded Textures .. " << std::endl << std::endl;
+			LOGGER.AddToLog("Loaded Textures.. \n");
 
 			return true;
 		}
@@ -218,7 +220,7 @@ namespace piolot
 			try
 			{
 				this->textures.insert_or_assign(_name, _texture);
-				std::cout << "Adding " << _name << " to textures." << std::endl;
+				LOGGER.AddToLog("Adding " + _name + " to textures.");
 			}
 			catch (...)
 			{
