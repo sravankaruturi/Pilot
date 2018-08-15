@@ -8,10 +8,10 @@
 #include "Window.h"
 #include "AssetManager.h"
 #include "Mesh.h"
-#include "Camera.h"
 #include <glm/gtc/matrix_transform.inl>
-#include "Entity.h"
 #include "Object.h"
+
+#include "TestScene.h"
 
 #define TESTING_ONLY			0
 #define DISABLE_UNIT_TESTS		1
@@ -44,26 +44,11 @@ int main(int argc, char ** argv)
 
 	{
 
-		Window window = Window(800, 600, "Vermin");
+		std::shared_ptr<Window> window = std::make_shared<Window>(800, 600, "Vermin");
 
-		piolot::Camera camera = piolot::Camera(glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0));
+		piolot::TestScene test_scene(window);
 
-		//ASMGR.LoadShaders();
-		//ASMGR.LoadTextures();
-
-#if 0
-		piolot::Entity nanosuit("nanosuit/nanosuit.obj", "good_test");
-		piolot::Entity nanosuit2("cube/cube.obj", "good_test");
-
-		// TODO: Where are the meshes for all the objects going??
-		auto test = ASMGR.objects;
-
-		nanosuit2.SetPosition(glm::vec3(3, 0, 0));
-		nanosuit2.SetRotation(glm::vec3(0, 0, 45.0f));
-		nanosuit2.SetScale(glm::vec3(2, 1, 1));
-		
-
-		glm::mat4 projection_matrix = glm::perspective(45.0f, float(window.GetWidth()) / window.GetHeight(), 0.1f, 100.0f);
+		glm::mat4 projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
 
 		float time = glfwGetTime();
 		float delta_time = 0;
@@ -71,103 +56,63 @@ int main(int argc, char ** argv)
 		glm::vec3 mouse_pointer_ray;
 		piolot::Entity * selected_entity = nullptr;
 
-		while (!glfwWindowShouldClose(window.GetWindow()))
+		while (!glfwWindowShouldClose(window->GetWindow()))
 		{
 
 			delta_time = glfwGetTime() - time;
 			time = glfwGetTime();
 
-			window.HandleInput();
+			window->HandleInput();
 
 			{
-				if (window.IsKeyPressedOrHeld(GLFW_KEY_W))
+				if (window->IsKeyPressedOrHeld(GLFW_KEY_W))
 				{
-					camera.ProcessKeyboard(piolot::Camera::forward, delta_time);
+					test_scene.ActiveCamera()->ProcessKeyboard(piolot::Camera::forward, delta_time);
 				}
 
-				if (window.IsKeyPressedOrHeld(GLFW_KEY_S))
+				if (window->IsKeyPressedOrHeld(GLFW_KEY_S))
 				{
-					camera.ProcessKeyboard(piolot::Camera::back, delta_time);
+					test_scene.ActiveCamera()->ProcessKeyboard(piolot::Camera::back, delta_time);
 				}
 
-				if (window.IsKeyPressedOrHeld(GLFW_KEY_A))
+				if (window->IsKeyPressedOrHeld(GLFW_KEY_A))
 				{
-					camera.ProcessKeyboard(piolot::Camera::leftside, delta_time);
+					test_scene.ActiveCamera()->ProcessKeyboard(piolot::Camera::leftside, delta_time);
 				}
 
-				if (window.IsKeyPressedOrHeld(GLFW_KEY_D))
+				if (window->IsKeyPressedOrHeld(GLFW_KEY_D))
 				{
-					camera.ProcessKeyboard(piolot::Camera::rightside, delta_time);
+					test_scene.ActiveCamera()->ProcessKeyboard(piolot::Camera::rightside, delta_time);
 				}
 
-				if (window.IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1))
+				if (window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1))
 				{
-					camera.ProcessMouseMovement(window.mouseOffsetX, window.mouseOffsetY);
+					test_scene.ActiveCamera()->ProcessMouseMovement(window->mouseOffsetX, window->mouseOffsetY);
 				}
-
-				mouse_pointer_ray = camera.GetMouseRayDirection(window.mouseX, window.mouseY, window.GetWidth(), window.GetHeight(), projection_matrix);
 				
 			}
 
 			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			nanosuit.Update(delta_time);
-			nanosuit2.Update(delta_time);
-
-			std::vector<piolot::Entity *> entities = {
-				&nanosuit,
-				&nanosuit2
-			};
-
+			test_scene.OnUpdate(delta_time);
 
 			{
 				// We set the View and Projection Matrices for all the Shaders that has them ( They all should have them ideally ).
 				for ( auto it : ASMGR.shaders)
 				{
 					it.second->use();
-					it.second->setMat4("view", camera.GetViewMatrix());
+					it.second->setMat4("view", test_scene.ActiveCamera()->GetViewMatrix());
 					it.second->setMat4("projection", projection_matrix);
 				}
 			}
 
-			{
-				float int_distance = 0;
-				float min_int_distance = 10000.0f;
-				// Do Ray Picking Here.
-				// For each Bounding Box, we check for the collision, and do what we want, as part of the Scene Update.
+			test_scene.OnRender();
 
-				// We reset this every frame.
-				selected_entity = nullptr;
-				// Loop through all Entities that can be selected.
-				for ( auto it : entities)
-				{
-					if ( it->CheckIfMouseOvered(camera.GetPosition(), mouse_pointer_ray, min_int_distance))
-					{
-						if ( int_distance < min_int_distance)
-						{
-							min_int_distance = int_distance;
-							selected_entity = &(*it);
-						}
-					}
-					it->SetSelectedInScene(false);
-				}
+			window->Update(delta_time);
 
-				if ( nullptr != selected_entity)
-				{
-					selected_entity->SetSelectedInScene(true);
-				}
-
-			}
-
-			nanosuit.Render();		
-			nanosuit2.Render();
-
-			window.Update(delta_time);
 		}
 
-
-#endif
 		// Do delete all the memory allocated by now.
 		ASMGR.ClearAllData();
 

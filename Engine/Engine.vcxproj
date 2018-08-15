@@ -132,6 +132,7 @@
     <ClCompile Include="CameraTests.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="tests.cpp" />
+    <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -147,6 +148,8 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PE_GL.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="TestScene.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
