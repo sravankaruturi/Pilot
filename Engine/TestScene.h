@@ -1,11 +1,15 @@
 ﻿#pragma once
 
 #include "Scene.h"
+#include "Ray.h"
 
 namespace piolot {
 
 	class TestScene : public Scene
 	{
+
+		Ray test;
+
 	public:
 
 		explicit TestScene(std::shared_ptr<Window> _window);

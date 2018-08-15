@@ -63,6 +63,9 @@
     <ClCompile Include="TestScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -110,6 +113,9 @@
     <ClInclude Include="TestScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Ray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\failing_test.frag">
@@ -128,6 +134,12 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="Shaders\bbox.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\axes.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\axes.vert">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

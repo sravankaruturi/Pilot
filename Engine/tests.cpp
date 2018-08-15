@@ -48,18 +48,12 @@ int main(int argc, char ** argv)
 
 		piolot::TestScene test_scene(window);
 
-		glm::mat4 projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
-
 		float time = glfwGetTime();
-		float delta_time = 0;
-
-		glm::vec3 mouse_pointer_ray;
-		piolot::Entity * selected_entity = nullptr;
 
 		while (!glfwWindowShouldClose(window->GetWindow()))
 		{
-
-			delta_time = glfwGetTime() - time;
+			const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
+			const float delta_time = glfwGetTime() - time;
 			time = glfwGetTime();
 
 			window->HandleInput();

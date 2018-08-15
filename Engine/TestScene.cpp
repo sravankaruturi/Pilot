@@ -6,7 +6,7 @@
 namespace piolot {
 
 	TestScene::TestScene(std::shared_ptr<Window> _window)
-		: Scene(_window)
+		: Scene(_window), test(glm::vec3(0, 0, 0), glm::vec3(1.0f, 0.0f, 0.0f))
 	{
 		ASMGR.ClearAllData();
 
@@ -59,6 +59,8 @@ namespace piolot {
 			}
 
 		}
+
+		test.Update(activeCamera->GetViewMatrix(), projection_matrix, glm::vec3(1.0f, 0.0, 0.0));
 	}
 
 	void TestScene::OnRender()
@@ -66,6 +68,8 @@ namespace piolot {
 		for (const auto& it : entities) {
 			it->Render();
 		}
+
+		test.Render(ASMGR.shaders.at("axes"), glm::vec3(1.0f, 0.0f, 0.0f));
 	}
 
 	void TestScene::OnImguiRender()
