@@ -19,6 +19,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{db7b7cfb-5090-4788-8ddb-803ac780a17c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ImGui">
+      <UniqueIdentifier>{3b6bc424-af38-40af-94e1-92b5555ac068}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="tests.cpp">
@@ -68,6 +71,21 @@
     </ClCompile>
     <ClCompile Include="Grid.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="external_files\ImGUI\imgui.cpp">
+      <Filter>Header Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="external_files\ImGUI\imgui_demo.cpp">
+      <Filter>Header Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="external_files\ImGUI\imgui_draw.cpp">
+      <Filter>Header Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="external_files\ImGUI\imgui_impl_glfw.cpp">
+      <Filter>Header Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="external_files\ImGUI\imgui_impl_opengl3.cpp">
+      <Filter>Header Files\ImGui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +142,30 @@
     </ClInclude>
     <ClInclude Include="Colours.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\imconfig.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\imgui.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\imgui_impl_glfw.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\imgui_impl_opengl3.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\imgui_internal.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\stb_rect_pack.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\stb_textedit.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\stb_truetype.h">
+      <Filter>Header Files\ImGui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -126,6 +126,11 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="external_files\glad\glad.c" />
+    <ClCompile Include="external_files\ImGUI\imgui.cpp" />
+    <ClCompile Include="external_files\ImGUI\imgui_demo.cpp" />
+    <ClCompile Include="external_files\ImGUI\imgui_draw.cpp" />
+    <ClCompile Include="external_files\ImGUI\imgui_impl_glfw.cpp" />
+    <ClCompile Include="external_files\ImGUI\imgui_impl_opengl3.cpp" />
     <ClCompile Include="GLShader.cpp" />
     <ClCompile Include="AllTests.cpp" />
     <ClCompile Include="Grid.cpp" />
@@ -145,6 +150,14 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Colours.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="external_files\ImGUI\imconfig.h" />
+    <ClInclude Include="external_files\ImGUI\imgui.h" />
+    <ClInclude Include="external_files\ImGUI\imgui_impl_glfw.h" />
+    <ClInclude Include="external_files\ImGUI\imgui_impl_opengl3.h" />
+    <ClInclude Include="external_files\ImGUI\imgui_internal.h" />
+    <ClInclude Include="external_files\ImGUI\stb_rect_pack.h" />
+    <ClInclude Include="external_files\ImGUI\stb_textedit.h" />
+    <ClInclude Include="external_files\ImGUI\stb_truetype.h" />
     <ClInclude Include="FolderLocations.h" />
     <ClInclude Include="GLShader.h" />
     <ClInclude Include="Grid.h" />

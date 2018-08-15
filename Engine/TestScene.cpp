@@ -2,6 +2,7 @@
 #include "AssetManager.h"
 #include "Window.h"
 #include <glm/gtc/matrix_transform.inl>
+#include "external_files/ImGUI/imgui.h"
 
 namespace piolot {
 
@@ -77,7 +78,8 @@ namespace piolot {
 
 	void TestScene::OnImguiRender()
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		//throw std::logic_error("The method or operation is not implemented.");
+		ImGui::Text("Hello World");
 	}
 
 }

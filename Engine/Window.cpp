@@ -1,5 +1,6 @@
 ﻿#include "Window.h"
 #include <iostream>
+#include "external_files/ImGUI/imgui.h"
 
 void window_resize(GLFWwindow * _window, int _width, int _height);
 void key_callback(GLFWwindow * _window, int _key, int scancode, int action, int mods);
@@ -140,6 +141,10 @@ void window_resize(GLFWwindow * _window, int _width, int _height) {
 
 void key_callback(GLFWwindow * _window, int _key, int scancode, int action, int mods) {
 
+	if (ImGui::GetIO().WantCaptureKeyboard) {
+		return;
+	}
+
 	auto win = static_cast<Window *>(glfwGetWindowUserPointer(_window));
 
 
@@ -166,6 +171,10 @@ void key_callback(GLFWwindow * _window, int _key, int scancode, int action, int 
 }
 
 void mouse_button_callback(GLFWwindow* _window, int _button, int _action, int _mods) {
+
+	if (ImGui::GetIO().WantCaptureMouse) {
+		return;
+	}
 
 	auto * win = (Window *)glfwGetWindowUserPointer(_window);
 
