@@ -104,6 +104,7 @@ namespace piolot
 		*/
 		bool LoadShaders()
 		{
+			std::cout << "Loading Shaders.." << std::endl;
 			// Load all the shaders in the directory and compile them.
 			for (auto& p : std::experimental::filesystem::directory_iterator(shaderDir))
 			{
@@ -139,12 +140,18 @@ namespace piolot
 					this->shaders.insert_or_assign(file_name, std::make_shared<GLShader>(
 						                               p.path().generic_string().c_str(),
 						                               (shaderDir + std::string("/") + file_name + std::string(".frag")).c_str()));
+
+					std::cout << "Loaded " << file_name << " Shader." << std::endl;
+
 				}catch(...)
 				{
 					return false;
 				}
 
 			}
+
+			std::cout << "Loaded Shaders Succesfully.." << std::endl << std::endl;
+
 			return true;
 		}
 
@@ -153,11 +160,13 @@ namespace piolot
 		*/
 		bool LoadTextures()
 		{
+			std::cout << "Loading Textures..." << std::endl;
 			for (auto& p : std::experimental::filesystem::directory_iterator(textureDir))
 			{
+				std::string file_name;
 				try
 				{
-					std::string file_name = p.path().filename().generic_string();
+					file_name = p.path().filename().generic_string();
 					while (file_name.back() != '.')
 					{
 						file_name.pop_back();
@@ -169,7 +178,11 @@ namespace piolot
 				{
 					return false;
 				}
+				std::cout << "Loaded " << file_name << " Texture" << std::endl;
 			}
+
+			std::cout << "Loaded Textures .. " << std::endl << std::endl;
+
 			return true;
 		}
 
@@ -202,10 +215,10 @@ namespace piolot
 		bool AddToTextures(const std::string& _name, std::shared_ptr<Texture> _texture)
 		{
 			if (IsTextureLoaded(_name)) return false;
-
 			try
 			{
 				this->textures.insert_or_assign(_name, _texture);
+				std::cout << "Adding " << _name << " to textures." << std::endl;
 			}
 			catch (...)
 			{

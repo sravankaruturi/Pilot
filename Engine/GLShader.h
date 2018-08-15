@@ -4,6 +4,7 @@
 #include <string>
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <unordered_map>
 
 namespace piolot
 {
@@ -19,7 +20,11 @@ namespace piolot
 		*/
 		unsigned int shaderId;
 
+		std::string shaderName;
+
 		bool compileStatus = true;
+
+		std::unordered_map<std::string, int > uniformLocations;
 
 		/**
 		* \brief Loads the shader at the specified path.
@@ -53,9 +58,10 @@ namespace piolot
 		* \param _name The Uniform Name
 		* \param _value The Uniform Value.
 		*/
-		void setBool(const std::string &_name, bool _value) const
+		void setBool(const std::string &_name, bool _value)
 		{
-			PE_GL(glUniform1i(glGetUniformLocation(shaderId, _name.c_str()), (int)_value));
+			const auto loc = getUniformLocation(_name);
+			PE_GL(glUniform1i(loc, (int)_value));
 		}
 
 		/**
@@ -63,9 +69,10 @@ namespace piolot
 		* \param _name The Uniform Name
 		* \param _value The Uniform Value.
 		*/
-		void setInt(const std::string &_name, int _value) const
+		void setInt(const std::string &_name, int _value)
 		{
-			PE_GL(glUniform1i(glGetUniformLocation(shaderId, _name.c_str()), _value));
+			const auto loc = getUniformLocation(_name);
+			PE_GL(glUniform1i(loc, _value));
 		}
 
 		/**
@@ -73,9 +80,10 @@ namespace piolot
 		* \param _name The Uniform Name
 		* \param _value The Uniform Value.
 		*/
-		void setFloat(const std::string &_name, float _value) const
+		void setFloat(const std::string &_name, float _value)
 		{
-			PE_GL(glUniform1f(glGetUniformLocation(shaderId, _name.c_str()), _value));
+			const auto loc = getUniformLocation(_name);
+			PE_GL(glUniform1f(loc, _value));
 		}
 
 		/**
@@ -83,9 +91,10 @@ namespace piolot
 		* \param _name The Uniform Name
 		* \param _value The Uniform Value.
 		*/
-		void setVec3(const std::string &_name, const glm::vec3 &_value) const
+		void setVec3(const std::string &_name, const glm::vec3 &_value)
 		{
-			PE_GL(glUniform3fv(glGetUniformLocation(shaderId, _name.c_str()), 1, &_value[0]));
+			const auto loc = getUniformLocation(_name);
+			PE_GL(glUniform3fv(loc, 1, &_value[0]));
 		}
 
 		/**
@@ -95,9 +104,10 @@ namespace piolot
 		* \param _y Value.y
 		* \param _z Value.z
 		*/
-		void setVec3(const std::string &_name, float _x, float _y, float _z) const
+		void setVec3(const std::string &_name, float _x, float _y, float _z)
 		{
-			PE_GL(glUniform3f(glGetUniformLocation(shaderId, _name.c_str()), _x, _y, _z));
+			const auto loc = getUniformLocation(_name);
+			PE_GL(glUniform3f(loc, _x, _y, _z));
 		}
 
 		/**
@@ -105,10 +115,10 @@ namespace piolot
 		* \param _name The Uniform Name
 		* \param _mat The Uniform Value.
 		*/
-		void setMat4(const std::string &_name, const glm::mat4 &_mat) const
+		void setMat4(const std::string &_name, const glm::mat4 &_mat)
 		{
-			PE_GL(const auto location = glGetUniformLocation(shaderId, _name.c_str()));
-			PE_GL(glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(_mat)));
+			const auto loc = getUniformLocation(_name);
+			PE_GL(glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(_mat)));
 		}
 
 		/**
@@ -117,6 +127,28 @@ namespace piolot
 		* \param _type The Type, Can be either PROGRAM or SHADER.
 		*/
 		bool CheckCompileErrors(unsigned int _shaderId, std::string _type);
+
+		private:
+
+			int getUniformLocation(const std::string& _name) {
+
+				if (uniformLocations.find(_name) == uniformLocations.end()) {
+
+					PE_GL(int location = glGetUniformLocation(shaderId, _name.c_str()));
+					uniformLocations[_name] = location;
+
+					if (location == -1) {
+						std::cout << "Uniform " << _name << " does not exist." << std::endl;
+					}
+
+					return location;
+
+				}
+				else {
+					return uniformLocations[_name];
+				}
+
+			}
 
 	};
 }

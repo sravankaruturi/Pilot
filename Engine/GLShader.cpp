@@ -66,6 +66,9 @@ namespace piolot
 		glDeleteShader(vertex);
 		glDeleteShader(fragment);
 
+		std::string vertex_path = std::string(_vertexPath);
+		shaderName = vertex_path.substr(vertex_path.find_last_of('/') + 1, vertex_path.find_last_of('.') - vertex_path.find_last_of('/') - 1);
+
 	}
 
 	bool GLShader::CheckCompileErrors(unsigned _shaderId, std::string _type)

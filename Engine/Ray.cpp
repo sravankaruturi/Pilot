@@ -55,7 +55,7 @@ namespace piolot {
 		current_shader->use();
 		current_shader->setMat4("u_ModelMatrix", glm::mat4(1.0f));
 		current_shader->setMat4("u_ViewMatrix", _viewMatrix);
-		current_shader->setMat4("u_ProjectionMatrix", _projectionMatrix);
+		current_shader->setMat4("u_ProjectiMatrix", _projectionMatrix);
 		current_shader->setVec3("u_Colour", _colour);
 
 	}
