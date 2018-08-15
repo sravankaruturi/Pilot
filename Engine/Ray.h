@@ -29,7 +29,7 @@ namespace piolot {
 
 		void Update(const glm::mat4 _viewMatrix, const glm::mat4 _projectionMatrix, const glm::vec3 _colour);
 
-		void Render(std::shared_ptr<GLShader> _shader, glm::vec3 _colour);
+		void Render(std::shared_ptr<GLShader> _shader, glm::vec3 _colour) const;
 
 	};
 

@@ -128,6 +128,7 @@
     <ClCompile Include="external_files\glad\glad.c" />
     <ClCompile Include="GLShader.cpp" />
     <ClCompile Include="AllTests.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="CameraTests.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -142,9 +143,11 @@
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="BoundingBox.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Colours.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FolderLocations.h" />
     <ClInclude Include="GLShader.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="LoggingMacros.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Object.h" />

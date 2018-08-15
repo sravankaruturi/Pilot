@@ -6,7 +6,7 @@
 namespace piolot {
 
 	TestScene::TestScene(std::shared_ptr<Window> _window)
-		: Scene(_window), test(glm::vec3(0, 0, 0), glm::vec3(1.0f, 0.0f, 0.0f))
+		: Scene(_window)
 	{
 		ASMGR.ClearAllData();
 
@@ -18,6 +18,9 @@ namespace piolot {
 		entities.push_back(std::make_shared<Entity>("nanosuit/nanosuit.obj", "good_test"));
 
 		ActiveCamera(cameras[0]);
+
+		// We need to wait for the Shaders to be loaded to call this function.
+		test.Init();
 
 	}
 
@@ -60,7 +63,7 @@ namespace piolot {
 
 		}
 
-		test.Update(activeCamera->GetViewMatrix(), projection_matrix, glm::vec3(1.0f, 0.0, 0.0));
+		test.Update(activeCamera->GetViewMatrix(), projection_matrix);
 	}
 
 	void TestScene::OnRender()
@@ -69,7 +72,7 @@ namespace piolot {
 			it->Render();
 		}
 
-		test.Render(ASMGR.shaders.at("axes"), glm::vec3(1.0f, 0.0f, 0.0f));
+		test.Render();
 	}
 
 	void TestScene::OnImguiRender()

@@ -55,12 +55,12 @@ namespace piolot {
 		current_shader->use();
 		current_shader->setMat4("u_ModelMatrix", glm::mat4(1.0f));
 		current_shader->setMat4("u_ViewMatrix", _viewMatrix);
-		current_shader->setMat4("u_ProjectiMatrix", _projectionMatrix);
+		current_shader->setMat4("u_ProjectionMatrix", _projectionMatrix);
 		current_shader->setVec3("u_Colour", _colour);
 
 	}
 
-	void Ray::Render(std::shared_ptr<GLShader> _shader, const glm::vec3 _colour)
+	void Ray::Render(std::shared_ptr<GLShader> _shader, const glm::vec3 _colour) const
 	{
 		_shader->use();
 		_shader->setVec3("u_Colour", _colour);

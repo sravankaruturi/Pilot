@@ -1,14 +1,14 @@
 ﻿#pragma once
 
 #include "Scene.h"
-#include "Ray.h"
+#include "Grid.h"
 
 namespace piolot {
 
 	class TestScene : public Scene
 	{
 
-		Ray test;
+		Grid test;
 
 	public:
 
