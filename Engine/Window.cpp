@@ -136,9 +136,9 @@ void window_resize(GLFWwindow * _window, int _width, int _height) {
 	auto win = static_cast<Window *>(glfwGetWindowUserPointer(_window));
 
 	// The Functions GetWidth and GetHeight give the udpated stuff.
+	win->UpdateFrameSize();
 
-
-	glViewport(0, 0, _width, _height);
+	glViewport(0, 0, win->GetWidth(), win->GetHeight());
 }
 
 void key_callback(GLFWwindow * _window, int _key, int scancode, int action, int mods) {

@@ -229,6 +229,48 @@ namespace piolot
 			return true;
 		}
 
+
+		void GuiRender()
+		{
+			// A Hierarchy listing all the Assets currently in the ASMGR.
+
+			ImGui::Columns(1);
+			if ( ImGui::CollapsingHeader("Shaders"))
+			{
+				for (auto it : shaders)
+				{
+					ImGui::Columns(2);
+					ImGui::Text(it.first.c_str());
+					ImGui::NextColumn();
+					ImGui::Text("%d", it.second->shaderId);
+					ImGui::NextColumn();
+				}
+			}
+
+			ImGui::Columns(1);
+			if (ImGui::CollapsingHeader("Textures"))
+			{
+				for (auto it : textures)
+				{
+					ImGui::Columns(3);
+					ImGui::Text(it.first.c_str());
+					ImGui::NextColumn();
+					ImGui::Text("%d", it.second->GetTextureId());
+					ImGui::NextColumn();
+					ImGui::Image((void *)it.second->GetTextureId(), ImVec2(30, 30));
+					if (ImGui::IsItemHovered())
+					{
+						ImGui::BeginTooltip();
+						ImGui::Image((void*)it.second->GetTextureId(), ImVec2(200, 200));
+						ImGui::EndTooltip();
+					}
+					ImGui::NextColumn();
+				}
+			}
+
+		}
+
+
 	};
 	
 }
