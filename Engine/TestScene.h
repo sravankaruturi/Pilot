@@ -2,6 +2,7 @@
 
 #include "Scene.h"
 #include "Grid.h"
+#include "Terrain.h"
 
 namespace piolot {
 
@@ -9,6 +10,7 @@ namespace piolot {
 	{
 
 		Grid test;
+		std::shared_ptr<Terrain> terrain_test;
 
 	public:
 

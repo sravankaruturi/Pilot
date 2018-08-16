@@ -138,6 +138,7 @@
     <ClCompile Include="CameraTests.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Ray.cpp" />
+    <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="tests.cpp" />
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="PE_GL.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Terrain.h" />
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Window.h" />
@@ -182,6 +184,8 @@
     <None Include="Shaders\failing_test.vert" />
     <None Include="Shaders\good_test.frag" />
     <None Include="Shaders\good_test.vert" />
+    <None Include="Shaders\terrain.frag" />
+    <None Include="Shaders\terrain.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -30,9 +30,8 @@ namespace piolot
 			ASMGR.objects.insert_or_assign(objectName, object);
 		}
 		
-		modelMatrix = glm::mat4(1.0f);
+		matrixDirty = true;
 
-		//boundingBox = BoundingBox(glm::vec3(-1.5, -1.5f, -1.5f), glm::vec3(1.5f, 1.5f, 1.5f));
 	}
 
 	void Entity::Update(float _deltaTime)

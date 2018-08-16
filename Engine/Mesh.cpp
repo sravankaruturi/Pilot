@@ -24,7 +24,7 @@ namespace piolot
 		{
 			PE_GL(glActiveTexture(GL_TEXTURE0 + i));
 			PE_GL(glBindTexture(GL_TEXTURE_2D, it->GetTextureId()));
-			ASMGR.shaders.at(_shaderName)->setInt("texture" + std::to_string(i), i);
+			ASMGR.shaders.at(_shaderName)->setInt("u_Texture" + std::to_string(i), i);
 			i++;
 		}
 

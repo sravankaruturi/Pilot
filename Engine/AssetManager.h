@@ -229,6 +229,20 @@ namespace piolot
 			return true;
 		}
 
+		bool AddToObjects(const std::string& _name, std::shared_ptr<Object> _object) {
+			if (IsObjectLoaded(_name)) return false;
+			try
+			{
+				this->objects.insert_or_assign(_name, _object);
+				LOGGER.AddToLog("Adding " + _name + " to Objects.");
+			}
+			catch (...)
+			{
+				return false;
+			}
+			return true;
+		}
+
 
 		void GuiRender()
 		{

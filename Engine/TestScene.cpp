@@ -22,6 +22,8 @@ namespace piolot {
 
 		// We need to wait for the Shaders to be loaded to call this function.
 		test.Init();
+		
+		terrain_test = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
 
 	}
 
@@ -64,6 +66,8 @@ namespace piolot {
 
 		}
 
+		terrain_test->Update(_deltaTime);
+
 		test.Update(activeCamera->GetViewMatrix(), projection_matrix);
 	}
 
@@ -72,6 +76,8 @@ namespace piolot {
 		for (const auto& it : entities) {
 			it->Render();
 		}
+
+		terrain_test->Render();
 
 		test.Render();
 	}

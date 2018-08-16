@@ -67,6 +67,7 @@ namespace piolot
 			return objectName;
 		}
 
+		Object(const std::string& _name, std::vector<std::shared_ptr<Mesh>> _meshes);
 		explicit Object(const std::string& _objectPath);
 		~Object();
 

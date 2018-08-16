@@ -87,6 +87,9 @@
     <ClCompile Include="external_files\ImGUI\imgui_impl_opengl3.cpp">
       <Filter>Header Files\ImGui</Filter>
     </ClCompile>
+    <ClCompile Include="Terrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -173,6 +176,9 @@
     <ClInclude Include="LoggingManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Terrain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\failing_test.frag">
@@ -197,6 +203,12 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="Shaders\axes.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\terrain.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\terrain.frag">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

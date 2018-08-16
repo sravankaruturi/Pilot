@@ -4,11 +4,16 @@
 #include "assimp/postprocess.h"
 #include "Object.h"
 #include "AssetManager.h"
-#include "LoggingMacros.h"
 
 
 namespace piolot
 {
+	Object::Object(const std::string& _name, std::vector<std::shared_ptr<Mesh>> _meshes)
+		: objectName(_name), meshes(_meshes)
+	{
+
+	}
+
 	Object::Object(const std::string& _objectPath)
 	{
 		directory = _objectPath.substr(0, _objectPath.find_last_of('/'));
@@ -16,7 +21,7 @@ namespace piolot
 
 		if (ASMGR.IsObjectLoaded(objectName))
 		{
-			PE_LOG("File, " + objectName + " skipped loading");
+			LOGGER.AddToLog("File, " + objectName + " skipped loading");
 			return;
 		}
 
@@ -40,7 +45,7 @@ namespace piolot
 	void Object::Render(const std::string _shaderName)
 	{
 		// Set any object wide uniforms here. Like Highlight colour os something.
-
+		PE_EXPECT(this->meshes.size() > 0);
 		for ( const std::shared_ptr<Mesh>& mesh : GetMeshes())
 		{
 			mesh->Render(_shaderName);

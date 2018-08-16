@@ -102,7 +102,9 @@ namespace piolot
 
 	public:
 
-		explicit Entity(const std::string& _objectPath, const std::string& _shaderName);
+		Entity() = default;
+
+		Entity(const std::string& _objectPath, const std::string& _shaderName);
 		~Entity() = default;
 
 		void Update(float _deltaTime);

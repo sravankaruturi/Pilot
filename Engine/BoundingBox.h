@@ -32,7 +32,7 @@ namespace piolot
 
 	public:
 
-		BoundingBox(glm::vec3 _minimumPoint, glm::vec3 _maximumPoint);
+		BoundingBox(glm::vec3 _minimumPoint = glm::vec3(-0.2f, -0.2f, -0.2f), glm::vec3 _maximumPoint = glm::vec3(0.2f, 0.2f, 0.2f));
 
 		unsigned int GetVerticesSize() const
 		{
