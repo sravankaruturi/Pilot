@@ -179,10 +179,10 @@ namespace piolot {
 	Terrain::~Terrain()
 	{
 		for (auto i = 0; i < nodeCountX; i++) {
-			delete tiles[i];
+			delete[] tiles[i];
 		}
 		
-		delete tiles;
+		delete[] tiles;
 	}
 
 
