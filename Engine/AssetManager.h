@@ -233,11 +233,11 @@ namespace piolot
 		void GuiRender()
 		{
 			// A Hierarchy listing all the Assets currently in the ASMGR.
-
+			ImGui::Begin("Asset Manager Details");
 			ImGui::Columns(1);
 			if ( ImGui::CollapsingHeader("Shaders"))
 			{
-				for (auto it : shaders)
+				for (auto it : this->shaders)
 				{
 					ImGui::Columns(2);
 					ImGui::Text(it.first.c_str());
@@ -250,7 +250,7 @@ namespace piolot
 			ImGui::Columns(1);
 			if (ImGui::CollapsingHeader("Textures"))
 			{
-				for (auto it : textures)
+				for (auto it : this->textures)
 				{
 					ImGui::Columns(3);
 					ImGui::Text(it.first.c_str());
@@ -267,6 +267,7 @@ namespace piolot
 					ImGui::NextColumn();
 				}
 			}
+			ImGui::End();
 
 		}
 

@@ -16,7 +16,7 @@ namespace piolot {
 
 		cameras.push_back(std::make_shared<Camera>(glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0)));
 
-		entities.push_back(std::make_shared<Entity>("nanosuit/nanosuit.obj", "good_test"));
+		entities.push_back(std::make_shared<Entity>("lowpolytree/lowpolytree.obj", "good_test"));
 
 		ActiveCamera(cameras[0]);
 

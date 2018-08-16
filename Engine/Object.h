@@ -21,11 +21,12 @@ namespace piolot
 		/**
 		* \brief Normal, A Vector3.
 		*/
-		glm::vec3 normal = glm::vec3(0.f, 0.f, 0.f);;
+		/*glm::vec3 normal = glm::vec3(0.f, 0.f, 0.f);;*/
 		/**
 		* \brief UV Co-ordinates, A Vector2
 		*/
-		glm::vec2 texCoord = glm::vec2(0.f, 0.f);;
+		// The Z Value would always be zero. Have to make this a vec3 for loading into the buffer.
+		glm::vec3 texCoord = glm::vec3(0.f, 0.f, 0.0f);;
 
 		/**
 		* \brief Default Constructor
@@ -43,12 +44,12 @@ namespace piolot
 		* \param _tx TexCoords.u
 		* \param _ty TexCoords.v
 		*/
-		VertexData(float _x, float _y, float _z, float _r, float _g, float _b, float _tx, float _ty)
-		{
-			position = glm::vec3(_x, _y, _z);
-			normal = glm::vec3(_r, _g, _b);
-			texCoord = glm::vec2(_tx, _ty);
-		}
+		//VertexData(float _x, float _y, float _z, float _r, float _g, float _b, float _tx, float _ty)
+		//{
+		//	position = glm::vec3(_x, _y, _z);
+		//	normal = glm::vec3(_r, _g, _b);
+		//	texCoord = glm::vec2(_tx, _ty);
+		//}
 	};
 
 	class Object
@@ -75,7 +76,7 @@ namespace piolot
 		void SetMeshes(std::vector<std::shared_ptr<piolot::Mesh>> val) { meshes = val; }
 	private:
 		void ProcessNode(aiNode *_node, const aiScene *_scene, std::vector<std::shared_ptr<Mesh>>& _meshes);
-		std::shared_ptr<Mesh> ProcessMesh(aiMesh * _mesh, const aiScene * _scene);
+		void ProcessAndAddMesh(aiMesh * _mesh, const aiScene * _scene);
 		std::vector<std::string> LoadMaterialTextures(aiMaterial* _mat, aiTextureType _type);
 	};
 }

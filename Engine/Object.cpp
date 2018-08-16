@@ -55,7 +55,7 @@ namespace piolot
 			// the node object only contains indices to index the actual objects in the scene. 
 			// the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
 			aiMesh* mesh = _scene->mMeshes[_node->mMeshes[i]];
-			meshes.push_back(ProcessMesh(mesh, _scene));
+			ProcessAndAddMesh(mesh, _scene);
 		}
 
 		/* We then go for the children */
@@ -65,7 +65,7 @@ namespace piolot
 		}
 	}
 
-	std::shared_ptr<Mesh> Object::ProcessMesh(aiMesh* _mesh, const aiScene* _scene)
+	void Object::ProcessAndAddMesh(aiMesh* _mesh, const aiScene* _scene)
 	{
 		std::vector<VertexData> vertices;
 		std::vector<unsigned int> indices;
@@ -82,20 +82,21 @@ namespace piolot
 			vector.z = _mesh->mVertices[i].z;
 			vertex.position = vector;
 
-			/* Normals */
-			vector.x = _mesh->mNormals[i].x;
-			vector.y = _mesh->mNormals[i].y;
-			vector.z = _mesh->mNormals[i].z;
-			vertex.normal = vector;
+			///* Normals */
+			//vector.x = _mesh->mNormals[i].x;
+			//vector.y = _mesh->mNormals[i].y;
+			//vector.z = _mesh->mNormals[i].z;
+			//vertex.normal = vector;
 
 			/* UV TexCoords */
 			if (_mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
 			{
-				glm::vec2 vec;
+				glm::vec3 vec;
 				// a vertex can contain up to 8 different texture coordinates. We thus make the assumption that we won't 
 				// use models where a vertex can have multiple texture coordinates so we always take the first set (0).
 				vec.x = _mesh->mTextureCoords[0][i].x;
 				vec.y = _mesh->mTextureCoords[0][i].y;
+				vec.z = 0.0f;
 				vertex.texCoord = vec;
 			}
 
@@ -135,7 +136,7 @@ namespace piolot
 		std::shared_ptr<Mesh> return_renderable = std::make_shared<Mesh>(&vertices[0], sizeof(VertexData), vertices.size(), indices);
 		return_renderable->SetTextureNames(textures);
 
-		return return_renderable;
+		this->meshes.push_back(return_renderable);
 
 	}
 

@@ -50,7 +50,7 @@ namespace piolot
 		// Use the Current Shader.
 		ASMGR.shaders.at(shaderName)->use();
 		// Set the Model Matrix.
-		ASMGR.shaders.at(shaderName)->setMat4("model", modelMatrix);
+		ASMGR.shaders.at(shaderName)->setMat4("u_ModelMatrix", modelMatrix);
 
 		// Render
 		ASMGR.objects.at(objectName)->Render(shaderName);
@@ -58,7 +58,7 @@ namespace piolot
 		//object->Render(shaderName);
 
 		ASMGR.shaders.at("bbox")->use();
-		ASMGR.shaders.at("bbox")->setMat4("model", glm::scale(modelMatrix, glm::vec3(1.001f, 1.001f, 1.001f)));
+		ASMGR.shaders.at("bbox")->setMat4("u_ModelMatrix", glm::scale(modelMatrix, glm::vec3(1.001f, 1.001f, 1.001f)));
 		if ( selectedInScene )
 		{
 			boundingBox.Render(glm::vec3(1.0, 1.0, 0.0));
