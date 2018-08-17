@@ -111,7 +111,7 @@ namespace piolot {
 				vertices[i * nodeCountZ + j] = TerrainVertexData();
 				vertices[i * nodeCountZ + j].position = glm::vec3(tiles[i][j].tilePosX, tiles[i][j].tilePosY, tiles[i][j].tilePosZ);
 				vertices[i * nodeCountZ + j].normal = glm::vec3();
-				vertices[i * nodeCountZ + j].colour = red;
+				vertices[i * nodeCountZ + j].colour = green;
 				vertices[i * nodeCountZ + j].texCoord = glm::vec3(i * 0.4, j * 0.4, 0);
 			}
 		}
@@ -160,6 +160,17 @@ namespace piolot {
 		Entity::Render();
 	}
 
+	void Terrain::Update(float _delatTime, float _totalTime)
+	{
+		Entity::Update(_delatTime);
+
+		if (this->areVerticesDirty) {
+			this->objectPtr->GetMeshes()[0]->UpdateVertices(&vertices[0], sizeof(TerrainVertexData), vertices.size());
+			areVerticesDirty = false;
+		}
+
+	}
+
 	//void Terrain::Render()
 	//{
 	//	Entity::Render();
@@ -175,6 +186,34 @@ namespace piolot {
 	//	//this->mesh->Render("terrain");
 
 	//}
+
+	glm::vec2 Terrain::GetNodeIndicesFromPos(const float& _x, const float& _z) const
+	{
+		return glm::vec2(glm::min(int(_x / gridLength), int(nodeCountX - 1)), glm::min(int(_z / gridBreadth), int(nodeCountZ - 1)));
+	}
+
+	void Terrain::HighlightNode(const unsigned _x, const unsigned _z)
+	{
+
+		this->vertices[_x * nodeCountZ + _z].colour = black;
+		/*this->vertices[(_x + 1) * nodeCountZ + _z].colour = yellow;
+		this->vertices[_x * nodeCountZ + _z + 1].colour = yellow;
+		this->vertices[(_x + 1) * nodeCountZ + _z + 1].colour = yellow;*/
+		areVerticesDirty = true;
+
+	}
+
+	void Terrain::ClearColours()
+	{
+
+		for (auto i = 0; i < nodeCountX; i++) {
+			for (auto j = 0; j < nodeCountZ; j++) {
+				this->vertices[i * nodeCountZ + j].colour = green;
+			}
+		}
+		areVerticesDirty = true;
+
+	}
 
 	Terrain::~Terrain()
 	{

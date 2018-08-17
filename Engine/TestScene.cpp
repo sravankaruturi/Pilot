@@ -27,7 +27,7 @@ namespace piolot {
 
 	}
 
-	void TestScene::OnUpdate(float _deltaTime)
+	void TestScene::OnUpdate(float _deltaTime, float _totalTime)
 	{
 		const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
 
@@ -37,6 +37,7 @@ namespace piolot {
 
 		glm::vec3 mouse_pointer_ray = activeCamera->GetMouseRayDirection(window->mouseX, window->mouseY, window->GetWidth(), window->GetHeight(), projection_matrix);
 
+		/* Ray Picking */
 		{
 			float int_distance = 0;
 			float min_int_distance = 10000.0f;
@@ -66,7 +67,25 @@ namespace piolot {
 
 		}
 
-		terrain_test->Update(_deltaTime);
+		/* Find Random Paths */
+		{
+			const float interval = 5;
+			if (_totalTime / interval - int(_totalTime / interval) < 0.004f) {
+
+				terrain_test->ClearColours();
+
+				startPosition = glm::vec3(rand() % terrain_test->GetLength(), 0, rand() % terrain_test->GetBreadth());
+				// Get the node pos.
+				glm::vec2 test_get_node = terrain_test->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
+				LOGGER.AddToLog(
+					"Random Point Selected: " + std::to_string(startPosition.x) + " , " + std::to_string(startPosition.z) + " "
+					"The node returned is: " + std::to_string(test_get_node.x) + ", " + std::to_string(test_get_node.y)
+				);
+				terrain_test->HighlightNode(test_get_node.x, test_get_node.y);
+			}
+		}
+
+		terrain_test->Update(_deltaTime, _totalTime);
 
 		test.Update(activeCamera->GetViewMatrix(), projection_matrix);
 	}

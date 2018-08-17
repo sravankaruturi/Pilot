@@ -94,4 +94,12 @@ namespace piolot
 			vertexAttribCounter += 1;
 		}
 	}
+
+	void Mesh::UpdateVertices(void* _dataPointer, size_t _dataStructureSize, unsigned _vertexCount)
+	{
+
+		PE_GL(glBindBuffer(GL_ARRAY_BUFFER, VBO));
+		PE_GL(glBufferData(GL_ARRAY_BUFFER, _dataStructureSize * _vertexCount, _dataPointer, GL_STATIC_DRAW));
+
+	}
 }

@@ -32,7 +32,64 @@ namespace piolot {
 	{
 
 		unsigned int length, breadth;
-		
+
+	public:
+		unsigned GetLength() const
+		{
+			return length;
+		}
+
+		unsigned GetBreadth() const
+		{
+			return breadth;
+		}
+
+		float GetGridLength() const
+		{
+			return gridLength;
+		}
+
+		float GetGridBreadth() const
+		{
+			return gridBreadth;
+		}
+
+		unsigned GetNodeCountX() const
+		{
+			return nodeCountX;
+		}
+
+		unsigned GetNodeCountZ() const
+		{
+			return nodeCountZ;
+		}
+
+		MapTile** GetTiles() const
+		{
+			return tiles;
+		}
+
+		const std::string& GetHeightMapFile() const
+		{
+			return heightMapFile;
+		}
+
+		const std::vector<TerrainVertexData>& GetVertices() const
+		{
+			return vertices;
+		}
+
+		const std::vector<unsigned>& GetIndices() const
+		{
+			return indices;
+		}
+
+		const std::shared_ptr<Object>& GetObjectPtr() const
+		{
+			return objectPtr;
+		}
+
+	private:
 		float gridLength, gridBreadth;
 
 		unsigned int nodeCountX, nodeCountZ;
@@ -42,6 +99,8 @@ namespace piolot {
 		std::string heightMapFile;
 
 		std::vector<TerrainVertexData> vertices;
+
+		bool areVerticesDirty = false;
 
 		std::vector<unsigned int> indices;
 
@@ -54,6 +113,17 @@ namespace piolot {
 		Terrain(int _mapLength, int _mapBreadth, float _gridLength, float _gridBreadth, std::string _heightMapFile);
 
 		void Render();
+
+		void Update(float _delatTime, float _totalTime);
+
+		float GetHeightAtPos(const float& _x, const float& _z);
+		float GetHeightForNode(const int& _x, const int& _z);
+
+		glm::vec2 GetNodeIndicesFromPos(const float& _x, const float& _z) const;
+
+		void HighlightNode(const unsigned int _x, const unsigned int _z);
+
+		void ClearColours();
 
 		~Terrain();
 

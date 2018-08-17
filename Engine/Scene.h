@@ -26,7 +26,7 @@ namespace piolot {
 		explicit Scene(std::shared_ptr<Window> _window);
 		~Scene() = default;
 
-		virtual void OnUpdate(float _deltaTime) {}
+		virtual void OnUpdate(float _deltaTime, float _totalTime) {}
 
 		virtual void OnRender() {}
 

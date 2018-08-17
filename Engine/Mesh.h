@@ -95,6 +95,9 @@ namespace piolot
 
 		Mesh(void * _dataPointer, size_t _dataStructureSize, unsigned int _vertexCount, std::vector<unsigned int> _indices);
 
+		// Use this to update the vertex data.. once in a while. Not alywas as this is expensive.
+		void UpdateVertices(void* _dataPointer, size_t _dataStructureSize, unsigned _vertexCount);
+
 		void Render(const std::string& _shaderName);
 	};
 

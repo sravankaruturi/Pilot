@@ -9,7 +9,6 @@
 #include "AssetManager.h"
 #include "Mesh.h"
 #include <glm/gtc/matrix_transform.inl>
-#include "Object.h"
 
 #include "TestScene.h"
 
@@ -71,10 +70,11 @@ int main(int argc, char ** argv)
 		while (!glfwWindowShouldClose(window->GetWindow()))
 		{
 			const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
+
 			const float delta_time = glfwGetTime() - time;
+			time = glfwGetTime();
 
 			ImGuiIO& io = ImGui::GetIO();
-			time = glfwGetTime();
 
 			window->HandleInput();
 
@@ -111,7 +111,7 @@ int main(int argc, char ** argv)
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			// Update Function
-			test_scene.OnUpdate(delta_time);
+			test_scene.OnUpdate(delta_time, time);
 
 			{
 				// We set the View and Projection Matrices for all the Shaders that has them ( They all should have them ideally ).

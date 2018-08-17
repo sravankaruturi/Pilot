@@ -12,12 +12,15 @@ namespace piolot {
 		Grid test;
 		std::shared_ptr<Terrain> terrain_test;
 
+		glm::vec3 startPosition;
+		glm::vec3 endPosition = glm::vec3(1.0f, 1.0f, 1.0f);
+
 	public:
 
 		explicit TestScene(std::shared_ptr<Window> _window);
 		~TestScene() = default;
 
-		virtual void OnUpdate(float _deltaTime) override;
+		virtual void OnUpdate(float _deltaTime, float _totalTime) override;
 
 
 		virtual void OnRender() override;
