@@ -23,6 +23,21 @@ namespace piolot {
 		float tilePosZ;
 		float tilePosY;
 
+
+		/* Calculated Navigation Stuff */
+		float navCost = 0.0f;
+		bool navWalkable = true;
+		MapTile * navNeighbours[8];
+		int navNeighbourCount = 0;
+		// Open Set?
+		bool navOpen;
+		// Closed Set?
+		bool navClosed;
+		MapTile * navParent = nullptr;
+		float navFCost = 0;
+		float navGCost = 0;
+		int navTileSet;
+
 	public:
 		MapTile() = default;
 
@@ -124,6 +139,15 @@ namespace piolot {
 		void HighlightNode(const unsigned int _x, const unsigned int _z);
 
 		void ClearColours();
+
+		std::vector<MapTile *> GetPathFromTiles(MapTile * _startTile, MapTile * _endTile);
+		std::vector<MapTile *> GetPathFromPositions(glm::vec3, glm::vec3);
+
+		MapTile * GetTileFromIndices(int _x, int _y);
+
+		void InitPathFinding();
+
+		void FillNeighbours(MapTile& _tile);
 
 		~Terrain();
 

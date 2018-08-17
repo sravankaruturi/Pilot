@@ -4,6 +4,8 @@
 #include "LoggingManager.h"
 #include "AssetManager.h"
 
+#define UNPASSABLE_NAV_COST_LIMIT		0.8f
+
 namespace piolot {
 
 	glm::vec3 Terrain::ComputeGridNormal(const int _x, const int _z)
@@ -73,6 +75,10 @@ namespace piolot {
 		int image_width, image_height, nr_channels;
 
 		auto data = stbi_load(_heightMapFile.c_str(), &image_width, &image_height, &nr_channels, 0);
+
+		if (NULL == data) {
+			LOGGER.AddToLog("Unable to load " + _heightMapFile, PE_LOG_ERROR);
+		}
 
 		for (auto i = 0; i < nodeCountX; i++)
 		{
@@ -151,7 +157,8 @@ namespace piolot {
 		this->objectName = "terrain";
 		this->shaderName = "terrain";
 
-		// Maybe push this mesh and texture data on to the Asset Manager, which we would use to draw stuff in render?
+		// Load Stuff for PathFinding
+		InitPathFinding();
 
 	}
 
@@ -171,21 +178,16 @@ namespace piolot {
 
 	}
 
-	//void Terrain::Render()
-	//{
-	//	Entity::Render();
-	//	//ASMGR.shaders.at("terrain")->use();
-	//	//ASMGR.shaders.at("terrain")->setMat4("u_ModelMatrix", glm::mat4(1.0));
-	//	//ASMGR.shaders.at("terrain")->setInt("u_texture0", 0);
+	float Terrain::GetHeightAtPos(const float& _x, const float& _z)
+	{
+		auto temp = GetNodeIndicesFromPos(_x, _z);
+		return GetHeightForNode(temp.x, temp.y);
+	}
 
-	//	//glActiveTexture(GL_TEXTURE0);
-	//	//???
-	//	//glBindTexture(0, ASMGR.textures.at("grass")->GetTextureId());
-	//	//???
-	//	//// Draw the Mesh.
-	//	//this->mesh->Render("terrain");
-
-	//}
+	float Terrain::GetHeightForNode(const int& _x, const int& _z)
+	{
+		return tiles[_x][_z].tilePosY;
+	}
 
 	glm::vec2 Terrain::GetNodeIndicesFromPos(const float& _x, const float& _z) const
 	{
@@ -208,11 +210,153 @@ namespace piolot {
 
 		for (auto i = 0; i < nodeCountX; i++) {
 			for (auto j = 0; j < nodeCountZ; j++) {
-				this->vertices[i * nodeCountZ + j].colour = green;
+				this->vertices[i * nodeCountZ + j].colour = black * ( tiles[i][j].navTileSet / 10.0f);
 			}
 		}
 		areVerticesDirty = true;
 
+	}
+
+	std::vector<MapTile *> Terrain::GetPathFromTiles(MapTile * _startTile, MapTile * _endTile)
+	{
+		std::vector<MapTile*> return_vector;
+
+		
+
+		return return_vector;
+	}
+
+	std::vector<MapTile *> Terrain::GetPathFromPositions(glm::vec3 _startPosition, glm::vec3 _endPosition)
+	{
+
+		// Get the Nodes from the Position.
+		auto start_node_indices = GetNodeIndicesFromPos(_startPosition.x, _startPosition.z);
+		auto end_node_indices = GetNodeIndicesFromPos(_endPosition.x, _endPosition.z);
+
+		return GetPathFromTiles(
+			GetTileFromIndices(start_node_indices.x, start_node_indices.y),
+			GetTileFromIndices(end_node_indices.x, end_node_indices.y)
+		);
+
+
+
+	}
+
+	MapTile* Terrain::GetTileFromIndices(int _x, int _y)
+	{
+		return &tiles[_x][_y];
+	}
+
+	void Terrain::InitPathFinding()
+	{
+
+		for (auto i = 0; i < nodeCountX; i++) {
+			for (auto j = 0; j < nodeCountZ; j++) {
+
+				auto& tile = tiles[i][j];
+
+				FillNeighbours(tile);
+
+				// For each neighbour, add to the cost.
+				auto variance = 0.0f;
+
+				for (auto k = 0; k < tile.navNeighbourCount; k++){
+
+					const auto temp = tile.navNeighbours[k]->tilePosY;
+					variance += temp * temp;
+
+				}
+
+				variance /= float(tile.navNeighbourCount);
+
+				tile.navCost = (( variance > 0.9f ) ? (0.9f) : variance) + 0.1f;
+				tile.navWalkable = (tile.navCost < UNPASSABLE_NAV_COST_LIMIT );
+				tile.navTileSet = i * nodeCountZ + j;
+
+			}
+		}
+
+		// Update the Tilsets based on whether you can walk or not.
+		bool changed = false;
+		do {
+			changed = false;
+
+			for (auto i = 0; i < nodeCountX; i++) {
+				for (auto j = 0; j < nodeCountZ; j++) {
+
+					auto&tile = tiles[i][j];
+					if (tile.navWalkable) {
+						for (auto k = 0; k < tile.navNeighbourCount; k++) {
+							const auto neighbour = tile.navNeighbours[k];
+							if (neighbour->navWalkable && neighbour->navTileSet < tile.navTileSet) {
+								changed = true;
+								tile.navTileSet = neighbour->navTileSet;
+							}
+						}
+					}
+
+				}
+			}
+		} while (changed);
+
+	}
+
+	void Terrain::FillNeighbours(MapTile& _tile)
+	{
+
+		// We Update the Tile Itself.
+		const auto& temp_x = _tile.tileIndexX;
+		const auto& temp_z = _tile.tileIndexZ;
+
+		/* TODO: Too many branches... Do something later on.*/
+		if (temp_z + 1 < nodeCountZ)
+		{
+			_tile.navNeighbours[_tile.navNeighbourCount] = &tiles[temp_x][temp_z + 1];
+			_tile.navNeighbourCount++;
+		}
+
+		if (temp_z - 1 > 0)
+		{
+			_tile.navNeighbours[_tile.navNeighbourCount] = &tiles[temp_x][temp_z - 1];
+			_tile.navNeighbourCount++;
+		}
+
+		if (temp_x + 1 < nodeCountX)
+		{
+
+			_tile.navNeighbours[_tile.navNeighbourCount] = &tiles[temp_x + 1][temp_z];
+			_tile.navNeighbourCount++;
+
+			if (temp_z + 1 < nodeCountZ)
+			{
+				_tile.navNeighbours[_tile.navNeighbourCount] = &tiles[temp_x + 1][temp_z + 1];
+				_tile.navNeighbourCount++;
+			}
+
+			if (temp_z - 1 > 0)
+			{
+				_tile.navNeighbours[_tile.navNeighbourCount] = &tiles[temp_x + 1][temp_z - 1];
+				_tile.navNeighbourCount++;
+			}
+		}
+
+		if (temp_x - 1 > 0)
+		{
+			_tile.navNeighbours[_tile.navNeighbourCount] = &tiles[temp_x - 1][temp_z];
+			_tile.navNeighbourCount++;
+
+			if (temp_z + 1 < nodeCountZ)
+			{
+				_tile.navNeighbours[_tile.navNeighbourCount] = &tiles[temp_x - 1][temp_z + 1];
+				_tile.navNeighbourCount++;
+			}
+
+			if (temp_z - 1 > 0)
+			{
+				_tile.navNeighbours[_tile.navNeighbourCount] = &tiles[temp_x - 1][temp_z - 1];
+				_tile.navNeighbourCount++;
+			}
+		}
 	}
 
 	Terrain::~Terrain()

@@ -23,7 +23,8 @@ namespace piolot {
 		// We need to wait for the Shaders to be loaded to call this function.
 		test.Init();
 		
-		terrain_test = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
+		//terrain_test = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
+		terrain_test = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap-divided.jpg");
 
 	}
 
@@ -75,13 +76,28 @@ namespace piolot {
 				terrain_test->ClearColours();
 
 				startPosition = glm::vec3(rand() % terrain_test->GetLength(), 0, rand() % terrain_test->GetBreadth());
+
 				// Get the node pos.
-				glm::vec2 test_get_node = terrain_test->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
-				LOGGER.AddToLog(
-					"Random Point Selected: " + std::to_string(startPosition.x) + " , " + std::to_string(startPosition.z) + " "
-					"The node returned is: " + std::to_string(test_get_node.x) + ", " + std::to_string(test_get_node.y)
-				);
+				const glm::vec2 test_get_node = terrain_test->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
+
+				//LOGGER.AddToLog(
+				//	"Random Point Selected: " + std::to_string(startPosition.x) + " , " + std::to_string(startPosition.z) + " "
+				//	"The node returned is: " + std::to_string(test_get_node.x) + ", " + std::to_string(test_get_node.y)
+				//);
+
 				terrain_test->HighlightNode(test_get_node.x, test_get_node.y);
+
+				endPosition = glm::vec3(rand() % terrain_test->GetLength(), 0, rand() % terrain_test->GetBreadth());
+
+				startPosition.y = terrain_test->GetHeightAtPos(startPosition.x, startPosition.z);
+				endPosition.y = terrain_test->GetHeightAtPos(endPosition.x, endPosition.z);
+
+				glm::vec2 test_end_node = terrain_test->GetNodeIndicesFromPos(endPosition.x, endPosition.z);
+
+				terrain_test->HighlightNode(test_end_node.x, test_end_node.y);
+
+				std::vector<MapTile*> path = terrain_test->GetPathFromPositions(startPosition, endPosition);
+
 			}
 		}
 
