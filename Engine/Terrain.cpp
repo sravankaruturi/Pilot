@@ -264,6 +264,7 @@ namespace piolot {
 		while ( !path_found && !open_set.empty())
 		{
 			int best_node_index = 0;
+			active_node = open_set[best_node_index];
 			for ( auto index = 0; index < open_set.size(); index++ )
 			{
 				if ( open_set[index]->navFCost < active_node->navFCost)
