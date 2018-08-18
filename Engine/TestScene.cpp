@@ -6,6 +6,11 @@
 
 namespace piolot {
 
+	std::string Vec3ToString(glm::vec3 _in)
+	{
+		return "(" + std::to_string(_in.x) + ", " + std::to_string(_in.y) + ", " + std::to_string(_in.z) + ")";
+	}
+
 	TestScene::TestScene(std::shared_ptr<Window> _window)
 		: Scene(_window)
 	{
@@ -24,7 +29,7 @@ namespace piolot {
 		test.Init();
 		
 		//terrain_test = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
-		terrain_test = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap-divided.jpg");
+		terrain_test = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
 
 	}
 
@@ -32,7 +37,7 @@ namespace piolot {
 	{
 		const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
 
-		for (const auto it : entities) {
+		for (const auto& it : entities) {
 			it->Update(_deltaTime);
 		}
 
@@ -71,34 +76,40 @@ namespace piolot {
 		/* Find Random Paths */
 		{
 			const float interval = 5;
-			if (_totalTime / interval - int(_totalTime / interval) < 0.004f) {
 
-				terrain_test->ClearColours();
+			terrain_test->ClearColours();
 
-				startPosition = glm::vec3(rand() % terrain_test->GetLength(), 0, rand() % terrain_test->GetBreadth());
+			glm::vec3 startPosition = glm::vec3(startxz.x, 0, startxz.y);
+			glm::vec3 endPosition = glm::vec3(endxz.x, 0, endxz.y);
 
-				// Get the node pos.
-				const glm::vec2 test_get_node = terrain_test->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
+			// Get the node pos.
+			const glm::vec2 test_get_node = terrain_test->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
 
-				//LOGGER.AddToLog(
-				//	"Random Point Selected: " + std::to_string(startPosition.x) + " , " + std::to_string(startPosition.z) + " "
-				//	"The node returned is: " + std::to_string(test_get_node.x) + ", " + std::to_string(test_get_node.y)
-				//);
+			//LOGGER.AddToLog(
+			//	"Random Point Selected: " + std::to_string(startPosition.x) + " , " + std::to_string(startPosition.z) + " "
+			//	"The node returned is: " + std::to_string(test_get_node.x) + ", " + std::to_string(test_get_node.y)
+			//);
 
-				terrain_test->HighlightNode(test_get_node.x, test_get_node.y);
+			terrain_test->HighlightNode(test_get_node.x, test_get_node.y);
 
-				endPosition = glm::vec3(rand() % terrain_test->GetLength(), 0, rand() % terrain_test->GetBreadth());
+			startPosition.y = terrain_test->GetHeightAtPos(startPosition.x, startPosition.z);
+			endPosition.y = terrain_test->GetHeightAtPos(endPosition.x, endPosition.z);
 
-				startPosition.y = terrain_test->GetHeightAtPos(startPosition.x, startPosition.z);
-				endPosition.y = terrain_test->GetHeightAtPos(endPosition.x, endPosition.z);
+			glm::vec2 test_end_node = terrain_test->GetNodeIndicesFromPos(endPosition.x, endPosition.z);
 
-				glm::vec2 test_end_node = terrain_test->GetNodeIndicesFromPos(endPosition.x, endPosition.z);
+			terrain_test->HighlightNode(test_end_node.x, test_end_node.y);
 
-				terrain_test->HighlightNode(test_end_node.x, test_end_node.y);
+			path = terrain_test->GetPathFromPositions(startPosition, endPosition);
 
-				std::vector<MapTile*> path = terrain_test->GetPathFromPositions(startPosition, endPosition);
+			std::string log_temp = "The path b/w the tiles, ";
 
+			log_temp += Vec3ToString(startPosition) + " and " + Vec3ToString(endPosition) + " has " + std::to_string(path.size()) + " nodes";
+
+			for ( auto it : path)
+			{
+				terrain_test->HighlightNode(it->tileIndexX, it->tileIndexZ);
 			}
+
 		}
 
 		terrain_test->Update(_deltaTime, _totalTime);
@@ -121,6 +132,25 @@ namespace piolot {
 	{
 		//throw std::logic_error("The method or operation is not implemented.");
 		ImGui::Text("Hello World");
+
+		ImGui::Begin("Terrain Pathing");
+
+		ImGui::SliderFloat2("Start Position", glm::value_ptr(startxz), 0.0f, 10.0f);
+		ImGui::SliderFloat2("End Position", glm::value_ptr(endxz), 0.0f, 10.0f);
+
+		std::string temp_log = "The path b/w these points has size + " + std::to_string(path.size());
+
+		ImGui::Text(temp_log.c_str());
+
+		if ( path.empty() )
+		{
+			// Print the tilesets.
+			std::string temp_log = "The node sets for the nodes are " + std::to_string(terrain_test->GetNodeSetFromPos(startxz.x, startxz.y)) + ", " + std::to_string(terrain_test->GetNodeSetFromPos(endxz.x, endxz.y));
+			ImGui::Text(temp_log.c_str());
+		}
+
+		ImGui::End();
+
 	}
 
 }

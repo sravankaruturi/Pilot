@@ -123,6 +123,10 @@ namespace piolot {
 
 		glm::vec3 ComputeGridNormal(int _x,int _z);
 
+		/* Testing stuff */
+		glm::vec2 startxz;
+		glm::vec2 endxz;
+
 	public:
 
 		Terrain(int _mapLength, int _mapBreadth, float _gridLength, float _gridBreadth, std::string _heightMapFile);
@@ -149,7 +153,16 @@ namespace piolot {
 
 		void FillNeighbours(MapTile& _tile);
 
+		void OnImguiRender();
+
+		int GetNodeSetFromPos(float _x, float _z);
+
+		std::vector<int> GetAllTileSets();
+
 		~Terrain();
+
+		/* Terrain Debug */
+		bool terrainDebug = false;
 
 	};
 

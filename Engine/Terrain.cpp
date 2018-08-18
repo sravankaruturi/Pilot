@@ -4,7 +4,9 @@
 #include "LoggingManager.h"
 #include "AssetManager.h"
 
-#define UNPASSABLE_NAV_COST_LIMIT		0.8f
+#include <algorithm>
+
+#define UNPASSABLE_NAV_COST_LIMIT		1.0f
 
 namespace piolot {
 
@@ -197,7 +199,7 @@ namespace piolot {
 	void Terrain::HighlightNode(const unsigned _x, const unsigned _z)
 	{
 
-		this->vertices[_x * nodeCountZ + _z].colour = black;
+		this->vertices[_x * nodeCountZ + _z].colour = yellow;
 		/*this->vertices[(_x + 1) * nodeCountZ + _z].colour = yellow;
 		this->vertices[_x * nodeCountZ + _z + 1].colour = yellow;
 		this->vertices[(_x + 1) * nodeCountZ + _z + 1].colour = yellow;*/
@@ -208,20 +210,147 @@ namespace piolot {
 	void Terrain::ClearColours()
 	{
 
+		auto all_tile_sets = GetAllTileSets();
+		auto number_tile_sets = all_tile_sets.size();
+
 		for (auto i = 0; i < nodeCountX; i++) {
 			for (auto j = 0; j < nodeCountZ; j++) {
-				this->vertices[i * nodeCountZ + j].colour = black * ( tiles[i][j].navTileSet / 10.0f);
+
+				int index = std::distance( all_tile_sets.begin(), std::find(all_tile_sets.begin(), all_tile_sets.end(), tiles[i][j].navTileSet));
+
+				this->vertices[i * nodeCountZ + j].colour = red * (float(index) / number_tile_sets);
 			}
 		}
 		areVerticesDirty = true;
 
 	}
 
+	float HCost(MapTile * _pointA, MapTile * _pointB)
+	{
+		return abs(_pointA->tilePosX - _pointB->tilePosX) + abs(_pointA->tilePosZ - _pointB->tilePosZ);
+	}
+
 	std::vector<MapTile *> Terrain::GetPathFromTiles(MapTile * _startTile, MapTile * _endTile)
 	{
 		std::vector<MapTile*> return_vector;
 
-		
+		if ( _startTile->navTileSet != _endTile->navTileSet)
+		{
+			// They are not in the same tile set. Return the empty stuff.
+			return return_vector;
+		}
+
+		for ( auto i = 0 ; i < nodeCountX ; i++)
+		{
+			for ( auto j = 0 ; j < nodeCountZ; j++)
+			{
+				tiles[i][j].navFCost = tiles[i][j].navGCost = INT_MAX;
+				tiles[i][j].navOpen = tiles[i][j].navClosed = false;
+			}
+		}
+
+		std::vector<MapTile *> open_set;
+
+		_startTile->navGCost = 0.0f;
+		_startTile->navFCost = HCost(_startTile, _endTile);
+		_startTile->navOpen = true;
+
+		open_set.push_back(_startTile);
+
+		auto active_node = open_set[0];
+
+		bool path_found = false;
+
+		while ( !path_found && !open_set.empty())
+		{
+			int best_node_index = 0;
+			for ( auto index = 0; index < open_set.size(); index++ )
+			{
+				if ( open_set[index]->navFCost < active_node->navFCost)
+				{
+					active_node = open_set[index];
+					best_node_index = index;
+				}
+			}
+
+			if (nullptr == active_node)
+			{
+				// This means there is no path.
+				break;
+			}
+
+			active_node->navOpen = false;
+			open_set.erase(open_set.begin() + best_node_index);
+
+			// TODO: Can we just check if they point to the same tile, since they are pointers..
+			if (_endTile->tileIndexX == active_node->tileIndexX && _endTile->tileIndexZ == active_node->tileIndexZ)
+			{
+				// We have reached the target. Retrace our Path.
+				std::vector<MapTile *> temp_path;
+
+				auto pathing_current_node = active_node;
+
+				while ( _startTile != pathing_current_node )
+				{
+					temp_path.push_back(pathing_current_node);
+					pathing_current_node = pathing_current_node->navParent;
+				}
+
+				for (auto i : temp_path)
+				{
+					return_vector.push_back(i);
+				}
+
+				return return_vector;
+
+			}else
+			{
+				for (auto i = 0 ; i < active_node->navNeighbourCount ; i++)
+				{
+					if ( nullptr != active_node->navNeighbours[i])
+					{
+						const auto new_g = active_node->navGCost + active_node->navCost;
+						const auto new_f = new_g + HCost(active_node->navNeighbours[i], _endTile);
+						
+						// Check if B is in the open list or closed list.
+						if ( active_node->navNeighbours[i]->navOpen || active_node->navNeighbours[i]->navClosed)
+						{
+							if (new_f < active_node->navNeighbours[i]->navFCost)
+							{
+								active_node->navNeighbours[i]->navGCost = new_g;
+								active_node->navNeighbours[i]->navFCost = new_f;
+								active_node->navNeighbours[i]->navParent = active_node;
+							}
+						}else
+						{
+							// If it is not in Open or Closed Sets, Add it to the open list.
+							active_node->navNeighbours[i]->navGCost = new_g;
+							active_node->navNeighbours[i]->navFCost = new_f;
+							active_node->navNeighbours[i]->navParent = active_node;
+							active_node->navNeighbours[i]->navOpen = true;
+							open_set.push_back(active_node->navNeighbours[i]);
+						}
+
+					}
+				}
+				active_node->navClosed = true;
+			}
+			
+		}
+
+		// TODO: Further reading is required.
+
+		// Set the active node as the tile with least F value, in the Openset.
+		// Remove the Active node from the Open set  ( and add it to the closed set.?? )
+		// Calculate the new G, value of the Neighbours as  Neighbour's G = A's G value + A's Cost.
+
+		// For each neighbour, B of A,
+		//		Check if B is in the Open List or Closed List.
+		//		1. If it is not in Open or Closed List, set B's G value to the Computed value. and the F Value = new G + H(B, EndNode), Add it to the OpenList, Set its parent pointer to A.
+		//		2. If it is in one of the Open or Closed Lists, Check if the current G value of B node is higher than the newly computed one., if it is update the Value and set the Parent to A.
+		// Select a new Active node A as the tile with least F Valueu in the Openset and repeat unitl A is the goal node.
+		// If the open list turns up empty, then there is no path.
+		// Build the path by traversing the parent pointer of the Goal Node to Start and then reverse it.
 
 		return return_vector;
 	}
@@ -299,6 +428,17 @@ namespace piolot {
 			}
 		} while (changed);
 
+		// Log all the tilesets.
+		std::vector<int> tile_sets = GetAllTileSets();
+
+		std::string log_temp = "Available tilesets left: ";
+		for ( auto it: tile_sets)
+		{
+			log_temp += " " + std::to_string(it) + ",";
+		}
+
+		LOGGER.AddToLog(log_temp, PE_LOG_INFO);
+
 	}
 
 	void Terrain::FillNeighbours(MapTile& _tile)
@@ -357,6 +497,41 @@ namespace piolot {
 				_tile.navNeighbourCount++;
 			}
 		}
+	}
+
+	void Terrain::OnImguiRender()
+	{
+
+
+
+	}
+
+	int Terrain::GetNodeSetFromPos(float _x, float _z)
+	{
+
+		auto start_node_indices = GetNodeIndicesFromPos(_x, _z);
+		auto tile = GetTileFromIndices(start_node_indices.x, start_node_indices.y);
+		return tile->navTileSet;
+
+	}
+
+	std::vector<int> Terrain::GetAllTileSets()
+	{
+		// Log all the tilesets.
+		std::vector<int> tile_sets;
+		for (auto i = 0; i < nodeCountX; i++) {
+			for (auto j = 0; j < nodeCountZ; j++) {
+
+				const auto& tile = tiles[i][j];
+
+				// If you cannot find it, add.
+				if (std::find(tile_sets.begin(), tile_sets.end(), tile.navTileSet) == tile_sets.end()) {
+					tile_sets.push_back(tile.navTileSet);
+				}
+
+			}
+		}
+		return tile_sets;
 	}
 
 	Terrain::~Terrain()

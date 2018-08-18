@@ -12,8 +12,13 @@ namespace piolot {
 		Grid test;
 		std::shared_ptr<Terrain> terrain_test;
 
-		glm::vec3 startPosition;
-		glm::vec3 endPosition = glm::vec3(1.0f, 1.0f, 1.0f);
+		//glm::vec3 startPosition;
+		//glm::vec3 endPosition = glm::vec3(1.0f, 1.0f, 1.0f);
+
+		glm::vec2 startxz;
+		glm::vec2 endxz;
+
+		std::vector<MapTile*> path;
 
 	public:
 
