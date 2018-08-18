@@ -133,23 +133,34 @@ namespace piolot {
 		//throw std::logic_error("The method or operation is not implemented.");
 		ImGui::Text("Hello World");
 
-		ImGui::Begin("Terrain Pathing");
+		ImGui::Checkbox("Show Terrain Debug Window", &pathingDebugWindow);
+		ImGui::Checkbox("Show Asset Manager Window", &displayAssetManagerWindow);
 
-		ImGui::SliderFloat2("Start Position", glm::value_ptr(startxz), 0.0f, 10.0f);
-		ImGui::SliderFloat2("End Position", glm::value_ptr(endxz), 0.0f, 10.0f);
-
-		std::string temp_log = "The path b/w these points has size + " + std::to_string(path.size());
-
-		ImGui::Text(temp_log.c_str());
-
-		if ( path.empty() )
+		if ( pathingDebugWindow )
 		{
-			// Print the tilesets.
-			std::string temp_log = "The node sets for the nodes are " + std::to_string(terrain_test->GetNodeSetFromPos(startxz.x, startxz.y)) + ", " + std::to_string(terrain_test->GetNodeSetFromPos(endxz.x, endxz.y));
+			ImGui::Begin("Terrain Pathing", &pathingDebugWindow);
+
+			ImGui::SliderFloat2("Start Position", glm::value_ptr(startxz), 0.0f, 10.0f);
+			ImGui::SliderFloat2("End Position", glm::value_ptr(endxz), 0.0f, 10.0f);
+
+			std::string temp_log = "The path b/w these points has size + " + std::to_string(path.size());
+
 			ImGui::Text(temp_log.c_str());
+
+			if (path.empty())
+			{
+				// Print the tilesets.
+				std::string temp_log = "The node sets for the nodes are " + std::to_string(terrain_test->GetNodeSetFromPos(startxz.x, startxz.y)) + ", " + std::to_string(terrain_test->GetNodeSetFromPos(endxz.x, endxz.y));
+				ImGui::Text(temp_log.c_str());
+			}
+
+			ImGui::End();
 		}
 
-		ImGui::End();
+		if ( displayAssetManagerWindow )
+		{
+			ASMGR.GuiRender(&displayAssetManagerWindow);
+		}
 
 	}
 

@@ -58,8 +58,7 @@ int main(int argc, char ** argv)
 		// Setup style
 		ImGui::StyleColorsDark();
 
-		bool display_logger = true;
-		bool display_asset_manager_debug = false;
+		bool display_logger = false;
 		piolot::ImGuiLog imgui_logger;
 		LOGGER.SetImGuiLogger(&imgui_logger);
 
@@ -132,17 +131,9 @@ int main(int argc, char ** argv)
 			ImGui::NewFrame();
 
 			ImGui::Checkbox("Show Log", &display_logger);
-			ImGui::Checkbox("Show Loaded Assets", &display_asset_manager_debug);
-
-			ImGui::Text("Wants Mouse Input : yes/no");
-			ImGui::Text( io.WantCaptureMouse ? "Yes" : "No" );
 
 			test_scene.OnImguiRender();
 
-			if (display_asset_manager_debug) {
-				ASMGR.GuiRender();
-			}
-			
 			if (display_logger) {
 				imgui_logger.Draw("Test Logger", &display_logger);
 			}

@@ -20,6 +20,10 @@ namespace piolot {
 
 		std::vector<MapTile*> path;
 
+		/* GUI Variables */
+		bool pathingDebugWindow = false;
+		bool displayAssetManagerWindow = false;
+
 	public:
 
 		explicit TestScene(std::shared_ptr<Window> _window);

@@ -244,10 +244,10 @@ namespace piolot
 		}
 
 
-		void GuiRender()
+		void GuiRender(bool * _windowFlag)
 		{
 			// A Hierarchy listing all the Assets currently in the ASMGR.
-			ImGui::Begin("Asset Manager Details");
+			ImGui::Begin("Asset Manager Details", _windowFlag);
 			ImGui::Columns(1);
 			if ( ImGui::CollapsingHeader("Shaders"))
 			{
