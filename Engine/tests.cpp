@@ -128,9 +128,9 @@ int main(int argc, char ** argv)
 			// GUI Render
 			ImGui_ImplOpenGL3_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
-			ImGui::NewFrame();
+			// ImGui::NewFrame();
 
-			ImGui::Checkbox("Show Log", &display_logger);
+			// ImGui::Checkbox("Show Log", &display_logger);
 
 			test_scene.OnImguiRender();
 

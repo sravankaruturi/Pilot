@@ -130,11 +130,28 @@ namespace piolot {
 
 	void TestScene::OnImguiRender()
 	{
+
+		ImGui::NewFrame();
+
+		if (ImGui::BeginMainMenuBar())
+		{
+			if ( ImGui::BeginMenu("Windows"))
+			{
+				if ( ImGui::MenuItem("Pathing Debug Window"))
+				{
+					pathingDebugWindow = true;
+				}
+				if( ImGui::MenuItem("Asset Manager Debug Window"))
+				{
+					displayAssetManagerWindow = true;
+				}
+				ImGui::EndMenu();
+			}
+			ImGui::EndMainMenuBar();
+		}
+
 		//throw std::logic_error("The method or operation is not implemented.");
 		ImGui::Text("Hello World");
-
-		ImGui::Checkbox("Show Terrain Debug Window", &pathingDebugWindow);
-		ImGui::Checkbox("Show Asset Manager Window", &displayAssetManagerWindow);
 
 		if ( pathingDebugWindow )
 		{
@@ -161,7 +178,7 @@ namespace piolot {
 		{
 			ASMGR.GuiRender(&displayAssetManagerWindow);
 		}
-
+		// ImGui::End();
 	}
 
 }
