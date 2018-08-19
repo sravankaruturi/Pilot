@@ -145,6 +145,10 @@ namespace piolot {
 				{
 					displayAssetManagerWindow = true;
 				}
+				if ( ImGui::MenuItem("Log Window"))
+				{
+					displayLogWindow = true;
+				}
 				ImGui::EndMenu();
 			}
 			ImGui::EndMainMenuBar();
@@ -177,6 +181,10 @@ namespace piolot {
 		if ( displayAssetManagerWindow )
 		{
 			ASMGR.GuiRender(&displayAssetManagerWindow);
+		}
+		if ( displayLogWindow)
+		{
+			LOGGER.Render(&displayLogWindow);
 		}
 		// ImGui::End();
 	}

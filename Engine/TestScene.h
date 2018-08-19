@@ -23,6 +23,7 @@ namespace piolot {
 		/* GUI Variables */
 		bool pathingDebugWindow = false;
 		bool displayAssetManagerWindow = false;
+		bool displayLogWindow = false;
 
 	public:
 

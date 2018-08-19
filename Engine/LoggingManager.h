@@ -61,6 +61,11 @@ namespace piolot {
 			return log;
 		}
 
+		void Render(bool * _windowBool)
+		{
+			this->imguiLogger->Draw("Log", _windowBool);
+		}
+
 	};
 
 }
