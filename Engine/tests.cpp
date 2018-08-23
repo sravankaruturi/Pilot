@@ -42,12 +42,13 @@ int main(int argc, char ** argv)
 
 #if !TESTING_ONLY
 
-	/*_CrtMemState memoryState = { 0 };
-	_CrtMemCheckpoint(&memoryState);*/
-
 	{
 
-		std::shared_ptr<Window> window = std::make_shared<Window>(1200, 900, "Vermin");
+		const auto aspect_ratio = 16.0f / 9.0f;
+		auto width = 1000;
+		auto height = width / aspect_ratio;
+
+		std::shared_ptr<Window> window = std::make_shared<Window>(width, height, "Vermin");
 
 		/* ImGui setup */
 		ImGui::CreateContext();
@@ -58,7 +59,6 @@ int main(int argc, char ** argv)
 		// Setup style
 		ImGui::StyleColorsDark();
 
-		bool display_logger = false;
 		piolot::ImGuiLog imgui_logger;
 		LOGGER.SetImGuiLogger(&imgui_logger);
 
@@ -152,7 +152,6 @@ int main(int argc, char ** argv)
 
 	}
 
-	//_CrtMemDumpAllObjectsSince(&memoryState);
 	return 0;
 #endif	
 

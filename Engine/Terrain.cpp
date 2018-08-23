@@ -200,9 +200,7 @@ namespace piolot {
 	{
 
 		this->vertices[_x * nodeCountZ + _z].colour = yellow;
-		/*this->vertices[(_x + 1) * nodeCountZ + _z].colour = yellow;
-		this->vertices[_x * nodeCountZ + _z + 1].colour = yellow;
-		this->vertices[(_x + 1) * nodeCountZ + _z + 1].colour = yellow;*/
+		this->vertices[_x * nodeCountZ + _z].texCoord.z = 1.0f;
 		areVerticesDirty = true;
 
 	}
@@ -219,6 +217,7 @@ namespace piolot {
 				int index = std::distance( all_tile_sets.begin(), std::find(all_tile_sets.begin(), all_tile_sets.end(), tiles[i][j].navTileSet));
 
 				this->vertices[i * nodeCountZ + j].colour = red * (float(index) / number_tile_sets);
+				this->vertices[i * nodeCountZ + j].texCoord.z = 0.0f;
 			}
 		}
 		areVerticesDirty = true;
