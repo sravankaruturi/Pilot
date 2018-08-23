@@ -73,7 +73,7 @@ int main(int argc, char ** argv)
 			const float delta_time = glfwGetTime() - time;
 			time = glfwGetTime();
 
-			ImGuiIO& io = ImGui::GetIO();
+			const ImGuiIO& io = ImGui::GetIO();
 
 			window->HandleInput();
 
@@ -130,6 +130,8 @@ int main(int argc, char ** argv)
 			ImGui_ImplGlfw_NewFrame();
 
 			test_scene.OnImguiRender();
+
+			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
 
 			ImGui::Render();
 			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
