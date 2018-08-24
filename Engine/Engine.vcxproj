@@ -186,6 +186,7 @@
     <None Include="Shaders\good_test.frag" />
     <None Include="Shaders\good_test.vert" />
     <None Include="Shaders\terrain.frag" />
+    <None Include="Shaders\terrain.shader" />
     <None Include="Shaders\terrain.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

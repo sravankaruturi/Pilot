@@ -33,7 +33,7 @@ namespace piolot
 			fragmentCode = fShaderStream.str();
 
 		}
-		catch (std::ifstream::failure e)
+		catch (std::ifstream::failure& _)
 		{
 			std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
 		}
@@ -42,7 +42,6 @@ namespace piolot
 		// 2. compile shaders
 		unsigned int vertex, fragment;
 		bool success;
-		char infoLog[512];
 		// vertex shader
 		vertex = glCreateShader(GL_VERTEX_SHADER);
 		glShaderSource(vertex, 1, &vShaderCode, NULL);
@@ -68,6 +67,79 @@ namespace piolot
 
 		std::string vertex_path = std::string(_vertexPath);
 		shaderName = vertex_path.substr(vertex_path.find_last_of('/') + 1, vertex_path.find_last_of('.') - vertex_path.find_last_of('/') - 1);
+
+	}
+
+	GLShader::GLShader(const char* _combinedFilePath)
+	{
+
+		// 1. retrieve the vertex/fragment source code from filePath
+		std::string vertexCode;
+		std::string fragmentCode;
+
+		std::ifstream shader_file_stream;
+
+		// ensure ifstream objects can throw exceptions:
+		shader_file_stream.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+		try
+		{
+			shader_file_stream = std::ifstream(_combinedFilePath);
+			std::string line;
+
+			std::stringstream ss[2];
+			int stream_index = -1;
+
+			while (getline(shader_file_stream, line))
+			{
+				if (line.find("#shader") != std::string::npos) {
+					if (line.find("vertex") != std::string::npos) {
+						stream_index = 0;
+					}
+					else if (line.find("fragment") != std::string::npos) {
+						stream_index = 1;
+					}
+				}
+				else {
+					ss[stream_index] << line << '\n';
+				}
+			}
+
+			vertexCode = ss[0].str();
+			fragmentCode = ss[1].str();
+
+		}
+		catch (std::ifstream::failure& _)
+		{
+			std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
+		}
+
+		const char* vShaderCode = vertexCode.c_str();
+		const char * fShaderCode = fragmentCode.c_str();
+		// 2. compile shaders
+		unsigned int vertex, fragment;
+		bool success;
+		// vertex shader
+		vertex = glCreateShader(GL_VERTEX_SHADER);
+		glShaderSource(vertex, 1, &vShaderCode, NULL);
+		glCompileShader(vertex);
+		success = CheckCompileErrors(vertex, "VERTEX");
+		compileStatus = compileStatus && success;
+		// fragment Shader
+		fragment = glCreateShader(GL_FRAGMENT_SHADER);
+		glShaderSource(fragment, 1, &fShaderCode, NULL);
+		glCompileShader(fragment);
+		success = CheckCompileErrors(fragment, "FRAGMENT");
+		compileStatus = compileStatus && success;
+		// shader Program
+		shaderId = glCreateProgram();
+		glAttachShader(shaderId, vertex);
+		glAttachShader(shaderId, fragment);
+		glLinkProgram(shaderId);
+		success = CheckCompileErrors(shaderId, "PROGRAM");
+		compileStatus = compileStatus && success;
+		// delete the shaders as they're linked into our program now and no longer necessary
+		glDeleteShader(vertex);
+		glDeleteShader(fragment);
 
 	}
 

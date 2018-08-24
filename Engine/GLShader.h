@@ -40,6 +40,8 @@ namespace piolot
 		*/
 		GLShader(const char * _vertexPath, const char * _fragmentPath);
 
+		explicit GLShader(const char * _filePath);
+
 		/**
 		* \brief Default Destructor
 		*/

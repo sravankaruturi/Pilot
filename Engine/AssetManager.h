@@ -112,7 +112,7 @@ namespace piolot
 			{
 				// *. Check only vert extensions.
 				std::string extension = p.path().extension().generic_string();
-				if (".vert" != extension)
+				if (".vert" != extension && ".shader" != extension)
 				{
 					if (".frag" != extension)
 					{
@@ -127,8 +127,15 @@ namespace piolot
 					std::string file_name = p.path().filename().generic_string();
 
 					// Important: This only works if the file extension is .vert.
-					for (auto i = 0; i < 5; i++)
-						file_name.pop_back();
+					if (".vert" == extension) {
+						for (auto i = 0; i < 5; i++)
+							file_name.pop_back();
+					}
+					else if (".shader" == extension) {
+						for (auto i = 0; i < 7; i++)
+							file_name.pop_back();
+					}
+					
 
 					// *. Get the key for the Map.
 					// *. Check if the Shader already exists and skip if it does log the anamoly.
@@ -137,11 +144,19 @@ namespace piolot
 						continue;
 					}
 
-					// *. Get the second file as well.
-					// *. Create the Shader and load it in the map.
-					this->shaders.insert_or_assign(file_name, std::make_shared<GLShader>(
-						                               p.path().generic_string().c_str(),
-						                               (shaderDir + std::string("/") + file_name + std::string(".frag")).c_str()));
+					if (".vert" == extension) {
+						// *. Get the second file as well.
+						// *. Create the Shader and load it in the map.
+						this->shaders.insert_or_assign(file_name, std::make_shared<GLShader>(
+							p.path().generic_string().c_str(),
+							(shaderDir + std::string("/") + file_name + std::string(".frag")).c_str()));
+					}
+					else if (".shader" == extension) {
+						this->shaders.insert_or_assign(file_name, std::make_shared<GLShader>(
+							p.path().generic_string().c_str()
+							)
+						);
+					}
 
 					LOGGER.AddToLog("Loaded " + file_name + " Shader.");
 
