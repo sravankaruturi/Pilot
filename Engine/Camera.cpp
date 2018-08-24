@@ -1,8 +1,30 @@
 ﻿#include "Camera.h"
 #include <glm/gtc/matrix_transform.hpp>
+#include "GLShader.h"
 
 namespace piolot
 {
+	void Camera::DisplayCameraDetailsImgui()
+	{
+		
+		ImGui::PushID(&this->cameraName);
+		ImGui::SliderFloat3("Position ##", glm::value_ptr(this->position), 0.1f, 20.0f);
+		ImGui::PopID();
+
+		ImGui::PushID(&this->cameraName);
+		ImGui::SliderFloat3("Front ##", glm::value_ptr(this->front), -1.0f, 1.0f);
+		ImGui::PopID();
+
+		ImGui::PushID(&this->cameraName);
+		ImGui::SliderFloat3("Up ##", glm::value_ptr(this->up), -1.0f, 1.0f);
+		ImGui::PopID();
+
+		ImGui::PushID(&this->cameraName);
+		ImGui::SliderFloat3("World Up ##", glm::value_ptr(this->worldUp), -1.0f, 1.0f);
+		ImGui::PopID();
+
+	}
+
 	void Camera::ProcessKeyboard(camera_movement _direction, float _deltaTime)
 	{
 		auto velocity = movementSpeed * _deltaTime;

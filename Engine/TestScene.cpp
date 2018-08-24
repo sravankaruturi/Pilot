@@ -19,8 +19,8 @@ namespace piolot {
 		ASMGR.LoadShaders();
 		ASMGR.LoadTextures();
 
-		cameras.push_back(std::make_shared<Camera>(glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0)));
-		cameras.push_back(std::make_shared<Camera>(glm::vec3(10, 0, 10), glm::vec3(-1, 0, -1), glm::vec3(0, 1, 0)));
+		cameras.push_back(std::make_shared<Camera>("First", glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0)));
+		cameras.push_back(std::make_shared<Camera>("Second", glm::vec3(10, 0, 10), glm::vec3(-1, 0, -1), glm::vec3(0, 1, 0)));
 
 		entities.push_back(std::make_shared<Entity>("lowpolytree/lowpolytree.obj", "good_test"));
 
@@ -179,9 +179,6 @@ namespace piolot {
 			ImGui::EndMainMenuBar();
 		}
 
-		//throw std::logic_error("The method or operation is not implemented.");
-		ImGui::Text("Hello World");
-
 		if ( pathingDebugWindow )
 		{
 			ImGui::Begin("Terrain Pathing", &pathingDebugWindow);
@@ -207,21 +204,42 @@ namespace piolot {
 		{
 			ImGui::Begin("Available Cameras", &displayCameraControls);
 
-			// Display each camera as a radio button to activate and the several factors of it.
-			auto i = 0;
+			static std::shared_ptr<Camera> selected_camera;
+			if (nullptr == selected_camera) {
+				selected_camera = cameras[0];
+			}
+
+			ImGui::BeginChild("Cameras##List", ImVec2(150, 0), true);
+			// Show all the cameras here.
 			for (auto& it : cameras) {
 
-				std::string name = "Camera " + i + std::string(" Position");
-				ImGui::SliderFloat3( name.c_str(), glm::value_ptr(it->GetPosition()), 0.1f, 20.0f);
+				ImGui::PushID(&it);
+				if (ImGui::Selectable(it->GetCameraName().c_str(), selected_camera == it)) {
 
-				std::string activate_camera_name = "Activate Camera " + i;
-				if (ImGui::Button(activate_camera_name.c_str())) {
-					this->activeCamera = it;
+					selected_camera = it;
+
 				}
-
-				i++;
-
+				ImGui::PopID();
 			}
+			ImGui::EndChild();
+
+			ImGui::SameLine();
+
+			ImGui::BeginGroup();
+
+				ImGui::BeginChild("Details", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
+
+				ImGui::Text(selected_camera->GetCameraName().c_str());
+				ImGui::Separator();
+
+				// Display Camera Details here.
+				selected_camera->DisplayCameraDetailsImgui();
+
+				ImGui::EndChild();
+
+				if (ImGui::Button("Activate Camera")) { activeCamera = selected_camera; }
+
+			ImGui::EndGroup();
 
 			ImGui::End();
 		}
@@ -230,11 +248,12 @@ namespace piolot {
 		{
 			ASMGR.GuiRender(&displayAssetManagerWindow);
 		}
+
 		if ( displayLogWindow)
 		{
 			LOGGER.Render(&displayLogWindow);
 		}
-		// ImGui::End();
+
 	}
 
 }

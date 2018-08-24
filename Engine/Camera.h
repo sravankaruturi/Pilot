@@ -2,6 +2,7 @@
 #include <glm/detail/type_vec3.hpp>
 #include <glm/mat4x4.hpp>
 #include <glad/glad.h>
+#include <string>
 
 namespace piolot
 {
@@ -26,15 +27,22 @@ namespace piolot
 
 		glm::mat4 viewMatrix;
 
+		std::string cameraName;
+
 	public:
+		std::string& GetCameraName()
+		{
+			return cameraName;
+		}
 
 
-		Camera(glm::vec3 _position, glm::vec3 _front, glm::vec3 _worldUp, float _movementSpeed = default_camera_speed, float _mouseSensitivity = default_camera_mouse_sensitivity)
+		Camera(const std::string& _cameraName, glm::vec3 _position, glm::vec3 _front, glm::vec3 _worldUp, float _movementSpeed = default_camera_speed, float _mouseSensitivity = default_camera_mouse_sensitivity)
 			: position(_position),
 			  front(_front),
 			  worldUp(_worldUp),
 			  movementSpeed(_movementSpeed),
-			  mouseSensitivity(_mouseSensitivity)
+			  mouseSensitivity(_mouseSensitivity),
+			  cameraName(_cameraName)
 		{
 			UpdateVectors();
 		}
@@ -104,6 +112,8 @@ namespace piolot
 		{
 			viewMatrix = _viewMatrix;
 		}
+
+		void DisplayCameraDetailsImgui();
 
 		enum camera_movement
 		{
