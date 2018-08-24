@@ -20,6 +20,7 @@ namespace piolot {
 		ASMGR.LoadTextures();
 
 		cameras.push_back(std::make_shared<Camera>(glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0)));
+		cameras.push_back(std::make_shared<Camera>(glm::vec3(10, 0, 10), glm::vec3(-1, 0, -1), glm::vec3(0, 1, 0)));
 
 		entities.push_back(std::make_shared<Entity>("lowpolytree/lowpolytree.obj", "good_test"));
 
@@ -207,9 +208,18 @@ namespace piolot {
 			ImGui::Begin("Available Cameras", &displayCameraControls);
 
 			// Display each camera as a radio button to activate and the several factors of it.
+			auto i = 0;
 			for (auto& it : cameras) {
 
-				ImGui::SliderFloat3("Camera Position", glm::value_ptr(it->GetPosition()), 0.1f, 20.0f);
+				std::string name = "Camera " + i + std::string(" Position");
+				ImGui::SliderFloat3( name.c_str(), glm::value_ptr(it->GetPosition()), 0.1f, 20.0f);
+
+				std::string activate_camera_name = "Activate Camera " + i;
+				if (ImGui::Button(activate_camera_name.c_str())) {
+					this->activeCamera = it;
+				}
+
+				i++;
 
 			}
 
