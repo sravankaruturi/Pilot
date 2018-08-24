@@ -8,18 +8,22 @@
 #include "Window.h"
 #include "AssetManager.h"
 #include "Mesh.h"
-#include "Camera.h"
 #include <glm/gtc/matrix_transform.inl>
-#include "Entity.h"
+
+#include "TestScene.h"
+
+#include "GUIHelpers.h"
+#include "external_files/ImGUI/imgui_impl_opengl3.h"
+#include "external_files/ImGUI/imgui_impl_glfw.h"
 
 #define TESTING_ONLY			0
-#define DISABLE_UNIT_TESTS		0
+#define DISABLE_UNIT_TESTS		1
 
 int main(int argc, char ** argv)
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
 #if !DISABLE_UNIT_TESTS
-	/*_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);*/
 
 	testing::InitGoogleTest(&argc, argv);
 	int test_value = RUN_ALL_TESTS();
@@ -38,120 +42,116 @@ int main(int argc, char ** argv)
 
 #if !TESTING_ONLY
 
-	_CrtMemState memoryState = { 0 };
-	_CrtMemCheckpoint(&memoryState);
-
 	{
 
-		Window window = Window(800, 600, "Vermin");
+		const auto aspect_ratio = 16.0f / 9.0f;
+		auto width = 1000;
+		auto height = width / aspect_ratio;
 
-		piolot::Camera camera = piolot::Camera(glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0));
+		std::shared_ptr<Window> window = std::make_shared<Window>(width, height, "Vermin");
 
-		ASMGR.LoadShaders();
-		ASMGR.LoadTextures();
+		/* ImGui setup */
+		ImGui::CreateContext();
 
-		piolot::Entity nanosuit("cube/cube.obj", "good_test");
-		piolot::Entity nanosuit2("cube/cube.obj", "good_test");
+		ImGui_ImplGlfw_InitForOpenGL(window->GetWindow(), false);
+		ImGui_ImplOpenGL3_Init();
 
-		nanosuit2.SetPosition(glm::vec3(3, 0, 0));
-		nanosuit2.SetRotation(glm::vec3(0, 0, 45.0f));
-		
+		// Setup style
+		ImGui::StyleColorsDark();
 
-		glm::mat4 projection_matrix = glm::perspective(45.0f, float(window.GetWidth()) / window.GetHeight(), 0.1f, 100.0f);
+		piolot::ImGuiLog imgui_logger;
+		LOGGER.SetImGuiLogger(&imgui_logger);
+
+		piolot::TestScene test_scene(window);
 
 		float time = glfwGetTime();
-		float deltaTime = 0;
 
-		glm::vec3 mouse_pointer_ray;
-
-		while (!glfwWindowShouldClose(window.GetWindow()))
+		while (!glfwWindowShouldClose(window->GetWindow()))
 		{
+			const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
 
-			deltaTime = glfwGetTime() - time;
+			const float delta_time = glfwGetTime() - time;
 			time = glfwGetTime();
 
-			window.HandleInput();
+			const ImGuiIO& io = ImGui::GetIO();
+
+			window->HandleInput();
 
 			{
-				if (window.IsKeyPressedOrHeld(GLFW_KEY_W))
+				// Try Letting Imgui Handle the Inputs for Now.. We need to change this..
+				if (window->IsKeyPressedOrHeld(GLFW_KEY_W))
 				{
-					camera.ProcessKeyboard(piolot::Camera::forward, deltaTime);
+					test_scene.ActiveCamera()->ProcessKeyboard(piolot::Camera::forward, delta_time);
 				}
 
-				if (window.IsKeyPressedOrHeld(GLFW_KEY_S))
+				if (window->IsKeyPressedOrHeld(GLFW_KEY_S))
 				{
-					camera.ProcessKeyboard(piolot::Camera::back, deltaTime);
+					test_scene.ActiveCamera()->ProcessKeyboard(piolot::Camera::back, delta_time);
 				}
 
-				if (window.IsKeyPressedOrHeld(GLFW_KEY_A))
+				if (window->IsKeyPressedOrHeld(GLFW_KEY_A))
 				{
-					camera.ProcessKeyboard(piolot::Camera::leftside, deltaTime);
+					test_scene.ActiveCamera()->ProcessKeyboard(piolot::Camera::leftside, delta_time);
 				}
 
-				if (window.IsKeyPressedOrHeld(GLFW_KEY_D))
+				if (window->IsKeyPressedOrHeld(GLFW_KEY_D))
 				{
-					camera.ProcessKeyboard(piolot::Camera::rightside, deltaTime);
+					test_scene.ActiveCamera()->ProcessKeyboard(piolot::Camera::rightside, delta_time);
 				}
 
-				if (window.IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1))
+				if (window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1))
 				{
-					camera.ProcessMouseMovement(window.mouseOffsetX, window.mouseOffsetY);
+					test_scene.ActiveCamera()->ProcessMouseMovement(window->mouseOffsetX, window->mouseOffsetY);
 				}
-
-				mouse_pointer_ray = camera.GetMouseRayDirection(window.mouseX, window.mouseY, window.GetWidth(), window.GetHeight(), projection_matrix);
 				
 			}
 
 			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			nanosuit.Update(deltaTime);
-			nanosuit2.Update(deltaTime);
-
+			// Update Function
+			test_scene.OnUpdate(delta_time, time);
 
 			{
 				// We set the View and Projection Matrices for all the Shaders that has them ( They all should have them ideally ).
 				for ( auto it : ASMGR.shaders)
 				{
 					it.second->use();
-					it.second->setMat4("view", camera.GetViewMatrix());
-					it.second->setMat4("projection", projection_matrix);
+					it.second->setMat4("u_ViewMatrix", test_scene.ActiveCamera()->GetViewMatrix());
+					it.second->setMat4("u_ProjectionMatrix", projection_matrix);
 				}
 			}
 
-			{
-				float int_distance = 0;
-				// Do Ray Picking Here.
-				// For each Bounding Box, we check for the collision, and do what we want, as part of the Scene Update.
-				if ( nanosuit.GetBoundingBox().CheckForCollisionWithRay(nanosuit.GetModelMatrix(), camera.GetPosition(), mouse_pointer_ray, int_distance))
-				{
-					nanosuit.SetSelectedInScene(true);
-				}else
-				{
-					nanosuit.SetSelectedInScene(false);
-				}
+			// Scene Render.
+			test_scene.OnRender();
 
-				if (nanosuit2.GetBoundingBox().CheckForCollisionWithRay(nanosuit2.GetModelMatrix(), camera.GetPosition(), mouse_pointer_ray, int_distance))
-				{
-					nanosuit2.SetSelectedInScene(true);
-				}else
-				{
-					nanosuit2.SetSelectedInScene(false);
-				}
+			// GUI Render
+			ImGui_ImplOpenGL3_NewFrame();
+			ImGui_ImplGlfw_NewFrame();
 
-			}
+			test_scene.OnImguiRender();
 
-			nanosuit.Render();		
-			nanosuit2.Render();
+			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
 
-			window.Update(deltaTime);
+			ImGui::Render();
+			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+
+			window->Update(delta_time);
+
 		}
+
+		// Do delete all the memory allocated by now.
+		ASMGR.ClearAllData();
+
+		// So all the shaders are being deleted and stuff.
+		//PE_ASSERT(test.expired());
+		ImGui_ImplOpenGL3_Shutdown();
+		ImGui_ImplGlfw_Shutdown();
+		ImGui::DestroyContext();
 
 	}
 
-	// Do delete all the memory allocated by now.
-
-	_CrtMemDumpAllObjectsSince(&memoryState);
 	return 0;
 #endif	
 

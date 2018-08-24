@@ -126,36 +126,67 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="external_files\glad\glad.c" />
+    <ClCompile Include="external_files\ImGUI\imgui.cpp" />
+    <ClCompile Include="external_files\ImGUI\imgui_demo.cpp" />
+    <ClCompile Include="external_files\ImGUI\imgui_draw.cpp" />
+    <ClCompile Include="external_files\ImGUI\imgui_impl_glfw.cpp" />
+    <ClCompile Include="external_files\ImGUI\imgui_impl_opengl3.cpp" />
     <ClCompile Include="GLShader.cpp" />
     <ClCompile Include="AllTests.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="CameraTests.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Ray.cpp" />
+    <ClCompile Include="Terrain.cpp" />
+    <ClCompile Include="TerrainTests.cpp" />
     <ClCompile Include="tests.cpp" />
+    <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AllTests.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="BoundingBox.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Colours.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="external_files\ImGUI\imconfig.h" />
+    <ClInclude Include="external_files\ImGUI\imgui.h" />
+    <ClInclude Include="external_files\ImGUI\imgui_impl_glfw.h" />
+    <ClInclude Include="external_files\ImGUI\imgui_impl_opengl3.h" />
+    <ClInclude Include="external_files\ImGUI\imgui_internal.h" />
+    <ClInclude Include="external_files\ImGUI\stb_rect_pack.h" />
+    <ClInclude Include="external_files\ImGUI\stb_textedit.h" />
+    <ClInclude Include="external_files\ImGUI\stb_truetype.h" />
     <ClInclude Include="FolderLocations.h" />
     <ClInclude Include="GLShader.h" />
+    <ClInclude Include="Grid.h" />
+    <ClInclude Include="GUIHelpers.h" />
     <ClInclude Include="LoggingMacros.h" />
+    <ClInclude Include="LoggingManager.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PE_GL.h" />
+    <ClInclude Include="Ray.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Terrain.h" />
+    <ClInclude Include="TestScene.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Shaders\axes.frag" />
+    <None Include="Shaders\axes.vert" />
     <None Include="Shaders\bbox.frag" />
     <None Include="Shaders\bbox.vert" />
     <None Include="Shaders\failing_test.frag" />
     <None Include="Shaders\failing_test.vert" />
     <None Include="Shaders\good_test.frag" />
     <None Include="Shaders\good_test.vert" />
+    <None Include="Shaders\terrain.frag" />
+    <None Include="Shaders\terrain.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

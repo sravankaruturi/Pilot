@@ -45,6 +45,8 @@ namespace piolot
 			loaded = false;
 		}
 
+		stbi_image_free(data);
+
 		glBindTexture(GL_TEXTURE_2D, 0);
 
 	}

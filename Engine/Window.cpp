@@ -1,5 +1,7 @@
 ﻿#include "Window.h"
 #include <iostream>
+#include "external_files/ImGUI/imgui.h"
+#include "external_files/ImGUI/imgui_impl_glfw.h"
 
 void window_resize(GLFWwindow * _window, int _width, int _height);
 void key_callback(GLFWwindow * _window, int _key, int scancode, int action, int mods);
@@ -34,6 +36,7 @@ Window::Window(unsigned width, unsigned height, const std::string& title): width
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
 	glfwSetWindowSizeCallback(window, window_resize);
 	glfwSetCursorPosCallback(window, cursor_position_callback);
+	glfwSetCharCallback(window, ImGui_ImplGlfw_CharCallback);
 
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -133,39 +136,50 @@ void window_resize(GLFWwindow * _window, int _width, int _height) {
 	auto win = static_cast<Window *>(glfwGetWindowUserPointer(_window));
 
 	// The Functions GetWidth and GetHeight give the udpated stuff.
+	win->UpdateFrameSize();
 
-
-	glViewport(0, 0, _width, _height);
+	glViewport(0, 0, win->GetWidth(), win->GetHeight());
 }
 
 void key_callback(GLFWwindow * _window, int _key, int scancode, int action, int mods) {
 
-	auto win = static_cast<Window *>(glfwGetWindowUserPointer(_window));
-
-
-	// ఇక్కడ మనం ప్రస్తుతమున్న State బట్టి కొత్త state పెడతాం
-	if (win->keys[_key] == key_pressed || win->keys[_key] == key_held)
-	{
-		if (action == GLFW_RELEASE)
-		{
-			win->keys[_key] = key_released;
-		}
-		else if (action == GLFW_REPEAT)
-		{
-			win->keys[_key] = key_held;
-		}
+	if (ImGui::GetIO().WantCaptureKeyboard) {
+		ImGui_ImplGlfw_KeyCallback(_window, _key, scancode, action, mods);
 	}
-	else
-	{
-		if (action == GLFW_PRESS)
+	else {
+
+		auto win = static_cast<Window *>(glfwGetWindowUserPointer(_window));
+
+
+		// ఇక్కడ మనం ప్రస్తుతమున్న State బట్టి కొత్త state పెడతాం
+		if (win->keys[_key] == key_pressed || win->keys[_key] == key_held)
 		{
-			win->keys[_key] = key_pressed;
+			if (action == GLFW_RELEASE)
+			{
+				win->keys[_key] = key_released;
+			}
+			else if (action == GLFW_REPEAT)
+			{
+				win->keys[_key] = key_held;
+			}
 		}
+		else
+		{
+			if (action == GLFW_PRESS)
+			{
+				win->keys[_key] = key_pressed;
+			}
+		}
+
 	}
 
 }
 
 void mouse_button_callback(GLFWwindow* _window, int _button, int _action, int _mods) {
+
+	if (ImGui::GetIO().WantCaptureMouse) {
+		return;
+	}
 
 	auto * win = (Window *)glfwGetWindowUserPointer(_window);
 

@@ -1,14 +1,19 @@
-﻿#include "Object.h"
-#include <iostream>
-#include "assimp/postprocess.h"
+﻿#include <iostream>
 #include <vector>
 
+#include "assimp/postprocess.h"
+#include "Object.h"
 #include "AssetManager.h"
-#include "LoggingMacros.h"
 
 
 namespace piolot
 {
+	Object::Object(const std::string& _name, std::vector<std::shared_ptr<Mesh>> _meshes)
+		: objectName(_name), meshes(_meshes)
+	{
+
+	}
+
 	Object::Object(const std::string& _objectPath)
 	{
 		directory = _objectPath.substr(0, _objectPath.find_last_of('/'));
@@ -16,7 +21,7 @@ namespace piolot
 
 		if (ASMGR.IsObjectLoaded(objectName))
 		{
-			PE_LOG("File, " + objectName + " skipped loading");
+			LOGGER.AddToLog("File, " + objectName + " skipped loading");
 			return;
 		}
 
@@ -30,29 +35,24 @@ namespace piolot
 		}
 
 		// process ASSIMP's root node recursively
-		ProcessNode(scene->mRootNode, scene, meshes);
+		ProcessNode(scene->mRootNode, scene, GetMeshes());
 
 	}
 
 	Object::~Object()
-	{
-		for ( auto mesh : meshes)
-		{
-			delete mesh;
-		}
-	}
+	= default;
 
 	void Object::Render(const std::string _shaderName)
 	{
-		// Set any object wide uniforms here. Like Hightlight colour os something.
-
-		for ( Mesh * mesh : meshes)
+		// Set any object wide uniforms here. Like Highlight colour os something.
+		PE_EXPECT(this->meshes.size() > 0);
+		for ( const std::shared_ptr<Mesh>& mesh : GetMeshes())
 		{
 			mesh->Render(_shaderName);
 		}
 	}
 
-	void Object::ProcessNode(aiNode* _node, const aiScene* _scene, std::vector<Mesh *>& meshes)
+	void Object::ProcessNode(aiNode* _node, const aiScene* _scene, std::vector<std::shared_ptr<Mesh>>& meshes)
 	{
 		/* Process each mesh at the current Node */
 		for (auto i = 0; i < _node->mNumMeshes; i++)
@@ -60,7 +60,7 @@ namespace piolot
 			// the node object only contains indices to index the actual objects in the scene. 
 			// the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
 			aiMesh* mesh = _scene->mMeshes[_node->mMeshes[i]];
-			meshes.push_back(ProcessMesh(mesh, _scene));
+			ProcessAndAddMesh(mesh, _scene);
 		}
 
 		/* We then go for the children */
@@ -70,7 +70,7 @@ namespace piolot
 		}
 	}
 
-	Mesh * Object::ProcessMesh(aiMesh* _mesh, const aiScene* _scene)
+	void Object::ProcessAndAddMesh(aiMesh* _mesh, const aiScene* _scene)
 	{
 		std::vector<VertexData> vertices;
 		std::vector<unsigned int> indices;
@@ -87,20 +87,21 @@ namespace piolot
 			vector.z = _mesh->mVertices[i].z;
 			vertex.position = vector;
 
-			/* Normals */
-			vector.x = _mesh->mNormals[i].x;
-			vector.y = _mesh->mNormals[i].y;
-			vector.z = _mesh->mNormals[i].z;
-			vertex.normal = vector;
+			///* Normals */
+			//vector.x = _mesh->mNormals[i].x;
+			//vector.y = _mesh->mNormals[i].y;
+			//vector.z = _mesh->mNormals[i].z;
+			//vertex.normal = vector;
 
 			/* UV TexCoords */
 			if (_mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
 			{
-				glm::vec2 vec;
+				glm::vec3 vec;
 				// a vertex can contain up to 8 different texture coordinates. We thus make the assumption that we won't 
 				// use models where a vertex can have multiple texture coordinates so we always take the first set (0).
 				vec.x = _mesh->mTextureCoords[0][i].x;
 				vec.y = _mesh->mTextureCoords[0][i].y;
+				vec.z = 0.0f;
 				vertex.texCoord = vec;
 			}
 
@@ -137,10 +138,10 @@ namespace piolot
 		std::vector<std::string> heightMaps = LoadMaterialTextures(material, aiTextureType_AMBIENT);
 		textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
-		auto return_renderable = DBG_NEW Mesh(&vertices[0], sizeof(VertexData), vertices.size(), indices);
+		std::shared_ptr<Mesh> return_renderable = std::make_shared<Mesh>(&vertices[0], sizeof(VertexData), vertices.size(), indices);
 		return_renderable->SetTextureNames(textures);
 
-		return return_renderable;
+		this->meshes.push_back(return_renderable);
 
 	}
 
@@ -174,7 +175,7 @@ namespace piolot
 				filename = directory + '/' + filename;
 
 				/* Create a new Texture Object and push it on to the Asset Manager. */
-				Texture * t = DBG_NEW Texture(filename);
+				std::shared_ptr<Texture> t = std::make_shared<Texture>(filename);
 				if (ASMGR.AddToTextures(key, t))
 				{
 					textures.push_back(key);

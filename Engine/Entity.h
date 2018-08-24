@@ -2,6 +2,7 @@
 #include <string>
 #include <glm/mat4x4.hpp>
 #include "BoundingBox.h"
+#include <glm/detail/_vectorize.hpp>
 
 namespace piolot
 {
@@ -101,11 +102,15 @@ namespace piolot
 
 	public:
 
-		Entity(const std::string& _objectName, const std::string& _shaderName);
+		Entity() = default;
+
+		Entity(const std::string& _objectPath, const std::string& _shaderName);
 		~Entity() = default;
 
 		void Update(float _deltaTime);
 		void Render();
+
+		bool CheckIfMouseOvered(const glm::vec3 _cameraPosition, const glm::vec3 _mouseRayDirection, float& _distance) const;
 
 	};
 }

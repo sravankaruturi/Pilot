@@ -32,14 +32,14 @@ namespace piolot
 
 	public:
 
-		BoundingBox(glm::vec3 _minimumPoint, glm::vec3 _maximumPoint);
+		BoundingBox(glm::vec3 _minimumPoint = glm::vec3(-0.2f, -0.2f, -0.2f), glm::vec3 _maximumPoint = glm::vec3(0.2f, 0.2f, 0.2f));
 
 		unsigned int GetVerticesSize() const
 		{
 			return vertices.size();
 		}
 
-		bool CheckForCollisionWithRay(const glm::mat4 _modelMatrix, const glm::vec3 _rayOrigin, const glm::vec3 _rayDirection, float& _intersectionDistance) const;
+		bool CheckForCollisionWithRay(const glm::mat4 _modelMatrix, const glm::vec3 _scale, const glm::vec3 _rayOrigin, const glm::vec3 _rayDirection, float& _intersectionDistance) const;
 
 		void Render(glm::vec3 _colour);
 

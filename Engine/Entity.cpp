@@ -18,20 +18,20 @@ namespace piolot
 	}
 
 	Entity::Entity(const std::string& _objectPath, const std::string& _shaderName)
-		:shaderName(_shaderName), boundingBox(BoundingBox(glm::vec3(-1.5, -1.5f, -1.5f), glm::vec3(1.5f, 1.5f, 1.5f)))
+		:shaderName(_shaderName), boundingBox(BoundingBox(glm::vec3(-1.0, -1.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f)))
 	{
-		Object * object = DBG_NEW Object(MDOEL_FOLDER + _objectPath);
-
-		objectName = object->GetObjectName();
+		
+		objectName = _objectPath.substr(_objectPath.find_last_of('/') + 1, _objectPath.find_last_of('.') - _objectPath.find_last_of('/') - 1);
 
 		if (!ASMGR.IsObjectLoaded(objectName))
 		{
+			// This allocation would be cleared from the Asset Manager.
+			std::shared_ptr<Object> object = std::make_shared<Object>(MODEL_FOLDER + _objectPath);
 			ASMGR.objects.insert_or_assign(objectName, object);
 		}
 		
-		modelMatrix = glm::mat4(1.0f);
+		matrixDirty = true;
 
-		boundingBox = BoundingBox(glm::vec3(-1.5, -1.5f, -1.5f), glm::vec3(1.5f, 1.5f, 1.5f));
 	}
 
 	void Entity::Update(float _deltaTime)
@@ -49,7 +49,7 @@ namespace piolot
 		// Use the Current Shader.
 		ASMGR.shaders.at(shaderName)->use();
 		// Set the Model Matrix.
-		ASMGR.shaders.at(shaderName)->setMat4("model", modelMatrix);
+		ASMGR.shaders.at(shaderName)->setMat4("u_ModelMatrix", modelMatrix);
 
 		// Render
 		ASMGR.objects.at(objectName)->Render(shaderName);
@@ -57,7 +57,7 @@ namespace piolot
 		//object->Render(shaderName);
 
 		ASMGR.shaders.at("bbox")->use();
-		ASMGR.shaders.at("bbox")->setMat4("model", modelMatrix);
+		ASMGR.shaders.at("bbox")->setMat4("u_ModelMatrix", glm::scale(modelMatrix, glm::vec3(1.001f, 1.001f, 1.001f)));
 		if ( selectedInScene )
 		{
 			boundingBox.Render(glm::vec3(1.0, 1.0, 0.0));
@@ -67,5 +67,11 @@ namespace piolot
 		}
 		
 		
+	}
+
+	bool Entity::CheckIfMouseOvered(const glm::vec3 _cameraPosition, const glm::vec3 _mouseRayDirection, float& _distance) const
+	{
+		// Checks if this entity is under the cursor. And updates the _distance to hold it.
+		return this->boundingBox.CheckForCollisionWithRay(this->modelMatrix, this->scale, _cameraPosition, _mouseRayDirection, _distance);
 	}
 }

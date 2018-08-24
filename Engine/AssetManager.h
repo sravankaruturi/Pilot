@@ -1,9 +1,15 @@
 ﻿#pragma once
-#include "Texture.h"
+
+#include <memory>
 #include <map>
-#include "GLShader.h"
 #include <filesystem>
+
+#include "Texture.h"
+#include "GLShader.h"
 #include "FolderLocations.h"
+
+#include "LoggingManager.h"
+
 
 #ifdef _DEBUG
 /*@see https://msdn.microsoft.com/en-us/library/x98tx3cf.aspx */
@@ -36,23 +42,23 @@ namespace piolot
 
 		void ClearAllData()
 		{
-			for (auto it : textures)
-			{
-				delete it.second;
-			}
+			//for (auto it : textures)
+			//{
+			//	delete it.second;
+			//}
 
-			for (auto it : shaders)
-			{
-				delete it.second;
-			}
+			///*for (auto it : shaders)
+			//{
+			//	delete it.second;
+			//}*/
 
-			for (auto it: objects)
-			{
-				// This is not an error since we have a properly defined destructor. 
-				// @see https://stackoverflow.com/questions/4325154/delete-objects-of-incomplete-type#4325223
-				// This is because of the Forward Declaration.
-				delete it.second;
-			}
+			//for (auto it: objects)
+			//{
+			//	// This is not an error since we have a properly defined destructor. 
+			//	// @see https://stackoverflow.com/questions/4325154/delete-objects-of-incomplete-type#4325223
+			//	// This is because of the Forward Declaration.
+			//	delete it.second;
+			//}
 
 			textures.clear();
 			shaders.clear();
@@ -75,16 +81,16 @@ namespace piolot
 		/**
 		* \brief A Map of all the shaders that we load.
 		*/
-		std::map<std::string, GLShader *> shaders;
+		std::map<std::string, std::shared_ptr<GLShader>> shaders;
 		/**
 		* \brief A Map of all the textures that we load.
 		*/
-		std::map<std::string, Texture *> textures;
+		std::map<std::string, std::shared_ptr<Texture>> textures;
 
 		/**
 		* \brief A Map of all the Renderables loaded.
 		*/
-		std::map<std::string, Object *> objects;
+		std::map<std::string, std::shared_ptr<Object>> objects;
 
 		/**
 		* \brief The Shader Directory from where all the shaders are loaded.
@@ -100,6 +106,7 @@ namespace piolot
 		*/
 		bool LoadShaders()
 		{
+			LOGGER.AddToLog("Loading Shaders...");
 			// Load all the shaders in the directory and compile them.
 			for (auto& p : std::experimental::filesystem::directory_iterator(shaderDir))
 			{
@@ -132,13 +139,21 @@ namespace piolot
 
 					// *. Get the second file as well.
 					// *. Create the Shader and load it in the map.
-					this->shaders.insert_or_assign(file_name, DBG_NEW GLShader(p.path().generic_string().c_str(), (shaderDir + std::string("/") + file_name + std::string(".frag")).c_str()));
+					this->shaders.insert_or_assign(file_name, std::make_shared<GLShader>(
+						                               p.path().generic_string().c_str(),
+						                               (shaderDir + std::string("/") + file_name + std::string(".frag")).c_str()));
+
+					LOGGER.AddToLog("Loaded " + file_name + " Shader.");
+
 				}catch(...)
 				{
 					return false;
 				}
 
 			}
+
+			LOGGER.AddToLog("Loaded Shaders Successfully. \n");
+
 			return true;
 		}
 
@@ -147,23 +162,29 @@ namespace piolot
 		*/
 		bool LoadTextures()
 		{
+			LOGGER.AddToLog("Loading Textures..");
 			for (auto& p : std::experimental::filesystem::directory_iterator(textureDir))
 			{
+				std::string file_name;
 				try
 				{
-					std::string file_name = p.path().filename().generic_string();
+					file_name = p.path().filename().generic_string();
 					while (file_name.back() != '.')
 					{
 						file_name.pop_back();
 					}
 					file_name.pop_back();
 
-					this->textures.insert_or_assign(file_name, DBG_NEW Texture(p.path().generic_string()));
+					this->textures.insert_or_assign(file_name, std::make_shared<Texture>(p.path().generic_string()));
 				}catch(...)
 				{
 					return false;
 				}
+				LOGGER.AddToLog("Loaded " + file_name + " Texture");
 			}
+
+			LOGGER.AddToLog("Loaded Textures.. \n");
+
 			return true;
 		}
 
@@ -193,13 +214,13 @@ namespace piolot
 		* \param _texture The Texture to load and place.
 		* \return Returns true if the Texture is succesfully loaded. False if something occurs.
 		*/
-		bool AddToTextures(const std::string& _name, Texture * _texture)
+		bool AddToTextures(const std::string& _name, std::shared_ptr<Texture> _texture)
 		{
 			if (IsTextureLoaded(_name)) return false;
-
 			try
 			{
 				this->textures.insert_or_assign(_name, _texture);
+				LOGGER.AddToLog("Adding " + _name + " to textures.");
 			}
 			catch (...)
 			{
@@ -207,6 +228,63 @@ namespace piolot
 			}
 			return true;
 		}
+
+		bool AddToObjects(const std::string& _name, std::shared_ptr<Object> _object) {
+			if (IsObjectLoaded(_name)) return false;
+			try
+			{
+				this->objects.insert_or_assign(_name, _object);
+				LOGGER.AddToLog("Adding " + _name + " to Objects.");
+			}
+			catch (...)
+			{
+				return false;
+			}
+			return true;
+		}
+
+
+		void GuiRender(bool * _windowFlag)
+		{
+			// A Hierarchy listing all the Assets currently in the ASMGR.
+			ImGui::Begin("Asset Manager Details", _windowFlag);
+			ImGui::Columns(1);
+			if ( ImGui::CollapsingHeader("Shaders"))
+			{
+				for (auto it : this->shaders)
+				{
+					ImGui::Columns(2);
+					ImGui::Text(it.first.c_str());
+					ImGui::NextColumn();
+					ImGui::Text("%d", it.second->shaderId);
+					ImGui::NextColumn();
+				}
+			}
+
+			ImGui::Columns(1);
+			if (ImGui::CollapsingHeader("Textures"))
+			{
+				for (auto it : this->textures)
+				{
+					ImGui::Columns(3);
+					ImGui::Text(it.first.c_str());
+					ImGui::NextColumn();
+					ImGui::Text("%d", it.second->GetTextureId());
+					ImGui::NextColumn();
+					ImGui::Image((void *)it.second->GetTextureId(), ImVec2(30, 30));
+					if (ImGui::IsItemHovered())
+					{
+						ImGui::BeginTooltip();
+						ImGui::Image((void*)it.second->GetTextureId(), ImVec2(200, 200));
+						ImGui::EndTooltip();
+					}
+					ImGui::NextColumn();
+				}
+			}
+			ImGui::End();
+
+		}
+
 
 	};
 	

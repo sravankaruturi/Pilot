@@ -19,6 +19,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{db7b7cfb-5090-4788-8ddb-803ac780a17c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ImGui">
+      <UniqueIdentifier>{3b6bc424-af38-40af-94e1-92b5555ac068}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="tests.cpp">
@@ -60,6 +63,36 @@
     <ClCompile Include="BoundingBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TestScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="external_files\ImGUI\imgui.cpp">
+      <Filter>Header Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="external_files\ImGUI\imgui_demo.cpp">
+      <Filter>Header Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="external_files\ImGUI\imgui_draw.cpp">
+      <Filter>Header Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="external_files\ImGUI\imgui_impl_glfw.cpp">
+      <Filter>Header Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="external_files\ImGUI\imgui_impl_opengl3.cpp">
+      <Filter>Header Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -98,6 +131,57 @@
     <ClInclude Include="BoundingBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AllTests.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Colours.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\imconfig.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\imgui.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\imgui_impl_glfw.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\imgui_impl_opengl3.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\imgui_internal.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\stb_rect_pack.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\stb_textedit.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="external_files\ImGUI\stb_truetype.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIHelpers.h">
+      <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="LoggingManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\failing_test.frag">
@@ -116,6 +200,18 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="Shaders\bbox.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\axes.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\axes.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\terrain.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\terrain.frag">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

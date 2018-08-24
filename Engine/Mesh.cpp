@@ -24,7 +24,7 @@ namespace piolot
 		{
 			PE_GL(glActiveTexture(GL_TEXTURE0 + i));
 			PE_GL(glBindTexture(GL_TEXTURE_2D, it->GetTextureId()));
-			ASMGR.shaders.at(_shaderName)->setInt("texture" + std::to_string(i), i);
+			ASMGR.shaders.at(_shaderName)->setInt("u_Texture" + std::to_string(i), i);
 			i++;
 		}
 
@@ -93,5 +93,13 @@ namespace piolot
 			PE_GL(glEnableVertexAttribArray(i));
 			vertexAttribCounter += 1;
 		}
+	}
+
+	void Mesh::UpdateVertices(void* _dataPointer, size_t _dataStructureSize, unsigned _vertexCount)
+	{
+
+		PE_GL(glBindBuffer(GL_ARRAY_BUFFER, VBO));
+		PE_GL(glBufferData(GL_ARRAY_BUFFER, _dataStructureSize * _vertexCount, _dataPointer, GL_STATIC_DRAW));
+
 	}
 }
