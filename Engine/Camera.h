@@ -3,12 +3,19 @@
 #include <glm/mat4x4.hpp>
 #include <glad/glad.h>
 #include <string>
+#include <utility>
 
 namespace piolot
 {
 
 	const float default_camera_speed = 2.0f;
 	const float default_camera_mouse_sensitivity = 1.0f / 128;
+
+	enum CameraType 
+	{
+		perspective,
+		orthogonal
+	};
 
 	class Camera
 	{
@@ -29,6 +36,8 @@ namespace piolot
 
 		std::string cameraName;
 
+		CameraType type;
+
 	public:
 		std::string& GetCameraName()
 		{
@@ -36,13 +45,14 @@ namespace piolot
 		}
 
 
-		Camera(const std::string& _cameraName, glm::vec3 _position, glm::vec3 _front, glm::vec3 _worldUp, float _movementSpeed = default_camera_speed, float _mouseSensitivity = default_camera_mouse_sensitivity)
+		Camera(std::string _cameraName, glm::vec3 _position, glm::vec3 _front, glm::vec3 _worldUp, CameraType _type = perspective, float _movementSpeed = default_camera_speed, float _mouseSensitivity = default_camera_mouse_sensitivity)
 			: position(_position),
 			  front(_front),
 			  worldUp(_worldUp),
 			  movementSpeed(_movementSpeed),
 			  mouseSensitivity(_mouseSensitivity),
-			  cameraName(_cameraName)
+			  cameraName(std::move(_cameraName)),
+			  type(_type)
 		{
 			UpdateVectors();
 		}
