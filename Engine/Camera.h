@@ -39,7 +39,7 @@ namespace piolot
 			UpdateVectors();
 		}
 
-		const glm::vec3& GetPosition() const
+		glm::vec3& GetPosition()
 		{
 			return position;
 		}
@@ -118,7 +118,6 @@ namespace piolot
 
 		glm::vec3 GetMouseRayDirection(float _mouseX, float _mouseY, int _windowWidth, int _windowHeight, glm::mat4 _projectionMatrix);
 
-	private:
 		void UpdateVectors();
 		void UpdateMatrices();
 	};

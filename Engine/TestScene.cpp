@@ -37,6 +37,10 @@ namespace piolot {
 	{
 		const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
 
+		for (auto& it : cameras) {
+			it->UpdateVectors();
+		}
+
 		for (const auto& it : entities) {
 			it->Update(_deltaTime);
 		}
@@ -119,6 +123,16 @@ namespace piolot {
 
 	void TestScene::OnRender()
 	{
+		const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
+
+		// We set the View and Projection Matrices for all the Shaders that has them ( They all should have them ideally ).
+		for (auto it : ASMGR.shaders)
+		{
+			it.second->use();
+			it.second->setMat4("u_ViewMatrix", this->ActiveCamera()->GetViewMatrix());
+			it.second->setMat4("u_ProjectionMatrix", projection_matrix);
+		}
+
 		for (const auto& it : entities) {
 			it->Render();
 		}
@@ -151,6 +165,16 @@ namespace piolot {
 				}
 				ImGui::EndMenu();
 			}
+
+			if (ImGui::BeginMenu("View")) {
+
+				if (ImGui::MenuItem("Cameras")) {
+					displayCameraControls = true;
+				}
+
+				ImGui::EndMenu();
+			}
+
 			ImGui::EndMainMenuBar();
 		}
 
@@ -173,6 +197,20 @@ namespace piolot {
 				// Print the tilesets.
 				std::string temp_log = "The node sets for the nodes are " + std::to_string(testTerrain->GetNodeSetFromPos(startxz.x, startxz.y)) + ", " + std::to_string(testTerrain->GetNodeSetFromPos(endxz.x, endxz.y));
 				ImGui::Text(temp_log.c_str());
+			}
+
+			ImGui::End();
+		}
+
+		if (displayCameraControls)
+		{
+			ImGui::Begin("Available Cameras", &displayCameraControls);
+
+			// Display each camera as a radio button to activate and the several factors of it.
+			for (auto& it : cameras) {
+
+				ImGui::SliderFloat3("Camera Position", glm::value_ptr(it->GetPosition()), 0.1f, 20.0f);
+
 			}
 
 			ImGui::End();

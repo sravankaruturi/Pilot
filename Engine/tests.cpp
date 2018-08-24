@@ -112,16 +112,6 @@ int main(int argc, char ** argv)
 			// Update Function
 			test_scene.OnUpdate(delta_time, time);
 
-			{
-				// We set the View and Projection Matrices for all the Shaders that has them ( They all should have them ideally ).
-				for ( auto it : ASMGR.shaders)
-				{
-					it.second->use();
-					it.second->setMat4("u_ViewMatrix", test_scene.ActiveCamera()->GetViewMatrix());
-					it.second->setMat4("u_ProjectionMatrix", projection_matrix);
-				}
-			}
-
 			// Scene Render.
 			test_scene.OnRender();
 
