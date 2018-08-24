@@ -9,8 +9,8 @@ namespace piolot {
 	class TestScene : public Scene
 	{
 
-		Grid test;
-		std::shared_ptr<Terrain> terrain_test;
+		Grid testGrid;
+		std::shared_ptr<Terrain> testTerrain;
 
 		//glm::vec3 startPosition;
 		//glm::vec3 endPosition = glm::vec3(1.0f, 1.0f, 1.0f);

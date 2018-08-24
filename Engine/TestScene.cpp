@@ -26,10 +26,10 @@ namespace piolot {
 		ActiveCamera(cameras[0]);
 
 		// We need to wait for the Shaders to be loaded to call this function.
-		test.Init();
+		testGrid.Init();
 		
 		//terrain_test = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
-		terrain_test = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
+		testTerrain = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
 
 	}
 
@@ -77,29 +77,29 @@ namespace piolot {
 		{
 			const float interval = 5;
 
-			terrain_test->ClearColours();
+			testTerrain->ClearColours();
 
 			glm::vec3 startPosition = glm::vec3(startxz.x, 0, startxz.y);
 			glm::vec3 endPosition = glm::vec3(endxz.x, 0, endxz.y);
 
 			// Get the node pos.
-			const glm::vec2 test_get_node = terrain_test->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
+			const glm::vec2 test_get_node = testTerrain->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
 
 			//LOGGER.AddToLog(
 			//	"Random Point Selected: " + std::to_string(startPosition.x) + " , " + std::to_string(startPosition.z) + " "
 			//	"The node returned is: " + std::to_string(test_get_node.x) + ", " + std::to_string(test_get_node.y)
 			//);
 
-			terrain_test->HighlightNode(test_get_node.x, test_get_node.y);
+			testTerrain->HighlightNode(test_get_node.x, test_get_node.y);
 
-			startPosition.y = terrain_test->GetHeightAtPos(startPosition.x, startPosition.z);
-			endPosition.y = terrain_test->GetHeightAtPos(endPosition.x, endPosition.z);
+			startPosition.y = testTerrain->GetHeightAtPos(startPosition.x, startPosition.z);
+			endPosition.y = testTerrain->GetHeightAtPos(endPosition.x, endPosition.z);
 
-			glm::vec2 test_end_node = terrain_test->GetNodeIndicesFromPos(endPosition.x, endPosition.z);
+			glm::vec2 test_end_node = testTerrain->GetNodeIndicesFromPos(endPosition.x, endPosition.z);
 
-			terrain_test->HighlightNode(test_end_node.x, test_end_node.y);
+			testTerrain->HighlightNode(test_end_node.x, test_end_node.y);
 
-			path = terrain_test->GetPathFromPositions(startPosition, endPosition);
+			path = testTerrain->GetPathFromPositions(startPosition, endPosition);
 
 			std::string log_temp = "The path b/w the tiles, ";
 
@@ -107,14 +107,14 @@ namespace piolot {
 
 			for ( auto it : path)
 			{
-				terrain_test->HighlightNode(it->tileIndexX, it->tileIndexZ);
+				testTerrain->HighlightNode(it->tileIndexX, it->tileIndexZ);
 			}
 
 		}
 
-		terrain_test->Update(_deltaTime, _totalTime);
+		testTerrain->Update(_deltaTime, _totalTime);
 
-		test.Update(activeCamera->GetViewMatrix(), projection_matrix);
+		testGrid.Update(activeCamera->GetViewMatrix(), projection_matrix);
 	}
 
 	void TestScene::OnRender()
@@ -123,9 +123,9 @@ namespace piolot {
 			it->Render();
 		}
 
-		terrain_test->Render();
+		testTerrain->Render();
 
-		test.Render();
+		testGrid.Render();
 	}
 
 	void TestScene::OnImguiRender()
@@ -171,7 +171,7 @@ namespace piolot {
 			if (path.empty())
 			{
 				// Print the tilesets.
-				std::string temp_log = "The node sets for the nodes are " + std::to_string(terrain_test->GetNodeSetFromPos(startxz.x, startxz.y)) + ", " + std::to_string(terrain_test->GetNodeSetFromPos(endxz.x, endxz.y));
+				std::string temp_log = "The node sets for the nodes are " + std::to_string(testTerrain->GetNodeSetFromPos(startxz.x, startxz.y)) + ", " + std::to_string(testTerrain->GetNodeSetFromPos(endxz.x, endxz.y));
 				ImGui::Text(temp_log.c_str());
 			}
 
