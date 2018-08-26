@@ -14,6 +14,16 @@ namespace piolot {
 	TestScene::TestScene(std::shared_ptr<Window> _window)
 		: Scene(_window)
 	{
+
+		auto w2 = window->GetWidth() / 2;
+		auto h2 = window->GetHeight() / 2;
+
+
+		PE_GL(glViewportIndexedf(0, 0, 0, w2, h2));
+		PE_GL(glViewportIndexedf(1, w2, 0, w2, h2));
+		PE_GL(glViewportIndexedf(2, 0, h2, w2, h2));
+		PE_GL(glViewportIndexedf(3, w2, h2, w2, h2));
+
 		ASMGR.ClearAllData();
 
 		ASMGR.LoadShaders();
@@ -124,15 +134,35 @@ namespace piolot {
 
 	void TestScene::OnRender()
 	{
-		const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
+		const auto persp_projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
+		//const auto ortho_projection_matrix = glm::ortho(-1 * window->GetWidth()/2, window->GetWidth()/2, - 1 * window->GetHeight()/2, window->GetHeight()/2);
+		const auto ortho_projection_matrix = glm::ortho(-16.0f, 16.0f, -9.0f, 9.0f, 0.1f, 100.f);
+
+		glm::mat4 projection_matrices[4] = {persp_projection_matrix, ortho_projection_matrix, ortho_projection_matrix, ortho_projection_matrix};
+		glm::mat4 view_matrices[4] = {this->activeCamera->GetViewMatrix()};
 
 		// We set the View and Projection Matrices for all the Shaders that has them ( They all should have them ideally ).
 		for (auto it : ASMGR.shaders)
 		{
 			it.second->use();
-			it.second->setMat4("u_ViewMatrix", this->ActiveCamera()->GetViewMatrix());
-			it.second->setMat4("u_ProjectionMatrix", projection_matrix);
+
+			//PE_GL(glUniformMatrix4fv(it.second->GetUniformLocation("u_ViewMatrix"), GL_FALSE, 4, &view_matrices[0][0][0]));
+			it.second->setMat4("u_ViewMatrix[0]", view_matrices[0]);
+			it.second->setMat4("u_ViewMatrix[1]", view_matrices[0]);
+			it.second->setMat4("u_ViewMatrix[2]", view_matrices[0]);
+			it.second->setMat4("u_ViewMatrix[3]", view_matrices[0]);
+
+
+			//PE_GL(glUniformMatrix4fv(it.second->GetUniformLocation("u_ProjectionMatrix"), GL_FALSE, 4, &projection_matrices[0][0][0]));
+			it.second->setMat4("u_ProjectionMatrix[0]", projection_matrices[0]);
+			it.second->setMat4("u_ProjectionMatrix[1]", projection_matrices[1]);
+			it.second->setMat4("u_ProjectionMatrix[2]", projection_matrices[2]);
+			it.second->setMat4("u_ProjectionMatrix[3]", projection_matrices[3]);
+
 		}
+
+		glViewport(0, 0, window->GetWidth() / 2, window->GetHeight() / 2);
+		glViewport(0, window->GetHeight() / 2, window->GetWidth() / 2, window->GetHeight() / 2);
 
 		for (const auto& it : entities) {
 			it->Render();
@@ -141,6 +171,7 @@ namespace piolot {
 		testTerrain->Render();
 
 		testGrid.Render();
+
 	}
 
 	void TestScene::OnImguiRender()

@@ -24,7 +24,7 @@ namespace piolot {
 		bool pathingDebugWindow = false;
 		bool displayAssetManagerWindow = false;
 		bool displayLogWindow = false;
-		bool displayCameraControls = true;
+		bool displayCameraControls = false;
 
 	public:
 

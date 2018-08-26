@@ -133,24 +133,24 @@ namespace piolot
 		bool success;
 
 		// vertex shader
-		GL_CALL(vertex = glCreateShader(GL_VERTEX_SHADER));
-		GL_CALL(glShaderSource(vertex, 1, &vShaderCode, NULL));
-		GL_CALL(glCompileShader(vertex));
+		PE_GL(vertex = glCreateShader(GL_VERTEX_SHADER));
+		PE_GL(glShaderSource(vertex, 1, &vShaderCode, NULL));
+		PE_GL(glCompileShader(vertex));
 		success = CheckCompileErrors(vertex, "VERTEX");
 		compileStatus = compileStatus && success;
 
 		// fragment Shader
-		GL_CALL(fragment = glCreateShader(GL_FRAGMENT_SHADER));
-		GL_CALL(glShaderSource(fragment, 1, &fShaderCode, NULL));
-		GL_CALL(glCompileShader(fragment));
+		PE_GL(fragment = glCreateShader(GL_FRAGMENT_SHADER));
+		PE_GL(glShaderSource(fragment, 1, &fShaderCode, NULL));
+		PE_GL(glCompileShader(fragment));
 		success = CheckCompileErrors(fragment, "FRAGMENT");
 		compileStatus = compileStatus && success;
 
 		if (!geometry_shader_code.empty()) {
 			// Geometry Shader
-			GL_CALL(geometry = glCreateShader(GL_GEOMETRY_SHADER));
-			GL_CALL(glShaderSource(geometry, 1, &g_shader_code, NULL));
-			GL_CALL(glCompileShader(geometry));
+			PE_GL(geometry = glCreateShader(GL_GEOMETRY_SHADER));
+			PE_GL(glShaderSource(geometry, 1, &g_shader_code, NULL));
+			PE_GL(glCompileShader(geometry));
 			success = CheckCompileErrors(geometry, "GEOMETRY");
 			compileStatus = compileStatus && success;
 		}
@@ -162,10 +162,10 @@ namespace piolot
 		glAttachShader(shaderId, fragment);
 
 		if (!geometry_shader_code.empty()) {
-			GL_CALL(glAttachShader(shaderId, geometry));
+			PE_GL(glAttachShader(shaderId, geometry));
 		}
 
-		glLinkProgram(shaderId);
+		PE_GL(glLinkProgram(shaderId));
 		success = CheckCompileErrors(shaderId, "PROGRAM");
 		compileStatus = compileStatus && success;
 		// delete the shaders as they're linked into our program now and no longer necessary
@@ -173,7 +173,7 @@ namespace piolot
 		glDeleteShader(fragment);
 
 		if (!geometry_shader_code.empty()) {
-			GL_CALL(glDeleteShader(geometry));
+			PE_GL(glDeleteShader(geometry));
 		}
 
 	}
@@ -199,6 +199,9 @@ namespace piolot
 			if (!success)
 			{
 				glGetProgramInfoLog(_shaderId, 1024, NULL, infoLog);
+				std::string out = "ERROR::PROGRAM_LINKING_ERROR of type: " + _type;
+				std::cout << out << std::endl;
+				std::cout << infoLog << std::endl;
 			}
 		}
 		return success;

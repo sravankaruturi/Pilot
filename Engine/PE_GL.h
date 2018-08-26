@@ -38,4 +38,4 @@ static bool pe_gl_log_error(const char * _functionName, const char * _fileName, 
 	return true;
 }
 
-#define GL_CALL 
+//#define GL_CALL 
