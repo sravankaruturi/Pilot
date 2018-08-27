@@ -66,6 +66,8 @@ int main(int argc, char ** argv)
 
 		float time = glfwGetTime();
 
+		bool display_multiple_views = false;
+
 		while (!glfwWindowShouldClose(window->GetWindow()))
 		{
 			const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
@@ -103,24 +105,37 @@ int main(int argc, char ** argv)
 				{
 					test_scene.ActiveCamera()->ProcessMouseMovement(window->mouseOffsetX, window->mouseOffsetY);
 				}
+
+				if (window->IsKeyPressedAndReleased(GLFW_KEY_SPACE))
+				{
+					display_multiple_views = !display_multiple_views;
+				}
 				
 			}
 
 			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+
+			if ( display_multiple_views)
+			{
+				auto w2 = window->GetWidth() / 2;
+				auto h2 = window->GetHeight() / 2;
+
+				PE_GL(glViewportIndexedf(0, 0, 0, w2, h2));
+				PE_GL(glViewportIndexedf(1, w2, 0, w2, h2));
+				PE_GL(glViewportIndexedf(2, 0, h2, w2, h2));
+				PE_GL(glViewportIndexedf(3, w2, h2, w2, h2));
+			}else
+			{
+				PE_GL(glViewportIndexedf(0, 0, 0, window->GetWidth(), window->GetHeight()));
+				PE_GL(glViewportIndexedf(1, 0, 0, 0, 0));
+				PE_GL(glViewportIndexedf(2, 0, 0, 0, 0));
+				PE_GL(glViewportIndexedf(3, 0, 0, 0, 0));
+			}
+
 			// Update Function
 			test_scene.OnUpdate(delta_time, time);
-
-			{
-				// We set the View and Projection Matrices for all the Shaders that has them ( They all should have them ideally ).
-				for ( auto it : ASMGR.shaders)
-				{
-					it.second->use();
-					it.second->setMat4("u_ViewMatrix", test_scene.ActiveCamera()->GetViewMatrix());
-					it.second->setMat4("u_ProjectionMatrix", projection_matrix);
-				}
-			}
 
 			// Scene Render.
 			test_scene.OnRender();
@@ -129,9 +144,13 @@ int main(int argc, char ** argv)
 			ImGui_ImplOpenGL3_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
 
-			test_scene.OnImguiRender();
+			piolot::ImGuiControlVariables test_scene_vars = {
+				display_multiple_views
+			};
 
-			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
+			test_scene.OnImguiRender(test_scene_vars);
+
+			/*ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);*/
 
 			ImGui::Render();
 			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

@@ -2,12 +2,20 @@
 #include <glm/detail/type_vec3.hpp>
 #include <glm/mat4x4.hpp>
 #include <glad/glad.h>
+#include <string>
+#include <utility>
 
 namespace piolot
 {
 
 	const float default_camera_speed = 2.0f;
 	const float default_camera_mouse_sensitivity = 1.0f / 128;
+
+	enum CameraType 
+	{
+		perspective,
+		orthogonal
+	};
 
 	class Camera
 	{
@@ -26,20 +34,30 @@ namespace piolot
 
 		glm::mat4 viewMatrix;
 
+		std::string cameraName;
+
+		CameraType type;
+
 	public:
+		std::string& GetCameraName()
+		{
+			return cameraName;
+		}
 
 
-		Camera(glm::vec3 _position, glm::vec3 _front, glm::vec3 _worldUp, float _movementSpeed = default_camera_speed, float _mouseSensitivity = default_camera_mouse_sensitivity)
+		Camera(std::string _cameraName, glm::vec3 _position, glm::vec3 _front, glm::vec3 _worldUp, CameraType _type = perspective, float _movementSpeed = default_camera_speed, float _mouseSensitivity = default_camera_mouse_sensitivity)
 			: position(_position),
 			  front(_front),
 			  worldUp(_worldUp),
 			  movementSpeed(_movementSpeed),
-			  mouseSensitivity(_mouseSensitivity)
+			  mouseSensitivity(_mouseSensitivity),
+			  cameraName(std::move(_cameraName)),
+			  type(_type)
 		{
 			UpdateVectors();
 		}
 
-		const glm::vec3& GetPosition() const
+		glm::vec3& GetPosition()
 		{
 			return position;
 		}
@@ -105,6 +123,8 @@ namespace piolot
 			viewMatrix = _viewMatrix;
 		}
 
+		void DisplayCameraDetailsImgui();
+
 		enum camera_movement
 		{
 			forward,
@@ -118,7 +138,6 @@ namespace piolot
 
 		glm::vec3 GetMouseRayDirection(float _mouseX, float _mouseY, int _windowWidth, int _windowHeight, glm::mat4 _projectionMatrix);
 
-	private:
 		void UpdateVectors();
 		void UpdateMatrices();
 	};

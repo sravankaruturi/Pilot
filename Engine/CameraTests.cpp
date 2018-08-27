@@ -13,7 +13,7 @@ protected:
 	// World Up is along the Y Axis.
 	glm::vec3 world_up = glm::vec3(0, 1, 0);
 
-	piolot::Camera c = piolot::Camera(position, front, world_up);
+	piolot::Camera c = piolot::Camera("Test", position, front, world_up);
 
 };
 

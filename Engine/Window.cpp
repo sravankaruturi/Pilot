@@ -14,8 +14,8 @@ Window::Window(unsigned width, unsigned height, const std::string& title): width
 {
 
 	isGlfwInit = glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 #if _APPLE
@@ -49,6 +49,7 @@ Window::Window(unsigned width, unsigned height, const std::string& title): width
 	}
 
 	glEnable(GL_DEPTH_TEST);
+	//glEnable(GL_SCISSOR_TEST);
 
 }
 
@@ -138,7 +139,7 @@ void window_resize(GLFWwindow * _window, int _width, int _height) {
 	// The Functions GetWidth and GetHeight give the udpated stuff.
 	win->UpdateFrameSize();
 
-	glViewport(0, 0, win->GetWidth(), win->GetHeight());
+	//glViewport(0, 0, win->GetWidth(), win->GetHeight());
 }
 
 void key_callback(GLFWwindow * _window, int _key, int scancode, int action, int mods) {

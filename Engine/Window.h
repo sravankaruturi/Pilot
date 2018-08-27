@@ -23,13 +23,15 @@ public:
 	Window(unsigned width, unsigned height, const std::string& title);
 	~Window();
 
-	unsigned GetWidth() const
+	unsigned GetWidth()
 	{
+		glfwGetFramebufferSize(window, &this->width, &this->height);
 		return width;
 	}
 
-	unsigned GetHeight() const
+	unsigned GetHeight()
 	{
+		glfwGetFramebufferSize(window, &this->width, &this->height);
 		return height;
 	}
 

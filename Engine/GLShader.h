@@ -40,6 +40,8 @@ namespace piolot
 		*/
 		GLShader(const char * _vertexPath, const char * _fragmentPath);
 
+		explicit GLShader(const char * _filePath);
+
 		/**
 		* \brief Default Destructor
 		*/
@@ -61,7 +63,7 @@ namespace piolot
 		*/
 		void setBool(const std::string &_name, bool _value)
 		{
-			const auto loc = getUniformLocation(_name);
+			const auto loc = GetUniformLocation(_name);
 			PE_GL(glUniform1i(loc, (int)_value));
 		}
 
@@ -72,7 +74,7 @@ namespace piolot
 		*/
 		void setInt(const std::string &_name, int _value)
 		{
-			const auto loc = getUniformLocation(_name);
+			const auto loc = GetUniformLocation(_name);
 			PE_GL(glUniform1i(loc, _value));
 		}
 
@@ -83,7 +85,7 @@ namespace piolot
 		*/
 		void setFloat(const std::string &_name, float _value)
 		{
-			const auto loc = getUniformLocation(_name);
+			const auto loc = GetUniformLocation(_name);
 			PE_GL(glUniform1f(loc, _value));
 		}
 
@@ -94,7 +96,7 @@ namespace piolot
 		*/
 		void setVec3(const std::string &_name, const glm::vec3 &_value)
 		{
-			const auto loc = getUniformLocation(_name);
+			const auto loc = GetUniformLocation(_name);
 			PE_GL(glUniform3fv(loc, 1, &_value[0]));
 		}
 
@@ -107,7 +109,7 @@ namespace piolot
 		*/
 		void setVec3(const std::string &_name, float _x, float _y, float _z)
 		{
-			const auto loc = getUniformLocation(_name);
+			const auto loc = GetUniformLocation(_name);
 			PE_GL(glUniform3f(loc, _x, _y, _z));
 		}
 
@@ -118,7 +120,7 @@ namespace piolot
 		*/
 		void setMat4(const std::string &_name, const glm::mat4 &_mat)
 		{
-			const auto loc = getUniformLocation(_name);
+			const auto loc = GetUniformLocation(_name);
 			PE_GL(glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(_mat)));
 		}
 
@@ -129,27 +131,25 @@ namespace piolot
 		*/
 		bool CheckCompileErrors(unsigned int _shaderId, std::string _type);
 
-		private:
+		int GetUniformLocation(const std::string& _name) {
 
-			int getUniformLocation(const std::string& _name) {
+			if (uniformLocations.find(_name) == uniformLocations.end()) {
 
-				if (uniformLocations.find(_name) == uniformLocations.end()) {
+				PE_GL(int location = glGetUniformLocation(shaderId, _name.c_str()));
+				uniformLocations[_name] = location;
 
-					PE_GL(int location = glGetUniformLocation(shaderId, _name.c_str()));
-					uniformLocations[_name] = location;
-
-					if (location == -1) {
-						LOGGER.AddToLog("The Uniform, " + _name + " does not exist for the shader, " + shaderName, PE_LOG_WARN);
-					}
-
-					return location;
-
+				if (location == -1) {
+					LOGGER.AddToLog("The Uniform, " + _name + " does not exist for the shader, " + shaderName, PE_LOG_WARN);
 				}
-				else {
-					return uniformLocations[_name];
-				}
+
+				return location;
 
 			}
+			else {
+				return uniformLocations[_name];
+			}
+
+		}
 
 	};
 }
