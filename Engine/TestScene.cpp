@@ -6,6 +6,11 @@
 
 namespace piolot {
 
+	static void test_scene_resize(GLFWwindow * _window, int )
+	{
+		
+	}
+
 	std::string Vec3ToString(glm::vec3 _in)
 	{
 		return "(" + std::to_string(_in.x) + ", " + std::to_string(_in.y) + ", " + std::to_string(_in.z) + ")";
@@ -23,6 +28,8 @@ namespace piolot {
 		PE_GL(glViewportIndexedf(1, w2, 0, w2, h2));
 		PE_GL(glViewportIndexedf(2, 0, h2, w2, h2));
 		PE_GL(glViewportIndexedf(3, w2, h2, w2, h2));
+
+		PE_GL(glEnable(GL_SCISSOR_TEST));
 
 		ASMGR.ClearAllData();
 
@@ -46,6 +53,7 @@ namespace piolot {
 
 	void TestScene::OnUpdate(float _deltaTime, float _totalTime)
 	{
+
 		const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
 
 		for (auto& it : cameras) {
@@ -141,28 +149,53 @@ namespace piolot {
 		glm::mat4 projection_matrices[4] = {persp_projection_matrix, ortho_projection_matrix, ortho_projection_matrix, ortho_projection_matrix};
 		glm::mat4 view_matrices[4] = {this->activeCamera->GetViewMatrix()};
 
+		view_matrices[1] = glm::lookAt(glm::vec3(8, 0, 0), glm::vec3(), glm::vec3(0, 1, 0));
+		view_matrices[2] = glm::lookAt(glm::vec3(0, 8, 0), glm::vec3(), glm::vec3(0, 0, 1));;
+		view_matrices[3] = glm::lookAt(glm::vec3(0, 0, 8), glm::vec3(), glm::vec3(0, 1, 0));;
+
 		// We set the View and Projection Matrices for all the Shaders that has them ( They all should have them ideally ).
 		for (auto it : ASMGR.shaders)
 		{
 			it.second->use();
 
-			//PE_GL(glUniformMatrix4fv(it.second->GetUniformLocation("u_ViewMatrix"), GL_FALSE, 4, &view_matrices[0][0][0]));
-			it.second->setMat4("u_ViewMatrix[0]", view_matrices[0]);
-			it.second->setMat4("u_ViewMatrix[1]", view_matrices[0]);
-			it.second->setMat4("u_ViewMatrix[2]", view_matrices[0]);
-			it.second->setMat4("u_ViewMatrix[3]", view_matrices[0]);
-
-
-			//PE_GL(glUniformMatrix4fv(it.second->GetUniformLocation("u_ProjectionMatrix"), GL_FALSE, 4, &projection_matrices[0][0][0]));
-			it.second->setMat4("u_ProjectionMatrix[0]", projection_matrices[0]);
-			it.second->setMat4("u_ProjectionMatrix[1]", projection_matrices[1]);
-			it.second->setMat4("u_ProjectionMatrix[2]", projection_matrices[2]);
-			it.second->setMat4("u_ProjectionMatrix[3]", projection_matrices[3]);
+			if ( it.first != "terrain" && it.first != "axes")
+			{
+				it.second->setMat4("u_ViewMatrix", view_matrices[0]);
+				it.second->setMat4("u_ProjectionMatrix", projection_matrices[0]);
+			}
 
 		}
 
-		glViewport(0, 0, window->GetWidth() / 2, window->GetHeight() / 2);
-		glViewport(0, window->GetHeight() / 2, window->GetWidth() / 2, window->GetHeight() / 2);
+		{
+			// Set the terrain Shader View and projection matrices for multiple viewports.
+			auto terrain_shader = ASMGR.shaders.at("terrain");
+			terrain_shader->use();
+			//PE_GL(glUniformMatrix4fv(it.second->GetUniformLocation("u_ViewMatrix"), GL_FALSE, 4, &view_matrices[0][0][0]));
+			auto loc = terrain_shader->GetUniformLocation("u_ViewMatrix");
+			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, &view_matrices[0][0][0]));
+
+			loc = terrain_shader->GetUniformLocation("u_ProjectionMatrix");
+			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, glm::value_ptr(projection_matrices[0])));
+
+
+			auto axes_shader = ASMGR.shaders.at("axes");
+			axes_shader->use();
+			//PE_GL(glUniformMatrix4fv(it.second->GetUniformLocation("u_ViewMatrix"), GL_FALSE, 4, &view_matrices[0][0][0]));
+			loc = axes_shader->GetUniformLocation("u_ViewMatrix");
+			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, &view_matrices[0][0][0]));
+
+			loc = axes_shader->GetUniformLocation("u_ProjectionMatrix");
+			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, glm::value_ptr(projection_matrices[0])));
+		}
+		
+
+		auto w2 = window->GetWidth() / 2;
+		auto h2 = window->GetHeight() / 2;
+
+		PE_GL(glViewportIndexedf(0, 0, 0, w2, h2));
+		PE_GL(glViewportIndexedf(1, w2, 0, w2, h2));
+		PE_GL(glViewportIndexedf(2, 0, h2, w2, h2));
+		PE_GL(glViewportIndexedf(3, w2, h2, w2, h2));
 
 		for (const auto& it : entities) {
 			it->Render();

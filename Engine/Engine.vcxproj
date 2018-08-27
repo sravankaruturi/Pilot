@@ -177,8 +177,7 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\axes.frag" />
-    <None Include="Shaders\axes.vert" />
+    <None Include="Shaders\axes.shader" />
     <None Include="Shaders\bbox.frag" />
     <None Include="Shaders\bbox.vert" />
     <None Include="Shaders\failing_test.frag" />
