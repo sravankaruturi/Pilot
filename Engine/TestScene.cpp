@@ -20,17 +20,6 @@ namespace piolot {
 		: Scene(_window)
 	{
 
-		auto w2 = window->GetWidth() / 2;
-		auto h2 = window->GetHeight() / 2;
-
-
-		PE_GL(glViewportIndexedf(0, 0, 0, w2, h2));
-		PE_GL(glViewportIndexedf(1, w2, 0, w2, h2));
-		PE_GL(glViewportIndexedf(2, 0, h2, w2, h2));
-		PE_GL(glViewportIndexedf(3, w2, h2, w2, h2));
-
-		PE_GL(glEnable(GL_SCISSOR_TEST));
-
 		ASMGR.ClearAllData();
 
 		ASMGR.LoadShaders();
@@ -189,14 +178,6 @@ namespace piolot {
 		}
 		
 
-		auto w2 = window->GetWidth() / 2;
-		auto h2 = window->GetHeight() / 2;
-
-		PE_GL(glViewportIndexedf(0, 0, 0, w2, h2));
-		PE_GL(glViewportIndexedf(1, w2, 0, w2, h2));
-		PE_GL(glViewportIndexedf(2, 0, h2, w2, h2));
-		PE_GL(glViewportIndexedf(3, w2, h2, w2, h2));
-
 		for (const auto& it : entities) {
 			it->Render();
 		}
@@ -207,7 +188,7 @@ namespace piolot {
 
 	}
 
-	void TestScene::OnImguiRender()
+	void TestScene::OnImguiRender(ImGuiControlVariables& _vars)
 	{
 
 		ImGui::NewFrame();
@@ -235,6 +216,11 @@ namespace piolot {
 
 				if (ImGui::MenuItem("Cameras")) {
 					displayCameraControls = true;
+				}
+
+				if ( ImGui::MenuItem( _vars.show_multiple_viewports ? "Hide Other Views" : "Show All Views" ))
+				{
+					_vars.show_multiple_viewports = !_vars.show_multiple_viewports;
 				}
 
 				ImGui::EndMenu();

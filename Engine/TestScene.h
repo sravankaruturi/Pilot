@@ -6,6 +6,11 @@
 
 namespace piolot {
 
+	struct ImGuiControlVariables
+	{
+		bool& show_multiple_viewports;
+	};
+
 	class TestScene : public Scene
 	{
 
@@ -37,7 +42,7 @@ namespace piolot {
 		virtual void OnRender() override;
 
 
-		virtual void OnImguiRender() override;
+		virtual void OnImguiRender(ImGuiControlVariables& _vars);
 
 	};
 
