@@ -6,15 +6,25 @@ layout(location = 1) in vec3 aNormal;
 layout(location = 2) in vec3 aColour;
 layout(location = 3) in vec3 aTexCoords;
 
-out vec3 g_FragPos;
-out vec3 g_Normal;
-out vec3 g_TexCoords;
-out vec3 g_Colour;
+struct vData {
+	vec3 g_FragPos;
+	vec3 g_Normal;
+	vec3 g_TexCoords;
+	vec3 g_Colour;
+};
+
+out vData g_Stuff;
 
 uniform mat4 u_ModelMatrix;
 
 void main()
 {
+
+	g_Stuff.g_FragPos = vec3(u_ModelMatrix * vec4(aPos, 1.0));
+	g_Stuff.g_Normal = mat3(transpose(inverse(u_ModelMatrix))) * aNormal;
+	g_Stuff.g_TexCoords = aTexCoords;
+	g_Stuff.g_Colour = aColour;
+
 	gl_Position = u_ModelMatrix * vec4(aPos, 1.0);
 
 }
@@ -23,11 +33,21 @@ void main()
 
 #version 430 core
 
+struct vData {
+	vec3 g_FragPos;
+	vec3 g_Normal;
+	vec3 g_TexCoords;
+	vec3 g_Colour;
+};
+
 layout(triangles, invocations = 4) in;
 layout(triangle_strip, max_vertices = 3) out;
 
 uniform mat4 u_ViewMatrix[4];
 uniform mat4 u_ProjectionMatrix[4];
+
+in vData g_Stuff[];
+out vData f_Stuff;
 
 void main() {
 
@@ -38,6 +58,8 @@ void main() {
 
 		// add here any other viewport-specific transform
 		gl_Position = u_ProjectionMatrix[gl_InvocationID] * u_ViewMatrix[gl_InvocationID] * gl_in[i].gl_Position;
+
+		f_Stuff = g_Stuff[i];
 
 		EmitVertex();
 	}
@@ -50,10 +72,21 @@ void main() {
 
 #version 430 core
 
+struct vData {
+	vec3 g_FragPos;
+	vec3 g_Normal;
+	vec3 g_TexCoords;
+	vec3 g_Colour;
+};
+
+uniform sampler2D u_Texture0;
+
 out vec4 FragColour;
+
+in vData f_Stuff;
 
 void main() {
 
-	FragColour = vec4(0.1, 0.9, 0.1, 1.0);
+	FragColour = mix(vec4(texture(u_Texture0, f_Stuff.g_TexCoords.xy)), vec4(f_Stuff.g_Colour, 1.0), f_Stuff.g_TexCoords.z);
 
 }
