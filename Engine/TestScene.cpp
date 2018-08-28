@@ -85,15 +85,21 @@ namespace piolot {
 				mouse_pointer_ray = activeCamera->GetMouseRayDirection(window->mouseX, window->mouseY, window->GetWidth(), window->GetHeight(), projection_matrix);
 			}
 			else {
+
+				ray_start = this->activeCamera->GetPosition();
+
 				// Multiple Viewport
 				// TODO: Fix This.
-				auto updated_x = window->mouseX - window->GetWidth() / 2;
-				auto updated_y = window->mouseY - window->GetHeight() / 2;
-				{
-					
-				}
+				float updated_x, updated_y;
 
-				mouse_pointer_ray = activeCamera->GetMouseRayDirection(updated_x, updated_y, viewport_size[2], viewport_size[3], projection_matrix);
+				updated_x = (window->mouseX > window->GetWidth() / 2.0f) ? window->mouseX - window->GetWidth() / 2.0f : window->mouseX;
+				updated_y = (window->mouseY > window->GetHeight() / 2.0f) ? window->mouseY - window->GetHeight() / 2.0f : window->mouseY;
+
+				updated_x *= 2;
+				updated_y *= 2;
+
+				//mouse_pointer_ray = activeCamera->GetMouseRayDirection(updated_x, updated_y, viewport_size[2], viewport_size[3], projection_matrix);
+				mouse_pointer_ray = activeCamera->GetMouseRayDirection(updated_x, updated_y, window->GetWidth(), window->GetHeight(), projection_matrix);
 
 			}
 
@@ -245,6 +251,10 @@ namespace piolot {
 				{
 					displayLogWindow = true;
 				}
+				if (ImGui::MenuItem("Ray Picking Debug Window")) {
+					displayRaypickingControls = true;
+				}
+
 				ImGui::EndMenu();
 			}
 
@@ -326,6 +336,46 @@ namespace piolot {
 				if (ImGui::Button("Activate Camera")) { activeCamera = selected_camera; }
 
 			ImGui::EndGroup();
+
+			ImGui::End();
+		}
+
+		if (displayRaypickingControls) {
+			ImGui::Begin("Ray Picking Debug", &displayRaypickingControls);
+
+			int viewport_size[4];
+			PE_GL(glGetIntegeri_v(GL_VIEWPORT, 0, viewport_size));
+
+			ImGui::Text("Mouse position: %.3f , %.3f", this->window->mouseX, this->window->mouseY);
+
+			float updated_x, updated_y;
+
+			const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
+			glm::vec3 mouse_pointer_ray;
+
+			if (viewport_size[2] == window->GetWidth() && viewport_size[3] == window->GetHeight()) {
+				updated_x = window->mouseX;
+				updated_y = window->mouseY;
+
+				mouse_pointer_ray = activeCamera->GetMouseRayDirection(window->mouseX, window->mouseY, window->GetWidth(), window->GetHeight(), projection_matrix);
+
+			}
+			else {
+				// Set Which viewport this is hovering over here.
+				updated_x = (window->mouseX > window->GetWidth()/2.0f) ? window->mouseX - window->GetWidth() / 2.0f : window->mouseX;
+				updated_y = (window->mouseY > window->GetHeight()/2.0f) ? window->mouseY - window->GetHeight() / 2.0f : window->mouseY;
+
+				updated_x *= 2;
+				updated_y *= 2;
+
+				mouse_pointer_ray = activeCamera->GetMouseRayDirection(updated_x, updated_y, window->GetWidth(), window->GetHeight(), projection_matrix);
+			}
+
+
+
+			ImGui::InputFloat3("Mouse Pointer Ray", glm::value_ptr(mouse_pointer_ray));
+
+			ImGui::Text("Updated Mouse position: %.3f , %.3f", updated_x, updated_y);
 
 			ImGui::End();
 		}
