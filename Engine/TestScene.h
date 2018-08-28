@@ -30,6 +30,7 @@ namespace piolot {
 		bool displayAssetManagerWindow = false;
 		bool displayLogWindow = false;
 		bool displayCameraControls = false;
+		bool displayRaypickingControls = true;
 
 	public:
 
