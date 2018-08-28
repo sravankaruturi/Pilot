@@ -53,21 +53,52 @@ namespace piolot {
 			it->Update(_deltaTime);
 		}
 
-		glm::vec3 mouse_pointer_ray = activeCamera->GetMouseRayDirection(window->mouseX, window->mouseY, window->GetWidth(), window->GetHeight(), projection_matrix);
+		glm::vec3 mouse_pointer_ray;
 
 		/* Ray Picking */
+		/* We would assume that Ray Picking works only in two instances of Viewport Style. 4 Viewports and 1 Viewport */
 		{
 			float int_distance = 0;
 			float min_int_distance = 10000.0f;
 			// Do Ray Picking Here.
 			// For each Bounding Box, we check for the collision, and do what we want, as part of the Scene Update.
 
+			// We get the Camera Position and then move it according to the Viewports.
+			// We get the Size of the Viewport 0. We comapre that to the Size of the framebuffer.
+
+			int viewport_size[4];
+			PE_GL(glGetIntegeri_v(GL_VIEWPORT, 0, viewport_size));
+
+			// If this is 0, 0, w, h, then we only have one viewport. Else. We have 4.
+			//std::cout << viewport_size[0] << ", " << viewport_size[1] << ", " << viewport_size[2] << ", " << viewport_size[3] << std::endl;
+
+			glm::vec3 ray_start;
+			if (viewport_size[2] == window->GetWidth() && viewport_size[3] == window->GetHeight()) {
+				// One Viewport
+				ray_start = this->activeCamera->GetPosition();
+
+				mouse_pointer_ray = activeCamera->GetMouseRayDirection(window->mouseX, window->mouseY, window->GetWidth(), window->GetHeight(), projection_matrix);
+			}
+			else {
+				// Multiple Viewport
+				// TODO: Fix This.
+				auto updated_x = window->mouseX - window->GetWidth() / 2;
+				auto updated_y = window->mouseY - window->GetHeight() / 2;
+				{
+					
+				}
+
+				mouse_pointer_ray = activeCamera->GetMouseRayDirection(updated_x, updated_y, viewport_size[2], viewport_size[3], projection_matrix);
+
+			}
+
+
 			// We reset this every frame.
 			std::shared_ptr<Entity> selected_entity;
 			// Loop through all Entities that can be selected.
 			for (auto it : entities)
 			{
-				if (it->CheckIfMouseOvered(this->activeCamera->GetPosition(), mouse_pointer_ray, min_int_distance))
+				if (it->CheckIfMouseOvered(ray_start, mouse_pointer_ray, min_int_distance))
 				{
 					if (int_distance < min_int_distance)
 					{
