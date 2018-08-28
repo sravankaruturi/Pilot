@@ -30,12 +30,12 @@ namespace piolot {
 		ASMGR.LoadShaders();
 		ASMGR.LoadTextures();
 
-		cameras.push_back(std::make_shared<Camera>("First", glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0)));
-		cameras.push_back(std::make_shared<Camera>("Second", glm::vec3(10, 0, 10), glm::vec3(-1, 0, -1), glm::vec3(0, 1, 0)));
+		cameras.insert_or_assign("First", std::make_shared<Camera>("First", glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0)));
+		cameras.insert_or_assign("Second", std::make_shared<Camera>("Second", glm::vec3(10, 0, 10), glm::vec3(-1, 0, -1), glm::vec3(0, 1, 0)));
 
 		entities.push_back(std::make_shared<Entity>("lowpolytree/lowpolytree.obj", "good_test"));
 
-		ActiveCamera(cameras[0]);
+		ActiveCamera(cameras.at("First"));
 
 		// We need to wait for the Shaders to be loaded to call this function.
 		testGrid.Init();
@@ -51,7 +51,7 @@ namespace piolot {
 		const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
 
 		for (auto& it : cameras) {
-			it->UpdateVectors();
+			it.second->UpdateVectors();
 		}
 
 		for (const auto& it : entities) {
@@ -306,7 +306,7 @@ namespace piolot {
 
 			static std::shared_ptr<Camera> selected_camera;
 			if (nullptr == selected_camera) {
-				selected_camera = cameras[0];
+				selected_camera = cameras.at("First");
 			}
 
 			ImGui::BeginChild("Cameras##List", ImVec2(150, 0), true);
@@ -314,9 +314,9 @@ namespace piolot {
 			for (auto& it : cameras) {
 
 				ImGui::PushID(&it);
-				if (ImGui::Selectable(it->GetCameraName().c_str(), selected_camera == it)) {
+				if (ImGui::Selectable(it.second->GetCameraName().c_str(), selected_camera == it.second)) {
 
-					selected_camera = it;
+					selected_camera = it.second;
 
 				}
 				ImGui::PopID();
