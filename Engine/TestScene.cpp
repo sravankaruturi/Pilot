@@ -452,6 +452,24 @@ namespace piolot {
 			// Display Camera Details here.
 			viewportsDetails[selected_index].camera->DisplayCameraDetailsImgui();
 
+			if (ImGui::Button("Select a Different Camera")) {
+
+				ImGui::OpenPopup("Camera_Selector_For_Viewports");
+
+			}
+
+			if (ImGui::BeginPopupModal("Camera_Selector_For_Viewports")) {
+
+				for (auto it : cameras) {
+					if (ImGui::Button(it.first.c_str())) {
+						viewportsDetails[selected_index].camera = it.second;
+						ImGui::CloseCurrentPopup();
+					}
+				}
+
+				ImGui::EndPopup();
+			}
+
 			ImGui::Checkbox("Orthogonal", &viewportsDetails[selected_index].isOrthogonal);
 
 			ImGui::EndChild();
