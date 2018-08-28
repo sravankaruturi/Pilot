@@ -43,6 +43,13 @@ namespace piolot {
 		//terrain_test = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
 		testTerrain = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
 
+		viewportsDetails[0].camera = activeCamera;
+		viewportsDetails[1].camera = activeCamera;
+		viewportsDetails[2].camera = activeCamera;
+		viewportsDetails[3].camera = activeCamera;
+
+		viewportsDetails[0].isOrthogonal = false;
+
 	}
 
 	void TestScene::OnUpdate(float _deltaTime, float _totalTime)
@@ -180,9 +187,19 @@ namespace piolot {
 		glm::mat4 projection_matrices[4] = {persp_projection_matrix, ortho_projection_matrix, ortho_projection_matrix, ortho_projection_matrix};
 		glm::mat4 view_matrices[4] = {this->activeCamera->GetViewMatrix()};
 
-		view_matrices[1] = glm::lookAt(glm::vec3(8, 0, 0), glm::vec3(), glm::vec3(0, 1, 0));
+		/*view_matrices[1] = glm::lookAt(glm::vec3(8, 0, 0), glm::vec3(), glm::vec3(0, 1, 0));
 		view_matrices[2] = glm::lookAt(glm::vec3(0, 8, 0), glm::vec3(), glm::vec3(0, 0, 1));;
-		view_matrices[3] = glm::lookAt(glm::vec3(0, 0, 8), glm::vec3(), glm::vec3(0, 1, 0));;
+		view_matrices[3] = glm::lookAt(glm::vec3(0, 0, 8), glm::vec3(), glm::vec3(0, 1, 0));;*/
+
+		view_matrices[0] = viewportsDetails[0].camera->GetViewMatrix();
+		view_matrices[1] = viewportsDetails[1].camera->GetViewMatrix();
+		view_matrices[2] = viewportsDetails[2].camera->GetViewMatrix();
+		view_matrices[3] = viewportsDetails[3].camera->GetViewMatrix();
+
+		projection_matrices[0] = viewportsDetails[0].isOrthogonal ? ortho_projection_matrix : persp_projection_matrix;
+		projection_matrices[1] = viewportsDetails[1].isOrthogonal ? ortho_projection_matrix : persp_projection_matrix;
+		projection_matrices[2] = viewportsDetails[2].isOrthogonal ? ortho_projection_matrix : persp_projection_matrix;
+		projection_matrices[3] = viewportsDetails[3].isOrthogonal ? ortho_projection_matrix : persp_projection_matrix;
 
 		// We set the View and Projection Matrices for all the Shaders that has them ( They all should have them ideally ).
 		for (auto it : ASMGR.shaders)
@@ -271,6 +288,10 @@ namespace piolot {
 				if ( ImGui::MenuItem( _vars.show_multiple_viewports ? "Hide Other Views" : "Show All Views" ))
 				{
 					_vars.show_multiple_viewports = !_vars.show_multiple_viewports;
+				}
+
+				if (ImGui::MenuItem("View Ports")) {
+					displayViewportControls = true;
 				}
 
 				ImGui::EndMenu();
@@ -397,6 +418,47 @@ namespace piolot {
 
 		if (displayDemoWindow) {
 			ImGui::ShowDemoWindow(&displayDemoWindow);
+		}
+
+		if (displayViewportControls) {
+			ImGui::Begin("View Port Controls", &displayViewportControls);
+
+			// Expose all of the Viewport Data we currently have.
+
+			static int selected_index = 0;
+
+			ImGui::BeginChild("Viewports##List", ImVec2(150, 0), true);
+
+			for (auto i = 0; i < 4; i++) {
+				ImGui::PushID(&viewportsDetails[i]);
+				if (ImGui::Selectable("Viewport %d", i == selected_index)) {
+					selected_index = i;
+				}
+				ImGui::PopID();
+			}
+
+			ImGui::EndChild();
+
+			ImGui::SameLine();
+
+			ImGui::BeginGroup();
+
+			ImGui::BeginChild("Details", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
+
+			ImGui::Text("Viewport %d", selected_index);
+			ImGui::Separator();
+
+			ImGui::Text("Camera");
+			// Display Camera Details here.
+			viewportsDetails[selected_index].camera->DisplayCameraDetailsImgui();
+
+			ImGui::Checkbox("Orthogonal", &viewportsDetails[selected_index].isOrthogonal);
+
+			ImGui::EndChild();
+
+			ImGui::EndGroup();
+
+			ImGui::End();
 		}
 
 	}
