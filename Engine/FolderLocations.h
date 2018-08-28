@@ -1,6 +1,6 @@
 ﻿//#define SHADER_FOLDER "../../Engine/Shaders/"
 
-#define IS_HOME_PC	TRUE
+#define IS_HOME_PC	FALSE
 
 #if IS_HOME_PC
 

@@ -112,6 +112,9 @@ namespace piolot {
 			}
 		}
 
+		// Freeing the Image Data.
+		stbi_image_free(data);
+
 		this->vertices.resize(nodeCountX * nodeCountZ);
 
 		for (auto i = 0; i < nodeCountX; i++) {
@@ -146,6 +149,8 @@ namespace piolot {
 
 			}
 		}
+
+		
 
 		auto mesh = std::make_shared<Mesh>(&vertices[0], sizeof(TerrainVertexData), vertices.size(), indices);
 		mesh->SetTextureNames(std::vector<std::string>{"grass"});
