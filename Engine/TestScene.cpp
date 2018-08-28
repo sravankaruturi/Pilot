@@ -2,7 +2,12 @@
 #include "AssetManager.h"
 #include "Window.h"
 #include <glm/gtc/matrix_transform.inl>
+
+#include "Configurations.h"
+
+#if ENABLE_GUI
 #include "external_files/ImGUI/imgui.h"
+#endif
 
 namespace piolot {
 

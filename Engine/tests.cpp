@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <crtdbg.h>
 
+#include "Configurations.h"
+
 #include <gtest/gtest.h>
 #include "Window.h"
 #include "AssetManager.h"
@@ -12,12 +14,11 @@
 
 #include "TestScene.h"
 
+#if ENABLE_GUI
 #include "GUIHelpers.h"
 #include "external_files/ImGUI/imgui_impl_opengl3.h"
 #include "external_files/ImGUI/imgui_impl_glfw.h"
-
-#define TESTING_ONLY			0
-#define DISABLE_UNIT_TESTS		1
+#endif
 
 int main(int argc, char ** argv)
 {
@@ -50,6 +51,7 @@ int main(int argc, char ** argv)
 
 		std::shared_ptr<Window> window = std::make_shared<Window>(width, height, "Vermin");
 
+#if ENABLE_GUI
 		/* ImGui setup */
 		ImGui::CreateContext();
 
@@ -61,6 +63,7 @@ int main(int argc, char ** argv)
 
 		piolot::ImGuiLog imgui_logger;
 		LOGGER.SetImGuiLogger(&imgui_logger);
+#endif
 
 		piolot::TestScene test_scene(window);
 
@@ -75,7 +78,9 @@ int main(int argc, char ** argv)
 			const float delta_time = glfwGetTime() - time;
 			time = glfwGetTime();
 
+#if ENABLE_GUI
 			const ImGuiIO& io = ImGui::GetIO();
+#endif
 
 			window->HandleInput();
 
@@ -140,6 +145,8 @@ int main(int argc, char ** argv)
 			// Scene Render.
 			test_scene.OnRender();
 
+#if ENABLE_GUI
+
 			// GUI Render
 			ImGui_ImplOpenGL3_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
@@ -155,6 +162,8 @@ int main(int argc, char ** argv)
 			ImGui::Render();
 			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
+#endif
+
 
 			window->Update(delta_time);
 
@@ -163,11 +172,13 @@ int main(int argc, char ** argv)
 		// Do delete all the memory allocated by now.
 		ASMGR.ClearAllData();
 
+#if ENABLE_GUI
 		// So all the shaders are being deleted and stuff.
 		//PE_ASSERT(test.expired());
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
+#endif
 
 	}
 

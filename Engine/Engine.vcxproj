@@ -151,6 +151,7 @@
     <ClInclude Include="BoundingBox.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Colours.h" />
+    <ClInclude Include="Configurations.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="external_files\ImGUI\imconfig.h" />
     <ClInclude Include="external_files\ImGUI\imgui.h" />
