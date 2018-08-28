@@ -255,6 +255,10 @@ namespace piolot {
 					displayRaypickingControls = true;
 				}
 
+				if (ImGui::MenuItem("Demo Window")) {
+					displayDemoWindow = true;
+				}
+
 				ImGui::EndMenu();
 			}
 
@@ -378,6 +382,7 @@ namespace piolot {
 			ImGui::Text("Updated Mouse position: %.3f , %.3f", updated_x, updated_y);
 
 			ImGui::End();
+
 		}
 
 		if ( displayAssetManagerWindow )
@@ -388,6 +393,10 @@ namespace piolot {
 		if ( displayLogWindow)
 		{
 			LOGGER.Render(&displayLogWindow);
+		}
+
+		if (displayDemoWindow) {
+			ImGui::ShowDemoWindow(&displayDemoWindow);
 		}
 
 	}

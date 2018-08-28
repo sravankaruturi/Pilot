@@ -31,6 +31,7 @@ namespace piolot {
 		bool displayLogWindow = false;
 		bool displayCameraControls = false;
 		bool displayRaypickingControls = true;
+		bool displayDemoWindow = false;
 
 	public:
 
@@ -39,9 +40,7 @@ namespace piolot {
 
 		virtual void OnUpdate(float _deltaTime, float _totalTime) override;
 
-
 		virtual void OnRender() override;
-
 
 		virtual void OnImguiRender(ImGuiControlVariables& _vars);
 
