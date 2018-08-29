@@ -5,7 +5,7 @@
 #include "Terrain.h"
 
 namespace piolot {
-
+	
 	struct ImGuiControlVariables
 	{
 		bool& show_multiple_viewports;

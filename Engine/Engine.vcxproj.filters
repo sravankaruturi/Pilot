@@ -93,6 +93,9 @@
     <ClCompile Include="TerrainTests.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="SaveSceneHelpers.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -183,6 +186,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Configurations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveSceneHelpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

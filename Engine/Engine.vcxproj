@@ -138,6 +138,7 @@
     <ClCompile Include="CameraTests.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Ray.cpp" />
+    <ClCompile Include="SaveSceneHelpers.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="TerrainTests.cpp" />
     <ClCompile Include="tests.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="PE_GL.h" />
     <ClInclude Include="Ray.h" />
+    <ClInclude Include="SaveSceneHelpers.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="TestScene.h" />

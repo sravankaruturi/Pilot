@@ -4,6 +4,7 @@
 #include <glad/glad.h>
 #include <string>
 #include <utility>
+#include <fstream>
 
 namespace piolot
 {
@@ -15,6 +16,23 @@ namespace piolot
 	{
 		perspective,
 		orthogonal
+	};
+
+	struct CameraSavingToStream
+	{
+		glm::vec3 position;
+		glm::vec3 front;
+		glm::vec3 up;
+		glm::vec3 right;
+
+		glm::vec3 worldUp;
+
+		float movementSpeed = 0.0f;
+		float mouseSensitivity = 0.0f;
+
+		glm::mat4 viewMatrix;
+
+		CameraType type;
 	};
 
 	class Camera
@@ -45,7 +63,7 @@ namespace piolot
 		}
 
 
-		Camera(std::string _cameraName, glm::vec3 _position, glm::vec3 _front, glm::vec3 _worldUp, CameraType _type = perspective, float _movementSpeed = default_camera_speed, float _mouseSensitivity = default_camera_mouse_sensitivity)
+		Camera(std::string _cameraName = "default", glm::vec3 _position = glm::vec3(0, 0, 10), glm::vec3 _front = glm::vec3(0, 0, -1), glm::vec3 _worldUp = glm::vec3(0, 1, 0), CameraType _type = perspective, float _movementSpeed = default_camera_speed, float _mouseSensitivity = default_camera_mouse_sensitivity)
 			: position(_position),
 			  front(_front),
 			  worldUp(_worldUp),
@@ -56,6 +74,8 @@ namespace piolot
 		{
 			UpdateVectors();
 		}
+
+		~Camera() = default;
 
 		glm::vec3& GetPosition()
 		{
@@ -140,6 +160,10 @@ namespace piolot
 
 		void UpdateVectors();
 		void UpdateMatrices();
+
+		void SaveToStream(std::ofstream& _out);
+		void LoadFromStream(std::ifstream& _in);
+
 	};
 
 }

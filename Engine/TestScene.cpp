@@ -1,4 +1,5 @@
-﻿#include "TestScene.h"
+﻿#pragma once
+#include "TestScene.h"
 #include "AssetManager.h"
 #include "Window.h"
 #include <glm/gtc/matrix_transform.inl>
@@ -10,6 +11,8 @@
 #if ENABLE_GUI
 #include "external_files/ImGUI/imgui.h"
 #endif
+
+#include "../SaveSceneHelpers.h"
 
 #define		NAME_LENGTH_TO_FILE		20
 
@@ -520,10 +523,11 @@ namespace piolot {
 			// We Save all the Cameras.
 			int number_of_cameras = cameras.size();
 			out.write((char *)&number_of_cameras, sizeof(int));
-			
-			// Try saving one camera., the first one.
-			out.write((char*)cameras.at("First").get(), sizeof(Camera));
-			out.write((char*)cameras.at("Second").get(), sizeof(Camera));
+
+			for (auto it : cameras) {
+				pe_helpers::store_strings(it.first, out);
+				it.second->SaveToStream(out);
+			}
 
 		}
 
@@ -546,9 +550,29 @@ namespace piolot {
 			int number_of_cameras = 0;
 			in.read((char *)&number_of_cameras, sizeof(int));
 
-			// Try loading a Camera
-			in.read((char*)cameras.at("First").get(), sizeof(Camera));
-			in.read((char*)cameras.at("Second").get(), sizeof(Camera));
+			cameras.clear();
+			LOGGER.AddToLog(std::to_string(activeCamera.use_count()), PE_LOG_INFO);
+			activeCamera.reset();
+
+			for (auto i = 0; i < number_of_cameras; i++) {
+
+				std::string camera_index;
+
+				std::shared_ptr<Camera> cam = std::make_shared<Camera>();
+
+				pe_helpers::read_strings(camera_index, in);
+
+				cam->LoadFromStream(in);
+
+				cameras.insert_or_assign(camera_index, cam);
+
+				if (nullptr == activeCamera) {
+					activeCamera = cam;
+					viewportsDetails[0].camera = activeCamera;
+				}
+
+			}
+
 		}
 
 		in.close();
