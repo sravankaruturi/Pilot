@@ -358,7 +358,12 @@ namespace piolot {
 
 				ImGui::EndChild();
 
-				if (ImGui::Button("Activate Camera")) { activeCamera = selected_camera; }
+				if (ImGui::Button("Activate Camera")) {
+					activeCamera = selected_camera;
+					// Set the Camera to the Current Viewport.
+					// It is 0 for now.
+					viewportsDetails[0].camera = activeCamera;
+				}
 
 			ImGui::EndGroup();
 
@@ -431,7 +436,8 @@ namespace piolot {
 
 			for (auto i = 0; i < 4; i++) {
 				ImGui::PushID(&viewportsDetails[i]);
-				if (ImGui::Selectable("Viewport %d", i == selected_index)) {
+				std::string name = "Viewport " + std::to_string(i);
+				if (ImGui::Selectable(name.c_str(), i == selected_index)) {
 					selected_index = i;
 				}
 				ImGui::PopID();
