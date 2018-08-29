@@ -529,6 +529,15 @@ namespace piolot {
 				it.second->SaveToStream(out);
 			}
 
+			// Store the Terrain
+			out.write((char*)testTerrain.get(), sizeof(Terrain));
+
+			// Store the Viewport Details.
+			for (auto i = 0; i < 4; i++) {
+				out.write((char*)(&(viewportsDetails[i].isOrthogonal)), sizeof(bool));
+				pe_helpers::store_strings(viewportsDetails[i].camera->GetCameraName(), out);
+			}
+
 		}
 
 		out.close();
@@ -551,7 +560,6 @@ namespace piolot {
 			in.read((char *)&number_of_cameras, sizeof(int));
 
 			cameras.clear();
-			LOGGER.AddToLog(std::to_string(activeCamera.use_count()), PE_LOG_INFO);
 			activeCamera.reset();
 
 			for (auto i = 0; i < number_of_cameras; i++) {
@@ -571,6 +579,17 @@ namespace piolot {
 					viewportsDetails[0].camera = activeCamera;
 				}
 
+			}
+
+			// Load the Terrain
+			in.read((char*)testTerrain.get(), sizeof(Terrain));
+
+			// Load the Viewport Details
+			for (auto i = 0; i < 4; i++) {
+				in.read((char*)(&(viewportsDetails[i].isOrthogonal)), sizeof(bool));
+				std::string camera_name;
+				pe_helpers::read_strings(camera_name, in);
+				viewportsDetails[i].camera = cameras.at(camera_name);
 			}
 
 		}
