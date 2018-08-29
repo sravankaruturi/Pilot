@@ -263,10 +263,13 @@ namespace piolot {
 		{
 			if (ImGui::BeginMenu("Scene")) {
 				if (ImGui::MenuItem("Save Scene")) {
-					this->SaveScene("filename");
+					this->SaveScene(filenameToSaveScene);
+				}
+				if (ImGui::MenuItem("Save Scene As...")) {
+					openSaveSceneAsWindow = true;
 				}
 				if (ImGui::MenuItem("Load Scene")) {
-					this->LoadScene("filename");
+					openLoadSceneWindow = true;
 				}
 				ImGui::EndMenu();
 			}
@@ -314,6 +317,58 @@ namespace piolot {
 			}
 
 			ImGui::EndMainMenuBar();
+		}
+
+		if (openSaveSceneAsWindow) {
+			ImGui::Begin("Save Scene", &openSaveSceneAsWindow);
+
+			if (ImGui::InputText("File Name: ##SaveSceneFileName", filenameToSaveScene, 20, ImGuiInputTextFlags_EnterReturnsTrue)) {
+
+			}
+
+			if (ImGui::Button("Save Scene")) {
+				this->SaveScene(filenameToSaveScene);
+			}
+
+			// TODO: Should we do this?. No do not do this, and provide a save button.
+			if (ImGui::Button("Cancel")) {
+				//filenameToSaveScene = "File Name";
+				openSaveSceneAsWindow = false;
+			}
+
+			ImGui::End();
+		}
+		
+		// TODO: Input Text is really wonky. Can we provide a better way, a drop down or selection box for people to choose how to save the files and how to load the files.
+		if (openLoadSceneWindow) {
+			ImGui::Begin("Load Scene", &openLoadSceneWindow);
+
+			if (ImGui::InputText("File Name: ##LoadSceneFileName", filenameToLoadScene, 20, ImGuiInputTextFlags_EnterReturnsTrue)) {
+				
+			}
+
+			if (ImGui::Button("Load Scene")) {
+				try {
+					this->LoadScene(filenameToLoadScene);
+#if _WIN32 || _WIN64
+					strncpy_s(filenameToLoadScene, filenameToSaveScene, 20);
+#else
+					strncpy(filenameToLoadScene, filenameToSaveScene, 20);
+#endif
+				}
+				catch (...) {
+					LOGGER.AddToLog("Cannot Open Scene" + std::string(filenameToLoadScene), PE_LOG_ERROR);
+					ImGui::Text("Cannot find the file. Please Check");
+				}
+		}
+
+			// TODO: Should we do this?. No do not do this, and provide a save button.
+			if (ImGui::Button("Cancel")) {
+				//filenameToSaveScene = "File Name";
+				openLoadSceneWindow = false;
+			}
+
+			ImGui::End();
 		}
 
 		if ( pathingDebugWindow )
