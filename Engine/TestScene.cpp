@@ -519,6 +519,13 @@ namespace piolot {
 			int number_of_cameras = cameras.size();
 			out.write((char *)&number_of_cameras, sizeof(int));
 
+			// Try saving the name of the Camera.
+			for (auto it : cameras) {
+				out.write((char*)&it.first, 20 * sizeof(char));
+				break;
+			}
+			
+
 			// Try saving one camera., the first one.
 			out.write((char*)cameras.at("First").get(), sizeof(Camera));
 
@@ -542,6 +549,10 @@ namespace piolot {
 
 			int number_of_cameras = 0;
 			in.read((char *)&number_of_cameras, sizeof(int));
+
+			// Try loading the name.
+			std::string camera_name;
+			in.read((char*)&camera_name, sizeof(char) * 20);
 
 			// Try loading a Camera
 			in.read((char*)cameras.at("First").get(), sizeof(Camera));
