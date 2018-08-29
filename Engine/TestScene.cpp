@@ -5,6 +5,8 @@
 
 #include "Configurations.h"
 
+#include <fstream>
+
 #if ENABLE_GUI
 #include "external_files/ImGUI/imgui.h"
 #endif
@@ -254,6 +256,15 @@ namespace piolot {
 
 		if (ImGui::BeginMainMenuBar())
 		{
+			if (ImGui::BeginMenu("Scene")) {
+				if (ImGui::MenuItem("Save Scene")) {
+					this->SaveScene("filename");
+				}
+				if (ImGui::MenuItem("Load Scene")) {
+					this->LoadScene("filename");
+				}
+				ImGui::EndMenu();
+			}
 			if ( ImGui::BeginMenu("Windows"))
 			{
 				if ( ImGui::MenuItem("Pathing Debug Window"))
@@ -483,6 +494,44 @@ namespace piolot {
 			ImGui::EndGroup();
 
 			ImGui::End();
+		}
+
+	}
+
+	void TestScene::SaveScene(const char * _fileName)
+	{
+		std::ofstream out(_fileName, std::ios::binary);
+
+		if (out.good()) {
+
+			// Save all the Stuff.
+
+			// Start by saving all the GUI bools and see if it is working.
+			out.write((char *)&pathingDebugWindow, sizeof(bool));
+			out.write((char *)&displayAssetManagerWindow, sizeof(bool));
+			out.write((char *)&displayLogWindow, sizeof(bool));
+			out.write((char *)&displayCameraControls, sizeof(bool));
+			out.write((char *)&displayRaypickingControls, sizeof(bool));
+			out.write((char *)&displayDemoWindow, sizeof(bool));
+			out.write((char *)&displayViewportControls, sizeof(bool));
+
+		}
+
+		out.close();
+	}
+
+	void TestScene::LoadScene(const char * _fileName)
+	{
+		std::ifstream in(_fileName, std::ios::binary);
+
+		if (in.good()) {
+			in.read((char *)&pathingDebugWindow, sizeof(bool));
+			in.read((char *)&displayAssetManagerWindow, sizeof(bool));
+			in.read((char *)&displayLogWindow, sizeof(bool));
+			in.read((char *)&displayCameraControls, sizeof(bool));
+			in.read((char *)&displayRaypickingControls, sizeof(bool));
+			in.read((char *)&displayDemoWindow, sizeof(bool));
+			in.read((char *)&displayViewportControls, sizeof(bool));
 		}
 
 	}

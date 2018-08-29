@@ -61,6 +61,10 @@ namespace piolot {
 
 		virtual void OnImguiRender(ImGuiControlVariables& _vars);
 
+		void SaveScene(const char * _fileName);
+
+		void LoadScene(const char * _fileName);
+
 	};
 
 }
