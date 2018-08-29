@@ -515,6 +515,13 @@ namespace piolot {
 			out.write((char *)&displayDemoWindow, sizeof(bool));
 			out.write((char *)&displayViewportControls, sizeof(bool));
 
+			// We Save all the Cameras.
+			int number_of_cameras = cameras.size();
+			out.write((char *)&number_of_cameras, sizeof(int));
+
+			// Try saving one camera., the first one.
+			out.write((char*)cameras.at("First").get(), sizeof(Camera));
+
 		}
 
 		out.close();
@@ -532,7 +539,15 @@ namespace piolot {
 			in.read((char *)&displayRaypickingControls, sizeof(bool));
 			in.read((char *)&displayDemoWindow, sizeof(bool));
 			in.read((char *)&displayViewportControls, sizeof(bool));
+
+			int number_of_cameras = 0;
+			in.read((char *)&number_of_cameras, sizeof(int));
+
+			// Try loading a Camera
+			in.read((char*)cameras.at("First").get(), sizeof(Camera));
 		}
+
+		in.close();
 
 	}
 
