@@ -5,6 +5,7 @@
 #include "AssetManager.h"
 
 #include <algorithm>
+#include "SaveSceneHelpers.h"
 
 #define UNPASSABLE_NAV_COST_LIMIT		1.0f
 
@@ -63,6 +64,12 @@ namespace piolot {
 		: length(_mapLength), breadth(_mapBreadth), gridLength(_gridLength), gridBreadth(_gridBreadth), heightMapFile(_heightMapFile)
 	{
 
+		Init();
+
+	}
+
+	void Terrain::Init()
+	{
 		nodeCountX = (length / gridLength) + 1;
 		nodeCountZ = (breadth / gridBreadth) + 1;
 
@@ -76,10 +83,10 @@ namespace piolot {
 		stbi_set_flip_vertically_on_load(true);
 		int image_width, image_height, nr_channels;
 
-		auto data = stbi_load(_heightMapFile.c_str(), &image_width, &image_height, &nr_channels, 0);
+		auto data = stbi_load(heightMapFile.c_str(), &image_width, &image_height, &nr_channels, 0);
 
 		if (NULL == data) {
-			LOGGER.AddToLog("Unable to load " + _heightMapFile, PE_LOG_ERROR);
+			LOGGER.AddToLog("Unable to load " + heightMapFile, PE_LOG_ERROR);
 		}
 
 		for (auto i = 0; i < nodeCountX; i++)
@@ -150,7 +157,7 @@ namespace piolot {
 			}
 		}
 
-		
+
 
 		auto mesh = std::make_shared<Mesh>(&vertices[0], sizeof(TerrainVertexData), vertices.size(), indices);
 		mesh->SetTextureNames(std::vector<std::string>{"grass"});
@@ -166,7 +173,6 @@ namespace piolot {
 
 		// Load Stuff for PathFinding
 		InitPathFinding();
-
 	}
 
 	void Terrain::Render()
@@ -539,13 +545,55 @@ namespace piolot {
 		return tile_sets;
 	}
 
-	Terrain::~Terrain()
+	void Terrain::SaveToFile(std::ofstream& _out)
+	{
+
+		// You can pretty much store everything but the MapTiles, as usual. Infact, we can construct this from the parameters.
+		_out.write((char*)&length, sizeof(int));
+		_out.write((char*)&breadth, sizeof(int));
+		_out.write((char*)&gridLength, sizeof(int));
+		_out.write((char*)&gridBreadth, sizeof(int));
+
+		pe_helpers::store_strings(heightMapFile, _out);
+
+		_out.write((char*)&startxz, sizeof(startxz));
+		_out.write((char*)&endxz, sizeof(endxz));
+
+	}
+
+	void Terrain::LoadFromFile(std::ifstream& _in)
+	{
+
+		// Read the Four Ints.
+		_in.read((char*)&length, sizeof(int));
+		_in.read((char*)&breadth, sizeof(int));
+		_in.read((char*)&gridLength, sizeof(int));
+		_in.read((char*)&gridBreadth, sizeof(int));
+
+		pe_helpers::read_strings(heightMapFile, _in);
+
+		_in.read((char*)&startxz, sizeof(startxz));
+		_in.read((char*)&endxz, sizeof(endxz));
+
+		// Init creates the new tiles. So, delete them before that.
+		DeleteTiles();
+
+		this->Init();
+
+	}
+
+	void Terrain::DeleteTiles() const
 	{
 		for (auto i = 0; i < nodeCountX; i++) {
 			delete[] tiles[i];
 		}
-		
+
 		delete[] tiles;
+	}
+
+	Terrain::~Terrain()
+	{
+		DeleteTiles();
 	}
 
 

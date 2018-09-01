@@ -322,9 +322,7 @@ namespace piolot {
 		if (openSaveSceneAsWindow) {
 			ImGui::Begin("Save Scene", &openSaveSceneAsWindow);
 
-			if (ImGui::InputText("File Name: ##SaveSceneFileName", filenameToSaveScene, 20, ImGuiInputTextFlags_EnterReturnsTrue)) {
-
-			}
+			if (ImGui::InputText("File Name: ##SaveSceneFileName", filenameToSaveScene, 20));
 
 			if (ImGui::Button("Save Scene")) {
 				this->SaveScene(filenameToSaveScene);
@@ -343,9 +341,7 @@ namespace piolot {
 		if (openLoadSceneWindow) {
 			ImGui::Begin("Load Scene", &openLoadSceneWindow);
 
-			if (ImGui::InputText("File Name: ##LoadSceneFileName", filenameToLoadScene, 20, ImGuiInputTextFlags_EnterReturnsTrue)) {
-				
-			}
+			if (ImGui::InputText("File to Load: ##LoadSceneFileName", filenameToLoadScene, 20));
 
 			if (ImGui::Button("Load Scene")) {
 				try {
@@ -560,7 +556,11 @@ namespace piolot {
 
 	void TestScene::SaveScene(const char * _fileName)
 	{
-		std::ofstream out(_fileName, std::ios::binary);
+
+		std::string test_string = std::string(SCENES_FOLDER) + std::string(_fileName);
+		const char * actual_file_name =  (test_string).c_str();
+
+		std::ofstream out(actual_file_name, std::ios::binary);
 
 		if (out.good()) {
 
@@ -585,6 +585,8 @@ namespace piolot {
 			}
 
 			// Store the Terrain
+			// We need to store the Map Tile Data as well, that is on the heap.
+			// TODO: Create a Save Terrain function for the Terrain, and a Load Terrain Function.
 			out.write((char*)testTerrain.get(), sizeof(Terrain));
 
 			// Store the Viewport Details.
@@ -600,7 +602,11 @@ namespace piolot {
 
 	void TestScene::LoadScene(const char * _fileName)
 	{
-		std::ifstream in(_fileName, std::ios::binary);
+
+		std::string test_string = std::string(SCENES_FOLDER) + std::string(_fileName);
+		const char * actual_file_name = (test_string).c_str();
+
+		std::ifstream in(actual_file_name, std::ios::binary);
 
 		if (in.good()) {
 			in.read((char *)&pathingDebugWindow, sizeof(bool));
@@ -637,7 +643,7 @@ namespace piolot {
 			}
 
 			// Load the Terrain
-			in.read((char*)testTerrain.get(), sizeof(Terrain));
+			testTerrain->LoadFromFile(in);
 
 			// Load the Viewport Details
 			for (auto i = 0; i < 4; i++) {

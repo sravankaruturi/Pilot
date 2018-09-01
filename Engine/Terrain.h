@@ -3,6 +3,8 @@
 #include <memory>
 #include "Object.h"
 
+#include <fstream>
+
 namespace piolot {
 
 	struct TerrainVertexData{
@@ -46,9 +48,33 @@ namespace piolot {
 	class Terrain : public Entity
 	{
 
+	private:
 		unsigned int length, breadth;
+	
+		float gridLength, gridBreadth;
+
+		unsigned int nodeCountX, nodeCountZ;
+
+		MapTile ** tiles;
+
+		std::string heightMapFile;
+
+		std::vector<TerrainVertexData> vertices;
+
+		bool areVerticesDirty = false;
+
+		std::vector<unsigned int> indices;
+
+		std::shared_ptr<Object> objectPtr;
+
+		glm::vec3 ComputeGridNormal(int _x,int _z);
+
+		/* Testing stuff */
+		glm::vec2 startxz;
+		glm::vec2 endxz;
 
 	public:
+
 		unsigned GetLength() const
 		{
 			return length;
@@ -104,32 +130,9 @@ namespace piolot {
 			return objectPtr;
 		}
 
-	private:
-		float gridLength, gridBreadth;
-
-		unsigned int nodeCountX, nodeCountZ;
-
-		MapTile ** tiles;
-
-		std::string heightMapFile;
-
-		std::vector<TerrainVertexData> vertices;
-
-		bool areVerticesDirty = false;
-
-		std::vector<unsigned int> indices;
-
-		std::shared_ptr<Object> objectPtr;
-
-		glm::vec3 ComputeGridNormal(int _x,int _z);
-
-		/* Testing stuff */
-		glm::vec2 startxz;
-		glm::vec2 endxz;
-
-	public:
-
 		Terrain(int _mapLength, int _mapBreadth, float _gridLength, float _gridBreadth, std::string _heightMapFile);
+
+		void Init();
 
 		void Render();
 
@@ -158,6 +161,12 @@ namespace piolot {
 		int GetNodeSetFromPos(float _x, float _z);
 
 		std::vector<int> GetAllTileSets();
+
+		void SaveToFile(std::ofstream& _out);
+
+		void LoadFromFile(std::ifstream& _in);
+
+		void DeleteTiles() const;
 
 		~Terrain();
 
