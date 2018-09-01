@@ -31,6 +31,7 @@ namespace piolot {
 	class TestScene : public Scene
 	{
 
+		// Stuff that should be saved
 		Grid testGrid;
 		std::shared_ptr<Terrain> testTerrain;
 
@@ -49,6 +50,15 @@ namespace piolot {
 		bool displayViewportControls = false;
 
 		ViewportDetails viewportsDetails[4];
+
+		// Save these as a nice QOL Feature.
+		std::string filenameToSaveScene = "File Name";
+		std::string filenameToLoadScene = "File Name";
+
+		// Stuff that should not be saved.
+		bool openSaveSceneAsWindow = false;
+		bool openLoadSceneWindow = false;
+
 
 	public:
 

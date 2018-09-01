@@ -263,10 +263,13 @@ namespace piolot {
 		{
 			if (ImGui::BeginMenu("Scene")) {
 				if (ImGui::MenuItem("Save Scene")) {
-					this->SaveScene("filename");
+					this->SaveScene(filenameToSaveScene.c_str());
+				}
+				if (ImGui::MenuItem("Save Scene As...")) {
+					openSaveSceneAsWindow = true;
 				}
 				if (ImGui::MenuItem("Load Scene")) {
-					this->LoadScene("filename");
+					openLoadSceneWindow = true;
 				}
 				ImGui::EndMenu();
 			}
@@ -314,6 +317,74 @@ namespace piolot {
 			}
 
 			ImGui::EndMainMenuBar();
+		}
+
+		if (openSaveSceneAsWindow) {
+			ImGui::Begin("Save Scene", &openSaveSceneAsWindow);
+
+			if (ImGui::InputText("File Name: ##SaveSceneFileName", &filenameToSaveScene[0], 20));
+
+			if (ImGui::Button("Save Scene")) {
+				this->SaveScene(filenameToSaveScene.c_str());
+			}
+
+			// TODO: Should we do this?. No do not do this, and provide a save button.
+			if (ImGui::Button("Cancel")) {
+				//filenameToSaveScene = "File Name";
+				openSaveSceneAsWindow = false;
+			}
+
+			ImGui::End();
+		}
+		
+		// TODO: Input Text is really wonky. Can we provide a better way, a drop down or selection box for people to choose how to save the files and how to load the files.
+		if (openLoadSceneWindow) {
+			ImGui::Begin("Load Scene", &openLoadSceneWindow);
+
+			// Iterate through the Scenes directory and Show the Scenes.
+			for (auto& p : std::experimental::filesystem::directory_iterator(SCENES_FOLDER)) {
+
+				std::string file_name_temp = p.path().filename().generic_string();
+
+				filenameToLoadScene = file_name_temp;
+
+				if ( ImGui::Button(file_name_temp.c_str())) {
+
+					//try {
+						this->LoadScene(filenameToLoadScene.c_str());
+						filenameToSaveScene = filenameToLoadScene;
+					/*}
+					catch (...) {
+						LOGGER.AddToLog("Cannot Open Scene " + std::string(filenameToLoadScene), PE_LOG_ERROR);
+						ImGui::Text("Cannot find the file. Please Check");
+					}*/
+				}
+			}
+
+			//ImGui::Separator();
+
+			//if (ImGui::InputText("File to Load: ##LoadSceneFileName", &filenameToLoadScene[0], 20));
+
+			//if (ImGui::Button("Load Scene")) {
+			//	//try {
+			//		this->LoadScene(filenameToLoadScene.c_str());
+			//		filenameToSaveScene = filenameToLoadScene;
+			//	//}
+			//	//catch (...) {
+			//	//	LOGGER.AddToLog("Cannot Open Scene " + std::string(filenameToLoadScene), PE_LOG_ERROR);
+			//	//	ImGui::Text("Cannot find the file. Please Check");
+			//	//}
+			//}
+
+			//ImGui::SameLine();
+
+			//// TODO: Should we do this?. No do not do this, and provide a save button.
+			//if (ImGui::Button("Cancel")) {
+			//	//filenameToSaveScene = "File Name";
+			//	openLoadSceneWindow = false;
+			//}
+
+			ImGui::End();
 		}
 
 		if ( pathingDebugWindow )
@@ -505,7 +576,11 @@ namespace piolot {
 
 	void TestScene::SaveScene(const char * _fileName)
 	{
-		std::ofstream out(_fileName, std::ios::binary);
+
+		std::string test_string = std::string(SCENES_FOLDER) + std::string(_fileName);
+		const char * actual_file_name =  (test_string).c_str();
+
+		std::ofstream out(actual_file_name, std::ios::binary);
 
 		if (out.good()) {
 
@@ -530,7 +605,9 @@ namespace piolot {
 			}
 
 			// Store the Terrain
-			out.write((char*)testTerrain.get(), sizeof(Terrain));
+			// We need to store the Map Tile Data as well, that is on the heap.
+			// TODO: Create a Save Terrain function for the Terrain, and a Load Terrain Function.
+			testTerrain->SaveToFile(out);
 
 			// Store the Viewport Details.
 			for (auto i = 0; i < 4; i++) {
@@ -545,7 +622,11 @@ namespace piolot {
 
 	void TestScene::LoadScene(const char * _fileName)
 	{
-		std::ifstream in(_fileName, std::ios::binary);
+
+		std::string test_string = std::string(SCENES_FOLDER) + std::string(_fileName);
+		const char * actual_file_name = (test_string).c_str();
+
+		std::ifstream in(actual_file_name, std::ios::binary);
 
 		if (in.good()) {
 			in.read((char *)&pathingDebugWindow, sizeof(bool));
@@ -582,7 +663,8 @@ namespace piolot {
 			}
 
 			// Load the Terrain
-			in.read((char*)testTerrain.get(), sizeof(Terrain));
+			ASMGR.objects.erase("terrain");
+			testTerrain->LoadFromFile(in);
 
 			// Load the Viewport Details
 			for (auto i = 0; i < 4; i++) {
