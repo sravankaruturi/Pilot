@@ -361,28 +361,28 @@ namespace piolot {
 				}
 			}
 
-			ImGui::Separator();
+			//ImGui::Separator();
 
-			if (ImGui::InputText("File to Load: ##LoadSceneFileName", &filenameToLoadScene[0], 20));
+			//if (ImGui::InputText("File to Load: ##LoadSceneFileName", &filenameToLoadScene[0], 20));
 
-			if (ImGui::Button("Load Scene")) {
-				//try {
-					this->LoadScene(filenameToLoadScene.c_str());
-					filenameToSaveScene = filenameToLoadScene;
-				//}
-				//catch (...) {
-				//	LOGGER.AddToLog("Cannot Open Scene " + std::string(filenameToLoadScene), PE_LOG_ERROR);
-				//	ImGui::Text("Cannot find the file. Please Check");
-				//}
-			}
+			//if (ImGui::Button("Load Scene")) {
+			//	//try {
+			//		this->LoadScene(filenameToLoadScene.c_str());
+			//		filenameToSaveScene = filenameToLoadScene;
+			//	//}
+			//	//catch (...) {
+			//	//	LOGGER.AddToLog("Cannot Open Scene " + std::string(filenameToLoadScene), PE_LOG_ERROR);
+			//	//	ImGui::Text("Cannot find the file. Please Check");
+			//	//}
+			//}
 
-			ImGui::SameLine();
+			//ImGui::SameLine();
 
-			// TODO: Should we do this?. No do not do this, and provide a save button.
-			if (ImGui::Button("Cancel")) {
-				//filenameToSaveScene = "File Name";
-				openLoadSceneWindow = false;
-			}
+			//// TODO: Should we do this?. No do not do this, and provide a save button.
+			//if (ImGui::Button("Cancel")) {
+			//	//filenameToSaveScene = "File Name";
+			//	openLoadSceneWindow = false;
+			//}
 
 			ImGui::End();
 		}
