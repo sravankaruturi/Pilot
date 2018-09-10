@@ -626,9 +626,9 @@ namespace piolot {
 		std::string test_string = std::string(SCENES_FOLDER) + std::string(_fileName);
 		const char * actual_file_name = (test_string).c_str();
 
-		std::ifstream in(actual_file_name, std::ios::binary);
+		std::ifstream in(actual_file_name, std::ios::binary );
 
-		if (in.good()) {
+		if (in.good() && !in.eof()) {
 			in.read((char *)&pathingDebugWindow, sizeof(bool));
 			in.read((char *)&displayAssetManagerWindow, sizeof(bool));
 			in.read((char *)&displayLogWindow, sizeof(bool));
