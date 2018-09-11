@@ -11,3 +11,6 @@ It uses Dear Imgui for all the UI Elements.
 
 1. Able to Save your Current working Scene to a binary file and resume working later.
 2. Can split your view into 4 viewports and assign different cameras for each viewport.
+
+# Dev Blog:
+https://sravankaruturi.github.io/Pilot/
