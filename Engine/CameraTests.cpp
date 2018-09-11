@@ -1,3 +1,8 @@
+#pragma once
+#include "Configurations.h"
+
+#if !DISABLE_UNIT_TESTS
+
 #include <gtest/gtest.h>
 #include "Camera.h"
 #include <glm/gtc/matrix_transform.inl>
@@ -115,3 +120,5 @@ TEST_F(CameraTests, CheckMouseRayDirection)
 	EXPECT_FLOAT_EQ(resultant_ray.z, -1);
 
 }
+
+#endif

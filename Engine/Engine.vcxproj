@@ -138,6 +138,7 @@
     <ClCompile Include="CameraTests.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Ray.cpp" />
+    <ClCompile Include="SaveSceneHelpers.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="TerrainTests.cpp" />
     <ClCompile Include="tests.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="BoundingBox.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Colours.h" />
+    <ClInclude Include="Configurations.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="external_files\ImGUI\imconfig.h" />
     <ClInclude Include="external_files\ImGUI\imgui.h" />
@@ -170,6 +172,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="PE_GL.h" />
     <ClInclude Include="Ray.h" />
+    <ClInclude Include="SaveSceneHelpers.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="TestScene.h" />
@@ -184,9 +187,7 @@
     <None Include="Shaders\failing_test.vert" />
     <None Include="Shaders\good_test.frag" />
     <None Include="Shaders\good_test.vert" />
-    <None Include="Shaders\terrain.frag" />
     <None Include="Shaders\terrain.shader" />
-    <None Include="Shaders\terrain.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

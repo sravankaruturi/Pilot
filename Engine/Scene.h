@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <memory>
+#include <map>
 
 #include "Camera.h"
 #include "Entity.h"
@@ -18,7 +19,7 @@ namespace piolot {
 
 		std::shared_ptr<Camera> activeCamera;
 
-		std::vector<std::shared_ptr<Camera>> cameras;
+		std::map<std::string, std::shared_ptr<Camera>> cameras;
 		std::vector<std::shared_ptr<Entity>> entities;
 
 	public:

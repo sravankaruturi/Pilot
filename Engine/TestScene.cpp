@@ -1,8 +1,20 @@
-﻿#include "TestScene.h"
+﻿#pragma once
+#include "TestScene.h"
 #include "AssetManager.h"
 #include "Window.h"
 #include <glm/gtc/matrix_transform.inl>
+
+#include "Configurations.h"
+
+#include <fstream>
+
+#if ENABLE_GUI
 #include "external_files/ImGUI/imgui.h"
+#endif
+
+#include "../SaveSceneHelpers.h"
+
+#define		NAME_LENGTH_TO_FILE		20
 
 namespace piolot {
 
@@ -25,18 +37,25 @@ namespace piolot {
 		ASMGR.LoadShaders();
 		ASMGR.LoadTextures();
 
-		cameras.push_back(std::make_shared<Camera>("First", glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0)));
-		cameras.push_back(std::make_shared<Camera>("Second", glm::vec3(10, 0, 10), glm::vec3(-1, 0, -1), glm::vec3(0, 1, 0)));
+		cameras.insert_or_assign("First", std::make_shared<Camera>("First", glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0)));
+		cameras.insert_or_assign("Second", std::make_shared<Camera>("Second", glm::vec3(10, 0, 10), glm::vec3(-1, 0, -1), glm::vec3(0, 1, 0)));
 
 		entities.push_back(std::make_shared<Entity>("lowpolytree/lowpolytree.obj", "good_test"));
 
-		ActiveCamera(cameras[0]);
+		ActiveCamera(cameras.at("First"));
 
 		// We need to wait for the Shaders to be loaded to call this function.
 		testGrid.Init();
 		
 		//terrain_test = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
 		testTerrain = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
+
+		viewportsDetails[0].camera = activeCamera;
+		viewportsDetails[1].camera = activeCamera;
+		viewportsDetails[2].camera = activeCamera;
+		viewportsDetails[3].camera = activeCamera;
+
+		viewportsDetails[0].isOrthogonal = false;
 
 	}
 
@@ -46,28 +65,65 @@ namespace piolot {
 		const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
 
 		for (auto& it : cameras) {
-			it->UpdateVectors();
+			it.second->UpdateVectors();
 		}
 
 		for (const auto& it : entities) {
 			it->Update(_deltaTime);
 		}
 
-		glm::vec3 mouse_pointer_ray = activeCamera->GetMouseRayDirection(window->mouseX, window->mouseY, window->GetWidth(), window->GetHeight(), projection_matrix);
+		glm::vec3 mouse_pointer_ray;
 
 		/* Ray Picking */
+		/* We would assume that Ray Picking works only in two instances of Viewport Style. 4 Viewports and 1 Viewport */
 		{
 			float int_distance = 0;
 			float min_int_distance = 10000.0f;
 			// Do Ray Picking Here.
 			// For each Bounding Box, we check for the collision, and do what we want, as part of the Scene Update.
 
+			// We get the Camera Position and then move it according to the Viewports.
+			// We get the Size of the Viewport 0. We comapre that to the Size of the framebuffer.
+
+			int viewport_size[4];
+			PE_GL(glGetIntegeri_v(GL_VIEWPORT, 0, viewport_size));
+
+			// If this is 0, 0, w, h, then we only have one viewport. Else. We have 4.
+			//std::cout << viewport_size[0] << ", " << viewport_size[1] << ", " << viewport_size[2] << ", " << viewport_size[3] << std::endl;
+
+			glm::vec3 ray_start;
+			if (viewport_size[2] == window->GetWidth() && viewport_size[3] == window->GetHeight()) {
+				// One Viewport
+				ray_start = this->activeCamera->GetPosition();
+
+				mouse_pointer_ray = activeCamera->GetMouseRayDirection(window->mouseX, window->mouseY, window->GetWidth(), window->GetHeight(), projection_matrix);
+			}
+			else {
+
+				ray_start = this->activeCamera->GetPosition();
+
+				// Multiple Viewport
+				// TODO: Fix This.
+				float updated_x, updated_y;
+
+				updated_x = (window->mouseX > window->GetWidth() / 2.0f) ? window->mouseX - window->GetWidth() / 2.0f : window->mouseX;
+				updated_y = (window->mouseY > window->GetHeight() / 2.0f) ? window->mouseY - window->GetHeight() / 2.0f : window->mouseY;
+
+				updated_x *= 2;
+				updated_y *= 2;
+
+				//mouse_pointer_ray = activeCamera->GetMouseRayDirection(updated_x, updated_y, viewport_size[2], viewport_size[3], projection_matrix);
+				mouse_pointer_ray = activeCamera->GetMouseRayDirection(updated_x, updated_y, window->GetWidth(), window->GetHeight(), projection_matrix);
+
+			}
+
+
 			// We reset this every frame.
 			std::shared_ptr<Entity> selected_entity;
 			// Loop through all Entities that can be selected.
 			for (auto it : entities)
 			{
-				if (it->CheckIfMouseOvered(this->activeCamera->GetPosition(), mouse_pointer_ray, min_int_distance))
+				if (it->CheckIfMouseOvered(ray_start, mouse_pointer_ray, min_int_distance))
 				{
 					if (int_distance < min_int_distance)
 					{
@@ -138,9 +194,19 @@ namespace piolot {
 		glm::mat4 projection_matrices[4] = {persp_projection_matrix, ortho_projection_matrix, ortho_projection_matrix, ortho_projection_matrix};
 		glm::mat4 view_matrices[4] = {this->activeCamera->GetViewMatrix()};
 
-		view_matrices[1] = glm::lookAt(glm::vec3(8, 0, 0), glm::vec3(), glm::vec3(0, 1, 0));
+		/*view_matrices[1] = glm::lookAt(glm::vec3(8, 0, 0), glm::vec3(), glm::vec3(0, 1, 0));
 		view_matrices[2] = glm::lookAt(glm::vec3(0, 8, 0), glm::vec3(), glm::vec3(0, 0, 1));;
-		view_matrices[3] = glm::lookAt(glm::vec3(0, 0, 8), glm::vec3(), glm::vec3(0, 1, 0));;
+		view_matrices[3] = glm::lookAt(glm::vec3(0, 0, 8), glm::vec3(), glm::vec3(0, 1, 0));;*/
+
+		view_matrices[0] = viewportsDetails[0].camera->GetViewMatrix();
+		view_matrices[1] = viewportsDetails[1].camera->GetViewMatrix();
+		view_matrices[2] = viewportsDetails[2].camera->GetViewMatrix();
+		view_matrices[3] = viewportsDetails[3].camera->GetViewMatrix();
+
+		projection_matrices[0] = viewportsDetails[0].isOrthogonal ? ortho_projection_matrix : persp_projection_matrix;
+		projection_matrices[1] = viewportsDetails[1].isOrthogonal ? ortho_projection_matrix : persp_projection_matrix;
+		projection_matrices[2] = viewportsDetails[2].isOrthogonal ? ortho_projection_matrix : persp_projection_matrix;
+		projection_matrices[3] = viewportsDetails[3].isOrthogonal ? ortho_projection_matrix : persp_projection_matrix;
 
 		// We set the View and Projection Matrices for all the Shaders that has them ( They all should have them ideally ).
 		for (auto it : ASMGR.shaders)
@@ -195,6 +261,18 @@ namespace piolot {
 
 		if (ImGui::BeginMainMenuBar())
 		{
+			if (ImGui::BeginMenu("Scene")) {
+				if (ImGui::MenuItem("Save Scene")) {
+					this->SaveScene(filenameToSaveScene.c_str());
+				}
+				if (ImGui::MenuItem("Save Scene As...")) {
+					openSaveSceneAsWindow = true;
+				}
+				if (ImGui::MenuItem("Load Scene")) {
+					openLoadSceneWindow = true;
+				}
+				ImGui::EndMenu();
+			}
 			if ( ImGui::BeginMenu("Windows"))
 			{
 				if ( ImGui::MenuItem("Pathing Debug Window"))
@@ -209,6 +287,14 @@ namespace piolot {
 				{
 					displayLogWindow = true;
 				}
+				if (ImGui::MenuItem("Ray Picking Debug Window")) {
+					displayRaypickingControls = true;
+				}
+
+				if (ImGui::MenuItem("Demo Window")) {
+					displayDemoWindow = true;
+				}
+
 				ImGui::EndMenu();
 			}
 
@@ -223,10 +309,82 @@ namespace piolot {
 					_vars.show_multiple_viewports = !_vars.show_multiple_viewports;
 				}
 
+				if (ImGui::MenuItem("View Ports")) {
+					displayViewportControls = true;
+				}
+
 				ImGui::EndMenu();
 			}
 
 			ImGui::EndMainMenuBar();
+		}
+
+		if (openSaveSceneAsWindow) {
+			ImGui::Begin("Save Scene", &openSaveSceneAsWindow);
+
+			if (ImGui::InputText("File Name: ##SaveSceneFileName", &filenameToSaveScene[0], 20));
+
+			if (ImGui::Button("Save Scene")) {
+				this->SaveScene(filenameToSaveScene.c_str());
+			}
+
+			// TODO: Should we do this?. No do not do this, and provide a save button.
+			if (ImGui::Button("Cancel")) {
+				//filenameToSaveScene = "File Name";
+				openSaveSceneAsWindow = false;
+			}
+
+			ImGui::End();
+		}
+		
+		// TODO: Input Text is really wonky. Can we provide a better way, a drop down or selection box for people to choose how to save the files and how to load the files.
+		if (openLoadSceneWindow) {
+			ImGui::Begin("Load Scene", &openLoadSceneWindow);
+
+			// Iterate through the Scenes directory and Show the Scenes.
+			for (auto& p : std::experimental::filesystem::directory_iterator(SCENES_FOLDER)) {
+
+				std::string file_name_temp = p.path().filename().generic_string();
+
+				filenameToLoadScene = file_name_temp;
+
+				if ( ImGui::Button(file_name_temp.c_str())) {
+
+					//try {
+						this->LoadScene(filenameToLoadScene.c_str());
+						filenameToSaveScene = filenameToLoadScene;
+					/*}
+					catch (...) {
+						LOGGER.AddToLog("Cannot Open Scene " + std::string(filenameToLoadScene), PE_LOG_ERROR);
+						ImGui::Text("Cannot find the file. Please Check");
+					}*/
+				}
+			}
+
+			//ImGui::Separator();
+
+			//if (ImGui::InputText("File to Load: ##LoadSceneFileName", &filenameToLoadScene[0], 20));
+
+			//if (ImGui::Button("Load Scene")) {
+			//	//try {
+			//		this->LoadScene(filenameToLoadScene.c_str());
+			//		filenameToSaveScene = filenameToLoadScene;
+			//	//}
+			//	//catch (...) {
+			//	//	LOGGER.AddToLog("Cannot Open Scene " + std::string(filenameToLoadScene), PE_LOG_ERROR);
+			//	//	ImGui::Text("Cannot find the file. Please Check");
+			//	//}
+			//}
+
+			//ImGui::SameLine();
+
+			//// TODO: Should we do this?. No do not do this, and provide a save button.
+			//if (ImGui::Button("Cancel")) {
+			//	//filenameToSaveScene = "File Name";
+			//	openLoadSceneWindow = false;
+			//}
+
+			ImGui::End();
 		}
 
 		if ( pathingDebugWindow )
@@ -256,7 +414,7 @@ namespace piolot {
 
 			static std::shared_ptr<Camera> selected_camera;
 			if (nullptr == selected_camera) {
-				selected_camera = cameras[0];
+				selected_camera = cameras.at("First");
 			}
 
 			ImGui::BeginChild("Cameras##List", ImVec2(150, 0), true);
@@ -264,9 +422,9 @@ namespace piolot {
 			for (auto& it : cameras) {
 
 				ImGui::PushID(&it);
-				if (ImGui::Selectable(it->GetCameraName().c_str(), selected_camera == it)) {
+				if (ImGui::Selectable(it.second->GetCameraName().c_str(), selected_camera == it.second)) {
 
-					selected_camera = it;
+					selected_camera = it.second;
 
 				}
 				ImGui::PopID();
@@ -287,11 +445,57 @@ namespace piolot {
 
 				ImGui::EndChild();
 
-				if (ImGui::Button("Activate Camera")) { activeCamera = selected_camera; }
+				if (ImGui::Button("Activate Camera")) {
+					activeCamera = selected_camera;
+					// Set the Camera to the Current Viewport.
+					// It is 0 for now.
+					viewportsDetails[0].camera = activeCamera;
+				}
 
 			ImGui::EndGroup();
 
 			ImGui::End();
+		}
+
+		if (displayRaypickingControls) {
+			ImGui::Begin("Ray Picking Debug", &displayRaypickingControls);
+
+			int viewport_size[4];
+			PE_GL(glGetIntegeri_v(GL_VIEWPORT, 0, viewport_size));
+
+			ImGui::Text("Mouse position: %.3f , %.3f", this->window->mouseX, this->window->mouseY);
+
+			float updated_x, updated_y;
+
+			const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
+			glm::vec3 mouse_pointer_ray;
+
+			if (viewport_size[2] == window->GetWidth() && viewport_size[3] == window->GetHeight()) {
+				updated_x = window->mouseX;
+				updated_y = window->mouseY;
+
+				mouse_pointer_ray = activeCamera->GetMouseRayDirection(window->mouseX, window->mouseY, window->GetWidth(), window->GetHeight(), projection_matrix);
+
+			}
+			else {
+				// Set Which viewport this is hovering over here.
+				updated_x = (window->mouseX > window->GetWidth()/2.0f) ? window->mouseX - window->GetWidth() / 2.0f : window->mouseX;
+				updated_y = (window->mouseY > window->GetHeight()/2.0f) ? window->mouseY - window->GetHeight() / 2.0f : window->mouseY;
+
+				updated_x *= 2;
+				updated_y *= 2;
+
+				mouse_pointer_ray = activeCamera->GetMouseRayDirection(updated_x, updated_y, window->GetWidth(), window->GetHeight(), projection_matrix);
+			}
+
+
+
+			ImGui::InputFloat3("Mouse Pointer Ray", glm::value_ptr(mouse_pointer_ray));
+
+			ImGui::Text("Updated Mouse position: %.3f , %.3f", updated_x, updated_y);
+
+			ImGui::End();
+
 		}
 
 		if ( displayAssetManagerWindow )
@@ -303,6 +507,176 @@ namespace piolot {
 		{
 			LOGGER.Render(&displayLogWindow);
 		}
+
+		if (displayDemoWindow) {
+			ImGui::ShowDemoWindow(&displayDemoWindow);
+		}
+
+		if (displayViewportControls) {
+			ImGui::Begin("View Port Controls", &displayViewportControls);
+
+			// Expose all of the Viewport Data we currently have.
+
+			static int selected_index = 0;
+
+			ImGui::BeginChild("Viewports##List", ImVec2(150, 0), true);
+
+			for (auto i = 0; i < 4; i++) {
+				ImGui::PushID(&viewportsDetails[i]);
+				std::string name = "Viewport " + std::to_string(i);
+				if (ImGui::Selectable(name.c_str(), i == selected_index)) {
+					selected_index = i;
+				}
+				ImGui::PopID();
+			}
+
+			ImGui::EndChild();
+
+			ImGui::SameLine();
+
+			ImGui::BeginGroup();
+
+			ImGui::BeginChild("Details", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
+
+			ImGui::Text("Viewport %d", selected_index);
+			ImGui::Separator();
+
+			ImGui::Text("Camera");
+			// Display Camera Details here.
+			viewportsDetails[selected_index].camera->DisplayCameraDetailsImgui();
+
+			if (ImGui::Button("Select a Different Camera")) {
+
+				ImGui::OpenPopup("Camera_Selector_For_Viewports");
+
+			}
+
+			if (ImGui::BeginPopupModal("Camera_Selector_For_Viewports")) {
+
+				for (auto it : cameras) {
+					if (ImGui::Button(it.first.c_str())) {
+						viewportsDetails[selected_index].camera = it.second;
+						ImGui::CloseCurrentPopup();
+					}
+				}
+
+				ImGui::EndPopup();
+			}
+
+			ImGui::Checkbox("Orthogonal", &viewportsDetails[selected_index].isOrthogonal);
+
+			ImGui::EndChild();
+
+			ImGui::EndGroup();
+
+			ImGui::End();
+		}
+
+	}
+
+	void TestScene::SaveScene(const char * _fileName)
+	{
+
+		std::string test_string = std::string(SCENES_FOLDER) + std::string(_fileName);
+		const char * actual_file_name =  (test_string).c_str();
+
+		std::ofstream out(actual_file_name, std::ios::binary);
+
+		if (out.good()) {
+
+			// Save all the Stuff.
+
+			// Start by saving all the GUI bools and see if it is working.
+			out.write((char *)&pathingDebugWindow, sizeof(bool));
+			out.write((char *)&displayAssetManagerWindow, sizeof(bool));
+			out.write((char *)&displayLogWindow, sizeof(bool));
+			out.write((char *)&displayCameraControls, sizeof(bool));
+			out.write((char *)&displayRaypickingControls, sizeof(bool));
+			out.write((char *)&displayDemoWindow, sizeof(bool));
+			out.write((char *)&displayViewportControls, sizeof(bool));
+
+			// We Save all the Cameras.
+			int number_of_cameras = cameras.size();
+			out.write((char *)&number_of_cameras, sizeof(int));
+
+			for (auto it : cameras) {
+				pe_helpers::store_strings(it.first, out);
+				it.second->SaveToStream(out);
+			}
+
+			// Store the Terrain
+			// We need to store the Map Tile Data as well, that is on the heap.
+			// TODO: Create a Save Terrain function for the Terrain, and a Load Terrain Function.
+			testTerrain->SaveToFile(out);
+
+			// Store the Viewport Details.
+			for (auto i = 0; i < 4; i++) {
+				out.write((char*)(&(viewportsDetails[i].isOrthogonal)), sizeof(bool));
+				pe_helpers::store_strings(viewportsDetails[i].camera->GetCameraName(), out);
+			}
+
+		}
+
+		out.close();
+	}
+
+	void TestScene::LoadScene(const char * _fileName)
+	{
+
+		std::string test_string = std::string(SCENES_FOLDER) + std::string(_fileName);
+		const char * actual_file_name = (test_string).c_str();
+
+		std::ifstream in(actual_file_name, std::ios::binary );
+
+		if (in.good() && !in.eof()) {
+			in.read((char *)&pathingDebugWindow, sizeof(bool));
+			in.read((char *)&displayAssetManagerWindow, sizeof(bool));
+			in.read((char *)&displayLogWindow, sizeof(bool));
+			in.read((char *)&displayCameraControls, sizeof(bool));
+			in.read((char *)&displayRaypickingControls, sizeof(bool));
+			in.read((char *)&displayDemoWindow, sizeof(bool));
+			in.read((char *)&displayViewportControls, sizeof(bool));
+
+			int number_of_cameras = 0;
+			in.read((char *)&number_of_cameras, sizeof(int));
+
+			cameras.clear();
+			activeCamera.reset();
+
+			for (auto i = 0; i < number_of_cameras; i++) {
+
+				std::string camera_index;
+
+				std::shared_ptr<Camera> cam = std::make_shared<Camera>();
+
+				pe_helpers::read_strings(camera_index, in);
+
+				cam->LoadFromStream(in);
+
+				cameras.insert_or_assign(camera_index, cam);
+
+				if (nullptr == activeCamera) {
+					activeCamera = cam;
+					viewportsDetails[0].camera = activeCamera;
+				}
+
+			}
+
+			// Load the Terrain
+			ASMGR.objects.erase("terrain");
+			testTerrain->LoadFromFile(in);
+
+			// Load the Viewport Details
+			for (auto i = 0; i < 4; i++) {
+				in.read((char*)(&(viewportsDetails[i].isOrthogonal)), sizeof(bool));
+				std::string camera_name;
+				pe_helpers::read_strings(camera_name, in);
+				viewportsDetails[i].camera = cameras.at(camera_name);
+			}
+
+		}
+
+		in.close();
 
 	}
 

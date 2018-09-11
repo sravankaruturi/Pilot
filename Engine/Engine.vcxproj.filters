@@ -93,6 +93,9 @@
     <ClCompile Include="TerrainTests.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="SaveSceneHelpers.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -182,6 +185,12 @@
     <ClInclude Include="Terrain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Configurations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveSceneHelpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\failing_test.frag">
@@ -200,12 +209,6 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="Shaders\bbox.vert">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="Shaders\terrain.vert">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="Shaders\terrain.frag">
       <Filter>Shaders</Filter>
     </None>
     <None Include="Shaders\terrain.shader">
