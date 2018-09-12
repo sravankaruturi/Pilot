@@ -16,7 +16,24 @@ namespace piolot
 
 		bool selectedInScene = false;
 
+		std::string entityName;
+
 	public:
+		std::string GetEntityName() const
+		{
+			return entityName;
+		}
+
+		void SetEntityName(const std::string& entity_name)
+		{
+			entityName = entity_name;
+		}
+
+		void SetShaderName(const std::string& shader_name)
+		{
+			shaderName = shader_name;
+		}
+
 		bool IsSelectedInScene() const
 		{
 			return selectedInScene;
@@ -35,6 +52,12 @@ namespace piolot
 		const std::string& GetShaderName() const
 		{
 			return shaderName;
+		}
+
+		void SetObjectName(const std::string& _objectName)
+		{
+			this->objectName = _objectName;
+			matrixDirty = true;
 		}
 
 		const std::string& GetObjectName() const
@@ -111,6 +134,8 @@ namespace piolot
 		void Render();
 
 		bool CheckIfMouseOvered(const glm::vec3 _cameraPosition, const glm::vec3 _mouseRayDirection, float& _distance) const;
+
+		void DisplayDetailsImgui();
 
 	};
 }

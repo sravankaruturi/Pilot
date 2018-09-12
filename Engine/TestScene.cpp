@@ -295,8 +295,14 @@ namespace piolot {
 					displayDemoWindow = true;
 				}
 
+				if( ImGui::MenuItem("Hierarchy"))
+				{
+					displayHierarchy = true;
+				}
+
 				ImGui::EndMenu();
 			}
+
 
 			if (ImGui::BeginMenu("View")) {
 
@@ -311,6 +317,17 @@ namespace piolot {
 
 				if (ImGui::MenuItem("View Ports")) {
 					displayViewportControls = true;
+				}
+
+				ImGui::EndMenu();
+			}
+
+			if (ImGui::BeginMenu("Entity"))
+			{
+
+				if (ImGui::MenuItem("Add"))
+				{
+					displayAddEntity = true;
 				}
 
 				ImGui::EndMenu();
@@ -408,6 +425,66 @@ namespace piolot {
 			ImGui::End();
 		}
 
+		if (displayHierarchy)
+		{
+
+			ImGui::Begin("Hierarchy", &displayHierarchy);
+
+			//TODO: This should be highlighted in the Viewport as well.
+			static std::shared_ptr<Entity> selected_entity;
+
+			if (selected_entity == nullptr)
+			{
+				selected_entity = entities[0];
+			}
+
+			// Set the selected flag for the entity.
+			selected_entity->SetSelectedInScene(true);
+
+			ImGui::BeginChild("Entities##List", ImVec2(200, 0), true);
+
+			// Loop through all the Entities
+			for ( auto& it : entities)
+			{
+				ImGui::PushID(&it);
+				if ( ImGui::Selectable(it->GetEntityName().c_str(), selected_entity == it))
+				{
+					selected_entity = it;
+				}
+				ImGui::PopID();
+
+			}
+
+			ImGui::EndChild();
+
+			ImGui::SameLine();
+			// Details of the selected Entity.
+			ImGui::BeginGroup();
+
+			{
+				ImGui::BeginChild("Details", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
+
+				ImGui::Text(selected_entity->GetEntityName().c_str());
+				ImGui::Separator();
+
+				selected_entity->DisplayDetailsImgui();
+
+				ImGui::EndChild();
+
+			}
+
+			ImGui::EndGroup();
+				
+			
+
+			// Cameras
+
+			// Terrain?
+
+			ImGui::End();
+
+		}
+
 		if (displayCameraControls)
 		{
 			ImGui::Begin("Available Cameras", &displayCameraControls);
@@ -488,11 +565,73 @@ namespace piolot {
 				mouse_pointer_ray = activeCamera->GetMouseRayDirection(updated_x, updated_y, window->GetWidth(), window->GetHeight(), projection_matrix);
 			}
 
-
-
 			ImGui::InputFloat3("Mouse Pointer Ray", glm::value_ptr(mouse_pointer_ray));
 
 			ImGui::Text("Updated Mouse position: %.3f , %.3f", updated_x, updated_y);
+
+			ImGui::End();
+
+		}
+
+		if (displayAddEntity)
+		{
+			ImGui::Begin("Add an Entity", &displayAddEntity);
+
+			// Add the Entity. The Gui for it.
+
+			if (ImGui::Button("Select Object"))
+			{
+				ImGui::OpenPopup("Select Object##For Entities");
+			}
+
+			if (ImGui::BeginPopupModal("Select Object##For Entities")) {
+
+				for (const auto& it : ASMGR.objects)
+				{
+					if (ImGui::Button(it.first.c_str()))
+					{
+						objName = it.first;
+						ImGui::CloseCurrentPopup();
+					}
+				}
+
+				ImGui::EndPopup();
+			}
+
+			if (ImGui::Button("Select Shader"))
+			{
+				ImGui::OpenPopup("Select Shader##For Entities");
+			}
+
+			if (ImGui::BeginPopupModal("Select Shader##For Entities")) {
+
+				for (const auto& it : ASMGR.shaders)
+				{
+					if (ImGui::Button(it.first.c_str()))
+					{
+						shaderName = it.first;
+						ImGui::CloseCurrentPopup();
+					}
+				}
+
+				ImGui::EndPopup();
+			}
+
+			// You select the Object Name and the Shader Name.
+
+			if ( ImGui::Button("Create"))
+			{
+				std::shared_ptr<Entity> new_ent = std::make_shared<Entity>();
+
+				// Make sure that you have selected and stored the strings.
+				PE_ASSERT(!objName.empty());
+				PE_ASSERT(!shaderName.empty());
+
+				new_ent->SetObjectName(objName);
+				new_ent->SetShaderName(shaderName);
+
+				entities.push_back(new_ent);
+			}
 
 			ImGui::End();
 
