@@ -59,6 +59,12 @@ namespace piolot {
 		bool openSaveSceneAsWindow = false;
 		bool openLoadSceneWindow = false;
 		bool displayHierarchy = false;
+		bool displayAddEntity = false;
+
+		// GUI Variables when you create a new Entity.
+
+		std::string objName;
+		std::string shaderName;
 
 
 	public:

@@ -322,6 +322,17 @@ namespace piolot {
 				ImGui::EndMenu();
 			}
 
+			if (ImGui::BeginMenu("Entity"))
+			{
+
+				if (ImGui::MenuItem("Add"))
+				{
+					displayAddEntity = true;
+				}
+
+				ImGui::EndMenu();
+			}
+
 			ImGui::EndMainMenuBar();
 		}
 
@@ -436,7 +447,7 @@ namespace piolot {
 			for ( auto& it : entities)
 			{
 				ImGui::PushID(&it);
-				if ( ImGui::Selectable(it->GetObjectName().c_str(), selected_entity == it))
+				if ( ImGui::Selectable(it->GetEntityName().c_str(), selected_entity == it))
 				{
 					selected_entity = it;
 				}
@@ -453,7 +464,7 @@ namespace piolot {
 			{
 				ImGui::BeginChild("Details", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
 
-				ImGui::Text(selected_entity->GetObjectName().c_str());
+				ImGui::Text(selected_entity->GetEntityName().c_str());
 				ImGui::Separator();
 
 				selected_entity->DisplayDetailsImgui();
@@ -554,11 +565,73 @@ namespace piolot {
 				mouse_pointer_ray = activeCamera->GetMouseRayDirection(updated_x, updated_y, window->GetWidth(), window->GetHeight(), projection_matrix);
 			}
 
-
-
 			ImGui::InputFloat3("Mouse Pointer Ray", glm::value_ptr(mouse_pointer_ray));
 
 			ImGui::Text("Updated Mouse position: %.3f , %.3f", updated_x, updated_y);
+
+			ImGui::End();
+
+		}
+
+		if (displayAddEntity)
+		{
+			ImGui::Begin("Add an Entity");
+
+			// Add the Entity. The Gui for it.
+
+			if (ImGui::Button("Select Object"))
+			{
+				ImGui::OpenPopup("Select Object##For Entities");
+			}
+
+			if (ImGui::BeginPopupModal("Select Object##For Entities")) {
+
+				for (const auto& it : ASMGR.objects)
+				{
+					if (ImGui::Button(it.first.c_str()))
+					{
+						objName = it.first;
+						ImGui::CloseCurrentPopup();
+					}
+				}
+
+				ImGui::EndPopup();
+			}
+
+			if (ImGui::Button("Select Shader"))
+			{
+				ImGui::OpenPopup("Select Shader##For Entities");
+			}
+
+			if (ImGui::BeginPopupModal("Select Shader##For Entities")) {
+
+				for (const auto& it : ASMGR.shaders)
+				{
+					if (ImGui::Button(it.first.c_str()))
+					{
+						shaderName = it.first;
+						ImGui::CloseCurrentPopup();
+					}
+				}
+
+				ImGui::EndPopup();
+			}
+
+			// You select the Object Name and the Shader Name.
+
+			if ( ImGui::Button("Create"))
+			{
+				std::shared_ptr<Entity> new_ent = std::make_shared<Entity>();
+
+				// Make sure that you have selected and stored the strings.
+				PE_ASSERT(!objName.empty());
+				PE_ASSERT(!shaderName.empty());
+
+				new_ent->SetObjectName(objName);
+				new_ent->SetShaderName(shaderName);
+
+				entities.push_back(new_ent);
+			}
 
 			ImGui::End();
 

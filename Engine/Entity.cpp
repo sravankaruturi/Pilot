@@ -50,6 +50,8 @@ namespace piolot
 	void Entity::Render()
 	{
 
+		PE_ASSERT(!shaderName.empty() && !objectName.empty());
+
 		// Use the Current Shader.
 		ASMGR.shaders.at(shaderName)->use();
 		// Set the Model Matrix.
@@ -87,4 +89,5 @@ namespace piolot
 		ImGui::InputFloat3("Scale", glm::value_ptr(scale));
 
 	}
+
 }
