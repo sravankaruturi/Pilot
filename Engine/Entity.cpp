@@ -36,11 +36,15 @@ namespace piolot
 
 	void Entity::Update(float _deltaTime)
 	{
+#if !ENABLE_GUI
 		if ( matrixDirty)
 		{
+#endif
 			UpdateMatrices();
+#if !ENABLE_GUI
 			matrixDirty = false;
 		}
+#endif
 	}
 
 	void Entity::Render()
@@ -73,5 +77,14 @@ namespace piolot
 	{
 		// Checks if this entity is under the cursor. And updates the _distance to hold it.
 		return this->boundingBox.CheckForCollisionWithRay(this->modelMatrix, this->scale, _cameraPosition, _mouseRayDirection, _distance);
+	}
+
+	void Entity::DisplayDetailsImgui()
+	{
+
+		ImGui::InputFloat3("Position", glm::value_ptr(position));
+		ImGui::InputFloat3("Rotation", glm::value_ptr(rotation));
+		ImGui::InputFloat3("Scale", glm::value_ptr(scale));
+
 	}
 }

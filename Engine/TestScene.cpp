@@ -295,8 +295,14 @@ namespace piolot {
 					displayDemoWindow = true;
 				}
 
+				if( ImGui::MenuItem("Hierarchy"))
+				{
+					displayHierarchy = true;
+				}
+
 				ImGui::EndMenu();
 			}
+
 
 			if (ImGui::BeginMenu("View")) {
 
@@ -406,6 +412,66 @@ namespace piolot {
 			}
 
 			ImGui::End();
+		}
+
+		if (displayHierarchy)
+		{
+
+			ImGui::Begin("Hierarchy", &displayHierarchy);
+
+			//TODO: This should be highlighted in the Viewport as well.
+			static std::shared_ptr<Entity> selected_entity;
+
+			if (selected_entity == nullptr)
+			{
+				selected_entity = entities[0];
+			}
+
+			// Set the selected flag for the entity.
+			selected_entity->SetSelectedInScene(true);
+
+			ImGui::BeginChild("Entities##List", ImVec2(200, 0), true);
+
+			// Loop through all the Entities
+			for ( auto& it : entities)
+			{
+				ImGui::PushID(&it);
+				if ( ImGui::Selectable(it->GetObjectName().c_str(), selected_entity == it))
+				{
+					selected_entity = it;
+				}
+				ImGui::PopID();
+
+			}
+
+			ImGui::EndChild();
+
+			ImGui::SameLine();
+			// Details of the selected Entity.
+			ImGui::BeginGroup();
+
+			{
+				ImGui::BeginChild("Details", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
+
+				ImGui::Text(selected_entity->GetObjectName().c_str());
+				ImGui::Separator();
+
+				selected_entity->DisplayDetailsImgui();
+
+				ImGui::EndChild();
+
+			}
+
+			ImGui::EndGroup();
+				
+			
+
+			// Cameras
+
+			// Terrain?
+
+			ImGui::End();
+
 		}
 
 		if (displayCameraControls)

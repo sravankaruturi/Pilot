@@ -112,5 +112,7 @@ namespace piolot
 
 		bool CheckIfMouseOvered(const glm::vec3 _cameraPosition, const glm::vec3 _mouseRayDirection, float& _distance) const;
 
+		void DisplayDetailsImgui();
+
 	};
 }

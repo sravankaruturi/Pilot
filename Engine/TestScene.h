@@ -58,6 +58,7 @@ namespace piolot {
 		// Stuff that should not be saved.
 		bool openSaveSceneAsWindow = false;
 		bool openLoadSceneWindow = false;
+		bool displayHierarchy = false;
 
 
 	public:
