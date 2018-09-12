@@ -27,7 +27,7 @@ int main(int argc, char ** argv)
 #if !DISABLE_UNIT_TESTS
 
 	testing::InitGoogleTest(&argc, argv);
-	int test_value = RUN_ALL_TESTS();
+	const auto _ = RUN_ALL_TESTS();
 
 	std::cout << "Press Return to Continue" << std::endl;
 	const int c = getchar();
@@ -41,7 +41,7 @@ int main(int argc, char ** argv)
 #endif
 
 
-#if !TESTING_ONLY
+#if !TESTING_ONLY 
 
 	{
 
