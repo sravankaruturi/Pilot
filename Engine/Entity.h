@@ -56,7 +56,7 @@ namespace piolot
 
 		void SetObjectName(const std::string& _objectName)
 		{
-			this->objectName = objectName;
+			this->objectName = _objectName;
 			matrixDirty = true;
 		}
 

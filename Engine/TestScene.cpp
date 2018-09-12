@@ -575,7 +575,7 @@ namespace piolot {
 
 		if (displayAddEntity)
 		{
-			ImGui::Begin("Add an Entity");
+			ImGui::Begin("Add an Entity", &displayAddEntity);
 
 			// Add the Entity. The Gui for it.
 
