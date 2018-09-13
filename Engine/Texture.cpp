@@ -3,7 +3,7 @@
 
 #ifndef STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
-#include "external_files/stb/stb_image.h"
+#include "../EngineDeps/external_files/stb/stb_image.h"
 #endif
 
 namespace piolot

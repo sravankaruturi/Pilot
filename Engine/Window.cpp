@@ -1,16 +1,17 @@
 ﻿#include "Window.h"
 #include <iostream>
-#include "external_files/ImGUI/imgui.h"
-#include "external_files/ImGUI/imgui_impl_glfw.h"
+
+#include "../EngineDeps/external_files/ImGUI/imgui.h"
+#include "../EngineDeps/external_files/ImGUI/imgui_impl_glfw.h"
 
 void window_resize(GLFWwindow * _window, int _width, int _height);
 void key_callback(GLFWwindow * _window, int _key, int scancode, int action, int mods);
 void mouse_button_callback(GLFWwindow* _window, int _button, int _action, int _mods);
 void cursor_position_callback(GLFWwindow* _window, double _xpos, double _ypos);
 
-Window::Window(unsigned width, unsigned height, const std::string& title): width(width),
-                                                                           height(height),
-                                                                           title(title)
+Window::Window(unsigned _width, unsigned _height, const std::string& _title): width(_width),
+                                                                           height(_height),
+                                                                           title(_title)
 {
 
 	isGlfwInit = glfwInit();
@@ -56,6 +57,97 @@ Window::Window(unsigned width, unsigned height, const std::string& title): width
 Window::~Window()
 {
 	CleanUp();
+}
+
+unsigned Window::GetWidth()
+{
+	glfwGetFramebufferSize(window, &this->width, &this->height);
+	return width;
+}
+
+unsigned Window::GetHeight()
+{
+	glfwGetFramebufferSize(window, &this->width, &this->height);
+	return height;
+}
+
+std::string Window::GetTitle() const
+{
+	return title;
+}
+
+void Window::SetWidth(unsigned _width)
+{
+	width = _width;
+}
+
+void Window::SetHeight(unsigned _height)
+{
+	height = _height;
+}
+
+bool Window::IsGladInit() const
+{
+	return isGladInit;
+}
+
+GLFWwindow* Window::GetWindow() const
+{
+	return window;
+}
+
+bool Window::IsGlfwInit() const
+{
+	return isGlfwInit;
+}
+
+bool Window::IsKeyPressed(unsigned _keyCode) const
+{
+	// TODO: Log this.
+	if (_keyCode >= MAX_KEYS)
+	{
+		return false;
+	}
+
+	return (keys[_keyCode] == key_pressed);
+}
+
+bool Window::IsKeyPressedAndReleased(unsigned _keyCode) const
+{
+	// TODO: Log this.
+	if (_keyCode >= MAX_KEYS)
+	{
+		return false;
+	}
+
+	return (keys[_keyCode] == key_released);
+}
+
+bool Window::IsKeyPressedOrHeld(const unsigned _keycode) const
+{
+	return IsKeyPressed(_keycode) || IsKeyHeld(_keycode);
+}
+
+bool Window::IsKeyHeld(unsigned _keyCode) const
+{
+	return (_keyCode >= MAX_KEYS) ? false : (keys[_keyCode] == key_held);
+}
+
+bool Window::IsMouseButtonPressed(unsigned _button) const
+{
+	// TODO: Log this.
+	if (_button >= MAX_BUTTONS)
+	{
+		return false;
+	}
+
+	return (mouseButtons[_button] == key_pressed);
+}
+
+void Window::GetMousePosition(double& x, double& y) const
+{
+	x = mouseX;
+	y = mouseY;
 }
 
 void Window::UpdateFrameSize()

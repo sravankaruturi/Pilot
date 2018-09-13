@@ -9,10 +9,10 @@
 #include <fstream>
 
 #if ENABLE_GUI
-#include "external_files/ImGUI/imgui.h"
+#include "../EngineDeps/external_files/ImGUI/imgui.h"
 #endif
 
-#include "../SaveSceneHelpers.h"
+#include "SaveSceneHelpers.h"
 
 #define		NAME_LENGTH_TO_FILE		20
 
@@ -48,7 +48,8 @@ namespace piolot {
 		testGrid.Init();
 		
 		//terrain_test = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
-		testTerrain = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
+		std::string heightmap_path = TEXTURE_FOLDER + std::string("heightmap.jpg");
+		testTerrain = std::make_shared<Terrain>(10, 10, 0.5, 0.5, heightmap_path);
 
 		viewportsDetails[0].camera = activeCamera;
 		viewportsDetails[1].camera = activeCamera;

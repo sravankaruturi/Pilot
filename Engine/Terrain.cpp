@@ -1,5 +1,5 @@
 ﻿#include "Terrain.h"
-#include "external_files/stb/stb_image.h"
+#include "../EngineDeps/external_files/stb/stb_image.h"
 #include "Colours.h"
 #include "LoggingManager.h"
 #include "AssetManager.h"

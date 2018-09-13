@@ -1,5 +1,5 @@
 #pragma once
-#include "external_files/ImGUI/imgui.h"
+#include "../EngineDeps/external_files/ImGUI/imgui.h"
 
 namespace piolot {
 
@@ -10,9 +10,9 @@ namespace piolot {
 		ImVector<int>       LineOffsets;        // Index to lines offset
 		bool                ScrollToBottom;
 
-		void    Clear() { Buf.clear(); LineOffsets.clear(); }
+		void Clear() { Buf.clear(); LineOffsets.clear(); }
 
-		void    AddLog(const char* fmt, ...) IM_FMTARGS(2)
+		void AddLog(const char* fmt, ...) IM_FMTARGS(2)
 		{
 			int old_size = Buf.size();
 			va_list args;
@@ -25,7 +25,7 @@ namespace piolot {
 			ScrollToBottom = true;
 		}
 
-		void    Draw(const char* title, bool* p_open = NULL)
+		void Draw(const char* title, bool* p_open = NULL)
 		{
 			ImGui::SetNextWindowSize(ImVec2(500, 400), ImGuiCond_FirstUseEver);
 			ImGui::Begin(title, p_open);

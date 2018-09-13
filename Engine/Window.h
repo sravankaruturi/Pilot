@@ -15,75 +15,99 @@ enum key_bool
 	key_released
 };
 
+/**
+ * \brief Window Class. Initialize this for opening the window. Cleanup to exit.
+ */
 class Window
 {
-public:
-
-
-	Window(unsigned width, unsigned height, const std::string& title);
-	~Window();
-
-	unsigned GetWidth()
-	{
-		glfwGetFramebufferSize(window, &this->width, &this->height);
-		return width;
-	}
-
-	unsigned GetHeight()
-	{
-		glfwGetFramebufferSize(window, &this->width, &this->height);
-		return height;
-	}
-
-	std::string GetTitle() const
-	{
-		return title;
-	}
 
 protected:
 
+	/**
+	 * \brief Width of the Window in Pixels.
+	 */
 	int width;
 
-public:
-
-	void SetWidth(unsigned _width)
-	{
-		width = _width;
-	}
-
-	void SetHeight(unsigned _height)
-	{
-		height = _height;
-	}
-
-	void UpdateFrameSize();
-
-protected:
+	/**
+	 * \brief Height of the Window in Pixels.
+	 */
 	int height;
+
+	/**
+	 * \brief Title of the Window.
+	 */
 	std::string title;
 
+	/**
+	 * \brief Flag to check if GLFW is Initialized.
+	 */
 	bool isGlfwInit = false;
+
+	/**
+	 * \brief Flag to check if Glad is Initialized.
+	 */
 	bool isGladInit = false;
 
-public:
-	bool IsGladInit() const
-	{
-		return isGladInit;
-	}
-
-protected:
+	/**
+	 * \brief The actual GLFW Window Pointer. Nullptr if GLFW is not initialized.
+	 */
 	GLFWwindow * window = nullptr;
 
 public:
-	GLFWwindow* GetWindow() const
-	{
-		return window;
-	}
 
-	bool IsGlfwInit() const
-	{
-		return isGlfwInit;
-	}
+	/**
+	 * \brief Creates the Window and Opens it.
+	 * \param _width Width of the Window
+	 * \param _height Height of the Window
+	 * \param _title Title of the Window
+	 */
+	Window(unsigned _width, unsigned _height, const std::string& _title);
+
+	/**
+	 * \brief Default Destructor. Calls Cleanup.
+	 */
+	~Window();
+
+	/** @defgroup Getters
+	* Getters
+	* @{
+	*/
+
+	unsigned GetWidth();
+
+	unsigned GetHeight();
+
+	std::string GetTitle() const;
+
+	bool IsGladInit() const;
+
+	bool IsGlfwInit() const;
+
+	GLFWwindow* GetWindow() const;
+
+	/*
+	* @} // End of Getters
+	*/
+
+	/** @defgroup Setters
+	* Setters
+	* @{
+	*/
+
+	void SetWidth(unsigned _width);
+
+	void SetHeight(unsigned _height);
+
+	/* @}
+	*/
+
+	/**
+	 * \brief Updates the Class's width and height with the GLFW Frame Buffer Width and Height.
+
+		Depends on a GLFW Call.
+	 */
+	void UpdateFrameSize();
+
 
 	/**
 	* \brief The keys and their current state.
@@ -131,45 +155,15 @@ public:
 
 	void HandleInput() const;
 
-	bool IsKeyPressed(unsigned int _keyCode) const
-	{
-		// TODO: Log this.
-		if (_keyCode >= MAX_KEYS) {
-			return false;
-		}
+	bool IsKeyPressed(unsigned int _keyCode) const;
 
-		return (keys[_keyCode] == key_pressed);
-	}
+	bool IsKeyPressedAndReleased(unsigned int _keyCode) const;
 
-	bool IsKeyPressedAndReleased(unsigned int _keyCode) const
-	{
-		// TODO: Log this.
-		if (_keyCode >= MAX_KEYS) {
-			return false;
-		}
+	bool IsKeyPressedOrHeld(const unsigned int _keycode) const;
 
-		return (keys[_keyCode] == key_released);
-	}
+	bool IsKeyHeld(unsigned int _keyCode) const;
 
-	bool IsKeyPressedOrHeld(const unsigned int _keycode) const
-	{
-		return IsKeyPressed(_keycode) || IsKeyHeld(_keycode);
-	}
-
-	bool IsKeyHeld(unsigned int _keyCode) const
-	{
-		return  (_keyCode >= MAX_KEYS) ? false : (keys[_keyCode] == key_held);
-	}
-
-	bool IsMouseButtonPressed(unsigned int _button) const
-	{
-		// TODO: Log this.
-		if (_button >= MAX_BUTTONS) {
-			return false;
-		}
-
-		return (mouseButtons[_button] == key_pressed);
-	}
+	bool IsMouseButtonPressed(unsigned int _button) const;
 
 	/* TODO: Implement this function later on */
 	//bool IsMouseButtonPressedAndReleased(unsigned int _button) const
@@ -187,17 +181,16 @@ public:
 	* \param x The Reference to Set the X Position to.
 	* \param y The reference to set the Y Position to.
 	*/
-	void GetMousePosition(double& x, double& y) const
-	{
-		x = mouseX;
-		y = mouseY;
-	}
+	void GetMousePosition(double& x, double& y) const;
 
 	// TODO: Write Unit Tests for This..
 	void Update(const float _deltatime);
 
 private:
 
+	/**
+	 * \brief Calls GLFWTerminate
+	 */
 	static void CleanUp();
 
 };

@@ -1,0 +1,53 @@
+\hypertarget{classpiolot_1_1_bounding_box}{}\section{piolot\+:\+:Bounding\+Box Class Reference}
+\label{classpiolot_1_1_bounding_box}\index{piolot\+::\+Bounding\+Box@{piolot\+::\+Bounding\+Box}}
+
+
+This class is used to create a simple cuboid around the Objects as a Bounding Box.  
+
+
+
+
+{\ttfamily \#include $<$Bounding\+Box.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const glm\+::vec3 \& {\bfseries Get\+Minimum\+Point} () const
+\item 
+const glm\+::vec3 \& {\bfseries Get\+Maximum\+Point} () const
+\item 
+unsigned int {\bfseries Get\+Vertices\+Size} () const
+\item 
+\mbox{\hyperlink{group___getters_ga699e27e8e646be7a0a47f89abb35778d}{Bounding\+Box}} (glm\+::vec3 \+\_\+minimum\+Point=glm\+::vec3(-\/0.\+2f, -\/0.\+2f, -\/0.\+2f), glm\+::vec3 \+\_\+maximum\+Point=glm\+::vec3(0.\+2f, 0.\+2f, 0.\+2f))
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___getters_ga552fcdb461cdc71c5da0fed7b486246d}{Check\+For\+Collision\+With\+Ray}} (const glm\+::mat4 \+\_\+model\+Matrix, const glm\+::vec3 \+\_\+scale, const glm\+::vec3 \+\_\+ray\+Origin, const glm\+::vec3 \+\_\+ray\+Direction, float \&\+\_\+intersection\+Distance) const
+\begin{DoxyCompactList}\small\item\em Check if the Bounding Box Collides with the \mbox{\hyperlink{classpiolot_1_1_ray}{Ray}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___getters_ga3ef9f966674be7fa0448d388b7a3d776}{Render}} (glm\+::vec3 \+\_\+colour)
+\begin{DoxyCompactList}\small\item\em Render the Bounding Box. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_bounding_box_a9e1b1896cdc55746ab9903241c358dc4}\label{classpiolot_1_1_bounding_box_a9e1b1896cdc55746ab9903241c358dc4}} 
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_bounding_box_a9e1b1896cdc55746ab9903241c358dc4}{minimum\+Point}}
+\begin{DoxyCompactList}\small\item\em The Minimum point of the Cuboid in 3D Space. Typically, the Bottom, Left, -\/Z Point. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classpiolot_1_1_bounding_box_a4b6af7e1b8cb46c8967a8921146097bd}\label{classpiolot_1_1_bounding_box_a4b6af7e1b8cb46c8967a8921146097bd}} 
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_bounding_box_a4b6af7e1b8cb46c8967a8921146097bd}{maximum\+Point}}
+\begin{DoxyCompactList}\small\item\em The Maximum point of the Cuboid. Typically, the Right, Top, +Z Point. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classpiolot_1_1_bounding_box_ae57572db987c9f1185ad73febc8fbc28}\label{classpiolot_1_1_bounding_box_ae57572db987c9f1185ad73febc8fbc28}} 
+std\+::vector$<$ glm\+::vec3 $>$ \mbox{\hyperlink{classpiolot_1_1_bounding_box_ae57572db987c9f1185ad73febc8fbc28}{vertices}}
+\begin{DoxyCompactList}\small\item\em The Vertices for the Cuboid. Will be computed based on the Min and Max Points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classpiolot_1_1_bounding_box_ad5ea73dcadf0d25c07cc8ff3761db4e3}\label{classpiolot_1_1_bounding_box_ad5ea73dcadf0d25c07cc8ff3761db4e3}} 
+unsigned int \mbox{\hyperlink{classpiolot_1_1_bounding_box_ad5ea73dcadf0d25c07cc8ff3761db4e3}{V\+AO}}
+\begin{DoxyCompactList}\small\item\em Vertex Array \mbox{\hyperlink{classpiolot_1_1_object}{Object}} ID. Used for Rendering the B\+Box. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classpiolot_1_1_bounding_box_a4c8c26e00dff9f14709bc2803b38a0bf}\label{classpiolot_1_1_bounding_box_a4c8c26e00dff9f14709bc2803b38a0bf}} 
+unsigned int \mbox{\hyperlink{classpiolot_1_1_bounding_box_a4c8c26e00dff9f14709bc2803b38a0bf}{V\+BO}}
+\begin{DoxyCompactList}\small\item\em Vertex Buffer \mbox{\hyperlink{classpiolot_1_1_object}{Object}} ID. Used for Rendering the B\+Box. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is used to create a simple cuboid around the Objects as a Bounding Box. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/dev/\+Piolot/\+Engine/Bounding\+Box.\+h\item 
+C\+:/dev/\+Piolot/\+Engine/Bounding\+Box.\+cpp\end{DoxyCompactItemize}

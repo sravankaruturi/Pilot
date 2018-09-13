@@ -1,0 +1,49 @@
+\hypertarget{classpiolot_1_1_scene}{}\section{piolot\+:\+:Scene Class Reference}
+\label{classpiolot_1_1_scene}\index{piolot\+::\+Scene@{piolot\+::\+Scene}}
+Inheritance diagram for piolot\+:\+:Scene\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classpiolot_1_1_scene}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_scene_af42469b97e0c1006bec5d384223db148}\label{classpiolot_1_1_scene_af42469b97e0c1006bec5d384223db148}} 
+{\bfseries Scene} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_window}{Window}} $>$ \+\_\+window)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_scene_ae05b812e9f1caa80526a79a03ab456e1}\label{classpiolot_1_1_scene_ae05b812e9f1caa80526a79a03ab456e1}} 
+virtual void {\bfseries On\+Update} (float \+\_\+delta\+Time, float \+\_\+total\+Time)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_scene_a6d634dd8b2f281052f034740644c1aa3}\label{classpiolot_1_1_scene_a6d634dd8b2f281052f034740644c1aa3}} 
+virtual void {\bfseries On\+Render} ()
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_scene_aedea470f1c3485d76ef0681e4a503584}\label{classpiolot_1_1_scene_aedea470f1c3485d76ef0681e4a503584}} 
+virtual void {\bfseries On\+Imgui\+Render} ()
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_scene_a73af83e23a36087989538d25216bb1f8}\label{classpiolot_1_1_scene_a73af83e23a36087989538d25216bb1f8}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_camera}{piolot\+::\+Camera}} $>$ {\bfseries Active\+Camera} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_scene_a2edd824436ee0c877ee03573c90f3002}\label{classpiolot_1_1_scene_a2edd824436ee0c877ee03573c90f3002}} 
+void {\bfseries Active\+Camera} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_camera}{piolot\+::\+Camera}} $>$ val)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_scene_a250749bf646c4ab0349bd98e515b0d5b}\label{classpiolot_1_1_scene_a250749bf646c4ab0349bd98e515b0d5b}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_window}{Window}} $>$ {\bfseries window}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_scene_a980ee452f49233f7b95fa4643e383ae9}\label{classpiolot_1_1_scene_a980ee452f49233f7b95fa4643e383ae9}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_camera}{Camera}} $>$ {\bfseries active\+Camera}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_scene_a3fe090e6f4c7747ebf8a675f93985409}\label{classpiolot_1_1_scene_a3fe090e6f4c7747ebf8a675f93985409}} 
+std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_camera}{Camera}} $>$ $>$ {\bfseries cameras}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_scene_acbfcb0b896570a28a7f2ed83c7426518}\label{classpiolot_1_1_scene_acbfcb0b896570a28a7f2ed83c7426518}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_entity}{Entity}} $>$ $>$ {\bfseries entities}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/dev/\+Piolot/\+Engine/Scene.\+h\end{DoxyCompactItemize}

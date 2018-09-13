@@ -53,9 +53,9 @@ namespace piolot {
 	
 		float gridLength, gridBreadth;
 
-		unsigned int nodeCountX, nodeCountZ;
+		unsigned int nodeCountX{}, nodeCountZ{};
 
-		MapTile ** tiles;
+		MapTile ** tiles{};
 
 		std::string heightMapFile;
 
@@ -70,8 +70,8 @@ namespace piolot {
 		glm::vec3 ComputeGridNormal(int _x,int _z);
 
 		/* Testing stuff */
-		glm::vec2 startxz;
-		glm::vec2 endxz;
+		glm::vec2 startxz{};
+		glm::vec2 endxz{};
 
 	public:
 

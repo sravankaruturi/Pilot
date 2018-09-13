@@ -1,0 +1,196 @@
+\hypertarget{classpiolot_1_1_asset_manager}{}\section{piolot\+:\+:Asset\+Manager Class Reference}
+\label{classpiolot_1_1_asset_manager}\index{piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}}
+
+
+The Singleton class that holds all the data for Shaders, Textures and Objects.  
+
+
+
+
+{\ttfamily \#include $<$Asset\+Manager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classpiolot_1_1_asset_manager_ab6e938de7632862bfbe0a673b6c53b21}{Clear\+All\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Remove all the data and clear the Asset Manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classpiolot_1_1_asset_manager_a49967e4909436ff8ebaeadf08db4ebc7}{$\sim$\+Asset\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classpiolot_1_1_asset_manager_ac56fdedc1bf3b98909856099811fa62f}\label{classpiolot_1_1_asset_manager_ac56fdedc1bf3b98909856099811fa62f}} 
+bool \mbox{\hyperlink{classpiolot_1_1_asset_manager_ac56fdedc1bf3b98909856099811fa62f}{Load\+Shaders}} ()
+\begin{DoxyCompactList}\small\item\em Loads all the shaders from the Shader Directory. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classpiolot_1_1_asset_manager_a34593c7f84f33abd929daa8510507881}\label{classpiolot_1_1_asset_manager_a34593c7f84f33abd929daa8510507881}} 
+bool \mbox{\hyperlink{classpiolot_1_1_asset_manager_a34593c7f84f33abd929daa8510507881}{Load\+Textures}} ()
+\begin{DoxyCompactList}\small\item\em Loads all the Textures from the \mbox{\hyperlink{classpiolot_1_1_texture}{Texture}} Directory. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classpiolot_1_1_asset_manager_acc9c8e5aff5c4b93faa151e0efb012f3}{Is\+Texture\+Loaded}} (std\+::string \+\_\+key)
+\begin{DoxyCompactList}\small\item\em Returns if the texture, key is loaded. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classpiolot_1_1_asset_manager_a120535d011b245328a45a1d85f181cc0}{Is\+Object\+Loaded}} (std\+::string \+\_\+key)
+\begin{DoxyCompactList}\small\item\em Returns if the mesh is loaded. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classpiolot_1_1_asset_manager_a06b647312e18c2ca212d34211d262783}{Add\+To\+Textures}} (const std\+::string \&\+\_\+name, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_texture}{Texture}} $>$ \+\_\+texture)
+\begin{DoxyCompactList}\small\item\em Add a texture to the exisiting map. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classpiolot_1_1_asset_manager_abfad75fa1cde6d1ecd77fbdf297a80b0}{Add\+To\+Objects}} (const std\+::string \&\+\_\+name, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_object}{Object}} $>$ \+\_\+object)
+\begin{DoxyCompactList}\small\item\em Add an object to the Map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_asset_manager_a00d1b6635e14cfdf2a618fff3ad61416}{Gui\+Render}} (bool $\ast$\+\_\+window\+Flag)
+\begin{DoxyCompactList}\small\item\em The Im\+G\+UI calls for the Asset Manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classpiolot_1_1_asset_manager}{Asset\+Manager}} \& \mbox{\hyperlink{classpiolot_1_1_asset_manager_a5bcfd6d2719bcada7f5865eb6e39664b}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Returns the instance of the Singleton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_asset_manager_ae8db7f8aa294e32d270181e4ba87d2ad}\label{classpiolot_1_1_asset_manager_ae8db7f8aa294e32d270181e4ba87d2ad}} 
+std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_g_l_shader}{G\+L\+Shader}} $>$ $>$ \mbox{\hyperlink{classpiolot_1_1_asset_manager_ae8db7f8aa294e32d270181e4ba87d2ad}{shaders}}
+\begin{DoxyCompactList}\small\item\em A Map of all the shaders that we load. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classpiolot_1_1_asset_manager_a6d9403a544a3efd67e33b52d6bb2a182}\label{classpiolot_1_1_asset_manager_a6d9403a544a3efd67e33b52d6bb2a182}} 
+std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_texture}{Texture}} $>$ $>$ \mbox{\hyperlink{classpiolot_1_1_asset_manager_a6d9403a544a3efd67e33b52d6bb2a182}{textures}}
+\begin{DoxyCompactList}\small\item\em A Map of all the textures that we load. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classpiolot_1_1_asset_manager_a5051f83ff594361ac33d94a885afde10}\label{classpiolot_1_1_asset_manager_a5051f83ff594361ac33d94a885afde10}} 
+std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_object}{Object}} $>$ $>$ \mbox{\hyperlink{classpiolot_1_1_asset_manager_a5051f83ff594361ac33d94a885afde10}{objects}}
+\begin{DoxyCompactList}\small\item\em A Map of all the Renderables loaded. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classpiolot_1_1_asset_manager_a0c7c10a24343176f2de6aeb2ddf1ac0d}\label{classpiolot_1_1_asset_manager_a0c7c10a24343176f2de6aeb2ddf1ac0d}} 
+std\+::string \mbox{\hyperlink{classpiolot_1_1_asset_manager_a0c7c10a24343176f2de6aeb2ddf1ac0d}{shader\+Dir}} = S\+H\+A\+D\+E\+R\+\_\+\+F\+O\+L\+D\+ER
+\begin{DoxyCompactList}\small\item\em The Shader Directory from where all the shaders are loaded. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classpiolot_1_1_asset_manager_a001707738b5a8e9da3fd5bfd3557392a}\label{classpiolot_1_1_asset_manager_a001707738b5a8e9da3fd5bfd3557392a}} 
+std\+::string \mbox{\hyperlink{classpiolot_1_1_asset_manager_a001707738b5a8e9da3fd5bfd3557392a}{texture\+Dir}} = T\+E\+X\+T\+U\+R\+E\+\_\+\+F\+O\+L\+D\+ER
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classpiolot_1_1_texture}{Texture}} Directory from where all the Textures are loaded. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The Singleton class that holds all the data for Shaders, Textures and Objects. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_asset_manager_a49967e4909436ff8ebaeadf08db4ebc7}\label{classpiolot_1_1_asset_manager_a49967e4909436ff8ebaeadf08db4ebc7}} 
+\index{piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}!````~Asset\+Manager@{$\sim$\+Asset\+Manager}}
+\index{````~Asset\+Manager@{$\sim$\+Asset\+Manager}!piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}}
+\subsubsection{\texorpdfstring{$\sim$\+Asset\+Manager()}{~AssetManager()}}
+{\footnotesize\ttfamily piolot\+::\+Asset\+Manager\+::$\sim$\+Asset\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default Constructor. 
+
+Destructor. Deletes all the Shaders and Textures stored here. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_asset_manager_abfad75fa1cde6d1ecd77fbdf297a80b0}\label{classpiolot_1_1_asset_manager_abfad75fa1cde6d1ecd77fbdf297a80b0}} 
+\index{piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}!Add\+To\+Objects@{Add\+To\+Objects}}
+\index{Add\+To\+Objects@{Add\+To\+Objects}!piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}}
+\subsubsection{\texorpdfstring{Add\+To\+Objects()}{AddToObjects()}}
+{\footnotesize\ttfamily bool piolot\+::\+Asset\+Manager\+::\+Add\+To\+Objects (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{\+\_\+name,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_object}{Object}} $>$}]{\+\_\+object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add an object to the Map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+name} & The Key \\
+\hline
+{\em \+\_\+object} & The \mbox{\hyperlink{classpiolot_1_1_object}{Object}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If the \mbox{\hyperlink{classpiolot_1_1_object}{Object}} is already loaded, returns false. Else, returns True. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpiolot_1_1_asset_manager_a06b647312e18c2ca212d34211d262783}\label{classpiolot_1_1_asset_manager_a06b647312e18c2ca212d34211d262783}} 
+\index{piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}!Add\+To\+Textures@{Add\+To\+Textures}}
+\index{Add\+To\+Textures@{Add\+To\+Textures}!piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}}
+\subsubsection{\texorpdfstring{Add\+To\+Textures()}{AddToTextures()}}
+{\footnotesize\ttfamily bool piolot\+::\+Asset\+Manager\+::\+Add\+To\+Textures (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{\+\_\+name,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_texture}{Texture}} $>$}]{\+\_\+texture }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a texture to the exisiting map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+name} & The Key to place the \mbox{\hyperlink{classpiolot_1_1_texture}{Texture}}. \\
+\hline
+{\em \+\_\+texture} & The \mbox{\hyperlink{classpiolot_1_1_texture}{Texture}} to load and place. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the \mbox{\hyperlink{classpiolot_1_1_texture}{Texture}} is succesfully loaded. False if something occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpiolot_1_1_asset_manager_ab6e938de7632862bfbe0a673b6c53b21}\label{classpiolot_1_1_asset_manager_ab6e938de7632862bfbe0a673b6c53b21}} 
+\index{piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}!Clear\+All\+Data@{Clear\+All\+Data}}
+\index{Clear\+All\+Data@{Clear\+All\+Data}!piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}}
+\subsubsection{\texorpdfstring{Clear\+All\+Data()}{ClearAllData()}}
+{\footnotesize\ttfamily void piolot\+::\+Asset\+Manager\+::\+Clear\+All\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove all the data and clear the Asset Manager. 
+
+$\ast$for (auto it \+: shaders) \mbox{\Hypertarget{classpiolot_1_1_asset_manager_a5bcfd6d2719bcada7f5865eb6e39664b}\label{classpiolot_1_1_asset_manager_a5bcfd6d2719bcada7f5865eb6e39664b}} 
+\index{piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}}
+\subsubsection{\texorpdfstring{get\+Instance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpiolot_1_1_asset_manager}{Asset\+Manager}} \& piolot\+::\+Asset\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns the instance of the Singleton. 
+
+\begin{DoxyReturn}{Returns}
+The reference to the static object, instance. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpiolot_1_1_asset_manager_a00d1b6635e14cfdf2a618fff3ad61416}\label{classpiolot_1_1_asset_manager_a00d1b6635e14cfdf2a618fff3ad61416}} 
+\index{piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}!Gui\+Render@{Gui\+Render}}
+\index{Gui\+Render@{Gui\+Render}!piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}}
+\subsubsection{\texorpdfstring{Gui\+Render()}{GuiRender()}}
+{\footnotesize\ttfamily void piolot\+::\+Asset\+Manager\+::\+Gui\+Render (\begin{DoxyParamCaption}\item[{bool $\ast$}]{\+\_\+window\+Flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The Im\+G\+UI calls for the Asset Manager. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+window\+Flag} & The \mbox{\hyperlink{class_window}{Window}} is Open Boolean \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_asset_manager_a120535d011b245328a45a1d85f181cc0}\label{classpiolot_1_1_asset_manager_a120535d011b245328a45a1d85f181cc0}} 
+\index{piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}!Is\+Object\+Loaded@{Is\+Object\+Loaded}}
+\index{Is\+Object\+Loaded@{Is\+Object\+Loaded}!piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}}
+\subsubsection{\texorpdfstring{Is\+Object\+Loaded()}{IsObjectLoaded()}}
+{\footnotesize\ttfamily bool piolot\+::\+Asset\+Manager\+::\+Is\+Object\+Loaded (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns if the mesh is loaded. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+key} & Key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if we find the mesh with the key. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpiolot_1_1_asset_manager_acc9c8e5aff5c4b93faa151e0efb012f3}\label{classpiolot_1_1_asset_manager_acc9c8e5aff5c4b93faa151e0efb012f3}} 
+\index{piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}!Is\+Texture\+Loaded@{Is\+Texture\+Loaded}}
+\index{Is\+Texture\+Loaded@{Is\+Texture\+Loaded}!piolot\+::\+Asset\+Manager@{piolot\+::\+Asset\+Manager}}
+\subsubsection{\texorpdfstring{Is\+Texture\+Loaded()}{IsTextureLoaded()}}
+{\footnotesize\ttfamily bool piolot\+::\+Asset\+Manager\+::\+Is\+Texture\+Loaded (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns if the texture, key is loaded. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+key} & The string, key to look for in the map. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns True if we can find the texture in the map. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/dev/\+Piolot/\+Engine/Asset\+Manager.\+h\item 
+C\+:/dev/\+Piolot/\+Engine/Asset\+Manager.\+cpp\end{DoxyCompactItemize}

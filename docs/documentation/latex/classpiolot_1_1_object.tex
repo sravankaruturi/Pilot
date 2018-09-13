@@ -1,0 +1,64 @@
+\hypertarget{classpiolot_1_1_object}{}\section{piolot\+:\+:Object Class Reference}
+\label{classpiolot_1_1_object}\index{piolot\+::\+Object@{piolot\+::\+Object}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_object_a592cb508bd914b41bff868e2a9b648f5}\label{classpiolot_1_1_object_a592cb508bd914b41bff868e2a9b648f5}} 
+const std\+::string \& {\bfseries Get\+Object\+Name} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_object_a05e280baf87f9780e5de1c24849b862c}\label{classpiolot_1_1_object_a05e280baf87f9780e5de1c24849b862c}} 
+{\bfseries Object} (const std\+::string \&\+\_\+name, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{Mesh}} $>$$>$ \+\_\+meshes)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_object_add3cd7bb280395a43069e872b384ac97}\label{classpiolot_1_1_object_add3cd7bb280395a43069e872b384ac97}} 
+{\bfseries Object} (const std\+::string \&\+\_\+object\+Path)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_object_aac452c0e8843e6a1bc64b4e7eae031cf}\label{classpiolot_1_1_object_aac452c0e8843e6a1bc64b4e7eae031cf}} 
+void {\bfseries Render} (std\+::string shader\+Name)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_object_ab3126fb80869e1a5b02ef43eb27e69ce}\label{classpiolot_1_1_object_ab3126fb80869e1a5b02ef43eb27e69ce}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{piolot\+::\+Mesh}} $>$ $>$ {\bfseries Get\+Meshes} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_object_abe2585d95f1cb2b388ea3bdf7868b968}\label{classpiolot_1_1_object_abe2585d95f1cb2b388ea3bdf7868b968}} 
+void {\bfseries Set\+Meshes} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{piolot\+::\+Mesh}} $>$$>$ val)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_object_ab361363059783f44a48c24529aef482e}\label{classpiolot_1_1_object_ab361363059783f44a48c24529aef482e}} 
+std\+::string {\bfseries directory}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_object_a1995f97bb181bf6aeee850052c01dd24}\label{classpiolot_1_1_object_a1995f97bb181bf6aeee850052c01dd24}} 
+std\+::string {\bfseries object\+Name}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_object_a4a26c60e9239d03e7c31a243c0325934}\label{classpiolot_1_1_object_a4a26c60e9239d03e7c31a243c0325934}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{Mesh}} $>$ $>$ {\bfseries meshes}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_object_ace45406ebc032ac05e6b9bb388ebc3c2}\label{classpiolot_1_1_object_ace45406ebc032ac05e6b9bb388ebc3c2}} 
+void {\bfseries Process\+Node} (ai\+Node $\ast$\+\_\+node, const ai\+Scene $\ast$\+\_\+scene, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{Mesh}} $>$$>$ \&\+\_\+meshes)
+\item 
+void \mbox{\hyperlink{classpiolot_1_1_object_ab917dddc7f767962960e607ada13a4d5}{Process\+And\+Add\+Mesh}} (ai\+Mesh $\ast$\+\_\+mesh, const ai\+Scene $\ast$\+\_\+scene)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_object_a87d3fb79aa882718cf10d72f85a397dc}\label{classpiolot_1_1_object_a87d3fb79aa882718cf10d72f85a397dc}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries Load\+Material\+Textures} (ai\+Material $\ast$\+\_\+mat, ai\+Texture\+Type \+\_\+type)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_object_ab917dddc7f767962960e607ada13a4d5}\label{classpiolot_1_1_object_ab917dddc7f767962960e607ada13a4d5}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Process\+And\+Add\+Mesh@{Process\+And\+Add\+Mesh}}
+\index{Process\+And\+Add\+Mesh@{Process\+And\+Add\+Mesh}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Process\+And\+Add\+Mesh()}{ProcessAndAddMesh()}}
+{\footnotesize\ttfamily void piolot\+::\+Object\+::\+Process\+And\+Add\+Mesh (\begin{DoxyParamCaption}\item[{ai\+Mesh $\ast$}]{\+\_\+mesh,  }\item[{const ai\+Scene $\ast$}]{\+\_\+scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyItemize}
+\item Normals $\ast$/ 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/dev/\+Piolot/\+Engine/Object.\+h\item 
+C\+:/dev/\+Piolot/\+Engine/Object.\+cpp\end{DoxyCompactItemize}

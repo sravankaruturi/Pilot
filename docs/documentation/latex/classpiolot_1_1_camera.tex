@@ -1,0 +1,123 @@
+\hypertarget{classpiolot_1_1_camera}{}\section{piolot\+:\+:Camera Class Reference}
+\label{classpiolot_1_1_camera}\index{piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0}\label{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0}} 
+enum {\bfseries camera\+\_\+movement} \{ {\bfseries forward}, 
+{\bfseries back}, 
+{\bfseries rightside}, 
+{\bfseries leftside}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_ae4322f03375c71eae72b7238a1c4ac12}\label{classpiolot_1_1_camera_ae4322f03375c71eae72b7238a1c4ac12}} 
+std\+::string \& {\bfseries Get\+Camera\+Name} ()
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a7c525f53bc93d1627261d40674e96104}\label{classpiolot_1_1_camera_a7c525f53bc93d1627261d40674e96104}} 
+{\bfseries Camera} (std\+::string \+\_\+camera\+Name=\char`\"{}default\char`\"{}, glm\+::vec3 \+\_\+position=glm\+::vec3(0, 0, 10), glm\+::vec3 \+\_\+front=glm\+::vec3(0, 0, -\/1), glm\+::vec3 \+\_\+world\+Up=glm\+::vec3(0, 1, 0), Camera\+Type \+\_\+type=perspective, float \+\_\+movement\+Speed=default\+\_\+camera\+\_\+speed, float \+\_\+mouse\+Sensitivity=default\+\_\+camera\+\_\+mouse\+\_\+sensitivity)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a9c12125ca134fdf776a296c0fac4a79f}\label{classpiolot_1_1_camera_a9c12125ca134fdf776a296c0fac4a79f}} 
+glm\+::vec3 \& {\bfseries Get\+Position} ()
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a84ff7b1edc39841dddc485fb9e641bf1}\label{classpiolot_1_1_camera_a84ff7b1edc39841dddc485fb9e641bf1}} 
+void {\bfseries Set\+Position} (const glm\+::vec3 \&\+\_\+position)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a6a428b0f65c9f2b3b5c5c028a96fb1f7}\label{classpiolot_1_1_camera_a6a428b0f65c9f2b3b5c5c028a96fb1f7}} 
+const glm\+::vec3 \& {\bfseries Get\+Front} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a6151125f42016135376a60182acb63ef}\label{classpiolot_1_1_camera_a6151125f42016135376a60182acb63ef}} 
+void {\bfseries Set\+Front} (const glm\+::vec3 \&\+\_\+front)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a9ce10517ad9161abf65b827d1884d785}\label{classpiolot_1_1_camera_a9ce10517ad9161abf65b827d1884d785}} 
+const glm\+::vec3 \& {\bfseries Get\+Up} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a970d1203b54bb2323f9cbb994366d3b4}\label{classpiolot_1_1_camera_a970d1203b54bb2323f9cbb994366d3b4}} 
+const glm\+::vec3 \& {\bfseries Get\+Right} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_afe3908486ce13772bf593a666869667a}\label{classpiolot_1_1_camera_afe3908486ce13772bf593a666869667a}} 
+const glm\+::vec3 \& {\bfseries Get\+World\+Up} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_ad270b37d787605772644f35b844992b0}\label{classpiolot_1_1_camera_ad270b37d787605772644f35b844992b0}} 
+float {\bfseries Get\+Movement\+Speed} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_aaf2988ab05281a6a1404207a76957ad6}\label{classpiolot_1_1_camera_aaf2988ab05281a6a1404207a76957ad6}} 
+void {\bfseries Set\+Movement\+Speed} (float \+\_\+movement\+Speed)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a4f9b65c8df717b82c3b7193457ce71f0}\label{classpiolot_1_1_camera_a4f9b65c8df717b82c3b7193457ce71f0}} 
+float {\bfseries Get\+Mouse\+Sensitivity} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_ade560e16d6c3775dab0637873e66e762}\label{classpiolot_1_1_camera_ade560e16d6c3775dab0637873e66e762}} 
+void {\bfseries Set\+Mouse\+Sensitivity} (float \+\_\+mouse\+Sensitivity)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_ad57c30f9e3f381a492b38566eab4b905}\label{classpiolot_1_1_camera_ad57c30f9e3f381a492b38566eab4b905}} 
+const glm\+::mat4 \& {\bfseries Get\+View\+Matrix} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_adf17d4592d4d144ea3deab9d8d5d836d}\label{classpiolot_1_1_camera_adf17d4592d4d144ea3deab9d8d5d836d}} 
+void {\bfseries Set\+View\+Matrix} (const glm\+::mat4 \&\+\_\+view\+Matrix)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_aa9172dabf1f037963c8f93f7b774cd9e}\label{classpiolot_1_1_camera_aa9172dabf1f037963c8f93f7b774cd9e}} 
+void {\bfseries Display\+Camera\+Details\+Imgui} ()
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a55a4d1a5773d240f08c766e6566591b3}\label{classpiolot_1_1_camera_a55a4d1a5773d240f08c766e6566591b3}} 
+void {\bfseries Process\+Keyboard} (camera\+\_\+movement \+\_\+direction, float \+\_\+delta\+Time)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_ae6e18ad2ee8ca787ffe5fa35a01dd16b}\label{classpiolot_1_1_camera_ae6e18ad2ee8ca787ffe5fa35a01dd16b}} 
+void {\bfseries Process\+Mouse\+Movement} (float \+\_\+xoffset, float \+\_\+yoffset)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a6f2dd8513b5f87e438e2721bd32b22c0}\label{classpiolot_1_1_camera_a6f2dd8513b5f87e438e2721bd32b22c0}} 
+glm\+::vec3 {\bfseries Get\+Mouse\+Ray\+Direction} (float \+\_\+mouseX, float \+\_\+mouseY, int \+\_\+window\+Width, int \+\_\+window\+Height, glm\+::mat4 \+\_\+projection\+Matrix)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a3e5675563dc81e8526c012e54cb92c9f}\label{classpiolot_1_1_camera_a3e5675563dc81e8526c012e54cb92c9f}} 
+void {\bfseries Update\+Vectors} ()
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a93e6bf77b4c9a6a1402a4866dc2590e9}\label{classpiolot_1_1_camera_a93e6bf77b4c9a6a1402a4866dc2590e9}} 
+void {\bfseries Update\+Matrices} ()
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_abd25ede2299da256764a59e991a8e25a}\label{classpiolot_1_1_camera_abd25ede2299da256764a59e991a8e25a}} 
+void {\bfseries Save\+To\+Stream} (std\+::ofstream \&\+\_\+out)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_acca1f703bec64c28d501760920cf8d57}\label{classpiolot_1_1_camera_acca1f703bec64c28d501760920cf8d57}} 
+void {\bfseries Load\+From\+Stream} (std\+::ifstream \&\+\_\+in)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a4552a5cf81a5a8ed249f632e157947a1}\label{classpiolot_1_1_camera_a4552a5cf81a5a8ed249f632e157947a1}} 
+glm\+::vec3 {\bfseries position}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a2adfedf79a032c96798b7d6e01755b5a}\label{classpiolot_1_1_camera_a2adfedf79a032c96798b7d6e01755b5a}} 
+glm\+::vec3 {\bfseries front}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a31ccd695a741d232fa4592d7713de37e}\label{classpiolot_1_1_camera_a31ccd695a741d232fa4592d7713de37e}} 
+glm\+::vec3 {\bfseries up}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a20ee1dceb691bb4eefda7a792a6de7c5}\label{classpiolot_1_1_camera_a20ee1dceb691bb4eefda7a792a6de7c5}} 
+glm\+::vec3 {\bfseries right}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_ae722f7d01f68b23b82feb2adb74b90c2}\label{classpiolot_1_1_camera_ae722f7d01f68b23b82feb2adb74b90c2}} 
+glm\+::vec3 {\bfseries world\+Up}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a92aadc4b56ef9667081ecb52b2d7bc42}\label{classpiolot_1_1_camera_a92aadc4b56ef9667081ecb52b2d7bc42}} 
+float {\bfseries movement\+Speed} = 0.\+0f
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_ade10b624b272d00a83fdc969da8755f9}\label{classpiolot_1_1_camera_ade10b624b272d00a83fdc969da8755f9}} 
+float {\bfseries mouse\+Sensitivity} = 0.\+0f
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a8f9352500ba36f03f6a384cc28579a95}\label{classpiolot_1_1_camera_a8f9352500ba36f03f6a384cc28579a95}} 
+glm\+::mat4 {\bfseries view\+Matrix}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_acada09a9b00303c10c694c386fa05f87}\label{classpiolot_1_1_camera_acada09a9b00303c10c694c386fa05f87}} 
+std\+::string {\bfseries camera\+Name}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_camera_a782c913d63204fd8e22c17111dc1921f}\label{classpiolot_1_1_camera_a782c913d63204fd8e22c17111dc1921f}} 
+Camera\+Type {\bfseries type}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/dev/\+Piolot/\+Engine/Camera.\+h\item 
+C\+:/dev/\+Piolot/\+Engine/Camera.\+cpp\end{DoxyCompactItemize}
