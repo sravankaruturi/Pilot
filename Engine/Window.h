@@ -68,9 +68,9 @@ public:
 	 */
 	~Window();
 
-	/** @defgroup Getters
-	* Getters
+	/** 
 	* @{
+	* Getters
 	*/
 
 	unsigned GetWidth();
@@ -86,19 +86,19 @@ public:
 	GLFWwindow* GetWindow() const;
 
 	/*
-	* @} // End of Getters
+	* @} 
 	*/
 
-	/** @defgroup Setters
+	/*@{
 	* Setters
-	* @{
 	*/
 
 	void SetWidth(unsigned _width);
 
 	void SetHeight(unsigned _height);
 
-	/* @}
+	/* 
+	* @}
 	*/
 
 	/**
