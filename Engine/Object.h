@@ -61,6 +61,8 @@ namespace piolot
 
 		std::vector<std::shared_ptr<Mesh>> meshes;
 
+		// TODO: Save Animations here.
+
 	public:
 		const std::string& GetObjectName() const
 		{
@@ -75,6 +77,9 @@ namespace piolot
 
 		std::vector<std::shared_ptr<piolot::Mesh>> GetMeshes() const { return meshes; }
 		void SetMeshes(std::vector<std::shared_ptr<piolot::Mesh>> val) { meshes = val; }
+
+		// TODO: Call PlayAnimation(_deltaTime) here.
+
 	private:
 		void ProcessNode(aiNode *_node, const aiScene *_scene, std::vector<std::shared_ptr<Mesh>>& _meshes);
 		void ProcessAndAddMesh(aiMesh * _mesh, const aiScene * _scene);
