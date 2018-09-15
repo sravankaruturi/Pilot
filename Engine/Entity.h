@@ -22,6 +22,13 @@ namespace piolot
 
 		glm::vec3 position{};
 
+		glm::vec3 rotation{ 0.0f, 0.0f, 0.0f };
+		glm::vec3 scale{ 1.0f, 1.0f, 1.0f };
+
+		glm::mat4 modelMatrix{};
+
+		bool matrixDirty = true;
+
 	public:
 		std::string GetEntityName() const
 		{
@@ -106,7 +113,6 @@ namespace piolot
 		 */
 		void LoadFromFile(std::ifstream& _in);
 
-	public:
 		void SetPosition(const glm::vec3& _position)
 		{
 			position = _position;
@@ -126,12 +132,6 @@ namespace piolot
 		}
 
 	protected:
-		glm::vec3 rotation{0.0f, 0.0f, 0.0f};
-		glm::vec3 scale{1.0f, 1.0f, 1.0f};
-
-		glm::mat4 modelMatrix{};
-
-		bool matrixDirty = true;
 
 		void UpdateMatrices();
 
