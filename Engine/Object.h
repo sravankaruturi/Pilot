@@ -80,6 +80,8 @@ namespace piolot
 		std::vector<std::shared_ptr<piolot::Mesh>> GetMeshes() const { return meshes; }
 		void SetMeshes(std::vector<std::shared_ptr<piolot::Mesh>> val) { meshes = val; }
 
+		void MeshDetailsImGUI();
+
 		// TODO: Call PlayAnimation(_deltaTime) here.
 
 	private:

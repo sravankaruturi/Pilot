@@ -127,6 +127,11 @@ namespace piolot
 		ImGui::InputFloat3("Rotation", glm::value_ptr(rotation));
 		ImGui::InputFloat3("Scale", glm::value_ptr(scale));
 
+		ImGui::Separator();
+
+		// Show object details.
+		ASMGR.objects.at(objectName)->MeshDetailsImGUI();
+
 	}
 
 }

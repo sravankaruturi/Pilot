@@ -52,6 +52,33 @@ namespace piolot
 		}
 	}
 
+	void Object::MeshDetailsImGUI()
+	{
+		std::string name;
+		short i = 0;
+		for (auto& it : this->meshes) {
+			i++;
+			ImGui::PushID(&it);
+			name = "Mesh " + std::to_string(i);
+			if (ImGui::TreeNode(name.c_str())) {
+				// Display the texture names.
+				ImGui::TextColored(ImVec4(1.0, 0.2, 0.2, 0.8), "Textures");
+				ImGui::Separator();
+
+				// Display all the textures.
+				//auto texture_names = it->GetTextureNames();
+				/*for (auto itit : texture_names) {
+					ImGui::Text(itit.c_str());
+				}*/
+
+				ImGui::TreePop();
+			}
+			ImGui::PopID();
+
+		}
+
+	}
+
 	void Object::ProcessNode(aiNode* _node, const aiScene* _scene, std::vector<std::shared_ptr<Mesh>>& meshes)
 	{
 		/* Process each mesh at the current Node */
