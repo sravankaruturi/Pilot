@@ -41,7 +41,9 @@ namespace piolot {
 		cameras.insert_or_assign("Second", std::make_shared<Camera>("Second", glm::vec3(10, 0, 10), glm::vec3(-1, 0, -1), glm::vec3(0, 1, 0)));
 
 		entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
-		entities.push_back(std::make_shared<Entity>("cuboid", "cube/cube_rig.dae", "cuboid"));
+		entities.push_back(std::make_shared<Entity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp"));
+		entities[1]->SetScale(glm::vec3(0.05f, 0.05f, 0.05f));
+		entities[1]->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
 
 		ActiveCamera(cameras.at("First"));
 
