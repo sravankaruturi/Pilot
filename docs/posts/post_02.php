@@ -9,11 +9,11 @@ include_once "post_header.php";
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
-              <h1>Initial Commit</h1>
-              <h2 class="subheading">How I started the project</h2>
+              <h1>Raypicking</h1>
+              <h2 class="subheading">..and Unit Tests</h2>
               <span class="meta">Posted by
                 <a href="#">Sravan</a>
-                on September 11, 2018</span>
+                on September 15, 2018</span>
             </div>
           </div>
         </div>
@@ -25,19 +25,21 @@ include_once "post_header.php";
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-            <p>I have been trying to stick to an Engine for a while now. And everytime, I fallback on creating a new one because I didn't like the Old one, after a certain point. This is the same. It started out while I was reading a book, and following his examples. Halfway through it, I did not like where it was going. So, I scrapped it, and started new. This time, with the knowledge of what I needed to implement first.</p>
+            <p>This is interesting. I have never needed to implement Ray Picking before since, I never made a Game in OpenGL or DirectX where you would point and click. I wasn't familiar with the concepts and loic behind it.</p>
 
-            <p>This Engine is supposed to be an Engine for an RTS Game. Now, how it would turn out, is to be seen. But so, far, I'm satisfied with the results</p>
+            <p>I dove in, read some online material on it, of which <a href="http://antongerdelan.net/opengl/raycasting.html" target="_blank">this</a> stood out the most to me. This is nicely summarized in <a href="https://www.youtube.com/watch?v=DLKN0jExRIM" target="_blank">a video</a> althought the video doesn't use C++</p>
 
-            <p>I've decided to take elaborate notes and document the entire process a week after I started this Engine. So, I do not have the very start of the process.</p>
+            <p>I had a lot of trouble with Ray Picking. I was quite confused as to why it did not work even though I did everything right. And after a couple of days of being stuck, I decided to write Unit Tests for this Engine to help me Debug where the issue was.</p>
 
-            <h2 class="section-heading">Terrain Loader</h2>
+            <h2 class="section-heading">Unit Tests</h2>
 
-            <p>I realized I wanted to start with loading a terrain. Load a heightmap file and create a terrain based on that. This way, I can create my own terrain in tools like Photoshop or Gimp without leaving the map upto chance, which is a huge deal when it comes to game balance. Note that it does however means that we need to create every map in the game ourselves.</p>
+            <p>Once I decided to include Unit Tests in my Project, I wanted to make sure that I would only write the tests as needed due to time constraints. So, this project would not be guided by the Test Driven Development Principles. But, the Unit Tests included would help me debug the Program. This might come back to impact me in the future, but for now, this seems to work just fine.</p>
+              
+            <p>Another issue I faced back then is to get the exact values of each Ray, Model, View Matrices to help write Unit Tests. I got it after some manual calculation and whiteboarding. You can see most of it the program, under the CameraTests.cpp file. </p>
 
             <!--<blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote>-->
 
-            <p>Actual development of the Terrain was easy, however the whiteboarding process took a while. Right now, every scene has a Terrain. It could be a nullptr, but it exists. This is to make sure that all Scenes conform to a specific set of Rules.</p>
+            <p>I also had the issue of determining the boundaries of a given mesh, and to use those boundaries for Ray Picking. I just a cube for now, But Bounding Boxes and determining their collisions with a Ray were introduced here.</p>
 
             <!--<h2 class="section-heading">Reaching for the Stars</h2>-->
 
