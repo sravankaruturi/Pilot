@@ -78,6 +78,10 @@ namespace piolot {
 
 		virtual void OnImguiRender(ImGuiControlVariables& _vars);
 
+		/**
+		 * \brief Save the current Scene to a binary file.
+		 * \param _fileName The Filename to save. No Extensions required.
+		 */
 		void SaveScene(const char * _fileName);
 
 		void LoadScene(const char * _fileName);

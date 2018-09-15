@@ -3,9 +3,48 @@
 #include "FolderLocations.h"
 #include "AssetManager.h"
 #include <glm/gtc/matrix_transform.inl>
+#include "SaveSceneHelpers.h"
 
 namespace piolot
 {
+	void Entity::SaveToFile(std::ofstream& _out)
+	{
+
+		// We need to save all the Data for the Entity.
+		pe_helpers::store_strings(shaderName, _out);
+		pe_helpers::store_strings(entityName, _out);
+		pe_helpers::store_strings(objectName, _out);
+
+		// Store the Bounding Box's minimum and maximum points.
+		_out.write((char*)&(boundingBox.GetMinimumPoint()), sizeof(position));
+		_out.write((char*)&(boundingBox.GetMaximumPoint()), sizeof(position));
+
+		_out.write((char*)&selectedInScene, sizeof(bool));
+		_out.write((char*)&position, sizeof(position));
+
+	}
+
+	void Entity::LoadFromFile(std::ifstream& _in)
+	{
+
+		// We need to save all the Data for the Entity.
+		pe_helpers::read_strings(shaderName, _in);
+		pe_helpers::read_strings(entityName, _in);
+		pe_helpers::read_strings(objectName, _in);
+
+		glm::vec3 min_point, max_point;
+
+		// Store the Bounding Box's minimum and maximum points.
+		_in.read((char*)&(min_point), sizeof(position));
+		_in.read((char*)&(max_point), sizeof(position));
+
+		this->boundingBox = BoundingBox(min_point, max_point);
+
+		_in.read((char*)&selectedInScene, sizeof(bool));
+		_in.read((char*)&position, sizeof(position));
+
+	}
+
 	void Entity::UpdateMatrices()
 	{
 		glm::mat4 model_matrix(1.0f);

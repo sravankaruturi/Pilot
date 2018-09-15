@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['width',['width',['../class_window.html#af5b1c436782cc9752d386493fbc5dc8c',1,'Window']]],
+  ['window',['Window',['../class_window.html',1,'Window'],['../class_window.html#a9957db4afdad3d57e5c5b6626b44b6d0',1,'Window::window()'],['../class_window.html#a65335a745eaadd9dbdbd265b7fbf0fc5',1,'Window::Window(unsigned _width, unsigned _height, const std::string &amp;_title)']]]
+];

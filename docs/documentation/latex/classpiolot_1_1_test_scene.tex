@@ -1,0 +1,102 @@
+\hypertarget{classpiolot_1_1_test_scene}{}\section{piolot\+:\+:Test\+Scene Class Reference}
+\label{classpiolot_1_1_test_scene}\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+Inheritance diagram for piolot\+:\+:Test\+Scene\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classpiolot_1_1_test_scene}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a1568f961f1632ccb9da36d14c6aae0d5}\label{classpiolot_1_1_test_scene_a1568f961f1632ccb9da36d14c6aae0d5}} 
+{\bfseries Test\+Scene} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_window}{Window}} $>$ \+\_\+window)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a1151c075257a2b626774502709e0aab9}\label{classpiolot_1_1_test_scene_a1151c075257a2b626774502709e0aab9}} 
+virtual void {\bfseries On\+Update} (float \+\_\+delta\+Time, float \+\_\+total\+Time) override
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_aeaccbb83f264fb4f1e8df5b246033f76}\label{classpiolot_1_1_test_scene_aeaccbb83f264fb4f1e8df5b246033f76}} 
+virtual void {\bfseries On\+Render} () override
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_aa75a09c9c598fc35949f097cbb6df5cb}\label{classpiolot_1_1_test_scene_aa75a09c9c598fc35949f097cbb6df5cb}} 
+virtual void {\bfseries On\+Imgui\+Render} (\mbox{\hyperlink{structpiolot_1_1_im_gui_control_variables}{Im\+Gui\+Control\+Variables}} \&\+\_\+vars)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a8fcd4f46ccdb6c49741bb37364d9bb0e}\label{classpiolot_1_1_test_scene_a8fcd4f46ccdb6c49741bb37364d9bb0e}} 
+void {\bfseries Save\+Scene} (const char $\ast$\+\_\+file\+Name)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a513072b5c63768aa0fcd0dd5a0a0ca98}\label{classpiolot_1_1_test_scene_a513072b5c63768aa0fcd0dd5a0a0ca98}} 
+void {\bfseries Load\+Scene} (const char $\ast$\+\_\+file\+Name)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_aca94d51dc521dd620b45d85ee817cb0a}\label{classpiolot_1_1_test_scene_aca94d51dc521dd620b45d85ee817cb0a}} 
+\mbox{\hyperlink{classpiolot_1_1_grid}{Grid}} {\bfseries test\+Grid}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a349626f35bec9409fa359108ce08c32e}\label{classpiolot_1_1_test_scene_a349626f35bec9409fa359108ce08c32e}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} $>$ {\bfseries test\+Terrain}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_ab19142067d70aede9c5ac3cadecb1c29}\label{classpiolot_1_1_test_scene_ab19142067d70aede9c5ac3cadecb1c29}} 
+glm\+::vec2 {\bfseries startxz}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_aa7838a55b521b6d9c1d32dc3ca240ba7}\label{classpiolot_1_1_test_scene_aa7838a55b521b6d9c1d32dc3ca240ba7}} 
+glm\+::vec2 {\bfseries endxz}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a2a69831062ede8e0e0f889064b257d51}\label{classpiolot_1_1_test_scene_a2a69831062ede8e0e0f889064b257d51}} 
+std\+::vector$<$ \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ $>$ {\bfseries path}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_ac12dc2505449af346ebcead571fd2954}\label{classpiolot_1_1_test_scene_ac12dc2505449af346ebcead571fd2954}} 
+bool {\bfseries pathing\+Debug\+Window} = false
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a7568d8b6dbe31cdac69303544c06d338}\label{classpiolot_1_1_test_scene_a7568d8b6dbe31cdac69303544c06d338}} 
+bool {\bfseries display\+Asset\+Manager\+Window} = false
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a1abbac46b5984ea191e8f429cd10e626}\label{classpiolot_1_1_test_scene_a1abbac46b5984ea191e8f429cd10e626}} 
+bool {\bfseries display\+Log\+Window} = false
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a91e97c2de25304b754313bd1beceecac}\label{classpiolot_1_1_test_scene_a91e97c2de25304b754313bd1beceecac}} 
+bool {\bfseries display\+Camera\+Controls} = false
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_aeff84b8ca87f60068340a8a3afbe11e5}\label{classpiolot_1_1_test_scene_aeff84b8ca87f60068340a8a3afbe11e5}} 
+bool {\bfseries display\+Raypicking\+Controls} = true
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a7416b0c39baa5a3154ac88bda22bdf25}\label{classpiolot_1_1_test_scene_a7416b0c39baa5a3154ac88bda22bdf25}} 
+bool {\bfseries display\+Demo\+Window} = false
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a5f2a7d4a162916445d89f338c01dbc93}\label{classpiolot_1_1_test_scene_a5f2a7d4a162916445d89f338c01dbc93}} 
+bool {\bfseries display\+Viewport\+Controls} = false
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a0cbccb0354c0c68f277c2360cefc9ab7}\label{classpiolot_1_1_test_scene_a0cbccb0354c0c68f277c2360cefc9ab7}} 
+\mbox{\hyperlink{structpiolot_1_1_viewport_details}{Viewport\+Details}} {\bfseries viewports\+Details} \mbox{[}4\mbox{]}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a9f8ea97b9444b79a962ec590af5761d3}\label{classpiolot_1_1_test_scene_a9f8ea97b9444b79a962ec590af5761d3}} 
+std\+::string {\bfseries filename\+To\+Save\+Scene} = \char`\"{}File Name\char`\"{}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a6dfdaeb3f1711bcca9b85bc5a0a5acd3}\label{classpiolot_1_1_test_scene_a6dfdaeb3f1711bcca9b85bc5a0a5acd3}} 
+std\+::string {\bfseries filename\+To\+Load\+Scene} = \char`\"{}File Name\char`\"{}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a6a9853bb71c428b0842dce2af2976514}\label{classpiolot_1_1_test_scene_a6a9853bb71c428b0842dce2af2976514}} 
+bool {\bfseries open\+Save\+Scene\+As\+Window} = false
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a29392a8bc16ade36f204bf56fa68cb17}\label{classpiolot_1_1_test_scene_a29392a8bc16ade36f204bf56fa68cb17}} 
+bool {\bfseries open\+Load\+Scene\+Window} = false
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_ab906d0870595d299b454becf24219171}\label{classpiolot_1_1_test_scene_ab906d0870595d299b454becf24219171}} 
+bool {\bfseries display\+Hierarchy} = false
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a4123335b4ec13948ff01ae9f344d9546}\label{classpiolot_1_1_test_scene_a4123335b4ec13948ff01ae9f344d9546}} 
+bool {\bfseries display\+Add\+Entity} = false
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_ad18ff08a06cd2076ea3b76c4d08867cc}\label{classpiolot_1_1_test_scene_ad18ff08a06cd2076ea3b76c4d08867cc}} 
+std\+::string {\bfseries obj\+Name}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_ae88852d0c8e77c07196e67cc1e93759c}\label{classpiolot_1_1_test_scene_ae88852d0c8e77c07196e67cc1e93759c}} 
+std\+::string {\bfseries shader\+Name}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/dev/\+Piolot/\+Engine/Test\+Scene.\+h\item 
+C\+:/dev/\+Piolot/\+Engine/Test\+Scene.\+cpp\end{DoxyCompactItemize}

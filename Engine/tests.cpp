@@ -16,9 +16,10 @@
 
 #if ENABLE_GUI
 #include "GUIHelpers.h"
-#include "external_files/ImGUI/imgui_impl_opengl3.h"
-#include "external_files/ImGUI/imgui_impl_glfw.h"
+#include "../EngineDeps/external_files/ImGUI/imgui_impl_opengl3.h"
+#include "../EngineDeps/external_files/ImGUI/imgui_impl_glfw.h"
 #endif
+
 
 int main(int argc, char ** argv)
 {

@@ -1,7 +1,7 @@
 ﻿#include "Camera.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include "GLShader.h"
-#include "../SaveSceneHelpers.h"
+#include "SaveSceneHelpers.h"
 
 namespace piolot
 {

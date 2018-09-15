@@ -9,10 +9,10 @@
 #include <fstream>
 
 #if ENABLE_GUI
-#include "external_files/ImGUI/imgui.h"
+#include "../EngineDeps/external_files/ImGUI/imgui.h"
 #endif
 
-#include "../SaveSceneHelpers.h"
+#include "SaveSceneHelpers.h"
 
 #define		NAME_LENGTH_TO_FILE		20
 
@@ -48,7 +48,8 @@ namespace piolot {
 		testGrid.Init();
 		
 		//terrain_test = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
-		testTerrain = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
+		std::string heightmap_path = TEXTURE_FOLDER + std::string("heightmap.jpg");
+		testTerrain = std::make_shared<Terrain>(10, 10, 0.5, 0.5, heightmap_path);
 
 		viewportsDetails[0].camera = activeCamera;
 		viewportsDetails[1].camera = activeCamera;
@@ -744,9 +745,15 @@ namespace piolot {
 			}
 
 			// Store the Terrain
-			// We need to store the Map Tile Data as well, that is on the heap.
-			// TODO: Create a Save Terrain function for the Terrain, and a Load Terrain Function.
 			testTerrain->SaveToFile(out);
+
+			pe_helpers::store_strings("Entities", out);
+			// Save all the Entities.
+			int number_of_entities = entities.size();
+			out.write((char*)&number_of_entities, sizeof(int));
+			for (auto it : entities) {
+				it->SaveToFile(out);
+			}
 
 			// Store the Viewport Details.
 			for (auto i = 0; i < 4; i++) {
@@ -804,6 +811,20 @@ namespace piolot {
 			// Load the Terrain
 			ASMGR.objects.erase("terrain");
 			testTerrain->LoadFromFile(in);
+
+			int number_of_entities = 0;
+			std::string entity_header_string;
+			pe_helpers::read_strings(entity_header_string, in);
+			in.read((char*)&number_of_entities, sizeof(int));
+			entities.clear();
+			for (auto i = 0; i < number_of_entities; i++) {
+
+				std::shared_ptr<Entity> ent = std::make_shared<Entity>();
+				ent->LoadFromFile(in);
+
+				entities.push_back(ent);
+
+			}
 
 			// Load the Viewport Details
 			for (auto i = 0; i < 4; i++) {

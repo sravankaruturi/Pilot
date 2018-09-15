@@ -1,0 +1,168 @@
+\hypertarget{classpiolot_1_1_terrain}{}\section{piolot\+:\+:Terrain Class Reference}
+\label{classpiolot_1_1_terrain}\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+Inheritance diagram for piolot\+:\+:Terrain\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classpiolot_1_1_terrain}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_aeb2f5954d70bc27d7dc84ab15180c502}\label{classpiolot_1_1_terrain_aeb2f5954d70bc27d7dc84ab15180c502}} 
+unsigned {\bfseries Get\+Length} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a7fa4bf450e2545dbce46a870caa31aa2}\label{classpiolot_1_1_terrain_a7fa4bf450e2545dbce46a870caa31aa2}} 
+unsigned {\bfseries Get\+Breadth} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_aa742fdf411184356e962f98d3785ec7c}\label{classpiolot_1_1_terrain_aa742fdf411184356e962f98d3785ec7c}} 
+float {\bfseries Get\+Grid\+Length} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_acd20433446ca1eef57b1498e26aa0aca}\label{classpiolot_1_1_terrain_acd20433446ca1eef57b1498e26aa0aca}} 
+float {\bfseries Get\+Grid\+Breadth} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a284fb2b373798b73d3893837cfe5d4bc}\label{classpiolot_1_1_terrain_a284fb2b373798b73d3893837cfe5d4bc}} 
+unsigned {\bfseries Get\+Node\+CountX} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_aef96f5a95563a88c641fbfd299c905f3}\label{classpiolot_1_1_terrain_aef96f5a95563a88c641fbfd299c905f3}} 
+unsigned {\bfseries Get\+Node\+CountZ} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a0366991939da62e46bff441c1b3988e0}\label{classpiolot_1_1_terrain_a0366991939da62e46bff441c1b3988e0}} 
+\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$$\ast$ {\bfseries Get\+Tiles} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a8ce0f148b1b05889f609796d09840543}\label{classpiolot_1_1_terrain_a8ce0f148b1b05889f609796d09840543}} 
+const std\+::string \& {\bfseries Get\+Height\+Map\+File} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a0fe5987e17e76c418cc9407a1acdc915}\label{classpiolot_1_1_terrain_a0fe5987e17e76c418cc9407a1acdc915}} 
+const std\+::vector$<$ \mbox{\hyperlink{structpiolot_1_1_terrain_vertex_data}{Terrain\+Vertex\+Data}} $>$ \& {\bfseries Get\+Vertices} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_ada8caf451e4946153d9a0cc4d5d0fcaf}\label{classpiolot_1_1_terrain_ada8caf451e4946153d9a0cc4d5d0fcaf}} 
+const std\+::vector$<$ unsigned $>$ \& {\bfseries Get\+Indices} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a445ca2537de1765c3ae2c8073db1603f}\label{classpiolot_1_1_terrain_a445ca2537de1765c3ae2c8073db1603f}} 
+const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_object}{Object}} $>$ \& {\bfseries Get\+Object\+Ptr} () const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_aa60d6ba8d6dd4affb441d15eda4ca0f8}\label{classpiolot_1_1_terrain_aa60d6ba8d6dd4affb441d15eda4ca0f8}} 
+{\bfseries Terrain} (int \+\_\+map\+Length, int \+\_\+map\+Breadth, float \+\_\+grid\+Length, float \+\_\+grid\+Breadth, std\+::string \+\_\+height\+Map\+File)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_af737ba0aa165e923a3e6bd37f6c9a9ab}\label{classpiolot_1_1_terrain_af737ba0aa165e923a3e6bd37f6c9a9ab}} 
+void {\bfseries Init} ()
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a21bf8a5f9f394709f2e938bf2a62db9c}\label{classpiolot_1_1_terrain_a21bf8a5f9f394709f2e938bf2a62db9c}} 
+void {\bfseries Render} ()
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a54f2eb43b93352f7584569f15a7dc824}\label{classpiolot_1_1_terrain_a54f2eb43b93352f7584569f15a7dc824}} 
+void {\bfseries Update} (float \+\_\+delat\+Time, float \+\_\+total\+Time)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a8eb74a9d2b2c403ff454dc639b47fcdd}\label{classpiolot_1_1_terrain_a8eb74a9d2b2c403ff454dc639b47fcdd}} 
+float {\bfseries Get\+Height\+At\+Pos} (const float \&\+\_\+x, const float \&\+\_\+z)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_ab34c88011a034755e5758985b9e02cc6}\label{classpiolot_1_1_terrain_ab34c88011a034755e5758985b9e02cc6}} 
+float {\bfseries Get\+Height\+For\+Node} (const int \&\+\_\+x, const int \&\+\_\+z)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a8ac0b5aef5986ea7c78d645742a6b51a}\label{classpiolot_1_1_terrain_a8ac0b5aef5986ea7c78d645742a6b51a}} 
+glm\+::vec2 {\bfseries Get\+Node\+Indices\+From\+Pos} (const float \&\+\_\+x, const float \&\+\_\+z) const
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_af9a39ab31e9621d02f78d89518c521f7}\label{classpiolot_1_1_terrain_af9a39ab31e9621d02f78d89518c521f7}} 
+void {\bfseries Highlight\+Node} (const unsigned int \+\_\+x, const unsigned int \+\_\+z)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_afe488b112444dc406a12fe83f8fb1a90}\label{classpiolot_1_1_terrain_afe488b112444dc406a12fe83f8fb1a90}} 
+void {\bfseries Clear\+Colours} ()
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_af3294a6025d6e23f79ff8693ca67fb79}\label{classpiolot_1_1_terrain_af3294a6025d6e23f79ff8693ca67fb79}} 
+std\+::vector$<$ \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ $>$ {\bfseries Get\+Path\+From\+Tiles} (\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$\+\_\+start\+Tile, \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$\+\_\+end\+Tile)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a27ab93eb2d5e058f4bfa9e6929b324bc}\label{classpiolot_1_1_terrain_a27ab93eb2d5e058f4bfa9e6929b324bc}} 
+std\+::vector$<$ \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ $>$ {\bfseries Get\+Path\+From\+Positions} (glm\+::vec3, glm\+::vec3)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a1dde3530579a5bcdbb35eec94dff49b5}\label{classpiolot_1_1_terrain_a1dde3530579a5bcdbb35eec94dff49b5}} 
+\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ {\bfseries Get\+Tile\+From\+Indices} (int \+\_\+x, int \+\_\+y)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a8c86b33ae5763a67ad783bebb37d88c5}\label{classpiolot_1_1_terrain_a8c86b33ae5763a67ad783bebb37d88c5}} 
+void {\bfseries Init\+Path\+Finding} ()
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_ae61a150d060f54eb14ef465541cc6214}\label{classpiolot_1_1_terrain_ae61a150d060f54eb14ef465541cc6214}} 
+void {\bfseries Fill\+Neighbours} (\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} \&\+\_\+tile)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a211e06f07b056d9e412f9b7d5c61f28f}\label{classpiolot_1_1_terrain_a211e06f07b056d9e412f9b7d5c61f28f}} 
+void {\bfseries On\+Imgui\+Render} ()
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a653f471121e6efec6fc9533e747486ae}\label{classpiolot_1_1_terrain_a653f471121e6efec6fc9533e747486ae}} 
+int {\bfseries Get\+Node\+Set\+From\+Pos} (float \+\_\+x, float \+\_\+z)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a1008afdeef49245b34551141ad40e512}\label{classpiolot_1_1_terrain_a1008afdeef49245b34551141ad40e512}} 
+std\+::vector$<$ int $>$ {\bfseries Get\+All\+Tile\+Sets} ()
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a2a3fee4479a1c367262917e87e80aeae}\label{classpiolot_1_1_terrain_a2a3fee4479a1c367262917e87e80aeae}} 
+void {\bfseries Save\+To\+File} (std\+::ofstream \&\+\_\+out)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_ab975d5914a10346ddcbe29467f0862c2}\label{classpiolot_1_1_terrain_ab975d5914a10346ddcbe29467f0862c2}} 
+void {\bfseries Load\+From\+File} (std\+::ifstream \&\+\_\+in)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_af2bc3eb0ea909a0fd96b6c11aeb29c8a}\label{classpiolot_1_1_terrain_af2bc3eb0ea909a0fd96b6c11aeb29c8a}} 
+void {\bfseries Delete\+Tiles} () const
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_af15b6de452d8225d07d7d4ae48d4f154}\label{classpiolot_1_1_terrain_af15b6de452d8225d07d7d4ae48d4f154}} 
+bool {\bfseries terrain\+Debug} = false
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a8228070fe11ba581ee8a8b8f9fe303d4}\label{classpiolot_1_1_terrain_a8228070fe11ba581ee8a8b8f9fe303d4}} 
+glm\+::vec3 {\bfseries Compute\+Grid\+Normal} (int \+\_\+x, int \+\_\+z)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_adfe24e50e102f6c0dd424e2e7f376f15}\label{classpiolot_1_1_terrain_adfe24e50e102f6c0dd424e2e7f376f15}} 
+unsigned int {\bfseries length}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a05c6d7e235fafccc8aaa300fb63dfc27}\label{classpiolot_1_1_terrain_a05c6d7e235fafccc8aaa300fb63dfc27}} 
+unsigned int {\bfseries breadth}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_ac1378a19d70d35bcafa1ac2c9e443d98}\label{classpiolot_1_1_terrain_ac1378a19d70d35bcafa1ac2c9e443d98}} 
+float {\bfseries grid\+Length}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_ac825eeb29fe45a95909488a560ac8331}\label{classpiolot_1_1_terrain_ac825eeb29fe45a95909488a560ac8331}} 
+float {\bfseries grid\+Breadth}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_af2671f954c4fa1be2228ccf4cb631abf}\label{classpiolot_1_1_terrain_af2671f954c4fa1be2228ccf4cb631abf}} 
+unsigned int {\bfseries node\+CountX} \{\}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a584b5d99c115bcfae303b3feea50c3a5}\label{classpiolot_1_1_terrain_a584b5d99c115bcfae303b3feea50c3a5}} 
+unsigned int {\bfseries node\+CountZ} \{\}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a092c31b5d881c4f89dac30cd887d1664}\label{classpiolot_1_1_terrain_a092c31b5d881c4f89dac30cd887d1664}} 
+\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$$\ast$ {\bfseries tiles} \{\}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a75cfcac6fb95fb3c63def8362ce393d0}\label{classpiolot_1_1_terrain_a75cfcac6fb95fb3c63def8362ce393d0}} 
+std\+::string {\bfseries height\+Map\+File}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a57bd2f1b451a1d670bc5f42134ecf2c0}\label{classpiolot_1_1_terrain_a57bd2f1b451a1d670bc5f42134ecf2c0}} 
+std\+::vector$<$ \mbox{\hyperlink{structpiolot_1_1_terrain_vertex_data}{Terrain\+Vertex\+Data}} $>$ {\bfseries vertices}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a0d8413db780f4ef041fd1794631ef122}\label{classpiolot_1_1_terrain_a0d8413db780f4ef041fd1794631ef122}} 
+bool {\bfseries are\+Vertices\+Dirty} = false
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a3f6ce2a18736eccd598931c72aeaf4bc}\label{classpiolot_1_1_terrain_a3f6ce2a18736eccd598931c72aeaf4bc}} 
+std\+::vector$<$ unsigned int $>$ {\bfseries indices}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a9711e78acb58e6d457758fc1ddd8d82d}\label{classpiolot_1_1_terrain_a9711e78acb58e6d457758fc1ddd8d82d}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_object}{Object}} $>$ {\bfseries object\+Ptr}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_aa658452ff45b3c472d7f8290ee689954}\label{classpiolot_1_1_terrain_aa658452ff45b3c472d7f8290ee689954}} 
+glm\+::vec2 {\bfseries startxz} \{\}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_terrain_abef2d354599b2fa104c4aa0c62035257}\label{classpiolot_1_1_terrain_abef2d354599b2fa104c4aa0c62035257}} 
+glm\+::vec2 {\bfseries endxz} \{\}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/dev/\+Piolot/\+Engine/Terrain.\+h\item 
+C\+:/dev/\+Piolot/\+Engine/Terrain.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,133 @@
+\hypertarget{class_window}{}\section{Window Class Reference}
+\label{class_window}\index{Window@{Window}}
+
+
+\mbox{\hyperlink{class_window}{Window}} Class. Initialize this for opening the window. Cleanup to exit.  
+
+
+
+
+{\ttfamily \#include $<$Window.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_window_a65335a745eaadd9dbdbd265b7fbf0fc5}{Window}} (unsigned \+\_\+width, unsigned \+\_\+height, const std\+::string \&\+\_\+title)
+\begin{DoxyCompactList}\small\item\em Creates the \mbox{\hyperlink{class_window}{Window}} and Opens it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_window_a245d821e6016fa1f6970ccbbedd635f6}\label{class_window_a245d821e6016fa1f6970ccbbedd635f6}} 
+\mbox{\hyperlink{class_window_a245d821e6016fa1f6970ccbbedd635f6}{$\sim$\+Window}} ()
+\begin{DoxyCompactList}\small\item\em Default Destructor. Calls Cleanup. \end{DoxyCompactList}\item 
+unsigned {\bfseries Get\+Width} ()
+\item 
+unsigned {\bfseries Get\+Height} ()
+\item 
+std\+::string {\bfseries Get\+Title} () const
+\item 
+bool {\bfseries Is\+Glad\+Init} () const
+\item 
+bool {\bfseries Is\+Glfw\+Init} () const
+\item 
+G\+L\+F\+Wwindow $\ast$ {\bfseries Get\+Window} () const
+\item 
+void {\bfseries Set\+Width} (unsigned \+\_\+width)
+\item 
+void {\bfseries Set\+Height} (unsigned \+\_\+height)
+\item 
+void \mbox{\hyperlink{group___getters_gac825ddc0aeda29fae94c5fc910f3f04d}{Update\+Frame\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Updates the Class\textquotesingle{}s width and height with the G\+L\+FW Frame Buffer Width and Height. \end{DoxyCompactList}\item 
+void {\bfseries Handle\+Input} () const
+\item 
+bool {\bfseries Is\+Key\+Pressed} (unsigned int \+\_\+key\+Code) const
+\item 
+bool {\bfseries Is\+Key\+Pressed\+And\+Released} (unsigned int \+\_\+key\+Code) const
+\item 
+bool {\bfseries Is\+Key\+Pressed\+Or\+Held} (const unsigned int \+\_\+keycode) const
+\item 
+bool {\bfseries Is\+Key\+Held} (unsigned int \+\_\+key\+Code) const
+\item 
+bool {\bfseries Is\+Mouse\+Button\+Pressed} (unsigned int \+\_\+button) const
+\item 
+void \mbox{\hyperlink{group___getters_ga65b02b0e52540d4c2c9d13689f4ec45a}{Get\+Mouse\+Position}} (double \&x, double \&y) const
+\begin{DoxyCompactList}\small\item\em Function to get the Mouse Position, to a couple of variables. \end{DoxyCompactList}\item 
+void {\bfseries Update} (const float \+\_\+deltatime)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+key\+\_\+bool \mbox{\hyperlink{group___getters_ga7e9389c2d0e9f90f10422f86be7d22d8}{keys}} \mbox{[}M\+A\+X\+\_\+\+K\+E\+YS\mbox{]} \{\}
+\begin{DoxyCompactList}\small\item\em The keys and their current state. \end{DoxyCompactList}\item 
+key\+\_\+bool \mbox{\hyperlink{group___getters_gaa0adc9c4e183ccaa355928059359fe9a}{prev\+Keys}} \mbox{[}M\+A\+X\+\_\+\+K\+E\+YS\mbox{]} \{\}
+\begin{DoxyCompactList}\small\item\em The Keys and their Previous State. \end{DoxyCompactList}\item 
+key\+\_\+bool \mbox{\hyperlink{group___getters_gaf219ad727d87f6f2d0d34c0d165ec065}{mouse\+Buttons}} \mbox{[}M\+A\+X\+\_\+\+B\+U\+T\+T\+O\+NS\mbox{]} = \{ key\+\_\+inactive \}
+\begin{DoxyCompactList}\small\item\em The Mouse buttons current state. \end{DoxyCompactList}\item 
+key\+\_\+bool \mbox{\hyperlink{group___getters_ga89e8b6c9ffa84a095ec76cf1b29b5f94}{prev\+Mouse\+Buttons}} \mbox{[}M\+A\+X\+\_\+\+B\+U\+T\+T\+O\+NS\mbox{]} = \{ key\+\_\+inactive \}
+\begin{DoxyCompactList}\small\item\em The Mouse buttons Previous state. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{group___getters_gad50401a5c3c350b562b9577106e60fb0}{prev\+MouseX}} \{ 0.\+0 \}
+\begin{DoxyCompactList}\small\item\em Mouse X Position in the Previous frame. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{group___getters_gaf4a58a8da45b8aeeb36dbcae237bcef4}{prev\+MouseY}} \{ 0.\+0 \}
+\begin{DoxyCompactList}\small\item\em Mouse Y Position in the Previous frame. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{group___getters_ga68f752a9e5c04cf32a50b169df0de609}{mouseX}} \{ 0.\+0 \}
+\begin{DoxyCompactList}\small\item\em Mouse X Position in the Current Frame. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{group___getters_ga9f5f64a77451ba45212dab398f7b9dac}{mouseY}} \{ 0.\+0 \}
+\begin{DoxyCompactList}\small\item\em Mouse Y Positin in the Current Frame. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{group___getters_ga93b50aa557f493c5589af5dcc8f74c4a}{mouse\+OffsetX}} \{ 0.\+0 \}
+\begin{DoxyCompactList}\small\item\em Mouse X offset from the last frame. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{group___getters_ga22d84e6f9e9c7e283f303798b630c733}{mouse\+OffsetY}} \{ 0.\+0 \}
+\begin{DoxyCompactList}\small\item\em Mouse Y offset from the last frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_window_af5b1c436782cc9752d386493fbc5dc8c}\label{class_window_af5b1c436782cc9752d386493fbc5dc8c}} 
+int \mbox{\hyperlink{class_window_af5b1c436782cc9752d386493fbc5dc8c}{width}}
+\begin{DoxyCompactList}\small\item\em Width of the \mbox{\hyperlink{class_window}{Window}} in Pixels. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_window_af0ac1732ca6b79a6f6b78aa344140514}\label{class_window_af0ac1732ca6b79a6f6b78aa344140514}} 
+int \mbox{\hyperlink{class_window_af0ac1732ca6b79a6f6b78aa344140514}{height}}
+\begin{DoxyCompactList}\small\item\em Height of the \mbox{\hyperlink{class_window}{Window}} in Pixels. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_window_accc3e5364fced57c273820aa51410e12}\label{class_window_accc3e5364fced57c273820aa51410e12}} 
+std\+::string \mbox{\hyperlink{class_window_accc3e5364fced57c273820aa51410e12}{title}}
+\begin{DoxyCompactList}\small\item\em Title of the \mbox{\hyperlink{class_window}{Window}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_window_aaeb459aaf4e4f822bb7411d557312328}\label{class_window_aaeb459aaf4e4f822bb7411d557312328}} 
+bool \mbox{\hyperlink{class_window_aaeb459aaf4e4f822bb7411d557312328}{is\+Glfw\+Init}} = false
+\begin{DoxyCompactList}\small\item\em Flag to check if G\+L\+FW is Initialized. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_window_a7a64d5cb08cc14d5d87cb4efa03fcb92}\label{class_window_a7a64d5cb08cc14d5d87cb4efa03fcb92}} 
+bool \mbox{\hyperlink{class_window_a7a64d5cb08cc14d5d87cb4efa03fcb92}{is\+Glad\+Init}} = false
+\begin{DoxyCompactList}\small\item\em Flag to check if Glad is Initialized. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_window_a9957db4afdad3d57e5c5b6626b44b6d0}\label{class_window_a9957db4afdad3d57e5c5b6626b44b6d0}} 
+G\+L\+F\+Wwindow $\ast$ \mbox{\hyperlink{class_window_a9957db4afdad3d57e5c5b6626b44b6d0}{window}} = nullptr
+\begin{DoxyCompactList}\small\item\em The actual G\+L\+FW \mbox{\hyperlink{class_window}{Window}} Pointer. Nullptr if G\+L\+FW is not initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{group___getters_gab0d4c2fa778638e6fde90fc221124384}{Clean\+Up}} ()
+\begin{DoxyCompactList}\small\item\em Calls G\+L\+F\+W\+Terminate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_window}{Window}} Class. Initialize this for opening the window. Cleanup to exit. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_window_a65335a745eaadd9dbdbd265b7fbf0fc5}\label{class_window_a65335a745eaadd9dbdbd265b7fbf0fc5}} 
+\index{Window@{Window}!Window@{Window}}
+\index{Window@{Window}!Window@{Window}}
+\subsubsection{\texorpdfstring{Window()}{Window()}}
+{\footnotesize\ttfamily Window\+::\+Window (\begin{DoxyParamCaption}\item[{unsigned}]{\+\_\+width,  }\item[{unsigned}]{\+\_\+height,  }\item[{const std\+::string \&}]{\+\_\+title }\end{DoxyParamCaption})}
+
+
+
+Creates the \mbox{\hyperlink{class_window}{Window}} and Opens it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+width} & Width of the \mbox{\hyperlink{class_window}{Window}} \\
+\hline
+{\em \+\_\+height} & Height of the \mbox{\hyperlink{class_window}{Window}} \\
+\hline
+{\em \+\_\+title} & Title of the \mbox{\hyperlink{class_window}{Window}} \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/dev/\+Piolot/\+Engine/Window.\+h\item 
+C\+:/dev/\+Piolot/\+Engine/Window.\+cpp\end{DoxyCompactItemize}

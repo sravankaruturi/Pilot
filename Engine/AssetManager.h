@@ -135,7 +135,7 @@ namespace piolot
 						for (auto i = 0; i < 7; i++)
 							file_name.pop_back();
 					}
-					
+
 
 					// *. Get the key for the Map.
 					// *. Check if the Shader already exists and skip if it does log the anamoly.
@@ -160,7 +160,8 @@ namespace piolot
 
 					LOGGER.AddToLog("Loaded " + file_name + " Shader.");
 
-				}catch(...)
+				}
+				catch (...)
 				{
 					return false;
 				}
@@ -191,7 +192,8 @@ namespace piolot
 					file_name.pop_back();
 
 					this->textures.insert_or_assign(file_name, std::make_shared<Texture>(p.path().generic_string()));
-				}catch(...)
+				}
+				catch (...)
 				{
 					return false;
 				}
@@ -264,7 +266,7 @@ namespace piolot
 			// A Hierarchy listing all the Assets currently in the ASMGR.
 			ImGui::Begin("Asset Manager Details", _windowFlag);
 			ImGui::Columns(1);
-			if ( ImGui::CollapsingHeader("Shaders"))
+			if (ImGui::CollapsingHeader("Shaders"))
 			{
 				for (auto it : this->shaders)
 				{
@@ -302,5 +304,5 @@ namespace piolot
 
 
 	};
-	
+
 }

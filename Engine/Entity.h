@@ -18,6 +18,10 @@ namespace piolot
 
 		std::string entityName;
 
+		std::string objectName;
+
+		glm::vec3 position{};
+
 	public:
 		std::string GetEntityName() const
 		{
@@ -90,10 +94,18 @@ namespace piolot
 			return matrixDirty;
 		}
 
-	protected:
-		std::string objectName;
+		/**
+		 * \brief Save the Entity to the OutputStream.
+		 * \param _out The Output Stream.
+		 */
+		void SaveToFile(std::ofstream& _out);
 
-		glm::vec3 position{};
+		/**
+		 * \brief Load the Entity from the InputStream
+		 * \param _in The Input Stream
+		 */
+		void LoadFromFile(std::ifstream& _in);
+
 	public:
 		void SetPosition(const glm::vec3& _position)
 		{

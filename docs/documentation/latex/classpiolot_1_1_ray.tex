@@ -1,0 +1,44 @@
+\hypertarget{classpiolot_1_1_ray}{}\section{piolot\+:\+:Ray Class Reference}
+\label{classpiolot_1_1_ray}\index{piolot\+::\+Ray@{piolot\+::\+Ray}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_ray_a800439dfd7597c519c4e6d5b6336a655}\label{classpiolot_1_1_ray_a800439dfd7597c519c4e6d5b6336a655}} 
+{\bfseries Ray} (glm\+::vec3 \+\_\+origin, glm\+::vec3 \+\_\+direction)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_ray_ada7c74126da4e4c8c0c7a63ae36c1ced}\label{classpiolot_1_1_ray_ada7c74126da4e4c8c0c7a63ae36c1ced}} 
+void {\bfseries Update} (const glm\+::mat4 \+\_\+view\+Matrix, const glm\+::mat4 \+\_\+projection\+Matrix, const glm\+::vec3 \+\_\+colour)
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_ray_a7ecae233c62860e006b474b293c1e6ca}\label{classpiolot_1_1_ray_a7ecae233c62860e006b474b293c1e6ca}} 
+void {\bfseries Render} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_g_l_shader}{G\+L\+Shader}} $>$ \+\_\+shader, glm\+::vec3 \+\_\+colour) const
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_ray_a6c21a81fd81741cca7f823e87fed1aef}\label{classpiolot_1_1_ray_a6c21a81fd81741cca7f823e87fed1aef}} 
+void {\bfseries Update\+Buffers} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_ray_a0db15f5545f46a7cf172a6cd8010e7c4}\label{classpiolot_1_1_ray_a0db15f5545f46a7cf172a6cd8010e7c4}} 
+glm\+::vec3 {\bfseries origin}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_ray_aaef1fc006491be8684d1786d2584b5fb}\label{classpiolot_1_1_ray_aaef1fc006491be8684d1786d2584b5fb}} 
+glm\+::vec3 {\bfseries direction}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_ray_a92517c7821a901e1b9c883f6635472cb}\label{classpiolot_1_1_ray_a92517c7821a901e1b9c883f6635472cb}} 
+unsigned int {\bfseries vbo}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_ray_a2b5e91b97506c618aef3b26c463f9788}\label{classpiolot_1_1_ray_a2b5e91b97506c618aef3b26c463f9788}} 
+unsigned int {\bfseries vao}
+\item 
+\mbox{\Hypertarget{classpiolot_1_1_ray_adb40c4fbcb029550c160a892842c40cc}\label{classpiolot_1_1_ray_adb40c4fbcb029550c160a892842c40cc}} 
+std\+::vector$<$ glm\+::vec3 $>$ {\bfseries vertices}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/dev/\+Piolot/\+Engine/Ray.\+h\item 
+C\+:/dev/\+Piolot/\+Engine/Ray.\+cpp\end{DoxyCompactItemize}
