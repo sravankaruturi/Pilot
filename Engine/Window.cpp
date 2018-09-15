@@ -1,6 +1,8 @@
 ﻿#include "Window.h"
 #include <iostream>
 
+#include "Configurations.h"
+
 #include "../EngineDeps/external_files/ImGUI/imgui.h"
 #include "../EngineDeps/external_files/ImGUI/imgui_impl_glfw.h"
 
