@@ -87,11 +87,15 @@ namespace piolot
 			vector.z = _mesh->mVertices[i].z;
 			vertex.position = vector;
 
-			///* Normals */
-			//vector.x = _mesh->mNormals[i].x;
-			//vector.y = _mesh->mNormals[i].y;
-			//vector.z = _mesh->mNormals[i].z;
-			//vertex.normal = vector;
+			if (_mesh->HasNormals()) {
+
+				/* Normals */
+				vector.x = _mesh->mNormals[i].x;
+				vector.y = _mesh->mNormals[i].y;
+				vector.z = _mesh->mNormals[i].z;
+				vertex.normal = vector;
+
+			}
 
 			/* UV TexCoords */
 			if (_mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?

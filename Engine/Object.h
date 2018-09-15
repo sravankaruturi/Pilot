@@ -18,15 +18,17 @@ namespace piolot
 		* \brief A Vector 3, Position.
 		*/
 		glm::vec3 position = glm::vec3(0.f, 0.f, 0.f);
+
 		/**
 		* \brief Normal, A Vector3.
 		*/
-		/*glm::vec3 normal = glm::vec3(0.f, 0.f, 0.f);;*/
+		glm::vec3 normal = glm::vec3(0.f, 0.f, 0.f);
+
 		/**
 		* \brief UV Co-ordinates, A Vector2
 		*/
 		// The Z Value would always be zero. Have to make this a vec3 for loading into the buffer.
-		glm::vec3 texCoord = glm::vec3(0.f, 0.f, 0.0f);;
+		glm::vec3 texCoord = glm::vec3(0.f, 0.f, 0.0f);
 
 		/**
 		* \brief Default Constructor

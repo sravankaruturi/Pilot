@@ -20,6 +20,6 @@
 #define MODEL_FOLDER			"Z:/IGMProfile/Desktop/Projects/Piolot/Engine/Assets/Models/"
 #define SCENES_FOLDER			"Z:/IGMProfile/Desktop/Projects/Piolot/Engine/Assets/Scenes/"
 
-#define EXTERNAL_FILES			"Z:/IGMProfile/Desktop/Projects/Piolot/Engine/external_files/"
+#define EXTERNAL_FILES			"Z:/IGMProfile/Desktop/Projects/Piolot/EngineDeps/external_files/"
 
 #endif

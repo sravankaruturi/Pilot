@@ -217,5 +217,8 @@
     <None Include="Shaders\axes.shader">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="Shaders\cuboid.shader">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

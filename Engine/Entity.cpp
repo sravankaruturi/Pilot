@@ -56,8 +56,8 @@ namespace piolot
 		modelMatrix = model_matrix;
 	}
 
-	Entity::Entity(const std::string& _objectPath, const std::string& _shaderName)
-		:shaderName(_shaderName), boundingBox(BoundingBox(glm::vec3(-1.0, -1.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f)))
+	Entity::Entity(const std::string& _entityName, const std::string& _objectPath, const std::string& _shaderName)
+		:entityName(_entityName), shaderName(_shaderName), boundingBox(BoundingBox(glm::vec3(-1.0, -1.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f)))
 	{
 		
 		objectName = _objectPath.substr(_objectPath.find_last_of('/') + 1, _objectPath.find_last_of('.') - _objectPath.find_last_of('/') - 1);
