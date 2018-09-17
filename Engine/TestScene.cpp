@@ -42,8 +42,9 @@ namespace piolot {
 
 		entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
 		entities.push_back(std::make_shared<Entity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp"));
+		entities[1]->SetPosition(glm::vec3(2.0, 0.0, 0.0));
 		entities[1]->SetScale(glm::vec3(0.05f, 0.05f, 0.05f));
-		entities[1]->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
+		entities[1]->SetRotation(glm::vec3(-90.f, 0.0f, 0.00f));
 
 		ActiveCamera(cameras.at("First"));
 
@@ -217,7 +218,7 @@ namespace piolot {
 		{
 			it.second->use();
 
-			if ( it.first != "terrain" && it.first != "axes")
+			if ( it.first != "terrain" && it.first != "axes" && it.first != "bob_lamp")
 			{
 				it.second->setMat4("u_ViewMatrix", view_matrices[0]);
 				it.second->setMat4("u_ProjectionMatrix", projection_matrices[0]);
@@ -244,6 +245,15 @@ namespace piolot {
 			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, &view_matrices[0][0][0]));
 
 			loc = axes_shader->GetUniformLocation("u_ProjectionMatrix");
+			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, glm::value_ptr(projection_matrices[0])));
+
+			auto boblammp_shader = ASMGR.shaders.at("bob_lamp");
+			boblammp_shader->use();
+			//PE_GL(glUniformMatrix4fv(it.second->GetUniformLocation("u_ViewMatrix"), GL_FALSE, 4, &view_matrices[0][0][0]));
+			loc = boblammp_shader->GetUniformLocation("u_ViewMatrix");
+			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, &view_matrices[0][0][0]));
+
+			loc = boblammp_shader->GetUniformLocation("u_ProjectionMatrix");
 			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, glm::value_ptr(projection_matrices[0])));
 		}
 		
