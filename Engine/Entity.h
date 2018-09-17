@@ -4,6 +4,9 @@
 #include "BoundingBox.h"
 #include <glm/detail/_vectorize.hpp>
 
+#define		MAX_BONES_PER_VERTEX		8;
+#define		MAX_NUMBER_OF_BONES			100;
+
 namespace piolot
 {
 	class Entity
@@ -27,7 +30,15 @@ namespace piolot
 
 		glm::mat4 modelMatrix{};
 
+		glm::mat4 boneMatrices[100]{};
+
 		bool matrixDirty = true;
+
+		/*
+		Animation Variables
+		*/
+
+		bool animationTotalTime = 0.0f;
 
 	public:
 		std::string GetEntityName() const
@@ -148,6 +159,8 @@ namespace piolot
 		bool CheckIfMouseOvered(const glm::vec3 _cameraPosition, const glm::vec3 _mouseRayDirection, float& _distance) const;
 
 		void DisplayDetailsImgui();
+
+		void PlayAnimation(float _deltaTime);
 
 	};
 }

@@ -144,6 +144,8 @@ namespace piolot {
 				selected_entity->SetSelectedInScene(true);
 			}
 
+			entities[1]->PlayAnimation(_deltaTime);
+
 		}
 
 		/* Find Random Paths */
