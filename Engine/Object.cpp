@@ -206,7 +206,7 @@ namespace piolot
 				filename = directory + '/' + filename;
 
 				/* Create a new Texture Object and push it on to the Asset Manager. */
-				std::shared_ptr<Texture> t = std::make_shared<Texture>(filename);
+				std::shared_ptr<Texture> t = std::make_shared<Texture>(filename, false);
 				if (ASMGR.AddToTextures(key, t))
 				{
 					textures.push_back(key);
