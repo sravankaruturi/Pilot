@@ -25,17 +25,15 @@ namespace piolot
 			return;
 		}
 
-		Assimp::Importer importer;
-
-		const aiScene * scene = importer.ReadFile(_objectPath, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
-		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
+		assimpScene = assimpImporter.ReadFile(_objectPath, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
+		if (!assimpScene|| assimpScene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !assimpScene->mRootNode) // if is Not Zero
 		{
-			std::cout << "ERROR::ASSIMP:: " << importer.GetErrorString() << std::endl;
+			std::cout << "ERROR::ASSIMP:: " << assimpImporter.GetErrorString() << std::endl;
 			return;
 		}
 
 		// process ASSIMP's root node recursively
-		ProcessNode(scene->mRootNode, scene, GetMeshes());
+		ProcessNode(assimpScene->mRootNode, assimpScene, GetMeshes());
 
 	}
 

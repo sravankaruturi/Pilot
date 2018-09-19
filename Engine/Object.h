@@ -63,6 +63,20 @@ namespace piolot
 
 		std::vector<std::shared_ptr<Mesh>> meshes;
 
+		/**
+		 * \brief The Assimp Importer.
+		 *
+		 * We need the imported Object because, as soon as this runs out of scope, the @assimpScene variable would be freed.
+		 */
+		Assimp::Importer assimpImporter;
+
+		/**
+		 * \brief This is the Assimp Scene Variable to keep track of the Animations.
+		 *
+		 * This is the easiest way to keep track of Animations instead of writing an entirely new class and functions based on that.
+		 */
+		const aiScene * assimpScene;
+
 		// TODO: Save Animations here.
 
 	public:

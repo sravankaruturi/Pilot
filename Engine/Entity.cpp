@@ -134,12 +134,4 @@ namespace piolot
 
 	}
 
-	void Entity::PlayAnimation(float _deltaTime)
-	{
-
-		// Play the Animation Here.
-		
-
-	}
-
 }
