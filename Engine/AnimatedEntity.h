@@ -1,8 +1,8 @@
 ﻿#pragma once
 #include "Entity.h"
 
-#define MAX_BONE_WEIGHTS_PER_VERTEX			8
-#define MAX_NUMBER_OF_BONES_PER_ENTITY		100
+// Change it in the shaders as well if we change it here.
+#define MAX_NUMBER_OF_BONES_PER_ENTITY		32
 
 /* Let us implement one animation per Entity for now. We can extend this later on to hold more animations. */
 

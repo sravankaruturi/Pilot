@@ -1,19 +1,95 @@
 ﻿#pragma once
 #include <string>
+#include <map>
 //#include <memory>
 
 #include "Mesh.h"
 #include <assimp/scene.h>
 #include <assimp/Importer.hpp>
+#include <assimp/anim.h>
+#include <assimp/material.h>
+
 #include <glm/detail/type_vec4.hpp>
 #include <glm/detail/type_vec2.hpp>
+
+#include "PE_GL.h"
+
+#define MAX_BONE_WEIGHTS_PER_VERTEX			8
 
 /*This is the list of all the meshes and the materials in it.*/
 namespace piolot
 {
 
-	struct VertexData
+	/**
+	 * \brief The Structure to hold data for each bone in an Object.
+	 */
+	struct BoneInfo
 	{
+		/**
+		 * \brief The Offset from the Object Root.
+		 */
+		aiMatrix4x4 bone_offset;
+
+		/**
+		 * \brief The Final Transformation after the Animation is applied.
+		 */
+		aiMatrix4x4 final_transformation;
+	};
+
+	/**
+	 * \brief The Struct to hold the data for each Vertex, and how the surrounding bones impact this vertex.
+	 */
+	struct VertexBoneData
+	{
+		unsigned int ids[MAX_BONE_WEIGHTS_PER_VERTEX] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+		float weights[MAX_BONE_WEIGHTS_PER_VERTEX] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+
+		VertexBoneData()
+		{
+			Reset();
+		}
+
+		void Reset()
+		{
+			memset(ids, 0, sizeof(ids));
+			memset(weights, 0, sizeof(weights));
+		}
+
+		void AddBoneData(unsigned int _boneId, float _weight)
+		{
+			for (auto i = 0; i < sizeof(ids) / sizeof(unsigned int); i++) {
+				if (weights[i] == 0.0) {
+					ids[i] = _boneId;
+					weights[i] = _weight;
+					return;
+				}
+			}
+
+			// should never get here - more bones than we have space for
+			PE_ASSERT(0);
+		}
+	};
+
+	struct AnimatedVertexData
+	{
+
+		/**
+		 * \brief This contains the details regarding the following variables.
+		 * 
+		 * It can be a 8 - length integer value, signifying that the number of locations for now, is limited to 8. We can add increase them later on if needed.
+		 * Each digit signifies the Data Type we are passing to the GPU.
+		 * 0 --> No Value.
+		 * 1 --> Float ( 32 bit?? ).
+		 * 2 --> Int ( 32 bit?? ).
+		 * 
+		 * 9 --> Undefined
+		 * All the values are vec4's. The digits signify what the datatype of each of these vector elements is.
+		 * 
+		 * 
+		 * 
+		 */
+		long header = 11122110;
+
 		/**
 		* \brief A Vector 3, Position. And Appended with a Zero
 		*/
@@ -30,30 +106,57 @@ namespace piolot
 		// The Z Value would always be zero. Have to make this a vec3 for loading into the buffer.
 		glm::vec4 texCoord = glm::vec4(0.f, 0.f, 0.0f, 0.0f);
 
+		VertexBoneData vbd;
 		
+
+		/**
+		* \brief Default Constructor
+		*/
+		AnimatedVertexData() = default;
+
+	};
+
+	struct VertexData
+	{
+
+		/**
+		* \brief This contains the details regarding the following variables.
+		*
+		* It can be a 8 - length integer value, signifying that the number of locations for now, is limited to 8. We can add increase them later on if needed.
+		* Each digit signifies the Data Type we are passing to the GPU.
+		* 0 --> No Value.
+		* 1 --> Float ( 32 bit?? ).
+		* 2 --> Int ( 32 bit?? ).
+		*
+		* 9 --> Undefined
+		* All the values are vec4's. The digits signify what the datatype of each of these vector elements is.
+		*
+		*
+		*
+		*/
+		long header = 11122110;
+
+		/**
+		* \brief A Vector 3, Position. And Appended with a Zero
+		*/
+		glm::vec4 position = glm::vec4(0.f, 0.f, 0.f, 0.f);
+
+		/**
+		* \brief Normal, A Vector3., Appended with a Zero
+		*/
+		glm::vec4 normal = glm::vec4(0.f, 0.f, 0.f, 0.f);
+
+		/**
+		* \brief UV Co-ordinates, A Vector2
+		*/
+		// The Z Value would always be zero. Have to make this a vec3 for loading into the buffer.
+		glm::vec4 texCoord = glm::vec4(0.f, 0.f, 0.0f, 0.0f);
 
 		/**
 		* \brief Default Constructor
 		*/
 		VertexData() = default;
 
-		/**
-		* \brief A Constructor with all the values.
-		* \param _x Position.x
-		* \param _y Position.y
-		* \param _z Position.z
-		* \param _r Normal.x
-		* \param _g Normal.y
-		* \param _b Normal.z
-		* \param _tx TexCoords.u
-		* \param _ty TexCoords.v
-		*/
-		//VertexData(float _x, float _y, float _z, float _r, float _g, float _b, float _tx, float _ty)
-		//{
-		//	position = glm::vec3(_x, _y, _z);
-		//	normal = glm::vec3(_r, _g, _b);
-		//	texCoord = glm::vec2(_tx, _ty);
-		//}
 	};
 
 	class Object
@@ -79,7 +182,29 @@ namespace piolot
 		 */
 		const aiScene * assimpScene;
 
-		// TODO: Save Animations here.
+		/**
+		 * \brief A map to keep track of the Bones in the Object.
+		 * 
+		 * String --> Key --> Bone Name.
+		 * unsigned int --> Value --> Index of this particular bone in the Bone Data.
+		 */
+		std::map<std::string, unsigned int> boneMapping;
+
+		/**
+		 * \brief This contains details regarding the Bone Transformations for all the Bones.
+		 * 
+		 * If you need a particular bone, get the index of that bone from the BoneMapping.
+		 * 
+		 * @see @boneMapping
+		 */
+		std::vector<BoneInfo> boneData;
+
+		/**
+		 * \brief Number of Bones Loaded by our Engine.
+		 * 
+		 * If this is different from the Actual Number of Bones in Assimp, we have a problem.
+		 */
+		unsigned int numberOfBonesLoaded = 0;
 
 	public:
 		const std::string& GetObjectName() const

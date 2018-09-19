@@ -32,6 +32,8 @@ namespace piolot
 			return;
 		}
 
+		// Check if it has Bones or not. If it does not, then use a different VertexData Structure.
+
 		// process ASSIMP's root node recursively
 		ProcessNode(assimpScene->mRootNode, assimpScene, GetMeshes());
 
@@ -97,13 +99,22 @@ namespace piolot
 
 	void Object::ProcessAndAddMesh(aiMesh* _mesh, const aiScene* _scene)
 	{
-		std::vector<VertexData> vertices;
+		std::vector<AnimatedVertexData> vertices;
 		std::vector<unsigned int> indices;
 		std::vector<std::string> texture_strings;
 
+		std::vector<VertexBoneData> vertex_bone_data;
+
+		vertex_bone_data.resize(_mesh->mNumVertices);
+
+		for ( auto& it: vertex_bone_data)
+		{
+			it.Reset();
+		}
+
 		for (auto i = 0; i < _mesh->mNumVertices; i++)
 		{
-			VertexData vertex;
+			AnimatedVertexData vertex;
 
 			glm::vec4 vector; /* Placeholder */
 
@@ -138,6 +149,57 @@ namespace piolot
 			}
 
 			vertices.push_back(vertex);
+
+		}
+
+		// This loop adds all the data for all the bones in this mesh. There might be overlap because, an entity might have two meshes with the same bone.
+		for (auto j = 0; j < _mesh->mNumBones; j++)
+		{
+			std::string bone_name = std::string(_mesh->mBones[j]->mName.data);
+
+			int bone_index = -1;
+
+			if (boneMapping.find(bone_name) == boneMapping.end())
+			{
+
+				bone_index = numberOfBonesLoaded;
+
+				BoneInfo bi;
+				bi.bone_offset = _mesh->mBones[j]->mOffsetMatrix;
+				boneData.push_back(bi);
+
+				boneMapping[bone_name] = bone_index;
+
+				numberOfBonesLoaded++;
+
+			}
+			else
+			{
+				bone_index = boneMapping[bone_name];
+			}
+
+			for ( auto k = 0 ; k < _mesh->mBones[j]->mNumWeights ; k++)
+			{
+				
+				unsigned int local_vertex_id = _mesh->mBones[j]->mWeights[k].mVertexId;
+				float weight = _mesh->mBones[j]->mWeights[k].mWeight;
+
+				vertex_bone_data[local_vertex_id].AddBoneData(bone_index, weight);
+
+				if ( bone_index > 32)
+				{
+					// This shouldn't happen usually.
+					PE_ASSERT(0);
+				}
+
+			}
+
+		}
+
+		// Now assign the Vertex Weights to the Vertex Data.
+		for ( auto i= 0 ; i < _mesh->mNumVertices; i++)
+		{
+			vertices[i].vbd = vertex_bone_data[i];
 		}
 
 		for (auto i = 0; i < _mesh->mNumFaces; i++)
@@ -170,7 +232,30 @@ namespace piolot
 		std::vector<std::string> heightMaps = LoadMaterialTextures(material, aiTextureType_AMBIENT);
 		textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
-		std::shared_ptr<Mesh> return_renderable = std::make_shared<Mesh>(&vertices[0], sizeof(VertexData), vertices.size(), indices);
+		std::shared_ptr<Mesh> return_renderable;
+		if ( _mesh->HasBones())
+		{
+			return_renderable = std::make_shared<Mesh>(&vertices[0], sizeof(AnimatedVertexData), vertices.size(), indices);
+		}
+		else
+		{
+			// If the Mesh has no bones, then make sure to change the struct here.
+			std::vector<VertexData> final_vertices;
+			final_vertices.resize(vertices.size());
+
+			for ( auto i = 0 ; i < vertices.size(); i++)
+			{
+				final_vertices[i].header = 11100000;
+				final_vertices[i].position = vertices[i].position;
+				final_vertices[i].normal = vertices[i].normal;
+				final_vertices[i].texCoord = vertices[i].texCoord;
+			}
+
+			return_renderable = std::make_shared<Mesh>(&final_vertices[0], sizeof(VertexData), vertices.size(), indices);
+
+		}
+		
+
 		return_renderable->SetTextureNames(textures);
 
 		this->meshes.push_back(return_renderable);
