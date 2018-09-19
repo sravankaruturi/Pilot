@@ -29,6 +29,8 @@ namespace piolot {
 
 		~AnimatedEntity() = default;
 
+		void PlayAnimation(float _deltaTime);
+
 	};
 
 

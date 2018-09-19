@@ -105,11 +105,12 @@ namespace piolot
 		{
 			VertexData vertex;
 
-			glm::vec3 vector; /* Placeholder */
+			glm::vec4 vector; /* Placeholder */
 
 			vector.x = _mesh->mVertices[i].x;
 			vector.y = _mesh->mVertices[i].y;
 			vector.z = _mesh->mVertices[i].z;
+			vector.w = 0.0f;
 			vertex.position = vector;
 
 			if (_mesh->HasNormals()) {
@@ -118,6 +119,7 @@ namespace piolot
 				vector.x = _mesh->mNormals[i].x;
 				vector.y = _mesh->mNormals[i].y;
 				vector.z = _mesh->mNormals[i].z;
+				vector.w = 0.0f;
 				vertex.normal = vector;
 
 			}
@@ -125,12 +127,13 @@ namespace piolot
 			/* UV TexCoords */
 			if (_mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
 			{
-				glm::vec3 vec;
+				glm::vec4 vec;
 				// a vertex can contain up to 8 different texture coordinates. We thus make the assumption that we won't 
 				// use models where a vertex can have multiple texture coordinates so we always take the first set (0).
 				vec.x = _mesh->mTextureCoords[0][i].x;
 				vec.y = _mesh->mTextureCoords[0][i].y;
 				vec.z = 0.0f;
+				vec.w = 0.0f;
 				vertex.texCoord = vec;
 			}
 

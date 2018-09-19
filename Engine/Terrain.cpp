@@ -127,10 +127,10 @@ namespace piolot {
 		for (auto i = 0; i < nodeCountX; i++) {
 			for (auto j = 0; j < nodeCountZ; j++) {
 				vertices[i * nodeCountZ + j] = TerrainVertexData();
-				vertices[i * nodeCountZ + j].position = glm::vec3(tiles[i][j].tilePosX, tiles[i][j].tilePosY, tiles[i][j].tilePosZ);
-				vertices[i * nodeCountZ + j].normal = glm::vec3();
-				vertices[i * nodeCountZ + j].colour = green;
-				vertices[i * nodeCountZ + j].texCoord = glm::vec3(i * 0.4, j * 0.4, 0);
+				vertices[i * nodeCountZ + j].position = glm::vec4(tiles[i][j].tilePosX, tiles[i][j].tilePosY, tiles[i][j].tilePosZ, 0.0f);
+				vertices[i * nodeCountZ + j].normal = glm::vec4();
+				vertices[i * nodeCountZ + j].colour = glm::vec4(green, 1.0f);
+				vertices[i * nodeCountZ + j].texCoord = glm::vec4(i * 0.4, j * 0.4, 0, 0);
 			}
 		}
 
@@ -152,7 +152,7 @@ namespace piolot {
 		{
 			for (auto j = 0; j < nodeCountZ; j++) {
 
-				vertices[i * nodeCountZ + j].normal = ComputeGridNormal(i, j);
+				vertices[i * nodeCountZ + j].normal = glm::vec4(ComputeGridNormal(i, j), 0.0);
 
 			}
 		}
@@ -210,7 +210,7 @@ namespace piolot {
 	void Terrain::HighlightNode(const unsigned _x, const unsigned _z)
 	{
 
-		this->vertices[_x * nodeCountZ + _z].colour = yellow;
+		this->vertices[_x * nodeCountZ + _z].colour = glm::vec4(yellow, 1.0f);
 		this->vertices[_x * nodeCountZ + _z].texCoord.z = 1.0f;
 		areVerticesDirty = true;
 
@@ -227,7 +227,7 @@ namespace piolot {
 
 				int index = std::distance( all_tile_sets.begin(), std::find(all_tile_sets.begin(), all_tile_sets.end(), tiles[i][j].navTileSet));
 
-				this->vertices[i * nodeCountZ + j].colour = red * (float(index) / number_tile_sets);
+				this->vertices[i * nodeCountZ + j].colour = glm::vec4( red * (float(index) / number_tile_sets), 0.0f);
 				this->vertices[i * nodeCountZ + j].texCoord.z = 0.0f;
 			}
 		}

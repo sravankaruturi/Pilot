@@ -3,6 +3,7 @@
 #include "Scene.h"
 #include "Grid.h"
 #include "Terrain.h"
+#include "AnimatedEntity.h"
 
 namespace piolot {
 	
@@ -65,6 +66,8 @@ namespace piolot {
 
 		std::string objName;
 		std::string shaderName;
+
+		std::unique_ptr<AnimatedEntity> animatedEntity;
 
 
 	public:

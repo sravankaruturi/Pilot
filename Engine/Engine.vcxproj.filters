@@ -96,6 +96,9 @@
     <ClCompile Include="..\EngineDeps\external_files\glad\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AnimatedEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -190,6 +193,9 @@
     </ClInclude>
     <ClInclude Include="..\EngineDeps\external_files\ImGUI\imconfig.h">
       <Filter>Header Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedEntity.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

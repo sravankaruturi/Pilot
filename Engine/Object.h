@@ -5,7 +5,7 @@
 #include "Mesh.h"
 #include <assimp/scene.h>
 #include <assimp/Importer.hpp>
-#include <glm/detail/type_vec3.hpp>
+#include <glm/detail/type_vec4.hpp>
 #include <glm/detail/type_vec2.hpp>
 
 /*This is the list of all the meshes and the materials in it.*/
@@ -15,20 +15,22 @@ namespace piolot
 	struct VertexData
 	{
 		/**
-		* \brief A Vector 3, Position.
+		* \brief A Vector 3, Position. And Appended with a Zero
 		*/
-		glm::vec3 position = glm::vec3(0.f, 0.f, 0.f);
+		glm::vec4 position = glm::vec4(0.f, 0.f, 0.f, 0.f);
 
 		/**
-		* \brief Normal, A Vector3.
+		* \brief Normal, A Vector3., Appended with a Zero
 		*/
-		glm::vec3 normal = glm::vec3(0.f, 0.f, 0.f);
+		glm::vec4 normal = glm::vec4(0.f, 0.f, 0.f, 0.f);
 
 		/**
 		* \brief UV Co-ordinates, A Vector2
 		*/
 		// The Z Value would always be zero. Have to make this a vec3 for loading into the buffer.
-		glm::vec3 texCoord = glm::vec3(0.f, 0.f, 0.0f);
+		glm::vec4 texCoord = glm::vec4(0.f, 0.f, 0.0f, 0.0f);
+
+		
 
 		/**
 		* \brief Default Constructor

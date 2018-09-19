@@ -8,10 +8,10 @@
 namespace piolot {
 
 	struct TerrainVertexData{
-		glm::vec3 position;
-		glm::vec3 normal;
-		glm::vec3 colour;
-		glm::vec3 texCoord;
+		glm::vec4 position;
+		glm::vec4 normal;
+		glm::vec4 colour;
+		glm::vec4 texCoord;
 	};
 
 	class MapTile {

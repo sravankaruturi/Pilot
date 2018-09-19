@@ -1,9 +1,9 @@
 #shader vertex
 
 #version 430 core
-layout(location = 0) in vec3 aPos;
-layout(location = 1) in vec3 aNormal;
-layout(location = 2) in vec3 aTexCoords;
+layout(location = 0) in vec4 aPos;
+layout(location = 1) in vec4 aNormal;
+layout(location = 2) in vec4 aTexCoords;
 
 struct vData {
 	vec3 g_FragPos;
@@ -19,12 +19,12 @@ uniform mat4 u_ModelMatrix;
 void main()
 {
 
-	g_Stuff.g_FragPos = vec3(u_ModelMatrix * vec4(aPos, 1.0));
-	g_Stuff.g_Normal = mat3(transpose(inverse(u_ModelMatrix))) * aNormal;
+	g_Stuff.g_FragPos = vec3(u_ModelMatrix * vec4(aPos.xyz, 1.0));
+	g_Stuff.g_Normal = mat3(transpose(inverse(u_ModelMatrix))) * aNormal.xyz;
 	g_Stuff.g_TexCoords = aTexCoords.xy;
 	//g_Stuff.g_Colour = aColour;
 
-	gl_Position = u_ModelMatrix * vec4(aPos, 1.0);
+	gl_Position = u_ModelMatrix * vec4(aPos.xyz, 1.0);
 
 }
 

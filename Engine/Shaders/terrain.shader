@@ -1,10 +1,10 @@
 ﻿#shader vertex
 
 #version 430 core
-layout(location = 0) in vec3 aPos;
-layout(location = 1) in vec3 aNormal;
-layout(location = 2) in vec3 aColour;
-layout(location = 3) in vec3 aTexCoords;
+layout(location = 0) in vec4 aPos;
+layout(location = 1) in vec4 aNormal;
+layout(location = 2) in vec4 aColour;
+layout(location = 3) in vec4 aTexCoords;
 
 struct vData {
 	vec3 g_FragPos;
@@ -20,12 +20,12 @@ uniform mat4 u_ModelMatrix;
 void main()
 {
 
-	g_Stuff.g_FragPos = vec3(u_ModelMatrix * vec4(aPos, 1.0));
-	g_Stuff.g_Normal = mat3(transpose(inverse(u_ModelMatrix))) * aNormal;
-	g_Stuff.g_TexCoords = aTexCoords;
-	g_Stuff.g_Colour = aColour;
+	g_Stuff.g_FragPos = vec3(u_ModelMatrix * vec4(aPos.xyz, 1.0));
+	g_Stuff.g_Normal = mat3(transpose(inverse(u_ModelMatrix))) * aNormal.xyz;
+	g_Stuff.g_TexCoords = aTexCoords.xyz;
+	g_Stuff.g_Colour = aColour.xyz;
 
-	gl_Position = u_ModelMatrix * vec4(aPos, 1.0);
+	gl_Position = u_ModelMatrix * vec4(aPos.xyz, 1.0);
 
 }
 
@@ -87,6 +87,7 @@ in vData f_Stuff;
 
 void main() {
 
-	FragColour = mix(vec4(texture(u_Texture0, f_Stuff.g_TexCoords.xy)), vec4(f_Stuff.g_Colour, 1.0), f_Stuff.g_TexCoords.z);
+	/*FragColour = mix(vec4(texture(u_Texture0, f_Stuff.g_TexCoords.xy)), vec4(f_Stuff.g_Colour, 1.0), f_Stuff.g_TexCoords.z);*/
+	FragColour = texture(u_Texture0, f_Stuff.g_TexCoords.xy);
 
 }

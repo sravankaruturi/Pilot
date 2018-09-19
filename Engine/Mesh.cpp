@@ -6,6 +6,9 @@
 namespace piolot
 {
 
+	// This assumes, and is hardcoded to make sure that all the values passed in are vec4s. Pad stuff if you need smaller vectors.
+	const int size_of_ints_per_input_vec = 4;
+
 	void Mesh::Render(const std::string& _shaderName)
 	{
 		if ( textureNames.size() != texturePointers.size())
@@ -60,9 +63,9 @@ namespace piolot
 		PE_GL(glBindBuffer(GL_ARRAY_BUFFER, VBO));
 		PE_GL(glBufferData(GL_ARRAY_BUFFER, _dataStructureSize * _vertexCount, _dataPointer, GL_STATIC_DRAW));
 
-		for (auto i = 0; i < (_dataStructureSize) / (3 * sizeof(float)); i++)
+		for (auto i = 0; i < (_dataStructureSize) / (size_of_ints_per_input_vec * sizeof(float)); i++)
 		{
-			PE_GL(glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, (_dataStructureSize), (void *)(3 * i * sizeof(float))));
+			PE_GL(glVertexAttribPointer(i, size_of_ints_per_input_vec, GL_FLOAT, GL_FALSE, (_dataStructureSize), (void *)(size_of_ints_per_input_vec * i * sizeof(float))));
 			PE_GL(glEnableVertexAttribArray(i));
 			vertexAttribCounter += 1;
 		}
@@ -87,9 +90,10 @@ namespace piolot
 		PE_GL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO));
 		PE_GL(glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * _indices.size(), &_indices[0], GL_STATIC_DRAW));
 
-		for (auto i = 0; i < _dataStructureSize / (3 * sizeof(float)); i++)
+		// This assumes, and is hardcoded to make sure that all the values passed in are vec4s. Pad stuff if you need smaller vectors.
+		for (auto i = 0; i < _dataStructureSize / (size_of_ints_per_input_vec * sizeof(float)); i++)
 		{
-			PE_GL(glVertexAttribPointer(i, 3, GL_FLOAT, GL_FALSE, _dataStructureSize, (void *)(3 * i * sizeof(float))));
+			PE_GL(glVertexAttribPointer(i, size_of_ints_per_input_vec, GL_FLOAT, GL_FALSE, _dataStructureSize, (void *)(size_of_ints_per_input_vec * i * sizeof(float))));
 			PE_GL(glEnableVertexAttribArray(i));
 			vertexAttribCounter += 1;
 		}

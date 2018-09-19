@@ -30,4 +30,15 @@ namespace piolot {
 		//matrixDirty = true;
 
 	}
+
+	void AnimatedEntity::PlayAnimation(float _deltaTime)
+	{
+
+		// Play the Animation.
+
+		// Update the Bone Matrices.
+
+		// Update the TotalTime.
+
+	}
 }
