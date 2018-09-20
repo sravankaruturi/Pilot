@@ -8,6 +8,9 @@
 namespace piolot {
 
 	struct TerrainVertexData{
+
+		long header = 11110000;
+
 		glm::vec4 position;
 		glm::vec4 normal;
 		glm::vec4 colour;

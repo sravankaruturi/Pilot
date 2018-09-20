@@ -78,7 +78,7 @@ namespace piolot
 		*
 		*
 		*/
-		//long header = 11122110;
+		long header = 11122110;
 		/**
 		* \brief A Vector 3, Position. And Appended with a Zero
 		*/
@@ -104,6 +104,9 @@ namespace piolot
 
 	struct VertexData
 	{
+
+		long header = 11100000;
+
 		/**
 		* \brief A Vector 3, Position. And Appended with a Zero
 		*/

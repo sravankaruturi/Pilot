@@ -79,6 +79,8 @@ namespace piolot
 		indexCount = _indices.size();
 		vertexCount = _vertexCount;
 
+		// Make sure that the Data Structure Size is adjusted to account for the header.
+
 		PE_GL(glGenVertexArrays(1, &VAO));
 		PE_GL(glGenBuffers(1, &VBO));
 
@@ -99,7 +101,7 @@ namespace piolot
 		// This assumes, and is hardcoded to make sure that all the values passed in are vec4s. Pad stuff if you need smaller vectors.
 		for (auto i = 0; i < _dataStructureSize / (size_of_ints_per_input_vec * sizeof(float)); i++)
 		{
-			PE_GL(glVertexAttribPointer(i, size_of_ints_per_input_vec, GL_FLOAT, GL_FALSE, _dataStructureSize, (void *)(size_of_ints_per_input_vec * i * sizeof(float))));
+			PE_GL(glVertexAttribPointer(i, size_of_ints_per_input_vec, GL_FLOAT, GL_FALSE, _dataStructureSize, (void *)(size_of_ints_per_input_vec * i * sizeof(float) + sizeof(long))));
 			PE_GL(glEnableVertexAttribArray(i));
 			vertexAttribCounter += 1;
 		}
