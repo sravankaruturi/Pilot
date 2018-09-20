@@ -11,10 +11,10 @@ namespace piolot
 
 	void Mesh::Render(const std::string& _shaderName)
 	{
-		if ( textureNames.size() != texturePointers.size())
+		if (textureNames.size() != texturePointers.size())
 		{
 			texturePointers.clear();
-			for ( auto it : textureNames)
+			for (auto it : textureNames)
 			{
 				texturePointers.push_back(ASMGR.textures.at(it));
 			}
@@ -23,7 +23,7 @@ namespace piolot
 		ASMGR.shaders.at(_shaderName)->use();
 
 		auto i = 0;
-		for ( const auto it : texturePointers)
+		for (const auto it : texturePointers)
 		{
 			PE_GL(glActiveTexture(GL_TEXTURE0 + i));
 			PE_GL(glBindTexture(GL_TEXTURE_2D, it->GetTextureId()));
@@ -34,12 +34,13 @@ namespace piolot
 		PE_GL(glBindVertexArray(this->VAO));
 		PE_GL(glBindBuffer(GL_ARRAY_BUFFER, this->VBO));
 
-		if ( usingIndexBuffer )
+		if (usingIndexBuffer)
 		{
 			PE_GL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO));
 			PE_GL(glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0));
 			PE_GL(glBindVertexArray(0));
-		}else
+		}
+		else
 		{
 			PE_GL(glDrawArrays(GL_TRIANGLES, 0, vertexCount));
 			PE_GL(glBindVertexArray(0));
