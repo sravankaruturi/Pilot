@@ -97,83 +97,183 @@ namespace piolot
 
 	void Object::ProcessAndAddMesh(aiMesh* _mesh, const aiScene* _scene)
 	{
-		std::vector<VertexData> vertices;
-		std::vector<unsigned int> indices;
-		std::vector<std::string> texture_strings;
 
-		for (auto i = 0; i < _mesh->mNumVertices; i++)
-		{
-			VertexData vertex;
+		if (_mesh->HasBones()) {
 
-			glm::vec4 vector; /* Placeholder */
+			std::vector<AnimatedVertexData> vertices;
+			std::vector<unsigned int> indices;
+			std::vector<std::string> texture_strings;
 
-			vector.x = _mesh->mVertices[i].x;
-			vector.y = _mesh->mVertices[i].y;
-			vector.z = _mesh->mVertices[i].z;
-			vector.w = 0.0f;
-			vertex.position = vector;
+			for (auto i = 0; i < _mesh->mNumVertices; i++)
+			{
+				AnimatedVertexData vertex;
 
-			if (_mesh->HasNormals()) {
+				glm::vec4 vector; /* Placeholder */
 
-				/* Normals */
-				vector.x = _mesh->mNormals[i].x;
-				vector.y = _mesh->mNormals[i].y;
-				vector.z = _mesh->mNormals[i].z;
+				vector.x = _mesh->mVertices[i].x;
+				vector.y = _mesh->mVertices[i].y;
+				vector.z = _mesh->mVertices[i].z;
 				vector.w = 0.0f;
-				vertex.normal = vector;
+				vertex.position = vector;
 
+				if (_mesh->HasNormals()) {
+
+					/* Normals */
+					vector.x = _mesh->mNormals[i].x;
+					vector.y = _mesh->mNormals[i].y;
+					vector.z = _mesh->mNormals[i].z;
+					vector.w = 0.0f;
+					vertex.normal = vector;
+
+				}
+
+				/* UV TexCoords */
+				if (_mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
+				{
+					glm::vec4 vec;
+					// a vertex can contain up to 8 different texture coordinates. We thus make the assumption that we won't 
+					// use models where a vertex can have multiple texture coordinates so we always take the first set (0).
+					vec.x = _mesh->mTextureCoords[0][i].x;
+					vec.y = _mesh->mTextureCoords[0][i].y;
+					vec.z = 0.0f;
+					vec.w = 0.0f;
+					vertex.texCoord = vec;
+				}
+
+				vertices.push_back(vertex);
 			}
 
-			/* UV TexCoords */
-			if (_mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
+			//for (auto i = 0; i < _mesh->mNumBones; i++) {
+
+			//	std::string bone_name = std::string(_mesh->mBones[i]->mName.data);
+
+			//	int bone_index = -1;
+
+			//}
+
+			for (int i = 0; i < _mesh->mNumVertices; i++) {
+				vertices[i].vbd = VertexBoneData();
+			}
+
+			for (auto i = 0; i < _mesh->mNumFaces; i++)
 			{
-				glm::vec4 vec;
-				// a vertex can contain up to 8 different texture coordinates. We thus make the assumption that we won't 
-				// use models where a vertex can have multiple texture coordinates so we always take the first set (0).
-				vec.x = _mesh->mTextureCoords[0][i].x;
-				vec.y = _mesh->mTextureCoords[0][i].y;
-				vec.z = 0.0f;
-				vec.w = 0.0f;
-				vertex.texCoord = vec;
+				aiFace face = _mesh->mFaces[i];
+
+				/* Retrieve Indices */
+				for (auto j = 0; j < face.mNumIndices; j++)
+				{
+					indices.push_back(face.mIndices[j]);
+				}
 			}
 
-			vertices.push_back(vertex);
+			aiMaterial * material = _scene->mMaterials[_mesh->mMaterialIndex];
+
+			/* This is the textures string that we're going to add to the Mesh/Renderable */
+			std::vector<std::string> textures;
+
+			/* Now we load all the textures */
+			// 1. diffuse maps
+			std::vector<std::string> diffuseMaps = LoadMaterialTextures(material, aiTextureType_DIFFUSE);
+			textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+			// 2. specular maps
+			std::vector<std::string> specularMaps = LoadMaterialTextures(material, aiTextureType_SPECULAR);
+			textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+			// 3. normal maps
+			std::vector<std::string> normalMaps = LoadMaterialTextures(material, aiTextureType_HEIGHT);
+			textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
+			// 4. height maps
+			std::vector<std::string> heightMaps = LoadMaterialTextures(material, aiTextureType_AMBIENT);
+			textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
+
+			std::shared_ptr<Mesh> return_renderable = std::make_shared<Mesh>(&vertices[0], sizeof(AnimatedVertexData), vertices.size(), indices);
+			return_renderable->SetTextureNames(textures);
+
+			this->meshes.push_back(return_renderable);
+
+		}
+		else {
+
+			std::vector<VertexData> vertices;
+			std::vector<unsigned int> indices;
+			std::vector<std::string> texture_strings;
+
+			for (auto i = 0; i < _mesh->mNumVertices; i++)
+			{
+				VertexData vertex;
+
+				glm::vec4 vector; /* Placeholder */
+
+				vector.x = _mesh->mVertices[i].x;
+				vector.y = _mesh->mVertices[i].y;
+				vector.z = _mesh->mVertices[i].z;
+				vector.w = 0.0f;
+				vertex.position = vector;
+
+				if (_mesh->HasNormals()) {
+
+					/* Normals */
+					vector.x = _mesh->mNormals[i].x;
+					vector.y = _mesh->mNormals[i].y;
+					vector.z = _mesh->mNormals[i].z;
+					vector.w = 0.0f;
+					vertex.normal = vector;
+
+				}
+
+				/* UV TexCoords */
+				if (_mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
+				{
+					glm::vec4 vec;
+					// a vertex can contain up to 8 different texture coordinates. We thus make the assumption that we won't 
+					// use models where a vertex can have multiple texture coordinates so we always take the first set (0).
+					vec.x = _mesh->mTextureCoords[0][i].x;
+					vec.y = _mesh->mTextureCoords[0][i].y;
+					vec.z = 0.0f;
+					vec.w = 0.0f;
+					vertex.texCoord = vec;
+				}
+
+				vertices.push_back(vertex);
+			}
+
+			for (auto i = 0; i < _mesh->mNumFaces; i++)
+			{
+				aiFace face = _mesh->mFaces[i];
+
+				/* Retrieve Indices */
+				for (auto j = 0; j < face.mNumIndices; j++)
+				{
+					indices.push_back(face.mIndices[j]);
+				}
+			}
+
+			aiMaterial * material = _scene->mMaterials[_mesh->mMaterialIndex];
+
+			/* This is the textures string that we're going to add to the Mesh/Renderable */
+			std::vector<std::string> textures;
+
+			/* Now we load all the textures */
+			// 1. diffuse maps
+			std::vector<std::string> diffuseMaps = LoadMaterialTextures(material, aiTextureType_DIFFUSE);
+			textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+			// 2. specular maps
+			std::vector<std::string> specularMaps = LoadMaterialTextures(material, aiTextureType_SPECULAR);
+			textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+			// 3. normal maps
+			std::vector<std::string> normalMaps = LoadMaterialTextures(material, aiTextureType_HEIGHT);
+			textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
+			// 4. height maps
+			std::vector<std::string> heightMaps = LoadMaterialTextures(material, aiTextureType_AMBIENT);
+			textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
+
+			std::shared_ptr<Mesh> return_renderable = std::make_shared<Mesh>(&vertices[0], sizeof(VertexData), vertices.size(), indices);
+			return_renderable->SetTextureNames(textures);
+
+			this->meshes.push_back(return_renderable);
+
 		}
 
-		for (auto i = 0; i < _mesh->mNumFaces; i++)
-		{
-			aiFace face = _mesh->mFaces[i];
-
-			/* Retrieve Indices */
-			for (auto j = 0; j < face.mNumIndices; j++)
-			{
-				indices.push_back(face.mIndices[j]);
-			}
-		}
-
-		aiMaterial * material = _scene->mMaterials[_mesh->mMaterialIndex];
-
-		/* This is the textures string that we're going to add to the Mesh/Renderable */
-		std::vector<std::string> textures;
-
-		/* Now we load all the textures */
-		// 1. diffuse maps
-		std::vector<std::string> diffuseMaps = LoadMaterialTextures(material, aiTextureType_DIFFUSE);
-		textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
-		// 2. specular maps
-		std::vector<std::string> specularMaps = LoadMaterialTextures(material, aiTextureType_SPECULAR);
-		textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
-		// 3. normal maps
-		std::vector<std::string> normalMaps = LoadMaterialTextures(material, aiTextureType_HEIGHT);
-		textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
-		// 4. height maps
-		std::vector<std::string> heightMaps = LoadMaterialTextures(material, aiTextureType_AMBIENT);
-		textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
-
-		std::shared_ptr<Mesh> return_renderable = std::make_shared<Mesh>(&vertices[0], sizeof(VertexData), vertices.size(), indices);
-		return_renderable->SetTextureNames(textures);
-
-		this->meshes.push_back(return_renderable);
+		
 
 	}
 

@@ -5,7 +5,7 @@
 #include "Mesh.h"
 #include <assimp/scene.h>
 #include <assimp/Importer.hpp>
-#include <glm/detail/type_vec4.hpp>
+#include <glm/vec4.hpp>
 #include <glm/detail/type_vec2.hpp>
 
 #include "PE_GL.h"
@@ -78,7 +78,7 @@ namespace piolot
 		*
 		*
 		*/
-		long header = 11122110;
+		//long header = 11122110;
 		/**
 		* \brief A Vector 3, Position. And Appended with a Zero
 		*/

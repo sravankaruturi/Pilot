@@ -1,9 +1,16 @@
 #shader vertex
 
 #version 430 core
+
+const int MAX_BONES = 32;
+
 layout(location = 0) in vec4 aPos;
 layout(location = 1) in vec4 aNormal;
 layout(location = 2) in vec4 aTexCoords;
+layout(location = 3) in ivec4 aBoneIds;
+layout(location = 4) in ivec4 aBoneIds2;
+layout(location = 5) in vec4 aWeights;
+layout(location = 6) in vec4 aWeights2;
 
 struct vData {
 	vec3 g_FragPos;
@@ -16,6 +23,8 @@ out vData g_Stuff;
 
 uniform mat4 u_ModelMatrix;
 
+uniform mat4 u_BoneMatrices[MAX_BONES];
+
 void main()
 {
 
@@ -23,6 +32,15 @@ void main()
 	g_Stuff.g_Normal = mat3(transpose(inverse(u_ModelMatrix))) * aNormal.xyz;
 	g_Stuff.g_TexCoords = aTexCoords.xy;
 	//g_Stuff.g_Colour = aColour;
+
+	mat4 boneTransforms = u_BoneMatrices[aBoneIds[0]] * aWeights[0];
+	boneTransforms += u_BoneMatrices[aBoneIds[1]] * aWeights[1];
+	boneTransforms += u_BoneMatrices[aBoneIds[2]] * aWeights[2];
+	boneTransforms += u_BoneMatrices[aBoneIds[3]] * aWeights[3];
+	boneTransforms += u_BoneMatrices[aBoneIds2[0]] * aWeights2[0];
+	boneTransforms += u_BoneMatrices[aBoneIds2[1]] * aWeights2[1];
+	boneTransforms += u_BoneMatrices[aBoneIds2[2]] * aWeights2[2];
+	boneTransforms += u_BoneMatrices[aBoneIds2[3]] * aWeights2[3];
 
 	gl_Position = u_ModelMatrix * vec4(aPos.xyz, 1.0);
 
