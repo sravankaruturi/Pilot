@@ -9,6 +9,7 @@
 #include <glm/detail/type_vec2.hpp>
 
 #include "PE_GL.h"
+#include <map>
 
 #define MAX_BONE_WEIGHTS_PER_VERTEX			8
 
@@ -155,7 +156,29 @@ namespace piolot
 		 */
 		const aiScene * assimpScene;
 
-		// TODO: Save Animations here.
+		/**
+		* \brief A map to keep track of the Bones in the Object.
+		*
+		* String --> Key --> Bone Name.
+		* unsigned int --> Value --> Index of this particular bone in the Bone Data.
+		*/
+		std::map<std::string, unsigned int> boneMapping;
+
+		/**
+		* \brief This contains details regarding the Bone Transformations for all the Bones.
+		*
+		* If you need a particular bone, get the index of that bone from the BoneMapping.
+		*
+		* @see @boneMapping
+		*/
+		std::vector<BoneInfo> boneData;
+
+		/**
+		* \brief Number of Bones Loaded by our Engine.
+		*
+		* If this is different from the Actual Number of Bones in Assimp, we have a problem.
+		*/
+		unsigned int numberOfBonesLoaded = 0;
 
 	public:
 		const std::string& GetObjectName() const

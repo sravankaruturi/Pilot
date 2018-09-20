@@ -104,6 +104,14 @@ namespace piolot
 			std::vector<unsigned int> indices;
 			std::vector<std::string> texture_strings;
 
+			std::vector<VertexBoneData> vertex_bone_data;
+			vertex_bone_data.resize(_mesh->mNumVertices);
+			for (auto& it : vertex_bone_data)
+			{
+				it.Reset();
+			}
+
+
 			for (auto i = 0; i < _mesh->mNumVertices; i++)
 			{
 				AnimatedVertexData vertex;
@@ -143,13 +151,43 @@ namespace piolot
 				vertices.push_back(vertex);
 			}
 
-			//for (auto i = 0; i < _mesh->mNumBones; i++) {
+			// This loop adds all the data for all the bones in this mesh. There might be overlap because, an entity might have two meshes with the same bone.
+			for (auto j = 0; j < _mesh->mNumBones; j++)
+			{
+				std::string bone_name = std::string(_mesh->mBones[j]->mName.data);
+				int bone_index = -1;
+				if (boneMapping.find(bone_name) == boneMapping.end())
+				{
+					bone_index = numberOfBonesLoaded;
+					BoneInfo bi;
+					bi.bone_offset = _mesh->mBones[j]->mOffsetMatrix;
+					boneData.push_back(bi);
+					boneMapping[bone_name] = bone_index;
+					numberOfBonesLoaded++;
+				}
+				else
+				{
+					bone_index = boneMapping[bone_name];
+				}
+				for (auto k = 0; k < _mesh->mBones[j]->mNumWeights; k++)
+				{
 
-			//	std::string bone_name = std::string(_mesh->mBones[i]->mName.data);
+					unsigned int local_vertex_id = _mesh->mBones[j]->mWeights[k].mVertexId;
+					float weight = _mesh->mBones[j]->mWeights[k].mWeight;
+					vertex_bone_data[local_vertex_id].AddBoneData(bone_index, weight);
+					if (bone_index > 32)
+					{
+						// This shouldn't happen usually.
+						PE_ASSERT(0);
+					}
+				}
+			}
+			// Now assign the Vertex Weights to the Vertex Data.
+			for (auto i = 0; i < _mesh->mNumVertices; i++)
+			{
+				vertices[i].vbd = vertex_bone_data[i];
+			}
 
-			//	int bone_index = -1;
-
-			//}
 
 			for (int i = 0; i < _mesh->mNumVertices; i++) {
 				vertices[i].vbd = VertexBoneData();
