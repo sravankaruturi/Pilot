@@ -133,6 +133,8 @@ namespace piolot
 		temp_pointer++;
 		_dataPointer = (void*)temp_pointer;
 
+		_dataStructureSize = _dataStructureSize - sizeof(long);
+
 
 		PE_GL(glGenVertexArrays(1, &VAO));
 		PE_GL(glGenBuffers(1, &VBO));
