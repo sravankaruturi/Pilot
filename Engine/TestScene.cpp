@@ -78,6 +78,7 @@ namespace piolot {
 			it->Update(_deltaTime);
 		}
 
+		animatedEntity->PlayAnimation(_deltaTime);
 		animatedEntity->Update(_deltaTime);
 
 		glm::vec3 mouse_pointer_ray;

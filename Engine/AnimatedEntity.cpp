@@ -43,6 +43,11 @@ namespace piolot {
 
 		// Update the TotalTime.
 
+		animationTotalTime += _deltaTime;
+
+		ASMGR.objects.at(objectName)->BoneTransform(animationTotalTime, boneMatrices);
+
+
 	}
 
 	void AnimatedEntity::Update(float _deltaTime)

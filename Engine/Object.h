@@ -10,6 +10,7 @@
 
 #include "PE_GL.h"
 #include <map>
+#include <glm/mat4x4.hpp>
 
 #define MAX_BONE_WEIGHTS_PER_VERTEX			8
 
@@ -180,6 +181,11 @@ namespace piolot
 		*/
 		unsigned int numberOfBonesLoaded = 0;
 
+		/**
+		 * \brief The Inverse of the Global Transform Matrix. Used to calculate the Final Transformation Matrices of the Bones.
+		 */
+		aiMatrix4x4 globalInverseTransform;
+
 	public:
 		const std::string& GetObjectName() const
 		{
@@ -197,12 +203,34 @@ namespace piolot
 
 		void MeshDetailsImGUI();
 
-		// TODO: Call PlayAnimation(_deltaTime) here.
+		/**
+		 * \brief This function would load the final Transformation Matrices ( transposed and Ready for OpenGL ) for a particular animation at a given time, from the start of the animation.
+		 * \param _totalTime Time elapsed since the start of the Animation
+		 * \param _matrices Matrices to load the Bone Matrices in
+		 */
+		void BoneTransform(float _totalTime, std::vector<glm::mat4>& _matrices);
 
 	private:
+
 		void ProcessNode(aiNode *_node, const aiScene *_scene, std::vector<std::shared_ptr<Mesh>>& _meshes);
 		void ProcessAndAddMesh(aiMesh * _mesh, const aiScene * _scene);
 		std::vector<std::string> LoadMaterialTextures(aiMaterial* _mat, aiTextureType _type);
+
+		/**
+		 * \brief Process the Node Hierarchy for details regarding the Animation
+		 * \param _animationTime Time in seconds
+		 * \param _node Current Node
+		 * \param _parentTransform The Transform of the Parent w.r.t the Object
+		 */
+		void ProcessNodeHierarchyAnimation(float _animationTime, const aiNode * _node, const aiMatrix4x4& _parentTransform);
+
+		/**
+		 * \brief Find the Node Animation Details Pointer using the Model Animation and the Node Name.
+		 * \param _animation The Animation of the Mesh we are currently looking for
+		 * \param _nodeName The Node Name that we currently want the animation details for.
+		 * \return The Node Animation Details.
+		 */
+		const aiNodeAnim * FindNodeAnim(const aiAnimation * _animation, const std::string& _nodeName);
 	};
 }
 
