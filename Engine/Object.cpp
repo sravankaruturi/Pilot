@@ -182,6 +182,7 @@ namespace piolot
 					}
 				}
 			}
+
 			// Now assign the Vertex Weights to the Vertex Data.
 			for (auto i = 0; i < _mesh->mNumVertices; i++)
 			{
@@ -189,9 +190,9 @@ namespace piolot
 			}
 
 
-			for (int i = 0; i < _mesh->mNumVertices; i++) {
-				vertices[i].vbd = VertexBoneData();
-			}
+			//for (int i = 0; i < _mesh->mNumVertices; i++) {
+			//	vertices[i].vbd = VertexBoneData();
+			//}
 
 			for (auto i = 0; i < _mesh->mNumFaces; i++)
 			{

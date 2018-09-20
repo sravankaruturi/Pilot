@@ -28,6 +28,9 @@ namespace piolot {
 		//}
 
 		//matrixDirty = true;
+		for (int i = 0; i < 32; i++) {
+			boneMatrices.push_back(glm::mat4(1.0f));
+		}
 
 	}
 
@@ -40,5 +43,16 @@ namespace piolot {
 
 		// Update the TotalTime.
 
+	}
+
+	void AnimatedEntity::Update(float _deltaTime)
+	{
+		Entity::Update(_deltaTime);
+
+		ASMGR.shaders.at(shaderName)->use();
+
+		auto loc = ASMGR.shaders.at(shaderName)->GetUniformLocation("u_BoneMatrices");
+
+		PE_GL(glUniformMatrix4fv(loc, boneMatrices.size(), GL_FALSE, &boneMatrices[0][0][0]));
 	}
 }

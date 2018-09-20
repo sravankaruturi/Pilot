@@ -19,7 +19,7 @@ namespace piolot {
 
 	protected:
 
-		glm::mat4 boneMatrices[MAX_NUMBER_OF_BONES_PER_ENTITY]{};
+		std::vector<glm::mat4> boneMatrices;
 
 		float animationTotalTime = 0.0f;
 
@@ -30,6 +30,8 @@ namespace piolot {
 		~AnimatedEntity() = default;
 
 		void PlayAnimation(float _deltaTime);
+
+		void Update(float _deltaTime);
 
 	};
 

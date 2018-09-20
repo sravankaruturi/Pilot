@@ -16,7 +16,7 @@ struct vData {
 	vec3 g_FragPos;
 	vec3 g_Normal;
 	vec2 g_TexCoords;
-	/*vec3 g_Colour;*/
+	vec3 g_Colour;
 };
 
 out vData g_Stuff;
@@ -31,7 +31,6 @@ void main()
 	g_Stuff.g_FragPos = vec3(u_ModelMatrix * vec4(aPos.xyz, 1.0));
 	g_Stuff.g_Normal = mat3(transpose(inverse(u_ModelMatrix))) * aNormal.xyz;
 	g_Stuff.g_TexCoords = aTexCoords.xy;
-	//g_Stuff.g_Colour = aColour;
 
 	mat4 boneTransforms = u_BoneMatrices[aBoneIds[0]] * aWeights[0];
 	boneTransforms += u_BoneMatrices[aBoneIds[1]] * aWeights[1];
@@ -42,7 +41,8 @@ void main()
 	boneTransforms += u_BoneMatrices[aBoneIds2[2]] * aWeights2[2];
 	boneTransforms += u_BoneMatrices[aBoneIds2[3]] * aWeights2[3];
 
-	gl_Position = u_ModelMatrix * vec4(aPos.xyz, 1.0);
+	gl_Position = u_ModelMatrix * boneTransforms * vec4(aPos.xyz, 1.0);
+	g_Stuff.g_Colour = vec3(1, 0, 0);
 
 }
 
@@ -54,7 +54,7 @@ struct vData {
 	vec3 g_FragPos;
 	vec3 g_Normal;
 	vec2 g_TexCoords;
-	//vec3 g_Colour;
+	vec3 g_Colour;
 };
 
 layout(triangles, invocations = 4) in;
@@ -93,7 +93,7 @@ struct vData {
 	vec3 g_FragPos;
 	vec3 g_Normal;
 	vec2 g_TexCoords;
-	//vec3 g_Colour;
+	vec3 g_Colour;
 };
 
 uniform sampler2D u_Texture0;
@@ -105,6 +105,6 @@ in vData f_Stuff;
 void main() {
 
 	/*FragColour = mix(vec4(texture(u_Texture0, f_Stuff.g_TexCoords.xy)), vec4(f_Stuff.g_Colour, 1.0), f_Stuff.g_TexCoords.z);*/
-	FragColour = vec4(texture(u_Texture0, f_Stuff.g_TexCoords));
+	FragColour = mix(texture(u_Texture0, f_Stuff.g_TexCoords), vec4(f_Stuff.g_Colour, 1.0), 0.1);
 
 }
