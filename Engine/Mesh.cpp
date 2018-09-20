@@ -126,14 +126,16 @@ namespace piolot
 			divisor *= 10;
 		}
 
-		// We remove the header from the data, so that we do not accidentally pass it.
-		// To Increment the Pointer, we should cast it to something. Incrementing Void * is not allowed.
-		// @see https://stackoverflow.com/questions/24472724/expression-must-be-a-pointer-to-a-complete-object-type-using-simple-pointer-arit
-		long * temp_pointer = (long *)_dataPointer;
-		temp_pointer++;
-		_dataPointer = (void*)temp_pointer;
+		// This is commented out, because we fix this by adjusting the stride, and the offset.
 
-		_dataStructureSize = _dataStructureSize - sizeof(long);
+		//// We remove the header from the data, so that we do not accidentally pass it.
+		//// To Increment the Pointer, we should cast it to something. Incrementing Void * is not allowed.
+		//// @see https://stackoverflow.com/questions/24472724/expression-must-be-a-pointer-to-a-complete-object-type-using-simple-pointer-arit
+		//long * temp_pointer = (long *)_dataPointer;
+		//temp_pointer++;
+		//_dataPointer = (void*)temp_pointer;
+
+		//_dataStructureSize = _dataStructureSize - sizeof(long);
 
 
 		PE_GL(glGenVertexArrays(1, &VAO));
@@ -156,13 +158,13 @@ namespace piolot
 		}
 
 		// This assumes, and is hardcoded to make sure that all the values passed in are vec4s. Pad stuff if you need smaller vectors.
-		int offset = 0;
+		int offset = sizeof(long);
 		for (auto i = 0; i < sizeof(header_read)/sizeof(short); i++)
 		{
 
 			if( header_read[i] == 0)
 			{
-				break;
+				continue;;
 			}
 
 			if ( header_read[i] == 1)
