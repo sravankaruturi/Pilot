@@ -79,7 +79,29 @@ namespace piolot
 		indexCount = _indices.size();
 		vertexCount = _vertexCount;
 
-		// Make sure that the Data Structure Size is adjusted to account for the header.
+		 // Read the header.
+		short header_read[8] = { 0 };
+		int long_size = sizeof(long);
+		// Read the long int.
+		long my_header = 0;
+		memcpy(&my_header, _dataPointer, long_size);
+		// Split it to the header_read array.
+		long divisor = 1;
+		for (int i = 0; i < 8; i++)
+		{
+			header_read[8 - i - 1] = (my_header / divisor) % 10;
+			divisor *= 10;
+		}
+
+		// Do not use this. Since, we are taking care of this in the Stride.
+
+		// We remove the header from the data, so that we do not accidentally pass it.
+		// To Increment the Pointer, we should cast it to something. Incrementing Void * is not allowed.
+		// @see https://stackoverflow.com/questions/24472724/expression-must-be-a-pointer-to-a-complete-object-type-using-simple-pointer-arit
+		/*long * temp_pointer = (long *)_dataPointer;
+		temp_pointer++;
+		_dataPointer = (void*)temp_pointer;*/
+
 
 		PE_GL(glGenVertexArrays(1, &VAO));
 		PE_GL(glGenBuffers(1, &VBO));
