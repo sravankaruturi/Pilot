@@ -44,8 +44,8 @@ namespace piolot {
 
 		animatedEntity = std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp");
 		animatedEntity->SetPosition(glm::vec3(2.0, 0.0, 0.0));
-		animatedEntity->SetScale(glm::vec3(0.05f, 0.05f, 0.05f));
-		animatedEntity->SetRotation(glm::vec3(-90.f, 0.0f, 0.00f));
+		animatedEntity->SetScale(glm::vec3(0.0125f, 0.0125f, 0.0125f));
+		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
 
 		ActiveCamera(cameras.at("First"));
 
@@ -154,7 +154,7 @@ namespace piolot {
 
 		/* Find Random Paths */
 		{
-			const float interval = 5;
+			const float interval = 15;
 
 			testTerrain->ClearColours();
 
@@ -187,6 +187,29 @@ namespace piolot {
 			for ( auto it : path)
 			{
 				testTerrain->HighlightNode(it->tileIndexX, it->tileIndexZ);
+			}
+
+			totalTimeCounterForPathing += _deltaTime;
+
+			if (totalTimeCounterForPathing < 1.0f && path.size() > 2) {
+				
+				// Get the Current Node.
+				glm::vec2 start_indices =  testTerrain->GetNodeIndicesFromPos(animatedEntity->GetPosition().x, animatedEntity->GetPosition().z);
+				auto start_tile = testTerrain->GetTileFromIndices(start_indices.x, start_indices.y);
+
+				// Look for the Next Node.
+				auto next_tile = path[1];
+
+				// Traverse the Distance b/w them * deltaTime. --> You complete the distance two nodes in 1 second.
+				glm::vec3 current_position = animatedEntity->GetPosition();
+				current_position.y = start_tile->GetPosition().y;
+				glm::vec3 final_position = current_position + ((next_tile->GetPosition() - start_tile->GetPosition()) * _deltaTime * 0.25f);
+
+				animatedEntity->SetPosition(final_position);
+
+			}
+			else if (totalTimeCounterForPathing > 1.0f) {
+				totalTimeCounterForPathing = 0.0f;
 			}
 
 		}

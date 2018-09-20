@@ -46,6 +46,10 @@ namespace piolot {
 	public:
 		MapTile() = default;
 
+		glm::vec3 GetPosition() {
+			return glm::vec3(tilePosX, tilePosY, tilePosZ);
+		}
+
 	};
 
 	class Terrain : public Entity

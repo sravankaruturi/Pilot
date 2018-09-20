@@ -39,6 +39,8 @@ namespace piolot {
 		glm::vec2 startxz;
 		glm::vec2 endxz;
 
+		float totalTimeCounterForPathing = 0;
+
 		std::vector<MapTile*> path;
 
 		/* GUI Variables */
