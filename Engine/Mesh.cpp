@@ -120,13 +120,32 @@ namespace piolot
 			PE_GL(glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * _indices.size(), &_indices[0], GL_STATIC_DRAW));
 		}
 
-		// This assumes, and is hardcoded to make sure that all the values passed in are vec4s. Pad stuff if you need smaller vectors.
-		for (auto i = 0; i < _dataStructureSize / (size_of_ints_per_input_vec * sizeof(float)); i++)
-		{
-			PE_GL(glVertexAttribPointer(i, size_of_ints_per_input_vec, GL_FLOAT, GL_FALSE, _dataStructureSize, (void *)(size_of_ints_per_input_vec * i * sizeof(float) + sizeof(long))));
-			PE_GL(glEnableVertexAttribArray(i));
-			vertexAttribCounter += 1;
+		int offset = sizeof(long);
+		for (int i = 0; i < sizeof(header_read) / sizeof(header_read[0]); i++) {
+
+			switch (header_read[i]) { 
+
+			case 1:
+				PE_GL(glVertexAttribPointer(i, size_of_ints_per_input_vec, GL_FLOAT, GL_FALSE, _dataStructureSize, (void*)offset));
+				offset += (sizeof(float) * size_of_ints_per_input_vec);
+				PE_GL(glEnableVertexAttribArray(i));
+				vertexAttribCounter += 1;
+				break;
+
+			case 2:
+				PE_GL(glVertexAttribIPointer(i, size_of_ints_per_input_vec,GL_INT , _dataStructureSize, (void*)offset));
+				offset += (sizeof(int) * size_of_ints_per_input_vec);
+				PE_GL(glEnableVertexAttribArray(i));
+				vertexAttribCounter += 1;
+				break;
+
+			default:
+				break;
+
+			}
+
 		}
+
 	}
 
 	void Mesh::UpdateVertices(void* _dataPointer, size_t _dataStructureSize, unsigned _vertexCount)
