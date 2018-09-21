@@ -69,7 +69,7 @@ namespace piolot {
 		std::string objName;
 		std::string shaderName;
 
-		std::unique_ptr<AnimatedEntity> animatedEntity;
+		std::vector<std::unique_ptr<AnimatedEntity>> animatedEntities;
 
 
 	public:

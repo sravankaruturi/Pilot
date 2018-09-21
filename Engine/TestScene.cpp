@@ -42,7 +42,9 @@ namespace piolot {
 
 		entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
 
-		animatedEntity = std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp");
+		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp"));
+
+		AnimatedEntity * animatedEntity = animatedEntities[0].get();
 		animatedEntity->SetPosition(glm::vec3(2.0, 0.0, 0.0));
 		animatedEntity->SetScale(glm::vec3(0.0125f, 0.0125f, 0.0125f));
 		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
@@ -78,8 +80,10 @@ namespace piolot {
 			it->Update(_deltaTime);
 		}
 
-		animatedEntity->PlayAnimation(_deltaTime);
-		animatedEntity->Update(_deltaTime);
+		AnimatedEntity * animated_entitiy = animatedEntities[0].get();
+
+		animated_entitiy->PlayAnimation(_deltaTime);
+		animated_entitiy->Update(_deltaTime);
 
 		glm::vec3 mouse_pointer_ray;
 
@@ -148,7 +152,7 @@ namespace piolot {
 				selected_entity->SetSelectedInScene(true);
 			}
 
-			animatedEntity->PlayAnimation(_deltaTime);
+			animated_entitiy->PlayAnimation(_deltaTime);
 
 		}
 
@@ -194,18 +198,18 @@ namespace piolot {
 			if (totalTimeCounterForPathing < 1.0f && path.size() > 2) {
 				
 				// Get the Current Node.
-				glm::vec2 start_indices =  testTerrain->GetNodeIndicesFromPos(animatedEntity->GetPosition().x, animatedEntity->GetPosition().z);
+				glm::vec2 start_indices =  testTerrain->GetNodeIndicesFromPos(animated_entitiy->GetPosition().x, animated_entitiy->GetPosition().z);
 				auto start_tile = testTerrain->GetTileFromIndices(start_indices.x, start_indices.y);
 
 				// Look for the Next Node.
 				auto next_tile = path[1];
 
 				// Traverse the Distance b/w them * deltaTime. --> You complete the distance two nodes in 1 second.
-				glm::vec3 current_position = animatedEntity->GetPosition();
+				glm::vec3 current_position = animated_entitiy->GetPosition();
 				current_position.y = start_tile->GetPosition().y;
 				glm::vec3 final_position = current_position + ((next_tile->GetPosition() - start_tile->GetPosition()) * _deltaTime * 0.25f);
 
-				animatedEntity->SetPosition(final_position);
+				animated_entitiy->SetPosition(final_position);
 
 			}
 			else if (totalTimeCounterForPathing > 1.0f) {
@@ -291,7 +295,9 @@ namespace piolot {
 			it->Render();
 		}
 
-		animatedEntity->Render();
+		for (const auto& it : animatedEntities) {
+			it->Render();
+		}
 
 		testTerrain->Render();
 
