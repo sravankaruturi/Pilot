@@ -94,14 +94,27 @@ namespace piolot {
 			it->Update(_deltaTime);
 		}
 
-		for (const auto& it : animatedEntities) {
+		{
+			// All the Operations on the Animated Entities need to be run sequentially, because the Bone Matrices tend to be stored.
+			// The FinalTransformation Matrix for the BoneData would be the same as the previous entity if it hasn't been modified.
 
-			AnimatedEntity * animated_entitiy = it.get();
+			AnimatedEntity * animated_entitiy = animatedEntities[0].get();
+			animated_entitiy->Update(_deltaTime);
+			animated_entitiy->PlayAnimation(_deltaTime);
 
-			//animated_entitiy->PlayAnimation(_deltaTime);
+			animated_entitiy = animatedEntities[1].get();
 			animated_entitiy->Update(_deltaTime);
 
 		}
+
+		//for (const auto& it : animatedEntities) {
+
+		//	AnimatedEntity * animated_entitiy = it.get();
+
+		//	//animated_entitiy->PlayAnimation(_deltaTime);
+		//	animated_entitiy->Update(_deltaTime);
+
+		//}
 
 		AnimatedEntity * animated_entitiy = animatedEntities[1].get();
 		animated_entitiy->PlayAnimation(_deltaTime);

@@ -33,6 +33,8 @@ namespace piolot {
 
 		void Update(float _deltaTime);
 
+		void Render();
+
 	};
 
 
