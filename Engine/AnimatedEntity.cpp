@@ -6,8 +6,8 @@ namespace piolot {
 
 
 
-	AnimatedEntity::AnimatedEntity(const std::string & _entityName, const std::string & _objectPath, const std::string & _shaderName)
-		: Entity(_entityName, _objectPath, _shaderName)
+	AnimatedEntity::AnimatedEntity(const std::string & _entityName, const std::string & _objectPath, const std::string & _shaderName, glm::vec3 _bboxLeast, glm::vec3 _bboxHigh)
+		: Entity(_entityName, _objectPath, _shaderName, _bboxLeast, _bboxHigh)
 	{
 
 		//matrixDirty = true;

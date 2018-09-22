@@ -65,9 +65,9 @@ namespace piolot {
 
 		entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
 
-		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp"));
+		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
 
-		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob_2", "boblamp/boblampclean.md5mesh", "bob_lamp"));
+		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob_2", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
 
 		AnimatedEntity * animatedEntity = animatedEntities[0].get();
 		animatedEntity->SetPosition(glm::vec3(2.0, 0.0, 0.0));

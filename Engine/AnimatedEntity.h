@@ -28,7 +28,7 @@ namespace piolot {
 		// Testing purposes.
 		void SetAnimationTotalTime(float _animationTotalTime) { animationTotalTime = _animationTotalTime; }
 
-		AnimatedEntity(const std::string& _entityName, const std::string& _objectPath, const std::string& _shaderName);
+		AnimatedEntity(const std::string& _entityName, const std::string& _objectPath, const std::string& _shaderName, glm::vec3 _bboxLeast = glm::vec3(-1, -1, -1), glm::vec3 _bboxHigh = glm::vec3(1, 1, 1));
 
 		~AnimatedEntity() = default;
 
