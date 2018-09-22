@@ -45,7 +45,7 @@ namespace piolot {
 
 		animationTotalTime += _deltaTime;
 
-		ASMGR.objects.at(objectName)->BoneTransform(animationTotalTime, boneMatrices);
+		ASMGR.objects.at(objectName)->BoneTransform(animationTotalTime, this->boneMatrices);
 
 
 	}

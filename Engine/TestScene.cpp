@@ -78,6 +78,7 @@ namespace piolot {
 		animatedEntity->SetPosition(glm::vec3(2.0, 0.0, 2.0));
 		animatedEntity->SetScale(glm::vec3(0.0125f, 0.0125f, 0.0125f));
 		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
+		animatedEntity->SetAnimationTotalTime(0.75f);
 		
 	}
 
@@ -97,6 +98,7 @@ namespace piolot {
 		{
 			// All the Operations on the Animated Entities need to be run sequentially, because the Bone Matrices tend to be stored.
 			// The FinalTransformation Matrix for the BoneData would be the same as the previous entity if it hasn't been modified.
+			// So, Update, PlayAnimation, Update Etc. 
 
 			AnimatedEntity * animated_entitiy = animatedEntities[0].get();
 			animated_entitiy->Update(_deltaTime);
@@ -104,20 +106,11 @@ namespace piolot {
 
 			animated_entitiy = animatedEntities[1].get();
 			animated_entitiy->Update(_deltaTime);
+			animated_entitiy->PlayAnimation(_deltaTime);
 
 		}
 
-		//for (const auto& it : animatedEntities) {
-
-		//	AnimatedEntity * animated_entitiy = it.get();
-
-		//	//animated_entitiy->PlayAnimation(_deltaTime);
-		//	animated_entitiy->Update(_deltaTime);
-
-		//}
-
 		AnimatedEntity * animated_entitiy = animatedEntities[1].get();
-		animated_entitiy->PlayAnimation(_deltaTime);
 
 		glm::vec3 mouse_pointer_ray;
 
@@ -199,11 +192,6 @@ namespace piolot {
 
 			// Get the node pos.
 			const glm::vec2 test_get_node = testTerrain->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
-
-			//LOGGER.AddToLog(
-			//	"Random Point Selected: " + std::to_string(startPosition.x) + " , " + std::to_string(startPosition.z) + " "
-			//	"The node returned is: " + std::to_string(test_get_node.x) + ", " + std::to_string(test_get_node.y)
-			//);
 
 			testTerrain->HighlightNode(test_get_node.x, test_get_node.y);
 
@@ -314,7 +302,7 @@ namespace piolot {
 
 			auto boblammp_shader = ASMGR.shaders.at("bob_lamp");
 			boblammp_shader->use();
-			//PE_GL(glUniformMatrix4fv(it.second->GetUniformLocation("u_ViewMatrix"), GL_FALSE, 4, &view_matrices[0][0][0]));
+			
 			loc = boblammp_shader->GetUniformLocation("u_ViewMatrix");
 			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, &view_matrices[0][0][0]));
 
@@ -805,6 +793,7 @@ namespace piolot {
 
 	}
 
+	// TODO: This is Broken. Fix this. This doesn't save the Animation Data.
 	void TestScene::SaveScene(const char * _fileName)
 	{
 

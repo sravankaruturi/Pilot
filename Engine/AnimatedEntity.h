@@ -25,6 +25,9 @@ namespace piolot {
 
 	public:
 
+		// Testing purposes.
+		void SetAnimationTotalTime(float _animationTotalTime) { animationTotalTime = _animationTotalTime; }
+
 		AnimatedEntity(const std::string& _entityName, const std::string& _objectPath, const std::string& _shaderName);
 
 		~AnimatedEntity() = default;
