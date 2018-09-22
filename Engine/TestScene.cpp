@@ -37,24 +37,11 @@ namespace piolot {
 		ASMGR.LoadShaders();
 		ASMGR.LoadTextures();
 
-		cameras.insert_or_assign("First", std::make_shared<Camera>("First", glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0)));
-		cameras.insert_or_assign("Second", std::make_shared<Camera>("Second", glm::vec3(10, 0, 10), glm::vec3(-1, 0, -1), glm::vec3(0, 1, 0)));
-
-		entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
-
-		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp"));
-
-		AnimatedEntity * animatedEntity = animatedEntities[0].get();
-		animatedEntity->SetPosition(glm::vec3(2.0, 0.0, 0.0));
-		animatedEntity->SetScale(glm::vec3(0.0125f, 0.0125f, 0.0125f));
-		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
-
-		ActiveCamera(cameras.at("First"));
+		TestScene::InitEntities();
 
 		// We need to wait for the Shaders to be loaded to call this function.
 		testGrid.Init();
-		
-		//terrain_test = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
+	
 		std::string heightmap_path = TEXTURE_FOLDER + std::string("heightmap.jpg");
 		testTerrain = std::make_shared<Terrain>(10, 10, 0.5, 0.5, heightmap_path);
 
@@ -65,6 +52,33 @@ namespace piolot {
 
 		viewportsDetails[0].isOrthogonal = false;
 
+	}
+
+	void TestScene::InitEntities()
+	{
+
+		/* Initialize Cameras */
+		cameras.insert_or_assign("First", std::make_shared<Camera>("First", glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0)));
+		cameras.insert_or_assign("Second", std::make_shared<Camera>("Second", glm::vec3(10, 0, 10), glm::vec3(-1, 0, -1), glm::vec3(0, 1, 0)));
+
+		ActiveCamera(cameras.at("First"));
+
+		entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
+
+		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp"));
+
+		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob_2", "boblamp/boblampclean.md5mesh", "bob_lamp"));
+
+		AnimatedEntity * animatedEntity = animatedEntities[0].get();
+		animatedEntity->SetPosition(glm::vec3(2.0, 0.0, 0.0));
+		animatedEntity->SetScale(glm::vec3(0.0125f, 0.0125f, 0.0125f));
+		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
+
+		animatedEntity = animatedEntities[1].get();
+		animatedEntity->SetPosition(glm::vec3(2.0, 0.0, 2.0));
+		animatedEntity->SetScale(glm::vec3(0.0125f, 0.0125f, 0.0125f));
+		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
+		
 	}
 
 	void TestScene::OnUpdate(float _deltaTime, float _totalTime)
@@ -80,10 +94,17 @@ namespace piolot {
 			it->Update(_deltaTime);
 		}
 
-		AnimatedEntity * animated_entitiy = animatedEntities[0].get();
+		for (const auto& it : animatedEntities) {
 
+			AnimatedEntity * animated_entitiy = it.get();
+
+			//animated_entitiy->PlayAnimation(_deltaTime);
+			animated_entitiy->Update(_deltaTime);
+
+		}
+
+		AnimatedEntity * animated_entitiy = animatedEntities[1].get();
 		animated_entitiy->PlayAnimation(_deltaTime);
-		animated_entitiy->Update(_deltaTime);
 
 		glm::vec3 mouse_pointer_ray;
 
@@ -151,8 +172,6 @@ namespace piolot {
 			{
 				selected_entity->SetSelectedInScene(true);
 			}
-
-			animated_entitiy->PlayAnimation(_deltaTime);
 
 		}
 
@@ -482,11 +501,11 @@ namespace piolot {
 			ImGui::Begin("Hierarchy", &displayHierarchy);
 
 			//TODO: This should be highlighted in the Viewport as well.
-			static std::shared_ptr<Entity> selected_entity;
+			static Entity * selected_entity;
 
 			if (selected_entity == nullptr)
 			{
-				selected_entity = entities[0];
+				selected_entity = entities[0].get();
 			}
 
 			// Set the selected flag for the entity.
@@ -498,12 +517,21 @@ namespace piolot {
 			for ( auto& it : entities)
 			{
 				ImGui::PushID(&it);
-				if ( ImGui::Selectable(it->GetEntityName().c_str(), selected_entity == it))
+				if ( ImGui::Selectable(it->GetEntityName().c_str(), selected_entity == it.get()))
 				{
-					selected_entity = it;
+					selected_entity = it.get();
 				}
 				ImGui::PopID();
 
+			}
+
+			for (auto& it : animatedEntities) {
+				ImGui::PushID(&it);
+				if (ImGui::Selectable(it->GetEntityName().c_str(), selected_entity == it.get()))
+				{
+					selected_entity = it.get();
+				}
+				ImGui::PopID();
 			}
 
 			ImGui::EndChild();

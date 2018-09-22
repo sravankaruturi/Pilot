@@ -5,6 +5,7 @@
 
 #include "Camera.h"
 #include "Entity.h"
+#include "AnimatedEntity.h"
 
 class Window;
 
@@ -20,12 +21,16 @@ namespace piolot {
 		std::shared_ptr<Camera> activeCamera;
 
 		std::map<std::string, std::shared_ptr<Camera>> cameras;
+
 		std::vector<std::shared_ptr<Entity>> entities;
+		std::vector<std::unique_ptr<AnimatedEntity>> animatedEntities;
 
 	public:
 
 		explicit Scene(std::shared_ptr<Window> _window);
 		~Scene() = default;
+
+		virtual void InitEntities() {};
 
 		virtual void OnUpdate(float _deltaTime, float _totalTime) {}
 

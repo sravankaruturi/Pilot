@@ -3,7 +3,6 @@
 #include "Scene.h"
 #include "Grid.h"
 #include "Terrain.h"
-#include "AnimatedEntity.h"
 
 namespace piolot {
 	
@@ -69,13 +68,13 @@ namespace piolot {
 		std::string objName;
 		std::string shaderName;
 
-		std::vector<std::unique_ptr<AnimatedEntity>> animatedEntities;
-
 
 	public:
 
 		explicit TestScene(std::shared_ptr<Window> _window);
 		~TestScene() = default;
+
+		void InitEntities() override;
 
 		virtual void OnUpdate(float _deltaTime, float _totalTime) override;
 
