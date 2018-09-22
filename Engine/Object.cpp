@@ -236,6 +236,11 @@ namespace piolot
 	void Object::MeshDetailsImGUI()
 	{
 		std::string name;
+
+		ImGui::Text("Bounding Box Details: ");
+		ImGui::Text("Min: %f %f %f", &leastVertex[0], &leastVertex[1], &leastVertex[2]);
+		ImGui::Text("Max: %f %f %f", &highestVertex[0], &highestVertex[1], &highestVertex[2]);
+
 		short i = 0;
 		for (auto& it : this->meshes) {
 			i++;
@@ -329,6 +334,14 @@ namespace piolot
 				vector.z = _mesh->mVertices[i].z;
 				vector.w = 0.0f;
 				vertex.position = vector;
+
+				leastVertex.x = glm::min(vector.x, leastVertex.x);
+				leastVertex.y = glm::min(vector.y, leastVertex.y);
+				leastVertex.z = glm::min(vector.z, leastVertex.z);
+
+				highestVertex.x = glm::max(vector.x, highestVertex.x);
+				highestVertex.y = glm::max(vector.y, highestVertex.y);
+				highestVertex.z = glm::max(vector.z, highestVertex.z);
 
 				if (_mesh->HasNormals()) {
 
@@ -453,6 +466,14 @@ namespace piolot
 				vector.z = _mesh->mVertices[i].z;
 				vector.w = 0.0f;
 				vertex.position = vector;
+
+				leastVertex.x = (vector.x < leastVertex.x) ? vector.x : leastVertex.x ;
+				leastVertex.y = glm::min(vector.y, leastVertex.y);
+				leastVertex.z = glm::min(vector.z, leastVertex.z);
+
+				highestVertex.x = glm::max(vector.x, highestVertex.x);
+				highestVertex.y = glm::max(vector.y, highestVertex.y);
+				highestVertex.z = glm::max(vector.z, highestVertex.z);
 
 				if (_mesh->HasNormals()) {
 

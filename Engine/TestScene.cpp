@@ -159,10 +159,24 @@ namespace piolot {
 
 
 			// We reset this every frame.
-			std::shared_ptr<Entity> selected_entity;
+			Entity * selected_entity = nullptr;
 			// Loop through all Entities that can be selected.
 			for (auto it : entities)
 			{
+				if (it->CheckIfMouseOvered(ray_start, mouse_pointer_ray, min_int_distance))
+				{
+					if (int_distance < min_int_distance)
+					{
+						min_int_distance = int_distance;
+						selected_entity = it.get();
+					}
+				}
+				it->SetSelectedInScene(false);
+			}
+
+			for (int i = 0 ; i < animatedEntities.size(); i++)
+			{
+				AnimatedEntity * it = animatedEntities[i].get();
 				if (it->CheckIfMouseOvered(ray_start, mouse_pointer_ray, min_int_distance))
 				{
 					if (int_distance < min_int_distance)
@@ -174,7 +188,8 @@ namespace piolot {
 				it->SetSelectedInScene(false);
 			}
 
-			if (nullptr != selected_entity)
+
+			if (nullptr != selected_entity && selected_entity)
 			{
 				selected_entity->SetSelectedInScene(true);
 			}

@@ -186,7 +186,19 @@ namespace piolot
 		 */
 		aiMatrix4x4 globalInverseTransform;
 
+		glm::vec3 leastVertex{};
+		glm::vec3 highestVertex{};
+
 	public:
+
+		const glm::vec3 GetLeastVertex() const{
+			return leastVertex;
+		}
+
+		const glm::vec3 GetHighestVertex() const{
+			return highestVertex;
+		}
+
 		const std::string& GetObjectName() const
 		{
 			return objectName;

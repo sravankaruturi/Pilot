@@ -12,8 +12,6 @@ namespace piolot
 	protected:
 		std::string shaderName;
 
-		BoundingBox boundingBox;
-
 		bool selectedInScene = false;
 
 		std::string entityName;
@@ -28,6 +26,11 @@ namespace piolot
 		glm::mat4 modelMatrix{};
 
 		bool matrixDirty = true;
+
+		glm::vec3 boundingBoxLeastVertex{-1, -1, -1};
+		glm::vec3 boundingBoxHighVertex{1, 1, 1};
+
+		BoundingBox boundingBox;
 
 	public:
 		std::string GetEntityName() const
@@ -139,7 +142,7 @@ namespace piolot
 
 		Entity() = default;
 
-		Entity(const std::string& _entityName, const std::string& _objectPath, const std::string& _shaderName);
+		Entity(const std::string& _entityName, const std::string& _objectPath, const std::string& _shaderName, glm::vec3 _boundingBoxLeast = glm::vec3( -1, -1, -1 ), glm::vec3 _boundingBoxHighest = glm::vec3( 1, 1, 1 ));
 		~Entity() = default;
 
 		void Update(float _deltaTime);

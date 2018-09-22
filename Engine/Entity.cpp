@@ -56,8 +56,8 @@ namespace piolot
 		modelMatrix = model_matrix;
 	}
 
-	Entity::Entity(const std::string& _entityName, const std::string& _objectPath, const std::string& _shaderName)
-		:entityName(_entityName), shaderName(_shaderName), boundingBox(BoundingBox(glm::vec3(-1.0, -1.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f)))
+	Entity::Entity(const std::string& _entityName, const std::string& _objectPath, const std::string& _shaderName, glm::vec3 _boundingBoxLeast, glm::vec3 _boundingBoxHigh)
+		:entityName(_entityName), shaderName(_shaderName), boundingBoxLeastVertex(_boundingBoxLeast), boundingBoxHighVertex(_boundingBoxHigh), boundingBox(BoundingBox(boundingBoxLeastVertex, boundingBoxHighVertex))
 	{
 		
 		objectName = _objectPath.substr(_objectPath.find_last_of('/') + 1, _objectPath.find_last_of('.') - _objectPath.find_last_of('/') - 1);
@@ -68,6 +68,11 @@ namespace piolot
 			std::shared_ptr<Object> object = std::make_shared<Object>(MODEL_FOLDER + _objectPath);
 			ASMGR.objects.insert_or_assign(objectName, object);
 		}
+
+		// Anthaa ayyipoyaaka manam Bounding Box udpate cheyyali.
+		// The Bounding Box can be created using the least vertex, the highest vertex, in terms of Both, X, Y, Z. Lets try it.
+		Object * current_object = ASMGR.objects.at(objectName).get();
+		//boundingBox = BoundingBox(current_object->GetHighestVertex(), current_object->GetHighestVertex());
 		
 		matrixDirty = true;
 
