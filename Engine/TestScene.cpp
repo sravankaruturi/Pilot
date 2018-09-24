@@ -181,17 +181,22 @@ namespace piolot {
 
 		}
 
+		testTerrain->ClearColours();
+
+		if ( nullptr != activeCamera )
+		{
+			Ray mouse_pointer_ray_ray{ activeCamera->GetPosition(), mouse_pointer_ray };
+			this->testTerrain->GetMouseRayPoint(mouse_pointer_ray_ray);
+		}
+
 		/* Find Random Paths */
 		{
-			const float interval = 15;
-
-			testTerrain->ClearColours();
 
 			glm::vec3 startPosition = glm::vec3(startxz.x, 0, startxz.y);
 			glm::vec3 endPosition = glm::vec3(endxz.x, 0, endxz.y);
 
 			// Get the node pos.
-			const glm::vec2 test_get_node = testTerrain->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
+			const glm::ivec2 test_get_node = testTerrain->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
 
 			testTerrain->HighlightNode(test_get_node.x, test_get_node.y);
 
@@ -648,6 +653,14 @@ namespace piolot {
 			ImGui::InputFloat3("Mouse Pointer Ray", glm::value_ptr(mouse_pointer_ray));
 
 			ImGui::Text("Updated Mouse position: %.3f , %.3f", updated_x, updated_y);
+
+			ImGui::Separator();
+
+			ImGui::Checkbox("Pointing at Origin: ", &this->testTerrain->pointingAtOrigin);
+
+			ImGui::SliderFloat("The Accuracy Parameter: ", &this->testTerrain->accuracyFactor, 0.1f, 1.0f);
+
+			ImGui::DragInt2("The selected Node Indices", glm::value_ptr(testTerrain->pointedNodeIndices), 0, 20);
 
 			ImGui::End();
 

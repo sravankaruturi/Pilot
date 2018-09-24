@@ -3,6 +3,7 @@
 #include "Colours.h"
 #include "LoggingManager.h"
 #include "AssetManager.h"
+#include "Ray.h"
 
 #include <algorithm>
 #include "SaveSceneHelpers.h"
@@ -98,7 +99,7 @@ namespace piolot {
 
 				float total = 0;
 
-				auto channels_without_alpha = (nr_channels == 2 || nr_channels == 4) ? (nr_channels - 1) : nr_channels;
+				const auto channels_without_alpha = (nr_channels == 2 || nr_channels == 4) ? (nr_channels - 1) : nr_channels;
 
 				// Do not count the Alpha
 				for (auto it = 0; it < channels_without_alpha; it++)
@@ -115,7 +116,7 @@ namespace piolot {
 				tiles[i][j].tilePosX = i * gridLength + gridLength / 2;
 				tiles[i][j].tilePosZ = j * gridBreadth + gridBreadth / 2;
 
-				tiles[i][j].tilePosY = total;
+				tiles[i][j].tilePosY = total * heightFactor;
 			}
 		}
 
@@ -202,9 +203,9 @@ namespace piolot {
 		return tiles[_x][_z].tilePosY;
 	}
 
-	glm::vec2 Terrain::GetNodeIndicesFromPos(const float& _x, const float& _z) const
+	glm::ivec2 Terrain::GetNodeIndicesFromPos(const float& _x, const float& _z) const
 	{
-		return glm::vec2(glm::min(int(_x / gridLength), int(nodeCountX - 1)), glm::min(int(_z / gridBreadth), int(nodeCountZ - 1)));
+		return glm::ivec2(glm::min(int(_x / gridLength), int(nodeCountX - 1)), glm::min(int(_z / gridBreadth), int(nodeCountZ - 1)));
 	}
 
 	void Terrain::HighlightNode(const unsigned _x, const unsigned _z)
@@ -596,5 +597,67 @@ namespace piolot {
 		DeleteTiles();
 	}
 
+	void Terrain::GetMouseRayPoint(Ray _ray, float _granularity)
+	{
 
+		// Note: The Following method does not work if the Terrain is rotated in any way.. Or I think it shouldn't
+
+		// We get the Terrain Origin Point.
+
+		glm::vec3 terrain_origin = this->position;
+
+		// We get the Y Coordinate.
+		float terrain_origin_y = this->position.y;
+
+		// We get the Maximum and Minimum bounds for the Y Coordinate for the Entire Terrain.
+		float possible_deviation = this->heightFactor;
+
+		// Now We check if the Ray Actually has any points where its Y is Similar to the Terrain's..
+		// Test if the Terrain origin Position lies on the Ray.
+
+		glm::vec3 ray_origin = _ray.GetOrigin();
+		glm::vec3 ray_direction = _ray.GetDirection();
+
+		// We call the 't' in P = P0 + R . t as the "factor".
+		// If Y lies on the Ray, check the factor for the corresponding X and Z, and check if they are in the ball park of the Actual Terrain.
+		// We do this, because given enough factor, All the Rays have all the Y values in them. ( Unless they are parallel to the other axes. )
+
+		float factor = (terrain_origin_y - ray_origin.y) / ray_direction.y;
+
+		float output_x = ray_origin.x + factor * ray_direction.x;
+		float output_z = ray_origin.z + factor * ray_direction.z;
+
+		// Check How Close the Output is to the Actual Terrain.
+		if ( glm::abs(output_x - terrain_origin.x) < accuracyFactor  && glm::abs(output_z - terrain_origin.z) < accuracyFactor)
+		{
+			pointingAtOrigin = true;
+		}else
+		{
+			pointingAtOrigin = false;
+		}
+
+		//pointedNodeIndices = { INT_MAX, INT_MAX };
+
+		// Loop through all the Nodes/Tiles and check if the X and Z exist in there.
+		// This method is really expensive. Figure out a better way.
+		for (auto i = 0; i < nodeCountX; i++) {
+			for (auto j = 0; j < nodeCountZ; j++) {
+
+				const auto& tile = tiles[i][j];
+
+				// Check for the x, y, z, values.
+				if (glm::abs(output_x - tile.GetPosition().x) < accuracyFactor  && glm::abs(output_z - tile.GetPosition().z) < accuracyFactor)
+				{
+					pointedNodeIndices.x = i;
+					pointedNodeIndices.y = j;
+
+					this->HighlightNode(i, j);
+
+					// If One Tile satisfies the Criteria, we break. We can make it more accurate by calculating the Distances and stuff. But why??
+					break;
+				}
+			}
+		}
+
+	}
 }

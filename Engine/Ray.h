@@ -16,6 +16,7 @@ namespace piolot {
 		glm::vec3 origin;
 		glm::vec3 direction;
 
+	
 		unsigned int vbo;
 		unsigned int vao;
 
@@ -24,6 +25,16 @@ namespace piolot {
 		void UpdateBuffers();
 
 	public:
+
+		glm::vec3 GetOrigin() const
+		{
+			return origin;
+		}
+
+		glm::vec3 GetDirection() const
+		{
+			return direction;
+		}
 
 		explicit Ray(glm::vec3 _origin, glm::vec3 _direction);
 
