@@ -25,6 +25,9 @@ namespace piolot {
 		std::vector<std::shared_ptr<Entity>> entities;
 		std::vector<std::unique_ptr<AnimatedEntity>> animatedEntities;
 
+		//std::vector<std::weak_ptr<AnimatedEntity>> selectedEntities;
+		Entity * selectedEntity;
+
 	public:
 
 		explicit Scene(std::shared_ptr<Window> _window);

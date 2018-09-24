@@ -157,18 +157,15 @@ namespace piolot {
 
 			}
 
-
-			// We reset this every frame.
-			Entity * selected_entity = nullptr;
 			// Loop through all Entities that can be selected.
 			for (auto it : entities)
 			{
-				if (it->CheckIfMouseOvered(ray_start, mouse_pointer_ray, min_int_distance))
+				if ( (window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1)) && (it->CheckIfMouseOvered(ray_start, mouse_pointer_ray, min_int_distance)))
 				{
 					if (int_distance < min_int_distance)
 					{
 						min_int_distance = int_distance;
-						selected_entity = it.get();
+						selectedEntity = it.get();
 					}
 				}
 				it->SetSelectedInScene(false);
@@ -177,21 +174,21 @@ namespace piolot {
 			for (int i = 0 ; i < animatedEntities.size(); i++)
 			{
 				AnimatedEntity * it = animatedEntities[i].get();
-				if (it->CheckIfMouseOvered(ray_start, mouse_pointer_ray, min_int_distance))
+				if ((window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1)) && it->CheckIfMouseOvered(ray_start, mouse_pointer_ray, min_int_distance))
 				{
 					if (int_distance < min_int_distance)
 					{
 						min_int_distance = int_distance;
-						selected_entity = it;
+						selectedEntity = it;
 					}
 				}
 				it->SetSelectedInScene(false);
 			}
 
 
-			if (nullptr != selected_entity && selected_entity)
+			if (nullptr != selectedEntity && selectedEntity)
 			{
-				selected_entity->SetSelectedInScene(true);
+				selectedEntity->SetSelectedInScene(true);
 			}
 
 		}
@@ -238,18 +235,18 @@ namespace piolot {
 			if (totalTimeCounterForPathing < 1.0f && path.size() > 2) {
 				
 				// Get the Current Node.
-				glm::vec2 start_indices =  testTerrain->GetNodeIndicesFromPos(animated_entitiy->GetPosition().x, animated_entitiy->GetPosition().z);
+				glm::vec2 start_indices =  testTerrain->GetNodeIndicesFromPos(selectedEntity->GetPosition().x, selectedEntity->GetPosition().z);
 				auto start_tile = testTerrain->GetTileFromIndices(start_indices.x, start_indices.y);
 
 				// Look for the Next Node.
 				auto next_tile = path[1];
 
 				// Traverse the Distance b/w them * deltaTime. --> You complete the distance two nodes in 1 second.
-				glm::vec3 current_position = animated_entitiy->GetPosition();
+				glm::vec3 current_position = selectedEntity->GetPosition();
 				current_position.y = start_tile->GetPosition().y;
 				glm::vec3 final_position = current_position + ((next_tile->GetPosition() - start_tile->GetPosition()) * _deltaTime * 0.25f);
 
-				animated_entitiy->SetPosition(final_position);
+				selectedEntity->SetPosition(final_position);
 
 			}
 			else if (totalTimeCounterForPathing > 1.0f) {
