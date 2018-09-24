@@ -201,6 +201,12 @@ namespace piolot {
 			this->testTerrain->GetMouseRayPoint(mouse_pointer_ray_ray);
 		}
 
+		if ( window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_2))
+		{
+			// Update the End XZ.
+			endxz.x = testTerrain->pointedNodeIndices.x;
+		}
+
 		/* Find Random Paths */
 		{
 
@@ -213,11 +219,26 @@ namespace piolot {
 			testTerrain->HighlightNode(test_get_node.x, test_get_node.y);
 
 			startPosition.y = testTerrain->GetHeightAtPos(startPosition.x, startPosition.z);
-			endPosition.y = testTerrain->GetHeightAtPos(endPosition.x, endPosition.z);
+			/*endPosition.y = testTerrain->GetHeightAtPos(endPosition.x, endPosition.z);*/
 
 			glm::vec2 test_end_node = testTerrain->GetNodeIndicesFromPos(endPosition.x, endPosition.z);
 
 			testTerrain->HighlightNode(test_end_node.x, test_end_node.y);
+
+			if ( window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_2))
+			{
+
+				if ( nullptr != selectedEntity)
+				{
+					// Update and Set the Starting Position to the Starting Position of the Entity.
+					startPosition = selectedEntity->GetPosition();
+					startxz = testTerrain->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
+				}
+
+				test_end_node = testTerrain->pointedNodeIndices;
+				glm::vec3 target_position = testTerrain->GetTileFromIndices(test_end_node.x, test_end_node.y)->GetPosition();
+				endxz = glm::vec2(target_position.x, target_position.z);
+			}
 
 			path = testTerrain->GetPathFromPositions(startPosition, endPosition);
 
@@ -231,7 +252,7 @@ namespace piolot {
 			}
 
 			totalTimeCounterForPathing += _deltaTime;
-
+					
 			if (totalTimeCounterForPathing < 1.0f && path.size() > 2) {
 				
 				// Get the Current Node.
