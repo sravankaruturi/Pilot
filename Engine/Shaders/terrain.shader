@@ -87,7 +87,7 @@ in vData f_Stuff;
 
 void main() {
 
-	/*FragColour = mix(vec4(texture(u_Texture0, f_Stuff.g_TexCoords.xy)), vec4(f_Stuff.g_Colour, 1.0), f_Stuff.g_TexCoords.z);*/
-	FragColour = texture(u_Texture0, f_Stuff.g_TexCoords.xy);
+	FragColour = mix(vec4(texture(u_Texture0, f_Stuff.g_TexCoords.xy)), vec4(f_Stuff.g_Colour, 0.5), f_Stuff.g_TexCoords.z);
+	//FragColour = texture(u_Texture0, f_Stuff.g_TexCoords.xy);
 
 }

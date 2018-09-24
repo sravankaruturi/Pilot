@@ -6,6 +6,7 @@
 #include <fstream>
 
 namespace piolot {
+	class Ray;
 
 	struct TerrainVertexData{
 
@@ -46,7 +47,7 @@ namespace piolot {
 	public:
 		MapTile() = default;
 
-		glm::vec3 GetPosition() {
+		glm::vec3 GetPosition() const {
 			return glm::vec3(tilePosX, tilePosY, tilePosZ);
 		}
 
@@ -74,11 +75,37 @@ namespace piolot {
 
 		std::shared_ptr<Object> objectPtr;
 
+		/**
+		 * \brief This is a float that can be used to modify the amplitude of the Terrain.
+		 * 
+		 * This is also used as Standard Deviation to Caclulate the Ray Intersection Point with the Terrain.
+		 */
+		float heightFactor = 1.0f;
+
 		glm::vec3 ComputeGridNormal(int _x,int _z);
 
 		/* Testing stuff */
 		glm::vec2 startxz{};
 		glm::vec2 endxz{};
+
+	public:
+
+		/**
+		 * \brief This is set to True, at Run time if you are pointing the Mouse Cursor over the Terrain origin.
+		 */
+		bool pointingAtOrigin = false;
+
+		/**
+		 * \brief This would be the Current Indices that are being pointed to by, the Mouse.
+		 * 
+		 * By Default, they are set to store INT_MAX. Unless they are being Updated.
+		 */
+		glm::ivec2 pointedNodeIndices{INT_MAX, INT_MAX};
+
+		/**
+		 * \brief The Accuracy by which we say, that a Ray has a Point on it. Lower is more Accurate.
+		 */
+		float accuracyFactor = 0.2f;
 
 	public:
 
@@ -148,7 +175,7 @@ namespace piolot {
 		float GetHeightAtPos(const float& _x, const float& _z);
 		float GetHeightForNode(const int& _x, const int& _z);
 
-		glm::vec2 GetNodeIndicesFromPos(const float& _x, const float& _z) const;
+		glm::ivec2 GetNodeIndicesFromPos(const float& _x, const float& _z) const;
 
 		void HighlightNode(const unsigned int _x, const unsigned int _z);
 
@@ -179,6 +206,15 @@ namespace piolot {
 
 		/* Terrain Debug */
 		bool terrainDebug = false;
+
+		/**
+		 * \brief Get the Intersection Point for the Ray and the Terrain.
+		 * \param _ray The Mouse Ray, based on the Current Mouse Position and the View Matrix.
+		 * \param _granularity The Granularity with which to search for the Intersection.
+		 * 
+		 * This is used in pathfinding.
+		 */
+		void GetMouseRayPoint(Ray _ray, float _granularity = 0.5f);
 
 	};
 

@@ -20,16 +20,9 @@ namespace piolot {
 	void AnimatedEntity::PlayAnimation(float _deltaTime)
 	{
 
-		// Play the Animation.
-
-		// Update the Bone Matrices.
-
-		// Update the TotalTime.
-
 		animationTotalTime += _deltaTime;
 
 		ASMGR.objects.at(objectName)->BoneTransform(animationTotalTime, this->boneMatrices);
-
 
 	}
 
