@@ -67,7 +67,11 @@ namespace piolot {
 
 		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
 
-		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob_2", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
+		animatedEntities.push_back(std::make_unique<AnimatedEntity>("archer", "archer/archer_walking.fbx", "bob_lamp", glm::vec3(-30, 0, -30), glm::vec3(30, 180, 30)));
+		std::shared_ptr<Texture> archer_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("archer/akai_diffuse.png"), false);
+		ASMGR.AddToTextures("akai_diffuse", archer_diffuse);
+		ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
+		//ASMGR.objects.at("archer_walking")->GetMeshes()[0]->texturePointers[0] = archer_diffuse;
 
 		AnimatedEntity * animatedEntity = animatedEntities[0].get();
 		animatedEntity->SetPosition(glm::vec3(2.0, 0.0, 0.0));
@@ -76,8 +80,9 @@ namespace piolot {
 
 		animatedEntity = animatedEntities[1].get();
 		animatedEntity->SetPosition(glm::vec3(2.0, 0.0, 2.0));
-		animatedEntity->SetScale(glm::vec3(0.0125f, 0.0125f, 0.0125f));
-		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
+		const float scale_factor = 256.f;
+		animatedEntity->SetScale(glm::vec3(1/scale_factor));
+		animatedEntity->SetRotation(glm::vec3(0, 0.0f, 0.00f));
 		animatedEntity->SetAnimationTotalTime(0.75f);
 		
 	}
@@ -214,11 +219,11 @@ namespace piolot {
 			glm::vec3 endPosition = glm::vec3(endxz.x, 0, endxz.y);
 
 			// Get the node pos.
-			const glm::ivec2 test_get_node = testTerrain->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
+			//const glm::ivec2 test_get_node = testTerrain->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
 
-			testTerrain->HighlightNode(test_get_node.x, test_get_node.y);
+			//testTerrain->HighlightNode(test_get_node.x, test_get_node.y);
 
-			startPosition.y = testTerrain->GetHeightAtPos(startPosition.x, startPosition.z);
+			//startPosition.y = testTerrain->GetHeightAtPos(startPosition.x, startPosition.z);
 			/*endPosition.y = testTerrain->GetHeightAtPos(endPosition.x, endPosition.z);*/
 
 			glm::vec2 test_end_node = testTerrain->GetNodeIndicesFromPos(endPosition.x, endPosition.z);
@@ -248,7 +253,7 @@ namespace piolot {
 
 			for ( auto it : path)
 			{
-				testTerrain->HighlightNode(it->tileIndexX, it->tileIndexZ);
+				//testTerrain->HighlightNode(it->tileIndexX, it->tileIndexZ);
 			}
 
 			totalTimeCounterForPathing += _deltaTime;

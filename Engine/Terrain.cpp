@@ -205,7 +205,18 @@ namespace piolot {
 
 	glm::ivec2 Terrain::GetNodeIndicesFromPos(const float& _x, const float& _z) const
 	{
-		return glm::ivec2(glm::min(int(_x / gridLength), int(nodeCountX - 1)), glm::min(int(_z / gridBreadth), int(nodeCountZ - 1)));
+		glm::ivec2 return_vec(glm::min(int(_x / gridLength), int(nodeCountX - 1)), glm::min(int(_z / gridBreadth), int(nodeCountZ - 1)));
+		std::string message = "The Node Index returned here was exceeding the Count. (";
+		message += return_vec.x;
+		message += ", ";
+		message += return_vec.y;
+		message += " )";
+
+		LOGGER.AddToLog(message, PE_LOG_INFO);
+		return_vec.x = glm::min(return_vec.x, (int)nodeCountX - 1);
+		return_vec.y = glm::min(return_vec.y, (int)nodeCountZ - 1);
+
+		return return_vec;
 	}
 
 	void Terrain::HighlightNode(const unsigned _x, const unsigned _z)
