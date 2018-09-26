@@ -25,8 +25,12 @@ namespace piolot {
 		std::vector<std::shared_ptr<Entity>> entities;
 		std::vector<std::unique_ptr<AnimatedEntity>> animatedEntities;
 
-		//std::vector<std::weak_ptr<AnimatedEntity>> selectedEntities;
-		Entity * selectedEntity;
+		/**
+		 * \brief Raw Pointers to the Selected Entities.
+		 * 
+		 * These selected entities can be destroyed even though they are selected. So, we just copy the addresses.
+		 */
+		std::vector<Entity *> selectedEntities;
 
 	public:
 

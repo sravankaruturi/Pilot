@@ -32,7 +32,24 @@ namespace piolot
 
 		BoundingBox boundingBox;
 
+		/**
+		 * \brief End Node for the Pathing.
+		 * 
+		 * We use the Current Position as the Start Position.
+		 */
+		glm::ivec2 targetNode{};
+
 	public:
+		glm::ivec2 GetTargetPosition() const
+		{
+			return targetNode;
+		}
+
+		void setTargetNode(const glm::ivec2& _targetNode)
+		{
+			targetNode = _targetNode;
+		}
+
 		std::string GetEntityName() const
 		{
 			return entityName;

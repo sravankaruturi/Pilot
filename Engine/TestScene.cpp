@@ -74,7 +74,7 @@ namespace piolot {
 		//ASMGR.objects.at("archer_walking")->GetMeshes()[0]->texturePointers[0] = archer_diffuse;
 
 		AnimatedEntity * animatedEntity = animatedEntities[0].get();
-		animatedEntity->SetPosition(glm::vec3(2.0, 0.0, 0.0));
+		animatedEntity->SetPosition(glm::vec3(4.0, 0.0, 2.0));
 		animatedEntity->SetScale(glm::vec3(0.0125f, 0.0125f, 0.0125f));
 		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
 
@@ -170,7 +170,10 @@ namespace piolot {
 					if (int_distance < min_int_distance)
 					{
 						min_int_distance = int_distance;
-						selectedEntity = it.get();
+						if ( !window->IsKeyPressedOrHeld(GLFW_KEY_LEFT_SHIFT)){
+							selectedEntities.clear();
+						}
+						selectedEntities.push_back(it.get());
 					}
 				}
 				it->SetSelectedInScene(false);
@@ -184,16 +187,19 @@ namespace piolot {
 					if (int_distance < min_int_distance)
 					{
 						min_int_distance = int_distance;
-						selectedEntity = it;
+						if (!window->IsKeyPressedOrHeld(GLFW_KEY_LEFT_SHIFT)) {
+							selectedEntities.clear();
+						}
+						selectedEntities.push_back(it);
 					}
 				}
 				it->SetSelectedInScene(false);
 			}
 
 
-			if (nullptr != selectedEntity && selectedEntity)
+			for ( auto it: selectedEntities)
 			{
-				selectedEntity->SetSelectedInScene(true);
+				it->SetSelectedInScene(true);
 			}
 
 		}
@@ -208,42 +214,22 @@ namespace piolot {
 
 		if ( window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_2))
 		{
-			// Update the End XZ.
-			endxz.x = testTerrain->pointedNodeIndices.x;
+			// Update the Target Node
+			for (auto it : selectedEntities) {
+				it->setTargetNode(testTerrain->pointedNodeIndices);
+			}
 		}
 
-		/* Find Random Paths */
+		/* Find Paths for each entitiy*/
+		for ( auto& it: animatedEntities)
 		{
 
-			glm::vec3 startPosition = glm::vec3(startxz.x, 0, startxz.y);
-			glm::vec3 endPosition = glm::vec3(endxz.x, 0, endxz.y);
+			glm::vec3 startPosition = it->GetPosition();
+			glm::ivec2 end_node = it->GetTargetPosition();
 
-			// Get the node pos.
-			//const glm::ivec2 test_get_node = testTerrain->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
+			glm::vec3 endPosition = testTerrain->GetTileFromIndices(end_node.x, end_node.y)->GetPosition();
 
-			//testTerrain->HighlightNode(test_get_node.x, test_get_node.y);
-
-			//startPosition.y = testTerrain->GetHeightAtPos(startPosition.x, startPosition.z);
-			/*endPosition.y = testTerrain->GetHeightAtPos(endPosition.x, endPosition.z);*/
-
-			glm::vec2 test_end_node = testTerrain->GetNodeIndicesFromPos(endPosition.x, endPosition.z);
-
-			testTerrain->HighlightNode(test_end_node.x, test_end_node.y);
-
-			if ( window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_2))
-			{
-
-				if ( nullptr != selectedEntity)
-				{
-					// Update and Set the Starting Position to the Starting Position of the Entity.
-					startPosition = selectedEntity->GetPosition();
-					startxz = testTerrain->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
-				}
-
-				test_end_node = testTerrain->pointedNodeIndices;
-				glm::vec3 target_position = testTerrain->GetTileFromIndices(test_end_node.x, test_end_node.y)->GetPosition();
-				endxz = glm::vec2(target_position.x, target_position.z);
-			}
+			testTerrain->HighlightNode(end_node.x, end_node.y);
 
 			path = testTerrain->GetPathFromPositions(startPosition, endPosition);
 
@@ -261,18 +247,18 @@ namespace piolot {
 			if (totalTimeCounterForPathing < 1.0f && path.size() > 2) {
 				
 				// Get the Current Node.
-				glm::vec2 start_indices =  testTerrain->GetNodeIndicesFromPos(selectedEntity->GetPosition().x, selectedEntity->GetPosition().z);
+				glm::vec2 start_indices =  testTerrain->GetNodeIndicesFromPos(it->GetPosition().x, it->GetPosition().z);
 				auto start_tile = testTerrain->GetTileFromIndices(start_indices.x, start_indices.y);
 
 				// Look for the Next Node.
 				auto next_tile = path[1];
 
 				// Traverse the Distance b/w them * deltaTime. --> You complete the distance two nodes in 1 second.
-				glm::vec3 current_position = selectedEntity->GetPosition();
+				glm::vec3 current_position = it->GetPosition();
 				current_position.y = start_tile->GetPosition().y;
 				glm::vec3 final_position = current_position + ((next_tile->GetPosition() - start_tile->GetPosition()) * _deltaTime * 0.25f);
 
-				selectedEntity->SetPosition(final_position);
+				it->SetPosition(final_position);
 
 			}
 			else if (totalTimeCounterForPathing > 1.0f) {
