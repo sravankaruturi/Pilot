@@ -32,7 +32,16 @@ namespace piolot {
 
 		/* Calculated Navigation Stuff */
 		float navCost = 0.0f;
+
+		/**
+		 * \brief Is the Tile walkable or does it have any static elements attached to it.
+		 */
 		bool navWalkable = true;
+
+		/**
+		 * \brief Is there a dynamic obstacle in the path.
+		 */
+		bool navObstacle = false;
 		MapTile * navNeighbours[8];
 		int navNeighbourCount = 0;
 		// Open Set?

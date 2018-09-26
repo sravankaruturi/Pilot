@@ -59,36 +59,46 @@ namespace piolot {
 
 		/* Initialize Cameras */
 		cameras.insert_or_assign("First", std::make_shared<Camera>("First", glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0)));
-		cameras.insert_or_assign("Second", std::make_shared<Camera>("Second", glm::vec3(10, 0, 10), glm::vec3(-1, 0, -1), glm::vec3(0, 1, 0)));
+		cameras.insert_or_assign("Second", std::make_shared<Camera>("Second", glm::vec3(10, 5, 10), glm::vec3(-0.5, -0.5, -0.5), glm::vec3(0, 1, 0)));
 
 		ActiveCamera(cameras.at("First"));
 
 		entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
 
 		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
-
-		animatedEntities.push_back(std::make_unique<AnimatedEntity>("archer", "archer/archer_walking.fbx", "bob_lamp", glm::vec3(-30, 0, -30), glm::vec3(30, 180, 30)));
-		std::shared_ptr<Texture> archer_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("archer/akai_diffuse.png"), false);
-		ASMGR.AddToTextures("akai_diffuse", archer_diffuse);
-		ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
-		//ASMGR.objects.at("archer_walking")->GetMeshes()[0]->texturePointers[0] = archer_diffuse;
-
 		AnimatedEntity * animatedEntity = animatedEntities[0].get();
 		animatedEntity->SetPosition(glm::vec3(4.0, 0.0, 2.0));
 		animatedEntity->SetScale(glm::vec3(0.0125f, 0.0125f, 0.0125f));
 		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
 
-		animatedEntity = animatedEntities[1].get();
-		animatedEntity->SetPosition(glm::vec3(2.0, 0.0, 2.0));
-		const float scale_factor = 256.f;
-		animatedEntity->SetScale(glm::vec3(1/scale_factor));
-		animatedEntity->SetRotation(glm::vec3(0, 0.0f, 0.00f));
-		animatedEntity->SetAnimationTotalTime(0.75f);
+		std::shared_ptr<Texture> archer_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("archer/akai_diffuse.png"), false);
+		ASMGR.AddToTextures("akai_diffuse", archer_diffuse);
+
+		for ( int i = 0 ; i < 5 ; i++)
+		{
+			
+			animatedEntities.push_back(std::make_unique<AnimatedEntity>("archer", "archer/archer_walking.fbx", "bob_lamp", glm::vec3(-30, 0, -30), glm::vec3(30, 180, 30)));
+
+			animatedEntity = animatedEntities[i + 1].get();
+			animatedEntity->SetPosition(glm::vec3(2.0, 0.0, (i + 1)));
+			const float scale_factor = 256.f;
+			animatedEntity->SetScale(glm::vec3(1 / scale_factor));
+			animatedEntity->SetRotation(glm::vec3(0, 0.0f, 0.00f));
+			animatedEntity->SetAnimationTotalTime(0.75f);
+		}
+
+		ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
 		
 	}
 
 	void TestScene::OnUpdate(float _deltaTime, float _totalTime)
 	{
+
+		if ( window->IsKeyPressedOrHeld(GLFW_KEY_C))
+		{
+			ActiveCamera(cameras.at("Second"));
+			viewportsDetails[0].camera = activeCamera;
+		}
 
 		const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
 
@@ -96,23 +106,28 @@ namespace piolot {
 			it.second->UpdateVectors();
 		}
 
+		// Reset the Obstacle flag for all the terrain tiles here.
+
+
+		// I can update all the Positions here.
+		glm::vec3 temp_position{};
 		for (const auto& it : entities) {
+
+			temp_position = it->GetPosition();
+			temp_position.y = testTerrain->GetHeightAtPos(temp_position.x, temp_position.z);
+			it->SetPosition(temp_position);
+
 			it->Update(_deltaTime);
 		}
 
+		for ( const auto& it: animatedEntities)
 		{
-			// All the Operations on the Animated Entities need to be run sequentially, because the Bone Matrices tend to be stored.
-			// The FinalTransformation Matrix for the BoneData would be the same as the previous entity if it hasn't been modified.
-			// So, Update, PlayAnimation, Update Etc. 
+			temp_position = it->GetPosition();
+			temp_position.y = testTerrain->GetHeightAtPos(temp_position.x, temp_position.z);
+			it->SetPosition(temp_position);
 
-			AnimatedEntity * animated_entitiy = animatedEntities[0].get();
-			animated_entitiy->Update(_deltaTime);
-			animated_entitiy->PlayAnimation(_deltaTime);
-
-			animated_entitiy = animatedEntities[1].get();
-			animated_entitiy->Update(_deltaTime);
-			animated_entitiy->PlayAnimation(_deltaTime);
-
+			it->Update(_deltaTime);
+			it->PlayAnimation(_deltaTime);
 		}
 
 		AnimatedEntity * animated_entitiy = animatedEntities[1].get();
@@ -255,10 +270,12 @@ namespace piolot {
 
 				// Traverse the Distance b/w them * deltaTime. --> You complete the distance two nodes in 1 second.
 				glm::vec3 current_position = it->GetPosition();
-				current_position.y = start_tile->GetPosition().y;
 				glm::vec3 final_position = current_position + ((next_tile->GetPosition() - start_tile->GetPosition()) * _deltaTime * 0.25f);
 
-				it->SetPosition(final_position);
+				current_position.x = final_position.x;
+				current_position.z = final_position.z;
+
+				it->SetPosition(current_position);
 
 			}
 			else if (totalTimeCounterForPathing > 1.0f) {

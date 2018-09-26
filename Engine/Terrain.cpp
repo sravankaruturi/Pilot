@@ -330,7 +330,8 @@ namespace piolot {
 			{
 				for (auto i = 0 ; i < active_node->navNeighbourCount ; i++)
 				{
-					if ( nullptr != active_node->navNeighbours[i])
+					// Check if the Neighbour has an obstacle.
+					if ( nullptr != active_node->navNeighbours[i] && !active_node->navNeighbours[i]->navObstacle)
 					{
 						const auto new_g = active_node->navGCost + active_node->navCost;
 						const auto new_f = new_g + HCost(active_node->navNeighbours[i], _endTile);
