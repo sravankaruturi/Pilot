@@ -58,7 +58,7 @@ namespace piolot {
 	{
 
 		/* Initialize Cameras */
-		cameras.insert_or_assign("First", std::make_shared<Camera>("First", glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0)));
+		cameras.insert_or_assign("First", std::make_shared<Camera>("First", glm::vec3(0, 5, 10), glm::vec3(0.5, -0.5, -0.5), glm::vec3(0, 1, 0)));
 		cameras.insert_or_assign("Second", std::make_shared<Camera>("Second", glm::vec3(10, 5, 10), glm::vec3(-0.5, -0.5, -0.5), glm::vec3(0, 1, 0)));
 
 		ActiveCamera(cameras.at("First"));
@@ -107,7 +107,7 @@ namespace piolot {
 		}
 
 		// Reset the Obstacle flag for all the terrain tiles here.
-
+		testTerrain->ResetObstacles();
 
 		// I can update all the Positions here.
 		glm::vec3 temp_position{};
@@ -202,7 +202,7 @@ namespace piolot {
 					if (int_distance < min_int_distance)
 					{
 						min_int_distance = int_distance;
-						if (!window->IsKeyPressedOrHeld(GLFW_KEY_LEFT_SHIFT)) {
+						if (!window->IsKeyHeld(GLFW_KEY_LEFT_SHIFT)) {
 							selectedEntities.clear();
 						}
 						selectedEntities.push_back(it);
@@ -230,9 +230,39 @@ namespace piolot {
 		if ( window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_2))
 		{
 			// Update the Target Node
-			for (auto it : selectedEntities) {
-				it->setTargetNode(testTerrain->pointedNodeIndices);
+
+			// Based on the Number of Entities selected, Make sure that you set the formations here.
+			// We use the Square Formation.. Always..
+
+			int number_of_selected_entities = selectedEntities.size();
+			int row_size = int(glm::sqrt(number_of_selected_entities));
+			int row_counter = 0;
+			int column_counter = 0;
+			int entity_counter = 0;
+
+			glm::ivec2 target_node = testTerrain->pointedNodeIndices;
+
+			for (row_counter = 0; row_counter < row_size; row_counter++) {
+				for (column_counter = 0; column_counter < row_size; column_counter++) {
+
+					glm::ivec2 temp_target_node = target_node;
+					temp_target_node.x += ( row_counter - row_size / 2);
+					temp_target_node.y += ( column_counter - row_size / 2);
+					selectedEntities[entity_counter++]->setTargetNode(temp_target_node);
+
+				}
 			}
+
+			if (number_of_selected_entities > entity_counter) {
+				__debugbreak();
+			}
+
+			//for (int i = 0; i < number_of_selected_entities; i++) {
+
+			//	auto it = selectedEntities[i];
+			//	it->setTargetNode(testTerrain->pointedNodeIndices);
+
+			//}
 		}
 
 		/* Find Paths for each entitiy*/

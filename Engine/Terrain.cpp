@@ -609,6 +609,16 @@ namespace piolot {
 		DeleteTiles();
 	}
 
+	void Terrain::ResetObstacles()
+	{
+		for (int i = 0 ; i < nodeCountX; i++)
+		{
+			for (int j = 0; j < nodeCountZ; j++) {
+				tiles[i][j].navObstacle = false;
+			}
+		}
+	}
+
 	void Terrain::GetMouseRayPoint(Ray _ray, float _granularity)
 	{
 

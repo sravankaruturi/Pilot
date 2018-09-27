@@ -213,6 +213,11 @@ namespace piolot {
 
 		~Terrain();
 
+		/**
+		 * \brief Resets the Obstacle during Path.
+		 */
+		void ResetObstacles();
+
 		/* Terrain Debug */
 		bool terrainDebug = false;
 
