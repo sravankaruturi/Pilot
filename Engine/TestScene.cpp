@@ -300,7 +300,7 @@ namespace piolot {
 
 				// Traverse the Distance b/w them * deltaTime. --> You complete the distance two nodes in 1 second.
 				glm::vec3 current_position = it->GetPosition();
-				glm::vec3 final_position = current_position + ((next_tile->GetPosition() - start_tile->GetPosition()) * _deltaTime * 0.25f);
+				glm::vec3 final_position = current_position + ((next_tile->GetPosition() - current_position) * _deltaTime * 0.25f);
 
 				current_position.x = final_position.x;
 				current_position.z = final_position.z;
@@ -569,7 +569,26 @@ namespace piolot {
 				ImGui::Text(temp_log.c_str());
 			}
 
+			ImGui::Separator();
+
+			if (!selectedEntities.empty()) {
+
+				glm::vec3 ent_pos = selectedEntities[0]->GetPosition();
+				glm::ivec2 ent_node = testTerrain->GetNodeIndicesFromPos(ent_pos.x, ent_pos.z);
+
+				ImGui::InputFloat3("Position: ", glm::value_ptr(ent_pos));
+
+				ImGui::DragInt2("Corresponding Node", glm::value_ptr(ent_node));
+
+			}
+			else {
+				ImGui::Text("No Entity selected to debug pathing,");
+			}
+
+			
+
 			ImGui::End();
+
 		}
 
 		if (displayHierarchy)
@@ -578,25 +597,19 @@ namespace piolot {
 			ImGui::Begin("Hierarchy", &displayHierarchy);
 
 			//TODO: This should be highlighted in the Viewport as well.
-			static Entity * selected_entity;
-
-			if (selected_entity == nullptr)
-			{
-				selected_entity = entities[0].get();
-			}
 
 			// Set the selected flag for the entity.
-			selected_entity->SetSelectedInScene(true);
-
 			ImGui::BeginChild("Entities##List", ImVec2(200, 0), true);
 
 			// Loop through all the Entities
 			for ( auto& it : entities)
 			{
 				ImGui::PushID(&it);
-				if ( ImGui::Selectable(it->GetEntityName().c_str(), selected_entity == it.get()))
+				if ( ImGui::Selectable(it->GetEntityName().c_str(), (std::find(selectedEntities.begin() , selectedEntities.end(), it.get()) != selectedEntities.end()) ))
 				{
-					selected_entity = it.get();
+					// It is already selected. If they click here, make sure that this is the only selected thing.
+					selectedEntities.clear();
+					selectedEntities.push_back(it.get());
 				}
 				ImGui::PopID();
 
@@ -604,9 +617,11 @@ namespace piolot {
 
 			for (auto& it : animatedEntities) {
 				ImGui::PushID(&it);
-				if (ImGui::Selectable(it->GetEntityName().c_str(), selected_entity == it.get()))
+				if (ImGui::Selectable(it->GetEntityName().c_str(), (std::find(selectedEntities.begin(), selectedEntities.end(), it.get()) != selectedEntities.end())))
 				{
-					selected_entity = it.get();
+					// It is already selected. If they click here, make sure that this is the only selected thing.
+					selectedEntities.clear();
+					selectedEntities.push_back(it.get());
 				}
 				ImGui::PopID();
 			}
@@ -618,15 +633,16 @@ namespace piolot {
 			ImGui::BeginGroup();
 
 			{
-				ImGui::BeginChild("Details", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
+				if (!selectedEntities.empty()) {
+					ImGui::BeginChild("Details", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
 
-				ImGui::Text(selected_entity->GetEntityName().c_str());
-				ImGui::Separator();
+					ImGui::Text(selectedEntities[0]->GetEntityName().c_str());
+					ImGui::Separator();
 
-				selected_entity->DisplayDetailsImgui();
+					selectedEntities[0]->DisplayDetailsImgui();
 
-				ImGui::EndChild();
-
+					ImGui::EndChild();
+				}
 			}
 
 			ImGui::EndGroup();

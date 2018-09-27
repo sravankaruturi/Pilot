@@ -137,6 +137,10 @@ namespace piolot
 		// Show object details.
 		ASMGR.objects.at(objectName)->MeshDetailsImGUI();
 
+		ImGui::Separator();
+		ImGui::Text("Pathing Debug");
+		ImGui::DragInt2("Target Node", glm::value_ptr(this->targetNode));
+
 	}
 
 }
