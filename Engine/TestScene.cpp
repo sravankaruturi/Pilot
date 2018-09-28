@@ -94,6 +94,8 @@ namespace piolot {
 	void TestScene::OnUpdate(float _deltaTime, float _totalTime)
 	{
 
+		Scene::OnUpdate(_deltaTime, _totalTime);
+
 		if ( window->IsKeyPressedOrHeld(GLFW_KEY_C))
 		{
 			ActiveCamera(cameras.at("Second"));
@@ -188,7 +190,9 @@ namespace piolot {
 						if ( !window->IsKeyPressedOrHeld(GLFW_KEY_LEFT_SHIFT)){
 							selectedEntities.clear();
 						}
-						selectedEntities.push_back(it.get());
+						if (std::find(selectedEntities.begin(), selectedEntities.end(), it.get()) == selectedEntities.end()) {
+							selectedEntities.push_back(it.get());
+						}
 					}
 				}
 				it->SetSelectedInScene(false);
@@ -205,7 +209,9 @@ namespace piolot {
 						if (!window->IsKeyHeld(GLFW_KEY_LEFT_SHIFT)) {
 							selectedEntities.clear();
 						}
-						selectedEntities.push_back(it);
+						if (std::find(selectedEntities.begin(), selectedEntities.end(), it) == selectedEntities.end()) {
+							selectedEntities.push_back(it);
+						}
 					}
 				}
 				it->SetSelectedInScene(false);
@@ -234,35 +240,28 @@ namespace piolot {
 			// Based on the Number of Entities selected, Make sure that you set the formations here.
 			// We use the Square Formation.. Always..
 
-			int number_of_selected_entities = selectedEntities.size();
-			int row_size = int(glm::sqrt(number_of_selected_entities));
-			int row_counter = 0;
-			int column_counter = 0;
+			const int number_of_selected_entities = selectedEntities.size();
+			const int number_of_rows = glm::ceil(glm::sqrt(number_of_selected_entities));
+			const int number_of_columns = glm::ceil((float)number_of_selected_entities / number_of_rows);
 			int entity_counter = 0;
 
 			glm::ivec2 target_node = testTerrain->pointedNodeIndices;
 
-			for (row_counter = 0; row_counter < row_size; row_counter++) {
-				for (column_counter = 0; column_counter < row_size; column_counter++) {
+			for (int row_counter = 0; row_counter < number_of_rows; row_counter++) {
+				for (int column_counter = 0; column_counter < number_of_columns; column_counter++) {
+
+					if (entity_counter >= number_of_selected_entities) {
+						break;
+					}
 
 					glm::ivec2 temp_target_node = target_node;
-					temp_target_node.x += ( row_counter - row_size / 2);
-					temp_target_node.y += ( column_counter - row_size / 2);
+					temp_target_node.x += ( row_counter - number_of_rows / 2);
+					temp_target_node.y += ( column_counter - number_of_rows / 2);
 					selectedEntities[entity_counter++]->setTargetNode(temp_target_node);
 
 				}
 			}
 
-			if (number_of_selected_entities > entity_counter) {
-				__debugbreak();
-			}
-
-			//for (int i = 0; i < number_of_selected_entities; i++) {
-
-			//	auto it = selectedEntities[i];
-			//	it->setTargetNode(testTerrain->pointedNodeIndices);
-
-			//}
 		}
 
 		/* Find Paths for each entitiy*/
@@ -289,14 +288,14 @@ namespace piolot {
 
 			totalTimeCounterForPathing += _deltaTime;
 					
-			if (totalTimeCounterForPathing < 1.0f && path.size() > 2) {
+			if (totalTimeCounterForPathing < 1.0f && !path.empty() ){
 				
 				// Get the Current Node.
 				glm::vec2 start_indices =  testTerrain->GetNodeIndicesFromPos(it->GetPosition().x, it->GetPosition().z);
 				auto start_tile = testTerrain->GetTileFromIndices(start_indices.x, start_indices.y);
 
 				// Look for the Next Node.
-				auto next_tile = path[1];
+				auto next_tile = path[0];
 
 				// Traverse the Distance b/w them * deltaTime. --> You complete the distance two nodes in 1 second.
 				glm::vec3 current_position = it->GetPosition();
@@ -445,6 +444,10 @@ namespace piolot {
 				if( ImGui::MenuItem("Hierarchy"))
 				{
 					displayHierarchy = true;
+				}
+
+				if (ImGui::MenuItem("Stats")) {
+					displayStats = true;
 				}
 
 				ImGui::EndMenu();
@@ -812,6 +815,20 @@ namespace piolot {
 
 				entities.push_back(new_ent);
 			}
+
+			ImGui::End();
+
+		}
+
+		if (displayStats) {
+
+			ImGui::Begin("Add an Entity", &displayAddEntity);
+
+			float fps = 1.0f / deltaTime;
+
+			std::string text = "Framerate " + std::to_string(fps);
+
+			ImGui::Text(text.c_str());
 
 			ImGui::End();
 

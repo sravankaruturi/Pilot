@@ -32,6 +32,9 @@ namespace piolot {
 		 */
 		std::vector<Entity *> selectedEntities;
 
+		float totalTime;
+		float deltaTime;
+
 	public:
 
 		explicit Scene(std::shared_ptr<Window> _window);
@@ -39,7 +42,10 @@ namespace piolot {
 
 		virtual void InitEntities() {};
 
-		virtual void OnUpdate(float _deltaTime, float _totalTime) {}
+		virtual void OnUpdate(float _deltaTime, float _totalTime) {
+			deltaTime = _deltaTime;
+			totalTime = _totalTime;
+		}
 
 		virtual void OnRender() {}
 
