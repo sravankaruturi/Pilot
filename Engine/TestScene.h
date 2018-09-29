@@ -68,6 +68,9 @@ namespace piolot {
 
 		std::string objName;
 		std::string shaderName;
+
+		// Debug the Ray.
+		Ray cameraRay{glm::vec3(), glm::vec3()};
 		
 
 
