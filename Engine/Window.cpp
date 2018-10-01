@@ -47,6 +47,9 @@ Window::Window(unsigned _width, unsigned _height, const std::string& _title): wi
 
 #endif
 
+	// Disable VSYNC
+	glfwSwapInterval(0);
+
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
