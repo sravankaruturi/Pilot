@@ -14,9 +14,9 @@ namespace piolot
 		if (textureNames.size() != texturePointers.size())
 		{
 			texturePointers.clear();
-			for (auto it : textureNames)
+			for (const auto& it : textureNames)
 			{
-				texturePointers.push_back(ASMGR.textures.at(it));
+				texturePointers.push_back(ASMGR.textures.at(it).get());
 			}
 		}
 

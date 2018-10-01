@@ -71,8 +71,7 @@ namespace piolot {
 		animatedEntity->SetScale(glm::vec3(0.0125f, 0.0125f, 0.0125f));
 		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
 
-		std::shared_ptr<Texture> archer_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("archer/akai_diffuse.png"), false);
-		ASMGR.AddToTextures("akai_diffuse", archer_diffuse);
+		ASMGR.AddToTextures("akai_diffuse", MODEL_FOLDER + std::string("archer/akai_diffuse.png"), false);
 
 		for (int i = 0; i < 5; i++)
 		{

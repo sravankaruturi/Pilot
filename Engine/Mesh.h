@@ -27,7 +27,8 @@ namespace piolot
 		std::vector<std::string> textureNames;
 
 		// Just because it is expesive to look up textures from the names every frame.
-		std::vector<std::shared_ptr<Texture>> texturePointers;
+		// The AssetManager is the owner of the Textures.
+		std::vector<Texture *> texturePointers;
 
 	public:
 		const std::vector<std::string>& GetTextureNames() const

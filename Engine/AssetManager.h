@@ -85,7 +85,7 @@ namespace piolot
 		/**
 		* \brief A Map of all the textures that we load.
 		*/
-		std::map<std::string, std::shared_ptr<Texture>> textures;
+		std::map<std::string, std::unique_ptr<Texture>> textures;
 
 		/**
 		* \brief A Map of all the Renderables loaded.
@@ -191,7 +191,7 @@ namespace piolot
 					}
 					file_name.pop_back();
 
-					this->textures.insert_or_assign(file_name, std::make_shared<Texture>(p.path().generic_string()));
+					this->textures.insert_or_assign(file_name, std::make_unique<Texture>(p.path().generic_string()));
 				}
 				catch (...)
 				{
@@ -231,12 +231,12 @@ namespace piolot
 		* \param _texture The Texture to load and place.
 		* \return Returns true if the Texture is succesfully loaded. False if something occurs.
 		*/
-		bool AddToTextures(const std::string& _name, std::shared_ptr<Texture> _texture)
+		bool AddToTextures(const std::string& _name, std::string _fileName, bool _shouldFlipY = true)
 		{
 			if (IsTextureLoaded(_name)) return false;
 			try
 			{
-				this->textures.insert_or_assign(_name, _texture);
+				this->textures.insert_or_assign(_name, std::make_unique<Texture>(_fileName, _shouldFlipY));
 				LOGGER.AddToLog("Adding " + _name + " to textures.");
 			}
 			catch (...)
@@ -281,7 +281,7 @@ namespace piolot
 			ImGui::Columns(1);
 			if (ImGui::CollapsingHeader("Textures"))
 			{
-				for (auto it : this->textures)
+				for (const auto& it : this->textures)
 				{
 					ImGui::Columns(3);
 					ImGui::Text(it.first.c_str());
