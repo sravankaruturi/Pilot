@@ -268,7 +268,7 @@ namespace piolot {
 
 		}
 
-		/* Find Paths for each entitiy*/
+		/* Find Paths for each entity */
 		for (auto& it : animatedEntities)
 		{
 
