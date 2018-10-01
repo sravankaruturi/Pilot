@@ -62,11 +62,16 @@ namespace piolot {
 		bool openLoadSceneWindow = false;
 		bool displayHierarchy = false;
 		bool displayAddEntity = false;
+		bool displayStats = true;
 
 		// GUI Variables when you create a new Entity.
 
 		std::string objName;
 		std::string shaderName;
+
+		// Debug the Ray.
+		Ray cameraRay{glm::vec3(), glm::vec3()};
+		
 
 
 	public:

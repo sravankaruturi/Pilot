@@ -205,7 +205,18 @@ namespace piolot {
 
 	glm::ivec2 Terrain::GetNodeIndicesFromPos(const float& _x, const float& _z) const
 	{
-		return glm::ivec2(glm::min(int(_x / gridLength), int(nodeCountX - 1)), glm::min(int(_z / gridBreadth), int(nodeCountZ - 1)));
+		glm::ivec2 return_vec(glm::min(int(_x / gridLength), int(nodeCountX - 1)), glm::min(int(_z / gridBreadth), int(nodeCountZ - 1)));
+		std::string message = "The Node Index returned here was exceeding the Count. (";
+		message += return_vec.x;
+		message += ", ";
+		message += return_vec.y;
+		message += " )";
+
+		LOGGER.AddToLog(message, PE_LOG_INFO);
+		return_vec.x = glm::min(return_vec.x, (int)nodeCountX - 1);
+		return_vec.y = glm::min(return_vec.y, (int)nodeCountZ - 1);
+
+		return return_vec;
 	}
 
 	void Terrain::HighlightNode(const unsigned _x, const unsigned _z)
@@ -319,7 +330,8 @@ namespace piolot {
 			{
 				for (auto i = 0 ; i < active_node->navNeighbourCount ; i++)
 				{
-					if ( nullptr != active_node->navNeighbours[i])
+					// Check if the Neighbour has an obstacle.
+					if ( nullptr != active_node->navNeighbours[i] && !active_node->navNeighbours[i]->navObstacle)
 					{
 						const auto new_g = active_node->navGCost + active_node->navCost;
 						const auto new_f = new_g + HCost(active_node->navNeighbours[i], _endTile);
@@ -597,67 +609,61 @@ namespace piolot {
 		DeleteTiles();
 	}
 
+	void Terrain::ResetObstacles()
+	{
+		for (int i = 0 ; i < nodeCountX; i++)
+		{
+			for (int j = 0; j < nodeCountZ; j++) {
+				tiles[i][j].navObstacle = false;
+			}
+		}
+	}
+
 	void Terrain::GetMouseRayPoint(Ray _ray, float _granularity)
 	{
 
-		// Note: The Following method does not work if the Terrain is rotated in any way.. Or I think it shouldn't
+		// Note: This method assumes that the tile positions obtained are in the World Space. Which means that the Actual terrain itseld has to be at Origin.
 
-		// We get the Terrain Origin Point.
-
-		glm::vec3 terrain_origin = this->position;
-
-		// We get the Y Coordinate.
-		float terrain_origin_y = this->position.y;
-
-		// We get the Maximum and Minimum bounds for the Y Coordinate for the Entire Terrain.
-		float possible_deviation = this->heightFactor;
-
-		// Now We check if the Ray Actually has any points where its Y is Similar to the Terrain's..
-		// Test if the Terrain origin Position lies on the Ray.
-
+		// Lets get the Ray Origin and Direction.
 		glm::vec3 ray_origin = _ray.GetOrigin();
 		glm::vec3 ray_direction = _ray.GetDirection();
 
-		// We call the 't' in P = P0 + R . t as the "factor".
-		// If Y lies on the Ray, check the factor for the corresponding X and Z, and check if they are in the ball park of the Actual Terrain.
-		// We do this, because given enough factor, All the Rays have all the Y values in them. ( Unless they are parallel to the other axes. )
+		// Now, the Ray is a function, R = R0 + t. D Where R is any point on the Ray, R0 being the Origin, D being the Direction and t, a floating point value.
 
-		float factor = (terrain_origin_y - ray_origin.y) / ray_direction.y;
+		// We Check for each Terrain Tile, which gets the closest in terms of a constant t, w.r.t x, y, z, axes.
+		glm::ivec2 closest_node{};
+		float deviation = INT_MAX;
 
-		float output_x = ray_origin.x + factor * ray_direction.x;
-		float output_z = ray_origin.z + factor * ray_direction.z;
-
-		// Check How Close the Output is to the Actual Terrain.
-		if ( glm::abs(output_x - terrain_origin.x) < accuracyFactor  && glm::abs(output_z - terrain_origin.z) < accuracyFactor)
-		{
-			pointingAtOrigin = true;
-		}else
-		{
-			pointingAtOrigin = false;
-		}
-
-		//pointedNodeIndices = { INT_MAX, INT_MAX };
-
-		// Loop through all the Nodes/Tiles and check if the X and Z exist in there.
-		// This method is really expensive. Figure out a better way.
 		for (auto i = 0; i < nodeCountX; i++) {
 			for (auto j = 0; j < nodeCountZ; j++) {
 
 				const auto& tile = tiles[i][j];
 
-				// Check for the x, y, z, values.
-				if (glm::abs(output_x - tile.GetPosition().x) < accuracyFactor  && glm::abs(output_z - tile.GetPosition().z) < accuracyFactor)
-				{
-					pointedNodeIndices.x = i;
-					pointedNodeIndices.y = j;
+				glm::vec3 temporary_t{};
 
-					this->HighlightNode(i, j);
+				temporary_t.y = (tile.GetPosition().y - ray_origin.y) / (ray_direction.y);
+				temporary_t.x = (tile.GetPosition().x - ray_origin.x) / (ray_direction.x);
+				temporary_t.z = (tile.GetPosition().z - ray_origin.z) / (ray_direction.z);
 
-					// If One Tile satisfies the Criteria, we break. We can make it more accurate by calculating the Distances and stuff. But why??
-					break;
+				// If the T  is same, as it ideally should be, this temp_deviation would be zero, i.e, the lowest it can be.
+				float temp_deviation = glm::abs(temporary_t.x - temporary_t.y) + glm::abs(temporary_t.z - temporary_t.y);
+
+				if (temp_deviation == 0) {
+					closest_node = { i, j };
+					deviation = 0;
+					pointedNodeIndices = closest_node;
+					return;
+				}
+
+				if (temp_deviation < deviation) {
+					deviation = temp_deviation;
+					closest_node = { i, j };
 				}
 			}
 		}
+
+		pointedNodeIndices = closest_node;
+		this->HighlightNode(pointedNodeIndices.x, pointedNodeIndices.y);
 
 	}
 }

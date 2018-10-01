@@ -2,7 +2,7 @@
 
 #version 430 core
 
-const int MAX_BONES = 32;
+const int MAX_BONES = 128;
 
 layout(location = 0) in vec4 aPos;
 layout(location = 1) in vec4 aNormal;

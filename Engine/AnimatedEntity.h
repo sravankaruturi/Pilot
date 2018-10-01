@@ -2,7 +2,7 @@
 #include "Entity.h"
 
 // You need to change this in the Shaders as well if you change it here.
-#define MAX_NUMBER_OF_BONES_PER_ENTITY		32
+#define MAX_NUMBER_OF_BONES_PER_ENTITY		128
 
 /* Let us implement one animation per Entity for now. We can extend this later on to hold more animations. */
 

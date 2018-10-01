@@ -25,6 +25,16 @@ namespace piolot {
 		std::vector<std::shared_ptr<Entity>> entities;
 		std::vector<std::unique_ptr<AnimatedEntity>> animatedEntities;
 
+		/**
+		 * \brief Raw Pointers to the Selected Entities.
+		 * 
+		 * These selected entities can be destroyed even though they are selected. So, we just copy the addresses.
+		 */
+		std::vector<Entity *> selectedEntities;
+
+		float totalTime;
+		float deltaTime;
+
 	public:
 
 		explicit Scene(std::shared_ptr<Window> _window);
@@ -32,7 +42,10 @@ namespace piolot {
 
 		virtual void InitEntities() {};
 
-		virtual void OnUpdate(float _deltaTime, float _totalTime) {}
+		virtual void OnUpdate(float _deltaTime, float _totalTime) {
+			deltaTime = _deltaTime;
+			totalTime = _totalTime;
+		}
 
 		virtual void OnRender() {}
 

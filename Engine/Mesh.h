@@ -23,6 +23,7 @@ namespace piolot
 		// For Debugging Purposes.
 		unsigned int vertexAttribCounter = 0;
 
+	public:
 		std::vector<std::string> textureNames;
 
 		// Just because it is expesive to look up textures from the names every frame.

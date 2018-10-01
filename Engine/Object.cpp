@@ -394,7 +394,7 @@ namespace piolot
 					unsigned int local_vertex_id = _mesh->mBones[j]->mWeights[k].mVertexId;
 					float weight = _mesh->mBones[j]->mWeights[k].mWeight;
 					vertex_bone_data[local_vertex_id].AddBoneData(bone_index, weight);
-					if (bone_index > 32)
+					if (bone_index > 128)
 					{
 						// This shouldn't happen usually.
 						PE_ASSERT(0);
