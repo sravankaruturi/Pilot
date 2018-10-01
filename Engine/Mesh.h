@@ -23,6 +23,7 @@ namespace piolot
 		// For Debugging Purposes.
 		unsigned int vertexAttribCounter = 0;
 
+	public:
 		std::vector<std::string> textureNames;
 
 		// Just because it is expesive to look up textures from the names every frame.
@@ -90,10 +91,10 @@ namespace piolot
 			return openglErrorFlag;
 		}
 
-		// A Couple of rules for the DataStructure. All the attributes should be size of 3. You have to pack them like that.
-		explicit Mesh(void * _dataPointer, size_t _dataStructureSize, unsigned int _vertexCount);
+		// A Couple of rules for the DataStructure. All the attributes should be size of 4. You have to pack them like that.
+		// explicit Mesh(void * _dataPointer, size_t _dataStructureSize, unsigned int _vertexCount);
 
-		Mesh(void * _dataPointer, size_t _dataStructureSize, unsigned int _vertexCount, std::vector<unsigned int> _indices);
+		explicit Mesh(void * _dataPointer, size_t _dataStructureSize, unsigned int _vertexCount, std::vector<unsigned int> _indices = std::vector<unsigned int>());
 
 		// Use this to update the vertex data.. once in a while. Not alywas as this is expensive.
 		void UpdateVertices(void* _dataPointer, size_t _dataStructureSize, unsigned _vertexCount);

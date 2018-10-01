@@ -96,6 +96,9 @@
     <ClCompile Include="..\EngineDeps\external_files\glad\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AnimatedEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -191,6 +194,9 @@
     <ClInclude Include="..\EngineDeps\external_files\ImGUI\imconfig.h">
       <Filter>Header Files\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="AnimatedEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\failing_test.frag">
@@ -215,6 +221,9 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="Shaders\axes.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\bob_lamp.shader">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

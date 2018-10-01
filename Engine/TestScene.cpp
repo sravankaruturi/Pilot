@@ -3,7 +3,7 @@
 #include "AssetManager.h"
 #include "Window.h"
 #include <glm/gtc/matrix_transform.inl>
-
+#include "Colours.h"
 #include "Configurations.h"
 
 #include <fstream>
@@ -18,9 +18,9 @@
 
 namespace piolot {
 
-	static void test_scene_resize(GLFWwindow * _window, int )
+	static void test_scene_resize(GLFWwindow * _window, int)
 	{
-		
+
 	}
 
 	std::string Vec3ToString(glm::vec3 _in)
@@ -37,17 +37,11 @@ namespace piolot {
 		ASMGR.LoadShaders();
 		ASMGR.LoadTextures();
 
-		cameras.insert_or_assign("First", std::make_shared<Camera>("First", glm::vec3(0, 0, 10), glm::vec3(0, 0, -1), glm::vec3(0, 1, 0)));
-		cameras.insert_or_assign("Second", std::make_shared<Camera>("Second", glm::vec3(10, 0, 10), glm::vec3(-1, 0, -1), glm::vec3(0, 1, 0)));
-
-		entities.push_back(std::make_shared<Entity>("lowpolytree/lowpolytree.obj", "good_test"));
-
-		ActiveCamera(cameras.at("First"));
+		TestScene::InitEntities();
 
 		// We need to wait for the Shaders to be loaded to call this function.
 		testGrid.Init();
-		
-		//terrain_test = std::make_shared<Terrain>(10, 10, 0.5, 0.5, "Assets/Textures/heightmap.jpg");
+
 		std::string heightmap_path = TEXTURE_FOLDER + std::string("heightmap.jpg");
 		testTerrain = std::make_shared<Terrain>(10, 10, 0.5, 0.5, heightmap_path);
 
@@ -60,8 +54,53 @@ namespace piolot {
 
 	}
 
+	void TestScene::InitEntities()
+	{
+
+		/* Initialize Cameras */
+		cameras.insert_or_assign("First", std::make_shared<Camera>("First", glm::vec3(0, 5, 10), glm::vec3(0.5, -0.5, -0.5), glm::vec3(0, 1, 0)));
+		cameras.insert_or_assign("Second", std::make_shared<Camera>("Second", glm::vec3(10, 5, 10), glm::vec3(-0.5, -0.5, -0.5), glm::vec3(0, 1, 0)));
+
+		ActiveCamera(cameras.at("First"));
+
+		entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
+
+		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
+		AnimatedEntity * animatedEntity = animatedEntities[0].get();
+		animatedEntity->SetPosition(glm::vec3(4.0, 0.0, 2.0));
+		animatedEntity->SetScale(glm::vec3(0.0125f, 0.0125f, 0.0125f));
+		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
+
+		std::shared_ptr<Texture> archer_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("archer/akai_diffuse.png"), false);
+		ASMGR.AddToTextures("akai_diffuse", archer_diffuse);
+
+		for (int i = 0; i < 5; i++)
+		{
+
+			animatedEntities.push_back(std::make_unique<AnimatedEntity>("archer", "archer/archer_walking.fbx", "bob_lamp", glm::vec3(-30, 0, -30), glm::vec3(30, 180, 30)));
+
+			animatedEntity = animatedEntities[i + 1].get();
+			animatedEntity->SetPosition(glm::vec3(2.0, 0.0, (i + 1)));
+			const float scale_factor = 256.f;
+			animatedEntity->SetScale(glm::vec3(1 / scale_factor));
+			animatedEntity->SetRotation(glm::vec3(0, 0.0f, 0.00f));
+			animatedEntity->SetAnimationTotalTime(0.75f);
+		}
+
+		ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
+
+	}
+
 	void TestScene::OnUpdate(float _deltaTime, float _totalTime)
 	{
+
+		Scene::OnUpdate(_deltaTime, _totalTime);
+
+		if (window->IsKeyPressedOrHeld(GLFW_KEY_C))
+		{
+			ActiveCamera(cameras.at("Second"));
+			viewportsDetails[0].camera = activeCamera;
+		}
 
 		const auto projection_matrix = glm::perspective(45.0f, float(window->GetWidth()) / window->GetHeight(), 0.1f, 100.0f);
 
@@ -69,9 +108,31 @@ namespace piolot {
 			it.second->UpdateVectors();
 		}
 
+		// Reset the Obstacle flag for all the terrain tiles here.
+		testTerrain->ResetObstacles();
+
+		// I can update all the Positions here.
+		glm::vec3 temp_position{};
 		for (const auto& it : entities) {
+
+			temp_position = it->GetPosition();
+			temp_position.y = testTerrain->GetHeightAtPos(temp_position.x, temp_position.z);
+			it->SetPosition(temp_position);
+
 			it->Update(_deltaTime);
 		}
+
+		for (const auto& it : animatedEntities)
+		{
+			temp_position = it->GetPosition();
+			temp_position.y = testTerrain->GetHeightAtPos(temp_position.x, temp_position.z);
+			it->SetPosition(temp_position);
+
+			it->Update(_deltaTime);
+			it->PlayAnimation(_deltaTime);
+		}
+
+		AnimatedEntity * animated_entitiy = animatedEntities[1].get();
 
 		glm::vec3 mouse_pointer_ray;
 
@@ -116,57 +177,107 @@ namespace piolot {
 				//mouse_pointer_ray = activeCamera->GetMouseRayDirection(updated_x, updated_y, viewport_size[2], viewport_size[3], projection_matrix);
 				mouse_pointer_ray = activeCamera->GetMouseRayDirection(updated_x, updated_y, window->GetWidth(), window->GetHeight(), projection_matrix);
 
+
 			}
 
-
-			// We reset this every frame.
-			std::shared_ptr<Entity> selected_entity;
 			// Loop through all Entities that can be selected.
 			for (auto it : entities)
 			{
-				if (it->CheckIfMouseOvered(ray_start, mouse_pointer_ray, min_int_distance))
+				if ((window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1)) && (it->CheckIfMouseOvered(ray_start, mouse_pointer_ray, min_int_distance)))
 				{
 					if (int_distance < min_int_distance)
 					{
 						min_int_distance = int_distance;
-						selected_entity = it;
+						if (!window->IsKeyPressedOrHeld(GLFW_KEY_LEFT_SHIFT)) {
+							selectedEntities.clear();
+						}
+						if (std::find(selectedEntities.begin(), selectedEntities.end(), it.get()) == selectedEntities.end()) {
+							selectedEntities.push_back(it.get());
+						}
 					}
 				}
 				it->SetSelectedInScene(false);
 			}
 
-			if (nullptr != selected_entity)
+			for (int i = 0; i < animatedEntities.size(); i++)
 			{
-				selected_entity->SetSelectedInScene(true);
+				AnimatedEntity * it = animatedEntities[i].get();
+				if ((window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1)) && it->CheckIfMouseOvered(ray_start, mouse_pointer_ray, min_int_distance))
+				{
+					if (int_distance < min_int_distance)
+					{
+						min_int_distance = int_distance;
+						if (!window->IsKeyHeld(GLFW_KEY_LEFT_SHIFT)) {
+							selectedEntities.clear();
+						}
+						if (std::find(selectedEntities.begin(), selectedEntities.end(), it) == selectedEntities.end()) {
+							selectedEntities.push_back(it);
+						}
+					}
+				}
+				it->SetSelectedInScene(false);
+			}
+
+
+			for (auto it : selectedEntities)
+			{
+				it->SetSelectedInScene(true);
 			}
 
 		}
 
-		/* Find Random Paths */
+
+		cameraRay = Ray(activeCamera->GetPosition(), mouse_pointer_ray);
+
+		testTerrain->ClearColours();
+
+		if (nullptr != activeCamera)
 		{
-			const float interval = 5;
+			Ray mouse_pointer_ray_ray{ activeCamera->GetPosition(), mouse_pointer_ray };
+			this->testTerrain->GetMouseRayPoint(mouse_pointer_ray_ray);
+		}
 
-			testTerrain->ClearColours();
+		if (window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_2))
+		{
+			// Update the Target Node
 
-			glm::vec3 startPosition = glm::vec3(startxz.x, 0, startxz.y);
-			glm::vec3 endPosition = glm::vec3(endxz.x, 0, endxz.y);
+			// Based on the Number of Entities selected, Make sure that you set the formations here.
+			// We use the Square Formation.. Always..
 
-			// Get the node pos.
-			const glm::vec2 test_get_node = testTerrain->GetNodeIndicesFromPos(startPosition.x, startPosition.z);
+			const int number_of_selected_entities = selectedEntities.size();
+			const int number_of_rows = glm::ceil(glm::sqrt(number_of_selected_entities));
+			const int number_of_columns = glm::ceil((float)number_of_selected_entities / number_of_rows);
+			int entity_counter = 0;
 
-			//LOGGER.AddToLog(
-			//	"Random Point Selected: " + std::to_string(startPosition.x) + " , " + std::to_string(startPosition.z) + " "
-			//	"The node returned is: " + std::to_string(test_get_node.x) + ", " + std::to_string(test_get_node.y)
-			//);
+			glm::ivec2 target_node = testTerrain->pointedNodeIndices;
 
-			testTerrain->HighlightNode(test_get_node.x, test_get_node.y);
+			for (int row_counter = 0; row_counter < number_of_rows; row_counter++) {
+				for (int column_counter = 0; column_counter < number_of_columns; column_counter++) {
 
-			startPosition.y = testTerrain->GetHeightAtPos(startPosition.x, startPosition.z);
-			endPosition.y = testTerrain->GetHeightAtPos(endPosition.x, endPosition.z);
+					if (entity_counter >= number_of_selected_entities) {
+						break;
+					}
 
-			glm::vec2 test_end_node = testTerrain->GetNodeIndicesFromPos(endPosition.x, endPosition.z);
+					glm::ivec2 temp_target_node = target_node;
+					temp_target_node.x += (row_counter - number_of_rows / 2);
+					temp_target_node.y += (column_counter - number_of_rows / 2);
+					selectedEntities[entity_counter++]->setTargetNode(temp_target_node);
 
-			testTerrain->HighlightNode(test_end_node.x, test_end_node.y);
+				}
+			}
+
+		}
+
+		/* Find Paths for each entity */
+		for (auto& it : animatedEntities)
+		{
+
+			glm::vec3 startPosition = it->GetPosition();
+			glm::ivec2 end_node = it->GetTargetPosition();
+
+			glm::vec3 endPosition = testTerrain->GetTileFromIndices(end_node.x, end_node.y)->GetPosition();
+
+			testTerrain->HighlightNode(end_node.x, end_node.y);
 
 			path = testTerrain->GetPathFromPositions(startPosition, endPosition);
 
@@ -174,9 +285,34 @@ namespace piolot {
 
 			log_temp += Vec3ToString(startPosition) + " and " + Vec3ToString(endPosition) + " has " + std::to_string(path.size()) + " nodes";
 
-			for ( auto it : path)
+			for (auto it : path)
 			{
-				testTerrain->HighlightNode(it->tileIndexX, it->tileIndexZ);
+				//testTerrain->HighlightNode(it->tileIndexX, it->tileIndexZ);
+			}
+
+			totalTimeCounterForPathing += _deltaTime;
+
+			if (totalTimeCounterForPathing < 1.0f && !path.empty()) {
+
+				// Get the Current Node.
+				glm::vec2 start_indices = testTerrain->GetNodeIndicesFromPos(it->GetPosition().x, it->GetPosition().z);
+				auto start_tile = testTerrain->GetTileFromIndices(start_indices.x, start_indices.y);
+
+				// Look for the Next Node.
+				auto next_tile = path[0];
+
+				// Traverse the Distance b/w them * deltaTime. --> You complete the distance two nodes in 1 second.
+				glm::vec3 current_position = it->GetPosition();
+				glm::vec3 final_position = current_position + ((next_tile->GetPosition() - current_position) * _deltaTime * 0.25f);
+
+				current_position.x = final_position.x;
+				current_position.z = final_position.z;
+
+				it->SetPosition(current_position);
+
+			}
+			else if (totalTimeCounterForPathing > 1.0f) {
+				totalTimeCounterForPathing = 0.0f;
 			}
 
 		}
@@ -192,8 +328,8 @@ namespace piolot {
 		//const auto ortho_projection_matrix = glm::ortho(-1 * window->GetWidth()/2, window->GetWidth()/2, - 1 * window->GetHeight()/2, window->GetHeight()/2);
 		const auto ortho_projection_matrix = glm::ortho(-16.0f, 16.0f, -9.0f, 9.0f, 0.1f, 100.f);
 
-		glm::mat4 projection_matrices[4] = {persp_projection_matrix, ortho_projection_matrix, ortho_projection_matrix, ortho_projection_matrix};
-		glm::mat4 view_matrices[4] = {this->activeCamera->GetViewMatrix()};
+		glm::mat4 projection_matrices[4] = { persp_projection_matrix, ortho_projection_matrix, ortho_projection_matrix, ortho_projection_matrix };
+		glm::mat4 view_matrices[4] = { this->activeCamera->GetViewMatrix() };
 
 		/*view_matrices[1] = glm::lookAt(glm::vec3(8, 0, 0), glm::vec3(), glm::vec3(0, 1, 0));
 		view_matrices[2] = glm::lookAt(glm::vec3(0, 8, 0), glm::vec3(), glm::vec3(0, 0, 1));;
@@ -214,7 +350,7 @@ namespace piolot {
 		{
 			it.second->use();
 
-			if ( it.first != "terrain" && it.first != "axes")
+			if (it.first != "terrain" && it.first != "axes" && it.first != "bob_lamp")
 			{
 				it.second->setMat4("u_ViewMatrix", view_matrices[0]);
 				it.second->setMat4("u_ProjectionMatrix", projection_matrices[0]);
@@ -242,16 +378,31 @@ namespace piolot {
 
 			loc = axes_shader->GetUniformLocation("u_ProjectionMatrix");
 			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, glm::value_ptr(projection_matrices[0])));
+
+			auto boblammp_shader = ASMGR.shaders.at("bob_lamp");
+			boblammp_shader->use();
+
+			loc = boblammp_shader->GetUniformLocation("u_ViewMatrix");
+			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, &view_matrices[0][0][0]));
+
+			loc = boblammp_shader->GetUniformLocation("u_ProjectionMatrix");
+			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, glm::value_ptr(projection_matrices[0])));
 		}
-		
+
 
 		for (const auto& it : entities) {
 			it->Render();
 		}
 
+		for (const auto& it : animatedEntities) {
+			it->Render();
+		}
+
+		cameraRay.Render(ASMGR.shaders.at("axes"), red);
+
 		testTerrain->Render();
 
-		testGrid.Render();
+		//testGrid.Render();
 
 	}
 
@@ -274,17 +425,17 @@ namespace piolot {
 				}
 				ImGui::EndMenu();
 			}
-			if ( ImGui::BeginMenu("Windows"))
+			if (ImGui::BeginMenu("Windows"))
 			{
-				if ( ImGui::MenuItem("Pathing Debug Window"))
+				if (ImGui::MenuItem("Pathing Debug Window"))
 				{
 					pathingDebugWindow = true;
 				}
-				if( ImGui::MenuItem("Asset Manager Debug Window"))
+				if (ImGui::MenuItem("Asset Manager Debug Window"))
 				{
 					displayAssetManagerWindow = true;
 				}
-				if ( ImGui::MenuItem("Log Window"))
+				if (ImGui::MenuItem("Log Window"))
 				{
 					displayLogWindow = true;
 				}
@@ -296,9 +447,13 @@ namespace piolot {
 					displayDemoWindow = true;
 				}
 
-				if( ImGui::MenuItem("Hierarchy"))
+				if (ImGui::MenuItem("Hierarchy"))
 				{
 					displayHierarchy = true;
+				}
+
+				if (ImGui::MenuItem("Stats")) {
+					displayStats = true;
 				}
 
 				ImGui::EndMenu();
@@ -311,7 +466,7 @@ namespace piolot {
 					displayCameraControls = true;
 				}
 
-				if ( ImGui::MenuItem( _vars.show_multiple_viewports ? "Hide Other Views" : "Show All Views" ))
+				if (ImGui::MenuItem(_vars.show_multiple_viewports ? "Hide Other Views" : "Show All Views"))
 				{
 					_vars.show_multiple_viewports = !_vars.show_multiple_viewports;
 				}
@@ -354,7 +509,7 @@ namespace piolot {
 
 			ImGui::End();
 		}
-		
+
 		// TODO: Input Text is really wonky. Can we provide a better way, a drop down or selection box for people to choose how to save the files and how to load the files.
 		if (openLoadSceneWindow) {
 			ImGui::Begin("Load Scene", &openLoadSceneWindow);
@@ -366,11 +521,11 @@ namespace piolot {
 
 				filenameToLoadScene = file_name_temp;
 
-				if ( ImGui::Button(file_name_temp.c_str())) {
+				if (ImGui::Button(file_name_temp.c_str())) {
 
 					//try {
-						this->LoadScene(filenameToLoadScene.c_str());
-						filenameToSaveScene = filenameToLoadScene;
+					this->LoadScene(filenameToLoadScene.c_str());
+					filenameToSaveScene = filenameToLoadScene;
 					/*}
 					catch (...) {
 						LOGGER.AddToLog("Cannot Open Scene " + std::string(filenameToLoadScene), PE_LOG_ERROR);
@@ -405,7 +560,7 @@ namespace piolot {
 			ImGui::End();
 		}
 
-		if ( pathingDebugWindow )
+		if (pathingDebugWindow)
 		{
 			ImGui::Begin("Terrain Pathing", &pathingDebugWindow);
 
@@ -423,7 +578,26 @@ namespace piolot {
 				ImGui::Text(temp_log.c_str());
 			}
 
+			ImGui::Separator();
+
+			if (!selectedEntities.empty()) {
+
+				glm::vec3 ent_pos = selectedEntities[0]->GetPosition();
+				glm::ivec2 ent_node = testTerrain->GetNodeIndicesFromPos(ent_pos.x, ent_pos.z);
+
+				ImGui::InputFloat3("Position: ", glm::value_ptr(ent_pos));
+
+				ImGui::DragInt2("Corresponding Node", glm::value_ptr(ent_node));
+
+			}
+			else {
+				ImGui::Text("No Entity selected to debug pathing,");
+			}
+
+
+
 			ImGui::End();
+
 		}
 
 		if (displayHierarchy)
@@ -432,28 +606,33 @@ namespace piolot {
 			ImGui::Begin("Hierarchy", &displayHierarchy);
 
 			//TODO: This should be highlighted in the Viewport as well.
-			static std::shared_ptr<Entity> selected_entity;
-
-			if (selected_entity == nullptr)
-			{
-				selected_entity = entities[0];
-			}
 
 			// Set the selected flag for the entity.
-			selected_entity->SetSelectedInScene(true);
-
 			ImGui::BeginChild("Entities##List", ImVec2(200, 0), true);
 
 			// Loop through all the Entities
-			for ( auto& it : entities)
+			for (auto& it : entities)
 			{
 				ImGui::PushID(&it);
-				if ( ImGui::Selectable(it->GetEntityName().c_str(), selected_entity == it))
+				if (ImGui::Selectable(it->GetEntityName().c_str(), (std::find(selectedEntities.begin(), selectedEntities.end(), it.get()) != selectedEntities.end())))
 				{
-					selected_entity = it;
+					// It is already selected. If they click here, make sure that this is the only selected thing.
+					selectedEntities.clear();
+					selectedEntities.push_back(it.get());
 				}
 				ImGui::PopID();
 
+			}
+
+			for (auto& it : animatedEntities) {
+				ImGui::PushID(&it);
+				if (ImGui::Selectable(it->GetEntityName().c_str(), (std::find(selectedEntities.begin(), selectedEntities.end(), it.get()) != selectedEntities.end())))
+				{
+					// It is already selected. If they click here, make sure that this is the only selected thing.
+					selectedEntities.clear();
+					selectedEntities.push_back(it.get());
+				}
+				ImGui::PopID();
 			}
 
 			ImGui::EndChild();
@@ -463,20 +642,21 @@ namespace piolot {
 			ImGui::BeginGroup();
 
 			{
-				ImGui::BeginChild("Details", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
+				if (!selectedEntities.empty()) {
+					ImGui::BeginChild("Details", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
 
-				ImGui::Text(selected_entity->GetEntityName().c_str());
-				ImGui::Separator();
+					ImGui::Text(selectedEntities[0]->GetEntityName().c_str());
+					ImGui::Separator();
 
-				selected_entity->DisplayDetailsImgui();
+					selectedEntities[0]->DisplayDetailsImgui();
 
-				ImGui::EndChild();
-
+					ImGui::EndChild();
+				}
 			}
 
 			ImGui::EndGroup();
-				
-			
+
+
 
 			// Cameras
 
@@ -513,22 +693,22 @@ namespace piolot {
 
 			ImGui::BeginGroup();
 
-				ImGui::BeginChild("Details", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
+			ImGui::BeginChild("Details", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
 
-				ImGui::Text(selected_camera->GetCameraName().c_str());
-				ImGui::Separator();
+			ImGui::Text(selected_camera->GetCameraName().c_str());
+			ImGui::Separator();
 
-				// Display Camera Details here.
-				selected_camera->DisplayCameraDetailsImgui();
+			// Display Camera Details here.
+			selected_camera->DisplayCameraDetailsImgui();
 
-				ImGui::EndChild();
+			ImGui::EndChild();
 
-				if (ImGui::Button("Activate Camera")) {
-					activeCamera = selected_camera;
-					// Set the Camera to the Current Viewport.
-					// It is 0 for now.
-					viewportsDetails[0].camera = activeCamera;
-				}
+			if (ImGui::Button("Activate Camera")) {
+				activeCamera = selected_camera;
+				// Set the Camera to the Current Viewport.
+				// It is 0 for now.
+				viewportsDetails[0].camera = activeCamera;
+			}
 
 			ImGui::EndGroup();
 
@@ -557,8 +737,8 @@ namespace piolot {
 			}
 			else {
 				// Set Which viewport this is hovering over here.
-				updated_x = (window->mouseX > window->GetWidth()/2.0f) ? window->mouseX - window->GetWidth() / 2.0f : window->mouseX;
-				updated_y = (window->mouseY > window->GetHeight()/2.0f) ? window->mouseY - window->GetHeight() / 2.0f : window->mouseY;
+				updated_x = (window->mouseX > window->GetWidth() / 2.0f) ? window->mouseX - window->GetWidth() / 2.0f : window->mouseX;
+				updated_y = (window->mouseY > window->GetHeight() / 2.0f) ? window->mouseY - window->GetHeight() / 2.0f : window->mouseY;
 
 				updated_x *= 2;
 				updated_y *= 2;
@@ -569,6 +749,14 @@ namespace piolot {
 			ImGui::InputFloat3("Mouse Pointer Ray", glm::value_ptr(mouse_pointer_ray));
 
 			ImGui::Text("Updated Mouse position: %.3f , %.3f", updated_x, updated_y);
+
+			ImGui::Separator();
+
+			ImGui::Checkbox("Pointing at Origin: ", &this->testTerrain->pointingAtOrigin);
+
+			ImGui::SliderFloat("The Accuracy Parameter: ", &this->testTerrain->accuracyFactor, 0.1f, 1.0f);
+
+			ImGui::DragInt2("The selected Node Indices", glm::value_ptr(testTerrain->pointedNodeIndices), 0, 20);
 
 			ImGui::End();
 
@@ -620,7 +808,7 @@ namespace piolot {
 
 			// You select the Object Name and the Shader Name.
 
-			if ( ImGui::Button("Create"))
+			if (ImGui::Button("Create"))
 			{
 				std::shared_ptr<Entity> new_ent = std::make_shared<Entity>();
 
@@ -638,12 +826,26 @@ namespace piolot {
 
 		}
 
-		if ( displayAssetManagerWindow )
+		if (displayStats) {
+
+			ImGui::Begin("Add an Entity", &displayAddEntity);
+
+			float fps = 1.0f / deltaTime;
+
+			std::string text = "Framerate " + std::to_string(fps);
+
+			ImGui::Text(text.c_str());
+
+			ImGui::End();
+
+		}
+
+		if (displayAssetManagerWindow)
 		{
 			ASMGR.GuiRender(&displayAssetManagerWindow);
 		}
 
-		if ( displayLogWindow)
+		if (displayLogWindow)
 		{
 			LOGGER.Render(&displayLogWindow);
 		}
@@ -714,11 +916,12 @@ namespace piolot {
 
 	}
 
+	// TODO: This is Broken. Fix this. This doesn't save the Animation Data.
 	void TestScene::SaveScene(const char * _fileName)
 	{
 
 		std::string test_string = std::string(SCENES_FOLDER) + std::string(_fileName);
-		const char * actual_file_name =  (test_string).c_str();
+		const char * actual_file_name = (test_string).c_str();
 
 		std::ofstream out(actual_file_name, std::ios::binary);
 
@@ -745,9 +948,15 @@ namespace piolot {
 			}
 
 			// Store the Terrain
-			// We need to store the Map Tile Data as well, that is on the heap.
-			// TODO: Create a Save Terrain function for the Terrain, and a Load Terrain Function.
 			testTerrain->SaveToFile(out);
+
+			pe_helpers::store_strings("Entities", out);
+			// Save all the Entities.
+			int number_of_entities = entities.size();
+			out.write((char*)&number_of_entities, sizeof(int));
+			for (auto it : entities) {
+				it->SaveToFile(out);
+			}
 
 			// Store the Viewport Details.
 			for (auto i = 0; i < 4; i++) {
@@ -766,7 +975,7 @@ namespace piolot {
 		std::string test_string = std::string(SCENES_FOLDER) + std::string(_fileName);
 		const char * actual_file_name = (test_string).c_str();
 
-		std::ifstream in(actual_file_name, std::ios::binary );
+		std::ifstream in(actual_file_name, std::ios::binary);
 
 		if (in.good() && !in.eof()) {
 			in.read((char *)&pathingDebugWindow, sizeof(bool));
@@ -805,6 +1014,20 @@ namespace piolot {
 			// Load the Terrain
 			ASMGR.objects.erase("terrain");
 			testTerrain->LoadFromFile(in);
+
+			int number_of_entities = 0;
+			std::string entity_header_string;
+			pe_helpers::read_strings(entity_header_string, in);
+			in.read((char*)&number_of_entities, sizeof(int));
+			entities.clear();
+			for (auto i = 0; i < number_of_entities; i++) {
+
+				std::shared_ptr<Entity> ent = std::make_shared<Entity>();
+				ent->LoadFromFile(in);
+
+				entities.push_back(ent);
+
+			}
 
 			// Load the Viewport Details
 			for (auto i = 0; i < 4; i++) {

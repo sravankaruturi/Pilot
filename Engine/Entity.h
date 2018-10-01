@@ -12,13 +12,44 @@ namespace piolot
 	protected:
 		std::string shaderName;
 
-		BoundingBox boundingBox;
-
 		bool selectedInScene = false;
 
 		std::string entityName;
 
+		std::string objectName;
+
+		glm::vec3 position{};
+
+		glm::vec3 rotation{ 0.0f, 0.0f, 0.0f };
+		glm::vec3 scale{ 1.0f, 1.0f, 1.0f };
+
+		glm::mat4 modelMatrix{};
+
+		bool matrixDirty = true;
+
+		glm::vec3 boundingBoxLeastVertex{-1, -1, -1};
+		glm::vec3 boundingBoxHighVertex{1, 1, 1};
+
+		BoundingBox boundingBox;
+
+		/**
+		 * \brief End Node for the Pathing.
+		 * 
+		 * We use the Current Position as the Start Position.
+		 */
+		glm::ivec2 targetNode{};
+
 	public:
+		glm::ivec2 GetTargetPosition() const
+		{
+			return targetNode;
+		}
+
+		void setTargetNode(const glm::ivec2& _targetNode)
+		{
+			targetNode = _targetNode;
+		}
+
 		std::string GetEntityName() const
 		{
 			return entityName;
@@ -90,11 +121,18 @@ namespace piolot
 			return matrixDirty;
 		}
 
-	protected:
-		std::string objectName;
+		/**
+		 * \brief Save the Entity to the OutputStream.
+		 * \param _out The Output Stream.
+		 */
+		void SaveToFile(std::ofstream& _out);
 
-		glm::vec3 position{};
-	public:
+		/**
+		 * \brief Load the Entity from the InputStream
+		 * \param _in The Input Stream
+		 */
+		void LoadFromFile(std::ifstream& _in);
+
 		void SetPosition(const glm::vec3& _position)
 		{
 			position = _position;
@@ -114,12 +152,6 @@ namespace piolot
 		}
 
 	protected:
-		glm::vec3 rotation{0.0f, 0.0f, 0.0f};
-		glm::vec3 scale{1.0f, 1.0f, 1.0f};
-
-		glm::mat4 modelMatrix{};
-
-		bool matrixDirty = true;
 
 		void UpdateMatrices();
 
@@ -127,7 +159,7 @@ namespace piolot
 
 		Entity() = default;
 
-		Entity(const std::string& _objectPath, const std::string& _shaderName);
+		Entity(const std::string& _entityName, const std::string& _objectPath, const std::string& _shaderName, glm::vec3 _boundingBoxLeast = glm::vec3( -1, -1, -1 ), glm::vec3 _boundingBoxHighest = glm::vec3( 1, 1, 1 ));
 		~Entity() = default;
 
 		void Update(float _deltaTime);

@@ -3,6 +3,7 @@
 #include "Colours.h"
 #include "LoggingManager.h"
 #include "AssetManager.h"
+#include "Ray.h"
 
 #include <algorithm>
 #include "SaveSceneHelpers.h"
@@ -98,7 +99,7 @@ namespace piolot {
 
 				float total = 0;
 
-				auto channels_without_alpha = (nr_channels == 2 || nr_channels == 4) ? (nr_channels - 1) : nr_channels;
+				const auto channels_without_alpha = (nr_channels == 2 || nr_channels == 4) ? (nr_channels - 1) : nr_channels;
 
 				// Do not count the Alpha
 				for (auto it = 0; it < channels_without_alpha; it++)
@@ -115,7 +116,7 @@ namespace piolot {
 				tiles[i][j].tilePosX = i * gridLength + gridLength / 2;
 				tiles[i][j].tilePosZ = j * gridBreadth + gridBreadth / 2;
 
-				tiles[i][j].tilePosY = total;
+				tiles[i][j].tilePosY = total * heightFactor;
 			}
 		}
 
@@ -127,10 +128,10 @@ namespace piolot {
 		for (auto i = 0; i < nodeCountX; i++) {
 			for (auto j = 0; j < nodeCountZ; j++) {
 				vertices[i * nodeCountZ + j] = TerrainVertexData();
-				vertices[i * nodeCountZ + j].position = glm::vec3(tiles[i][j].tilePosX, tiles[i][j].tilePosY, tiles[i][j].tilePosZ);
-				vertices[i * nodeCountZ + j].normal = glm::vec3();
-				vertices[i * nodeCountZ + j].colour = green;
-				vertices[i * nodeCountZ + j].texCoord = glm::vec3(i * 0.4, j * 0.4, 0);
+				vertices[i * nodeCountZ + j].position = glm::vec4(tiles[i][j].tilePosX, tiles[i][j].tilePosY, tiles[i][j].tilePosZ, 0.0f);
+				vertices[i * nodeCountZ + j].normal = glm::vec4();
+				vertices[i * nodeCountZ + j].colour = glm::vec4(green, 1.0f);
+				vertices[i * nodeCountZ + j].texCoord = glm::vec4(i * 0.4, j * 0.4, 0, 0);
 			}
 		}
 
@@ -152,7 +153,7 @@ namespace piolot {
 		{
 			for (auto j = 0; j < nodeCountZ; j++) {
 
-				vertices[i * nodeCountZ + j].normal = ComputeGridNormal(i, j);
+				vertices[i * nodeCountZ + j].normal = glm::vec4(ComputeGridNormal(i, j), 0.0);
 
 			}
 		}
@@ -202,15 +203,26 @@ namespace piolot {
 		return tiles[_x][_z].tilePosY;
 	}
 
-	glm::vec2 Terrain::GetNodeIndicesFromPos(const float& _x, const float& _z) const
+	glm::ivec2 Terrain::GetNodeIndicesFromPos(const float& _x, const float& _z) const
 	{
-		return glm::vec2(glm::min(int(_x / gridLength), int(nodeCountX - 1)), glm::min(int(_z / gridBreadth), int(nodeCountZ - 1)));
+		glm::ivec2 return_vec(glm::min(int(_x / gridLength), int(nodeCountX - 1)), glm::min(int(_z / gridBreadth), int(nodeCountZ - 1)));
+		std::string message = "The Node Index returned here was exceeding the Count. (";
+		message += return_vec.x;
+		message += ", ";
+		message += return_vec.y;
+		message += " )";
+
+		LOGGER.AddToLog(message, PE_LOG_INFO);
+		return_vec.x = glm::min(return_vec.x, (int)nodeCountX - 1);
+		return_vec.y = glm::min(return_vec.y, (int)nodeCountZ - 1);
+
+		return return_vec;
 	}
 
 	void Terrain::HighlightNode(const unsigned _x, const unsigned _z)
 	{
 
-		this->vertices[_x * nodeCountZ + _z].colour = yellow;
+		this->vertices[_x * nodeCountZ + _z].colour = glm::vec4(yellow, 1.0f);
 		this->vertices[_x * nodeCountZ + _z].texCoord.z = 1.0f;
 		areVerticesDirty = true;
 
@@ -227,7 +239,7 @@ namespace piolot {
 
 				int index = std::distance( all_tile_sets.begin(), std::find(all_tile_sets.begin(), all_tile_sets.end(), tiles[i][j].navTileSet));
 
-				this->vertices[i * nodeCountZ + j].colour = red * (float(index) / number_tile_sets);
+				this->vertices[i * nodeCountZ + j].colour = glm::vec4( red * (float(index) / number_tile_sets), 0.0f);
 				this->vertices[i * nodeCountZ + j].texCoord.z = 0.0f;
 			}
 		}
@@ -318,7 +330,8 @@ namespace piolot {
 			{
 				for (auto i = 0 ; i < active_node->navNeighbourCount ; i++)
 				{
-					if ( nullptr != active_node->navNeighbours[i])
+					// Check if the Neighbour has an obstacle.
+					if ( nullptr != active_node->navNeighbours[i] && !active_node->navNeighbours[i]->navObstacle)
 					{
 						const auto new_g = active_node->navGCost + active_node->navCost;
 						const auto new_f = new_g + HCost(active_node->navNeighbours[i], _endTile);
@@ -596,5 +609,61 @@ namespace piolot {
 		DeleteTiles();
 	}
 
+	void Terrain::ResetObstacles()
+	{
+		for (int i = 0 ; i < nodeCountX; i++)
+		{
+			for (int j = 0; j < nodeCountZ; j++) {
+				tiles[i][j].navObstacle = false;
+			}
+		}
+	}
 
+	void Terrain::GetMouseRayPoint(Ray _ray, float _granularity)
+	{
+
+		// Note: This method assumes that the tile positions obtained are in the World Space. Which means that the Actual terrain itseld has to be at Origin.
+
+		// Lets get the Ray Origin and Direction.
+		glm::vec3 ray_origin = _ray.GetOrigin();
+		glm::vec3 ray_direction = _ray.GetDirection();
+
+		// Now, the Ray is a function, R = R0 + t. D Where R is any point on the Ray, R0 being the Origin, D being the Direction and t, a floating point value.
+
+		// We Check for each Terrain Tile, which gets the closest in terms of a constant t, w.r.t x, y, z, axes.
+		glm::ivec2 closest_node{};
+		float deviation = INT_MAX;
+
+		for (auto i = 0; i < nodeCountX; i++) {
+			for (auto j = 0; j < nodeCountZ; j++) {
+
+				const auto& tile = tiles[i][j];
+
+				glm::vec3 temporary_t{};
+
+				temporary_t.y = (tile.GetPosition().y - ray_origin.y) / (ray_direction.y);
+				temporary_t.x = (tile.GetPosition().x - ray_origin.x) / (ray_direction.x);
+				temporary_t.z = (tile.GetPosition().z - ray_origin.z) / (ray_direction.z);
+
+				// If the T  is same, as it ideally should be, this temp_deviation would be zero, i.e, the lowest it can be.
+				float temp_deviation = glm::abs(temporary_t.x - temporary_t.y) + glm::abs(temporary_t.z - temporary_t.y);
+
+				if (temp_deviation == 0) {
+					closest_node = { i, j };
+					deviation = 0;
+					pointedNodeIndices = closest_node;
+					return;
+				}
+
+				if (temp_deviation < deviation) {
+					deviation = temp_deviation;
+					closest_node = { i, j };
+				}
+			}
+		}
+
+		pointedNodeIndices = closest_node;
+		this->HighlightNode(pointedNodeIndices.x, pointedNodeIndices.y);
+
+	}
 }

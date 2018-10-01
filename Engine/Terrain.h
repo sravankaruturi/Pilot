@@ -6,12 +6,16 @@
 #include <fstream>
 
 namespace piolot {
+	class Ray;
 
 	struct TerrainVertexData{
-		glm::vec3 position;
-		glm::vec3 normal;
-		glm::vec3 colour;
-		glm::vec3 texCoord;
+
+		long header = 11110000;
+
+		glm::vec4 position;
+		glm::vec4 normal;
+		glm::vec4 colour;
+		glm::vec4 texCoord;
 	};
 
 	class MapTile {
@@ -28,7 +32,16 @@ namespace piolot {
 
 		/* Calculated Navigation Stuff */
 		float navCost = 0.0f;
+
+		/**
+		 * \brief Is the Tile walkable or does it have any static elements attached to it.
+		 */
 		bool navWalkable = true;
+
+		/**
+		 * \brief Is there a dynamic obstacle in the path.
+		 */
+		bool navObstacle = false;
 		MapTile * navNeighbours[8];
 		int navNeighbourCount = 0;
 		// Open Set?
@@ -42,6 +55,10 @@ namespace piolot {
 
 	public:
 		MapTile() = default;
+
+		glm::vec3 GetPosition() const {
+			return glm::vec3(tilePosX, tilePosY, tilePosZ);
+		}
 
 	};
 
@@ -67,11 +84,37 @@ namespace piolot {
 
 		std::shared_ptr<Object> objectPtr;
 
+		/**
+		 * \brief This is a float that can be used to modify the amplitude of the Terrain.
+		 * 
+		 * This is also used as Standard Deviation to Caclulate the Ray Intersection Point with the Terrain.
+		 */
+		float heightFactor = 1.0f;
+
 		glm::vec3 ComputeGridNormal(int _x,int _z);
 
 		/* Testing stuff */
 		glm::vec2 startxz{};
 		glm::vec2 endxz{};
+
+	public:
+
+		/**
+		 * \brief This is set to True, at Run time if you are pointing the Mouse Cursor over the Terrain origin.
+		 */
+		bool pointingAtOrigin = false;
+
+		/**
+		 * \brief This would be the Current Indices that are being pointed to by, the Mouse.
+		 * 
+		 * By Default, they are set to store INT_MAX. Unless they are being Updated.
+		 */
+		glm::ivec2 pointedNodeIndices{INT_MAX, INT_MAX};
+
+		/**
+		 * \brief The Accuracy by which we say, that a Ray has a Point on it. Lower is more Accurate.
+		 */
+		float accuracyFactor = 0.2f;
 
 	public:
 
@@ -141,7 +184,7 @@ namespace piolot {
 		float GetHeightAtPos(const float& _x, const float& _z);
 		float GetHeightForNode(const int& _x, const int& _z);
 
-		glm::vec2 GetNodeIndicesFromPos(const float& _x, const float& _z) const;
+		glm::ivec2 GetNodeIndicesFromPos(const float& _x, const float& _z) const;
 
 		void HighlightNode(const unsigned int _x, const unsigned int _z);
 
@@ -170,8 +213,22 @@ namespace piolot {
 
 		~Terrain();
 
+		/**
+		 * \brief Resets the Obstacle during Path.
+		 */
+		void ResetObstacles();
+
 		/* Terrain Debug */
 		bool terrainDebug = false;
+
+		/**
+		 * \brief Get the Intersection Point for the Ray and the Terrain.
+		 * \param _ray The Mouse Ray, based on the Current Mouse Position and the View Matrix.
+		 * \param _granularity The Granularity with which to search for the Intersection.
+		 * 
+		 * This is used in pathfinding.
+		 */
+		void GetMouseRayPoint(Ray _ray, float _granularity = 0.5f);
 
 	};
 

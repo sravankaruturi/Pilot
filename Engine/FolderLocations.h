@@ -5,9 +5,9 @@
 #if IS_HOME_PC
 
 #define SHADER_FOLDER			"C:/dev/Piolot/Engine/Shaders/"
-#define TEXTURE_FOLDER			"C:/dev/Piolot/Assets/Textures/"
-#define MODEL_FOLDER			"C:/dev/Piolot/Assets/Models/"
-#define SCENES_FOLDER			"C:/dev/Piolot/Assets/Scenes/"
+#define TEXTURE_FOLDER			"C:/dev/Piolot/Engine/Assets/Textures/"
+#define MODEL_FOLDER			"C:/dev/Piolot/Engine/Assets/Models/"
+#define SCENES_FOLDER			"C:/dev/Piolot/Engine/Assets/Scenes/"
 
 #define EXTERNAL_FILES			"C:/dev/Piolot/EngineDeps/external_files/"
 
@@ -20,6 +20,6 @@
 #define MODEL_FOLDER			"Z:/IGMProfile/Desktop/Projects/Piolot/Engine/Assets/Models/"
 #define SCENES_FOLDER			"Z:/IGMProfile/Desktop/Projects/Piolot/Engine/Assets/Scenes/"
 
-#define EXTERNAL_FILES			"Z:/IGMProfile/Desktop/Projects/Piolot/Engine/external_files/"
+#define EXTERNAL_FILES			"Z:/IGMProfile/Desktop/Projects/Piolot/EngineDeps/external_files/"
 
 #endif

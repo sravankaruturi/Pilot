@@ -1,12 +1,12 @@
 ﻿#shader vertex
 #version 430 core
 
-layout(location = 0) in vec3 aPos;
+layout(location = 0) in vec4 aPos;
 
 uniform mat4 u_ModelMatrix;
 
 void main() {
-	gl_Position = u_ModelMatrix * vec4(aPos, 1.0);
+	gl_Position = u_ModelMatrix * vec4(aPos.xyz, 1.0);
 }
 
 #shader geometry

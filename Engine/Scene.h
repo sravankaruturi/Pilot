@@ -5,6 +5,7 @@
 
 #include "Camera.h"
 #include "Entity.h"
+#include "AnimatedEntity.h"
 
 class Window;
 
@@ -20,14 +21,31 @@ namespace piolot {
 		std::shared_ptr<Camera> activeCamera;
 
 		std::map<std::string, std::shared_ptr<Camera>> cameras;
+
 		std::vector<std::shared_ptr<Entity>> entities;
+		std::vector<std::unique_ptr<AnimatedEntity>> animatedEntities;
+
+		/**
+		 * \brief Raw Pointers to the Selected Entities.
+		 * 
+		 * These selected entities can be destroyed even though they are selected. So, we just copy the addresses.
+		 */
+		std::vector<Entity *> selectedEntities;
+
+		float totalTime;
+		float deltaTime;
 
 	public:
 
 		explicit Scene(std::shared_ptr<Window> _window);
 		~Scene() = default;
 
-		virtual void OnUpdate(float _deltaTime, float _totalTime) {}
+		virtual void InitEntities() {};
+
+		virtual void OnUpdate(float _deltaTime, float _totalTime) {
+			deltaTime = _deltaTime;
+			totalTime = _totalTime;
+		}
 
 		virtual void OnRender() {}
 

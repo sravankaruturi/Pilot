@@ -1,6 +1,8 @@
 ﻿#include "Window.h"
 #include <iostream>
 
+#include "Configurations.h"
+
 #include "../EngineDeps/external_files/ImGUI/imgui.h"
 #include "../EngineDeps/external_files/ImGUI/imgui_impl_glfw.h"
 
@@ -37,7 +39,13 @@ Window::Window(unsigned _width, unsigned _height, const std::string& _title): wi
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
 	glfwSetWindowSizeCallback(window, window_resize);
 	glfwSetCursorPosCallback(window, cursor_position_callback);
+
+#if ENABLE_GUI
+
 	glfwSetCharCallback(window, ImGui_ImplGlfw_CharCallback);
+	// TODO: What to do when there is no GUI?
+
+#endif
 
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -236,10 +244,13 @@ void window_resize(GLFWwindow * _window, int _width, int _height) {
 
 void key_callback(GLFWwindow * _window, int _key, int scancode, int action, int mods) {
 
+#if ENABLE_GUI
 	if (ImGui::GetIO().WantCaptureKeyboard) {
 		ImGui_ImplGlfw_KeyCallback(_window, _key, scancode, action, mods);
 	}
 	else {
+
+#endif
 
 		auto win = static_cast<Window *>(glfwGetWindowUserPointer(_window));
 
@@ -264,15 +275,19 @@ void key_callback(GLFWwindow * _window, int _key, int scancode, int action, int 
 			}
 		}
 
+#if ENABLE_GUI
 	}
+#endif
 
 }
 
 void mouse_button_callback(GLFWwindow* _window, int _button, int _action, int _mods) {
 
+#if ENABLE_GUI
 	if (ImGui::GetIO().WantCaptureMouse) {
 		return;
 	}
+#endif
 
 	auto * win = (Window *)glfwGetWindowUserPointer(_window);
 

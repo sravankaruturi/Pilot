@@ -38,6 +38,8 @@ namespace piolot {
 		glm::vec2 startxz;
 		glm::vec2 endxz;
 
+		float totalTimeCounterForPathing = 0;
+
 		std::vector<MapTile*> path;
 
 		/* GUI Variables */
@@ -45,7 +47,7 @@ namespace piolot {
 		bool displayAssetManagerWindow = false;
 		bool displayLogWindow = false;
 		bool displayCameraControls = false;
-		bool displayRaypickingControls = true;
+		bool displayRaypickingControls = false;
 		bool displayDemoWindow = false;
 		bool displayViewportControls = false;
 
@@ -60,11 +62,16 @@ namespace piolot {
 		bool openLoadSceneWindow = false;
 		bool displayHierarchy = false;
 		bool displayAddEntity = false;
+		bool displayStats = true;
 
 		// GUI Variables when you create a new Entity.
 
 		std::string objName;
 		std::string shaderName;
+
+		// Debug the Ray.
+		Ray cameraRay{glm::vec3(), glm::vec3()};
+		
 
 
 	public:
@@ -72,12 +79,18 @@ namespace piolot {
 		explicit TestScene(std::shared_ptr<Window> _window);
 		~TestScene() = default;
 
+		void InitEntities() override;
+
 		virtual void OnUpdate(float _deltaTime, float _totalTime) override;
 
 		virtual void OnRender() override;
 
 		virtual void OnImguiRender(ImGuiControlVariables& _vars);
 
+		/**
+		 * \brief Save the current Scene to a binary file.
+		 * \param _fileName The Filename to save. No Extensions required.
+		 */
 		void SaveScene(const char * _fileName);
 
 		void LoadScene(const char * _fileName);

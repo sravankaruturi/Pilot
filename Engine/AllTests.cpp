@@ -107,7 +107,8 @@ TEST_F(AllTests, MeshInitializerIndices)
 TEST_F(AllTests, EntityConstructorCheck)
 {
 	
-	Entity entity("cube/cube.obj", "good_test");
-	EXPECT_STREQ("cube", entity.GetObjectName().c_str());
+	Entity entity("test", "cube/cube_rig.dae", "cuboid");
+	EXPECT_STREQ("cube_rig", entity.GetObjectName().c_str());
+	EXPECT_STREQ("test", entity.GetEntityName().c_str());
 
 }
