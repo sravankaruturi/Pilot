@@ -1,3 +1,5 @@
+#if DEBUG
+
 #include "AllTests.h"
 
 TEST_F(AllTests, CheckGLFWInitialisation)
@@ -112,3 +114,5 @@ TEST_F(AllTests, EntityConstructorCheck)
 	EXPECT_STREQ("test", entity.GetEntityName().c_str());
 
 }
+
+#endif

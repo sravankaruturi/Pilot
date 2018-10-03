@@ -1,5 +1,7 @@
 #pragma once
 
+#if DEBUG
+
 #include "AllTests.h"
 #include <glm/gtc/matrix_transform.inl>
 
@@ -81,3 +83,5 @@ TEST_F(AllTests, BoundingBoxCollisionCheckWhenScaled)
 	EXPECT_FLOAT_EQ(distance, 9.0f);
 
 }
+
+#endif
