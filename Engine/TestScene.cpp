@@ -63,7 +63,8 @@ namespace piolot {
 
 		ActiveCamera(cameras.at("First"));
 
-		entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
+		//entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
+		entities.push_back(std::make_shared<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test"));
 
 		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
 		AnimatedEntity * animatedEntity = animatedEntities[0].get();
