@@ -43,7 +43,7 @@ namespace piolot {
 		testGrid.Init();
 
 		std::string heightmap_path = TEXTURE_FOLDER + std::string("heightmap.jpg");
-		testTerrain = std::make_shared<Terrain>(20, 20, 0.5, 0.5, heightmap_path);
+		testTerrain = std::make_shared<Terrain>(25, 25, 0.5, 0.5, heightmap_path);
 
 		viewportsDetails[0].camera = activeCamera;
 		viewportsDetails[1].camera = activeCamera;
@@ -377,34 +377,23 @@ namespace piolot {
 		}
 
 		{
-			// Set the terrain Shader View and projection matrices for multiple viewports.
-			auto terrain_shader = ASMGR.shaders.at("terrain");
-			terrain_shader->use();
-			//PE_GL(glUniformMatrix4fv(it.second->GetUniformLocation("u_ViewMatrix"), GL_FALSE, 4, &view_matrices[0][0][0]));
-			auto loc = terrain_shader->GetUniformLocation("u_ViewMatrix");
-			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, &view_matrices[0][0][0]));
+			std::vector<std::string> multiple_viewport_shaders = {
+				"axes",
+				"bob_lamp",
+				"terrain"
+			};
 
-			loc = terrain_shader->GetUniformLocation("u_ProjectionMatrix");
-			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, glm::value_ptr(projection_matrices[0])));
+			for (auto& it : multiple_viewport_shaders) {
 
+				auto shader_pointer = ASMGR.shaders.at(it);
+				shader_pointer->use();
+				auto loc = shader_pointer->GetUniformLocation("u_ViewMatrix");
+				PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, &view_matrices[0][0][0]));
 
-			auto axes_shader = ASMGR.shaders.at("axes");
-			axes_shader->use();
-			//PE_GL(glUniformMatrix4fv(it.second->GetUniformLocation("u_ViewMatrix"), GL_FALSE, 4, &view_matrices[0][0][0]));
-			loc = axes_shader->GetUniformLocation("u_ViewMatrix");
-			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, &view_matrices[0][0][0]));
+				loc = shader_pointer->GetUniformLocation("u_ProjectionMatrix");
+				PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, glm::value_ptr(projection_matrices[0])));
 
-			loc = axes_shader->GetUniformLocation("u_ProjectionMatrix");
-			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, glm::value_ptr(projection_matrices[0])));
-
-			auto boblammp_shader = ASMGR.shaders.at("bob_lamp");
-			boblammp_shader->use();
-
-			loc = boblammp_shader->GetUniformLocation("u_ViewMatrix");
-			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, &view_matrices[0][0][0]));
-
-			loc = boblammp_shader->GetUniformLocation("u_ProjectionMatrix");
-			PE_GL(glUniformMatrix4fv(loc, 4, GL_FALSE, glm::value_ptr(projection_matrices[0])));
+			}
 		}
 
 
