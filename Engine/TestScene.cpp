@@ -43,7 +43,7 @@ namespace piolot {
 		testGrid.Init();
 
 		std::string heightmap_path = TEXTURE_FOLDER + std::string("heightmap.jpg");
-		testTerrain = std::make_shared<Terrain>(10, 10, 0.5, 0.5, heightmap_path);
+		testTerrain = std::make_shared<Terrain>(20, 20, 0.5, 0.5, heightmap_path);
 
 		viewportsDetails[0].camera = activeCamera;
 		viewportsDetails[1].camera = activeCamera;
@@ -65,6 +65,8 @@ namespace piolot {
 
 		//entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
 		entities.push_back(std::make_shared<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test"));
+		entities[0]->SetScale(glm::vec3(1.0f / 128, 1.0f / 128, 1.f / 128));
+		//entities.push_back(std::make_shared<Entity>("cube", "cube/cube.obj", "good_test"));
 
 		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
 		AnimatedEntity * animatedEntity = animatedEntities[0].get();
@@ -74,6 +76,9 @@ namespace piolot {
 
 		std::shared_ptr<Texture> archer_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("archer/akai_diffuse.png"), false);
 		ASMGR.AddToTextures("akai_diffuse", archer_diffuse);
+
+		std::shared_ptr<Texture> building_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("Medieval_House/Medieval_House_Diff.png"), false);
+		ASMGR.AddToTextures("building_diffuse", building_diffuse);
 
 		for (int i = 0; i < 5; i++)
 		{
@@ -89,6 +94,7 @@ namespace piolot {
 		}
 
 		ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
+		ASMGR.objects.at("Medieval_House")->GetMeshes()[0]->textureNames.push_back("building_diffuse");
 
 	}
 
@@ -158,7 +164,6 @@ namespace piolot {
 			if (viewport_size[2] == window->GetWidth() && viewport_size[3] == window->GetHeight()) {
 				// One Viewport
 				ray_start = this->activeCamera->GetPosition();
-
 				mouse_pointer_ray = activeCamera->GetMouseRayDirection(window->mouseX, window->mouseY, window->GetWidth(), window->GetHeight(), projection_matrix);
 			}
 			else {
@@ -178,6 +183,18 @@ namespace piolot {
 				//mouse_pointer_ray = activeCamera->GetMouseRayDirection(updated_x, updated_y, viewport_size[2], viewport_size[3], projection_matrix);
 				mouse_pointer_ray = activeCamera->GetMouseRayDirection(updated_x, updated_y, window->GetWidth(), window->GetHeight(), projection_matrix);
 
+			}
+
+			if (window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1) && isPlacingMode) {
+
+				glm::ivec2 target_node = testTerrain->pointedNodeIndices;
+				entities.push_back(std::make_shared<Entity>("building_new", "Medieval_House/Medieval_House.obj", "good_test"));
+
+				Entity * last_entity = entities.back().get();
+				last_entity->SetScale(glm::vec3(1.0f / 128, 1.0f / 128, 1.0f / 128));
+				last_entity->SetPosition(testTerrain->GetTileFromIndices(target_node.x, target_node.y)->GetPosition());
+
+				isPlacingMode = false;
 
 			}
 
@@ -481,12 +498,17 @@ namespace piolot {
 
 			if (ImGui::BeginMenu("Entity"))
 			{
-
 				if (ImGui::MenuItem("Add"))
 				{
 					displayAddEntity = true;
 				}
+				ImGui::EndMenu();
+			}
 
+			if (ImGui::BeginMenu("Action")) {
+				if (ImGui::MenuItem("Place a New Building")) {
+					isPlacingMode = true;
+				}
 				ImGui::EndMenu();
 			}
 

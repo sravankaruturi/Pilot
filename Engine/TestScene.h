@@ -64,6 +64,8 @@ namespace piolot {
 		bool displayAddEntity = false;
 		bool displayStats = true;
 
+		bool isPlacingMode = false;
+
 		// GUI Variables when you create a new Entity.
 
 		std::string objName;
@@ -81,9 +83,9 @@ namespace piolot {
 
 		void InitEntities() override;
 
-		virtual void OnUpdate(float _deltaTime, float _totalTime) override;
+		void OnUpdate(float _deltaTime, float _totalTime) override;
 
-		virtual void OnRender() override;
+		void OnRender() override;
 
 		virtual void OnImguiRender(ImGuiControlVariables& _vars);
 
