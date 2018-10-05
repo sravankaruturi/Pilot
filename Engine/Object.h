@@ -189,7 +189,23 @@ namespace piolot
 		glm::vec3 leastVertex{};
 		glm::vec3 highestVertex{};
 
+		/**
+		 * \brief This keeps track of when this particular object was animated last.
+		 *
+		 * By Keeping track of this, if we have multiple animated entities sharing the animation, they can use the same Object. If we have two different entities playing different animation, we can create a new object for them.
+		 */
+		float lastAnimationUpdateTime = 0.0f;
+
 	public:
+		float& GetLastAnimationUpdateTime()
+		{
+			return lastAnimationUpdateTime;
+		}
+
+		void SetLastAnimationUpdateTime(float _lastAnimationUpdateTime)
+		{
+			lastAnimationUpdateTime = _lastAnimationUpdateTime;
+		}
 
 		const glm::vec3 GetLeastVertex() const{
 			return leastVertex;

@@ -17,12 +17,21 @@ namespace piolot {
 
 	}
 
-	void AnimatedEntity::PlayAnimation(float _deltaTime)
+	void AnimatedEntity::PlayAnimation(float _deltaTime, float _currentTime)
 	{
 
-		animationTotalTime += _deltaTime;
+		Object * current_object = ASMGR.objects.at(objectName).get();
 
-		ASMGR.objects.at(objectName)->BoneTransform(animationTotalTime, this->boneMatrices);
+		float animation_time = current_object->GetLastAnimationUpdateTime();
+
+		if ( _currentTime - animation_time >= _deltaTime) {
+
+			animationTotalTime += _deltaTime;
+
+			current_object->BoneTransform(animationTotalTime, this->boneMatrices);
+			current_object->SetLastAnimationUpdateTime(_currentTime);
+
+		}
 
 	}
 

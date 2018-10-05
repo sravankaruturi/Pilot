@@ -32,7 +32,7 @@ namespace piolot {
 
 		~AnimatedEntity() = default;
 
-		void PlayAnimation(float _deltaTime);
+		void PlayAnimation(float _deltaTime, float _currentTime);
 
 		void Update(float _deltaTime);
 
