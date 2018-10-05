@@ -238,6 +238,12 @@ namespace piolot
 		 */
 		void BoneTransform(float _totalTime, std::vector<glm::mat4>& _matrices);
 
+		/*
+		* \brief Copy the Bone Matrices.
+		* \param _matrices A reference to the Vector of Matrices that we want to assign the Bone Matrices to.
+		*/
+		void CopyBoneMatrices(std::vector<glm::mat4>& _matrices);
+
 	private:
 
 		void ProcessNode(aiNode *_node, const aiScene *_scene, std::vector<std::shared_ptr<Mesh>>& _meshes);
@@ -259,6 +265,7 @@ namespace piolot
 		 * \return The Node Animation Details.
 		 */
 		const aiNodeAnim * FindNodeAnim(const aiAnimation * _animation, const std::string& _nodeName);
+
 	};
 }
 

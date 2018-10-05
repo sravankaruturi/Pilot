@@ -66,7 +66,6 @@ namespace piolot {
 		//entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
 		entities.push_back(std::make_shared<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test"));
 		entities[0]->SetScale(glm::vec3(1.0f / 128, 1.0f / 128, 1.f / 128));
-		//entities.push_back(std::make_shared<Entity>("cube", "cube/cube.obj", "good_test"));
 
 		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
 		AnimatedEntity * animatedEntity = animatedEntities[0].get();
@@ -80,7 +79,7 @@ namespace piolot {
 		std::shared_ptr<Texture> building_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("Medieval_House/Medieval_House_Diff.png"), false);
 		ASMGR.AddToTextures("building_diffuse", building_diffuse);
 
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < 10; i++)
 		{
 
 			animatedEntities.push_back(std::make_unique<AnimatedEntity>("archer", "archer/archer_walking.fbx", "bob_lamp", glm::vec3(-30, 0, -30), glm::vec3(30, 180, 30)));

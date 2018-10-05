@@ -40,6 +40,8 @@ Window::Window(unsigned _width, unsigned _height, const std::string& _title): wi
 	glfwSetWindowSizeCallback(window, window_resize);
 	glfwSetCursorPosCallback(window, cursor_position_callback);
 
+	glfwSwapInterval(0);
+
 #if ENABLE_GUI
 
 	glfwSetCharCallback(window, ImGui_ImplGlfw_CharCallback);
