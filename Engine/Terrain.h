@@ -230,6 +230,8 @@ namespace piolot {
 		 */
 		void GetMouseRayPoint(Ray _ray, float _granularity = 0.5f);
 
+		void SetTerrainNodeNotWalkable(glm::ivec2 _nodeIndices);
+
 	};
 
 

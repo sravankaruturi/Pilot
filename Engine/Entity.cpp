@@ -1,9 +1,12 @@
-﻿#include "Entity.h"
+﻿#pragma once
+#include "Entity.h"
 #include "Object.h"
 #include "FolderLocations.h"
 #include "AssetManager.h"
 #include <glm/gtc/matrix_transform.inl>
 #include "SaveSceneHelpers.h"
+
+#include "Terrain.h"
 
 namespace piolot
 {
@@ -43,6 +46,13 @@ namespace piolot
 		_in.read((char*)&selectedInScene, sizeof(bool));
 		_in.read((char*)&position, sizeof(position));
 
+	}
+
+	void Entity::SetInitialPosition(const glm::vec3& _position, Terrain * _terrain)
+	{
+		position = _position;
+		targetNode = _terrain->GetNodeIndicesFromPos(position.x, position.z);
+		matrixDirty = true;
 	}
 
 	void Entity::UpdateMatrices()

@@ -37,13 +37,13 @@ namespace piolot {
 		ASMGR.LoadShaders();
 		ASMGR.LoadTextures();
 
-		TestScene::InitEntities();
-
 		// We need to wait for the Shaders to be loaded to call this function.
 		testGrid.Init();
 
 		std::string heightmap_path = TEXTURE_FOLDER + std::string("heightmap.jpg");
 		testTerrain = std::make_shared<Terrain>(25, 25, 0.5, 0.5, heightmap_path);
+
+		TestScene::InitEntities();
 
 		viewportsDetails[0].camera = activeCamera;
 		viewportsDetails[1].camera = activeCamera;
@@ -69,7 +69,7 @@ namespace piolot {
 
 		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
 		AnimatedEntity * animatedEntity = animatedEntities[0].get();
-		animatedEntity->SetPosition(glm::vec3(4.0, 0.0, 2.0));
+		animatedEntity->SetInitialPosition(glm::vec3(4.0, 0.0, 2.0), testTerrain.get());
 		animatedEntity->SetScale(glm::vec3(0.0125f, 0.0125f, 0.0125f));
 		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
 
@@ -85,7 +85,7 @@ namespace piolot {
 			animatedEntities.push_back(std::make_unique<AnimatedEntity>("archer", "archer/archer_walking.fbx", "bob_lamp", glm::vec3(-30, 0, -30), glm::vec3(30, 180, 30)));
 
 			animatedEntity = animatedEntities[i + 1].get();
-			animatedEntity->SetPosition(glm::vec3(2.0, 0.0, (i + 1)));
+			animatedEntity->SetInitialPosition(glm::vec3(2.0, 0.0, (i + 1)), testTerrain.get());
 			const float scale_factor = 256.f;
 			animatedEntity->SetScale(glm::vec3(1 / scale_factor));
 			animatedEntity->SetRotation(glm::vec3(0, 0.0f, 0.00f));
@@ -184,16 +184,38 @@ namespace piolot {
 
 			}
 
+			// #TODO: Create a separate fucntion called Add Building or something.
 			if (window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1) && isPlacingMode) {
 
 				glm::ivec2 target_node = testTerrain->pointedNodeIndices;
-				entities.push_back(std::make_shared<Entity>("building_new", "Medieval_House/Medieval_House.obj", "good_test"));
 
-				Entity * last_entity = entities.back().get();
-				last_entity->SetScale(glm::vec3(1.0f / 128, 1.0f / 128, 1.0f / 128));
-				last_entity->SetPosition(testTerrain->GetTileFromIndices(target_node.x, target_node.y)->GetPosition());
+				// Make sure that there are enough nodes around the pointed node.
+				if (!((target_node.x > testTerrain->GetNodeCountX() - 1 && target_node.x < 1) || (target_node.y > testTerrain->GetNodeCountZ() - 1 && target_node.y < 1))) {
 
-				isPlacingMode = false;
+					entities.push_back(std::make_shared<Entity>("building_new", "Medieval_House/Medieval_House.obj", "good_test"));
+
+					Entity * last_entity = entities.back().get();
+					last_entity->SetScale(glm::vec3(1.0f / 128, 1.0f / 128, 1.0f / 128));
+					last_entity->SetPosition(testTerrain->GetTileFromIndices(target_node.x, target_node.y)->GetPosition());
+
+					// We then update the corresponding terrain nodes to not walkable.
+
+					// We get the Nine Nodes, of the Building.
+					testTerrain->SetTerrainNodeNotWalkable(target_node);
+					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x, target_node.y - 1));
+					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x, target_node.y + 1));
+
+					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x + 1, target_node.y));
+					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x + 1, target_node.y - 1));
+					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x + 1, target_node.y + 1));
+
+					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x - 1, target_node.y));
+					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x - 1, target_node.y - 1));
+					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x - 1, target_node.y + 1));
+
+					isPlacingMode = false;
+
+				}
 
 			}
 

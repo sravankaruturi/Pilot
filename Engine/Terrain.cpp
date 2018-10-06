@@ -130,8 +130,8 @@ namespace piolot {
 				vertices[i * nodeCountZ + j] = TerrainVertexData();
 				vertices[i * nodeCountZ + j].position = glm::vec4(tiles[i][j].tilePosX, tiles[i][j].tilePosY, tiles[i][j].tilePosZ, 0.0f);
 				vertices[i * nodeCountZ + j].normal = glm::vec4();
-				vertices[i * nodeCountZ + j].colour = glm::vec4(green, 1.0f);
-				vertices[i * nodeCountZ + j].texCoord = glm::vec4(i * 0.4, j * 0.4, 0, 0);
+				vertices[i * nodeCountZ + j].colour = (tiles[i][j].navWalkable) ? glm::vec4(green, 1.0f) : glm::vec4(red, 1.0f);
+				vertices[i * nodeCountZ + j].texCoord = glm::vec4(i * 0.4, j * 0.4, 0.5, 0);
 			}
 		}
 
@@ -237,10 +237,12 @@ namespace piolot {
 		for (auto i = 0; i < nodeCountX; i++) {
 			for (auto j = 0; j < nodeCountZ; j++) {
 
-				int index = std::distance( all_tile_sets.begin(), std::find(all_tile_sets.begin(), all_tile_sets.end(), tiles[i][j].navTileSet));
+				/*int index = std::distance( all_tile_sets.begin(), std::find(all_tile_sets.begin(), all_tile_sets.end(), tiles[i][j].navTileSet));
 
 				this->vertices[i * nodeCountZ + j].colour = glm::vec4( red * (float(index) / number_tile_sets), 0.0f);
-				this->vertices[i * nodeCountZ + j].texCoord.z = 0.0f;
+				this->vertices[i * nodeCountZ + j].texCoord.z = 0.5f;*/
+				vertices[i * nodeCountZ + j].colour = (tiles[i][j].navWalkable) ? glm::vec4(green, 1.0f) : glm::vec4(red, 1.0f);
+				this->vertices[i * nodeCountZ + j].texCoord.z = 0.5f;
 			}
 		}
 		areVerticesDirty = true;
@@ -259,6 +261,15 @@ namespace piolot {
 		if ( _startTile->navTileSet != _endTile->navTileSet)
 		{
 			// They are not in the same tile set. Return the empty stuff.
+			return return_vector;
+		}
+
+		if (!_endTile->navWalkable) {
+			return return_vector;
+		}
+
+		// Make sure that they are not the same tiles.
+		if (_startTile == _endTile) {
 			return return_vector;
 		}
 
@@ -305,7 +316,7 @@ namespace piolot {
 			active_node->navOpen = false;
 			open_set.erase(open_set.begin() + best_node_index);
 
-			// TODO: Can we just check if they point to the same tile, since they are pointers..
+			// Can we just check if they point to the same tile, since they are pointers.. Apparently we cant
 			if (_endTile->tileIndexX == active_node->tileIndexX && _endTile->tileIndexZ == active_node->tileIndexZ)
 			{
 				// We have reached the target. Retrace our Path.
@@ -423,7 +434,9 @@ namespace piolot {
 				variance /= float(tile.navNeighbourCount);
 
 				tile.navCost = (( variance > 0.9f ) ? (0.9f) : variance) + 0.1f;
-				tile.navWalkable = (tile.navCost < UNPASSABLE_NAV_COST_LIMIT );
+
+				// If it is set to be not navigable, the cost doesn't change that fact.
+				tile.navWalkable = (tile.navCost < UNPASSABLE_NAV_COST_LIMIT ) || tile.navWalkable;
 				tile.navTileSet = i * nodeCountZ + j;
 
 			}
@@ -664,6 +677,14 @@ namespace piolot {
 
 		pointedNodeIndices = closest_node;
 		this->HighlightNode(pointedNodeIndices.x, pointedNodeIndices.y);
+
+	}
+
+	void Terrain::SetTerrainNodeNotWalkable(glm::ivec2 _nodeIndices)
+	{
+
+		tiles[_nodeIndices.x][_nodeIndices.y].navWalkable = false;
+		areVerticesDirty = true;
 
 	}
 }
