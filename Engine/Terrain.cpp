@@ -278,7 +278,8 @@ namespace piolot {
 			for ( auto j = 0 ; j < nodeCountZ; j++)
 			{
 				tiles[i][j].navFCost = tiles[i][j].navGCost = INT_MAX;
-				tiles[i][j].navOpen = tiles[i][j].navClosed = false;
+				tiles[i][j].navOpen = false;
+				tiles[i][j].navClosed = !tiles[i][j].navWalkable;
 			}
 		}
 
@@ -350,7 +351,7 @@ namespace piolot {
 						// Check if B is in the open list or closed list.
 						if ( active_node->navNeighbours[i]->navOpen || active_node->navNeighbours[i]->navClosed)
 						{
-							if (new_f < active_node->navNeighbours[i]->navFCost)
+							if ((new_f < active_node->navNeighbours[i]->navFCost) && (active_node->navNeighbours[i]->navWalkable))
 							{
 								active_node->navNeighbours[i]->navGCost = new_g;
 								active_node->navNeighbours[i]->navFCost = new_f;
