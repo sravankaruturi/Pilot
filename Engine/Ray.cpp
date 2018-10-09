@@ -17,7 +17,7 @@ namespace piolot {
 		// Add all the vertices.
 		vertices.push_back(origin);
 
-		for (int i = 1; i < 10; i++)
+		for (int i = 1; i < 20; i++)
 		{
 			vertices.push_back(origin + glm::vec3(direction.x * i, direction.y * i, direction.z * i));
 		}

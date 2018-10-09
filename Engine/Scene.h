@@ -32,6 +32,13 @@ namespace piolot {
 		 */
 		std::vector<Entity *> selectedEntities;
 
+		/**
+		 * \brief Raw Pointers to the Temporary Entities.
+		 * 
+		 * These entities are cleared every frame, after they are drawn.
+		 */
+		std::vector<std::unique_ptr<Entity>> tempEntities;
+
 		float totalTime;
 		float deltaTime;
 
@@ -45,6 +52,8 @@ namespace piolot {
 		virtual void OnUpdate(float _deltaTime, float _totalTime) {
 			deltaTime = _deltaTime;
 			totalTime = _totalTime;
+
+			tempEntities.clear();
 		}
 
 		virtual void OnRender() {}

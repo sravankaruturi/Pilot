@@ -184,6 +184,26 @@ namespace piolot {
 
 			}
 
+			if ( isPlacingMode )
+			{
+				// Draw the house wherever the mouse points, on the Terrain.
+				glm::ivec2 target_node = testTerrain->pointedNodeIndices;
+
+				// Make sure that there are enough nodes around the pointed node.
+				if (!((target_node.x > testTerrain->GetNodeCountX() - 1 && target_node.x < 1) || (target_node.y > testTerrain->GetNodeCountZ() - 1 && target_node.y < 1))) {
+
+					tempEntities.push_back(std::make_unique<Entity>("building_temp", "Medieval_House/Medieval_House.obj", "good_test"));
+
+					auto temp_building = tempEntities.back().get();
+
+					const float scaling_factor = 256.0f;
+					temp_building->SetScale(glm::vec3(1.0f / scaling_factor, 1.0f / scaling_factor, 1.0f / scaling_factor));
+					temp_building->SetPosition(testTerrain->GetTileFromIndices(target_node.x, target_node.y)->GetPosition());
+
+				}
+
+			}
+
 			// #TODO: Create a separate fucntion called Add Building or something.
 			if (window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1) && isPlacingMode) {
 
@@ -426,6 +446,11 @@ namespace piolot {
 		}
 
 		for (const auto& it : animatedEntities) {
+			it->Render();
+		}
+
+		for (const auto& it: tempEntities)
+		{
 			it->Render();
 		}
 
