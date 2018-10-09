@@ -190,6 +190,12 @@ namespace piolot {
 
 		void ClearColours();
 
+		/**
+		 * \brief Get the Path from _startTile to _endTile
+		 * \param _startTile The Map Tile where you start
+		 * \param _endTile The Map Tile where you end
+		 * \return A Vector of Tile, the path to take.
+		 */
 		std::vector<MapTile *> GetPathFromTiles(MapTile * _startTile, MapTile * _endTile);
 		std::vector<MapTile *> GetPathFromPositions(glm::vec3, glm::vec3);
 

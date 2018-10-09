@@ -251,7 +251,12 @@ namespace piolot {
 
 	float HCost(MapTile * _pointA, MapTile * _pointB)
 	{
-		return abs(_pointA->tilePosX - _pointB->tilePosX) + abs(_pointA->tilePosZ - _pointB->tilePosZ);
+		if ( _pointA->navWalkable && _pointB->navWalkable )
+		{
+			return abs(_pointA->tilePosX - _pointB->tilePosX) + abs(_pointA->tilePosZ - _pointB->tilePosZ);
+		}
+
+		return INT_MAX;
 	}
 
 	std::vector<MapTile *> Terrain::GetPathFromTiles(MapTile * _startTile, MapTile * _endTile)
@@ -291,14 +296,14 @@ namespace piolot {
 
 		open_set.push_back(_startTile);
 
-		auto active_node = open_set[0];
-
 		bool path_found = false;
 
 		while ( !path_found && !open_set.empty())
 		{
 			int best_node_index = 0;
-			active_node = open_set[best_node_index];
+
+			MapTile* active_node = open_set[best_node_index];
+
 			for ( auto index = 0; index < open_set.size(); index++ )
 			{
 				if ( open_set[index]->navFCost < active_node->navFCost)
@@ -334,44 +339,47 @@ namespace piolot {
 				for (auto i : temp_path)
 				{
 					return_vector.push_back(i);
+					HighlightNode(i->tileIndexX, i->tileIndexZ);
 				}
 
 				return return_vector;
 
-			}else
+			}
+
+
+			for (auto i = 0 ; i < active_node->navNeighbourCount ; i++)
 			{
-				for (auto i = 0 ; i < active_node->navNeighbourCount ; i++)
+				// Check if the Neighbour has an obstacle or if it is in the closed list.
+				// Closed set contains Nodes/Tiles that we have no intention of looking up again.
+				if ( nullptr != active_node->navNeighbours[i] && !active_node->navNeighbours[i]->navObstacle && !active_node->navNeighbours[i]->navClosed)
 				{
-					// Check if the Neighbour has an obstacle.
-					if ( nullptr != active_node->navNeighbours[i] && !active_node->navNeighbours[i]->navObstacle)
-					{
-						const auto new_g = active_node->navGCost + active_node->navCost;
-						const auto new_f = new_g + HCost(active_node->navNeighbours[i], _endTile);
+					const auto new_g = active_node->navGCost + active_node->navCost;
+					const auto new_f = new_g + HCost(active_node->navNeighbours[i], _endTile);
 						
-						// Check if B is in the open list or closed list.
-						if ( active_node->navNeighbours[i]->navOpen || active_node->navNeighbours[i]->navClosed)
+					// Check if B is in the open list
+					if ( active_node->navNeighbours[i]->navOpen)
+					{
+						if ((active_node->navNeighbours[i]->navWalkable) && (new_f < active_node->navNeighbours[i]->navFCost))
 						{
-							if ((new_f < active_node->navNeighbours[i]->navFCost) && (active_node->navNeighbours[i]->navWalkable))
-							{
-								active_node->navNeighbours[i]->navGCost = new_g;
-								active_node->navNeighbours[i]->navFCost = new_f;
-								active_node->navNeighbours[i]->navParent = active_node;
-							}
-						}else
-						{
-							// If it is not in Open or Closed Sets, Add it to the open list.
 							active_node->navNeighbours[i]->navGCost = new_g;
 							active_node->navNeighbours[i]->navFCost = new_f;
 							active_node->navNeighbours[i]->navParent = active_node;
-							active_node->navNeighbours[i]->navOpen = true;
-							open_set.push_back(active_node->navNeighbours[i]);
 						}
-
+					} // If it doesn't exist in the Closed List as well.
+					else if (!active_node->navNeighbours[i]->navClosed)
+					{
+						// If it is not in Open or Closed Sets, Add it to the open list.
+						active_node->navNeighbours[i]->navGCost = new_g;
+						active_node->navNeighbours[i]->navFCost = new_f;
+						active_node->navNeighbours[i]->navParent = active_node;
+						active_node->navNeighbours[i]->navOpen = true;
+						open_set.push_back(active_node->navNeighbours[i]);
 					}
+
 				}
-				active_node->navClosed = true;
 			}
-			
+
+			active_node->navClosed = true;
 		}
 
 		// TODO: Further reading is required.

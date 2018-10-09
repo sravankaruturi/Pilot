@@ -195,7 +195,8 @@ namespace piolot {
 					entities.push_back(std::make_shared<Entity>("building_new", "Medieval_House/Medieval_House.obj", "good_test"));
 
 					Entity * last_entity = entities.back().get();
-					last_entity->SetScale(glm::vec3(1.0f / 128, 1.0f / 128, 1.0f / 128));
+					const float scaling_factor = 256.0f;
+					last_entity->SetScale(glm::vec3(1.0f / scaling_factor, 1.0f / scaling_factor, 1.0f / scaling_factor));
 					last_entity->SetPosition(testTerrain->GetTileFromIndices(target_node.x, target_node.y)->GetPosition());
 
 					// We then update the corresponding terrain nodes to not walkable.
@@ -338,11 +339,13 @@ namespace piolot {
 				auto start_tile = testTerrain->GetTileFromIndices(start_indices.x, start_indices.y);
 
 				// Look for the Next Node.
-				auto next_tile = path[0];
+				auto next_tile = path.back();
+
+				const auto speed = 1.f;
 
 				// Traverse the Distance b/w them * deltaTime. --> You complete the distance two nodes in 1 second.
 				glm::vec3 current_position = it->GetPosition();
-				glm::vec3 final_position = current_position + ((next_tile->GetPosition() - current_position) * _deltaTime * 0.25f);
+				glm::vec3 final_position = current_position + ((next_tile->GetPosition() - current_position) * _deltaTime * speed);
 
 				current_position.x = final_position.x;
 				current_position.z = final_position.z;
