@@ -150,15 +150,15 @@ namespace piolot {
 		glm::vec3 mouse_pointer_ray;
 
 		/* Ray Picking */
-		/* We would assume that Ray Picking works only in two instances of Viewport Style. 4 Viewports and 1 Viewport */
+		/* We would assume that Ray Picking works only in two instances of Viewport Style. 4 View ports and 1 Viewport */
 		{
 			float int_distance = 0;
 			float min_int_distance = 10000.0f;
 			// Do Ray Picking Here.
 			// For each Bounding Box, we check for the collision, and do what we want, as part of the Scene Update.
 
-			// We get the Camera Position and then move it according to the Viewports.
-			// We get the Size of the Viewport 0. We comapre that to the Size of the framebuffer.
+			// We get the Camera Position and then move it according to the View ports.
+			// We get the Size of the Viewport 0. We compare that to the Size of the frame buffer.
 
 			int viewport_size[4];
 			PE_GL(glGetIntegeri_v(GL_VIEWPORT, 0, viewport_size));
