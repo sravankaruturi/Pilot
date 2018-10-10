@@ -65,7 +65,8 @@ namespace piolot {
 
 		//entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
 		entities.push_back(std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test"));
-		entities[0]->SetScale(glm::vec3(1.0f / 128, 1.0f / 128, 1.f / 128));
+		const float building_scaling_factor = 256.0f;
+		entities[0]->SetScale(glm::vec3(1.0f / building_scaling_factor, 1.0f / building_scaling_factor, 1.0f / building_scaling_factor));
 
 		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
 		AnimatedEntity * animatedEntity = animatedEntities[0].get();
@@ -94,6 +95,10 @@ namespace piolot {
 
 		ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
 		ASMGR.objects.at("Medieval_House")->GetMeshes()[0]->textureNames.push_back("building_diffuse");
+
+		buildingPlacer = std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test");
+		//buildingPlacer->SetPosition(glm::vec3(0.0f));
+		buildingPlacer->SetScale(glm::vec3(1.0f / building_scaling_factor, 1.0f / building_scaling_factor, 1.0f / building_scaling_factor));
 
 	}
 
@@ -137,6 +142,8 @@ namespace piolot {
 			it->Update(_deltaTime);
 			it->PlayAnimation(_deltaTime, _totalTime);
 		}
+
+		buildingPlacer->Update(_deltaTime);
 
 		AnimatedEntity * animated_entitiy = animatedEntities[1].get();
 
@@ -184,24 +191,15 @@ namespace piolot {
 
 			}
 
-			if ( isPlacingMode )
+			// Draw the house wherever the mouse points, on the Terrain.
+			const glm::ivec2 target_node = testTerrain->pointedNodeIndices;
+			// Make sure that there are enough nodes around the pointed node.
+			if ( target_node.x < testTerrain->GetNodeCountX() - 1 && target_node.x > 1)
 			{
-				// Draw the house wherever the mouse points, on the Terrain.
-				glm::ivec2 target_node = testTerrain->pointedNodeIndices;
-
-				// Make sure that there are enough nodes around the pointed node.
-				if (!((target_node.x > testTerrain->GetNodeCountX() - 1 && target_node.x < 1) || (target_node.y > testTerrain->GetNodeCountZ() - 1 && target_node.y < 1))) {
-
-					tempEntities.push_back(std::make_unique<Entity>("building_temp", "Medieval_House/Medieval_House.obj", "good_test"));
-
-					auto temp_building = tempEntities.back().get();
-
-					const float scaling_factor = 256.0f;
-					temp_building->SetScale(glm::vec3(1.0f / scaling_factor, 1.0f / scaling_factor, 1.0f / scaling_factor));
-					temp_building->SetPosition(testTerrain->GetTileFromIndices(target_node.x, target_node.y)->GetPosition());
-
+				if ( target_node.y < testTerrain->GetNodeCountZ() - 1 && target_node.y > 1)
+				{
+					buildingPlacer->SetPosition(testTerrain->GetTileFromIndices(target_node.x, target_node.y)->GetPosition());
 				}
-
 			}
 
 			// #TODO: Create a separate fucntion called Add Building or something.
@@ -449,9 +447,13 @@ namespace piolot {
 			it->Render();
 		}
 
-		for (const auto& it: tempEntities)
+		/*for (const auto& it: tempEntities)
 		{
 			it->Render();
+		}*/
+		if ( isPlacingMode)
+		{
+			buildingPlacer->Render();
 		}
 
 		cameraRay.Render(ASMGR.shaders.at("axes"), red);
@@ -671,6 +673,9 @@ namespace piolot {
 			// Set the selected flag for the entity.
 			ImGui::BeginChild("Entities##List", ImVec2(200, 0), true);
 
+			ImGui::Separator();
+			ImGui::TextColored(ImVec4(1, 0, 0, 1), "Entities");
+
 			// Loop through all the Entities
 			for (auto& it : entities)
 			{
@@ -685,7 +690,24 @@ namespace piolot {
 
 			}
 
+			ImGui::Separator();
+			ImGui::TextColored(ImVec4(1, 0, 0, 1), "Animated Entities");
+
 			for (auto& it : animatedEntities) {
+				ImGui::PushID(&it);
+				if (ImGui::Selectable(it->GetEntityName().c_str(), (std::find(selectedEntities.begin(), selectedEntities.end(), it.get()) != selectedEntities.end())))
+				{
+					// It is already selected. If they click here, make sure that this is the only selected thing.
+					selectedEntities.clear();
+					selectedEntities.push_back(it.get());
+				}
+				ImGui::PopID();
+			}
+
+			ImGui::Separator();
+			ImGui::TextColored(ImVec4(1, 0, 0, 1), "Temporary Entities");
+			for ( auto& it: tempEntities)
+			{
 				ImGui::PushID(&it);
 				if (ImGui::Selectable(it->GetEntityName().c_str(), (std::find(selectedEntities.begin(), selectedEntities.end(), it.get()) != selectedEntities.end())))
 				{

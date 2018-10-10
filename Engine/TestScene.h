@@ -35,6 +35,11 @@ namespace piolot {
 		Grid testGrid;
 		std::shared_ptr<Terrain> testTerrain;
 
+		/**
+		 * \brief This would be a temporary entity that we draw when we are in the Placing Mode.
+		 */
+		std::unique_ptr<Entity> buildingPlacer;
+
 		glm::vec2 startxz;
 		glm::vec2 endxz;
 
