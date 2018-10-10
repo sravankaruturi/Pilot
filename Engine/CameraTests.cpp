@@ -1,4 +1,7 @@
 #pragma once
+
+#if DEBUG
+
 #include "Configurations.h"
 
 #if !DISABLE_UNIT_TESTS
@@ -120,5 +123,7 @@ TEST_F(CameraTests, CheckMouseRayDirection)
 	EXPECT_FLOAT_EQ(resultant_ray.z, -1);
 
 }
+
+#endif
 
 #endif

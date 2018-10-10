@@ -190,6 +190,12 @@ namespace piolot {
 
 		void ClearColours();
 
+		/**
+		 * \brief Get the Path from _startTile to _endTile
+		 * \param _startTile The Map Tile where you start
+		 * \param _endTile The Map Tile where you end
+		 * \return A Vector of Tile, the path to take.
+		 */
 		std::vector<MapTile *> GetPathFromTiles(MapTile * _startTile, MapTile * _endTile);
 		std::vector<MapTile *> GetPathFromPositions(glm::vec3, glm::vec3);
 
@@ -229,6 +235,8 @@ namespace piolot {
 		 * This is used in pathfinding.
 		 */
 		void GetMouseRayPoint(Ray _ray, float _granularity = 0.5f);
+
+		void SetTerrainNodeNotWalkable(glm::ivec2 _nodeIndices);
 
 	};
 

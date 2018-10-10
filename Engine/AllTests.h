@@ -1,5 +1,7 @@
 #pragma once
 
+#if DEBUG
+
 #include "AssetManager.h"
 #include "Window.h"
 #include <gtest/gtest.h>
@@ -48,3 +50,5 @@ public:
 	};
 
 };
+
+#endif

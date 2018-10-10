@@ -130,8 +130,8 @@ namespace piolot {
 				vertices[i * nodeCountZ + j] = TerrainVertexData();
 				vertices[i * nodeCountZ + j].position = glm::vec4(tiles[i][j].tilePosX, tiles[i][j].tilePosY, tiles[i][j].tilePosZ, 0.0f);
 				vertices[i * nodeCountZ + j].normal = glm::vec4();
-				vertices[i * nodeCountZ + j].colour = glm::vec4(green, 1.0f);
-				vertices[i * nodeCountZ + j].texCoord = glm::vec4(i * 0.4, j * 0.4, 0, 0);
+				vertices[i * nodeCountZ + j].colour = (tiles[i][j].navWalkable) ? glm::vec4(green, 1.0f) : glm::vec4(red, 1.0f);
+				vertices[i * nodeCountZ + j].texCoord = glm::vec4(i * 0.4, j * 0.4, 0.5, 0);
 			}
 		}
 
@@ -212,7 +212,6 @@ namespace piolot {
 		message += return_vec.y;
 		message += " )";
 
-		LOGGER.AddToLog(message, PE_LOG_INFO);
 		return_vec.x = glm::min(return_vec.x, (int)nodeCountX - 1);
 		return_vec.y = glm::min(return_vec.y, (int)nodeCountZ - 1);
 
@@ -237,10 +236,12 @@ namespace piolot {
 		for (auto i = 0; i < nodeCountX; i++) {
 			for (auto j = 0; j < nodeCountZ; j++) {
 
-				int index = std::distance( all_tile_sets.begin(), std::find(all_tile_sets.begin(), all_tile_sets.end(), tiles[i][j].navTileSet));
+				/*int index = std::distance( all_tile_sets.begin(), std::find(all_tile_sets.begin(), all_tile_sets.end(), tiles[i][j].navTileSet));
 
 				this->vertices[i * nodeCountZ + j].colour = glm::vec4( red * (float(index) / number_tile_sets), 0.0f);
-				this->vertices[i * nodeCountZ + j].texCoord.z = 0.0f;
+				this->vertices[i * nodeCountZ + j].texCoord.z = 0.5f;*/
+				vertices[i * nodeCountZ + j].colour = (tiles[i][j].navWalkable) ? glm::vec4(green, 1.0f) : glm::vec4(red, 1.0f);
+				this->vertices[i * nodeCountZ + j].texCoord.z = 0.5f;
 			}
 		}
 		areVerticesDirty = true;
@@ -249,7 +250,12 @@ namespace piolot {
 
 	float HCost(MapTile * _pointA, MapTile * _pointB)
 	{
-		return abs(_pointA->tilePosX - _pointB->tilePosX) + abs(_pointA->tilePosZ - _pointB->tilePosZ);
+		if ( _pointA->navWalkable && _pointB->navWalkable )
+		{
+			return abs(_pointA->tilePosX - _pointB->tilePosX) + abs(_pointA->tilePosZ - _pointB->tilePosZ);
+		}
+
+		return INT_MAX;
 	}
 
 	std::vector<MapTile *> Terrain::GetPathFromTiles(MapTile * _startTile, MapTile * _endTile)
@@ -262,12 +268,22 @@ namespace piolot {
 			return return_vector;
 		}
 
+		if (!_endTile->navWalkable) {
+			return return_vector;
+		}
+
+		// Make sure that they are not the same tiles.
+		if (_startTile == _endTile) {
+			return return_vector;
+		}
+
 		for ( auto i = 0 ; i < nodeCountX ; i++)
 		{
 			for ( auto j = 0 ; j < nodeCountZ; j++)
 			{
 				tiles[i][j].navFCost = tiles[i][j].navGCost = INT_MAX;
-				tiles[i][j].navOpen = tiles[i][j].navClosed = false;
+				tiles[i][j].navOpen = false;
+				tiles[i][j].navClosed = !tiles[i][j].navWalkable;
 			}
 		}
 
@@ -279,14 +295,14 @@ namespace piolot {
 
 		open_set.push_back(_startTile);
 
-		auto active_node = open_set[0];
-
 		bool path_found = false;
 
 		while ( !path_found && !open_set.empty())
 		{
 			int best_node_index = 0;
-			active_node = open_set[best_node_index];
+
+			MapTile* active_node = open_set[best_node_index];
+
 			for ( auto index = 0; index < open_set.size(); index++ )
 			{
 				if ( open_set[index]->navFCost < active_node->navFCost)
@@ -305,7 +321,7 @@ namespace piolot {
 			active_node->navOpen = false;
 			open_set.erase(open_set.begin() + best_node_index);
 
-			// TODO: Can we just check if they point to the same tile, since they are pointers..
+			// Can we just check if they point to the same tile, since they are pointers.. Apparently we cant
 			if (_endTile->tileIndexX == active_node->tileIndexX && _endTile->tileIndexZ == active_node->tileIndexZ)
 			{
 				// We have reached the target. Retrace our Path.
@@ -322,44 +338,47 @@ namespace piolot {
 				for (auto i : temp_path)
 				{
 					return_vector.push_back(i);
+					HighlightNode(i->tileIndexX, i->tileIndexZ);
 				}
 
 				return return_vector;
 
-			}else
+			}
+
+
+			for (auto i = 0 ; i < active_node->navNeighbourCount ; i++)
 			{
-				for (auto i = 0 ; i < active_node->navNeighbourCount ; i++)
+				// Check if the Neighbour has an obstacle or if it is in the closed list.
+				// Closed set contains Nodes/Tiles that we have no intention of looking up again.
+				if ( nullptr != active_node->navNeighbours[i] && !active_node->navNeighbours[i]->navObstacle && !active_node->navNeighbours[i]->navClosed)
 				{
-					// Check if the Neighbour has an obstacle.
-					if ( nullptr != active_node->navNeighbours[i] && !active_node->navNeighbours[i]->navObstacle)
-					{
-						const auto new_g = active_node->navGCost + active_node->navCost;
-						const auto new_f = new_g + HCost(active_node->navNeighbours[i], _endTile);
+					const auto new_g = active_node->navGCost + active_node->navCost;
+					const auto new_f = new_g + HCost(active_node->navNeighbours[i], _endTile);
 						
-						// Check if B is in the open list or closed list.
-						if ( active_node->navNeighbours[i]->navOpen || active_node->navNeighbours[i]->navClosed)
+					// Check if B is in the open list
+					if ( active_node->navNeighbours[i]->navOpen)
+					{
+						if ((active_node->navNeighbours[i]->navWalkable) && (new_f < active_node->navNeighbours[i]->navFCost))
 						{
-							if (new_f < active_node->navNeighbours[i]->navFCost)
-							{
-								active_node->navNeighbours[i]->navGCost = new_g;
-								active_node->navNeighbours[i]->navFCost = new_f;
-								active_node->navNeighbours[i]->navParent = active_node;
-							}
-						}else
-						{
-							// If it is not in Open or Closed Sets, Add it to the open list.
 							active_node->navNeighbours[i]->navGCost = new_g;
 							active_node->navNeighbours[i]->navFCost = new_f;
 							active_node->navNeighbours[i]->navParent = active_node;
-							active_node->navNeighbours[i]->navOpen = true;
-							open_set.push_back(active_node->navNeighbours[i]);
 						}
-
+					} // If it doesn't exist in the Closed List as well.
+					else if (!active_node->navNeighbours[i]->navClosed)
+					{
+						// If it is not in Open or Closed Sets, Add it to the open list.
+						active_node->navNeighbours[i]->navGCost = new_g;
+						active_node->navNeighbours[i]->navFCost = new_f;
+						active_node->navNeighbours[i]->navParent = active_node;
+						active_node->navNeighbours[i]->navOpen = true;
+						open_set.push_back(active_node->navNeighbours[i]);
 					}
+
 				}
-				active_node->navClosed = true;
 			}
-			
+
+			active_node->navClosed = true;
 		}
 
 		// TODO: Further reading is required.
@@ -423,7 +442,9 @@ namespace piolot {
 				variance /= float(tile.navNeighbourCount);
 
 				tile.navCost = (( variance > 0.9f ) ? (0.9f) : variance) + 0.1f;
-				tile.navWalkable = (tile.navCost < UNPASSABLE_NAV_COST_LIMIT );
+
+				// If it is set to be not navigable, the cost doesn't change that fact.
+				tile.navWalkable = (tile.navCost < UNPASSABLE_NAV_COST_LIMIT ) || tile.navWalkable;
 				tile.navTileSet = i * nodeCountZ + j;
 
 			}
@@ -664,6 +685,14 @@ namespace piolot {
 
 		pointedNodeIndices = closest_node;
 		this->HighlightNode(pointedNodeIndices.x, pointedNodeIndices.y);
+
+	}
+
+	void Terrain::SetTerrainNodeNotWalkable(glm::ivec2 _nodeIndices)
+	{
+
+		tiles[_nodeIndices.x][_nodeIndices.y].navWalkable = false;
+		areVerticesDirty = true;
 
 	}
 }

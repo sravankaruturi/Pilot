@@ -6,6 +6,9 @@
 
 namespace piolot
 {
+
+	class Terrain;
+
 	class Entity
 	{
 
@@ -132,6 +135,8 @@ namespace piolot
 		 * \param _in The Input Stream
 		 */
 		void LoadFromFile(std::ifstream& _in);
+
+		void SetInitialPosition(const glm::vec3& _position, Terrain * _terrain);
 
 		void SetPosition(const glm::vec3& _position)
 		{
