@@ -47,31 +47,6 @@ namespace piolot
 		}
 	}
 
-	//Mesh::Mesh(void * _dataPointer, size_t _dataStructureSize, unsigned int _vertexCount)
-	//{
-
-	//	PE_GL(glGenVertexArrays(1, &VAO));
-	//	PE_GL(glGenBuffers(1, &VBO));
-
-	//	usingIndexBuffer = false;
-	//	EBO = 0;
-	//	indexCount = 0;
-
-	//	vertexCount = _vertexCount;
-
-	//	PE_GL(glBindVertexArray(VAO));
-
-	//	PE_GL(glBindBuffer(GL_ARRAY_BUFFER, VBO));
-	//	PE_GL(glBufferData(GL_ARRAY_BUFFER, _dataStructureSize * _vertexCount, _dataPointer, GL_STATIC_DRAW));
-
-	//	for (auto i = 0; i < (_dataStructureSize) / (size_of_ints_per_input_vec * sizeof(float)); i++)
-	//	{
-	//		PE_GL(glVertexAttribPointer(i, size_of_ints_per_input_vec, GL_FLOAT, GL_FALSE, (_dataStructureSize), (void *)(size_of_ints_per_input_vec * i * sizeof(float))));
-	//		PE_GL(glEnableVertexAttribArray(i));
-	//		vertexAttribCounter += 1;
-	//	}
-	//}
-
 	Mesh::Mesh(void* _dataPointer, size_t _dataStructureSize, unsigned _vertexCount, std::vector<unsigned> _indices)
 	{
 

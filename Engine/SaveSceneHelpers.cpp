@@ -32,7 +32,7 @@ namespace pe_helpers {
 
 		_output.resize(string_length);
 
-		delete temp_char_string;
+		delete[] temp_char_string;
 
 	}
 

@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include <memory>
-#include <map>
+#include <unordered_map>
 
 #include "Camera.h"
 #include "Entity.h"
@@ -16,13 +16,35 @@ namespace piolot {
 
 	protected:
 
+		/**
+		 * \brief The Shared Pointer for the Window.
+		 */
 		std::shared_ptr<Window> window;
 
+		/**
+		 * \brief The Camera that is currently Active.
+		 */
 		std::shared_ptr<Camera> activeCamera;
 
-		std::map<std::string, std::shared_ptr<Camera>> cameras;
+		/**
+		 * \brief The Map of all the Cameras that are currently in the Scene.
+		 * 
+		 * We use Unordered Map because when we disable the UI, we have a slight performance benefit for the UnOrdered Map. This is definitely worse when you have the UI Enabled.
+		 */
+		std::unordered_map<std::string, std::shared_ptr<Camera>> cameras;
 
-		std::vector<std::shared_ptr<Entity>> entities;
+		/**
+		 * \brief All the Entities.
+		 * 
+		 * The Scene owns them. When you delete the Scene, the entities are deleted.
+		 */
+		std::vector<std::unique_ptr<Entity>> entities;
+
+		/**
+		 * \brief All the Entities with Animations.
+		 * 
+		 * The Scene owns them. When you delete the Scene, the entities are deleted.
+		 */
 		std::vector<std::unique_ptr<AnimatedEntity>> animatedEntities;
 
 		/**
@@ -32,27 +54,73 @@ namespace piolot {
 		 */
 		std::vector<Entity *> selectedEntities;
 
+		/**
+		 * \brief Raw Pointers to the Temporary Entities.
+		 * 
+		 * These entities are cleared every frame, after they are drawn.
+		 */
+		std::vector<std::unique_ptr<Entity>> tempEntities;
+
+		/**
+		 * \brief Total time since the Window Opened.
+		 * 
+		 * Populated by using glfwgettime() function.
+		 * @see https://www.glfw.org/docs/3.0/group__time.html
+		 */
 		float totalTime;
+
+		/**
+		 * \brief The time elapsed since the last frame.
+		 */
 		float deltaTime;
 
 	public:
 
 		explicit Scene(std::shared_ptr<Window> _window);
-		~Scene() = default;
+		virtual ~Scene() = default;
 
-		virtual void InitEntities() {};
+		/**
+		 *  \defgroup Virtual functions that are supposed to be overwritten.
+		 *  @{
+		 **/
+
+		/**
+		 * \brief Function to be overwritten to Initialize the Entities
+		 */
+		virtual void InitEntities() = 0;
 
 		virtual void OnUpdate(float _deltaTime, float _totalTime) {
 			deltaTime = _deltaTime;
 			totalTime = _totalTime;
+
+			tempEntities.clear();
 		}
 
-		virtual void OnRender() {}
+		virtual void OnRender() = 0;
 
-		virtual void OnImguiRender() {}
+		/**
+		 * \brief Render the ImGUI Stuff
+		 * 
+		 * This can be completely overwritten and ignored and doesn't have to be implemented.
+		 */
+		virtual void OnImguiRender(){}
 
-		std::shared_ptr<piolot::Camera> ActiveCamera() const { return activeCamera; }
-		void ActiveCamera(std::shared_ptr<piolot::Camera> val) { activeCamera = val; }
+		/**
+		 *@}
+		**/
+
+		/**
+		* \brief Activate the passed Camera.
+		* \param val The Camera to Activate
+		**/
+		void ActivateCamera(std::shared_ptr<Camera> _val) { activeCamera = _val; }
+
+		/**
+		 * \brief Get the ActiveCamera
+		 * \return Returns a pointer to the Current Active Camera
+		 */
+		std::shared_ptr<Camera> GetActiveCamera() const { return activeCamera; }
+		
 	};
 
 	inline Scene::Scene(std::shared_ptr<Window> _window)

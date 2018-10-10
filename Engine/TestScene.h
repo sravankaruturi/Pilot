@@ -35,6 +35,11 @@ namespace piolot {
 		Grid testGrid;
 		std::shared_ptr<Terrain> testTerrain;
 
+		/**
+		 * \brief This would be a temporary entity that we draw when we are in the Placing Mode.
+		 */
+		std::unique_ptr<Entity> buildingPlacer;
+
 		glm::vec2 startxz;
 		glm::vec2 endxz;
 
@@ -64,6 +69,8 @@ namespace piolot {
 		bool displayAddEntity = false;
 		bool displayStats = true;
 
+		bool isPlacingMode = false;
+
 		// GUI Variables when you create a new Entity.
 
 		std::string objName;
@@ -79,12 +86,24 @@ namespace piolot {
 		explicit TestScene(std::shared_ptr<Window> _window);
 		~TestScene() = default;
 
+		/**
+		 * \brief Initialize all the Entities that shall be present in the Scene when it loads.
+		 */
 		void InitEntities() override;
 
-		virtual void OnUpdate(float _deltaTime, float _totalTime) override;
+		/**
+		 * \brief Update the program by one frame.
+		 * \param _deltaTime The Time from between the last frame and this frame
+		 * \param _totalTime The Total Time since the Program started
+		 */
+		void OnUpdate(float _deltaTime, float _totalTime) override;
 
-		virtual void OnRender() override;
+		void OnRender() override;
 
+		/**
+		 * \brief Render the ImGUI's current Frame.
+		 * \param _vars The Variables that ImGui modifies and might need, to perform its functions
+		 */
 		virtual void OnImguiRender(ImGuiControlVariables& _vars);
 
 		/**
@@ -93,6 +112,10 @@ namespace piolot {
 		 */
 		void SaveScene(const char * _fileName);
 
+		/**
+		 * \brief Load the Scene from the binary file.
+		 * \param _fileName The Filename to load. As specific as you can get, with the extension.
+		 */
 		void LoadScene(const char * _fileName);
 
 	};
