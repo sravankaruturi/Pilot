@@ -81,12 +81,24 @@ namespace piolot {
 		explicit TestScene(std::shared_ptr<Window> _window);
 		~TestScene() = default;
 
+		/**
+		 * \brief Initialize all the Entities that shall be present in the Scene when it loads.
+		 */
 		void InitEntities() override;
 
+		/**
+		 * \brief Update the program by one frame.
+		 * \param _deltaTime The Time from between the last frame and this frame
+		 * \param _totalTime The Total Time since the Program started
+		 */
 		void OnUpdate(float _deltaTime, float _totalTime) override;
 
 		void OnRender() override;
 
+		/**
+		 * \brief Render the ImGUI's current Frame.
+		 * \param _vars The Variables that ImGui modifies and might need, to perform its functions
+		 */
 		virtual void OnImguiRender(ImGuiControlVariables& _vars);
 
 		/**
@@ -95,6 +107,10 @@ namespace piolot {
 		 */
 		void SaveScene(const char * _fileName);
 
+		/**
+		 * \brief Load the Scene from the binary file.
+		 * \param _fileName The Filename to load. As specific as you can get, with the extension.
+		 */
 		void LoadScene(const char * _fileName);
 
 	};

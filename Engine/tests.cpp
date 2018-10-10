@@ -89,27 +89,27 @@ int main(int argc, char ** argv)
 				// Try Letting Imgui Handle the Inputs for Now.. We need to change this..
 				if (window->IsKeyPressedOrHeld(GLFW_KEY_W))
 				{
-					test_scene.ActiveCamera()->ProcessKeyboard(piolot::Camera::forward, delta_time);
+					test_scene.GetActiveCamera()->ProcessKeyboard(piolot::Camera::forward, delta_time);
 				}
 
 				if (window->IsKeyPressedOrHeld(GLFW_KEY_S))
 				{
-					test_scene.ActiveCamera()->ProcessKeyboard(piolot::Camera::back, delta_time);
+					test_scene.GetActiveCamera()->ProcessKeyboard(piolot::Camera::back, delta_time);
 				}
 
 				if (window->IsKeyPressedOrHeld(GLFW_KEY_A))
 				{
-					test_scene.ActiveCamera()->ProcessKeyboard(piolot::Camera::leftside, delta_time);
+					test_scene.GetActiveCamera()->ProcessKeyboard(piolot::Camera::leftside, delta_time);
 				}
 
 				if (window->IsKeyPressedOrHeld(GLFW_KEY_D))
 				{
-					test_scene.ActiveCamera()->ProcessKeyboard(piolot::Camera::rightside, delta_time);
+					test_scene.GetActiveCamera()->ProcessKeyboard(piolot::Camera::rightside, delta_time);
 				}
 
 				if (window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1))
 				{
-					test_scene.ActiveCamera()->ProcessMouseMovement(window->mouseOffsetX, window->mouseOffsetY);
+					test_scene.GetActiveCamera()->ProcessMouseMovement(window->mouseOffsetX, window->mouseOffsetY);
 				}
 
 				if (window->IsKeyPressedAndReleased(GLFW_KEY_SPACE))

@@ -61,10 +61,10 @@ namespace piolot {
 		cameras.insert_or_assign("First", std::make_shared<Camera>("First", glm::vec3(0, 5, 10), glm::vec3(0.5, -0.5, -0.5), glm::vec3(0, 1, 0)));
 		cameras.insert_or_assign("Second", std::make_shared<Camera>("Second", glm::vec3(10, 5, 10), glm::vec3(-0.5, -0.5, -0.5), glm::vec3(0, 1, 0)));
 
-		ActiveCamera(cameras.at("First"));
+		ActivateCamera(cameras.at("First"));
 
 		//entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
-		entities.push_back(std::make_shared<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test"));
+		entities.push_back(std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test"));
 		entities[0]->SetScale(glm::vec3(1.0f / 128, 1.0f / 128, 1.f / 128));
 
 		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
@@ -104,7 +104,7 @@ namespace piolot {
 
 		if (window->IsKeyPressedOrHeld(GLFW_KEY_C))
 		{
-			ActiveCamera(cameras.at("Second"));
+			ActivateCamera(cameras.at("Second"));
 			viewportsDetails[0].camera = activeCamera;
 		}
 
@@ -212,7 +212,7 @@ namespace piolot {
 				// Make sure that there are enough nodes around the pointed node.
 				if (!((target_node.x > testTerrain->GetNodeCountX() - 1 && target_node.x < 1) || (target_node.y > testTerrain->GetNodeCountZ() - 1 && target_node.y < 1))) {
 
-					entities.push_back(std::make_shared<Entity>("building_new", "Medieval_House/Medieval_House.obj", "good_test"));
+					entities.push_back(std::make_unique<Entity>("building_new", "Medieval_House/Medieval_House.obj", "good_test"));
 
 					Entity * last_entity = entities.back().get();
 					const float scaling_factor = 256.0f;
@@ -241,7 +241,7 @@ namespace piolot {
 			}
 
 			// Loop through all Entities that can be selected.
-			for (auto it : entities)
+			for (auto& it : entities)
 			{
 				if ((window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1)) && (it->CheckIfMouseOvered(ray_start, mouse_pointer_ray, min_int_distance)))
 				{
@@ -871,16 +871,17 @@ namespace piolot {
 
 			if (ImGui::Button("Create"))
 			{
-				std::shared_ptr<Entity> new_ent = std::make_shared<Entity>();
-
 				// Make sure that you have selected and stored the strings.
 				PE_ASSERT(!objName.empty());
 				PE_ASSERT(!shaderName.empty());
 
+				entities.push_back(std::make_unique<Entity>());
+
+				Entity * new_ent = entities.back().get();
+
 				new_ent->SetObjectName(objName);
 				new_ent->SetShaderName(shaderName);
-
-				entities.push_back(new_ent);
+				
 			}
 
 			ImGui::End();
@@ -1015,7 +1016,7 @@ namespace piolot {
 			// Save all the Entities.
 			int number_of_entities = entities.size();
 			out.write((char*)&number_of_entities, sizeof(int));
-			for (auto it : entities) {
+			for (auto& it : entities) {
 				it->SaveToFile(out);
 			}
 
@@ -1081,12 +1082,11 @@ namespace piolot {
 			pe_helpers::read_strings(entity_header_string, in);
 			in.read((char*)&number_of_entities, sizeof(int));
 			entities.clear();
+
 			for (auto i = 0; i < number_of_entities; i++) {
 
-				std::shared_ptr<Entity> ent = std::make_shared<Entity>();
-				ent->LoadFromFile(in);
-
-				entities.push_back(ent);
+				entities.push_back(std::make_unique<Entity>());
+				entities.back()->LoadFromFile(in);
 
 			}
 
