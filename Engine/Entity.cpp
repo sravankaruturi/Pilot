@@ -24,6 +24,8 @@ namespace piolot
 
 		_out.write((char*)&selectedInScene, sizeof(bool));
 		_out.write((char*)&position, sizeof(position));
+		_out.write((char*)&rotation, sizeof(rotation));
+		_out.write((char*)&scale, sizeof(scale));
 
 	}
 
@@ -45,6 +47,8 @@ namespace piolot
 
 		_in.read((char*)&selectedInScene, sizeof(bool));
 		_in.read((char*)&position, sizeof(position));
+		_in.read((char*)&rotation, sizeof(rotation));
+		_in.read((char*)&scale, sizeof(scale));
 
 	}
 

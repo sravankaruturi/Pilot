@@ -212,7 +212,6 @@ namespace piolot {
 		message += return_vec.y;
 		message += " )";
 
-		LOGGER.AddToLog(message, PE_LOG_INFO);
 		return_vec.x = glm::min(return_vec.x, (int)nodeCountX - 1);
 		return_vec.y = glm::min(return_vec.y, (int)nodeCountZ - 1);
 

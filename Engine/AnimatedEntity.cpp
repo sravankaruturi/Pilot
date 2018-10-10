@@ -2,6 +2,8 @@
 #include "AssetManager.h"
 #include "Object.h"
 
+#include <fstream>
+
 namespace piolot {
 
 
@@ -52,5 +54,39 @@ namespace piolot {
 
 		Entity::Render();
 
+	}
+
+	void AnimatedEntity::SaveToFile(std::ofstream& _out)
+	{
+		// We store the base entity first.
+		Entity::SaveToFile(_out);
+
+		// Now We store the Bone Matrices
+		// Store the number of Bone Matrices
+		int number_of_bone_matrices = boneMatrices.size();
+		_out.write((char*)&number_of_bone_matrices, sizeof(int));
+		for ( int i = 0 ; i < number_of_bone_matrices ; i++)
+		{
+			_out.write((char*)&(boneMatrices[i]), sizeof(glm::mat4));
+		}
+
+		_out.write((char*)&animationTotalTime, sizeof(float));
+	}
+
+	void AnimatedEntity::LoadFromFile(std::ifstream& _in)
+	{
+
+		// We load the base entity first.
+		Entity::LoadFromFile(_in);
+		int number_of_bone_matrices = 0;
+		_in.read((char*)&number_of_bone_matrices, sizeof(number_of_bone_matrices));
+		boneMatrices.clear();
+		boneMatrices.resize(number_of_bone_matrices);
+		for ( int i = 0 ; i < number_of_bone_matrices ; i++)
+		{
+			_in.read((char*)&(boneMatrices[i]), sizeof(glm::mat4));
+		}
+
+		_in.read((char*)&animationTotalTime, sizeof(float));
 	}
 }

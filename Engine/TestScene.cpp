@@ -1009,6 +1009,12 @@ namespace piolot {
 				it.second->SaveToStream(out);
 			}
 
+			// Store the Viewport Details.
+			for (auto i = 0; i < 4; i++) {
+				out.write((char*)(&(viewportsDetails[i].isOrthogonal)), sizeof(bool));
+				pe_helpers::store_strings(viewportsDetails[i].camera->GetCameraName(), out);
+			}
+
 			// Store the Terrain
 			testTerrain->SaveToFile(out);
 
@@ -1020,10 +1026,13 @@ namespace piolot {
 				it->SaveToFile(out);
 			}
 
-			// Store the Viewport Details.
-			for (auto i = 0; i < 4; i++) {
-				out.write((char*)(&(viewportsDetails[i].isOrthogonal)), sizeof(bool));
-				pe_helpers::store_strings(viewportsDetails[i].camera->GetCameraName(), out);
+
+			// Save all the Animated Entities
+			pe_helpers::store_strings("Animated Entities", out);
+			number_of_entities = animatedEntities.size();
+			out.write((char*)&number_of_entities, sizeof(int));
+			for (auto& it : animatedEntities) {
+				it->SaveToFile(out);
 			}
 
 		}
@@ -1056,37 +1065,20 @@ namespace piolot {
 
 			for (auto i = 0; i < number_of_cameras; i++) {
 
-				std::string camera_index;
+				std::string camera_key;
 
 				std::shared_ptr<Camera> cam = std::make_shared<Camera>();
 
-				pe_helpers::read_strings(camera_index, in);
+				pe_helpers::read_strings(camera_key, in);
 
 				cam->LoadFromStream(in);
 
-				cameras.insert_or_assign(camera_index, cam);
+				cameras.insert_or_assign(camera_key, cam);
 
 				if (nullptr == activeCamera) {
 					activeCamera = cam;
 					viewportsDetails[0].camera = activeCamera;
 				}
-
-			}
-
-			// Load the Terrain
-			ASMGR.objects.erase("terrain");
-			testTerrain->LoadFromFile(in);
-
-			int number_of_entities = 0;
-			std::string entity_header_string;
-			pe_helpers::read_strings(entity_header_string, in);
-			in.read((char*)&number_of_entities, sizeof(int));
-			entities.clear();
-
-			for (auto i = 0; i < number_of_entities; i++) {
-
-				entities.push_back(std::make_unique<Entity>());
-				entities.back()->LoadFromFile(in);
 
 			}
 
@@ -1098,6 +1090,35 @@ namespace piolot {
 				viewportsDetails[i].camera = cameras.at(camera_name);
 			}
 
+			// Load the Terrain
+			ASMGR.objects.erase("terrain");
+			testTerrain->LoadFromFile(in);
+
+			int number_of_entities = 0;
+			std::string entity_header_string;
+			pe_helpers::read_strings(entity_header_string, in);
+			in.read((char*)&number_of_entities, sizeof(int));
+			entities.clear();
+			entities.resize(number_of_entities);
+			for (auto i = 0; i < number_of_entities; i++) {
+
+				entities[i] = (std::make_unique<Entity>());
+				entities[i]->LoadFromFile(in);
+
+			}
+
+			// Load all the animated Entities.
+			pe_helpers::read_strings(entity_header_string, in);
+			in.read((char*)&number_of_entities, sizeof(int));
+			animatedEntities.clear();
+			animatedEntities.resize(number_of_entities);
+
+			for (auto i = 0; i < number_of_entities; i++) {
+
+				animatedEntities[i] = (std::make_unique<AnimatedEntity>());
+				animatedEntities[i]->LoadFromFile(in);
+
+			}
 		}
 
 		in.close();
