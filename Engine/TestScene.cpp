@@ -194,9 +194,9 @@ namespace piolot {
 			// Draw the house wherever the mouse points, on the Terrain.
 			const glm::ivec2 target_node = testTerrain->pointedNodeIndices;
 			// Make sure that there are enough nodes around the pointed node.
-			if ( target_node.x < testTerrain->GetNodeCountX() - 1 && target_node.x > 1)
+			if ( target_node.x < testTerrain->GetNodeCountX() - 1 && target_node.x >= 1)
 			{
-				if ( target_node.y < testTerrain->GetNodeCountZ() - 1 && target_node.y > 1)
+				if ( target_node.y < testTerrain->GetNodeCountZ() - 1 && target_node.y >= 1)
 				{
 					buildingPlacer->SetPosition(testTerrain->GetTileFromIndices(target_node.x, target_node.y)->GetPosition());
 				}
