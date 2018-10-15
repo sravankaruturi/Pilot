@@ -365,10 +365,20 @@ namespace piolot {
 				glm::vec3 current_position = it->GetPosition();
 				glm::vec3 final_position = current_position + ((next_tile->GetPosition() - current_position) * _deltaTime * speed);
 
+				// Get the Rotation, about, y ,axis, with both the nodes.
+				// Get the Vector, Target Node - Current Node.
+				// The Inverse of Dot Product b/w that and X Axis, should be the angle?
+				glm::vec3 target_direction = glm::normalize(final_position - current_position);
+				glm::vec3 x_axis = glm::vec3(0, 0, 1);
+
+				glm::vec3 rotation = it->GetRotation();
+				rotation.y = (target_direction.x > 0) ?  glm::degrees(glm::acos(glm::dot(target_direction, x_axis))) : (360 - glm::degrees(glm::acos(glm::dot(target_direction, x_axis))));
+
 				current_position.x = final_position.x;
 				current_position.z = final_position.z;
 
 				it->SetPosition(current_position);
+				it->SetRotation(rotation);
 
 			}
 			else if (totalTimeCounterForPathing > 1.0f) {
