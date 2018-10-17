@@ -150,6 +150,7 @@
     <ClCompile Include="TerrainTests.cpp" />
     <ClCompile Include="tests.cpp" />
     <ClCompile Include="TestScene.cpp" />
+    <ClCompile Include="TestSceneUtils.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
