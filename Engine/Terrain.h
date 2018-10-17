@@ -188,6 +188,8 @@ namespace piolot {
 
 		void HighlightNode(const unsigned int _x, const unsigned int _z);
 
+		bool CanPlaceHere(unsigned int _x, unsigned int _z);
+
 		void ClearColours();
 
 		/**

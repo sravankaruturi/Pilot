@@ -96,9 +96,11 @@ namespace piolot {
 		ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
 		ASMGR.objects.at("Medieval_House")->GetMeshes()[0]->textureNames.push_back("building_diffuse");
 
-		buildingPlacer = std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test");
+		buildingPlacer = std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "buildingPlacer");
 		//buildingPlacer->SetPosition(glm::vec3(0.0f));
-		buildingPlacer->SetScale(glm::vec3(1.0f / building_scaling_factor, 1.0f / building_scaling_factor, 1.0f / building_scaling_factor));
+		buildingPlacer->SetScale(glm::vec3(1.0f / building_scaling_factor, 1.0f / building_scaling_factor, 1.0f / building_scaling_factor) * 1.01f);
+		ASMGR.shaders.at("buildingPlacer")->use();
+		ASMGR.shaders.at("buildingPlacer")->setVec4("u_Colour0", 0, 1, 0, 1);
 
 	}
 
@@ -193,17 +195,19 @@ namespace piolot {
 
 			// Draw the house wherever the mouse points, on the Terrain.
 			const glm::ivec2 target_node = testTerrain->pointedNodeIndices;
-			// Make sure that there are enough nodes around the pointed node.
-			if ( target_node.x < testTerrain->GetNodeCountX() - 1 && target_node.x >= 1)
-			{
-				if ( target_node.y < testTerrain->GetNodeCountZ() - 1 && target_node.y >= 1)
-				{
-					buildingPlacer->SetPosition(testTerrain->GetTileFromIndices(target_node.x, target_node.y)->GetPosition());
-				}
-			}
+
+			// Check if you can place the building there.
+			bool test_can_place = testTerrain->CanPlaceHere(target_node.x, target_node.y);
+
+			const MapTile * current_tile = testTerrain->GetTileFromIndices(target_node.x, target_node.y);
+			buildingPlacer->SetPosition(current_tile->GetPosition());
+
+			ASMGR.shaders.at("buildingPlacer")->use();
+			ASMGR.shaders.at("buildingPlacer")->setVec4("u_Colour0", glm::vec4((test_can_place) ? green : red, 1.0f));
+
 
 			// #TODO: Create a separate fucntion called Add Building or something.
-			if (window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1) && isPlacingMode) {
+			if (window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1) && isPlacingMode && test_can_place) {
 
 				glm::ivec2 target_node = testTerrain->pointedNodeIndices;
 

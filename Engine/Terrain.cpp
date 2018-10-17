@@ -227,6 +227,47 @@ namespace piolot {
 
 	}
 
+	bool Terrain::CanPlaceHere(unsigned _x, unsigned _z)
+	{
+
+		if (_x < nodeCountX - 1 && _x >= 1)
+		{
+			if (_z < nodeCountZ - 1 && _z >= 1)
+			{
+				MapTile * current_tile = GetTileFromIndices(_x, _z);
+
+				MapTile * neighbours[8];
+
+				neighbours[0] = GetTileFromIndices(_x - 1, _z);
+				neighbours[1] = GetTileFromIndices(_x - 1, _z - 1);
+				neighbours[2] = GetTileFromIndices(_x - 1, _z + 1);
+				
+				neighbours[3] = GetTileFromIndices(_x + 1, _z);
+				neighbours[4] = GetTileFromIndices(_x + 1, _z + 1);
+				neighbours[5] = GetTileFromIndices(_x + 1, _z - 1);
+												   
+				neighbours[6] = GetTileFromIndices(_x, _z + 1);
+				neighbours[7] = GetTileFromIndices(_x, _z - 1);
+
+				bool colour_red = false;
+
+				// i , line number to make sure.
+				for (int i221 = 0; i221 < 8; i221++)
+				{
+					colour_red |= neighbours[i221]->navObstacle;
+				}
+
+				colour_red |= current_tile->navObstacle;
+
+				return !colour_red;
+
+			}
+		}
+
+		return false;
+
+	}
+
 	void Terrain::ClearColours()
 	{
 
@@ -416,6 +457,17 @@ namespace piolot {
 
 	MapTile* Terrain::GetTileFromIndices(int _x, int _y)
 	{
+
+		if ( _x > nodeCountX || _x < 0)
+		{
+			_x = 0;
+		}
+
+		if ( _y > nodeCountZ || _y < 0)
+		{
+			_y = 0;
+		}
+
 		return &tiles[_x][_y];
 	}
 
