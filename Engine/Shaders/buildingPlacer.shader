@@ -28,5 +28,5 @@ uniform vec4 u_Colour0;
 
 void main()
 {
-	FragColour = mix(texture(u_Texture0, texCoord), u_Colour0, 0.5);
+	FragColour = mix(texture(u_Texture0, texCoord), u_Colour0, 0.3);
 }
