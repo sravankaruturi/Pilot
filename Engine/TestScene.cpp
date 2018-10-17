@@ -120,7 +120,7 @@ namespace piolot {
 		}
 
 		// Reset the Obstacle flag for all the terrain tiles here.
-		testTerrain->ResetObstacles();
+		// testTerrain->ResetObstacles();
 
 		// I can update all the Positions here.
 		glm::vec3 temp_position{};

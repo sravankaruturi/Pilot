@@ -240,7 +240,7 @@ namespace piolot {
 
 				this->vertices[i * nodeCountZ + j].colour = glm::vec4( red * (float(index) / number_tile_sets), 0.0f);
 				this->vertices[i * nodeCountZ + j].texCoord.z = 0.5f;*/
-				vertices[i * nodeCountZ + j].colour = (tiles[i][j].navWalkable) ? glm::vec4(green, 1.0f) : glm::vec4(red, 1.0f);
+				vertices[i * nodeCountZ + j].colour = (tiles[i][j].navWalkable && !tiles[i][j].navObstacle) ? glm::vec4(green, 1.0f) : glm::vec4(red, 1.0f);
 				this->vertices[i * nodeCountZ + j].texCoord.z = 0.5f;
 			}
 		}
@@ -691,7 +691,7 @@ namespace piolot {
 	void Terrain::SetTerrainNodeObstacle(glm::ivec2 _nodeIndices)
 	{
 
-		tiles[_nodeIndices.x][_nodeIndices.y].navWalkable = false;
+		tiles[_nodeIndices.x][_nodeIndices.y].navObstacle = true;
 		areVerticesDirty = true;
 
 	}
