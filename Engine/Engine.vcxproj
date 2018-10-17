@@ -144,6 +144,7 @@
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="CameraTests.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="ScreenQuad.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="SaveSceneHelpers.cpp" />
     <ClCompile Include="Terrain.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PE_GL.h" />
+    <ClInclude Include="ScreenQuad.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="SaveSceneHelpers.h" />
     <ClInclude Include="Scene.h" />
@@ -198,6 +200,7 @@
     <None Include="Shaders\failing_test.vert" />
     <None Include="Shaders\good_test.frag" />
     <None Include="Shaders\good_test.vert" />
+    <None Include="Shaders\screenQuad.shader" />
     <None Include="Shaders\terrain.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

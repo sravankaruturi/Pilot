@@ -164,7 +164,16 @@ namespace piolot
 
 		Entity() = default;
 
-		Entity(const std::string& _entityName, const std::string& _objectPath, const std::string& _shaderName, glm::vec3 _boundingBoxLeast = glm::vec3( -1, -1, -1 ), glm::vec3 _boundingBoxHighest = glm::vec3( 1, 1, 1 ));
+		/**
+		 * \brief Create an Entity based on the Object and the Shader
+		 * \param _entityName The Name of the Entity you want to create.
+		 * \param _objectPath The Name of the Object you want to Use.
+		 * \param _shaderName The Shader Name you want to use.
+		 * \param _boundingBoxLeast The least vertex of the Bounding Box.
+		 * \param _boundingBoxHigh The highest Vertex of the Bounding Box.
+		 */
+		Entity(const std::string& _entityName, const std::string& _objectPath, const std::string& _shaderName, glm::vec3 _boundingBoxLeast = glm::vec3( -1, -1, -1 ), glm::vec3
+		       _boundingBoxHigh = glm::vec3( 1, 1, 1 ));
 		~Entity() = default;
 
 		void Update(float _deltaTime);

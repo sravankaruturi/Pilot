@@ -4,6 +4,8 @@
 #include "Grid.h"
 #include "Terrain.h"
 
+#include "ScreenQuad.h"
+
 namespace piolot {
 	
 	struct ImGuiControlVariables
@@ -84,7 +86,7 @@ namespace piolot {
 		 */
 		glm::mat4 projectionMatrix;
 		
-
+		std::unique_ptr<ScreenQuad> quad1;
 
 	public:
 

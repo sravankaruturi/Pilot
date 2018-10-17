@@ -6,13 +6,11 @@
 #include "Colours.h"
 #include "Configurations.h"
 
-#include <fstream>
-
 #if ENABLE_GUI
 #include "../EngineDeps/external_files/ImGUI/imgui.h"
 #endif
 
-#include "SaveSceneHelpers.h"
+
 
 #define		NAME_LENGTH_TO_FILE		20
 
@@ -64,9 +62,9 @@ namespace piolot {
 		ActivateCamera(cameras.at("First"));
 
 		//entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
-		entities.push_back(std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test"));
+		//entities.push_back(std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test"));
 		const float building_scaling_factor = 256.0f;
-		entities[0]->SetScale(glm::vec3(1.0f / building_scaling_factor, 1.0f / building_scaling_factor, 1.0f / building_scaling_factor));
+		//entities[0]->SetScale(glm::vec3(1.0f / building_scaling_factor, 1.0f / building_scaling_factor, 1.0f / building_scaling_factor));
 
 		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
 		AnimatedEntity * animatedEntity = animatedEntities[0].get();
@@ -94,13 +92,15 @@ namespace piolot {
 		}
 
 		ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
-		ASMGR.objects.at("Medieval_House")->GetMeshes()[0]->textureNames.push_back("building_diffuse");
+		//ASMGR.objects.at("Medieval_House")->GetMeshes()[0]->textureNames.push_back("building_diffuse");
 
 		buildingPlacer = std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "buildingPlacer");
 		//buildingPlacer->SetPosition(glm::vec3(0.0f));
 		buildingPlacer->SetScale(glm::vec3(1.0f / building_scaling_factor, 1.0f / building_scaling_factor, 1.0f / building_scaling_factor) * 1.01f);
 		ASMGR.shaders.at("buildingPlacer")->use();
 		ASMGR.shaders.at("buildingPlacer")->setVec4("u_Colour0", 0, 1, 0, 1);
+
+		quad1 = std::make_unique<ScreenQuad>("Testing Label", 0, 0);
 
 	}
 
@@ -144,6 +144,8 @@ namespace piolot {
 			it->Update(_deltaTime);
 			it->PlayAnimation(_deltaTime, _totalTime);
 		}
+
+		quad1->Update(_deltaTime);
 
 		buildingPlacer->Update(_deltaTime);
 
@@ -284,6 +286,8 @@ namespace piolot {
 			it->Render();
 		}
 
+		quad1->Render();
+
 		/*for (const auto& it: tempEntities)
 		{
 			it->Render();
@@ -298,155 +302,6 @@ namespace piolot {
 		testTerrain->Render();
 
 		//testGrid.Render();
-
-	}
-
-	
-
-	// TODO: This is Broken. Fix this. This doesn't save the Animation Data.
-	void TestScene::SaveScene(const char * _fileName)
-	{
-
-		std::string test_string = std::string(SCENES_FOLDER) + std::string(_fileName);
-		const char * actual_file_name = (test_string).c_str();
-
-		std::ofstream out(actual_file_name, std::ios::binary);
-
-		if (out.good()) {
-
-			// Save all the Stuff.
-
-			// Start by saving all the GUI bools and see if it is working.
-			out.write((char *)&pathingDebugWindow, sizeof(bool));
-			out.write((char *)&displayAssetManagerWindow, sizeof(bool));
-			out.write((char *)&displayLogWindow, sizeof(bool));
-			out.write((char *)&displayCameraControls, sizeof(bool));
-			out.write((char *)&displayRaypickingControls, sizeof(bool));
-			out.write((char *)&displayDemoWindow, sizeof(bool));
-			out.write((char *)&displayViewportControls, sizeof(bool));
-
-			// We Save all the Cameras.
-			int number_of_cameras = cameras.size();
-			out.write((char *)&number_of_cameras, sizeof(int));
-
-			for (auto it : cameras) {
-				pe_helpers::store_strings(it.first, out);
-				it.second->SaveToStream(out);
-			}
-
-			// Store the Viewport Details.
-			for (auto i = 0; i < 4; i++) {
-				out.write((char*)(&(viewportsDetails[i].isOrthogonal)), sizeof(bool));
-				pe_helpers::store_strings(viewportsDetails[i].camera->GetCameraName(), out);
-			}
-
-			// Store the Terrain
-			testTerrain->SaveToFile(out);
-
-			pe_helpers::store_strings("Entities", out);
-			// Save all the Entities.
-			int number_of_entities = entities.size();
-			out.write((char*)&number_of_entities, sizeof(int));
-			for (auto& it : entities) {
-				it->SaveToFile(out);
-			}
-
-
-			// Save all the Animated Entities
-			pe_helpers::store_strings("Animated Entities", out);
-			number_of_entities = animatedEntities.size();
-			out.write((char*)&number_of_entities, sizeof(int));
-			for (auto& it : animatedEntities) {
-				it->SaveToFile(out);
-			}
-
-		}
-
-		out.close();
-	}
-
-	void TestScene::LoadScene(const char * _fileName)
-	{
-
-		std::string test_string = std::string(SCENES_FOLDER) + std::string(_fileName);
-		const char * actual_file_name = (test_string).c_str();
-
-		std::ifstream in(actual_file_name, std::ios::binary);
-
-		if (in.good() && !in.eof()) {
-			in.read((char *)&pathingDebugWindow, sizeof(bool));
-			in.read((char *)&displayAssetManagerWindow, sizeof(bool));
-			in.read((char *)&displayLogWindow, sizeof(bool));
-			in.read((char *)&displayCameraControls, sizeof(bool));
-			in.read((char *)&displayRaypickingControls, sizeof(bool));
-			in.read((char *)&displayDemoWindow, sizeof(bool));
-			in.read((char *)&displayViewportControls, sizeof(bool));
-
-			int number_of_cameras = 0;
-			in.read((char *)&number_of_cameras, sizeof(int));
-
-			cameras.clear();
-			activeCamera.reset();
-
-			for (auto i = 0; i < number_of_cameras; i++) {
-
-				std::string camera_key;
-
-				std::shared_ptr<Camera> cam = std::make_shared<Camera>();
-
-				pe_helpers::read_strings(camera_key, in);
-
-				cam->LoadFromStream(in);
-
-				cameras.insert_or_assign(camera_key, cam);
-
-				if (nullptr == activeCamera) {
-					activeCamera = cam;
-					viewportsDetails[0].camera = activeCamera;
-				}
-
-			}
-
-			// Load the Viewport Details
-			for (auto i = 0; i < 4; i++) {
-				in.read((char*)(&(viewportsDetails[i].isOrthogonal)), sizeof(bool));
-				std::string camera_name;
-				pe_helpers::read_strings(camera_name, in);
-				viewportsDetails[i].camera = cameras.at(camera_name);
-			}
-
-			// Load the Terrain
-			ASMGR.objects.erase("terrain");
-			testTerrain->LoadFromFile(in);
-
-			int number_of_entities = 0;
-			std::string entity_header_string;
-			pe_helpers::read_strings(entity_header_string, in);
-			in.read((char*)&number_of_entities, sizeof(int));
-			entities.clear();
-			entities.resize(number_of_entities);
-			for (auto i = 0; i < number_of_entities; i++) {
-
-				entities[i] = (std::make_unique<Entity>());
-				entities[i]->LoadFromFile(in);
-
-			}
-
-			// Load all the animated Entities.
-			pe_helpers::read_strings(entity_header_string, in);
-			in.read((char*)&number_of_entities, sizeof(int));
-			animatedEntities.clear();
-			animatedEntities.resize(number_of_entities);
-
-			for (auto i = 0; i < number_of_entities; i++) {
-
-				animatedEntities[i] = (std::make_unique<AnimatedEntity>());
-				animatedEntities[i]->LoadFromFile(in);
-
-			}
-		}
-
-		in.close();
 
 	}
 
