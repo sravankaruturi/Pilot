@@ -688,7 +688,7 @@ namespace piolot {
 
 	}
 
-	void Terrain::SetTerrainNodeNotWalkable(glm::ivec2 _nodeIndices)
+	void Terrain::SetTerrainNodeObstacle(glm::ivec2 _nodeIndices)
 	{
 
 		tiles[_nodeIndices.x][_nodeIndices.y].navWalkable = false;

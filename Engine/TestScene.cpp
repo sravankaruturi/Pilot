@@ -220,17 +220,17 @@ namespace piolot {
 					// We then update the corresponding terrain nodes to not walkable.
 
 					// We get the Nine Nodes, of the Building.
-					testTerrain->SetTerrainNodeNotWalkable(target_node);
-					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x, target_node.y - 1));
-					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x, target_node.y + 1));
+					testTerrain->SetTerrainNodeObstacle(target_node);
+					testTerrain->SetTerrainNodeObstacle(glm::ivec2(target_node.x, target_node.y - 1));
+					testTerrain->SetTerrainNodeObstacle(glm::ivec2(target_node.x, target_node.y + 1));
 
-					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x + 1, target_node.y));
-					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x + 1, target_node.y - 1));
-					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x + 1, target_node.y + 1));
+					testTerrain->SetTerrainNodeObstacle(glm::ivec2(target_node.x + 1, target_node.y));
+					testTerrain->SetTerrainNodeObstacle(glm::ivec2(target_node.x + 1, target_node.y - 1));
+					testTerrain->SetTerrainNodeObstacle(glm::ivec2(target_node.x + 1, target_node.y + 1));
 
-					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x - 1, target_node.y));
-					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x - 1, target_node.y - 1));
-					testTerrain->SetTerrainNodeNotWalkable(glm::ivec2(target_node.x - 1, target_node.y + 1));
+					testTerrain->SetTerrainNodeObstacle(glm::ivec2(target_node.x - 1, target_node.y));
+					testTerrain->SetTerrainNodeObstacle(glm::ivec2(target_node.x - 1, target_node.y - 1));
+					testTerrain->SetTerrainNodeObstacle(glm::ivec2(target_node.x - 1, target_node.y + 1));
 
 					isPlacingMode = false;
 
