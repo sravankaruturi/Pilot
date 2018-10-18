@@ -17,6 +17,11 @@ namespace piolot
 
 		bool selectedInScene = false;
 
+		/**
+		 * \brief This denotes that this object is not on a node, so it should not update the Y position of this.
+		 */
+		bool notOnANode = false;
+
 		std::string entityName;
 
 		std::string objectName;

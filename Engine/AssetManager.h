@@ -191,7 +191,14 @@ namespace piolot
 					}
 					file_name.pop_back();
 
-					this->textures.insert_or_assign(file_name, std::make_shared<Texture>(p.path().generic_string()));
+					bool flip = true;
+
+					// We mark the texture files, with __noflip when we do not want to flip them.
+					if (file_name.find("__noflip") != std::string::npos) {
+						flip = false;
+					}
+
+					this->textures.insert_or_assign(file_name, std::make_shared<Texture>(p.path().generic_string(), flip));
 				}
 				catch (...)
 				{

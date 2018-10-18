@@ -100,14 +100,15 @@ namespace piolot {
 		ASMGR.shaders.at("buildingPlacer")->use();
 		ASMGR.shaders.at("buildingPlacer")->setVec4("u_Colour0", 0, 1, 0, 1);
 
-		quad1 = std::make_unique<ScreenQuad>("Testing Label", 0, 0, 1920, 1080);
+		entities.push_back(std::make_unique<ScreenQuad>("Testing Label", 0, 0, 1920, 1080));
+		ScreenQuad * quad1 = (ScreenQuad *)entities.back().get();
 		float size_y = 0.125f;
 		quad1->SetScale(glm::vec3(size_y, 1, 1));
-		quad1->SetPosition(glm::vec3(0, 0, 0));
+		quad1->SetPosition(glm::vec3(0, size_y - 1, 0));
 		quad1->SetRotation(glm::vec3(0, 0, -90));
 
 		ASMGR.shaders.at("screenQuad")->use();
-		const auto tex_names = std::vector<std::string>{ std::string("UI") };
+		const auto tex_names = std::vector<std::string>{ std::string("UI__noflip") };
 		ASMGR.objects.at("plane")->GetMeshes()[0]->SetTextureNames(tex_names);
 
 	}
@@ -152,8 +153,6 @@ namespace piolot {
 			it->Update(_deltaTime);
 			it->PlayAnimation(_deltaTime, _totalTime);
 		}
-
-		quad1->Update(_deltaTime);
 
 		buildingPlacer->Update(_deltaTime);
 
@@ -293,8 +292,6 @@ namespace piolot {
 		for (const auto& it : animatedEntities) {
 			it->Render();
 		}
-
-		quad1->Render();
 
 		/*for (const auto& it: tempEntities)
 		{

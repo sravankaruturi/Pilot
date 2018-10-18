@@ -85,8 +85,6 @@ namespace piolot {
 		 * \brief The Projection Matrix.
 		 */
 		glm::mat4 projectionMatrix;
-		
-		std::unique_ptr<ScreenQuad> quad1;
 
 	public:
 
