@@ -3,7 +3,7 @@
 namespace piolot
 {
 
-	ScreenQuad::ScreenQuad(const std::string& _name, float _x, float _y)
+	ScreenQuad::ScreenQuad(const std::string& _name, float _x, float _y, float _width, float _height)
 		: Entity(_name, "plane/plane.obj", "screenQuad")
 	{
 

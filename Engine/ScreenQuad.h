@@ -21,8 +21,10 @@ namespace piolot
 		 * \param _name The Name of the Quad.
 		 * \param _x X Coordinate in Screen Space
 		 * \param _y Y Coordinate in Screen Space
+		 * \param _width The Width of the Screen
+		 * \param _height The Height of the Screen
 		 */
-		ScreenQuad(const std::string& _name, float _x, float _y);
+		ScreenQuad(const std::string& _name, float _x, float _y, float _width, float _height);
 
 	};
 

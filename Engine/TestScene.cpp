@@ -100,7 +100,15 @@ namespace piolot {
 		ASMGR.shaders.at("buildingPlacer")->use();
 		ASMGR.shaders.at("buildingPlacer")->setVec4("u_Colour0", 0, 1, 0, 1);
 
-		quad1 = std::make_unique<ScreenQuad>("Testing Label", 0, 0);
+		quad1 = std::make_unique<ScreenQuad>("Testing Label", 0, 0, 1920, 1080);
+		float size_y = 0.125f;
+		quad1->SetScale(glm::vec3(size_y, 1, 1));
+		quad1->SetPosition(glm::vec3(0, 0, 0));
+		quad1->SetRotation(glm::vec3(0, 0, -90));
+
+		ASMGR.shaders.at("screenQuad")->use();
+		const auto tex_names = std::vector<std::string>{ std::string("UI") };
+		ASMGR.objects.at("plane")->GetMeshes()[0]->SetTextureNames(tex_names);
 
 	}
 
@@ -249,7 +257,7 @@ namespace piolot {
 		{
 			it.second->use();
 
-			if (it.first != "terrain" && it.first != "axes" && it.first != "bob_lamp")
+			if (it.first != "terrain" && it.first != "axes" && it.first != "bob_lamp" && it.first != "screenQuad")
 			{
 				it.second->setMat4("u_ViewMatrix", view_matrices[0]);
 				it.second->setMat4("u_ProjectionMatrix", projection_matrices[0]);
