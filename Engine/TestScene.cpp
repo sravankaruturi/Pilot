@@ -91,25 +91,26 @@ namespace piolot {
 			animatedEntity->SetAnimationTotalTime(0.75f);
 		}
 
-		ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
-		//ASMGR.objects.at("Medieval_House")->GetMeshes()[0]->textureNames.push_back("building_diffuse");
-
 		buildingPlacer = std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "buildingPlacer");
-		//buildingPlacer->SetPosition(glm::vec3(0.0f));
 		buildingPlacer->SetScale(glm::vec3(1.0f / building_scaling_factor, 1.0f / building_scaling_factor, 1.0f / building_scaling_factor) * 1.01f);
+
+		ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
+		ASMGR.objects.at("Medieval_House")->GetMeshes()[0]->textureNames.push_back("building_diffuse");
+
+		//buildingPlacer->SetPosition(glm::vec3(0.0f));
 		ASMGR.shaders.at("buildingPlacer")->use();
 		ASMGR.shaders.at("buildingPlacer")->setVec4("u_Colour0", 0, 1, 0, 1);
 
-		entities.push_back(std::make_unique<ScreenQuad>("Testing Label", 0, 0, 1920, 1080));
+		/*entities.push_back(std::make_unique<ScreenQuad>("Testing Label", 0, 0, 1920, 1080));
 		ScreenQuad * quad1 = (ScreenQuad *)entities.back().get();
 		float size_y = 0.125f;
 		quad1->SetScale(glm::vec3(size_y, 1, 1));
 		quad1->SetPosition(glm::vec3(0, size_y - 1, 0));
-		quad1->SetRotation(glm::vec3(0, 0, -90));
+		quad1->SetRotation(glm::vec3(0, 0, -90));*/
 
-		ASMGR.shaders.at("screenQuad")->use();
-		const auto tex_names = std::vector<std::string>{ std::string("UI__noflip") };
-		ASMGR.objects.at("plane")->GetMeshes()[0]->SetTextureNames(tex_names);
+		/*ASMGR.shaders.at("screenQuad")->use();
+		const auto tex_names = std::vector<std::string>{ std::string("UI__noflip") };*/
+		//ASMGR.objects.at("plane")->GetMeshes()[0]->SetTextureNames(tex_names);
 
 	}
 
