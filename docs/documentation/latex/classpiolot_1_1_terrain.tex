@@ -1,5 +1,14 @@
 \hypertarget{classpiolot_1_1_terrain}{}\section{piolot\+:\+:Terrain Class Reference}
 \label{classpiolot_1_1_terrain}\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+
+
+Container of all \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} functions. Is Derived from \mbox{\hyperlink{classpiolot_1_1_entity}{Entity}}.  
+
+
+
+
+{\ttfamily \#include $<$Terrain.\+h$>$}
+
 Inheritance diagram for piolot\+:\+:Terrain\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,160 +18,725 @@ Inheritance diagram for piolot\+:\+:Terrain\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_aeb2f5954d70bc27d7dc84ab15180c502}\label{classpiolot_1_1_terrain_aeb2f5954d70bc27d7dc84ab15180c502}} 
-unsigned {\bfseries Get\+Length} () const
+unsigned \mbox{\hyperlink{classpiolot_1_1_terrain_aeb2f5954d70bc27d7dc84ab15180c502}{Get\+Length}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a7fa4bf450e2545dbce46a870caa31aa2}\label{classpiolot_1_1_terrain_a7fa4bf450e2545dbce46a870caa31aa2}} 
-unsigned {\bfseries Get\+Breadth} () const
+unsigned \mbox{\hyperlink{classpiolot_1_1_terrain_a7fa4bf450e2545dbce46a870caa31aa2}{Get\+Breadth}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_aa742fdf411184356e962f98d3785ec7c}\label{classpiolot_1_1_terrain_aa742fdf411184356e962f98d3785ec7c}} 
-float {\bfseries Get\+Grid\+Length} () const
+float \mbox{\hyperlink{classpiolot_1_1_terrain_aa742fdf411184356e962f98d3785ec7c}{Get\+Grid\+Length}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_acd20433446ca1eef57b1498e26aa0aca}\label{classpiolot_1_1_terrain_acd20433446ca1eef57b1498e26aa0aca}} 
-float {\bfseries Get\+Grid\+Breadth} () const
+float \mbox{\hyperlink{classpiolot_1_1_terrain_acd20433446ca1eef57b1498e26aa0aca}{Get\+Grid\+Breadth}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a284fb2b373798b73d3893837cfe5d4bc}\label{classpiolot_1_1_terrain_a284fb2b373798b73d3893837cfe5d4bc}} 
-unsigned {\bfseries Get\+Node\+CountX} () const
+unsigned \mbox{\hyperlink{classpiolot_1_1_terrain_a284fb2b373798b73d3893837cfe5d4bc}{Get\+Node\+CountX}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_aef96f5a95563a88c641fbfd299c905f3}\label{classpiolot_1_1_terrain_aef96f5a95563a88c641fbfd299c905f3}} 
-unsigned {\bfseries Get\+Node\+CountZ} () const
+unsigned \mbox{\hyperlink{classpiolot_1_1_terrain_aef96f5a95563a88c641fbfd299c905f3}{Get\+Node\+CountZ}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a0366991939da62e46bff441c1b3988e0}\label{classpiolot_1_1_terrain_a0366991939da62e46bff441c1b3988e0}} 
-\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$$\ast$ {\bfseries Get\+Tiles} () const
+\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$$\ast$ \mbox{\hyperlink{classpiolot_1_1_terrain_a0366991939da62e46bff441c1b3988e0}{Get\+Tiles}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a8ce0f148b1b05889f609796d09840543}\label{classpiolot_1_1_terrain_a8ce0f148b1b05889f609796d09840543}} 
-const std\+::string \& {\bfseries Get\+Height\+Map\+File} () const
+const std\+::string \& \mbox{\hyperlink{classpiolot_1_1_terrain_a8ce0f148b1b05889f609796d09840543}{Get\+Height\+Map\+File}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a0fe5987e17e76c418cc9407a1acdc915}\label{classpiolot_1_1_terrain_a0fe5987e17e76c418cc9407a1acdc915}} 
-const std\+::vector$<$ \mbox{\hyperlink{structpiolot_1_1_terrain_vertex_data}{Terrain\+Vertex\+Data}} $>$ \& {\bfseries Get\+Vertices} () const
+const std\+::vector$<$ \mbox{\hyperlink{structpiolot_1_1_terrain_vertex_data}{Terrain\+Vertex\+Data}} $>$ \& \mbox{\hyperlink{classpiolot_1_1_terrain_a0fe5987e17e76c418cc9407a1acdc915}{Get\+Vertices}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_ada8caf451e4946153d9a0cc4d5d0fcaf}\label{classpiolot_1_1_terrain_ada8caf451e4946153d9a0cc4d5d0fcaf}} 
-const std\+::vector$<$ unsigned $>$ \& {\bfseries Get\+Indices} () const
+const std\+::vector$<$ unsigned $>$ \& \mbox{\hyperlink{classpiolot_1_1_terrain_ada8caf451e4946153d9a0cc4d5d0fcaf}{Get\+Indices}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a445ca2537de1765c3ae2c8073db1603f}\label{classpiolot_1_1_terrain_a445ca2537de1765c3ae2c8073db1603f}} 
-const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_object}{Object}} $>$ \& {\bfseries Get\+Object\+Ptr} () const
+const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_object}{Object}} $>$ \& \mbox{\hyperlink{classpiolot_1_1_terrain_a445ca2537de1765c3ae2c8073db1603f}{Get\+Object\+Ptr}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_aa60d6ba8d6dd4affb441d15eda4ca0f8}\label{classpiolot_1_1_terrain_aa60d6ba8d6dd4affb441d15eda4ca0f8}} 
-{\bfseries Terrain} (int \+\_\+map\+Length, int \+\_\+map\+Breadth, float \+\_\+grid\+Length, float \+\_\+grid\+Breadth, std\+::string \+\_\+height\+Map\+File)
+\mbox{\hyperlink{classpiolot_1_1_terrain_aa60d6ba8d6dd4affb441d15eda4ca0f8}{Terrain}} (int \+\_\+map\+Length, int \+\_\+map\+Breadth, float \+\_\+grid\+Length, float \+\_\+grid\+Breadth, std\+::string \+\_\+height\+Map\+File)
+\begin{DoxyCompactList}\small\item\em Create a \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} based on the Height Map Image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_terrain_af737ba0aa165e923a3e6bd37f6c9a9ab}{Init}} ()
+\begin{DoxyCompactList}\small\item\em Initialize the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_terrain_a21bf8a5f9f394709f2e938bf2a62db9c}{Render}} ()
+\begin{DoxyCompactList}\small\item\em Render the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_terrain_a54f2eb43b93352f7584569f15a7dc824}{Update}} (float \+\_\+delat\+Time, float \+\_\+total\+Time)
+\begin{DoxyCompactList}\small\item\em Update the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classpiolot_1_1_terrain_a8eb74a9d2b2c403ff454dc639b47fcdd}{Get\+Height\+At\+Pos}} (const float \&\+\_\+x, const float \&\+\_\+z)
+\begin{DoxyCompactList}\small\item\em Gets the Height at a position in this terrain. All values are in World Space. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classpiolot_1_1_terrain_ab34c88011a034755e5758985b9e02cc6}{Get\+Height\+For\+Node}} (const int \&\+\_\+x, const int \&\+\_\+z)
+\begin{DoxyCompactList}\small\item\em Gets the Height of a Node in this \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}. All the values are in World Space. \end{DoxyCompactList}\item 
+glm\+::ivec2 \mbox{\hyperlink{classpiolot_1_1_terrain_af174aa49fb1d2a4b81e2ed1856a69905}{Get\+Node\+Indices\+From\+Pos}} (const float \&\+\_\+x, const float \&\+\_\+z) const
+\begin{DoxyCompactList}\small\item\em Get the Indices of the Node corresponding to this Position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_terrain_ae418fe0d7f2e8edef2edb01ed2312616}{Highlight\+Node}} (unsigned int \+\_\+x, unsigned int \+\_\+z)
+\begin{DoxyCompactList}\small\item\em Highlight the Node (X, Z) with Yellow Colour. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classpiolot_1_1_terrain_ac8708f04a159b572b3ad665ed3be601b}{Can\+Place\+Here}} (unsigned int \+\_\+x, unsigned int \+\_\+z)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_af737ba0aa165e923a3e6bd37f6c9a9ab}\label{classpiolot_1_1_terrain_af737ba0aa165e923a3e6bd37f6c9a9ab}} 
-void {\bfseries Init} ()
+void \mbox{\hyperlink{classpiolot_1_1_terrain_afe488b112444dc406a12fe83f8fb1a90}{Clear\+Colours}} ()
+\begin{DoxyCompactList}\small\item\em Clear any highlights we made in the previous frame. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ $>$ \mbox{\hyperlink{classpiolot_1_1_terrain_af3294a6025d6e23f79ff8693ca67fb79}{Get\+Path\+From\+Tiles}} (\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$\+\_\+start\+Tile, \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$\+\_\+end\+Tile)
+\begin{DoxyCompactList}\small\item\em Get the Path from \+\_\+start\+Tile to \+\_\+end\+Tile. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ $>$ \mbox{\hyperlink{classpiolot_1_1_terrain_a27ab93eb2d5e058f4bfa9e6929b324bc}{Get\+Path\+From\+Positions}} (glm\+::vec3, glm\+::vec3)
+\begin{DoxyCompactList}\small\item\em Get the Path from start position to the end position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ \mbox{\hyperlink{classpiolot_1_1_terrain_a1dde3530579a5bcdbb35eec94dff49b5}{Get\+Tile\+From\+Indices}} (int \+\_\+x, int \+\_\+y)
+\begin{DoxyCompactList}\small\item\em Get the Node at (x, z) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_terrain_a8c86b33ae5763a67ad783bebb37d88c5}{Init\+Path\+Finding}} ()
+\begin{DoxyCompactList}\small\item\em Initialize the necessary variables for Pathfinding. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_terrain_ae61a150d060f54eb14ef465541cc6214}{Fill\+Neighbours}} (\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} \&\+\_\+tile)
+\begin{DoxyCompactList}\small\item\em Populate the neighbours list of the Tile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_terrain_a211e06f07b056d9e412f9b7d5c61f28f}{On\+Imgui\+Render}} ()
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a21bf8a5f9f394709f2e938bf2a62db9c}\label{classpiolot_1_1_terrain_a21bf8a5f9f394709f2e938bf2a62db9c}} 
-void {\bfseries Render} ()
+int \mbox{\hyperlink{classpiolot_1_1_terrain_a653f471121e6efec6fc9533e747486ae}{Get\+Node\+Set\+From\+Pos}} (float \+\_\+x, float \+\_\+z)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a54f2eb43b93352f7584569f15a7dc824}\label{classpiolot_1_1_terrain_a54f2eb43b93352f7584569f15a7dc824}} 
-void {\bfseries Update} (float \+\_\+delat\+Time, float \+\_\+total\+Time)
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classpiolot_1_1_terrain_a1008afdeef49245b34551141ad40e512}{Get\+All\+Tile\+Sets}} ()
+\begin{DoxyCompactList}\small\item\em Get a List of all the Tilesets. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_terrain_a2a3fee4479a1c367262917e87e80aeae}{Save\+To\+File}} (std\+::ofstream \&\+\_\+out)
+\begin{DoxyCompactList}\small\item\em Save this to the Output Stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_terrain_ab975d5914a10346ddcbe29467f0862c2}{Load\+From\+File}} (std\+::ifstream \&\+\_\+in)
+\begin{DoxyCompactList}\small\item\em Load the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} from the Input Stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_terrain_af2bc3eb0ea909a0fd96b6c11aeb29c8a}{Delete\+Tiles}} () const
+\begin{DoxyCompactList}\small\item\em Delete the Tiles ( Tiles are allocated on the Heap. Destroy Them ) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classpiolot_1_1_terrain_afcbff7ea78c7a5a5eb0032de624c4109}{$\sim$\+Terrain}} ()
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a8eb74a9d2b2c403ff454dc639b47fcdd}\label{classpiolot_1_1_terrain_a8eb74a9d2b2c403ff454dc639b47fcdd}} 
-float {\bfseries Get\+Height\+At\+Pos} (const float \&\+\_\+x, const float \&\+\_\+z)
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_ab34c88011a034755e5758985b9e02cc6}\label{classpiolot_1_1_terrain_ab34c88011a034755e5758985b9e02cc6}} 
-float {\bfseries Get\+Height\+For\+Node} (const int \&\+\_\+x, const int \&\+\_\+z)
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a8ac0b5aef5986ea7c78d645742a6b51a}\label{classpiolot_1_1_terrain_a8ac0b5aef5986ea7c78d645742a6b51a}} 
-glm\+::vec2 {\bfseries Get\+Node\+Indices\+From\+Pos} (const float \&\+\_\+x, const float \&\+\_\+z) const
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_af9a39ab31e9621d02f78d89518c521f7}\label{classpiolot_1_1_terrain_af9a39ab31e9621d02f78d89518c521f7}} 
-void {\bfseries Highlight\+Node} (const unsigned int \+\_\+x, const unsigned int \+\_\+z)
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_afe488b112444dc406a12fe83f8fb1a90}\label{classpiolot_1_1_terrain_afe488b112444dc406a12fe83f8fb1a90}} 
-void {\bfseries Clear\+Colours} ()
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_af3294a6025d6e23f79ff8693ca67fb79}\label{classpiolot_1_1_terrain_af3294a6025d6e23f79ff8693ca67fb79}} 
-std\+::vector$<$ \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ $>$ {\bfseries Get\+Path\+From\+Tiles} (\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$\+\_\+start\+Tile, \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$\+\_\+end\+Tile)
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a27ab93eb2d5e058f4bfa9e6929b324bc}\label{classpiolot_1_1_terrain_a27ab93eb2d5e058f4bfa9e6929b324bc}} 
-std\+::vector$<$ \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ $>$ {\bfseries Get\+Path\+From\+Positions} (glm\+::vec3, glm\+::vec3)
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a1dde3530579a5bcdbb35eec94dff49b5}\label{classpiolot_1_1_terrain_a1dde3530579a5bcdbb35eec94dff49b5}} 
-\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ {\bfseries Get\+Tile\+From\+Indices} (int \+\_\+x, int \+\_\+y)
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a8c86b33ae5763a67ad783bebb37d88c5}\label{classpiolot_1_1_terrain_a8c86b33ae5763a67ad783bebb37d88c5}} 
-void {\bfseries Init\+Path\+Finding} ()
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_ae61a150d060f54eb14ef465541cc6214}\label{classpiolot_1_1_terrain_ae61a150d060f54eb14ef465541cc6214}} 
-void {\bfseries Fill\+Neighbours} (\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} \&\+\_\+tile)
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a211e06f07b056d9e412f9b7d5c61f28f}\label{classpiolot_1_1_terrain_a211e06f07b056d9e412f9b7d5c61f28f}} 
-void {\bfseries On\+Imgui\+Render} ()
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a653f471121e6efec6fc9533e747486ae}\label{classpiolot_1_1_terrain_a653f471121e6efec6fc9533e747486ae}} 
-int {\bfseries Get\+Node\+Set\+From\+Pos} (float \+\_\+x, float \+\_\+z)
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a1008afdeef49245b34551141ad40e512}\label{classpiolot_1_1_terrain_a1008afdeef49245b34551141ad40e512}} 
-std\+::vector$<$ int $>$ {\bfseries Get\+All\+Tile\+Sets} ()
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a2a3fee4479a1c367262917e87e80aeae}\label{classpiolot_1_1_terrain_a2a3fee4479a1c367262917e87e80aeae}} 
-void {\bfseries Save\+To\+File} (std\+::ofstream \&\+\_\+out)
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_ab975d5914a10346ddcbe29467f0862c2}\label{classpiolot_1_1_terrain_ab975d5914a10346ddcbe29467f0862c2}} 
-void {\bfseries Load\+From\+File} (std\+::ifstream \&\+\_\+in)
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_af2bc3eb0ea909a0fd96b6c11aeb29c8a}\label{classpiolot_1_1_terrain_af2bc3eb0ea909a0fd96b6c11aeb29c8a}} 
-void {\bfseries Delete\+Tiles} () const
+void \mbox{\hyperlink{classpiolot_1_1_terrain_ac3809c8441d17080168a077f97827816}{Reset\+Obstacles}} ()
+\begin{DoxyCompactList}\small\item\em Resets the Obstacle during Path. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_terrain_a527f6f0fe0d2085280e95bf6540987a2}{Get\+Mouse\+Ray\+Point}} (\mbox{\hyperlink{classpiolot_1_1_ray}{Ray}} \+\_\+ray, float \+\_\+granularity=0.\+5f)
+\begin{DoxyCompactList}\small\item\em Get the Intersection Point for the \mbox{\hyperlink{classpiolot_1_1_ray}{Ray}} and the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_terrain_a6ec5d3beab0a60517cff5603b66fd19e}{Set\+Terrain\+Node\+Obstacle}} (glm\+::ivec2 \+\_\+node\+Indices)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_af15b6de452d8225d07d7d4ae48d4f154}\label{classpiolot_1_1_terrain_af15b6de452d8225d07d7d4ae48d4f154}} 
-bool {\bfseries terrain\+Debug} = false
+bool \mbox{\hyperlink{classpiolot_1_1_terrain_a408da4b61ad3fd021d84b71827c86bd6}{pointing\+At\+Origin}} = false
+\begin{DoxyCompactList}\small\item\em This is set to True, at Run time if you are pointing the Mouse Cursor over the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} origin. \end{DoxyCompactList}\item 
+glm\+::ivec2 \mbox{\hyperlink{classpiolot_1_1_terrain_a23d4f9114f5d9830e08ac411150b07e6}{pointed\+Node\+Indices}} \{I\+N\+T\+\_\+\+M\+AX, I\+N\+T\+\_\+\+M\+AX\}
+\begin{DoxyCompactList}\small\item\em This would be the Current Indices that are being pointed to by, the Mouse. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classpiolot_1_1_terrain_a3174244bc7ad70014bbcf8d400231cd7}{accuracy\+Factor}} = 0.\+2f
+\begin{DoxyCompactList}\small\item\em The Accuracy by which we say, that a \mbox{\hyperlink{classpiolot_1_1_ray}{Ray}} has a Point on it. Lower is more Accurate. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classpiolot_1_1_terrain_af15b6de452d8225d07d7d4ae48d4f154}{terrain\+Debug}} = false
 \end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a8228070fe11ba581ee8a8b8f9fe303d4}\label{classpiolot_1_1_terrain_a8228070fe11ba581ee8a8b8f9fe303d4}} 
-glm\+::vec3 {\bfseries Compute\+Grid\+Normal} (int \+\_\+x, int \+\_\+z)
-\end{DoxyCompactItemize}
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_terrain_a8228070fe11ba581ee8a8b8f9fe303d4}{Compute\+Grid\+Normal}} (int \+\_\+x, int \+\_\+z)
+\begin{DoxyCompactList}\small\item\em Computes the Normal based on its surrounding Nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_adfe24e50e102f6c0dd424e2e7f376f15}\label{classpiolot_1_1_terrain_adfe24e50e102f6c0dd424e2e7f376f15}} 
-unsigned int {\bfseries length}
+unsigned int \mbox{\hyperlink{classpiolot_1_1_terrain_adfe24e50e102f6c0dd424e2e7f376f15}{length}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a05c6d7e235fafccc8aaa300fb63dfc27}\label{classpiolot_1_1_terrain_a05c6d7e235fafccc8aaa300fb63dfc27}} 
-unsigned int {\bfseries breadth}
+unsigned int \mbox{\hyperlink{classpiolot_1_1_terrain_a05c6d7e235fafccc8aaa300fb63dfc27}{breadth}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_ac1378a19d70d35bcafa1ac2c9e443d98}\label{classpiolot_1_1_terrain_ac1378a19d70d35bcafa1ac2c9e443d98}} 
-float {\bfseries grid\+Length}
+float \mbox{\hyperlink{classpiolot_1_1_terrain_ac1378a19d70d35bcafa1ac2c9e443d98}{grid\+Length}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_ac825eeb29fe45a95909488a560ac8331}\label{classpiolot_1_1_terrain_ac825eeb29fe45a95909488a560ac8331}} 
-float {\bfseries grid\+Breadth}
+float \mbox{\hyperlink{classpiolot_1_1_terrain_ac825eeb29fe45a95909488a560ac8331}{grid\+Breadth}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_af2671f954c4fa1be2228ccf4cb631abf}\label{classpiolot_1_1_terrain_af2671f954c4fa1be2228ccf4cb631abf}} 
-unsigned int {\bfseries node\+CountX} \{\}
+unsigned int \mbox{\hyperlink{classpiolot_1_1_terrain_af2671f954c4fa1be2228ccf4cb631abf}{node\+CountX}} \{\}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a584b5d99c115bcfae303b3feea50c3a5}\label{classpiolot_1_1_terrain_a584b5d99c115bcfae303b3feea50c3a5}} 
-unsigned int {\bfseries node\+CountZ} \{\}
+unsigned int \mbox{\hyperlink{classpiolot_1_1_terrain_a584b5d99c115bcfae303b3feea50c3a5}{node\+CountZ}} \{\}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a092c31b5d881c4f89dac30cd887d1664}\label{classpiolot_1_1_terrain_a092c31b5d881c4f89dac30cd887d1664}} 
-\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$$\ast$ {\bfseries tiles} \{\}
+\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$$\ast$ \mbox{\hyperlink{classpiolot_1_1_terrain_a092c31b5d881c4f89dac30cd887d1664}{tiles}} \{\}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a75cfcac6fb95fb3c63def8362ce393d0}\label{classpiolot_1_1_terrain_a75cfcac6fb95fb3c63def8362ce393d0}} 
-std\+::string {\bfseries height\+Map\+File}
+std\+::string \mbox{\hyperlink{classpiolot_1_1_terrain_a75cfcac6fb95fb3c63def8362ce393d0}{height\+Map\+File}}
+\begin{DoxyCompactList}\small\item\em The Filename, from which this terrain is based on. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structpiolot_1_1_terrain_vertex_data}{Terrain\+Vertex\+Data}} $>$ \mbox{\hyperlink{classpiolot_1_1_terrain_a57bd2f1b451a1d670bc5f42134ecf2c0}{vertices}}
+\begin{DoxyCompactList}\small\item\em The vertices we use to create the \mbox{\hyperlink{classpiolot_1_1_mesh}{Mesh}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classpiolot_1_1_terrain_a0d8413db780f4ef041fd1794631ef122}{are\+Vertices\+Dirty}} = false
+\begin{DoxyCompactList}\small\item\em Flag to Check if we need to update the Buffer. \end{DoxyCompactList}\item 
+std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{classpiolot_1_1_terrain_a3f6ce2a18736eccd598931c72aeaf4bc}{indices}}
+\begin{DoxyCompactList}\small\item\em The Indices. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_object}{Object}} $>$ \mbox{\hyperlink{classpiolot_1_1_terrain_a9711e78acb58e6d457758fc1ddd8d82d}{object\+Ptr}}
+\begin{DoxyCompactList}\small\item\em Pointer of the Created Object/\+Mesh. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classpiolot_1_1_terrain_a6dbae27fe94d5cd2dbe279a187f8b6fc}{height\+Factor}} = 1.\+0f
+\begin{DoxyCompactList}\small\item\em This is a float that can be used to modify the amplitude of the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}. \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{classpiolot_1_1_terrain_aa658452ff45b3c472d7f8290ee689954}{startxz}} \{\}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a57bd2f1b451a1d670bc5f42134ecf2c0}\label{classpiolot_1_1_terrain_a57bd2f1b451a1d670bc5f42134ecf2c0}} 
-std\+::vector$<$ \mbox{\hyperlink{structpiolot_1_1_terrain_vertex_data}{Terrain\+Vertex\+Data}} $>$ {\bfseries vertices}
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a0d8413db780f4ef041fd1794631ef122}\label{classpiolot_1_1_terrain_a0d8413db780f4ef041fd1794631ef122}} 
-bool {\bfseries are\+Vertices\+Dirty} = false
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a3f6ce2a18736eccd598931c72aeaf4bc}\label{classpiolot_1_1_terrain_a3f6ce2a18736eccd598931c72aeaf4bc}} 
-std\+::vector$<$ unsigned int $>$ {\bfseries indices}
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_a9711e78acb58e6d457758fc1ddd8d82d}\label{classpiolot_1_1_terrain_a9711e78acb58e6d457758fc1ddd8d82d}} 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_object}{Object}} $>$ {\bfseries object\+Ptr}
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_aa658452ff45b3c472d7f8290ee689954}\label{classpiolot_1_1_terrain_aa658452ff45b3c472d7f8290ee689954}} 
-glm\+::vec2 {\bfseries startxz} \{\}
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_terrain_abef2d354599b2fa104c4aa0c62035257}\label{classpiolot_1_1_terrain_abef2d354599b2fa104c4aa0c62035257}} 
-glm\+::vec2 {\bfseries endxz} \{\}
+glm\+::vec2 \mbox{\hyperlink{classpiolot_1_1_terrain_abef2d354599b2fa104c4aa0c62035257}{endxz}} \{\}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
+\subsection{Detailed Description}
+Container of all \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} functions. Is Derived from \mbox{\hyperlink{classpiolot_1_1_entity}{Entity}}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_aa60d6ba8d6dd4affb441d15eda4ca0f8}\label{classpiolot_1_1_terrain_aa60d6ba8d6dd4affb441d15eda4ca0f8}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Terrain@{Terrain}}
+\index{Terrain@{Terrain}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Terrain()}{Terrain()}}
+{\footnotesize\ttfamily piolot\+::\+Terrain\+::\+Terrain (\begin{DoxyParamCaption}\item[{int}]{\+\_\+map\+Length,  }\item[{int}]{\+\_\+map\+Breadth,  }\item[{float}]{\+\_\+grid\+Length,  }\item[{float}]{\+\_\+grid\+Breadth,  }\item[{std\+::string}]{\+\_\+height\+Map\+File }\end{DoxyParamCaption})}
+
+
+
+Create a \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} based on the Height Map Image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+map\+Length} & The Length of the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} in the World Coordinates \\
+\hline
+{\em \+\_\+map\+Breadth} & The Breadth of the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} in the world Co-\/ordinates \\
+\hline
+{\em \+\_\+grid\+Length} & Length of each \mbox{\hyperlink{classpiolot_1_1_grid}{Grid}} in the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} \\
+\hline
+{\em \+\_\+grid\+Breadth} & Breadth of each Tile in the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} \\
+\hline
+{\em \+\_\+height\+Map\+File} & The File to base the Height Map on \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_afcbff7ea78c7a5a5eb0032de624c4109}\label{classpiolot_1_1_terrain_afcbff7ea78c7a5a5eb0032de624c4109}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!````~Terrain@{$\sim$\+Terrain}}
+\index{````~Terrain@{$\sim$\+Terrain}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{$\sim$\+Terrain()}{~Terrain()}}
+{\footnotesize\ttfamily piolot\+::\+Terrain\+::$\sim$\+Terrain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_ac8708f04a159b572b3ad665ed3be601b}\label{classpiolot_1_1_terrain_ac8708f04a159b572b3ad665ed3be601b}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Can\+Place\+Here@{Can\+Place\+Here}}
+\index{Can\+Place\+Here@{Can\+Place\+Here}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Can\+Place\+Here()}{CanPlaceHere()}}
+{\footnotesize\ttfamily bool piolot\+::\+Terrain\+::\+Can\+Place\+Here (\begin{DoxyParamCaption}\item[{unsigned int}]{\+\_\+x,  }\item[{unsigned int}]{\+\_\+z }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_afe488b112444dc406a12fe83f8fb1a90}\label{classpiolot_1_1_terrain_afe488b112444dc406a12fe83f8fb1a90}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Clear\+Colours@{Clear\+Colours}}
+\index{Clear\+Colours@{Clear\+Colours}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Clear\+Colours()}{ClearColours()}}
+{\footnotesize\ttfamily void piolot\+::\+Terrain\+::\+Clear\+Colours (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clear any highlights we made in the previous frame. 
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a8228070fe11ba581ee8a8b8f9fe303d4}\label{classpiolot_1_1_terrain_a8228070fe11ba581ee8a8b8f9fe303d4}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Compute\+Grid\+Normal@{Compute\+Grid\+Normal}}
+\index{Compute\+Grid\+Normal@{Compute\+Grid\+Normal}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Compute\+Grid\+Normal()}{ComputeGridNormal()}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Terrain\+::\+Compute\+Grid\+Normal (\begin{DoxyParamCaption}\item[{int}]{\+\_\+x,  }\item[{int}]{\+\_\+z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Computes the Normal based on its surrounding Nodes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+x} & Node Index X \\
+\hline
+{\em \+\_\+z} & Node Index Z \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Normal at Index X, Z 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_af2bc3eb0ea909a0fd96b6c11aeb29c8a}\label{classpiolot_1_1_terrain_af2bc3eb0ea909a0fd96b6c11aeb29c8a}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Delete\+Tiles@{Delete\+Tiles}}
+\index{Delete\+Tiles@{Delete\+Tiles}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Delete\+Tiles()}{DeleteTiles()}}
+{\footnotesize\ttfamily void piolot\+::\+Terrain\+::\+Delete\+Tiles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Delete the Tiles ( Tiles are allocated on the Heap. Destroy Them ) 
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_ae61a150d060f54eb14ef465541cc6214}\label{classpiolot_1_1_terrain_ae61a150d060f54eb14ef465541cc6214}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Fill\+Neighbours@{Fill\+Neighbours}}
+\index{Fill\+Neighbours@{Fill\+Neighbours}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Fill\+Neighbours()}{FillNeighbours()}}
+{\footnotesize\ttfamily void piolot\+::\+Terrain\+::\+Fill\+Neighbours (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} \&}]{\+\_\+tile }\end{DoxyParamCaption})}
+
+
+
+Populate the neighbours list of the Tile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+tile} & The Tile to perform this operation on. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a1008afdeef49245b34551141ad40e512}\label{classpiolot_1_1_terrain_a1008afdeef49245b34551141ad40e512}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+All\+Tile\+Sets@{Get\+All\+Tile\+Sets}}
+\index{Get\+All\+Tile\+Sets@{Get\+All\+Tile\+Sets}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+All\+Tile\+Sets()}{GetAllTileSets()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ piolot\+::\+Terrain\+::\+Get\+All\+Tile\+Sets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get a List of all the Tilesets. 
+
+\begin{DoxyReturn}{Returns}
+List of all the Tile\+Sets in the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} when called. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a7fa4bf450e2545dbce46a870caa31aa2}\label{classpiolot_1_1_terrain_a7fa4bf450e2545dbce46a870caa31aa2}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Breadth@{Get\+Breadth}}
+\index{Get\+Breadth@{Get\+Breadth}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Breadth()}{GetBreadth()}}
+{\footnotesize\ttfamily unsigned piolot\+::\+Terrain\+::\+Get\+Breadth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_acd20433446ca1eef57b1498e26aa0aca}\label{classpiolot_1_1_terrain_acd20433446ca1eef57b1498e26aa0aca}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Grid\+Breadth@{Get\+Grid\+Breadth}}
+\index{Get\+Grid\+Breadth@{Get\+Grid\+Breadth}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Grid\+Breadth()}{GetGridBreadth()}}
+{\footnotesize\ttfamily float piolot\+::\+Terrain\+::\+Get\+Grid\+Breadth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_aa742fdf411184356e962f98d3785ec7c}\label{classpiolot_1_1_terrain_aa742fdf411184356e962f98d3785ec7c}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Grid\+Length@{Get\+Grid\+Length}}
+\index{Get\+Grid\+Length@{Get\+Grid\+Length}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Grid\+Length()}{GetGridLength()}}
+{\footnotesize\ttfamily float piolot\+::\+Terrain\+::\+Get\+Grid\+Length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a8eb74a9d2b2c403ff454dc639b47fcdd}\label{classpiolot_1_1_terrain_a8eb74a9d2b2c403ff454dc639b47fcdd}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Height\+At\+Pos@{Get\+Height\+At\+Pos}}
+\index{Get\+Height\+At\+Pos@{Get\+Height\+At\+Pos}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Height\+At\+Pos()}{GetHeightAtPos()}}
+{\footnotesize\ttfamily float piolot\+::\+Terrain\+::\+Get\+Height\+At\+Pos (\begin{DoxyParamCaption}\item[{const float \&}]{\+\_\+x,  }\item[{const float \&}]{\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+Gets the Height at a position in this terrain. All values are in World Space. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+x} & X Position \\
+\hline
+{\em \+\_\+z} & Z Position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Y Position 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_ab34c88011a034755e5758985b9e02cc6}\label{classpiolot_1_1_terrain_ab34c88011a034755e5758985b9e02cc6}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Height\+For\+Node@{Get\+Height\+For\+Node}}
+\index{Get\+Height\+For\+Node@{Get\+Height\+For\+Node}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Height\+For\+Node()}{GetHeightForNode()}}
+{\footnotesize\ttfamily float piolot\+::\+Terrain\+::\+Get\+Height\+For\+Node (\begin{DoxyParamCaption}\item[{const int \&}]{\+\_\+x,  }\item[{const int \&}]{\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+Gets the Height of a Node in this \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}. All the values are in World Space. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+x} & Node Index X \\
+\hline
+{\em \+\_\+z} & Node Index Z \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Height at Node X, Z 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a8ce0f148b1b05889f609796d09840543}\label{classpiolot_1_1_terrain_a8ce0f148b1b05889f609796d09840543}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Height\+Map\+File@{Get\+Height\+Map\+File}}
+\index{Get\+Height\+Map\+File@{Get\+Height\+Map\+File}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Height\+Map\+File()}{GetHeightMapFile()}}
+{\footnotesize\ttfamily const std\+::string\& piolot\+::\+Terrain\+::\+Get\+Height\+Map\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_ada8caf451e4946153d9a0cc4d5d0fcaf}\label{classpiolot_1_1_terrain_ada8caf451e4946153d9a0cc4d5d0fcaf}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Indices@{Get\+Indices}}
+\index{Get\+Indices@{Get\+Indices}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Indices()}{GetIndices()}}
+{\footnotesize\ttfamily const std\+::vector$<$unsigned$>$\& piolot\+::\+Terrain\+::\+Get\+Indices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_aeb2f5954d70bc27d7dc84ab15180c502}\label{classpiolot_1_1_terrain_aeb2f5954d70bc27d7dc84ab15180c502}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Length@{Get\+Length}}
+\index{Get\+Length@{Get\+Length}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Length()}{GetLength()}}
+{\footnotesize\ttfamily unsigned piolot\+::\+Terrain\+::\+Get\+Length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a527f6f0fe0d2085280e95bf6540987a2}\label{classpiolot_1_1_terrain_a527f6f0fe0d2085280e95bf6540987a2}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Mouse\+Ray\+Point@{Get\+Mouse\+Ray\+Point}}
+\index{Get\+Mouse\+Ray\+Point@{Get\+Mouse\+Ray\+Point}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Mouse\+Ray\+Point()}{GetMouseRayPoint()}}
+{\footnotesize\ttfamily void piolot\+::\+Terrain\+::\+Get\+Mouse\+Ray\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpiolot_1_1_ray}{Ray}}}]{\+\_\+ray,  }\item[{float}]{\+\_\+granularity = {\ttfamily 0.5f} }\end{DoxyParamCaption})}
+
+
+
+Get the Intersection Point for the \mbox{\hyperlink{classpiolot_1_1_ray}{Ray}} and the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+ray} & The Mouse \mbox{\hyperlink{classpiolot_1_1_ray}{Ray}}, based on the Current Mouse Position and the View Matrix. \\
+\hline
+{\em \+\_\+granularity} & The Granularity with which to search for the Intersection.\\
+\hline
+\end{DoxyParams}
+This is used in pathfinding. \mbox{\Hypertarget{classpiolot_1_1_terrain_a284fb2b373798b73d3893837cfe5d4bc}\label{classpiolot_1_1_terrain_a284fb2b373798b73d3893837cfe5d4bc}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Node\+CountX@{Get\+Node\+CountX}}
+\index{Get\+Node\+CountX@{Get\+Node\+CountX}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Node\+Count\+X()}{GetNodeCountX()}}
+{\footnotesize\ttfamily unsigned piolot\+::\+Terrain\+::\+Get\+Node\+CountX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_aef96f5a95563a88c641fbfd299c905f3}\label{classpiolot_1_1_terrain_aef96f5a95563a88c641fbfd299c905f3}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Node\+CountZ@{Get\+Node\+CountZ}}
+\index{Get\+Node\+CountZ@{Get\+Node\+CountZ}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Node\+Count\+Z()}{GetNodeCountZ()}}
+{\footnotesize\ttfamily unsigned piolot\+::\+Terrain\+::\+Get\+Node\+CountZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_af174aa49fb1d2a4b81e2ed1856a69905}\label{classpiolot_1_1_terrain_af174aa49fb1d2a4b81e2ed1856a69905}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Node\+Indices\+From\+Pos@{Get\+Node\+Indices\+From\+Pos}}
+\index{Get\+Node\+Indices\+From\+Pos@{Get\+Node\+Indices\+From\+Pos}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Node\+Indices\+From\+Pos()}{GetNodeIndicesFromPos()}}
+{\footnotesize\ttfamily glm\+::ivec2 piolot\+::\+Terrain\+::\+Get\+Node\+Indices\+From\+Pos (\begin{DoxyParamCaption}\item[{const float \&}]{\+\_\+x,  }\item[{const float \&}]{\+\_\+z }\end{DoxyParamCaption}) const}
+
+
+
+Get the Indices of the Node corresponding to this Position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+x} & Position X \\
+\hline
+{\em \+\_\+z} & Position Z \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Node Indices, as an i\+Vec2 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a653f471121e6efec6fc9533e747486ae}\label{classpiolot_1_1_terrain_a653f471121e6efec6fc9533e747486ae}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Node\+Set\+From\+Pos@{Get\+Node\+Set\+From\+Pos}}
+\index{Get\+Node\+Set\+From\+Pos@{Get\+Node\+Set\+From\+Pos}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Node\+Set\+From\+Pos()}{GetNodeSetFromPos()}}
+{\footnotesize\ttfamily int piolot\+::\+Terrain\+::\+Get\+Node\+Set\+From\+Pos (\begin{DoxyParamCaption}\item[{float}]{\+\_\+x,  }\item[{float}]{\+\_\+z }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a445ca2537de1765c3ae2c8073db1603f}\label{classpiolot_1_1_terrain_a445ca2537de1765c3ae2c8073db1603f}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Object\+Ptr@{Get\+Object\+Ptr}}
+\index{Get\+Object\+Ptr@{Get\+Object\+Ptr}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Object\+Ptr()}{GetObjectPtr()}}
+{\footnotesize\ttfamily const std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classpiolot_1_1_object}{Object}}$>$\& piolot\+::\+Terrain\+::\+Get\+Object\+Ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a27ab93eb2d5e058f4bfa9e6929b324bc}\label{classpiolot_1_1_terrain_a27ab93eb2d5e058f4bfa9e6929b324bc}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Path\+From\+Positions@{Get\+Path\+From\+Positions}}
+\index{Get\+Path\+From\+Positions@{Get\+Path\+From\+Positions}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Path\+From\+Positions()}{GetPathFromPositions()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ $>$ piolot\+::\+Terrain\+::\+Get\+Path\+From\+Positions (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+start\+Position,  }\item[{glm\+::vec3}]{\+\_\+end\+Position }\end{DoxyParamCaption})}
+
+
+
+Get the Path from start position to the end position. 
+
+\begin{DoxyReturn}{Returns}
+A Vector of Tiles, the path to take. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_af3294a6025d6e23f79ff8693ca67fb79}\label{classpiolot_1_1_terrain_af3294a6025d6e23f79ff8693ca67fb79}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Path\+From\+Tiles@{Get\+Path\+From\+Tiles}}
+\index{Get\+Path\+From\+Tiles@{Get\+Path\+From\+Tiles}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Path\+From\+Tiles()}{GetPathFromTiles()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ $>$ piolot\+::\+Terrain\+::\+Get\+Path\+From\+Tiles (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$}]{\+\_\+start\+Tile,  }\item[{\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$}]{\+\_\+end\+Tile }\end{DoxyParamCaption})}
+
+
+
+Get the Path from \+\_\+start\+Tile to \+\_\+end\+Tile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+start\+Tile} & The Map Tile where you start \\
+\hline
+{\em \+\_\+end\+Tile} & The Map Tile where you end \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Vector of Tile, the path to take. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a1dde3530579a5bcdbb35eec94dff49b5}\label{classpiolot_1_1_terrain_a1dde3530579a5bcdbb35eec94dff49b5}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Tile\+From\+Indices@{Get\+Tile\+From\+Indices}}
+\index{Get\+Tile\+From\+Indices@{Get\+Tile\+From\+Indices}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Tile\+From\+Indices()}{GetTileFromIndices()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ piolot\+::\+Terrain\+::\+Get\+Tile\+From\+Indices (\begin{DoxyParamCaption}\item[{int}]{\+\_\+x,  }\item[{int}]{\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Get the Node at (x, z) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+x} & Node Index X \\
+\hline
+{\em \+\_\+y} & Node Index Z \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the Tile at (x, z) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a0366991939da62e46bff441c1b3988e0}\label{classpiolot_1_1_terrain_a0366991939da62e46bff441c1b3988e0}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Tiles@{Get\+Tiles}}
+\index{Get\+Tiles@{Get\+Tiles}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Tiles()}{GetTiles()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}}$\ast$$\ast$ piolot\+::\+Terrain\+::\+Get\+Tiles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a0fe5987e17e76c418cc9407a1acdc915}\label{classpiolot_1_1_terrain_a0fe5987e17e76c418cc9407a1acdc915}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Get\+Vertices@{Get\+Vertices}}
+\index{Get\+Vertices@{Get\+Vertices}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Get\+Vertices()}{GetVertices()}}
+{\footnotesize\ttfamily const std\+::vector$<$\mbox{\hyperlink{structpiolot_1_1_terrain_vertex_data}{Terrain\+Vertex\+Data}}$>$\& piolot\+::\+Terrain\+::\+Get\+Vertices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_ae418fe0d7f2e8edef2edb01ed2312616}\label{classpiolot_1_1_terrain_ae418fe0d7f2e8edef2edb01ed2312616}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Highlight\+Node@{Highlight\+Node}}
+\index{Highlight\+Node@{Highlight\+Node}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Highlight\+Node()}{HighlightNode()}}
+{\footnotesize\ttfamily void piolot\+::\+Terrain\+::\+Highlight\+Node (\begin{DoxyParamCaption}\item[{unsigned int}]{\+\_\+x,  }\item[{unsigned int}]{\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+Highlight the Node (X, Z) with Yellow Colour. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+x} & Node Index X \\
+\hline
+{\em \+\_\+z} & Node Index Z \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_af737ba0aa165e923a3e6bd37f6c9a9ab}\label{classpiolot_1_1_terrain_af737ba0aa165e923a3e6bd37f6c9a9ab}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Init@{Init}}
+\index{Init@{Init}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void piolot\+::\+Terrain\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}. 
+
+
+\begin{DoxyEnumerate}
+\item Load the Image and parse it.
+\item Create Vertices based in the Lengths and breadths passed.
+\item Calculate Normals for each vertex.
+\item Create the \mbox{\hyperlink{classpiolot_1_1_object}{Object}} and push it to the Asset Manager to Render. 
+\end{DoxyEnumerate}\mbox{\Hypertarget{classpiolot_1_1_terrain_a8c86b33ae5763a67ad783bebb37d88c5}\label{classpiolot_1_1_terrain_a8c86b33ae5763a67ad783bebb37d88c5}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Init\+Path\+Finding@{Init\+Path\+Finding}}
+\index{Init\+Path\+Finding@{Init\+Path\+Finding}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Init\+Path\+Finding()}{InitPathFinding()}}
+{\footnotesize\ttfamily void piolot\+::\+Terrain\+::\+Init\+Path\+Finding (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize the necessary variables for Pathfinding. 
+
+
+\begin{DoxyEnumerate}
+\item Calculate the Cost of Each Tile based on the Normals and the Height.
+\item Calculate the Tilesets.
+\item Calculate if you can actually reach that node, ever, or not. 
+\end{DoxyEnumerate}\mbox{\Hypertarget{classpiolot_1_1_terrain_ab975d5914a10346ddcbe29467f0862c2}\label{classpiolot_1_1_terrain_ab975d5914a10346ddcbe29467f0862c2}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Load\+From\+File@{Load\+From\+File}}
+\index{Load\+From\+File@{Load\+From\+File}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Load\+From\+File()}{LoadFromFile()}}
+{\footnotesize\ttfamily void piolot\+::\+Terrain\+::\+Load\+From\+File (\begin{DoxyParamCaption}\item[{std\+::ifstream \&}]{\+\_\+in }\end{DoxyParamCaption})}
+
+
+
+Load the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} from the Input Stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+in} & Input Stream Reference \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a211e06f07b056d9e412f9b7d5c61f28f}\label{classpiolot_1_1_terrain_a211e06f07b056d9e412f9b7d5c61f28f}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!On\+Imgui\+Render@{On\+Imgui\+Render}}
+\index{On\+Imgui\+Render@{On\+Imgui\+Render}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{On\+Imgui\+Render()}{OnImguiRender()}}
+{\footnotesize\ttfamily void piolot\+::\+Terrain\+::\+On\+Imgui\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a21bf8a5f9f394709f2e938bf2a62db9c}\label{classpiolot_1_1_terrain_a21bf8a5f9f394709f2e938bf2a62db9c}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Render@{Render}}
+\index{Render@{Render}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily void piolot\+::\+Terrain\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Render the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}. 
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_ac3809c8441d17080168a077f97827816}\label{classpiolot_1_1_terrain_ac3809c8441d17080168a077f97827816}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Reset\+Obstacles@{Reset\+Obstacles}}
+\index{Reset\+Obstacles@{Reset\+Obstacles}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Reset\+Obstacles()}{ResetObstacles()}}
+{\footnotesize\ttfamily void piolot\+::\+Terrain\+::\+Reset\+Obstacles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the Obstacle during Path. 
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a2a3fee4479a1c367262917e87e80aeae}\label{classpiolot_1_1_terrain_a2a3fee4479a1c367262917e87e80aeae}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Save\+To\+File@{Save\+To\+File}}
+\index{Save\+To\+File@{Save\+To\+File}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Save\+To\+File()}{SaveToFile()}}
+{\footnotesize\ttfamily void piolot\+::\+Terrain\+::\+Save\+To\+File (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{\+\_\+out }\end{DoxyParamCaption})}
+
+
+
+Save this to the Output Stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+out} & Output Stream Reference \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a6ec5d3beab0a60517cff5603b66fd19e}\label{classpiolot_1_1_terrain_a6ec5d3beab0a60517cff5603b66fd19e}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Set\+Terrain\+Node\+Obstacle@{Set\+Terrain\+Node\+Obstacle}}
+\index{Set\+Terrain\+Node\+Obstacle@{Set\+Terrain\+Node\+Obstacle}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Set\+Terrain\+Node\+Obstacle()}{SetTerrainNodeObstacle()}}
+{\footnotesize\ttfamily void piolot\+::\+Terrain\+::\+Set\+Terrain\+Node\+Obstacle (\begin{DoxyParamCaption}\item[{glm\+::ivec2}]{\+\_\+node\+Indices }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a54f2eb43b93352f7584569f15a7dc824}\label{classpiolot_1_1_terrain_a54f2eb43b93352f7584569f15a7dc824}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!Update@{Update}}
+\index{Update@{Update}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void piolot\+::\+Terrain\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{\+\_\+delat\+Time,  }\item[{float}]{\+\_\+total\+Time }\end{DoxyParamCaption})}
+
+
+
+Update the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+delat\+Time} & Delta Time \\
+\hline
+{\em \+\_\+total\+Time} & Total Time\\
+\hline
+\end{DoxyParams}
+Push to the Buffer, if the Vertices are dirty. 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a3174244bc7ad70014bbcf8d400231cd7}\label{classpiolot_1_1_terrain_a3174244bc7ad70014bbcf8d400231cd7}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!accuracy\+Factor@{accuracy\+Factor}}
+\index{accuracy\+Factor@{accuracy\+Factor}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{accuracy\+Factor}{accuracyFactor}}
+{\footnotesize\ttfamily float piolot\+::\+Terrain\+::accuracy\+Factor = 0.\+2f}
+
+
+
+The Accuracy by which we say, that a \mbox{\hyperlink{classpiolot_1_1_ray}{Ray}} has a Point on it. Lower is more Accurate. 
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a0d8413db780f4ef041fd1794631ef122}\label{classpiolot_1_1_terrain_a0d8413db780f4ef041fd1794631ef122}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!are\+Vertices\+Dirty@{are\+Vertices\+Dirty}}
+\index{are\+Vertices\+Dirty@{are\+Vertices\+Dirty}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{are\+Vertices\+Dirty}{areVerticesDirty}}
+{\footnotesize\ttfamily bool piolot\+::\+Terrain\+::are\+Vertices\+Dirty = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flag to Check if we need to update the Buffer. 
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a05c6d7e235fafccc8aaa300fb63dfc27}\label{classpiolot_1_1_terrain_a05c6d7e235fafccc8aaa300fb63dfc27}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!breadth@{breadth}}
+\index{breadth@{breadth}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{breadth}{breadth}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Terrain\+::breadth\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_abef2d354599b2fa104c4aa0c62035257}\label{classpiolot_1_1_terrain_abef2d354599b2fa104c4aa0c62035257}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!endxz@{endxz}}
+\index{endxz@{endxz}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{endxz}{endxz}}
+{\footnotesize\ttfamily glm\+::vec2 piolot\+::\+Terrain\+::endxz \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_ac825eeb29fe45a95909488a560ac8331}\label{classpiolot_1_1_terrain_ac825eeb29fe45a95909488a560ac8331}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!grid\+Breadth@{grid\+Breadth}}
+\index{grid\+Breadth@{grid\+Breadth}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{grid\+Breadth}{gridBreadth}}
+{\footnotesize\ttfamily float piolot\+::\+Terrain\+::grid\+Breadth\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_ac1378a19d70d35bcafa1ac2c9e443d98}\label{classpiolot_1_1_terrain_ac1378a19d70d35bcafa1ac2c9e443d98}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!grid\+Length@{grid\+Length}}
+\index{grid\+Length@{grid\+Length}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{grid\+Length}{gridLength}}
+{\footnotesize\ttfamily float piolot\+::\+Terrain\+::grid\+Length\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a6dbae27fe94d5cd2dbe279a187f8b6fc}\label{classpiolot_1_1_terrain_a6dbae27fe94d5cd2dbe279a187f8b6fc}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!height\+Factor@{height\+Factor}}
+\index{height\+Factor@{height\+Factor}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{height\+Factor}{heightFactor}}
+{\footnotesize\ttfamily float piolot\+::\+Terrain\+::height\+Factor = 1.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+This is a float that can be used to modify the amplitude of the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}. 
+
+This is also used as Standard Deviation to Calculate the \mbox{\hyperlink{classpiolot_1_1_ray}{Ray}} Intersection Point with the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}. \mbox{\Hypertarget{classpiolot_1_1_terrain_a75cfcac6fb95fb3c63def8362ce393d0}\label{classpiolot_1_1_terrain_a75cfcac6fb95fb3c63def8362ce393d0}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!height\+Map\+File@{height\+Map\+File}}
+\index{height\+Map\+File@{height\+Map\+File}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{height\+Map\+File}{heightMapFile}}
+{\footnotesize\ttfamily std\+::string piolot\+::\+Terrain\+::height\+Map\+File\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Filename, from which this terrain is based on. 
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a3f6ce2a18736eccd598931c72aeaf4bc}\label{classpiolot_1_1_terrain_a3f6ce2a18736eccd598931c72aeaf4bc}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!indices@{indices}}
+\index{indices@{indices}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{indices}{indices}}
+{\footnotesize\ttfamily std\+::vector$<$unsigned int$>$ piolot\+::\+Terrain\+::indices\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Indices. 
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_adfe24e50e102f6c0dd424e2e7f376f15}\label{classpiolot_1_1_terrain_adfe24e50e102f6c0dd424e2e7f376f15}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!length@{length}}
+\index{length@{length}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Terrain\+::length\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_af2671f954c4fa1be2228ccf4cb631abf}\label{classpiolot_1_1_terrain_af2671f954c4fa1be2228ccf4cb631abf}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!node\+CountX@{node\+CountX}}
+\index{node\+CountX@{node\+CountX}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{node\+CountX}{nodeCountX}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Terrain\+::node\+CountX \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a584b5d99c115bcfae303b3feea50c3a5}\label{classpiolot_1_1_terrain_a584b5d99c115bcfae303b3feea50c3a5}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!node\+CountZ@{node\+CountZ}}
+\index{node\+CountZ@{node\+CountZ}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{node\+CountZ}{nodeCountZ}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Terrain\+::node\+CountZ \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a9711e78acb58e6d457758fc1ddd8d82d}\label{classpiolot_1_1_terrain_a9711e78acb58e6d457758fc1ddd8d82d}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!object\+Ptr@{object\+Ptr}}
+\index{object\+Ptr@{object\+Ptr}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{object\+Ptr}{objectPtr}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classpiolot_1_1_object}{Object}}$>$ piolot\+::\+Terrain\+::object\+Ptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer of the Created Object/\+Mesh. 
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a23d4f9114f5d9830e08ac411150b07e6}\label{classpiolot_1_1_terrain_a23d4f9114f5d9830e08ac411150b07e6}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!pointed\+Node\+Indices@{pointed\+Node\+Indices}}
+\index{pointed\+Node\+Indices@{pointed\+Node\+Indices}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{pointed\+Node\+Indices}{pointedNodeIndices}}
+{\footnotesize\ttfamily glm\+::ivec2 piolot\+::\+Terrain\+::pointed\+Node\+Indices \{I\+N\+T\+\_\+\+M\+AX, I\+N\+T\+\_\+\+M\+AX\}}
+
+
+
+This would be the Current Indices that are being pointed to by, the Mouse. 
+
+By Default, they are set to store I\+N\+T\+\_\+\+M\+AX. Unless they are being Updated. \mbox{\Hypertarget{classpiolot_1_1_terrain_a408da4b61ad3fd021d84b71827c86bd6}\label{classpiolot_1_1_terrain_a408da4b61ad3fd021d84b71827c86bd6}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!pointing\+At\+Origin@{pointing\+At\+Origin}}
+\index{pointing\+At\+Origin@{pointing\+At\+Origin}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{pointing\+At\+Origin}{pointingAtOrigin}}
+{\footnotesize\ttfamily bool piolot\+::\+Terrain\+::pointing\+At\+Origin = false}
+
+
+
+This is set to True, at Run time if you are pointing the Mouse Cursor over the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} origin. 
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_aa658452ff45b3c472d7f8290ee689954}\label{classpiolot_1_1_terrain_aa658452ff45b3c472d7f8290ee689954}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!startxz@{startxz}}
+\index{startxz@{startxz}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{startxz}{startxz}}
+{\footnotesize\ttfamily glm\+::vec2 piolot\+::\+Terrain\+::startxz \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_af15b6de452d8225d07d7d4ae48d4f154}\label{classpiolot_1_1_terrain_af15b6de452d8225d07d7d4ae48d4f154}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!terrain\+Debug@{terrain\+Debug}}
+\index{terrain\+Debug@{terrain\+Debug}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{terrain\+Debug}{terrainDebug}}
+{\footnotesize\ttfamily bool piolot\+::\+Terrain\+::terrain\+Debug = false}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a092c31b5d881c4f89dac30cd887d1664}\label{classpiolot_1_1_terrain_a092c31b5d881c4f89dac30cd887d1664}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!tiles@{tiles}}
+\index{tiles@{tiles}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{tiles}{tiles}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}}$\ast$$\ast$ piolot\+::\+Terrain\+::tiles \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_terrain_a57bd2f1b451a1d670bc5f42134ecf2c0}\label{classpiolot_1_1_terrain_a57bd2f1b451a1d670bc5f42134ecf2c0}} 
+\index{piolot\+::\+Terrain@{piolot\+::\+Terrain}!vertices@{vertices}}
+\index{vertices@{vertices}!piolot\+::\+Terrain@{piolot\+::\+Terrain}}
+\subsubsection{\texorpdfstring{vertices}{vertices}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structpiolot_1_1_terrain_vertex_data}{Terrain\+Vertex\+Data}}$>$ piolot\+::\+Terrain\+::vertices\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The vertices we use to create the \mbox{\hyperlink{classpiolot_1_1_mesh}{Mesh}}. 
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/dev/\+Piolot/\+Engine/Terrain.\+h\item 
-C\+:/dev/\+Piolot/\+Engine/Terrain.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_terrain_8h}{Terrain.\+h}}\item 
+\mbox{\hyperlink{_terrain_8cpp}{Terrain.\+cpp}}\end{DoxyCompactItemize}

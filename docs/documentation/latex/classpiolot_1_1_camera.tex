@@ -1,123 +1,335 @@
 \hypertarget{classpiolot_1_1_camera}{}\section{piolot\+:\+:Camera Class Reference}
 \label{classpiolot_1_1_camera}\index{piolot\+::\+Camera@{piolot\+::\+Camera}}
+
+
+{\ttfamily \#include $<$Camera.\+h$>$}
+
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0}\label{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0}} 
-enum {\bfseries camera\+\_\+movement} \{ {\bfseries forward}, 
-{\bfseries back}, 
-{\bfseries rightside}, 
-{\bfseries leftside}
+enum \mbox{\hyperlink{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0}{camera\+\_\+movement}} \{ \mbox{\hyperlink{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0a0cb80fe1877fddc4afdeb7bb00785842}{forward}}, 
+\mbox{\hyperlink{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0a54badf21a866512cc17c36e2cf1b4aa6}{back}}, 
+\mbox{\hyperlink{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0a4f24534e1ab495cce0a63f8e28fda1b9}{rightside}}, 
+\mbox{\hyperlink{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0a25379d6baed208220bc99d359283c5e8}{leftside}}
  \}
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_ae4322f03375c71eae72b7238a1c4ac12}\label{classpiolot_1_1_camera_ae4322f03375c71eae72b7238a1c4ac12}} 
-std\+::string \& {\bfseries Get\+Camera\+Name} ()
+std\+::string \& \mbox{\hyperlink{classpiolot_1_1_camera_ae4322f03375c71eae72b7238a1c4ac12}{Get\+Camera\+Name}} ()
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a7c525f53bc93d1627261d40674e96104}\label{classpiolot_1_1_camera_a7c525f53bc93d1627261d40674e96104}} 
-{\bfseries Camera} (std\+::string \+\_\+camera\+Name=\char`\"{}default\char`\"{}, glm\+::vec3 \+\_\+position=glm\+::vec3(0, 0, 10), glm\+::vec3 \+\_\+front=glm\+::vec3(0, 0, -\/1), glm\+::vec3 \+\_\+world\+Up=glm\+::vec3(0, 1, 0), Camera\+Type \+\_\+type=perspective, float \+\_\+movement\+Speed=default\+\_\+camera\+\_\+speed, float \+\_\+mouse\+Sensitivity=default\+\_\+camera\+\_\+mouse\+\_\+sensitivity)
+\mbox{\hyperlink{classpiolot_1_1_camera_a7c525f53bc93d1627261d40674e96104}{Camera}} (std\+::string \+\_\+camera\+Name=\char`\"{}default\char`\"{}, glm\+::vec3 \+\_\+position=glm\+::vec3(0, 0, 10), glm\+::vec3 \+\_\+front=glm\+::vec3(0, 0, -\/1), glm\+::vec3 \+\_\+world\+Up=glm\+::vec3(0, 1, 0), \mbox{\hyperlink{namespacepiolot_a8ffac0a73d973fb66879963da5defc90}{Camera\+Type}} \+\_\+type=\mbox{\hyperlink{namespacepiolot_a8ffac0a73d973fb66879963da5defc90a2306e17263193ee4e70fe9756faef528}{perspective}}, float \+\_\+movement\+Speed=\mbox{\hyperlink{namespacepiolot_ad09978d4f33e2559089adbc964c31992}{default\+\_\+camera\+\_\+speed}}, float \+\_\+mouse\+Sensitivity=\mbox{\hyperlink{namespacepiolot_a748a31cf105e50f2a20ccaba5fd374d3}{default\+\_\+camera\+\_\+mouse\+\_\+sensitivity}})
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a9c12125ca134fdf776a296c0fac4a79f}\label{classpiolot_1_1_camera_a9c12125ca134fdf776a296c0fac4a79f}} 
-glm\+::vec3 \& {\bfseries Get\+Position} ()
+\mbox{\hyperlink{classpiolot_1_1_camera_a0d693a4be11bfc98a2cb46c4363ed00f}{$\sim$\+Camera}} ()=default
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a84ff7b1edc39841dddc485fb9e641bf1}\label{classpiolot_1_1_camera_a84ff7b1edc39841dddc485fb9e641bf1}} 
-void {\bfseries Set\+Position} (const glm\+::vec3 \&\+\_\+position)
+glm\+::vec3 \& \mbox{\hyperlink{classpiolot_1_1_camera_a9c12125ca134fdf776a296c0fac4a79f}{Get\+Position}} ()
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a6a428b0f65c9f2b3b5c5c028a96fb1f7}\label{classpiolot_1_1_camera_a6a428b0f65c9f2b3b5c5c028a96fb1f7}} 
-const glm\+::vec3 \& {\bfseries Get\+Front} () const
+void \mbox{\hyperlink{classpiolot_1_1_camera_a84ff7b1edc39841dddc485fb9e641bf1}{Set\+Position}} (const glm\+::vec3 \&\+\_\+position)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a6151125f42016135376a60182acb63ef}\label{classpiolot_1_1_camera_a6151125f42016135376a60182acb63ef}} 
-void {\bfseries Set\+Front} (const glm\+::vec3 \&\+\_\+front)
+const glm\+::vec3 \& \mbox{\hyperlink{classpiolot_1_1_camera_a6a428b0f65c9f2b3b5c5c028a96fb1f7}{Get\+Front}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a9ce10517ad9161abf65b827d1884d785}\label{classpiolot_1_1_camera_a9ce10517ad9161abf65b827d1884d785}} 
-const glm\+::vec3 \& {\bfseries Get\+Up} () const
+void \mbox{\hyperlink{classpiolot_1_1_camera_a6151125f42016135376a60182acb63ef}{Set\+Front}} (const glm\+::vec3 \&\+\_\+front)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a970d1203b54bb2323f9cbb994366d3b4}\label{classpiolot_1_1_camera_a970d1203b54bb2323f9cbb994366d3b4}} 
-const glm\+::vec3 \& {\bfseries Get\+Right} () const
+const glm\+::vec3 \& \mbox{\hyperlink{classpiolot_1_1_camera_a9ce10517ad9161abf65b827d1884d785}{Get\+Up}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_afe3908486ce13772bf593a666869667a}\label{classpiolot_1_1_camera_afe3908486ce13772bf593a666869667a}} 
-const glm\+::vec3 \& {\bfseries Get\+World\+Up} () const
+const glm\+::vec3 \& \mbox{\hyperlink{classpiolot_1_1_camera_a970d1203b54bb2323f9cbb994366d3b4}{Get\+Right}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_ad270b37d787605772644f35b844992b0}\label{classpiolot_1_1_camera_ad270b37d787605772644f35b844992b0}} 
-float {\bfseries Get\+Movement\+Speed} () const
+const glm\+::vec3 \& \mbox{\hyperlink{classpiolot_1_1_camera_afe3908486ce13772bf593a666869667a}{Get\+World\+Up}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_aaf2988ab05281a6a1404207a76957ad6}\label{classpiolot_1_1_camera_aaf2988ab05281a6a1404207a76957ad6}} 
-void {\bfseries Set\+Movement\+Speed} (float \+\_\+movement\+Speed)
+float \mbox{\hyperlink{classpiolot_1_1_camera_ad270b37d787605772644f35b844992b0}{Get\+Movement\+Speed}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a4f9b65c8df717b82c3b7193457ce71f0}\label{classpiolot_1_1_camera_a4f9b65c8df717b82c3b7193457ce71f0}} 
-float {\bfseries Get\+Mouse\+Sensitivity} () const
+void \mbox{\hyperlink{classpiolot_1_1_camera_aaf2988ab05281a6a1404207a76957ad6}{Set\+Movement\+Speed}} (float \+\_\+movement\+Speed)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_ade560e16d6c3775dab0637873e66e762}\label{classpiolot_1_1_camera_ade560e16d6c3775dab0637873e66e762}} 
-void {\bfseries Set\+Mouse\+Sensitivity} (float \+\_\+mouse\+Sensitivity)
+float \mbox{\hyperlink{classpiolot_1_1_camera_a4f9b65c8df717b82c3b7193457ce71f0}{Get\+Mouse\+Sensitivity}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_ad57c30f9e3f381a492b38566eab4b905}\label{classpiolot_1_1_camera_ad57c30f9e3f381a492b38566eab4b905}} 
-const glm\+::mat4 \& {\bfseries Get\+View\+Matrix} () const
+void \mbox{\hyperlink{classpiolot_1_1_camera_ade560e16d6c3775dab0637873e66e762}{Set\+Mouse\+Sensitivity}} (float \+\_\+mouse\+Sensitivity)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_adf17d4592d4d144ea3deab9d8d5d836d}\label{classpiolot_1_1_camera_adf17d4592d4d144ea3deab9d8d5d836d}} 
-void {\bfseries Set\+View\+Matrix} (const glm\+::mat4 \&\+\_\+view\+Matrix)
+const glm\+::mat4 \& \mbox{\hyperlink{classpiolot_1_1_camera_ad57c30f9e3f381a492b38566eab4b905}{Get\+View\+Matrix}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_aa9172dabf1f037963c8f93f7b774cd9e}\label{classpiolot_1_1_camera_aa9172dabf1f037963c8f93f7b774cd9e}} 
-void {\bfseries Display\+Camera\+Details\+Imgui} ()
+void \mbox{\hyperlink{classpiolot_1_1_camera_adf17d4592d4d144ea3deab9d8d5d836d}{Set\+View\+Matrix}} (const glm\+::mat4 \&\+\_\+view\+Matrix)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a55a4d1a5773d240f08c766e6566591b3}\label{classpiolot_1_1_camera_a55a4d1a5773d240f08c766e6566591b3}} 
-void {\bfseries Process\+Keyboard} (camera\+\_\+movement \+\_\+direction, float \+\_\+delta\+Time)
+void \mbox{\hyperlink{classpiolot_1_1_camera_aa9172dabf1f037963c8f93f7b774cd9e}{Display\+Camera\+Details\+Imgui}} ()
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_ae6e18ad2ee8ca787ffe5fa35a01dd16b}\label{classpiolot_1_1_camera_ae6e18ad2ee8ca787ffe5fa35a01dd16b}} 
-void {\bfseries Process\+Mouse\+Movement} (float \+\_\+xoffset, float \+\_\+yoffset)
+void \mbox{\hyperlink{classpiolot_1_1_camera_a55a4d1a5773d240f08c766e6566591b3}{Process\+Keyboard}} (\mbox{\hyperlink{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0}{camera\+\_\+movement}} \+\_\+direction, float \+\_\+delta\+Time)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a6f2dd8513b5f87e438e2721bd32b22c0}\label{classpiolot_1_1_camera_a6f2dd8513b5f87e438e2721bd32b22c0}} 
-glm\+::vec3 {\bfseries Get\+Mouse\+Ray\+Direction} (float \+\_\+mouseX, float \+\_\+mouseY, int \+\_\+window\+Width, int \+\_\+window\+Height, glm\+::mat4 \+\_\+projection\+Matrix)
+void \mbox{\hyperlink{classpiolot_1_1_camera_ae6e18ad2ee8ca787ffe5fa35a01dd16b}{Process\+Mouse\+Movement}} (float \+\_\+xoffset, float \+\_\+yoffset)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a3e5675563dc81e8526c012e54cb92c9f}\label{classpiolot_1_1_camera_a3e5675563dc81e8526c012e54cb92c9f}} 
-void {\bfseries Update\+Vectors} ()
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_camera_a6f2dd8513b5f87e438e2721bd32b22c0}{Get\+Mouse\+Ray\+Direction}} (float \+\_\+mouseX, float \+\_\+mouseY, int \+\_\+window\+Width, int \+\_\+window\+Height, glm\+::mat4 \+\_\+projection\+Matrix)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a93e6bf77b4c9a6a1402a4866dc2590e9}\label{classpiolot_1_1_camera_a93e6bf77b4c9a6a1402a4866dc2590e9}} 
-void {\bfseries Update\+Matrices} ()
+void \mbox{\hyperlink{classpiolot_1_1_camera_a3e5675563dc81e8526c012e54cb92c9f}{Update\+Vectors}} ()
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_abd25ede2299da256764a59e991a8e25a}\label{classpiolot_1_1_camera_abd25ede2299da256764a59e991a8e25a}} 
-void {\bfseries Save\+To\+Stream} (std\+::ofstream \&\+\_\+out)
+void \mbox{\hyperlink{classpiolot_1_1_camera_a93e6bf77b4c9a6a1402a4866dc2590e9}{Update\+Matrices}} ()
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_acca1f703bec64c28d501760920cf8d57}\label{classpiolot_1_1_camera_acca1f703bec64c28d501760920cf8d57}} 
-void {\bfseries Load\+From\+Stream} (std\+::ifstream \&\+\_\+in)
+void \mbox{\hyperlink{classpiolot_1_1_camera_abd25ede2299da256764a59e991a8e25a}{Save\+To\+Stream}} (std\+::ofstream \&\+\_\+out)
+\item 
+void \mbox{\hyperlink{classpiolot_1_1_camera_acca1f703bec64c28d501760920cf8d57}{Load\+From\+Stream}} (std\+::ifstream \&\+\_\+in)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a4552a5cf81a5a8ed249f632e157947a1}\label{classpiolot_1_1_camera_a4552a5cf81a5a8ed249f632e157947a1}} 
-glm\+::vec3 {\bfseries position}
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_camera_a4552a5cf81a5a8ed249f632e157947a1}{position}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a2adfedf79a032c96798b7d6e01755b5a}\label{classpiolot_1_1_camera_a2adfedf79a032c96798b7d6e01755b5a}} 
-glm\+::vec3 {\bfseries front}
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_camera_a2adfedf79a032c96798b7d6e01755b5a}{front}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a31ccd695a741d232fa4592d7713de37e}\label{classpiolot_1_1_camera_a31ccd695a741d232fa4592d7713de37e}} 
-glm\+::vec3 {\bfseries up}
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_camera_a31ccd695a741d232fa4592d7713de37e}{up}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a20ee1dceb691bb4eefda7a792a6de7c5}\label{classpiolot_1_1_camera_a20ee1dceb691bb4eefda7a792a6de7c5}} 
-glm\+::vec3 {\bfseries right}
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_camera_a20ee1dceb691bb4eefda7a792a6de7c5}{right}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_ae722f7d01f68b23b82feb2adb74b90c2}\label{classpiolot_1_1_camera_ae722f7d01f68b23b82feb2adb74b90c2}} 
-glm\+::vec3 {\bfseries world\+Up}
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_camera_ae722f7d01f68b23b82feb2adb74b90c2}{world\+Up}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a92aadc4b56ef9667081ecb52b2d7bc42}\label{classpiolot_1_1_camera_a92aadc4b56ef9667081ecb52b2d7bc42}} 
-float {\bfseries movement\+Speed} = 0.\+0f
+float \mbox{\hyperlink{classpiolot_1_1_camera_a92aadc4b56ef9667081ecb52b2d7bc42}{movement\+Speed}} = 0.\+0f
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_ade10b624b272d00a83fdc969da8755f9}\label{classpiolot_1_1_camera_ade10b624b272d00a83fdc969da8755f9}} 
-float {\bfseries mouse\+Sensitivity} = 0.\+0f
+float \mbox{\hyperlink{classpiolot_1_1_camera_ade10b624b272d00a83fdc969da8755f9}{mouse\+Sensitivity}} = 0.\+0f
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a8f9352500ba36f03f6a384cc28579a95}\label{classpiolot_1_1_camera_a8f9352500ba36f03f6a384cc28579a95}} 
-glm\+::mat4 {\bfseries view\+Matrix}
+glm\+::mat4 \mbox{\hyperlink{classpiolot_1_1_camera_a8f9352500ba36f03f6a384cc28579a95}{view\+Matrix}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_acada09a9b00303c10c694c386fa05f87}\label{classpiolot_1_1_camera_acada09a9b00303c10c694c386fa05f87}} 
-std\+::string {\bfseries camera\+Name}
+std\+::string \mbox{\hyperlink{classpiolot_1_1_camera_acada09a9b00303c10c694c386fa05f87}{camera\+Name}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_camera_a782c913d63204fd8e22c17111dc1921f}\label{classpiolot_1_1_camera_a782c913d63204fd8e22c17111dc1921f}} 
-Camera\+Type {\bfseries type}
+\mbox{\hyperlink{namespacepiolot_a8ffac0a73d973fb66879963da5defc90}{Camera\+Type}} \mbox{\hyperlink{classpiolot_1_1_camera_a782c913d63204fd8e22c17111dc1921f}{type}}
 \end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0}\label{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!camera\+\_\+movement@{camera\+\_\+movement}}
+\index{camera\+\_\+movement@{camera\+\_\+movement}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{camera\+\_\+movement}{camera\_movement}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0}{piolot\+::\+Camera\+::camera\+\_\+movement}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{forward@{forward}!piolot\+::\+Camera@{piolot\+::\+Camera}}\index{piolot\+::\+Camera@{piolot\+::\+Camera}!forward@{forward}}}\mbox{\Hypertarget{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0a0cb80fe1877fddc4afdeb7bb00785842}\label{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0a0cb80fe1877fddc4afdeb7bb00785842}} 
+forward&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{back@{back}!piolot\+::\+Camera@{piolot\+::\+Camera}}\index{piolot\+::\+Camera@{piolot\+::\+Camera}!back@{back}}}\mbox{\Hypertarget{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0a54badf21a866512cc17c36e2cf1b4aa6}\label{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0a54badf21a866512cc17c36e2cf1b4aa6}} 
+back&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{rightside@{rightside}!piolot\+::\+Camera@{piolot\+::\+Camera}}\index{piolot\+::\+Camera@{piolot\+::\+Camera}!rightside@{rightside}}}\mbox{\Hypertarget{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0a4f24534e1ab495cce0a63f8e28fda1b9}\label{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0a4f24534e1ab495cce0a63f8e28fda1b9}} 
+rightside&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{leftside@{leftside}!piolot\+::\+Camera@{piolot\+::\+Camera}}\index{piolot\+::\+Camera@{piolot\+::\+Camera}!leftside@{leftside}}}\mbox{\Hypertarget{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0a25379d6baed208220bc99d359283c5e8}\label{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0a25379d6baed208220bc99d359283c5e8}} 
+leftside&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_camera_a7c525f53bc93d1627261d40674e96104}\label{classpiolot_1_1_camera_a7c525f53bc93d1627261d40674e96104}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Camera()}{Camera()}}
+{\footnotesize\ttfamily piolot\+::\+Camera\+::\+Camera (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+camera\+Name = {\ttfamily \char`\"{}default\char`\"{}},  }\item[{glm\+::vec3}]{\+\_\+position = {\ttfamily glm\+:\+:vec3(0,~0,~10)},  }\item[{glm\+::vec3}]{\+\_\+front = {\ttfamily glm\+:\+:vec3(0,~0,~-\/1)},  }\item[{glm\+::vec3}]{\+\_\+world\+Up = {\ttfamily glm\+:\+:vec3(0,~1,~0)},  }\item[{\mbox{\hyperlink{namespacepiolot_a8ffac0a73d973fb66879963da5defc90}{Camera\+Type}}}]{\+\_\+type = {\ttfamily \mbox{\hyperlink{namespacepiolot_a8ffac0a73d973fb66879963da5defc90a2306e17263193ee4e70fe9756faef528}{perspective}}},  }\item[{float}]{\+\_\+movement\+Speed = {\ttfamily \mbox{\hyperlink{namespacepiolot_ad09978d4f33e2559089adbc964c31992}{default\+\_\+camera\+\_\+speed}}},  }\item[{float}]{\+\_\+mouse\+Sensitivity = {\ttfamily \mbox{\hyperlink{namespacepiolot_a748a31cf105e50f2a20ccaba5fd374d3}{default\+\_\+camera\+\_\+mouse\+\_\+sensitivity}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a0d693a4be11bfc98a2cb46c4363ed00f}\label{classpiolot_1_1_camera_a0d693a4be11bfc98a2cb46c4363ed00f}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!````~Camera@{$\sim$\+Camera}}
+\index{````~Camera@{$\sim$\+Camera}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{$\sim$\+Camera()}{~Camera()}}
+{\footnotesize\ttfamily piolot\+::\+Camera\+::$\sim$\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_camera_aa9172dabf1f037963c8f93f7b774cd9e}\label{classpiolot_1_1_camera_aa9172dabf1f037963c8f93f7b774cd9e}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Display\+Camera\+Details\+Imgui@{Display\+Camera\+Details\+Imgui}}
+\index{Display\+Camera\+Details\+Imgui@{Display\+Camera\+Details\+Imgui}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Display\+Camera\+Details\+Imgui()}{DisplayCameraDetailsImgui()}}
+{\footnotesize\ttfamily void piolot\+::\+Camera\+::\+Display\+Camera\+Details\+Imgui (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_ae4322f03375c71eae72b7238a1c4ac12}\label{classpiolot_1_1_camera_ae4322f03375c71eae72b7238a1c4ac12}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Get\+Camera\+Name@{Get\+Camera\+Name}}
+\index{Get\+Camera\+Name@{Get\+Camera\+Name}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Get\+Camera\+Name()}{GetCameraName()}}
+{\footnotesize\ttfamily std\+::string\& piolot\+::\+Camera\+::\+Get\+Camera\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a6a428b0f65c9f2b3b5c5c028a96fb1f7}\label{classpiolot_1_1_camera_a6a428b0f65c9f2b3b5c5c028a96fb1f7}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Get\+Front@{Get\+Front}}
+\index{Get\+Front@{Get\+Front}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Get\+Front()}{GetFront()}}
+{\footnotesize\ttfamily const glm\+::vec3\& piolot\+::\+Camera\+::\+Get\+Front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a6f2dd8513b5f87e438e2721bd32b22c0}\label{classpiolot_1_1_camera_a6f2dd8513b5f87e438e2721bd32b22c0}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Get\+Mouse\+Ray\+Direction@{Get\+Mouse\+Ray\+Direction}}
+\index{Get\+Mouse\+Ray\+Direction@{Get\+Mouse\+Ray\+Direction}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Get\+Mouse\+Ray\+Direction()}{GetMouseRayDirection()}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Camera\+::\+Get\+Mouse\+Ray\+Direction (\begin{DoxyParamCaption}\item[{float}]{\+\_\+mouseX,  }\item[{float}]{\+\_\+mouseY,  }\item[{int}]{\+\_\+window\+Width,  }\item[{int}]{\+\_\+window\+Height,  }\item[{glm\+::mat4}]{\+\_\+projection\+Matrix }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a4f9b65c8df717b82c3b7193457ce71f0}\label{classpiolot_1_1_camera_a4f9b65c8df717b82c3b7193457ce71f0}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Get\+Mouse\+Sensitivity@{Get\+Mouse\+Sensitivity}}
+\index{Get\+Mouse\+Sensitivity@{Get\+Mouse\+Sensitivity}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Get\+Mouse\+Sensitivity()}{GetMouseSensitivity()}}
+{\footnotesize\ttfamily float piolot\+::\+Camera\+::\+Get\+Mouse\+Sensitivity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_ad270b37d787605772644f35b844992b0}\label{classpiolot_1_1_camera_ad270b37d787605772644f35b844992b0}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Get\+Movement\+Speed@{Get\+Movement\+Speed}}
+\index{Get\+Movement\+Speed@{Get\+Movement\+Speed}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Get\+Movement\+Speed()}{GetMovementSpeed()}}
+{\footnotesize\ttfamily float piolot\+::\+Camera\+::\+Get\+Movement\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a9c12125ca134fdf776a296c0fac4a79f}\label{classpiolot_1_1_camera_a9c12125ca134fdf776a296c0fac4a79f}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Get\+Position@{Get\+Position}}
+\index{Get\+Position@{Get\+Position}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Get\+Position()}{GetPosition()}}
+{\footnotesize\ttfamily glm\+::vec3\& piolot\+::\+Camera\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a970d1203b54bb2323f9cbb994366d3b4}\label{classpiolot_1_1_camera_a970d1203b54bb2323f9cbb994366d3b4}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Get\+Right@{Get\+Right}}
+\index{Get\+Right@{Get\+Right}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Get\+Right()}{GetRight()}}
+{\footnotesize\ttfamily const glm\+::vec3\& piolot\+::\+Camera\+::\+Get\+Right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a9ce10517ad9161abf65b827d1884d785}\label{classpiolot_1_1_camera_a9ce10517ad9161abf65b827d1884d785}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Get\+Up@{Get\+Up}}
+\index{Get\+Up@{Get\+Up}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Get\+Up()}{GetUp()}}
+{\footnotesize\ttfamily const glm\+::vec3\& piolot\+::\+Camera\+::\+Get\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_ad57c30f9e3f381a492b38566eab4b905}\label{classpiolot_1_1_camera_ad57c30f9e3f381a492b38566eab4b905}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Get\+View\+Matrix@{Get\+View\+Matrix}}
+\index{Get\+View\+Matrix@{Get\+View\+Matrix}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Get\+View\+Matrix()}{GetViewMatrix()}}
+{\footnotesize\ttfamily const glm\+::mat4\& piolot\+::\+Camera\+::\+Get\+View\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_afe3908486ce13772bf593a666869667a}\label{classpiolot_1_1_camera_afe3908486ce13772bf593a666869667a}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Get\+World\+Up@{Get\+World\+Up}}
+\index{Get\+World\+Up@{Get\+World\+Up}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Get\+World\+Up()}{GetWorldUp()}}
+{\footnotesize\ttfamily const glm\+::vec3\& piolot\+::\+Camera\+::\+Get\+World\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_acca1f703bec64c28d501760920cf8d57}\label{classpiolot_1_1_camera_acca1f703bec64c28d501760920cf8d57}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Load\+From\+Stream@{Load\+From\+Stream}}
+\index{Load\+From\+Stream@{Load\+From\+Stream}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Load\+From\+Stream()}{LoadFromStream()}}
+{\footnotesize\ttfamily void piolot\+::\+Camera\+::\+Load\+From\+Stream (\begin{DoxyParamCaption}\item[{std\+::ifstream \&}]{\+\_\+in }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a55a4d1a5773d240f08c766e6566591b3}\label{classpiolot_1_1_camera_a55a4d1a5773d240f08c766e6566591b3}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Process\+Keyboard@{Process\+Keyboard}}
+\index{Process\+Keyboard@{Process\+Keyboard}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Process\+Keyboard()}{ProcessKeyboard()}}
+{\footnotesize\ttfamily void piolot\+::\+Camera\+::\+Process\+Keyboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpiolot_1_1_camera_afba5e0e4539ee7666e8354842c4988e0}{camera\+\_\+movement}}}]{\+\_\+direction,  }\item[{float}]{\+\_\+delta\+Time }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_ae6e18ad2ee8ca787ffe5fa35a01dd16b}\label{classpiolot_1_1_camera_ae6e18ad2ee8ca787ffe5fa35a01dd16b}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Process\+Mouse\+Movement@{Process\+Mouse\+Movement}}
+\index{Process\+Mouse\+Movement@{Process\+Mouse\+Movement}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Process\+Mouse\+Movement()}{ProcessMouseMovement()}}
+{\footnotesize\ttfamily void piolot\+::\+Camera\+::\+Process\+Mouse\+Movement (\begin{DoxyParamCaption}\item[{float}]{\+\_\+xoffset,  }\item[{float}]{\+\_\+yoffset }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_abd25ede2299da256764a59e991a8e25a}\label{classpiolot_1_1_camera_abd25ede2299da256764a59e991a8e25a}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Save\+To\+Stream@{Save\+To\+Stream}}
+\index{Save\+To\+Stream@{Save\+To\+Stream}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Save\+To\+Stream()}{SaveToStream()}}
+{\footnotesize\ttfamily void piolot\+::\+Camera\+::\+Save\+To\+Stream (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{\+\_\+out }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a6151125f42016135376a60182acb63ef}\label{classpiolot_1_1_camera_a6151125f42016135376a60182acb63ef}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Set\+Front@{Set\+Front}}
+\index{Set\+Front@{Set\+Front}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Set\+Front()}{SetFront()}}
+{\footnotesize\ttfamily void piolot\+::\+Camera\+::\+Set\+Front (\begin{DoxyParamCaption}\item[{const glm\+::vec3 \&}]{\+\_\+front }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_ade560e16d6c3775dab0637873e66e762}\label{classpiolot_1_1_camera_ade560e16d6c3775dab0637873e66e762}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Set\+Mouse\+Sensitivity@{Set\+Mouse\+Sensitivity}}
+\index{Set\+Mouse\+Sensitivity@{Set\+Mouse\+Sensitivity}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Set\+Mouse\+Sensitivity()}{SetMouseSensitivity()}}
+{\footnotesize\ttfamily void piolot\+::\+Camera\+::\+Set\+Mouse\+Sensitivity (\begin{DoxyParamCaption}\item[{float}]{\+\_\+mouse\+Sensitivity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_aaf2988ab05281a6a1404207a76957ad6}\label{classpiolot_1_1_camera_aaf2988ab05281a6a1404207a76957ad6}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Set\+Movement\+Speed@{Set\+Movement\+Speed}}
+\index{Set\+Movement\+Speed@{Set\+Movement\+Speed}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Set\+Movement\+Speed()}{SetMovementSpeed()}}
+{\footnotesize\ttfamily void piolot\+::\+Camera\+::\+Set\+Movement\+Speed (\begin{DoxyParamCaption}\item[{float}]{\+\_\+movement\+Speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a84ff7b1edc39841dddc485fb9e641bf1}\label{classpiolot_1_1_camera_a84ff7b1edc39841dddc485fb9e641bf1}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Set\+Position@{Set\+Position}}
+\index{Set\+Position@{Set\+Position}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Set\+Position()}{SetPosition()}}
+{\footnotesize\ttfamily void piolot\+::\+Camera\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{const glm\+::vec3 \&}]{\+\_\+position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_adf17d4592d4d144ea3deab9d8d5d836d}\label{classpiolot_1_1_camera_adf17d4592d4d144ea3deab9d8d5d836d}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Set\+View\+Matrix@{Set\+View\+Matrix}}
+\index{Set\+View\+Matrix@{Set\+View\+Matrix}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Set\+View\+Matrix()}{SetViewMatrix()}}
+{\footnotesize\ttfamily void piolot\+::\+Camera\+::\+Set\+View\+Matrix (\begin{DoxyParamCaption}\item[{const glm\+::mat4 \&}]{\+\_\+view\+Matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a93e6bf77b4c9a6a1402a4866dc2590e9}\label{classpiolot_1_1_camera_a93e6bf77b4c9a6a1402a4866dc2590e9}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Update\+Matrices@{Update\+Matrices}}
+\index{Update\+Matrices@{Update\+Matrices}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Update\+Matrices()}{UpdateMatrices()}}
+{\footnotesize\ttfamily void piolot\+::\+Camera\+::\+Update\+Matrices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a3e5675563dc81e8526c012e54cb92c9f}\label{classpiolot_1_1_camera_a3e5675563dc81e8526c012e54cb92c9f}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!Update\+Vectors@{Update\+Vectors}}
+\index{Update\+Vectors@{Update\+Vectors}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{Update\+Vectors()}{UpdateVectors()}}
+{\footnotesize\ttfamily void piolot\+::\+Camera\+::\+Update\+Vectors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_camera_acada09a9b00303c10c694c386fa05f87}\label{classpiolot_1_1_camera_acada09a9b00303c10c694c386fa05f87}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!camera\+Name@{camera\+Name}}
+\index{camera\+Name@{camera\+Name}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{camera\+Name}{cameraName}}
+{\footnotesize\ttfamily std\+::string piolot\+::\+Camera\+::camera\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a2adfedf79a032c96798b7d6e01755b5a}\label{classpiolot_1_1_camera_a2adfedf79a032c96798b7d6e01755b5a}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!front@{front}}
+\index{front@{front}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{front}{front}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Camera\+::front\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_ade10b624b272d00a83fdc969da8755f9}\label{classpiolot_1_1_camera_ade10b624b272d00a83fdc969da8755f9}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!mouse\+Sensitivity@{mouse\+Sensitivity}}
+\index{mouse\+Sensitivity@{mouse\+Sensitivity}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{mouse\+Sensitivity}{mouseSensitivity}}
+{\footnotesize\ttfamily float piolot\+::\+Camera\+::mouse\+Sensitivity = 0.\+0f\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a92aadc4b56ef9667081ecb52b2d7bc42}\label{classpiolot_1_1_camera_a92aadc4b56ef9667081ecb52b2d7bc42}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!movement\+Speed@{movement\+Speed}}
+\index{movement\+Speed@{movement\+Speed}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{movement\+Speed}{movementSpeed}}
+{\footnotesize\ttfamily float piolot\+::\+Camera\+::movement\+Speed = 0.\+0f\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a4552a5cf81a5a8ed249f632e157947a1}\label{classpiolot_1_1_camera_a4552a5cf81a5a8ed249f632e157947a1}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!position@{position}}
+\index{position@{position}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Camera\+::position\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a20ee1dceb691bb4eefda7a792a6de7c5}\label{classpiolot_1_1_camera_a20ee1dceb691bb4eefda7a792a6de7c5}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!right@{right}}
+\index{right@{right}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{right}{right}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Camera\+::right\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a782c913d63204fd8e22c17111dc1921f}\label{classpiolot_1_1_camera_a782c913d63204fd8e22c17111dc1921f}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!type@{type}}
+\index{type@{type}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacepiolot_a8ffac0a73d973fb66879963da5defc90}{Camera\+Type}} piolot\+::\+Camera\+::type\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a31ccd695a741d232fa4592d7713de37e}\label{classpiolot_1_1_camera_a31ccd695a741d232fa4592d7713de37e}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!up@{up}}
+\index{up@{up}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{up}{up}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Camera\+::up\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_a8f9352500ba36f03f6a384cc28579a95}\label{classpiolot_1_1_camera_a8f9352500ba36f03f6a384cc28579a95}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!view\+Matrix@{view\+Matrix}}
+\index{view\+Matrix@{view\+Matrix}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{view\+Matrix}{viewMatrix}}
+{\footnotesize\ttfamily glm\+::mat4 piolot\+::\+Camera\+::view\+Matrix\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_camera_ae722f7d01f68b23b82feb2adb74b90c2}\label{classpiolot_1_1_camera_ae722f7d01f68b23b82feb2adb74b90c2}} 
+\index{piolot\+::\+Camera@{piolot\+::\+Camera}!world\+Up@{world\+Up}}
+\index{world\+Up@{world\+Up}!piolot\+::\+Camera@{piolot\+::\+Camera}}
+\subsubsection{\texorpdfstring{world\+Up}{worldUp}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Camera\+::world\+Up\hspace{0.3cm}{\ttfamily [protected]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/dev/\+Piolot/\+Engine/Camera.\+h\item 
-C\+:/dev/\+Piolot/\+Engine/Camera.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_camera_8h}{Camera.\+h}}\item 
+\mbox{\hyperlink{_camera_8cpp}{Camera.\+cpp}}\end{DoxyCompactItemize}

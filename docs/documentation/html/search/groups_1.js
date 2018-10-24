@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['setters',['Setters',['../group___setters.html',1,'']]]
+  ['getters',['Getters',['../group___getters.html',1,'']]]
 ];

@@ -14,91 +14,80 @@
 \item 
 \mbox{\hyperlink{class_window_a65335a745eaadd9dbdbd265b7fbf0fc5}{Window}} (unsigned \+\_\+width, unsigned \+\_\+height, const std\+::string \&\+\_\+title)
 \begin{DoxyCompactList}\small\item\em Creates the \mbox{\hyperlink{class_window}{Window}} and Opens it. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_window_a245d821e6016fa1f6970ccbbedd635f6}\label{class_window_a245d821e6016fa1f6970ccbbedd635f6}} 
 \mbox{\hyperlink{class_window_a245d821e6016fa1f6970ccbbedd635f6}{$\sim$\+Window}} ()
-\begin{DoxyCompactList}\small\item\em Default Destructor. Calls Cleanup. \end{DoxyCompactList}\item 
-unsigned {\bfseries Get\+Width} ()
-\item 
-unsigned {\bfseries Get\+Height} ()
-\item 
-std\+::string {\bfseries Get\+Title} () const
-\item 
-bool {\bfseries Is\+Glad\+Init} () const
-\item 
-bool {\bfseries Is\+Glfw\+Init} () const
-\item 
-G\+L\+F\+Wwindow $\ast$ {\bfseries Get\+Window} () const
-\item 
-void {\bfseries Set\+Width} (unsigned \+\_\+width)
-\item 
-void {\bfseries Set\+Height} (unsigned \+\_\+height)
-\item 
-void \mbox{\hyperlink{group___getters_gac825ddc0aeda29fae94c5fc910f3f04d}{Update\+Frame\+Size}} ()
-\begin{DoxyCompactList}\small\item\em Updates the Class\textquotesingle{}s width and height with the G\+L\+FW Frame Buffer Width and Height. \end{DoxyCompactList}\item 
-void {\bfseries Handle\+Input} () const
-\item 
-bool {\bfseries Is\+Key\+Pressed} (unsigned int \+\_\+key\+Code) const
-\item 
-bool {\bfseries Is\+Key\+Pressed\+And\+Released} (unsigned int \+\_\+key\+Code) const
-\item 
-bool {\bfseries Is\+Key\+Pressed\+Or\+Held} (const unsigned int \+\_\+keycode) const
-\item 
-bool {\bfseries Is\+Key\+Held} (unsigned int \+\_\+key\+Code) const
-\item 
-bool {\bfseries Is\+Mouse\+Button\+Pressed} (unsigned int \+\_\+button) const
-\item 
-void \mbox{\hyperlink{group___getters_ga65b02b0e52540d4c2c9d13689f4ec45a}{Get\+Mouse\+Position}} (double \&x, double \&y) const
-\begin{DoxyCompactList}\small\item\em Function to get the Mouse Position, to a couple of variables. \end{DoxyCompactList}\item 
-void {\bfseries Update} (const float \+\_\+deltatime)
-\end{DoxyCompactItemize}
-\subsection*{Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-key\+\_\+bool \mbox{\hyperlink{group___getters_ga7e9389c2d0e9f90f10422f86be7d22d8}{keys}} \mbox{[}M\+A\+X\+\_\+\+K\+E\+YS\mbox{]} \{\}
-\begin{DoxyCompactList}\small\item\em The keys and their current state. \end{DoxyCompactList}\item 
-key\+\_\+bool \mbox{\hyperlink{group___getters_gaa0adc9c4e183ccaa355928059359fe9a}{prev\+Keys}} \mbox{[}M\+A\+X\+\_\+\+K\+E\+YS\mbox{]} \{\}
-\begin{DoxyCompactList}\small\item\em The Keys and their Previous State. \end{DoxyCompactList}\item 
-key\+\_\+bool \mbox{\hyperlink{group___getters_gaf219ad727d87f6f2d0d34c0d165ec065}{mouse\+Buttons}} \mbox{[}M\+A\+X\+\_\+\+B\+U\+T\+T\+O\+NS\mbox{]} = \{ key\+\_\+inactive \}
-\begin{DoxyCompactList}\small\item\em The Mouse buttons current state. \end{DoxyCompactList}\item 
-key\+\_\+bool \mbox{\hyperlink{group___getters_ga89e8b6c9ffa84a095ec76cf1b29b5f94}{prev\+Mouse\+Buttons}} \mbox{[}M\+A\+X\+\_\+\+B\+U\+T\+T\+O\+NS\mbox{]} = \{ key\+\_\+inactive \}
-\begin{DoxyCompactList}\small\item\em The Mouse buttons Previous state. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{group___getters_gad50401a5c3c350b562b9577106e60fb0}{prev\+MouseX}} \{ 0.\+0 \}
-\begin{DoxyCompactList}\small\item\em Mouse X Position in the Previous frame. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{group___getters_gaf4a58a8da45b8aeeb36dbcae237bcef4}{prev\+MouseY}} \{ 0.\+0 \}
-\begin{DoxyCompactList}\small\item\em Mouse Y Position in the Previous frame. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{group___getters_ga68f752a9e5c04cf32a50b169df0de609}{mouseX}} \{ 0.\+0 \}
-\begin{DoxyCompactList}\small\item\em Mouse X Position in the Current Frame. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{group___getters_ga9f5f64a77451ba45212dab398f7b9dac}{mouseY}} \{ 0.\+0 \}
-\begin{DoxyCompactList}\small\item\em Mouse Y Positin in the Current Frame. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{group___getters_ga93b50aa557f493c5589af5dcc8f74c4a}{mouse\+OffsetX}} \{ 0.\+0 \}
-\begin{DoxyCompactList}\small\item\em Mouse X offset from the last frame. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{group___getters_ga22d84e6f9e9c7e283f303798b630c733}{mouse\+OffsetY}} \{ 0.\+0 \}
-\begin{DoxyCompactList}\small\item\em Mouse Y offset from the last frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Default Destructor. Calls Cleanup. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_window_af5b1c436782cc9752d386493fbc5dc8c}\label{class_window_af5b1c436782cc9752d386493fbc5dc8c}} 
 int \mbox{\hyperlink{class_window_af5b1c436782cc9752d386493fbc5dc8c}{width}}
 \begin{DoxyCompactList}\small\item\em Width of the \mbox{\hyperlink{class_window}{Window}} in Pixels. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_window_af0ac1732ca6b79a6f6b78aa344140514}\label{class_window_af0ac1732ca6b79a6f6b78aa344140514}} 
 int \mbox{\hyperlink{class_window_af0ac1732ca6b79a6f6b78aa344140514}{height}}
 \begin{DoxyCompactList}\small\item\em Height of the \mbox{\hyperlink{class_window}{Window}} in Pixels. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_window_accc3e5364fced57c273820aa51410e12}\label{class_window_accc3e5364fced57c273820aa51410e12}} 
 std\+::string \mbox{\hyperlink{class_window_accc3e5364fced57c273820aa51410e12}{title}}
 \begin{DoxyCompactList}\small\item\em Title of the \mbox{\hyperlink{class_window}{Window}}. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_window_aaeb459aaf4e4f822bb7411d557312328}\label{class_window_aaeb459aaf4e4f822bb7411d557312328}} 
 bool \mbox{\hyperlink{class_window_aaeb459aaf4e4f822bb7411d557312328}{is\+Glfw\+Init}} = false
 \begin{DoxyCompactList}\small\item\em Flag to check if G\+L\+FW is Initialized. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_window_a7a64d5cb08cc14d5d87cb4efa03fcb92}\label{class_window_a7a64d5cb08cc14d5d87cb4efa03fcb92}} 
 bool \mbox{\hyperlink{class_window_a7a64d5cb08cc14d5d87cb4efa03fcb92}{is\+Glad\+Init}} = false
 \begin{DoxyCompactList}\small\item\em Flag to check if Glad is Initialized. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_window_a9957db4afdad3d57e5c5b6626b44b6d0}\label{class_window_a9957db4afdad3d57e5c5b6626b44b6d0}} 
 G\+L\+F\+Wwindow $\ast$ \mbox{\hyperlink{class_window_a9957db4afdad3d57e5c5b6626b44b6d0}{window}} = nullptr
 \begin{DoxyCompactList}\small\item\em The actual G\+L\+FW \mbox{\hyperlink{class_window}{Window}} Pointer. Nullptr if G\+L\+FW is not initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \mbox{\hyperlink{group___getters_gab0d4c2fa778638e6fde90fc221124384}{Clean\+Up}} ()
+\mbox{\hyperlink{_window_8h_a793ae82d7efec9490f81b4595e03b6f2}{key\+\_\+bool}} \mbox{\hyperlink{class_window_a7e9389c2d0e9f90f10422f86be7d22d8}{keys}} \mbox{[}\mbox{\hyperlink{_window_8h_a3077ecca3770bdee50e6a17dfb55d002}{M\+A\+X\+\_\+\+K\+E\+YS}}\mbox{]} \{\}
+\begin{DoxyCompactList}\small\item\em The keys and their current state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_window_8h_a793ae82d7efec9490f81b4595e03b6f2}{key\+\_\+bool}} \mbox{\hyperlink{class_window_aa0adc9c4e183ccaa355928059359fe9a}{prev\+Keys}} \mbox{[}\mbox{\hyperlink{_window_8h_a3077ecca3770bdee50e6a17dfb55d002}{M\+A\+X\+\_\+\+K\+E\+YS}}\mbox{]} \{\}
+\begin{DoxyCompactList}\small\item\em The Keys and their Previous State. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_window_8h_a793ae82d7efec9490f81b4595e03b6f2}{key\+\_\+bool}} \mbox{\hyperlink{class_window_af219ad727d87f6f2d0d34c0d165ec065}{mouse\+Buttons}} \mbox{[}\mbox{\hyperlink{_window_8h_a8bb0c7f312bb8665c3377a061dae552c}{M\+A\+X\+\_\+\+B\+U\+T\+T\+O\+NS}}\mbox{]} = \{ \mbox{\hyperlink{_window_8h_a793ae82d7efec9490f81b4595e03b6f2ab04ef1a66cda34ead7b763a49080d854}{key\+\_\+inactive}} \}
+\begin{DoxyCompactList}\small\item\em The Mouse buttons current state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_window_8h_a793ae82d7efec9490f81b4595e03b6f2}{key\+\_\+bool}} \mbox{\hyperlink{class_window_a89e8b6c9ffa84a095ec76cf1b29b5f94}{prev\+Mouse\+Buttons}} \mbox{[}\mbox{\hyperlink{_window_8h_a8bb0c7f312bb8665c3377a061dae552c}{M\+A\+X\+\_\+\+B\+U\+T\+T\+O\+NS}}\mbox{]} = \{ \mbox{\hyperlink{_window_8h_a793ae82d7efec9490f81b4595e03b6f2ab04ef1a66cda34ead7b763a49080d854}{key\+\_\+inactive}} \}
+\begin{DoxyCompactList}\small\item\em The Mouse buttons Previous state. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_window_ad50401a5c3c350b562b9577106e60fb0}{prev\+MouseX}} \{ 0.\+0 \}
+\begin{DoxyCompactList}\small\item\em Mouse X Position in the Previous frame. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_window_af4a58a8da45b8aeeb36dbcae237bcef4}{prev\+MouseY}} \{ 0.\+0 \}
+\begin{DoxyCompactList}\small\item\em Mouse Y Position in the Previous frame. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_window_a68f752a9e5c04cf32a50b169df0de609}{mouseX}} \{ 0.\+0 \}
+\begin{DoxyCompactList}\small\item\em Mouse X Position in the Current Frame. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_window_a9f5f64a77451ba45212dab398f7b9dac}{mouseY}} \{ 0.\+0 \}
+\begin{DoxyCompactList}\small\item\em Mouse Y Positin in the Current Frame. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_window_a93b50aa557f493c5589af5dcc8f74c4a}{mouse\+OffsetX}} \{ 0.\+0 \}
+\begin{DoxyCompactList}\small\item\em Mouse X offset from the last frame. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_window_a22d84e6f9e9c7e283f303798b630c733}{mouse\+OffsetY}} \{ 0.\+0 \}
+\begin{DoxyCompactList}\small\item\em Mouse Y offset from the last frame. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_window_a77d5347666653b9a20c389e0e412f700}{Get\+Width}} ()
+\item 
+unsigned \mbox{\hyperlink{class_window_a19c8d97415b163e5f641388f1d537085}{Get\+Height}} ()
+\item 
+std\+::string \mbox{\hyperlink{class_window_ae66865d49d16710c1cb11fd39ab7564f}{Get\+Title}} () const
+\item 
+bool \mbox{\hyperlink{class_window_acd18a545a32f73ae1dc0c1bd00573f20}{Is\+Glad\+Init}} () const
+\item 
+bool \mbox{\hyperlink{class_window_a84c80356e911db086098e29e8a870829}{Is\+Glfw\+Init}} () const
+\item 
+G\+L\+F\+Wwindow $\ast$ \mbox{\hyperlink{class_window_ad7e49197526473b23c01ecc9cd2292d2}{Get\+Window}} () const
+\item 
+void \mbox{\hyperlink{class_window_a2fba7009a94faaef315b90509124a65c}{Set\+Width}} (unsigned \+\_\+width)
+\item 
+void \mbox{\hyperlink{class_window_a28843b64d34ec006f51274e154a81f00}{Set\+Height}} (unsigned \+\_\+height)
+\item 
+void \mbox{\hyperlink{class_window_ac825ddc0aeda29fae94c5fc910f3f04d}{Update\+Frame\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Updates the Class\textquotesingle{}s width and height with the G\+L\+FW Frame Buffer Width and Height. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_window_a6703058dead0231b089862ad1e226c70}{Handle\+Input}} () const
+\item 
+bool \mbox{\hyperlink{class_window_a72708934a1134a2ad9729f45719902a7}{Is\+Key\+Pressed}} (unsigned int \+\_\+key\+Code) const
+\item 
+bool \mbox{\hyperlink{class_window_a4000d4a6212d66cb1b14023cfb68c3a0}{Is\+Key\+Pressed\+And\+Released}} (unsigned int \+\_\+key\+Code) const
+\item 
+bool \mbox{\hyperlink{class_window_a78186413fc84fbb83f1c5c8a230d45fa}{Is\+Key\+Pressed\+Or\+Held}} (const unsigned int \+\_\+keycode) const
+\item 
+bool \mbox{\hyperlink{class_window_a2d13c2ec079ed3f8e907969781217c93}{Is\+Key\+Held}} (unsigned int \+\_\+key\+Code) const
+\item 
+bool \mbox{\hyperlink{class_window_a174de5939a61138e7c3cfe0136716f01}{Is\+Mouse\+Button\+Pressed}} (unsigned int \+\_\+button) const
+\item 
+void \mbox{\hyperlink{class_window_a65b02b0e52540d4c2c9d13689f4ec45a}{Get\+Mouse\+Position}} (double \&x, double \&y) const
+\begin{DoxyCompactList}\small\item\em Function to get the Mouse Position, to a couple of variables. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_window_a86a9ed5f891a93f0c3c44d8577be4e71}{Update}} (const float \+\_\+deltatime)
+\item 
+static void \mbox{\hyperlink{class_window_ab0d4c2fa778638e6fde90fc221124384}{Clean\+Up}} ()
 \begin{DoxyCompactList}\small\item\em Calls G\+L\+F\+W\+Terminate. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -125,9 +114,312 @@ Creates the \mbox{\hyperlink{class_window}{Window}} and Opens it.
 {\em \+\_\+title} & Title of the \mbox{\hyperlink{class_window}{Window}} \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_window_a245d821e6016fa1f6970ccbbedd635f6}\label{class_window_a245d821e6016fa1f6970ccbbedd635f6}} 
+\index{Window@{Window}!````~Window@{$\sim$\+Window}}
+\index{````~Window@{$\sim$\+Window}!Window@{Window}}
+\subsubsection{\texorpdfstring{$\sim$\+Window()}{~Window()}}
+{\footnotesize\ttfamily Window\+::$\sim$\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Destructor. Calls Cleanup. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_window_ab0d4c2fa778638e6fde90fc221124384}\label{class_window_ab0d4c2fa778638e6fde90fc221124384}} 
+\index{Window@{Window}!Clean\+Up@{Clean\+Up}}
+\index{Clean\+Up@{Clean\+Up}!Window@{Window}}
+\subsubsection{\texorpdfstring{Clean\+Up()}{CleanUp()}}
+{\footnotesize\ttfamily void Window\+::\+Clean\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Calls G\+L\+F\+W\+Terminate. 
+
+\mbox{\Hypertarget{class_window_a19c8d97415b163e5f641388f1d537085}\label{class_window_a19c8d97415b163e5f641388f1d537085}} 
+\index{Window@{Window}!Get\+Height@{Get\+Height}}
+\index{Get\+Height@{Get\+Height}!Window@{Window}}
+\subsubsection{\texorpdfstring{Get\+Height()}{GetHeight()}}
+{\footnotesize\ttfamily unsigned Window\+::\+Get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_window_a65b02b0e52540d4c2c9d13689f4ec45a}\label{class_window_a65b02b0e52540d4c2c9d13689f4ec45a}} 
+\index{Window@{Window}!Get\+Mouse\+Position@{Get\+Mouse\+Position}}
+\index{Get\+Mouse\+Position@{Get\+Mouse\+Position}!Window@{Window}}
+\subsubsection{\texorpdfstring{Get\+Mouse\+Position()}{GetMousePosition()}}
+{\footnotesize\ttfamily void Window\+::\+Get\+Mouse\+Position (\begin{DoxyParamCaption}\item[{double \&}]{x,  }\item[{double \&}]{y }\end{DoxyParamCaption}) const}
+
+
+
+Function to get the Mouse Position, to a couple of variables. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The Reference to Set the X Position to. \\
+\hline
+{\em y} & The reference to set the Y Position to. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_window_ae66865d49d16710c1cb11fd39ab7564f}\label{class_window_ae66865d49d16710c1cb11fd39ab7564f}} 
+\index{Window@{Window}!Get\+Title@{Get\+Title}}
+\index{Get\+Title@{Get\+Title}!Window@{Window}}
+\subsubsection{\texorpdfstring{Get\+Title()}{GetTitle()}}
+{\footnotesize\ttfamily std\+::string Window\+::\+Get\+Title (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_window_a77d5347666653b9a20c389e0e412f700}\label{class_window_a77d5347666653b9a20c389e0e412f700}} 
+\index{Window@{Window}!Get\+Width@{Get\+Width}}
+\index{Get\+Width@{Get\+Width}!Window@{Window}}
+\subsubsection{\texorpdfstring{Get\+Width()}{GetWidth()}}
+{\footnotesize\ttfamily unsigned Window\+::\+Get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getters \mbox{\Hypertarget{class_window_ad7e49197526473b23c01ecc9cd2292d2}\label{class_window_ad7e49197526473b23c01ecc9cd2292d2}} 
+\index{Window@{Window}!Get\+Window@{Get\+Window}}
+\index{Get\+Window@{Get\+Window}!Window@{Window}}
+\subsubsection{\texorpdfstring{Get\+Window()}{GetWindow()}}
+{\footnotesize\ttfamily G\+L\+F\+Wwindow $\ast$ Window\+::\+Get\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_window_a6703058dead0231b089862ad1e226c70}\label{class_window_a6703058dead0231b089862ad1e226c70}} 
+\index{Window@{Window}!Handle\+Input@{Handle\+Input}}
+\index{Handle\+Input@{Handle\+Input}!Window@{Window}}
+\subsubsection{\texorpdfstring{Handle\+Input()}{HandleInput()}}
+{\footnotesize\ttfamily void Window\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_window_acd18a545a32f73ae1dc0c1bd00573f20}\label{class_window_acd18a545a32f73ae1dc0c1bd00573f20}} 
+\index{Window@{Window}!Is\+Glad\+Init@{Is\+Glad\+Init}}
+\index{Is\+Glad\+Init@{Is\+Glad\+Init}!Window@{Window}}
+\subsubsection{\texorpdfstring{Is\+Glad\+Init()}{IsGladInit()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Glad\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_window_a84c80356e911db086098e29e8a870829}\label{class_window_a84c80356e911db086098e29e8a870829}} 
+\index{Window@{Window}!Is\+Glfw\+Init@{Is\+Glfw\+Init}}
+\index{Is\+Glfw\+Init@{Is\+Glfw\+Init}!Window@{Window}}
+\subsubsection{\texorpdfstring{Is\+Glfw\+Init()}{IsGlfwInit()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Glfw\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_window_a2d13c2ec079ed3f8e907969781217c93}\label{class_window_a2d13c2ec079ed3f8e907969781217c93}} 
+\index{Window@{Window}!Is\+Key\+Held@{Is\+Key\+Held}}
+\index{Is\+Key\+Held@{Is\+Key\+Held}!Window@{Window}}
+\subsubsection{\texorpdfstring{Is\+Key\+Held()}{IsKeyHeld()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Key\+Held (\begin{DoxyParamCaption}\item[{unsigned int}]{\+\_\+key\+Code }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_window_a72708934a1134a2ad9729f45719902a7}\label{class_window_a72708934a1134a2ad9729f45719902a7}} 
+\index{Window@{Window}!Is\+Key\+Pressed@{Is\+Key\+Pressed}}
+\index{Is\+Key\+Pressed@{Is\+Key\+Pressed}!Window@{Window}}
+\subsubsection{\texorpdfstring{Is\+Key\+Pressed()}{IsKeyPressed()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Key\+Pressed (\begin{DoxyParamCaption}\item[{unsigned int}]{\+\_\+key\+Code }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_window_a4000d4a6212d66cb1b14023cfb68c3a0}\label{class_window_a4000d4a6212d66cb1b14023cfb68c3a0}} 
+\index{Window@{Window}!Is\+Key\+Pressed\+And\+Released@{Is\+Key\+Pressed\+And\+Released}}
+\index{Is\+Key\+Pressed\+And\+Released@{Is\+Key\+Pressed\+And\+Released}!Window@{Window}}
+\subsubsection{\texorpdfstring{Is\+Key\+Pressed\+And\+Released()}{IsKeyPressedAndReleased()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Key\+Pressed\+And\+Released (\begin{DoxyParamCaption}\item[{unsigned int}]{\+\_\+key\+Code }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_window_a78186413fc84fbb83f1c5c8a230d45fa}\label{class_window_a78186413fc84fbb83f1c5c8a230d45fa}} 
+\index{Window@{Window}!Is\+Key\+Pressed\+Or\+Held@{Is\+Key\+Pressed\+Or\+Held}}
+\index{Is\+Key\+Pressed\+Or\+Held@{Is\+Key\+Pressed\+Or\+Held}!Window@{Window}}
+\subsubsection{\texorpdfstring{Is\+Key\+Pressed\+Or\+Held()}{IsKeyPressedOrHeld()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Key\+Pressed\+Or\+Held (\begin{DoxyParamCaption}\item[{const unsigned int}]{\+\_\+keycode }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_window_a174de5939a61138e7c3cfe0136716f01}\label{class_window_a174de5939a61138e7c3cfe0136716f01}} 
+\index{Window@{Window}!Is\+Mouse\+Button\+Pressed@{Is\+Mouse\+Button\+Pressed}}
+\index{Is\+Mouse\+Button\+Pressed@{Is\+Mouse\+Button\+Pressed}!Window@{Window}}
+\subsubsection{\texorpdfstring{Is\+Mouse\+Button\+Pressed()}{IsMouseButtonPressed()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Mouse\+Button\+Pressed (\begin{DoxyParamCaption}\item[{unsigned int}]{\+\_\+button }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_window_a28843b64d34ec006f51274e154a81f00}\label{class_window_a28843b64d34ec006f51274e154a81f00}} 
+\index{Window@{Window}!Set\+Height@{Set\+Height}}
+\index{Set\+Height@{Set\+Height}!Window@{Window}}
+\subsubsection{\texorpdfstring{Set\+Height()}{SetHeight()}}
+{\footnotesize\ttfamily void Window\+::\+Set\+Height (\begin{DoxyParamCaption}\item[{unsigned}]{\+\_\+height }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_window_a2fba7009a94faaef315b90509124a65c}\label{class_window_a2fba7009a94faaef315b90509124a65c}} 
+\index{Window@{Window}!Set\+Width@{Set\+Width}}
+\index{Set\+Width@{Set\+Width}!Window@{Window}}
+\subsubsection{\texorpdfstring{Set\+Width()}{SetWidth()}}
+{\footnotesize\ttfamily void Window\+::\+Set\+Width (\begin{DoxyParamCaption}\item[{unsigned}]{\+\_\+width }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_window_a86a9ed5f891a93f0c3c44d8577be4e71}\label{class_window_a86a9ed5f891a93f0c3c44d8577be4e71}} 
+\index{Window@{Window}!Update@{Update}}
+\index{Update@{Update}!Window@{Window}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Window\+::\+Update (\begin{DoxyParamCaption}\item[{const float}]{\+\_\+deltatime }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_window_ac825ddc0aeda29fae94c5fc910f3f04d}\label{class_window_ac825ddc0aeda29fae94c5fc910f3f04d}} 
+\index{Window@{Window}!Update\+Frame\+Size@{Update\+Frame\+Size}}
+\index{Update\+Frame\+Size@{Update\+Frame\+Size}!Window@{Window}}
+\subsubsection{\texorpdfstring{Update\+Frame\+Size()}{UpdateFrameSize()}}
+{\footnotesize\ttfamily void Window\+::\+Update\+Frame\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the Class\textquotesingle{}s width and height with the G\+L\+FW Frame Buffer Width and Height. 
+
+Depends on a G\+L\+FW Call. 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_window_af0ac1732ca6b79a6f6b78aa344140514}\label{class_window_af0ac1732ca6b79a6f6b78aa344140514}} 
+\index{Window@{Window}!height@{height}}
+\index{height@{height}!Window@{Window}}
+\subsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily int Window\+::height\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Height of the \mbox{\hyperlink{class_window}{Window}} in Pixels. 
+
+\mbox{\Hypertarget{class_window_a7a64d5cb08cc14d5d87cb4efa03fcb92}\label{class_window_a7a64d5cb08cc14d5d87cb4efa03fcb92}} 
+\index{Window@{Window}!is\+Glad\+Init@{is\+Glad\+Init}}
+\index{is\+Glad\+Init@{is\+Glad\+Init}!Window@{Window}}
+\subsubsection{\texorpdfstring{is\+Glad\+Init}{isGladInit}}
+{\footnotesize\ttfamily bool Window\+::is\+Glad\+Init = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Flag to check if Glad is Initialized. 
+
+\mbox{\Hypertarget{class_window_aaeb459aaf4e4f822bb7411d557312328}\label{class_window_aaeb459aaf4e4f822bb7411d557312328}} 
+\index{Window@{Window}!is\+Glfw\+Init@{is\+Glfw\+Init}}
+\index{is\+Glfw\+Init@{is\+Glfw\+Init}!Window@{Window}}
+\subsubsection{\texorpdfstring{is\+Glfw\+Init}{isGlfwInit}}
+{\footnotesize\ttfamily bool Window\+::is\+Glfw\+Init = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Flag to check if G\+L\+FW is Initialized. 
+
+\mbox{\Hypertarget{class_window_a7e9389c2d0e9f90f10422f86be7d22d8}\label{class_window_a7e9389c2d0e9f90f10422f86be7d22d8}} 
+\index{Window@{Window}!keys@{keys}}
+\index{keys@{keys}!Window@{Window}}
+\subsubsection{\texorpdfstring{keys}{keys}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_window_8h_a793ae82d7efec9490f81b4595e03b6f2}{key\+\_\+bool}} Window\+::keys\mbox{[}\mbox{\hyperlink{_window_8h_a3077ecca3770bdee50e6a17dfb55d002}{M\+A\+X\+\_\+\+K\+E\+YS}}\mbox{]} \{\}}
+
+
+
+The keys and their current state. 
+
+\mbox{\Hypertarget{class_window_af219ad727d87f6f2d0d34c0d165ec065}\label{class_window_af219ad727d87f6f2d0d34c0d165ec065}} 
+\index{Window@{Window}!mouse\+Buttons@{mouse\+Buttons}}
+\index{mouse\+Buttons@{mouse\+Buttons}!Window@{Window}}
+\subsubsection{\texorpdfstring{mouse\+Buttons}{mouseButtons}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_window_8h_a793ae82d7efec9490f81b4595e03b6f2}{key\+\_\+bool}} Window\+::mouse\+Buttons\mbox{[}\mbox{\hyperlink{_window_8h_a8bb0c7f312bb8665c3377a061dae552c}{M\+A\+X\+\_\+\+B\+U\+T\+T\+O\+NS}}\mbox{]} = \{ \mbox{\hyperlink{_window_8h_a793ae82d7efec9490f81b4595e03b6f2ab04ef1a66cda34ead7b763a49080d854}{key\+\_\+inactive}} \}}
+
+
+
+The Mouse buttons current state. 
+
+\mbox{\Hypertarget{class_window_a93b50aa557f493c5589af5dcc8f74c4a}\label{class_window_a93b50aa557f493c5589af5dcc8f74c4a}} 
+\index{Window@{Window}!mouse\+OffsetX@{mouse\+OffsetX}}
+\index{mouse\+OffsetX@{mouse\+OffsetX}!Window@{Window}}
+\subsubsection{\texorpdfstring{mouse\+OffsetX}{mouseOffsetX}}
+{\footnotesize\ttfamily double Window\+::mouse\+OffsetX \{ 0.\+0 \}}
+
+
+
+Mouse X offset from the last frame. 
+
+\mbox{\Hypertarget{class_window_a22d84e6f9e9c7e283f303798b630c733}\label{class_window_a22d84e6f9e9c7e283f303798b630c733}} 
+\index{Window@{Window}!mouse\+OffsetY@{mouse\+OffsetY}}
+\index{mouse\+OffsetY@{mouse\+OffsetY}!Window@{Window}}
+\subsubsection{\texorpdfstring{mouse\+OffsetY}{mouseOffsetY}}
+{\footnotesize\ttfamily double Window\+::mouse\+OffsetY \{ 0.\+0 \}}
+
+
+
+Mouse Y offset from the last frame. 
+
+\mbox{\Hypertarget{class_window_a68f752a9e5c04cf32a50b169df0de609}\label{class_window_a68f752a9e5c04cf32a50b169df0de609}} 
+\index{Window@{Window}!mouseX@{mouseX}}
+\index{mouseX@{mouseX}!Window@{Window}}
+\subsubsection{\texorpdfstring{mouseX}{mouseX}}
+{\footnotesize\ttfamily double Window\+::mouseX \{ 0.\+0 \}}
+
+
+
+Mouse X Position in the Current Frame. 
+
+\mbox{\Hypertarget{class_window_a9f5f64a77451ba45212dab398f7b9dac}\label{class_window_a9f5f64a77451ba45212dab398f7b9dac}} 
+\index{Window@{Window}!mouseY@{mouseY}}
+\index{mouseY@{mouseY}!Window@{Window}}
+\subsubsection{\texorpdfstring{mouseY}{mouseY}}
+{\footnotesize\ttfamily double Window\+::mouseY \{ 0.\+0 \}}
+
+
+
+Mouse Y Positin in the Current Frame. 
+
+\mbox{\Hypertarget{class_window_aa0adc9c4e183ccaa355928059359fe9a}\label{class_window_aa0adc9c4e183ccaa355928059359fe9a}} 
+\index{Window@{Window}!prev\+Keys@{prev\+Keys}}
+\index{prev\+Keys@{prev\+Keys}!Window@{Window}}
+\subsubsection{\texorpdfstring{prev\+Keys}{prevKeys}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_window_8h_a793ae82d7efec9490f81b4595e03b6f2}{key\+\_\+bool}} Window\+::prev\+Keys\mbox{[}\mbox{\hyperlink{_window_8h_a3077ecca3770bdee50e6a17dfb55d002}{M\+A\+X\+\_\+\+K\+E\+YS}}\mbox{]} \{\}}
+
+
+
+The Keys and their Previous State. 
+
+\mbox{\Hypertarget{class_window_a89e8b6c9ffa84a095ec76cf1b29b5f94}\label{class_window_a89e8b6c9ffa84a095ec76cf1b29b5f94}} 
+\index{Window@{Window}!prev\+Mouse\+Buttons@{prev\+Mouse\+Buttons}}
+\index{prev\+Mouse\+Buttons@{prev\+Mouse\+Buttons}!Window@{Window}}
+\subsubsection{\texorpdfstring{prev\+Mouse\+Buttons}{prevMouseButtons}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_window_8h_a793ae82d7efec9490f81b4595e03b6f2}{key\+\_\+bool}} Window\+::prev\+Mouse\+Buttons\mbox{[}\mbox{\hyperlink{_window_8h_a8bb0c7f312bb8665c3377a061dae552c}{M\+A\+X\+\_\+\+B\+U\+T\+T\+O\+NS}}\mbox{]} = \{ \mbox{\hyperlink{_window_8h_a793ae82d7efec9490f81b4595e03b6f2ab04ef1a66cda34ead7b763a49080d854}{key\+\_\+inactive}} \}}
+
+
+
+The Mouse buttons Previous state. 
+
+\mbox{\Hypertarget{class_window_ad50401a5c3c350b562b9577106e60fb0}\label{class_window_ad50401a5c3c350b562b9577106e60fb0}} 
+\index{Window@{Window}!prev\+MouseX@{prev\+MouseX}}
+\index{prev\+MouseX@{prev\+MouseX}!Window@{Window}}
+\subsubsection{\texorpdfstring{prev\+MouseX}{prevMouseX}}
+{\footnotesize\ttfamily double Window\+::prev\+MouseX \{ 0.\+0 \}}
+
+
+
+Mouse X Position in the Previous frame. 
+
+\mbox{\Hypertarget{class_window_af4a58a8da45b8aeeb36dbcae237bcef4}\label{class_window_af4a58a8da45b8aeeb36dbcae237bcef4}} 
+\index{Window@{Window}!prev\+MouseY@{prev\+MouseY}}
+\index{prev\+MouseY@{prev\+MouseY}!Window@{Window}}
+\subsubsection{\texorpdfstring{prev\+MouseY}{prevMouseY}}
+{\footnotesize\ttfamily double Window\+::prev\+MouseY \{ 0.\+0 \}}
+
+
+
+Mouse Y Position in the Previous frame. 
+
+\mbox{\Hypertarget{class_window_accc3e5364fced57c273820aa51410e12}\label{class_window_accc3e5364fced57c273820aa51410e12}} 
+\index{Window@{Window}!title@{title}}
+\index{title@{title}!Window@{Window}}
+\subsubsection{\texorpdfstring{title}{title}}
+{\footnotesize\ttfamily std\+::string Window\+::title\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Title of the \mbox{\hyperlink{class_window}{Window}}. 
+
+\mbox{\Hypertarget{class_window_af5b1c436782cc9752d386493fbc5dc8c}\label{class_window_af5b1c436782cc9752d386493fbc5dc8c}} 
+\index{Window@{Window}!width@{width}}
+\index{width@{width}!Window@{Window}}
+\subsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily int Window\+::width\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Width of the \mbox{\hyperlink{class_window}{Window}} in Pixels. 
+
+\mbox{\Hypertarget{class_window_a9957db4afdad3d57e5c5b6626b44b6d0}\label{class_window_a9957db4afdad3d57e5c5b6626b44b6d0}} 
+\index{Window@{Window}!window@{window}}
+\index{window@{window}!Window@{Window}}
+\subsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily G\+L\+F\+Wwindow$\ast$ Window\+::window = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The actual G\+L\+FW \mbox{\hyperlink{class_window}{Window}} Pointer. Nullptr if G\+L\+FW is not initialized. 
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/dev/\+Piolot/\+Engine/Window.\+h\item 
-C\+:/dev/\+Piolot/\+Engine/Window.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_window_8h}{Window.\+h}}\item 
+\mbox{\hyperlink{_window_8cpp}{Window.\+cpp}}\end{DoxyCompactItemize}

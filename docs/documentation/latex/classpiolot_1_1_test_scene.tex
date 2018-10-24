@@ -1,5 +1,9 @@
 \hypertarget{classpiolot_1_1_test_scene}{}\section{piolot\+:\+:Test\+Scene Class Reference}
 \label{classpiolot_1_1_test_scene}\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+
+
+{\ttfamily \#include $<$Test\+Scene.\+h$>$}
+
 Inheritance diagram for piolot\+:\+:Test\+Scene\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,94 +13,377 @@ Inheritance diagram for piolot\+:\+:Test\+Scene\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a1568f961f1632ccb9da36d14c6aae0d5}\label{classpiolot_1_1_test_scene_a1568f961f1632ccb9da36d14c6aae0d5}} 
-{\bfseries Test\+Scene} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_window}{Window}} $>$ \+\_\+window)
+\mbox{\hyperlink{classpiolot_1_1_test_scene_a1568f961f1632ccb9da36d14c6aae0d5}{Test\+Scene}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_window}{Window}} $>$ \+\_\+window)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a1151c075257a2b626774502709e0aab9}\label{classpiolot_1_1_test_scene_a1151c075257a2b626774502709e0aab9}} 
-virtual void {\bfseries On\+Update} (float \+\_\+delta\+Time, float \+\_\+total\+Time) override
+\mbox{\hyperlink{classpiolot_1_1_test_scene_a615e7e4264391f122ffdf0f997c825f4}{$\sim$\+Test\+Scene}} ()=default
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_aeaccbb83f264fb4f1e8df5b246033f76}\label{classpiolot_1_1_test_scene_aeaccbb83f264fb4f1e8df5b246033f76}} 
-virtual void {\bfseries On\+Render} () override
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_aa75a09c9c598fc35949f097cbb6df5cb}\label{classpiolot_1_1_test_scene_aa75a09c9c598fc35949f097cbb6df5cb}} 
-virtual void {\bfseries On\+Imgui\+Render} (\mbox{\hyperlink{structpiolot_1_1_im_gui_control_variables}{Im\+Gui\+Control\+Variables}} \&\+\_\+vars)
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a8fcd4f46ccdb6c49741bb37364d9bb0e}\label{classpiolot_1_1_test_scene_a8fcd4f46ccdb6c49741bb37364d9bb0e}} 
-void {\bfseries Save\+Scene} (const char $\ast$\+\_\+file\+Name)
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a513072b5c63768aa0fcd0dd5a0a0ca98}\label{classpiolot_1_1_test_scene_a513072b5c63768aa0fcd0dd5a0a0ca98}} 
-void {\bfseries Load\+Scene} (const char $\ast$\+\_\+file\+Name)
+void \mbox{\hyperlink{classpiolot_1_1_test_scene_a76c03545ecd764cd4350eec338c9a94e}{Init\+Entities}} () override
+\begin{DoxyCompactList}\small\item\em Initialize all the Entities that shall be present in the \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}} when it loads. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_test_scene_a1151c075257a2b626774502709e0aab9}{On\+Update}} (float \+\_\+delta\+Time, float \+\_\+total\+Time) override
+\begin{DoxyCompactList}\small\item\em Update the program by one frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_test_scene_aeaccbb83f264fb4f1e8df5b246033f76}{On\+Render}} () override
+\begin{DoxyCompactList}\small\item\em Render the \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classpiolot_1_1_test_scene_aa75a09c9c598fc35949f097cbb6df5cb}{On\+Imgui\+Render}} (\mbox{\hyperlink{structpiolot_1_1_im_gui_control_variables}{Im\+Gui\+Control\+Variables}} \&\+\_\+vars)
+\begin{DoxyCompactList}\small\item\em Render the Im\+G\+UI\textquotesingle{}s current Frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_test_scene_a8fcd4f46ccdb6c49741bb37364d9bb0e}{Save\+Scene}} (const char $\ast$\+\_\+file\+Name)
+\begin{DoxyCompactList}\small\item\em Save the current \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}} to a binary file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_test_scene_a513072b5c63768aa0fcd0dd5a0a0ca98}{Load\+Scene}} (const char $\ast$\+\_\+file\+Name)
+\begin{DoxyCompactList}\small\item\em Load the \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}} from the binary file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_test_scene_a22c630a5e1c5725f04140ec15a125de7}{Ray\+Picking}} ()
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_aca94d51dc521dd620b45d85ee817cb0a}\label{classpiolot_1_1_test_scene_aca94d51dc521dd620b45d85ee817cb0a}} 
-\mbox{\hyperlink{classpiolot_1_1_grid}{Grid}} {\bfseries test\+Grid}
+\mbox{\hyperlink{classpiolot_1_1_grid}{Grid}} \mbox{\hyperlink{classpiolot_1_1_test_scene_aca94d51dc521dd620b45d85ee817cb0a}{test\+Grid}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a349626f35bec9409fa359108ce08c32e}\label{classpiolot_1_1_test_scene_a349626f35bec9409fa359108ce08c32e}} 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} $>$ {\bfseries test\+Terrain}
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}} $>$ \mbox{\hyperlink{classpiolot_1_1_test_scene_a349626f35bec9409fa359108ce08c32e}{test\+Terrain}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_ab19142067d70aede9c5ac3cadecb1c29}\label{classpiolot_1_1_test_scene_ab19142067d70aede9c5ac3cadecb1c29}} 
-glm\+::vec2 {\bfseries startxz}
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_entity}{Entity}} $>$ \mbox{\hyperlink{classpiolot_1_1_test_scene_ae0a460b8b6b3d352f92be069a6d69fb3}{building\+Placer}}
+\begin{DoxyCompactList}\small\item\em This would be a temporary entity that we draw when we are in the Placing Mode. \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{classpiolot_1_1_test_scene_ab19142067d70aede9c5ac3cadecb1c29}{startxz}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_aa7838a55b521b6d9c1d32dc3ca240ba7}\label{classpiolot_1_1_test_scene_aa7838a55b521b6d9c1d32dc3ca240ba7}} 
-glm\+::vec2 {\bfseries endxz}
+glm\+::vec2 \mbox{\hyperlink{classpiolot_1_1_test_scene_aa7838a55b521b6d9c1d32dc3ca240ba7}{endxz}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a2a69831062ede8e0e0f889064b257d51}\label{classpiolot_1_1_test_scene_a2a69831062ede8e0e0f889064b257d51}} 
-std\+::vector$<$ \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ $>$ {\bfseries path}
+float \mbox{\hyperlink{classpiolot_1_1_test_scene_ad676a1a351b61b8e7071b2d91856ad14}{total\+Time\+Counter\+For\+Pathing}} = 0
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_ac12dc2505449af346ebcead571fd2954}\label{classpiolot_1_1_test_scene_ac12dc2505449af346ebcead571fd2954}} 
-bool {\bfseries pathing\+Debug\+Window} = false
+std\+::vector$<$ \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ $>$ \mbox{\hyperlink{classpiolot_1_1_test_scene_a2a69831062ede8e0e0f889064b257d51}{path}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a7568d8b6dbe31cdac69303544c06d338}\label{classpiolot_1_1_test_scene_a7568d8b6dbe31cdac69303544c06d338}} 
-bool {\bfseries display\+Asset\+Manager\+Window} = false
+bool \mbox{\hyperlink{classpiolot_1_1_test_scene_ac12dc2505449af346ebcead571fd2954}{pathing\+Debug\+Window}} = false
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a1abbac46b5984ea191e8f429cd10e626}\label{classpiolot_1_1_test_scene_a1abbac46b5984ea191e8f429cd10e626}} 
-bool {\bfseries display\+Log\+Window} = false
+bool \mbox{\hyperlink{classpiolot_1_1_test_scene_a7568d8b6dbe31cdac69303544c06d338}{display\+Asset\+Manager\+Window}} = false
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a91e97c2de25304b754313bd1beceecac}\label{classpiolot_1_1_test_scene_a91e97c2de25304b754313bd1beceecac}} 
-bool {\bfseries display\+Camera\+Controls} = false
+bool \mbox{\hyperlink{classpiolot_1_1_test_scene_a1abbac46b5984ea191e8f429cd10e626}{display\+Log\+Window}} = false
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_aeff84b8ca87f60068340a8a3afbe11e5}\label{classpiolot_1_1_test_scene_aeff84b8ca87f60068340a8a3afbe11e5}} 
-bool {\bfseries display\+Raypicking\+Controls} = true
+bool \mbox{\hyperlink{classpiolot_1_1_test_scene_a91e97c2de25304b754313bd1beceecac}{display\+Camera\+Controls}} = false
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a7416b0c39baa5a3154ac88bda22bdf25}\label{classpiolot_1_1_test_scene_a7416b0c39baa5a3154ac88bda22bdf25}} 
-bool {\bfseries display\+Demo\+Window} = false
+bool \mbox{\hyperlink{classpiolot_1_1_test_scene_aeff84b8ca87f60068340a8a3afbe11e5}{display\+Raypicking\+Controls}} = false
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a5f2a7d4a162916445d89f338c01dbc93}\label{classpiolot_1_1_test_scene_a5f2a7d4a162916445d89f338c01dbc93}} 
-bool {\bfseries display\+Viewport\+Controls} = false
+bool \mbox{\hyperlink{classpiolot_1_1_test_scene_a7416b0c39baa5a3154ac88bda22bdf25}{display\+Demo\+Window}} = false
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a0cbccb0354c0c68f277c2360cefc9ab7}\label{classpiolot_1_1_test_scene_a0cbccb0354c0c68f277c2360cefc9ab7}} 
-\mbox{\hyperlink{structpiolot_1_1_viewport_details}{Viewport\+Details}} {\bfseries viewports\+Details} \mbox{[}4\mbox{]}
+bool \mbox{\hyperlink{classpiolot_1_1_test_scene_a5f2a7d4a162916445d89f338c01dbc93}{display\+Viewport\+Controls}} = false
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a9f8ea97b9444b79a962ec590af5761d3}\label{classpiolot_1_1_test_scene_a9f8ea97b9444b79a962ec590af5761d3}} 
-std\+::string {\bfseries filename\+To\+Save\+Scene} = \char`\"{}File Name\char`\"{}
+\mbox{\hyperlink{structpiolot_1_1_viewport_details}{Viewport\+Details}} \mbox{\hyperlink{classpiolot_1_1_test_scene_a0cbccb0354c0c68f277c2360cefc9ab7}{viewports\+Details}} \mbox{[}4\mbox{]}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a6dfdaeb3f1711bcca9b85bc5a0a5acd3}\label{classpiolot_1_1_test_scene_a6dfdaeb3f1711bcca9b85bc5a0a5acd3}} 
-std\+::string {\bfseries filename\+To\+Load\+Scene} = \char`\"{}File Name\char`\"{}
+std\+::string \mbox{\hyperlink{classpiolot_1_1_test_scene_a9f8ea97b9444b79a962ec590af5761d3}{filename\+To\+Save\+Scene}} = \char`\"{}File Name\char`\"{}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a6a9853bb71c428b0842dce2af2976514}\label{classpiolot_1_1_test_scene_a6a9853bb71c428b0842dce2af2976514}} 
-bool {\bfseries open\+Save\+Scene\+As\+Window} = false
+std\+::string \mbox{\hyperlink{classpiolot_1_1_test_scene_a6dfdaeb3f1711bcca9b85bc5a0a5acd3}{filename\+To\+Load\+Scene}} = \char`\"{}File Name\char`\"{}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a29392a8bc16ade36f204bf56fa68cb17}\label{classpiolot_1_1_test_scene_a29392a8bc16ade36f204bf56fa68cb17}} 
-bool {\bfseries open\+Load\+Scene\+Window} = false
+bool \mbox{\hyperlink{classpiolot_1_1_test_scene_a6a9853bb71c428b0842dce2af2976514}{open\+Save\+Scene\+As\+Window}} = false
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_ab906d0870595d299b454becf24219171}\label{classpiolot_1_1_test_scene_ab906d0870595d299b454becf24219171}} 
-bool {\bfseries display\+Hierarchy} = false
+bool \mbox{\hyperlink{classpiolot_1_1_test_scene_a29392a8bc16ade36f204bf56fa68cb17}{open\+Load\+Scene\+Window}} = false
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_a4123335b4ec13948ff01ae9f344d9546}\label{classpiolot_1_1_test_scene_a4123335b4ec13948ff01ae9f344d9546}} 
-bool {\bfseries display\+Add\+Entity} = false
+bool \mbox{\hyperlink{classpiolot_1_1_test_scene_ab906d0870595d299b454becf24219171}{display\+Hierarchy}} = false
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_ad18ff08a06cd2076ea3b76c4d08867cc}\label{classpiolot_1_1_test_scene_ad18ff08a06cd2076ea3b76c4d08867cc}} 
-std\+::string {\bfseries obj\+Name}
+bool \mbox{\hyperlink{classpiolot_1_1_test_scene_a4123335b4ec13948ff01ae9f344d9546}{display\+Add\+Entity}} = false
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_test_scene_ae88852d0c8e77c07196e67cc1e93759c}\label{classpiolot_1_1_test_scene_ae88852d0c8e77c07196e67cc1e93759c}} 
-std\+::string {\bfseries shader\+Name}
-\end{DoxyCompactItemize}
+bool \mbox{\hyperlink{classpiolot_1_1_test_scene_a66ea919cf7e7a7ddf8931eef4c41b841}{display\+Stats}} = true
+\item 
+bool \mbox{\hyperlink{classpiolot_1_1_test_scene_a426f58e9273e201864ccf3e0e8b342e3}{is\+Placing\+Mode}} = false
+\item 
+std\+::string \mbox{\hyperlink{classpiolot_1_1_test_scene_ad18ff08a06cd2076ea3b76c4d08867cc}{obj\+Name}}
+\item 
+std\+::string \mbox{\hyperlink{classpiolot_1_1_test_scene_ae88852d0c8e77c07196e67cc1e93759c}{shader\+Name}}
+\item 
+\mbox{\hyperlink{classpiolot_1_1_ray}{Ray}} \mbox{\hyperlink{classpiolot_1_1_test_scene_a6a9b96c88caf979ba3e763c11653b290}{camera\+Ray}} \{glm\+::vec3(), glm\+::vec3()\}
+\item 
+glm\+::mat4 \mbox{\hyperlink{classpiolot_1_1_test_scene_a6f4e922ee3d44c78b879e761dd1c4175}{projection\+Matrix}}
+\begin{DoxyCompactList}\small\item\em The Projection Matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a1568f961f1632ccb9da36d14c6aae0d5}\label{classpiolot_1_1_test_scene_a1568f961f1632ccb9da36d14c6aae0d5}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!Test\+Scene@{Test\+Scene}}
+\index{Test\+Scene@{Test\+Scene}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{Test\+Scene()}{TestScene()}}
+{\footnotesize\ttfamily piolot\+::\+Test\+Scene\+::\+Test\+Scene (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_window}{Window}} $>$}]{\+\_\+window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a615e7e4264391f122ffdf0f997c825f4}\label{classpiolot_1_1_test_scene_a615e7e4264391f122ffdf0f997c825f4}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!````~Test\+Scene@{$\sim$\+Test\+Scene}}
+\index{````~Test\+Scene@{$\sim$\+Test\+Scene}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{$\sim$\+Test\+Scene()}{~TestScene()}}
+{\footnotesize\ttfamily piolot\+::\+Test\+Scene\+::$\sim$\+Test\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a76c03545ecd764cd4350eec338c9a94e}\label{classpiolot_1_1_test_scene_a76c03545ecd764cd4350eec338c9a94e}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!Init\+Entities@{Init\+Entities}}
+\index{Init\+Entities@{Init\+Entities}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{Init\+Entities()}{InitEntities()}}
+{\footnotesize\ttfamily void piolot\+::\+Test\+Scene\+::\+Init\+Entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initialize all the Entities that shall be present in the \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}} when it loads. 
+
+
+
+Implements \mbox{\hyperlink{group___virtual_ga6871dbb3f61a724a166fd83c3c1dc3a3}{piolot\+::\+Scene}}.
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a513072b5c63768aa0fcd0dd5a0a0ca98}\label{classpiolot_1_1_test_scene_a513072b5c63768aa0fcd0dd5a0a0ca98}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!Load\+Scene@{Load\+Scene}}
+\index{Load\+Scene@{Load\+Scene}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{Load\+Scene()}{LoadScene()}}
+{\footnotesize\ttfamily void piolot\+::\+Test\+Scene\+::\+Load\+Scene (\begin{DoxyParamCaption}\item[{const char $\ast$}]{\+\_\+file\+Name }\end{DoxyParamCaption})}
+
+
+
+Load the \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}} from the binary file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+file\+Name} & The Filename to load. As specific as you can get, with the extension. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_aa75a09c9c598fc35949f097cbb6df5cb}\label{classpiolot_1_1_test_scene_aa75a09c9c598fc35949f097cbb6df5cb}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!On\+Imgui\+Render@{On\+Imgui\+Render}}
+\index{On\+Imgui\+Render@{On\+Imgui\+Render}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{On\+Imgui\+Render()}{OnImguiRender()}}
+{\footnotesize\ttfamily void piolot\+::\+Test\+Scene\+::\+On\+Imgui\+Render (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpiolot_1_1_im_gui_control_variables}{Im\+Gui\+Control\+Variables}} \&}]{\+\_\+vars }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Render the Im\+G\+UI\textquotesingle{}s current Frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+vars} & The Variables that Im\+Gui modifies and might need, to perform its functions \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_aeaccbb83f264fb4f1e8df5b246033f76}\label{classpiolot_1_1_test_scene_aeaccbb83f264fb4f1e8df5b246033f76}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!On\+Render@{On\+Render}}
+\index{On\+Render@{On\+Render}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{On\+Render()}{OnRender()}}
+{\footnotesize\ttfamily void piolot\+::\+Test\+Scene\+::\+On\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Render the \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}}. 
+
+
+
+Implements \mbox{\hyperlink{group___virtual_gaaa3f6f2cb0dce355d890c8b43a2f11f2}{piolot\+::\+Scene}}.
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a1151c075257a2b626774502709e0aab9}\label{classpiolot_1_1_test_scene_a1151c075257a2b626774502709e0aab9}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!On\+Update@{On\+Update}}
+\index{On\+Update@{On\+Update}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{On\+Update()}{OnUpdate()}}
+{\footnotesize\ttfamily void piolot\+::\+Test\+Scene\+::\+On\+Update (\begin{DoxyParamCaption}\item[{float}]{\+\_\+delta\+Time,  }\item[{float}]{\+\_\+total\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Update the program by one frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+delta\+Time} & The Time from between the last frame and this frame \\
+\hline
+{\em \+\_\+total\+Time} & The Total Time since the Program started \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{group___virtual_gae05b812e9f1caa80526a79a03ab456e1}{piolot\+::\+Scene}}.
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a22c630a5e1c5725f04140ec15a125de7}\label{classpiolot_1_1_test_scene_a22c630a5e1c5725f04140ec15a125de7}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!Ray\+Picking@{Ray\+Picking}}
+\index{Ray\+Picking@{Ray\+Picking}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{Ray\+Picking()}{RayPicking()}}
+{\footnotesize\ttfamily void piolot\+::\+Test\+Scene\+::\+Ray\+Picking (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a8fcd4f46ccdb6c49741bb37364d9bb0e}\label{classpiolot_1_1_test_scene_a8fcd4f46ccdb6c49741bb37364d9bb0e}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!Save\+Scene@{Save\+Scene}}
+\index{Save\+Scene@{Save\+Scene}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{Save\+Scene()}{SaveScene()}}
+{\footnotesize\ttfamily void piolot\+::\+Test\+Scene\+::\+Save\+Scene (\begin{DoxyParamCaption}\item[{const char $\ast$}]{\+\_\+file\+Name }\end{DoxyParamCaption})}
+
+
+
+Save the current \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}} to a binary file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+file\+Name} & The Filename to save. No Extensions required. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_ae0a460b8b6b3d352f92be069a6d69fb3}\label{classpiolot_1_1_test_scene_ae0a460b8b6b3d352f92be069a6d69fb3}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!building\+Placer@{building\+Placer}}
+\index{building\+Placer@{building\+Placer}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{building\+Placer}{buildingPlacer}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classpiolot_1_1_entity}{Entity}}$>$ piolot\+::\+Test\+Scene\+::building\+Placer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+This would be a temporary entity that we draw when we are in the Placing Mode. 
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a6a9b96c88caf979ba3e763c11653b290}\label{classpiolot_1_1_test_scene_a6a9b96c88caf979ba3e763c11653b290}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!camera\+Ray@{camera\+Ray}}
+\index{camera\+Ray@{camera\+Ray}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{camera\+Ray}{cameraRay}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpiolot_1_1_ray}{Ray}} piolot\+::\+Test\+Scene\+::camera\+Ray \{glm\+::vec3(), glm\+::vec3()\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a4123335b4ec13948ff01ae9f344d9546}\label{classpiolot_1_1_test_scene_a4123335b4ec13948ff01ae9f344d9546}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!display\+Add\+Entity@{display\+Add\+Entity}}
+\index{display\+Add\+Entity@{display\+Add\+Entity}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{display\+Add\+Entity}{displayAddEntity}}
+{\footnotesize\ttfamily bool piolot\+::\+Test\+Scene\+::display\+Add\+Entity = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a7568d8b6dbe31cdac69303544c06d338}\label{classpiolot_1_1_test_scene_a7568d8b6dbe31cdac69303544c06d338}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!display\+Asset\+Manager\+Window@{display\+Asset\+Manager\+Window}}
+\index{display\+Asset\+Manager\+Window@{display\+Asset\+Manager\+Window}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{display\+Asset\+Manager\+Window}{displayAssetManagerWindow}}
+{\footnotesize\ttfamily bool piolot\+::\+Test\+Scene\+::display\+Asset\+Manager\+Window = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a91e97c2de25304b754313bd1beceecac}\label{classpiolot_1_1_test_scene_a91e97c2de25304b754313bd1beceecac}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!display\+Camera\+Controls@{display\+Camera\+Controls}}
+\index{display\+Camera\+Controls@{display\+Camera\+Controls}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{display\+Camera\+Controls}{displayCameraControls}}
+{\footnotesize\ttfamily bool piolot\+::\+Test\+Scene\+::display\+Camera\+Controls = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a7416b0c39baa5a3154ac88bda22bdf25}\label{classpiolot_1_1_test_scene_a7416b0c39baa5a3154ac88bda22bdf25}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!display\+Demo\+Window@{display\+Demo\+Window}}
+\index{display\+Demo\+Window@{display\+Demo\+Window}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{display\+Demo\+Window}{displayDemoWindow}}
+{\footnotesize\ttfamily bool piolot\+::\+Test\+Scene\+::display\+Demo\+Window = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_ab906d0870595d299b454becf24219171}\label{classpiolot_1_1_test_scene_ab906d0870595d299b454becf24219171}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!display\+Hierarchy@{display\+Hierarchy}}
+\index{display\+Hierarchy@{display\+Hierarchy}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{display\+Hierarchy}{displayHierarchy}}
+{\footnotesize\ttfamily bool piolot\+::\+Test\+Scene\+::display\+Hierarchy = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a1abbac46b5984ea191e8f429cd10e626}\label{classpiolot_1_1_test_scene_a1abbac46b5984ea191e8f429cd10e626}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!display\+Log\+Window@{display\+Log\+Window}}
+\index{display\+Log\+Window@{display\+Log\+Window}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{display\+Log\+Window}{displayLogWindow}}
+{\footnotesize\ttfamily bool piolot\+::\+Test\+Scene\+::display\+Log\+Window = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_aeff84b8ca87f60068340a8a3afbe11e5}\label{classpiolot_1_1_test_scene_aeff84b8ca87f60068340a8a3afbe11e5}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!display\+Raypicking\+Controls@{display\+Raypicking\+Controls}}
+\index{display\+Raypicking\+Controls@{display\+Raypicking\+Controls}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{display\+Raypicking\+Controls}{displayRaypickingControls}}
+{\footnotesize\ttfamily bool piolot\+::\+Test\+Scene\+::display\+Raypicking\+Controls = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a66ea919cf7e7a7ddf8931eef4c41b841}\label{classpiolot_1_1_test_scene_a66ea919cf7e7a7ddf8931eef4c41b841}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!display\+Stats@{display\+Stats}}
+\index{display\+Stats@{display\+Stats}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{display\+Stats}{displayStats}}
+{\footnotesize\ttfamily bool piolot\+::\+Test\+Scene\+::display\+Stats = true\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a5f2a7d4a162916445d89f338c01dbc93}\label{classpiolot_1_1_test_scene_a5f2a7d4a162916445d89f338c01dbc93}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!display\+Viewport\+Controls@{display\+Viewport\+Controls}}
+\index{display\+Viewport\+Controls@{display\+Viewport\+Controls}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{display\+Viewport\+Controls}{displayViewportControls}}
+{\footnotesize\ttfamily bool piolot\+::\+Test\+Scene\+::display\+Viewport\+Controls = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_aa7838a55b521b6d9c1d32dc3ca240ba7}\label{classpiolot_1_1_test_scene_aa7838a55b521b6d9c1d32dc3ca240ba7}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!endxz@{endxz}}
+\index{endxz@{endxz}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{endxz}{endxz}}
+{\footnotesize\ttfamily glm\+::vec2 piolot\+::\+Test\+Scene\+::endxz\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a6dfdaeb3f1711bcca9b85bc5a0a5acd3}\label{classpiolot_1_1_test_scene_a6dfdaeb3f1711bcca9b85bc5a0a5acd3}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!filename\+To\+Load\+Scene@{filename\+To\+Load\+Scene}}
+\index{filename\+To\+Load\+Scene@{filename\+To\+Load\+Scene}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{filename\+To\+Load\+Scene}{filenameToLoadScene}}
+{\footnotesize\ttfamily std\+::string piolot\+::\+Test\+Scene\+::filename\+To\+Load\+Scene = \char`\"{}File Name\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a9f8ea97b9444b79a962ec590af5761d3}\label{classpiolot_1_1_test_scene_a9f8ea97b9444b79a962ec590af5761d3}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!filename\+To\+Save\+Scene@{filename\+To\+Save\+Scene}}
+\index{filename\+To\+Save\+Scene@{filename\+To\+Save\+Scene}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{filename\+To\+Save\+Scene}{filenameToSaveScene}}
+{\footnotesize\ttfamily std\+::string piolot\+::\+Test\+Scene\+::filename\+To\+Save\+Scene = \char`\"{}File Name\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a426f58e9273e201864ccf3e0e8b342e3}\label{classpiolot_1_1_test_scene_a426f58e9273e201864ccf3e0e8b342e3}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!is\+Placing\+Mode@{is\+Placing\+Mode}}
+\index{is\+Placing\+Mode@{is\+Placing\+Mode}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{is\+Placing\+Mode}{isPlacingMode}}
+{\footnotesize\ttfamily bool piolot\+::\+Test\+Scene\+::is\+Placing\+Mode = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_ad18ff08a06cd2076ea3b76c4d08867cc}\label{classpiolot_1_1_test_scene_ad18ff08a06cd2076ea3b76c4d08867cc}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!obj\+Name@{obj\+Name}}
+\index{obj\+Name@{obj\+Name}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{obj\+Name}{objName}}
+{\footnotesize\ttfamily std\+::string piolot\+::\+Test\+Scene\+::obj\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a29392a8bc16ade36f204bf56fa68cb17}\label{classpiolot_1_1_test_scene_a29392a8bc16ade36f204bf56fa68cb17}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!open\+Load\+Scene\+Window@{open\+Load\+Scene\+Window}}
+\index{open\+Load\+Scene\+Window@{open\+Load\+Scene\+Window}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{open\+Load\+Scene\+Window}{openLoadSceneWindow}}
+{\footnotesize\ttfamily bool piolot\+::\+Test\+Scene\+::open\+Load\+Scene\+Window = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a6a9853bb71c428b0842dce2af2976514}\label{classpiolot_1_1_test_scene_a6a9853bb71c428b0842dce2af2976514}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!open\+Save\+Scene\+As\+Window@{open\+Save\+Scene\+As\+Window}}
+\index{open\+Save\+Scene\+As\+Window@{open\+Save\+Scene\+As\+Window}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{open\+Save\+Scene\+As\+Window}{openSaveSceneAsWindow}}
+{\footnotesize\ttfamily bool piolot\+::\+Test\+Scene\+::open\+Save\+Scene\+As\+Window = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a2a69831062ede8e0e0f889064b257d51}\label{classpiolot_1_1_test_scene_a2a69831062ede8e0e0f889064b257d51}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!path@{path}}
+\index{path@{path}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{path}{path}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}}$\ast$$>$ piolot\+::\+Test\+Scene\+::path\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_ac12dc2505449af346ebcead571fd2954}\label{classpiolot_1_1_test_scene_ac12dc2505449af346ebcead571fd2954}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!pathing\+Debug\+Window@{pathing\+Debug\+Window}}
+\index{pathing\+Debug\+Window@{pathing\+Debug\+Window}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{pathing\+Debug\+Window}{pathingDebugWindow}}
+{\footnotesize\ttfamily bool piolot\+::\+Test\+Scene\+::pathing\+Debug\+Window = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a6f4e922ee3d44c78b879e761dd1c4175}\label{classpiolot_1_1_test_scene_a6f4e922ee3d44c78b879e761dd1c4175}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!projection\+Matrix@{projection\+Matrix}}
+\index{projection\+Matrix@{projection\+Matrix}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{projection\+Matrix}{projectionMatrix}}
+{\footnotesize\ttfamily glm\+::mat4 piolot\+::\+Test\+Scene\+::projection\+Matrix\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Projection Matrix. 
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_ae88852d0c8e77c07196e67cc1e93759c}\label{classpiolot_1_1_test_scene_ae88852d0c8e77c07196e67cc1e93759c}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!shader\+Name@{shader\+Name}}
+\index{shader\+Name@{shader\+Name}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{shader\+Name}{shaderName}}
+{\footnotesize\ttfamily std\+::string piolot\+::\+Test\+Scene\+::shader\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_ab19142067d70aede9c5ac3cadecb1c29}\label{classpiolot_1_1_test_scene_ab19142067d70aede9c5ac3cadecb1c29}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!startxz@{startxz}}
+\index{startxz@{startxz}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{startxz}{startxz}}
+{\footnotesize\ttfamily glm\+::vec2 piolot\+::\+Test\+Scene\+::startxz\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_aca94d51dc521dd620b45d85ee817cb0a}\label{classpiolot_1_1_test_scene_aca94d51dc521dd620b45d85ee817cb0a}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!test\+Grid@{test\+Grid}}
+\index{test\+Grid@{test\+Grid}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{test\+Grid}{testGrid}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpiolot_1_1_grid}{Grid}} piolot\+::\+Test\+Scene\+::test\+Grid\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a349626f35bec9409fa359108ce08c32e}\label{classpiolot_1_1_test_scene_a349626f35bec9409fa359108ce08c32e}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!test\+Terrain@{test\+Terrain}}
+\index{test\+Terrain@{test\+Terrain}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{test\+Terrain}{testTerrain}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}$>$ piolot\+::\+Test\+Scene\+::test\+Terrain\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_ad676a1a351b61b8e7071b2d91856ad14}\label{classpiolot_1_1_test_scene_ad676a1a351b61b8e7071b2d91856ad14}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!total\+Time\+Counter\+For\+Pathing@{total\+Time\+Counter\+For\+Pathing}}
+\index{total\+Time\+Counter\+For\+Pathing@{total\+Time\+Counter\+For\+Pathing}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{total\+Time\+Counter\+For\+Pathing}{totalTimeCounterForPathing}}
+{\footnotesize\ttfamily float piolot\+::\+Test\+Scene\+::total\+Time\+Counter\+For\+Pathing = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_test_scene_a0cbccb0354c0c68f277c2360cefc9ab7}\label{classpiolot_1_1_test_scene_a0cbccb0354c0c68f277c2360cefc9ab7}} 
+\index{piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}!viewports\+Details@{viewports\+Details}}
+\index{viewports\+Details@{viewports\+Details}!piolot\+::\+Test\+Scene@{piolot\+::\+Test\+Scene}}
+\subsubsection{\texorpdfstring{viewports\+Details}{viewportsDetails}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structpiolot_1_1_viewport_details}{Viewport\+Details}} piolot\+::\+Test\+Scene\+::viewports\+Details\mbox{[}4\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/dev/\+Piolot/\+Engine/Test\+Scene.\+h\item 
-C\+:/dev/\+Piolot/\+Engine/Test\+Scene.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_test_scene_8h}{Test\+Scene.\+h}}\item 
+\mbox{\hyperlink{_test_scene_8cpp}{Test\+Scene.\+cpp}}\item 
+\mbox{\hyperlink{_test_scene_utils_8cpp}{Test\+Scene\+Utils.\+cpp}}\end{DoxyCompactItemize}

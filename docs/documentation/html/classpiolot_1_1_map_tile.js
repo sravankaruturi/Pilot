@@ -1,12 +1,14 @@
 var classpiolot_1_1_map_tile =
 [
     [ "MapTile", "classpiolot_1_1_map_tile.html#af673d44bd4ea54b760d423bdf4730194", null ],
+    [ "GetPosition", "classpiolot_1_1_map_tile.html#a7c9e9f16474de4e82689811afc1ac123", null ],
     [ "navClosed", "classpiolot_1_1_map_tile.html#a272716e88eca5a971db3a3f9ea2ccf47", null ],
     [ "navCost", "classpiolot_1_1_map_tile.html#a0a8329aad9563449e69940e754c0eab7", null ],
     [ "navFCost", "classpiolot_1_1_map_tile.html#ac7792c3dfdb53cabaf7e444910067818", null ],
     [ "navGCost", "classpiolot_1_1_map_tile.html#a87c3aae25887660abd0cb4ee3ee9b973", null ],
     [ "navNeighbourCount", "classpiolot_1_1_map_tile.html#ace07e3f8b0ef22f37759d1dd37e54a03", null ],
     [ "navNeighbours", "classpiolot_1_1_map_tile.html#acc1c622d4a9446293840af35180f61d7", null ],
+    [ "navObstacle", "classpiolot_1_1_map_tile.html#ac30c95a0900b0b204d002fac6206934b", null ],
     [ "navOpen", "classpiolot_1_1_map_tile.html#ad26177f9ff510ea762454933534bcfd1", null ],
     [ "navParent", "classpiolot_1_1_map_tile.html#aadab9080952f11ef7566b63b46a842a0", null ],
     [ "navTileSet", "classpiolot_1_1_map_tile.html#a1968deb3bc5f0c4ff4eb05995eff6fd7", null ],

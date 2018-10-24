@@ -1,7 +1,6 @@
 var classpiolot_1_1_mesh =
 [
-    [ "Mesh", "classpiolot_1_1_mesh.html#a3476df99ba790254513c9e9a3bad02d3", null ],
-    [ "Mesh", "classpiolot_1_1_mesh.html#adc3c74b1c936bb0a4d73e7377d08f319", null ],
+    [ "Mesh", "classpiolot_1_1_mesh.html#a74d2647106f2fab38f95eb0ab5c678ef", null ],
     [ "GetEbo", "classpiolot_1_1_mesh.html#afe44ffdc27bc839ec6139f801e2efae9", null ],
     [ "GetIndexCount", "classpiolot_1_1_mesh.html#aaeaf1e4a7ed7fff6c27103393077c6f3", null ],
     [ "GetOpenglErrorFlag", "classpiolot_1_1_mesh.html#aa0dad39c742e455b1a0fe27731d01737", null ],

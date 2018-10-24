@@ -1,64 +1,349 @@
 \hypertarget{classpiolot_1_1_object}{}\section{piolot\+:\+:Object Class Reference}
 \label{classpiolot_1_1_object}\index{piolot\+::\+Object@{piolot\+::\+Object}}
+
+
+{\ttfamily \#include $<$Object.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_object_a592cb508bd914b41bff868e2a9b648f5}\label{classpiolot_1_1_object_a592cb508bd914b41bff868e2a9b648f5}} 
-const std\+::string \& {\bfseries Get\+Object\+Name} () const
+float \& \mbox{\hyperlink{classpiolot_1_1_object_ab948ad199b42e7182b6bc4b21cd68d9b}{Get\+Last\+Animation\+Update\+Time}} ()
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_object_a05e280baf87f9780e5de1c24849b862c}\label{classpiolot_1_1_object_a05e280baf87f9780e5de1c24849b862c}} 
-{\bfseries Object} (const std\+::string \&\+\_\+name, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{Mesh}} $>$$>$ \+\_\+meshes)
+void \mbox{\hyperlink{classpiolot_1_1_object_a39a9f4b026f1e1d97cde05b131fd56d8}{Set\+Last\+Animation\+Update\+Time}} (float \+\_\+last\+Animation\+Update\+Time)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_object_add3cd7bb280395a43069e872b384ac97}\label{classpiolot_1_1_object_add3cd7bb280395a43069e872b384ac97}} 
-{\bfseries Object} (const std\+::string \&\+\_\+object\+Path)
+const glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_object_a5539388d51bad81ce2e253122c02b0ef}{Get\+Least\+Vertex}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_object_aac452c0e8843e6a1bc64b4e7eae031cf}\label{classpiolot_1_1_object_aac452c0e8843e6a1bc64b4e7eae031cf}} 
-void {\bfseries Render} (std\+::string shader\+Name)
+const glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_object_ac7704fb8d510eb5a4f02d7cbe6eced9f}{Get\+Highest\+Vertex}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_object_ab3126fb80869e1a5b02ef43eb27e69ce}\label{classpiolot_1_1_object_ab3126fb80869e1a5b02ef43eb27e69ce}} 
-std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{piolot\+::\+Mesh}} $>$ $>$ {\bfseries Get\+Meshes} () const
+const std\+::string \& \mbox{\hyperlink{classpiolot_1_1_object_a592cb508bd914b41bff868e2a9b648f5}{Get\+Object\+Name}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_object_abe2585d95f1cb2b388ea3bdf7868b968}\label{classpiolot_1_1_object_abe2585d95f1cb2b388ea3bdf7868b968}} 
-void {\bfseries Set\+Meshes} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{piolot\+::\+Mesh}} $>$$>$ val)
+\mbox{\hyperlink{classpiolot_1_1_object_a05e280baf87f9780e5de1c24849b862c}{Object}} (const std\+::string \&\+\_\+name, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{Mesh}} $>$$>$ \+\_\+meshes)
+\item 
+\mbox{\hyperlink{classpiolot_1_1_object_add3cd7bb280395a43069e872b384ac97}{Object}} (const std\+::string \&\+\_\+object\+Path)
+\item 
+\mbox{\hyperlink{classpiolot_1_1_object_ad6983e37a5ffc74726c4605454643f23}{$\sim$\+Object}} ()
+\item 
+void \mbox{\hyperlink{classpiolot_1_1_object_aac452c0e8843e6a1bc64b4e7eae031cf}{Render}} (std\+::string shader\+Name)
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{piolot\+::\+Mesh}} $>$ $>$ \mbox{\hyperlink{classpiolot_1_1_object_ab3126fb80869e1a5b02ef43eb27e69ce}{Get\+Meshes}} () const
+\item 
+void \mbox{\hyperlink{classpiolot_1_1_object_abe2585d95f1cb2b388ea3bdf7868b968}{Set\+Meshes}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{piolot\+::\+Mesh}} $>$$>$ val)
+\item 
+void \mbox{\hyperlink{classpiolot_1_1_object_a7cc3243f893c5978ab600201f799feb0}{Mesh\+Details\+Im\+G\+UI}} ()
+\item 
+void \mbox{\hyperlink{classpiolot_1_1_object_af3eda47bd353a782ed6fa85fd44bf0ec}{Bone\+Transform}} (float \+\_\+total\+Time, std\+::vector$<$ glm\+::mat4 $>$ \&\+\_\+matrices)
+\begin{DoxyCompactList}\small\item\em This function would load the final Transformation Matrices ( transposed and Ready for Open\+GL ) for a particular animation at a given time, from the start of the animation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_object_ae4fa72eb5f53481b0daf2d99decec169}{Copy\+Bone\+Matrices}} (std\+::vector$<$ glm\+::mat4 $>$ \&\+\_\+matrices)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_object_ab361363059783f44a48c24529aef482e}\label{classpiolot_1_1_object_ab361363059783f44a48c24529aef482e}} 
-std\+::string {\bfseries directory}
+std\+::string \mbox{\hyperlink{classpiolot_1_1_object_ab361363059783f44a48c24529aef482e}{directory}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_object_a1995f97bb181bf6aeee850052c01dd24}\label{classpiolot_1_1_object_a1995f97bb181bf6aeee850052c01dd24}} 
-std\+::string {\bfseries object\+Name}
+std\+::string \mbox{\hyperlink{classpiolot_1_1_object_a1995f97bb181bf6aeee850052c01dd24}{object\+Name}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_object_a4a26c60e9239d03e7c31a243c0325934}\label{classpiolot_1_1_object_a4a26c60e9239d03e7c31a243c0325934}} 
-std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{Mesh}} $>$ $>$ {\bfseries meshes}
-\end{DoxyCompactItemize}
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{Mesh}} $>$ $>$ \mbox{\hyperlink{classpiolot_1_1_object_a4a26c60e9239d03e7c31a243c0325934}{meshes}}
+\item 
+Assimp\+::\+Importer \mbox{\hyperlink{classpiolot_1_1_object_a5c3cdbb5520b6ff452a9d248bb359cbd}{assimp\+Importer}}
+\begin{DoxyCompactList}\small\item\em The Assimp Importer. \end{DoxyCompactList}\item 
+const ai\+Scene $\ast$ \mbox{\hyperlink{classpiolot_1_1_object_a169e800bae7a051cac9c2e11477a78f9}{assimp\+Scene}}
+\begin{DoxyCompactList}\small\item\em This is the Assimp \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}} Variable to keep track of the Animations. \end{DoxyCompactList}\item 
+std\+::map$<$ std\+::string, unsigned int $>$ \mbox{\hyperlink{classpiolot_1_1_object_a7d00c3e5c9727dfd9c9937ba401470d7}{bone\+Mapping}}
+\begin{DoxyCompactList}\small\item\em A map to keep track of the Bones in the \mbox{\hyperlink{classpiolot_1_1_object}{Object}}. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structpiolot_1_1_bone_info}{Bone\+Info}} $>$ \mbox{\hyperlink{classpiolot_1_1_object_a0cab740496f8e838feb4268b36180ed7}{bone\+Data}}
+\begin{DoxyCompactList}\small\item\em This contains details regarding the Bone Transformations for all the Bones. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classpiolot_1_1_object_ad0a2a51c6614bfb552ee12801643ece2}{number\+Of\+Bones\+Loaded}} = 0
+\begin{DoxyCompactList}\small\item\em Number of Bones Loaded by our Engine. \end{DoxyCompactList}\item 
+ai\+Matrix4x4 \mbox{\hyperlink{classpiolot_1_1_object_a30772cbf9aaab4c5871df82581b8d117}{global\+Inverse\+Transform}}
+\begin{DoxyCompactList}\small\item\em The Inverse of the Global Transform Matrix. Used to calculate the Final Transformation Matrices of the Bones. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_object_a44fd0867a8daca738c9b798181e9c48b}{least\+Vertex}} \{\}
+\item 
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_object_a6862a74fc8184327a0f763578f4a7532}{highest\+Vertex}} \{\}
+\item 
+float \mbox{\hyperlink{classpiolot_1_1_object_addfd3a255444e86bab978e3e9ee27d37}{last\+Animation\+Update\+Time}} = 0.\+0f
+\begin{DoxyCompactList}\small\item\em This keeps track of when this particular object was animated last. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_object_ace45406ebc032ac05e6b9bb388ebc3c2}\label{classpiolot_1_1_object_ace45406ebc032ac05e6b9bb388ebc3c2}} 
-void {\bfseries Process\+Node} (ai\+Node $\ast$\+\_\+node, const ai\+Scene $\ast$\+\_\+scene, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{Mesh}} $>$$>$ \&\+\_\+meshes)
+void \mbox{\hyperlink{classpiolot_1_1_object_ace45406ebc032ac05e6b9bb388ebc3c2}{Process\+Node}} (ai\+Node $\ast$\+\_\+node, const ai\+Scene $\ast$\+\_\+scene, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{Mesh}} $>$$>$ \&\+\_\+meshes)
 \item 
 void \mbox{\hyperlink{classpiolot_1_1_object_ab917dddc7f767962960e607ada13a4d5}{Process\+And\+Add\+Mesh}} (ai\+Mesh $\ast$\+\_\+mesh, const ai\+Scene $\ast$\+\_\+scene)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_object_a87d3fb79aa882718cf10d72f85a397dc}\label{classpiolot_1_1_object_a87d3fb79aa882718cf10d72f85a397dc}} 
-std\+::vector$<$ std\+::string $>$ {\bfseries Load\+Material\+Textures} (ai\+Material $\ast$\+\_\+mat, ai\+Texture\+Type \+\_\+type)
-\end{DoxyCompactItemize}
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classpiolot_1_1_object_a87d3fb79aa882718cf10d72f85a397dc}{Load\+Material\+Textures}} (ai\+Material $\ast$\+\_\+mat, ai\+Texture\+Type \+\_\+type)
+\item 
+void \mbox{\hyperlink{classpiolot_1_1_object_a0fb805f24099b9084e70ec083c25d253}{Process\+Node\+Hierarchy\+Animation}} (float \+\_\+animation\+Time, const ai\+Node $\ast$\+\_\+node, const ai\+Matrix4x4 \&\+\_\+parent\+Transform)
+\begin{DoxyCompactList}\small\item\em Process the Node Hierarchy for details regarding the Animation. \end{DoxyCompactList}\item 
+const ai\+Node\+Anim $\ast$ \mbox{\hyperlink{classpiolot_1_1_object_a63011b95040a4fab1f2514258c70b35a}{Find\+Node\+Anim}} (const ai\+Animation $\ast$\+\_\+animation, const std\+::string \&\+\_\+node\+Name)
+\begin{DoxyCompactList}\small\item\em Find the Node Animation Details Pointer using the Model Animation and the Node Name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_object_a05e280baf87f9780e5de1c24849b862c}\label{classpiolot_1_1_object_a05e280baf87f9780e5de1c24849b862c}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Object@{Object}}
+\index{Object@{Object}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Object()}{Object()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily piolot\+::\+Object\+::\+Object (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{\+\_\+name,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{Mesh}} $>$$>$}]{\+\_\+meshes }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_object_add3cd7bb280395a43069e872b384ac97}\label{classpiolot_1_1_object_add3cd7bb280395a43069e872b384ac97}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Object@{Object}}
+\index{Object@{Object}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Object()}{Object()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily piolot\+::\+Object\+::\+Object (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{\+\_\+object\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_object_ad6983e37a5ffc74726c4605454643f23}\label{classpiolot_1_1_object_ad6983e37a5ffc74726c4605454643f23}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!````~Object@{$\sim$\+Object}}
+\index{````~Object@{$\sim$\+Object}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{$\sim$\+Object()}{~Object()}}
+{\footnotesize\ttfamily piolot\+::\+Object\+::$\sim$\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_object_af3eda47bd353a782ed6fa85fd44bf0ec}\label{classpiolot_1_1_object_af3eda47bd353a782ed6fa85fd44bf0ec}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Bone\+Transform@{Bone\+Transform}}
+\index{Bone\+Transform@{Bone\+Transform}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Bone\+Transform()}{BoneTransform()}}
+{\footnotesize\ttfamily void piolot\+::\+Object\+::\+Bone\+Transform (\begin{DoxyParamCaption}\item[{float}]{\+\_\+total\+Time,  }\item[{std\+::vector$<$ glm\+::mat4 $>$ \&}]{\+\_\+matrices }\end{DoxyParamCaption})}
+
+
+
+This function would load the final Transformation Matrices ( transposed and Ready for Open\+GL ) for a particular animation at a given time, from the start of the animation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+total\+Time} & Time elapsed since the start of the Animation \\
+\hline
+{\em \+\_\+matrices} & Matrices to load the Bone Matrices in \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_object_ae4fa72eb5f53481b0daf2d99decec169}\label{classpiolot_1_1_object_ae4fa72eb5f53481b0daf2d99decec169}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Copy\+Bone\+Matrices@{Copy\+Bone\+Matrices}}
+\index{Copy\+Bone\+Matrices@{Copy\+Bone\+Matrices}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Copy\+Bone\+Matrices()}{CopyBoneMatrices()}}
+{\footnotesize\ttfamily void piolot\+::\+Object\+::\+Copy\+Bone\+Matrices (\begin{DoxyParamCaption}\item[{std\+::vector$<$ glm\+::mat4 $>$ \&}]{\+\_\+matrices }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_object_a63011b95040a4fab1f2514258c70b35a}\label{classpiolot_1_1_object_a63011b95040a4fab1f2514258c70b35a}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Find\+Node\+Anim@{Find\+Node\+Anim}}
+\index{Find\+Node\+Anim@{Find\+Node\+Anim}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Find\+Node\+Anim()}{FindNodeAnim()}}
+{\footnotesize\ttfamily const ai\+Node\+Anim $\ast$ piolot\+::\+Object\+::\+Find\+Node\+Anim (\begin{DoxyParamCaption}\item[{const ai\+Animation $\ast$}]{\+\_\+animation,  }\item[{const std\+::string \&}]{\+\_\+node\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Find the Node Animation Details Pointer using the Model Animation and the Node Name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+animation} & The Animation of the \mbox{\hyperlink{classpiolot_1_1_mesh}{Mesh}} we are currently looking for \\
+\hline
+{\em \+\_\+node\+Name} & The Node Name that we currently want the animation details for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Node Animation Details. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpiolot_1_1_object_ac7704fb8d510eb5a4f02d7cbe6eced9f}\label{classpiolot_1_1_object_ac7704fb8d510eb5a4f02d7cbe6eced9f}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Get\+Highest\+Vertex@{Get\+Highest\+Vertex}}
+\index{Get\+Highest\+Vertex@{Get\+Highest\+Vertex}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Get\+Highest\+Vertex()}{GetHighestVertex()}}
+{\footnotesize\ttfamily const glm\+::vec3 piolot\+::\+Object\+::\+Get\+Highest\+Vertex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_object_ab948ad199b42e7182b6bc4b21cd68d9b}\label{classpiolot_1_1_object_ab948ad199b42e7182b6bc4b21cd68d9b}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Get\+Last\+Animation\+Update\+Time@{Get\+Last\+Animation\+Update\+Time}}
+\index{Get\+Last\+Animation\+Update\+Time@{Get\+Last\+Animation\+Update\+Time}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Get\+Last\+Animation\+Update\+Time()}{GetLastAnimationUpdateTime()}}
+{\footnotesize\ttfamily float\& piolot\+::\+Object\+::\+Get\+Last\+Animation\+Update\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_object_a5539388d51bad81ce2e253122c02b0ef}\label{classpiolot_1_1_object_a5539388d51bad81ce2e253122c02b0ef}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Get\+Least\+Vertex@{Get\+Least\+Vertex}}
+\index{Get\+Least\+Vertex@{Get\+Least\+Vertex}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Get\+Least\+Vertex()}{GetLeastVertex()}}
+{\footnotesize\ttfamily const glm\+::vec3 piolot\+::\+Object\+::\+Get\+Least\+Vertex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_object_ab3126fb80869e1a5b02ef43eb27e69ce}\label{classpiolot_1_1_object_ab3126fb80869e1a5b02ef43eb27e69ce}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Get\+Meshes@{Get\+Meshes}}
+\index{Get\+Meshes@{Get\+Meshes}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Get\+Meshes()}{GetMeshes()}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classpiolot_1_1_mesh}{piolot\+::\+Mesh}}$>$ $>$ piolot\+::\+Object\+::\+Get\+Meshes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_object_a592cb508bd914b41bff868e2a9b648f5}\label{classpiolot_1_1_object_a592cb508bd914b41bff868e2a9b648f5}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Get\+Object\+Name@{Get\+Object\+Name}}
+\index{Get\+Object\+Name@{Get\+Object\+Name}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Get\+Object\+Name()}{GetObjectName()}}
+{\footnotesize\ttfamily const std\+::string\& piolot\+::\+Object\+::\+Get\+Object\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_object_a87d3fb79aa882718cf10d72f85a397dc}\label{classpiolot_1_1_object_a87d3fb79aa882718cf10d72f85a397dc}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Load\+Material\+Textures@{Load\+Material\+Textures}}
+\index{Load\+Material\+Textures@{Load\+Material\+Textures}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Load\+Material\+Textures()}{LoadMaterialTextures()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ piolot\+::\+Object\+::\+Load\+Material\+Textures (\begin{DoxyParamCaption}\item[{ai\+Material $\ast$}]{\+\_\+mat,  }\item[{ai\+Texture\+Type}]{\+\_\+type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_object_a7cc3243f893c5978ab600201f799feb0}\label{classpiolot_1_1_object_a7cc3243f893c5978ab600201f799feb0}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Mesh\+Details\+Im\+G\+UI@{Mesh\+Details\+Im\+G\+UI}}
+\index{Mesh\+Details\+Im\+G\+UI@{Mesh\+Details\+Im\+G\+UI}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Mesh\+Details\+Im\+G\+U\+I()}{MeshDetailsImGUI()}}
+{\footnotesize\ttfamily void piolot\+::\+Object\+::\+Mesh\+Details\+Im\+G\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{classpiolot_1_1_object_ab917dddc7f767962960e607ada13a4d5}\label{classpiolot_1_1_object_ab917dddc7f767962960e607ada13a4d5}} 
 \index{piolot\+::\+Object@{piolot\+::\+Object}!Process\+And\+Add\+Mesh@{Process\+And\+Add\+Mesh}}
 \index{Process\+And\+Add\+Mesh@{Process\+And\+Add\+Mesh}!piolot\+::\+Object@{piolot\+::\+Object}}
 \subsubsection{\texorpdfstring{Process\+And\+Add\+Mesh()}{ProcessAndAddMesh()}}
 {\footnotesize\ttfamily void piolot\+::\+Object\+::\+Process\+And\+Add\+Mesh (\begin{DoxyParamCaption}\item[{ai\+Mesh $\ast$}]{\+\_\+mesh,  }\item[{const ai\+Scene $\ast$}]{\+\_\+scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+\mbox{\Hypertarget{classpiolot_1_1_object_ace45406ebc032ac05e6b9bb388ebc3c2}\label{classpiolot_1_1_object_ace45406ebc032ac05e6b9bb388ebc3c2}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Process\+Node@{Process\+Node}}
+\index{Process\+Node@{Process\+Node}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Process\+Node()}{ProcessNode()}}
+{\footnotesize\ttfamily void piolot\+::\+Object\+::\+Process\+Node (\begin{DoxyParamCaption}\item[{ai\+Node $\ast$}]{\+\_\+node,  }\item[{const ai\+Scene $\ast$}]{\+\_\+scene,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{Mesh}} $>$$>$ \&}]{\+\_\+meshes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-\begin{DoxyItemize}
-\item Normals $\ast$/ 
-\end{DoxyItemize}
+\mbox{\Hypertarget{classpiolot_1_1_object_a0fb805f24099b9084e70ec083c25d253}\label{classpiolot_1_1_object_a0fb805f24099b9084e70ec083c25d253}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Process\+Node\+Hierarchy\+Animation@{Process\+Node\+Hierarchy\+Animation}}
+\index{Process\+Node\+Hierarchy\+Animation@{Process\+Node\+Hierarchy\+Animation}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Process\+Node\+Hierarchy\+Animation()}{ProcessNodeHierarchyAnimation()}}
+{\footnotesize\ttfamily void piolot\+::\+Object\+::\+Process\+Node\+Hierarchy\+Animation (\begin{DoxyParamCaption}\item[{float}]{\+\_\+animation\+Time,  }\item[{const ai\+Node $\ast$}]{\+\_\+node,  }\item[{const ai\+Matrix4x4 \&}]{\+\_\+parent\+Transform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Process the Node Hierarchy for details regarding the Animation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+animation\+Time} & Time in seconds \\
+\hline
+{\em \+\_\+node} & Current Node \\
+\hline
+{\em \+\_\+parent\+Transform} & The Transform of the Parent w.\+r.\+t the \mbox{\hyperlink{classpiolot_1_1_object}{Object}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_object_aac452c0e8843e6a1bc64b4e7eae031cf}\label{classpiolot_1_1_object_aac452c0e8843e6a1bc64b4e7eae031cf}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Render@{Render}}
+\index{Render@{Render}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily void piolot\+::\+Object\+::\+Render (\begin{DoxyParamCaption}\item[{std\+::string}]{shader\+Name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_object_a39a9f4b026f1e1d97cde05b131fd56d8}\label{classpiolot_1_1_object_a39a9f4b026f1e1d97cde05b131fd56d8}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Set\+Last\+Animation\+Update\+Time@{Set\+Last\+Animation\+Update\+Time}}
+\index{Set\+Last\+Animation\+Update\+Time@{Set\+Last\+Animation\+Update\+Time}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Set\+Last\+Animation\+Update\+Time()}{SetLastAnimationUpdateTime()}}
+{\footnotesize\ttfamily void piolot\+::\+Object\+::\+Set\+Last\+Animation\+Update\+Time (\begin{DoxyParamCaption}\item[{float}]{\+\_\+last\+Animation\+Update\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_object_abe2585d95f1cb2b388ea3bdf7868b968}\label{classpiolot_1_1_object_abe2585d95f1cb2b388ea3bdf7868b968}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!Set\+Meshes@{Set\+Meshes}}
+\index{Set\+Meshes@{Set\+Meshes}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{Set\+Meshes()}{SetMeshes()}}
+{\footnotesize\ttfamily void piolot\+::\+Object\+::\+Set\+Meshes (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_mesh}{piolot\+::\+Mesh}} $>$$>$}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_object_a5c3cdbb5520b6ff452a9d248bb359cbd}\label{classpiolot_1_1_object_a5c3cdbb5520b6ff452a9d248bb359cbd}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!assimp\+Importer@{assimp\+Importer}}
+\index{assimp\+Importer@{assimp\+Importer}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{assimp\+Importer}{assimpImporter}}
+{\footnotesize\ttfamily Assimp\+::\+Importer piolot\+::\+Object\+::assimp\+Importer\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The Assimp Importer. 
+
+We need the imported \mbox{\hyperlink{classpiolot_1_1_object}{Object}} because, as soon as this runs out of scope, the  variable would be freed. \mbox{\Hypertarget{classpiolot_1_1_object_a169e800bae7a051cac9c2e11477a78f9}\label{classpiolot_1_1_object_a169e800bae7a051cac9c2e11477a78f9}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!assimp\+Scene@{assimp\+Scene}}
+\index{assimp\+Scene@{assimp\+Scene}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{assimp\+Scene}{assimpScene}}
+{\footnotesize\ttfamily const ai\+Scene$\ast$ piolot\+::\+Object\+::assimp\+Scene\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+This is the Assimp \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}} Variable to keep track of the Animations. 
+
+This is the easiest way to keep track of Animations instead of writing an entirely new class and functions based on that. \mbox{\Hypertarget{classpiolot_1_1_object_a0cab740496f8e838feb4268b36180ed7}\label{classpiolot_1_1_object_a0cab740496f8e838feb4268b36180ed7}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!bone\+Data@{bone\+Data}}
+\index{bone\+Data@{bone\+Data}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{bone\+Data}{boneData}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structpiolot_1_1_bone_info}{Bone\+Info}}$>$ piolot\+::\+Object\+::bone\+Data\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+This contains details regarding the Bone Transformations for all the Bones. 
+
+If you need a particular bone, get the index of that bone from the Bone\+Mapping.
+
+\begin{DoxySeeAlso}{See also}
+
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classpiolot_1_1_object_a7d00c3e5c9727dfd9c9937ba401470d7}\label{classpiolot_1_1_object_a7d00c3e5c9727dfd9c9937ba401470d7}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!bone\+Mapping@{bone\+Mapping}}
+\index{bone\+Mapping@{bone\+Mapping}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{bone\+Mapping}{boneMapping}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, unsigned int$>$ piolot\+::\+Object\+::bone\+Mapping\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A map to keep track of the Bones in the \mbox{\hyperlink{classpiolot_1_1_object}{Object}}. 
+
+String --$>$ Key --$>$ Bone Name. unsigned int --$>$ Value --$>$ Index of this particular bone in the Bone Data. \mbox{\Hypertarget{classpiolot_1_1_object_ab361363059783f44a48c24529aef482e}\label{classpiolot_1_1_object_ab361363059783f44a48c24529aef482e}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!directory@{directory}}
+\index{directory@{directory}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{directory}{directory}}
+{\footnotesize\ttfamily std\+::string piolot\+::\+Object\+::directory\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_object_a30772cbf9aaab4c5871df82581b8d117}\label{classpiolot_1_1_object_a30772cbf9aaab4c5871df82581b8d117}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!global\+Inverse\+Transform@{global\+Inverse\+Transform}}
+\index{global\+Inverse\+Transform@{global\+Inverse\+Transform}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{global\+Inverse\+Transform}{globalInverseTransform}}
+{\footnotesize\ttfamily ai\+Matrix4x4 piolot\+::\+Object\+::global\+Inverse\+Transform\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The Inverse of the Global Transform Matrix. Used to calculate the Final Transformation Matrices of the Bones. 
+
+\mbox{\Hypertarget{classpiolot_1_1_object_a6862a74fc8184327a0f763578f4a7532}\label{classpiolot_1_1_object_a6862a74fc8184327a0f763578f4a7532}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!highest\+Vertex@{highest\+Vertex}}
+\index{highest\+Vertex@{highest\+Vertex}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{highest\+Vertex}{highestVertex}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Object\+::highest\+Vertex \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_object_addfd3a255444e86bab978e3e9ee27d37}\label{classpiolot_1_1_object_addfd3a255444e86bab978e3e9ee27d37}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!last\+Animation\+Update\+Time@{last\+Animation\+Update\+Time}}
+\index{last\+Animation\+Update\+Time@{last\+Animation\+Update\+Time}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{last\+Animation\+Update\+Time}{lastAnimationUpdateTime}}
+{\footnotesize\ttfamily float piolot\+::\+Object\+::last\+Animation\+Update\+Time = 0.\+0f\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+This keeps track of when this particular object was animated last. 
+
+By Keeping track of this, if we have multiple animated entities sharing the animation, they can use the same \mbox{\hyperlink{classpiolot_1_1_object}{Object}}. If we have two different entities playing different animation, we can create a new object for them. \mbox{\Hypertarget{classpiolot_1_1_object_a44fd0867a8daca738c9b798181e9c48b}\label{classpiolot_1_1_object_a44fd0867a8daca738c9b798181e9c48b}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!least\+Vertex@{least\+Vertex}}
+\index{least\+Vertex@{least\+Vertex}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{least\+Vertex}{leastVertex}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Object\+::least\+Vertex \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_object_a4a26c60e9239d03e7c31a243c0325934}\label{classpiolot_1_1_object_a4a26c60e9239d03e7c31a243c0325934}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!meshes@{meshes}}
+\index{meshes@{meshes}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{meshes}{meshes}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classpiolot_1_1_mesh}{Mesh}}$>$ $>$ piolot\+::\+Object\+::meshes\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_object_ad0a2a51c6614bfb552ee12801643ece2}\label{classpiolot_1_1_object_ad0a2a51c6614bfb552ee12801643ece2}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!number\+Of\+Bones\+Loaded@{number\+Of\+Bones\+Loaded}}
+\index{number\+Of\+Bones\+Loaded@{number\+Of\+Bones\+Loaded}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{number\+Of\+Bones\+Loaded}{numberOfBonesLoaded}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Object\+::number\+Of\+Bones\+Loaded = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Number of Bones Loaded by our Engine. 
+
+If this is different from the Actual Number of Bones in Assimp, we have a problem. \mbox{\Hypertarget{classpiolot_1_1_object_a1995f97bb181bf6aeee850052c01dd24}\label{classpiolot_1_1_object_a1995f97bb181bf6aeee850052c01dd24}} 
+\index{piolot\+::\+Object@{piolot\+::\+Object}!object\+Name@{object\+Name}}
+\index{object\+Name@{object\+Name}!piolot\+::\+Object@{piolot\+::\+Object}}
+\subsubsection{\texorpdfstring{object\+Name}{objectName}}
+{\footnotesize\ttfamily std\+::string piolot\+::\+Object\+::object\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/dev/\+Piolot/\+Engine/Object.\+h\item 
-C\+:/dev/\+Piolot/\+Engine/Object.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_object_8h}{Object.\+h}}\item 
+\mbox{\hyperlink{_object_8cpp}{Object.\+cpp}}\end{DoxyCompactItemize}

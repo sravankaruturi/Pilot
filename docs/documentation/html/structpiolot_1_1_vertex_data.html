@@ -95,51 +95,129 @@ $(document).ready(function(){initNavTree('structpiolot_1_1_vertex_data.html','')
 <div class="title">piolot::VertexData Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_object_8h_source.html">Object.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab5710817488ea549782c284288dfe42b"><td class="memItemLeft" align="right" valign="top"><a id="ab5710817488ea549782c284288dfe42b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpiolot_1_1_vertex_data.html#ab5710817488ea549782c284288dfe42b">VertexData</a> ()=default</td></tr>
-<tr class="memdesc:ab5710817488ea549782c284288dfe42b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default Constructor. <br /></td></tr>
+<tr class="memitem:ab5710817488ea549782c284288dfe42b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpiolot_1_1_vertex_data.html#ab5710817488ea549782c284288dfe42b">VertexData</a> ()=default</td></tr>
+<tr class="memdesc:ab5710817488ea549782c284288dfe42b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default Constructor.  <a href="#ab5710817488ea549782c284288dfe42b">More...</a><br /></td></tr>
 <tr class="separator:ab5710817488ea549782c284288dfe42b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ae69924bb32a5d744c5978787936ec50c"><td class="memItemLeft" align="right" valign="top"><a id="ae69924bb32a5d744c5978787936ec50c"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpiolot_1_1_vertex_data.html#ae69924bb32a5d744c5978787936ec50c">position</a> = glm::vec3(0.f, 0.f, 0.f)</td></tr>
-<tr class="memdesc:ae69924bb32a5d744c5978787936ec50c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Vector 3, Position. <br /></td></tr>
-<tr class="separator:ae69924bb32a5d744c5978787936ec50c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cb8263b64bf377f3cb1dc876b71b183"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpiolot_1_1_vertex_data.html#a5cb8263b64bf377f3cb1dc876b71b183">texCoord</a> = glm::vec3(0.f, 0.f, 0.0f)</td></tr>
-<tr class="memdesc:a5cb8263b64bf377f3cb1dc876b71b183"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normal, A Vector3.  <a href="#a5cb8263b64bf377f3cb1dc876b71b183">More...</a><br /></td></tr>
-<tr class="separator:a5cb8263b64bf377f3cb1dc876b71b183"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78e01f3bbe046b60050981d73418f65c"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpiolot_1_1_vertex_data.html#a78e01f3bbe046b60050981d73418f65c">header</a> = 11100000</td></tr>
+<tr class="separator:a78e01f3bbe046b60050981d73418f65c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2301ef8c411743410ea63808f5da434"><td class="memItemLeft" align="right" valign="top">glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpiolot_1_1_vertex_data.html#aa2301ef8c411743410ea63808f5da434">position</a> = glm::vec4(0.f, 0.f, 0.f, 0.f)</td></tr>
+<tr class="memdesc:aa2301ef8c411743410ea63808f5da434"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Vector 3, Position. And Appended with a Zero.  <a href="#aa2301ef8c411743410ea63808f5da434">More...</a><br /></td></tr>
+<tr class="separator:aa2301ef8c411743410ea63808f5da434"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfb0b716a15091828ffb47dc07617460"><td class="memItemLeft" align="right" valign="top">glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpiolot_1_1_vertex_data.html#acfb0b716a15091828ffb47dc07617460">normal</a> = glm::vec4(0.f, 0.f, 0.f, 0.f)</td></tr>
+<tr class="memdesc:acfb0b716a15091828ffb47dc07617460"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normal, A Vector3., Appended with a Zero.  <a href="#acfb0b716a15091828ffb47dc07617460">More...</a><br /></td></tr>
+<tr class="separator:acfb0b716a15091828ffb47dc07617460"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3cf53f6a2dac9617bd2f39df13af149"><td class="memItemLeft" align="right" valign="top">glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpiolot_1_1_vertex_data.html#ab3cf53f6a2dac9617bd2f39df13af149">texCoord</a> = glm::vec4(0.f, 0.f, 0.0f, 0.0f)</td></tr>
+<tr class="memdesc:ab3cf53f6a2dac9617bd2f39df13af149"><td class="mdescLeft">&#160;</td><td class="mdescRight">UV Co-ordinates, A Vector2.  <a href="#ab3cf53f6a2dac9617bd2f39df13af149">More...</a><br /></td></tr>
+<tr class="separator:ab3cf53f6a2dac9617bd2f39df13af149"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ab5710817488ea549782c284288dfe42b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5710817488ea549782c284288dfe42b">&#9670;&nbsp;</a></span>VertexData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">piolot::VertexData::VertexData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default Constructor. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a5cb8263b64bf377f3cb1dc876b71b183"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5cb8263b64bf377f3cb1dc876b71b183">&#9670;&nbsp;</a></span>texCoord</h2>
+<a id="a78e01f3bbe046b60050981d73418f65c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78e01f3bbe046b60050981d73418f65c">&#9670;&nbsp;</a></span>header</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">glm::vec3 piolot::VertexData::texCoord = glm::vec3(0.f, 0.f, 0.0f)</td>
+          <td class="memname">long piolot::VertexData::header = 11100000</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Normal, A Vector3. </p>
-<p>UV Co-ordinates, A Vector2 </p>
+</div>
+</div>
+<a id="acfb0b716a15091828ffb47dc07617460"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfb0b716a15091828ffb47dc07617460">&#9670;&nbsp;</a></span>normal</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec4 piolot::VertexData::normal = glm::vec4(0.f, 0.f, 0.f, 0.f)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Normal, A Vector3., Appended with a Zero. </p>
+
+</div>
+</div>
+<a id="aa2301ef8c411743410ea63808f5da434"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2301ef8c411743410ea63808f5da434">&#9670;&nbsp;</a></span>position</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec4 piolot::VertexData::position = glm::vec4(0.f, 0.f, 0.f, 0.f)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A Vector 3, Position. And Appended with a Zero. </p>
+
+</div>
+</div>
+<a id="ab3cf53f6a2dac9617bd2f39df13af149"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3cf53f6a2dac9617bd2f39df13af149">&#9670;&nbsp;</a></span>texCoord</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec4 piolot::VertexData::texCoord = glm::vec4(0.f, 0.f, 0.0f, 0.0f)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>UV Co-ordinates, A Vector2. </p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>C:/dev/Piolot/Engine/<a class="el" href="_object_8h_source.html">Object.h</a></li>
+<li><a class="el" href="_object_8h_source.html">Object.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>piolot</b></li><li class="navelem"><a class="el" href="structpiolot_1_1_vertex_data.html">VertexData</a></li>
+    <li class="navelem"><a class="el" href="namespacepiolot.html">piolot</a></li><li class="navelem"><a class="el" href="structpiolot_1_1_vertex_data.html">VertexData</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>

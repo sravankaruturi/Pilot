@@ -1,10 +1,13 @@
 var hierarchy =
 [
+    [ "piolot::AnimatedVertexData", "structpiolot_1_1_animated_vertex_data.html", null ],
     [ "piolot::AssetManager", "classpiolot_1_1_asset_manager.html", null ],
+    [ "piolot::BoneInfo", "structpiolot_1_1_bone_info.html", null ],
     [ "piolot::BoundingBox", "classpiolot_1_1_bounding_box.html", null ],
     [ "piolot::Camera", "classpiolot_1_1_camera.html", null ],
     [ "piolot::CameraSavingToStream", "structpiolot_1_1_camera_saving_to_stream.html", null ],
     [ "piolot::Entity", "classpiolot_1_1_entity.html", [
+      [ "piolot::AnimatedEntity", "classpiolot_1_1_animated_entity.html", null ],
       [ "piolot::Terrain", "classpiolot_1_1_terrain.html", null ]
     ] ],
     [ "piolot::GLShader", "classpiolot_1_1_g_l_shader.html", null ],
@@ -20,12 +23,9 @@ var hierarchy =
       [ "piolot::TestScene", "classpiolot_1_1_test_scene.html", null ]
     ] ],
     [ "piolot::TerrainVertexData", "structpiolot_1_1_terrain_vertex_data.html", null ],
-    [ "Test", null, [
-      [ "AllTests", "class_all_tests.html", null ]
-    ] ],
     [ "piolot::Texture", "classpiolot_1_1_texture.html", null ],
+    [ "piolot::VertexBoneData", "structpiolot_1_1_vertex_bone_data.html", null ],
     [ "piolot::VertexData", "structpiolot_1_1_vertex_data.html", null ],
-    [ "AllTests::VertexDataTestGood", "struct_all_tests_1_1_vertex_data_test_good.html", null ],
     [ "piolot::ViewportDetails", "structpiolot_1_1_viewport_details.html", null ],
     [ "Window", "class_window.html", null ]
 ];

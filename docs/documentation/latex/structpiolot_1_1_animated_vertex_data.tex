@@ -1,0 +1,93 @@
+\hypertarget{structpiolot_1_1_animated_vertex_data}{}\section{piolot\+:\+:Animated\+Vertex\+Data Struct Reference}
+\label{structpiolot_1_1_animated_vertex_data}\index{piolot\+::\+Animated\+Vertex\+Data@{piolot\+::\+Animated\+Vertex\+Data}}
+
+
+{\ttfamily \#include $<$Object.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structpiolot_1_1_animated_vertex_data_a0f3f76292e605de2aa5ceb0148f1da74}{Animated\+Vertex\+Data}} ()=default
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+long \mbox{\hyperlink{structpiolot_1_1_animated_vertex_data_aceada2166f0ac3779f700d39f6eee5c1}{header}} = 11122110
+\begin{DoxyCompactList}\small\item\em This contains the details regarding the following variables. \end{DoxyCompactList}\item 
+glm\+::vec4 \mbox{\hyperlink{structpiolot_1_1_animated_vertex_data_a9947f0e7811c173ff80c1cf345ec5d42}{position}} = glm\+::vec4(0.f, 0.f, 0.f, 0.f)
+\begin{DoxyCompactList}\small\item\em A Vector 3, Position. And Appended with a Zero. \end{DoxyCompactList}\item 
+glm\+::vec4 \mbox{\hyperlink{structpiolot_1_1_animated_vertex_data_a42fe3afa838bcb9951849b914fd43a9d}{normal}} = glm\+::vec4(0.f, 0.f, 0.f, 0.f)
+\begin{DoxyCompactList}\small\item\em Normal, A Vector3., Appended with a Zero. \end{DoxyCompactList}\item 
+glm\+::vec4 \mbox{\hyperlink{structpiolot_1_1_animated_vertex_data_ad8c5dfde767f37338b9f5497081ae0e6}{tex\+Coord}} = glm\+::vec4(0.f, 0.f, 0.\+0f, 0.\+0f)
+\begin{DoxyCompactList}\small\item\em UV Co-\/ordinates, A Vector2. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structpiolot_1_1_vertex_bone_data}{Vertex\+Bone\+Data}} \mbox{\hyperlink{structpiolot_1_1_animated_vertex_data_a8c62a1712805dbfeb4f136c9f5bd90f3}{vbd}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structpiolot_1_1_animated_vertex_data_a0f3f76292e605de2aa5ceb0148f1da74}\label{structpiolot_1_1_animated_vertex_data_a0f3f76292e605de2aa5ceb0148f1da74}} 
+\index{piolot\+::\+Animated\+Vertex\+Data@{piolot\+::\+Animated\+Vertex\+Data}!Animated\+Vertex\+Data@{Animated\+Vertex\+Data}}
+\index{Animated\+Vertex\+Data@{Animated\+Vertex\+Data}!piolot\+::\+Animated\+Vertex\+Data@{piolot\+::\+Animated\+Vertex\+Data}}
+\subsubsection{\texorpdfstring{Animated\+Vertex\+Data()}{AnimatedVertexData()}}
+{\footnotesize\ttfamily piolot\+::\+Animated\+Vertex\+Data\+::\+Animated\+Vertex\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default Constructor. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structpiolot_1_1_animated_vertex_data_aceada2166f0ac3779f700d39f6eee5c1}\label{structpiolot_1_1_animated_vertex_data_aceada2166f0ac3779f700d39f6eee5c1}} 
+\index{piolot\+::\+Animated\+Vertex\+Data@{piolot\+::\+Animated\+Vertex\+Data}!header@{header}}
+\index{header@{header}!piolot\+::\+Animated\+Vertex\+Data@{piolot\+::\+Animated\+Vertex\+Data}}
+\subsubsection{\texorpdfstring{header}{header}}
+{\footnotesize\ttfamily long piolot\+::\+Animated\+Vertex\+Data\+::header = 11122110}
+
+
+
+This contains the details regarding the following variables. 
+
+It can be a 8 -\/ length integer value, signifying that the number of locations for now, is limited to 8. We can add increase them later on if needed. Each digit signifies the Data Type we are passing to the G\+PU. 0 --$>$ No Value. 1 --$>$ Float ( 32 bit?? ). 2 --$>$ Int ( 32 bit?? ).
+
+9 --$>$ Undefined All the values are vec4\textquotesingle{}s. The digits signify what the datatype of each of these vector elements is. \mbox{\Hypertarget{structpiolot_1_1_animated_vertex_data_a42fe3afa838bcb9951849b914fd43a9d}\label{structpiolot_1_1_animated_vertex_data_a42fe3afa838bcb9951849b914fd43a9d}} 
+\index{piolot\+::\+Animated\+Vertex\+Data@{piolot\+::\+Animated\+Vertex\+Data}!normal@{normal}}
+\index{normal@{normal}!piolot\+::\+Animated\+Vertex\+Data@{piolot\+::\+Animated\+Vertex\+Data}}
+\subsubsection{\texorpdfstring{normal}{normal}}
+{\footnotesize\ttfamily glm\+::vec4 piolot\+::\+Animated\+Vertex\+Data\+::normal = glm\+::vec4(0.f, 0.f, 0.f, 0.f)}
+
+
+
+Normal, A Vector3., Appended with a Zero. 
+
+\mbox{\Hypertarget{structpiolot_1_1_animated_vertex_data_a9947f0e7811c173ff80c1cf345ec5d42}\label{structpiolot_1_1_animated_vertex_data_a9947f0e7811c173ff80c1cf345ec5d42}} 
+\index{piolot\+::\+Animated\+Vertex\+Data@{piolot\+::\+Animated\+Vertex\+Data}!position@{position}}
+\index{position@{position}!piolot\+::\+Animated\+Vertex\+Data@{piolot\+::\+Animated\+Vertex\+Data}}
+\subsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily glm\+::vec4 piolot\+::\+Animated\+Vertex\+Data\+::position = glm\+::vec4(0.f, 0.f, 0.f, 0.f)}
+
+
+
+A Vector 3, Position. And Appended with a Zero. 
+
+\mbox{\Hypertarget{structpiolot_1_1_animated_vertex_data_ad8c5dfde767f37338b9f5497081ae0e6}\label{structpiolot_1_1_animated_vertex_data_ad8c5dfde767f37338b9f5497081ae0e6}} 
+\index{piolot\+::\+Animated\+Vertex\+Data@{piolot\+::\+Animated\+Vertex\+Data}!tex\+Coord@{tex\+Coord}}
+\index{tex\+Coord@{tex\+Coord}!piolot\+::\+Animated\+Vertex\+Data@{piolot\+::\+Animated\+Vertex\+Data}}
+\subsubsection{\texorpdfstring{tex\+Coord}{texCoord}}
+{\footnotesize\ttfamily glm\+::vec4 piolot\+::\+Animated\+Vertex\+Data\+::tex\+Coord = glm\+::vec4(0.f, 0.f, 0.\+0f, 0.\+0f)}
+
+
+
+UV Co-\/ordinates, A Vector2. 
+
+\mbox{\Hypertarget{structpiolot_1_1_animated_vertex_data_a8c62a1712805dbfeb4f136c9f5bd90f3}\label{structpiolot_1_1_animated_vertex_data_a8c62a1712805dbfeb4f136c9f5bd90f3}} 
+\index{piolot\+::\+Animated\+Vertex\+Data@{piolot\+::\+Animated\+Vertex\+Data}!vbd@{vbd}}
+\index{vbd@{vbd}!piolot\+::\+Animated\+Vertex\+Data@{piolot\+::\+Animated\+Vertex\+Data}}
+\subsubsection{\texorpdfstring{vbd}{vbd}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structpiolot_1_1_vertex_bone_data}{Vertex\+Bone\+Data}} piolot\+::\+Animated\+Vertex\+Data\+::vbd}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_object_8h}{Object.\+h}}\end{DoxyCompactItemize}

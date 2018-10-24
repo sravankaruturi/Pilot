@@ -97,26 +97,20 @@ $(document).ready(function(){initNavTree('classpiolot_1_1_asset_manager.html',''
 </div><!--header-->
 <div class="contents">
 
-<p>The Singleton class that holds all the data for Shaders, Textures and Objects.  
- <a href="classpiolot_1_1_asset_manager.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="_asset_manager_8h_source.html">AssetManager.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab6e938de7632862bfbe0a673b6c53b21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#ab6e938de7632862bfbe0a673b6c53b21">ClearAllData</a> ()</td></tr>
-<tr class="memdesc:ab6e938de7632862bfbe0a673b6c53b21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all the data and clear the Asset Manager.  <a href="#ab6e938de7632862bfbe0a673b6c53b21">More...</a><br /></td></tr>
 <tr class="separator:ab6e938de7632862bfbe0a673b6c53b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49967e4909436ff8ebaeadf08db4ebc7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#a49967e4909436ff8ebaeadf08db4ebc7">~AssetManager</a> ()</td></tr>
 <tr class="memdesc:a49967e4909436ff8ebaeadf08db4ebc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default Constructor.  <a href="#a49967e4909436ff8ebaeadf08db4ebc7">More...</a><br /></td></tr>
 <tr class="separator:a49967e4909436ff8ebaeadf08db4ebc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac56fdedc1bf3b98909856099811fa62f"><td class="memItemLeft" align="right" valign="top"><a id="ac56fdedc1bf3b98909856099811fa62f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#ac56fdedc1bf3b98909856099811fa62f">LoadShaders</a> ()</td></tr>
-<tr class="memdesc:ac56fdedc1bf3b98909856099811fa62f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads all the shaders from the Shader Directory. <br /></td></tr>
+<tr class="memitem:ac56fdedc1bf3b98909856099811fa62f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#ac56fdedc1bf3b98909856099811fa62f">LoadShaders</a> ()</td></tr>
+<tr class="memdesc:ac56fdedc1bf3b98909856099811fa62f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads all the shaders from the Shader Directory.  <a href="#ac56fdedc1bf3b98909856099811fa62f">More...</a><br /></td></tr>
 <tr class="separator:ac56fdedc1bf3b98909856099811fa62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34593c7f84f33abd929daa8510507881"><td class="memItemLeft" align="right" valign="top"><a id="a34593c7f84f33abd929daa8510507881"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#a34593c7f84f33abd929daa8510507881">LoadTextures</a> ()</td></tr>
-<tr class="memdesc:a34593c7f84f33abd929daa8510507881"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads all the Textures from the <a class="el" href="classpiolot_1_1_texture.html">Texture</a> Directory. <br /></td></tr>
+<tr class="memitem:a34593c7f84f33abd929daa8510507881"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#a34593c7f84f33abd929daa8510507881">LoadTextures</a> ()</td></tr>
+<tr class="memdesc:a34593c7f84f33abd929daa8510507881"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads all the Textures from the <a class="el" href="classpiolot_1_1_texture.html">Texture</a> Directory.  <a href="#a34593c7f84f33abd929daa8510507881">More...</a><br /></td></tr>
 <tr class="separator:a34593c7f84f33abd929daa8510507881"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc9c8e5aff5c4b93faa151e0efb012f3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#acc9c8e5aff5c4b93faa151e0efb012f3">IsTextureLoaded</a> (std::string _key)</td></tr>
 <tr class="memdesc:acc9c8e5aff5c4b93faa151e0efb012f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns if the texture, key is loaded.  <a href="#acc9c8e5aff5c4b93faa151e0efb012f3">More...</a><br /></td></tr>
@@ -128,10 +122,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a06b647312e18c2ca212d34211d262783"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a texture to the exisiting map.  <a href="#a06b647312e18c2ca212d34211d262783">More...</a><br /></td></tr>
 <tr class="separator:a06b647312e18c2ca212d34211d262783"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfad75fa1cde6d1ecd77fbdf297a80b0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#abfad75fa1cde6d1ecd77fbdf297a80b0">AddToObjects</a> (const std::string &amp;_name, std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_object.html">Object</a> &gt; _object)</td></tr>
-<tr class="memdesc:abfad75fa1cde6d1ecd77fbdf297a80b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an object to the Map.  <a href="#abfad75fa1cde6d1ecd77fbdf297a80b0">More...</a><br /></td></tr>
 <tr class="separator:abfad75fa1cde6d1ecd77fbdf297a80b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00d1b6635e14cfdf2a618fff3ad61416"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#a00d1b6635e14cfdf2a618fff3ad61416">GuiRender</a> (bool *_windowFlag)</td></tr>
-<tr class="memdesc:a00d1b6635e14cfdf2a618fff3ad61416"><td class="mdescLeft">&#160;</td><td class="mdescRight">The ImGUI calls for the Asset Manager.  <a href="#a00d1b6635e14cfdf2a618fff3ad61416">More...</a><br /></td></tr>
 <tr class="separator:a00d1b6635e14cfdf2a618fff3ad61416"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -142,30 +134,23 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ae8db7f8aa294e32d270181e4ba87d2ad"><td class="memItemLeft" align="right" valign="top"><a id="ae8db7f8aa294e32d270181e4ba87d2ad"></a>
-std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_g_l_shader.html">GLShader</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#ae8db7f8aa294e32d270181e4ba87d2ad">shaders</a></td></tr>
-<tr class="memdesc:ae8db7f8aa294e32d270181e4ba87d2ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Map of all the shaders that we load. <br /></td></tr>
+<tr class="memitem:ae8db7f8aa294e32d270181e4ba87d2ad"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_g_l_shader.html">GLShader</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#ae8db7f8aa294e32d270181e4ba87d2ad">shaders</a></td></tr>
+<tr class="memdesc:ae8db7f8aa294e32d270181e4ba87d2ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Map of all the shaders that we load.  <a href="#ae8db7f8aa294e32d270181e4ba87d2ad">More...</a><br /></td></tr>
 <tr class="separator:ae8db7f8aa294e32d270181e4ba87d2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d9403a544a3efd67e33b52d6bb2a182"><td class="memItemLeft" align="right" valign="top"><a id="a6d9403a544a3efd67e33b52d6bb2a182"></a>
-std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_texture.html">Texture</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#a6d9403a544a3efd67e33b52d6bb2a182">textures</a></td></tr>
-<tr class="memdesc:a6d9403a544a3efd67e33b52d6bb2a182"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Map of all the textures that we load. <br /></td></tr>
+<tr class="memitem:a6d9403a544a3efd67e33b52d6bb2a182"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_texture.html">Texture</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#a6d9403a544a3efd67e33b52d6bb2a182">textures</a></td></tr>
+<tr class="memdesc:a6d9403a544a3efd67e33b52d6bb2a182"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Map of all the textures that we load.  <a href="#a6d9403a544a3efd67e33b52d6bb2a182">More...</a><br /></td></tr>
 <tr class="separator:a6d9403a544a3efd67e33b52d6bb2a182"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5051f83ff594361ac33d94a885afde10"><td class="memItemLeft" align="right" valign="top"><a id="a5051f83ff594361ac33d94a885afde10"></a>
-std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_object.html">Object</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#a5051f83ff594361ac33d94a885afde10">objects</a></td></tr>
-<tr class="memdesc:a5051f83ff594361ac33d94a885afde10"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Map of all the Renderables loaded. <br /></td></tr>
+<tr class="memitem:a5051f83ff594361ac33d94a885afde10"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_object.html">Object</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#a5051f83ff594361ac33d94a885afde10">objects</a></td></tr>
+<tr class="memdesc:a5051f83ff594361ac33d94a885afde10"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Map of all the Renderables loaded.  <a href="#a5051f83ff594361ac33d94a885afde10">More...</a><br /></td></tr>
 <tr class="separator:a5051f83ff594361ac33d94a885afde10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c7c10a24343176f2de6aeb2ddf1ac0d"><td class="memItemLeft" align="right" valign="top"><a id="a0c7c10a24343176f2de6aeb2ddf1ac0d"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#a0c7c10a24343176f2de6aeb2ddf1ac0d">shaderDir</a> = SHADER_FOLDER</td></tr>
-<tr class="memdesc:a0c7c10a24343176f2de6aeb2ddf1ac0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Shader Directory from where all the shaders are loaded. <br /></td></tr>
+<tr class="memitem:a0c7c10a24343176f2de6aeb2ddf1ac0d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#a0c7c10a24343176f2de6aeb2ddf1ac0d">shaderDir</a> = <a class="el" href="_folder_locations_8h.html#abcb8d25bec836dd9c9bf096e180aa64b">SHADER_FOLDER</a></td></tr>
+<tr class="memdesc:a0c7c10a24343176f2de6aeb2ddf1ac0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Shader Directory from where all the shaders are loaded.  <a href="#a0c7c10a24343176f2de6aeb2ddf1ac0d">More...</a><br /></td></tr>
 <tr class="separator:a0c7c10a24343176f2de6aeb2ddf1ac0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a001707738b5a8e9da3fd5bfd3557392a"><td class="memItemLeft" align="right" valign="top"><a id="a001707738b5a8e9da3fd5bfd3557392a"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#a001707738b5a8e9da3fd5bfd3557392a">textureDir</a> = TEXTURE_FOLDER</td></tr>
-<tr class="memdesc:a001707738b5a8e9da3fd5bfd3557392a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classpiolot_1_1_texture.html">Texture</a> Directory from where all the Textures are loaded. <br /></td></tr>
+<tr class="memitem:a001707738b5a8e9da3fd5bfd3557392a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_asset_manager.html#a001707738b5a8e9da3fd5bfd3557392a">textureDir</a> = <a class="el" href="_folder_locations_8h.html#a6091860db09533ddbf7ce1b197eaaead">TEXTURE_FOLDER</a></td></tr>
+<tr class="memdesc:a001707738b5a8e9da3fd5bfd3557392a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classpiolot_1_1_texture.html">Texture</a> Directory from where all the Textures are loaded.  <a href="#a001707738b5a8e9da3fd5bfd3557392a">More...</a><br /></td></tr>
 <tr class="separator:a001707738b5a8e9da3fd5bfd3557392a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The Singleton class that holds all the data for Shaders, Textures and Objects. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a49967e4909436ff8ebaeadf08db4ebc7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a49967e4909436ff8ebaeadf08db4ebc7">&#9670;&nbsp;</a></span>~AssetManager()</h2>
 
@@ -228,16 +213,6 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Add an object to the Map. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">_name</td><td>The Key </td></tr>
-    <tr><td class="paramname">_object</td><td>The <a class="el" href="classpiolot_1_1_object.html">Object</a> </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>If the <a class="el" href="classpiolot_1_1_object.html">Object</a> is already loaded, returns false. Else, returns True. </dd></dl>
 
 </div>
 </div>
@@ -309,8 +284,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Remove all the data and clear the Asset Manager. </p>
+<p>*for (auto it : shaders)</p>
 <p>*for (auto it : shaders) </p>
 
 </div>
@@ -366,14 +340,6 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>The ImGUI calls for the Asset Manager. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">_windowFlag</td><td>The <a class="el" href="class_window.html" title="Window Class. Initialize this for opening the window. Cleanup to exit. ">Window</a> is Open Boolean </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -447,16 +413,151 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 
 </div>
 </div>
+<a id="ac56fdedc1bf3b98909856099811fa62f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac56fdedc1bf3b98909856099811fa62f">&#9670;&nbsp;</a></span>LoadShaders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool piolot::AssetManager::LoadShaders </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Loads all the shaders from the Shader Directory. </p>
+
+</div>
+</div>
+<a id="a34593c7f84f33abd929daa8510507881"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34593c7f84f33abd929daa8510507881">&#9670;&nbsp;</a></span>LoadTextures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool piolot::AssetManager::LoadTextures </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Loads all the Textures from the <a class="el" href="classpiolot_1_1_texture.html">Texture</a> Directory. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a5051f83ff594361ac33d94a885afde10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5051f83ff594361ac33d94a885afde10">&#9670;&nbsp;</a></span>objects</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::shared_ptr&lt;<a class="el" href="classpiolot_1_1_object.html">Object</a>&gt; &gt; piolot::AssetManager::objects</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A Map of all the Renderables loaded. </p>
+
+</div>
+</div>
+<a id="a0c7c10a24343176f2de6aeb2ddf1ac0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c7c10a24343176f2de6aeb2ddf1ac0d">&#9670;&nbsp;</a></span>shaderDir</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string piolot::AssetManager::shaderDir = <a class="el" href="_folder_locations_8h.html#abcb8d25bec836dd9c9bf096e180aa64b">SHADER_FOLDER</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The Shader Directory from where all the shaders are loaded. </p>
+
+</div>
+</div>
+<a id="ae8db7f8aa294e32d270181e4ba87d2ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8db7f8aa294e32d270181e4ba87d2ad">&#9670;&nbsp;</a></span>shaders</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::shared_ptr&lt;<a class="el" href="classpiolot_1_1_g_l_shader.html">GLShader</a>&gt; &gt; piolot::AssetManager::shaders</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A Map of all the shaders that we load. </p>
+
+</div>
+</div>
+<a id="a001707738b5a8e9da3fd5bfd3557392a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a001707738b5a8e9da3fd5bfd3557392a">&#9670;&nbsp;</a></span>textureDir</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string piolot::AssetManager::textureDir = <a class="el" href="_folder_locations_8h.html#a6091860db09533ddbf7ce1b197eaaead">TEXTURE_FOLDER</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The <a class="el" href="classpiolot_1_1_texture.html">Texture</a> Directory from where all the Textures are loaded. </p>
+
+</div>
+</div>
+<a id="a6d9403a544a3efd67e33b52d6bb2a182"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d9403a544a3efd67e33b52d6bb2a182">&#9670;&nbsp;</a></span>textures</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::shared_ptr&lt;<a class="el" href="classpiolot_1_1_texture.html">Texture</a>&gt; &gt; piolot::AssetManager::textures</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A Map of all the textures that we load. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/dev/Piolot/Engine/<a class="el" href="_asset_manager_8h_source.html">AssetManager.h</a></li>
-<li>C:/dev/Piolot/Engine/AssetManager.cpp</li>
+<li><a class="el" href="_asset_manager_8h_source.html">AssetManager.h</a></li>
+<li><a class="el" href="_asset_manager_8cpp.html">AssetManager.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>piolot</b></li><li class="navelem"><a class="el" href="classpiolot_1_1_asset_manager.html">AssetManager</a></li>
+    <li class="navelem"><a class="el" href="namespacepiolot.html">piolot</a></li><li class="navelem"><a class="el" href="classpiolot_1_1_asset_manager.html">AssetManager</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>

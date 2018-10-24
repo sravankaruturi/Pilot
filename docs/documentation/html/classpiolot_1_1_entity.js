@@ -1,7 +1,7 @@
 var classpiolot_1_1_entity =
 [
     [ "Entity", "classpiolot_1_1_entity.html#af79da1eeca5dbb28414ca7e54e6c6d42", null ],
-    [ "Entity", "classpiolot_1_1_entity.html#ae7fc7ed3219c928da4bce17e1e504733", null ],
+    [ "Entity", "classpiolot_1_1_entity.html#ad6a8344aece7f5c4b63f46623f5bed18", null ],
     [ "~Entity", "classpiolot_1_1_entity.html#a7264c4056ad0f48408e1edfab38fe4e8", null ],
     [ "CheckIfMouseOvered", "classpiolot_1_1_entity.html#affee050e5904bd4dff3239804bea6e7e", null ],
     [ "DisplayDetailsImgui", "classpiolot_1_1_entity.html#acc08eed4d3e1185dfc3fb396720443e5", null ],
@@ -13,19 +13,26 @@ var classpiolot_1_1_entity =
     [ "GetRotation", "classpiolot_1_1_entity.html#a4cd721f2ff085908999d9c100bbaf214", null ],
     [ "GetScale", "classpiolot_1_1_entity.html#ac5530a0639da344c0e8f86c2176fa4a6", null ],
     [ "GetShaderName", "classpiolot_1_1_entity.html#a95f3ad12bcec709938fb35633d51a3f5", null ],
+    [ "GetTargetPosition", "classpiolot_1_1_entity.html#afa9c74b8c025139367a3f3fbfe431692", null ],
     [ "IsMatrixDirty", "classpiolot_1_1_entity.html#a025d60f0f6de447381d9ab2211986075", null ],
     [ "IsSelectedInScene", "classpiolot_1_1_entity.html#ae2f2a9ae6613e02d69129e5346884f4e", null ],
+    [ "LoadFromFile", "classpiolot_1_1_entity.html#a9906217e32eb3550d57fa526ed7fe60f", null ],
     [ "Render", "classpiolot_1_1_entity.html#a9b7f0caf16313208ca115504a2453a12", null ],
+    [ "SaveToFile", "classpiolot_1_1_entity.html#aefccda157de60277a141d865982a089b", null ],
     [ "SetEntityName", "classpiolot_1_1_entity.html#a4b458394b15a68f6ecf19e79b60f8730", null ],
+    [ "SetInitialPosition", "classpiolot_1_1_entity.html#a4084ce43ed70e5a9ec1f51d811cdcead", null ],
     [ "SetObjectName", "classpiolot_1_1_entity.html#a575051c2dffebde6948c421bb9153c3c", null ],
     [ "SetPosition", "classpiolot_1_1_entity.html#af80fc92eb9232113046c602d5daa1a76", null ],
     [ "SetRotation", "classpiolot_1_1_entity.html#ae2d789ed80e63f1bcad90d003ea15e94", null ],
     [ "SetScale", "classpiolot_1_1_entity.html#a16d7b329d92ebdc78178e460c7cee6dc", null ],
     [ "SetSelectedInScene", "classpiolot_1_1_entity.html#ab989dc8df66c461663c431993b5b2334", null ],
     [ "SetShaderName", "classpiolot_1_1_entity.html#a1c52edf232af06086a4058c46d2cb783", null ],
+    [ "setTargetNode", "classpiolot_1_1_entity.html#a8effc8fb437b50228b6467556236a043", null ],
     [ "Update", "classpiolot_1_1_entity.html#a35aed98e4aedd0aa64ee512f83d912ec", null ],
     [ "UpdateMatrices", "classpiolot_1_1_entity.html#a100b4699f74f506217c4d545f5a81f58", null ],
     [ "boundingBox", "classpiolot_1_1_entity.html#a133cd55e173decca797dde8d6c4714d3", null ],
+    [ "boundingBoxHighVertex", "classpiolot_1_1_entity.html#a19516d394f36d44c42e742403ff04341", null ],
+    [ "boundingBoxLeastVertex", "classpiolot_1_1_entity.html#ac6c2e3e5d992af3ce7411667ffaca70f", null ],
     [ "entityName", "classpiolot_1_1_entity.html#acdc85c4db87446266e0e04392d54cd11", null ],
     [ "matrixDirty", "classpiolot_1_1_entity.html#ae8f4e05ad6742e55a3ed3792d21c3282", null ],
     [ "modelMatrix", "classpiolot_1_1_entity.html#abca37f3906e85c0f184f1c2ffe627a7e", null ],
@@ -34,5 +41,6 @@ var classpiolot_1_1_entity =
     [ "rotation", "classpiolot_1_1_entity.html#ad490e079062ae866cbd14afbc768c37f", null ],
     [ "scale", "classpiolot_1_1_entity.html#a80bbefe25b4316190caf5d8cc77bd125", null ],
     [ "selectedInScene", "classpiolot_1_1_entity.html#a50e4d7090890c7bedc3dffa1fe4d3dc9", null ],
-    [ "shaderName", "classpiolot_1_1_entity.html#aa2eeb64fbf3f1445b2895ac680ba7e36", null ]
+    [ "shaderName", "classpiolot_1_1_entity.html#aa2eeb64fbf3f1445b2895ac680ba7e36", null ],
+    [ "targetNode", "classpiolot_1_1_entity.html#a5038500567bdea17e4c1a4070a7ccef3", null ]
 ];

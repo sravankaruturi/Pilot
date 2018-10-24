@@ -1,0 +1,62 @@
+\hypertarget{_p_e___g_l_8h}{}\section{P\+E\+\_\+\+G\+L.\+h File Reference}
+\label{_p_e___g_l_8h}\index{P\+E\+\_\+\+G\+L.\+h@{P\+E\+\_\+\+G\+L.\+h}}
+{\ttfamily \#include $<$glad/glad.\+h$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_p_e___g_l_8h_a72be6753a7f02ef65ab8e23080672005}{P\+E\+\_\+\+A\+S\+S\+E\+RT}}(x)~if (!(x)) \+\_\+\+\_\+debugbreak()
+\item 
+\#define \mbox{\hyperlink{_p_e___g_l_8h_a67069893cae576a5e8482fb7cfd0fa50}{P\+E\+\_\+\+E\+X\+P\+E\+CT}}(x)~x
+\item 
+\#define \mbox{\hyperlink{_p_e___g_l_8h_a38d1967b97382c3d920fda0d82fdccb1}{P\+E\+\_\+\+GL}}(x)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{_p_e___g_l_8h_aefd6b05020e2918b57139579ca3dea09}{pe\+\_\+gl\+\_\+clear\+\_\+errors}} ()
+\item 
+static bool \mbox{\hyperlink{_p_e___g_l_8h_ac82c3fd18504f363fb0f6591244f1ea2}{pe\+\_\+gl\+\_\+log\+\_\+error}} (const char $\ast$\+\_\+function\+Name, const char $\ast$\+\_\+file\+Name, int \+\_\+line)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_p_e___g_l_8h_a72be6753a7f02ef65ab8e23080672005}\label{_p_e___g_l_8h_a72be6753a7f02ef65ab8e23080672005}} 
+\index{P\+E\+\_\+\+G\+L.\+h@{P\+E\+\_\+\+G\+L.\+h}!P\+E\+\_\+\+A\+S\+S\+E\+RT@{P\+E\+\_\+\+A\+S\+S\+E\+RT}}
+\index{P\+E\+\_\+\+A\+S\+S\+E\+RT@{P\+E\+\_\+\+A\+S\+S\+E\+RT}!P\+E\+\_\+\+G\+L.\+h@{P\+E\+\_\+\+G\+L.\+h}}
+\subsubsection{\texorpdfstring{P\+E\+\_\+\+A\+S\+S\+E\+RT}{PE\_ASSERT}}
+{\footnotesize\ttfamily \#define P\+E\+\_\+\+A\+S\+S\+E\+RT(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~if (!(x)) \+\_\+\+\_\+debugbreak()}
+
+\mbox{\Hypertarget{_p_e___g_l_8h_a67069893cae576a5e8482fb7cfd0fa50}\label{_p_e___g_l_8h_a67069893cae576a5e8482fb7cfd0fa50}} 
+\index{P\+E\+\_\+\+G\+L.\+h@{P\+E\+\_\+\+G\+L.\+h}!P\+E\+\_\+\+E\+X\+P\+E\+CT@{P\+E\+\_\+\+E\+X\+P\+E\+CT}}
+\index{P\+E\+\_\+\+E\+X\+P\+E\+CT@{P\+E\+\_\+\+E\+X\+P\+E\+CT}!P\+E\+\_\+\+G\+L.\+h@{P\+E\+\_\+\+G\+L.\+h}}
+\subsubsection{\texorpdfstring{P\+E\+\_\+\+E\+X\+P\+E\+CT}{PE\_EXPECT}}
+{\footnotesize\ttfamily \#define P\+E\+\_\+\+E\+X\+P\+E\+CT(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~x}
+
+\mbox{\Hypertarget{_p_e___g_l_8h_a38d1967b97382c3d920fda0d82fdccb1}\label{_p_e___g_l_8h_a38d1967b97382c3d920fda0d82fdccb1}} 
+\index{P\+E\+\_\+\+G\+L.\+h@{P\+E\+\_\+\+G\+L.\+h}!P\+E\+\_\+\+GL@{P\+E\+\_\+\+GL}}
+\index{P\+E\+\_\+\+GL@{P\+E\+\_\+\+GL}!P\+E\+\_\+\+G\+L.\+h@{P\+E\+\_\+\+G\+L.\+h}}
+\subsubsection{\texorpdfstring{P\+E\+\_\+\+GL}{PE\_GL}}
+{\footnotesize\ttfamily \#define P\+E\+\_\+\+GL(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\mbox{\hyperlink{_p_e___g_l_8h_aefd6b05020e2918b57139579ca3dea09}{pe\_gl\_clear\_errors}}();\(\backslash\)
+    x;\(\backslash\)
+    PE\_EXPECT(\mbox{\hyperlink{_p_e___g_l_8h_ac82c3fd18504f363fb0f6591244f1ea2}{pe\_gl\_log\_error}}(#x, \_\_FILE\_\_, \_\_LINE\_\_))
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_p_e___g_l_8h_aefd6b05020e2918b57139579ca3dea09}\label{_p_e___g_l_8h_aefd6b05020e2918b57139579ca3dea09}} 
+\index{P\+E\+\_\+\+G\+L.\+h@{P\+E\+\_\+\+G\+L.\+h}!pe\+\_\+gl\+\_\+clear\+\_\+errors@{pe\+\_\+gl\+\_\+clear\+\_\+errors}}
+\index{pe\+\_\+gl\+\_\+clear\+\_\+errors@{pe\+\_\+gl\+\_\+clear\+\_\+errors}!P\+E\+\_\+\+G\+L.\+h@{P\+E\+\_\+\+G\+L.\+h}}
+\subsubsection{\texorpdfstring{pe\+\_\+gl\+\_\+clear\+\_\+errors()}{pe\_gl\_clear\_errors()}}
+{\footnotesize\ttfamily static void pe\+\_\+gl\+\_\+clear\+\_\+errors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_p_e___g_l_8h_ac82c3fd18504f363fb0f6591244f1ea2}\label{_p_e___g_l_8h_ac82c3fd18504f363fb0f6591244f1ea2}} 
+\index{P\+E\+\_\+\+G\+L.\+h@{P\+E\+\_\+\+G\+L.\+h}!pe\+\_\+gl\+\_\+log\+\_\+error@{pe\+\_\+gl\+\_\+log\+\_\+error}}
+\index{pe\+\_\+gl\+\_\+log\+\_\+error@{pe\+\_\+gl\+\_\+log\+\_\+error}!P\+E\+\_\+\+G\+L.\+h@{P\+E\+\_\+\+G\+L.\+h}}
+\subsubsection{\texorpdfstring{pe\+\_\+gl\+\_\+log\+\_\+error()}{pe\_gl\_log\_error()}}
+{\footnotesize\ttfamily static bool pe\+\_\+gl\+\_\+log\+\_\+error (\begin{DoxyParamCaption}\item[{const char $\ast$}]{\+\_\+function\+Name,  }\item[{const char $\ast$}]{\+\_\+file\+Name,  }\item[{int}]{\+\_\+line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+

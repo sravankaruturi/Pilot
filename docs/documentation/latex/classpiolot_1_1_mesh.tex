@@ -1,86 +1,214 @@
 \hypertarget{classpiolot_1_1_mesh}{}\section{piolot\+:\+:Mesh Class Reference}
 \label{classpiolot_1_1_mesh}\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+
+
+{\ttfamily \#include $<$Mesh.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a9351991e7afd13a3c121aedc5577cfd9}\label{classpiolot_1_1_mesh_a9351991e7afd13a3c121aedc5577cfd9}} 
-const std\+::vector$<$ std\+::string $>$ \& {\bfseries Get\+Texture\+Names} () const
+const std\+::vector$<$ std\+::string $>$ \& \mbox{\hyperlink{classpiolot_1_1_mesh_a9351991e7afd13a3c121aedc5577cfd9}{Get\+Texture\+Names}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a5d5f50621cac37966f39e6ee09788949}\label{classpiolot_1_1_mesh_a5d5f50621cac37966f39e6ee09788949}} 
-void {\bfseries Set\+Texture\+Names} (const std\+::vector$<$ std\+::string $>$ \&\+\_\+basic\+Strings)
+void \mbox{\hyperlink{classpiolot_1_1_mesh_a5d5f50621cac37966f39e6ee09788949}{Set\+Texture\+Names}} (const std\+::vector$<$ std\+::string $>$ \&\+\_\+basic\+Strings)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a2864e1da1d187185cebc55790f6d5940}\label{classpiolot_1_1_mesh_a2864e1da1d187185cebc55790f6d5940}} 
-unsigned {\bfseries Get\+Vertex\+Attrib\+Counter} () const
+unsigned \mbox{\hyperlink{classpiolot_1_1_mesh_a2864e1da1d187185cebc55790f6d5940}{Get\+Vertex\+Attrib\+Counter}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a755867d22123118a4b4e00bbf677e987}\label{classpiolot_1_1_mesh_a755867d22123118a4b4e00bbf677e987}} 
-unsigned {\bfseries Get\+Vbo} () const
+unsigned \mbox{\hyperlink{classpiolot_1_1_mesh_a755867d22123118a4b4e00bbf677e987}{Get\+Vbo}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a8f4122e191086d7f5e95250a80766d82}\label{classpiolot_1_1_mesh_a8f4122e191086d7f5e95250a80766d82}} 
-unsigned {\bfseries Get\+Vao} () const
+unsigned \mbox{\hyperlink{classpiolot_1_1_mesh_a8f4122e191086d7f5e95250a80766d82}{Get\+Vao}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_afe44ffdc27bc839ec6139f801e2efae9}\label{classpiolot_1_1_mesh_afe44ffdc27bc839ec6139f801e2efae9}} 
-unsigned {\bfseries Get\+Ebo} () const
+unsigned \mbox{\hyperlink{classpiolot_1_1_mesh_afe44ffdc27bc839ec6139f801e2efae9}{Get\+Ebo}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a4336c9ab2304035ab8e2a7fdad9233e7}\label{classpiolot_1_1_mesh_a4336c9ab2304035ab8e2a7fdad9233e7}} 
-bool {\bfseries Is\+Using\+Index\+Buffer} () const
+bool \mbox{\hyperlink{classpiolot_1_1_mesh_a4336c9ab2304035ab8e2a7fdad9233e7}{Is\+Using\+Index\+Buffer}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a48f0c3d62435199c10ce0169a079c995}\label{classpiolot_1_1_mesh_a48f0c3d62435199c10ce0169a079c995}} 
-unsigned {\bfseries Get\+Vertex\+Count} () const
+unsigned \mbox{\hyperlink{classpiolot_1_1_mesh_a48f0c3d62435199c10ce0169a079c995}{Get\+Vertex\+Count}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_aaeaf1e4a7ed7fff6c27103393077c6f3}\label{classpiolot_1_1_mesh_aaeaf1e4a7ed7fff6c27103393077c6f3}} 
-unsigned {\bfseries Get\+Index\+Count} () const
+unsigned \mbox{\hyperlink{classpiolot_1_1_mesh_aaeaf1e4a7ed7fff6c27103393077c6f3}{Get\+Index\+Count}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_aa0dad39c742e455b1a0fe27731d01737}\label{classpiolot_1_1_mesh_aa0dad39c742e455b1a0fe27731d01737}} 
-unsigned int {\bfseries Get\+Opengl\+Error\+Flag} () const
+unsigned int \mbox{\hyperlink{classpiolot_1_1_mesh_aa0dad39c742e455b1a0fe27731d01737}{Get\+Opengl\+Error\+Flag}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a3476df99ba790254513c9e9a3bad02d3}\label{classpiolot_1_1_mesh_a3476df99ba790254513c9e9a3bad02d3}} 
-{\bfseries Mesh} (void $\ast$\+\_\+data\+Pointer, size\+\_\+t \+\_\+data\+Structure\+Size, unsigned int \+\_\+vertex\+Count)
+\mbox{\hyperlink{classpiolot_1_1_mesh_a74d2647106f2fab38f95eb0ab5c678ef}{Mesh}} (void $\ast$\+\_\+data\+Pointer, size\+\_\+t \+\_\+data\+Structure\+Size, unsigned int \+\_\+vertex\+Count, std\+::vector$<$ unsigned int $>$ \+\_\+indices=std\+::vector$<$ unsigned int $>$())
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_adc3c74b1c936bb0a4d73e7377d08f319}\label{classpiolot_1_1_mesh_adc3c74b1c936bb0a4d73e7377d08f319}} 
-{\bfseries Mesh} (void $\ast$\+\_\+data\+Pointer, size\+\_\+t \+\_\+data\+Structure\+Size, unsigned int \+\_\+vertex\+Count, std\+::vector$<$ unsigned int $>$ \+\_\+indices)
+void \mbox{\hyperlink{classpiolot_1_1_mesh_a55e20241728a050db306a531bf6d6c79}{Update\+Vertices}} (void $\ast$\+\_\+data\+Pointer, size\+\_\+t \+\_\+data\+Structure\+Size, unsigned \+\_\+vertex\+Count)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a55e20241728a050db306a531bf6d6c79}\label{classpiolot_1_1_mesh_a55e20241728a050db306a531bf6d6c79}} 
-void {\bfseries Update\+Vertices} (void $\ast$\+\_\+data\+Pointer, size\+\_\+t \+\_\+data\+Structure\+Size, unsigned \+\_\+vertex\+Count)
+void \mbox{\hyperlink{classpiolot_1_1_mesh_ad7d1c1d6b25a58d52c6a126cf25e235e}{Render}} (const std\+::string \&\+\_\+shader\+Name)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_ad7d1c1d6b25a58d52c6a126cf25e235e}\label{classpiolot_1_1_mesh_ad7d1c1d6b25a58d52c6a126cf25e235e}} 
-void {\bfseries Render} (const std\+::string \&\+\_\+shader\+Name)
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classpiolot_1_1_mesh_a846f32a4e5b9426db5fdc76a6828b195}{texture\+Names}}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_texture}{Texture}} $>$ $>$ \mbox{\hyperlink{classpiolot_1_1_mesh_a266423d1215e337db045baa99ca6ad88}{texture\+Pointers}}
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a937bc2daa3a4b8e7d751ce7dbd65cb43}\label{classpiolot_1_1_mesh_a937bc2daa3a4b8e7d751ce7dbd65cb43}} 
-unsigned int {\bfseries V\+BO}
+unsigned int \mbox{\hyperlink{classpiolot_1_1_mesh_a937bc2daa3a4b8e7d751ce7dbd65cb43}{V\+BO}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a6ad4c6fbd31933aa4803650f918ab277}\label{classpiolot_1_1_mesh_a6ad4c6fbd31933aa4803650f918ab277}} 
-unsigned int {\bfseries V\+AO}
+unsigned int \mbox{\hyperlink{classpiolot_1_1_mesh_a6ad4c6fbd31933aa4803650f918ab277}{V\+AO}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a523f048f2a1ec6bdbe3179d1b1822647}\label{classpiolot_1_1_mesh_a523f048f2a1ec6bdbe3179d1b1822647}} 
-unsigned int {\bfseries E\+BO}
+unsigned int \mbox{\hyperlink{classpiolot_1_1_mesh_a523f048f2a1ec6bdbe3179d1b1822647}{E\+BO}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a641fac9e111d3eed8992e7a616d6f9bc}\label{classpiolot_1_1_mesh_a641fac9e111d3eed8992e7a616d6f9bc}} 
-unsigned int {\bfseries vertex\+Attrib\+Counter} = 0
+unsigned int \mbox{\hyperlink{classpiolot_1_1_mesh_a641fac9e111d3eed8992e7a616d6f9bc}{vertex\+Attrib\+Counter}} = 0
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a846f32a4e5b9426db5fdc76a6828b195}\label{classpiolot_1_1_mesh_a846f32a4e5b9426db5fdc76a6828b195}} 
-std\+::vector$<$ std\+::string $>$ {\bfseries texture\+Names}
+bool \mbox{\hyperlink{classpiolot_1_1_mesh_a490f057b9ff145fd162d31839bfda5e0}{using\+Index\+Buffer}} = true
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a266423d1215e337db045baa99ca6ad88}\label{classpiolot_1_1_mesh_a266423d1215e337db045baa99ca6ad88}} 
-std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_texture}{Texture}} $>$ $>$ {\bfseries texture\+Pointers}
+unsigned int \mbox{\hyperlink{classpiolot_1_1_mesh_a7db2c12891c5df244ab243ce75f68c02}{vertex\+Count}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a490f057b9ff145fd162d31839bfda5e0}\label{classpiolot_1_1_mesh_a490f057b9ff145fd162d31839bfda5e0}} 
-bool {\bfseries using\+Index\+Buffer} = true
+unsigned int \mbox{\hyperlink{classpiolot_1_1_mesh_a4483ae9ec80da17e7bc4277d032112ab}{index\+Count}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a7db2c12891c5df244ab243ce75f68c02}\label{classpiolot_1_1_mesh_a7db2c12891c5df244ab243ce75f68c02}} 
-unsigned int {\bfseries vertex\+Count}
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a4483ae9ec80da17e7bc4277d032112ab}\label{classpiolot_1_1_mesh_a4483ae9ec80da17e7bc4277d032112ab}} 
-unsigned int {\bfseries index\+Count}
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_mesh_a8d286f1e153dfcbd2883b347c9a4f162}\label{classpiolot_1_1_mesh_a8d286f1e153dfcbd2883b347c9a4f162}} 
-unsigned int {\bfseries opengl\+Error\+Flag}
+unsigned int \mbox{\hyperlink{classpiolot_1_1_mesh_a8d286f1e153dfcbd2883b347c9a4f162}{opengl\+Error\+Flag}}
 \end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a74d2647106f2fab38f95eb0ab5c678ef}\label{classpiolot_1_1_mesh_a74d2647106f2fab38f95eb0ab5c678ef}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!Mesh@{Mesh}}
+\index{Mesh@{Mesh}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{Mesh()}{Mesh()}}
+{\footnotesize\ttfamily piolot\+::\+Mesh\+::\+Mesh (\begin{DoxyParamCaption}\item[{void $\ast$}]{\+\_\+data\+Pointer,  }\item[{size\+\_\+t}]{\+\_\+data\+Structure\+Size,  }\item[{unsigned int}]{\+\_\+vertex\+Count,  }\item[{std\+::vector$<$ unsigned int $>$}]{\+\_\+indices = {\ttfamily std\+:\+:vector$<$unsigned~int$>$()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_mesh_afe44ffdc27bc839ec6139f801e2efae9}\label{classpiolot_1_1_mesh_afe44ffdc27bc839ec6139f801e2efae9}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!Get\+Ebo@{Get\+Ebo}}
+\index{Get\+Ebo@{Get\+Ebo}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Ebo()}{GetEbo()}}
+{\footnotesize\ttfamily unsigned piolot\+::\+Mesh\+::\+Get\+Ebo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_aaeaf1e4a7ed7fff6c27103393077c6f3}\label{classpiolot_1_1_mesh_aaeaf1e4a7ed7fff6c27103393077c6f3}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!Get\+Index\+Count@{Get\+Index\+Count}}
+\index{Get\+Index\+Count@{Get\+Index\+Count}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Index\+Count()}{GetIndexCount()}}
+{\footnotesize\ttfamily unsigned piolot\+::\+Mesh\+::\+Get\+Index\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_aa0dad39c742e455b1a0fe27731d01737}\label{classpiolot_1_1_mesh_aa0dad39c742e455b1a0fe27731d01737}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!Get\+Opengl\+Error\+Flag@{Get\+Opengl\+Error\+Flag}}
+\index{Get\+Opengl\+Error\+Flag@{Get\+Opengl\+Error\+Flag}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Opengl\+Error\+Flag()}{GetOpenglErrorFlag()}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Mesh\+::\+Get\+Opengl\+Error\+Flag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a9351991e7afd13a3c121aedc5577cfd9}\label{classpiolot_1_1_mesh_a9351991e7afd13a3c121aedc5577cfd9}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!Get\+Texture\+Names@{Get\+Texture\+Names}}
+\index{Get\+Texture\+Names@{Get\+Texture\+Names}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Texture\+Names()}{GetTextureNames()}}
+{\footnotesize\ttfamily const std\+::vector$<$std\+::string$>$\& piolot\+::\+Mesh\+::\+Get\+Texture\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a8f4122e191086d7f5e95250a80766d82}\label{classpiolot_1_1_mesh_a8f4122e191086d7f5e95250a80766d82}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!Get\+Vao@{Get\+Vao}}
+\index{Get\+Vao@{Get\+Vao}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Vao()}{GetVao()}}
+{\footnotesize\ttfamily unsigned piolot\+::\+Mesh\+::\+Get\+Vao (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a755867d22123118a4b4e00bbf677e987}\label{classpiolot_1_1_mesh_a755867d22123118a4b4e00bbf677e987}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!Get\+Vbo@{Get\+Vbo}}
+\index{Get\+Vbo@{Get\+Vbo}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Vbo()}{GetVbo()}}
+{\footnotesize\ttfamily unsigned piolot\+::\+Mesh\+::\+Get\+Vbo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a2864e1da1d187185cebc55790f6d5940}\label{classpiolot_1_1_mesh_a2864e1da1d187185cebc55790f6d5940}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!Get\+Vertex\+Attrib\+Counter@{Get\+Vertex\+Attrib\+Counter}}
+\index{Get\+Vertex\+Attrib\+Counter@{Get\+Vertex\+Attrib\+Counter}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Vertex\+Attrib\+Counter()}{GetVertexAttribCounter()}}
+{\footnotesize\ttfamily unsigned piolot\+::\+Mesh\+::\+Get\+Vertex\+Attrib\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a48f0c3d62435199c10ce0169a079c995}\label{classpiolot_1_1_mesh_a48f0c3d62435199c10ce0169a079c995}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!Get\+Vertex\+Count@{Get\+Vertex\+Count}}
+\index{Get\+Vertex\+Count@{Get\+Vertex\+Count}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{Get\+Vertex\+Count()}{GetVertexCount()}}
+{\footnotesize\ttfamily unsigned piolot\+::\+Mesh\+::\+Get\+Vertex\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a4336c9ab2304035ab8e2a7fdad9233e7}\label{classpiolot_1_1_mesh_a4336c9ab2304035ab8e2a7fdad9233e7}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!Is\+Using\+Index\+Buffer@{Is\+Using\+Index\+Buffer}}
+\index{Is\+Using\+Index\+Buffer@{Is\+Using\+Index\+Buffer}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{Is\+Using\+Index\+Buffer()}{IsUsingIndexBuffer()}}
+{\footnotesize\ttfamily bool piolot\+::\+Mesh\+::\+Is\+Using\+Index\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_ad7d1c1d6b25a58d52c6a126cf25e235e}\label{classpiolot_1_1_mesh_ad7d1c1d6b25a58d52c6a126cf25e235e}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!Render@{Render}}
+\index{Render@{Render}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily void piolot\+::\+Mesh\+::\+Render (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{\+\_\+shader\+Name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a5d5f50621cac37966f39e6ee09788949}\label{classpiolot_1_1_mesh_a5d5f50621cac37966f39e6ee09788949}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!Set\+Texture\+Names@{Set\+Texture\+Names}}
+\index{Set\+Texture\+Names@{Set\+Texture\+Names}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{Set\+Texture\+Names()}{SetTextureNames()}}
+{\footnotesize\ttfamily void piolot\+::\+Mesh\+::\+Set\+Texture\+Names (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{\+\_\+basic\+Strings }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a55e20241728a050db306a531bf6d6c79}\label{classpiolot_1_1_mesh_a55e20241728a050db306a531bf6d6c79}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!Update\+Vertices@{Update\+Vertices}}
+\index{Update\+Vertices@{Update\+Vertices}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{Update\+Vertices()}{UpdateVertices()}}
+{\footnotesize\ttfamily void piolot\+::\+Mesh\+::\+Update\+Vertices (\begin{DoxyParamCaption}\item[{void $\ast$}]{\+\_\+data\+Pointer,  }\item[{size\+\_\+t}]{\+\_\+data\+Structure\+Size,  }\item[{unsigned}]{\+\_\+vertex\+Count }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a523f048f2a1ec6bdbe3179d1b1822647}\label{classpiolot_1_1_mesh_a523f048f2a1ec6bdbe3179d1b1822647}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!E\+BO@{E\+BO}}
+\index{E\+BO@{E\+BO}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{E\+BO}{EBO}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Mesh\+::\+E\+BO\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a4483ae9ec80da17e7bc4277d032112ab}\label{classpiolot_1_1_mesh_a4483ae9ec80da17e7bc4277d032112ab}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!index\+Count@{index\+Count}}
+\index{index\+Count@{index\+Count}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{index\+Count}{indexCount}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Mesh\+::index\+Count\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a8d286f1e153dfcbd2883b347c9a4f162}\label{classpiolot_1_1_mesh_a8d286f1e153dfcbd2883b347c9a4f162}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!opengl\+Error\+Flag@{opengl\+Error\+Flag}}
+\index{opengl\+Error\+Flag@{opengl\+Error\+Flag}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{opengl\+Error\+Flag}{openglErrorFlag}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Mesh\+::opengl\+Error\+Flag\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a846f32a4e5b9426db5fdc76a6828b195}\label{classpiolot_1_1_mesh_a846f32a4e5b9426db5fdc76a6828b195}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!texture\+Names@{texture\+Names}}
+\index{texture\+Names@{texture\+Names}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{texture\+Names}{textureNames}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ piolot\+::\+Mesh\+::texture\+Names}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a266423d1215e337db045baa99ca6ad88}\label{classpiolot_1_1_mesh_a266423d1215e337db045baa99ca6ad88}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!texture\+Pointers@{texture\+Pointers}}
+\index{texture\+Pointers@{texture\+Pointers}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{texture\+Pointers}{texturePointers}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classpiolot_1_1_texture}{Texture}}$>$ $>$ piolot\+::\+Mesh\+::texture\+Pointers}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a490f057b9ff145fd162d31839bfda5e0}\label{classpiolot_1_1_mesh_a490f057b9ff145fd162d31839bfda5e0}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!using\+Index\+Buffer@{using\+Index\+Buffer}}
+\index{using\+Index\+Buffer@{using\+Index\+Buffer}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{using\+Index\+Buffer}{usingIndexBuffer}}
+{\footnotesize\ttfamily bool piolot\+::\+Mesh\+::using\+Index\+Buffer = true\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a6ad4c6fbd31933aa4803650f918ab277}\label{classpiolot_1_1_mesh_a6ad4c6fbd31933aa4803650f918ab277}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!V\+AO@{V\+AO}}
+\index{V\+AO@{V\+AO}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{V\+AO}{VAO}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Mesh\+::\+V\+AO\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a937bc2daa3a4b8e7d751ce7dbd65cb43}\label{classpiolot_1_1_mesh_a937bc2daa3a4b8e7d751ce7dbd65cb43}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!V\+BO@{V\+BO}}
+\index{V\+BO@{V\+BO}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{V\+BO}{VBO}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Mesh\+::\+V\+BO\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a641fac9e111d3eed8992e7a616d6f9bc}\label{classpiolot_1_1_mesh_a641fac9e111d3eed8992e7a616d6f9bc}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!vertex\+Attrib\+Counter@{vertex\+Attrib\+Counter}}
+\index{vertex\+Attrib\+Counter@{vertex\+Attrib\+Counter}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{vertex\+Attrib\+Counter}{vertexAttribCounter}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Mesh\+::vertex\+Attrib\+Counter = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_mesh_a7db2c12891c5df244ab243ce75f68c02}\label{classpiolot_1_1_mesh_a7db2c12891c5df244ab243ce75f68c02}} 
+\index{piolot\+::\+Mesh@{piolot\+::\+Mesh}!vertex\+Count@{vertex\+Count}}
+\index{vertex\+Count@{vertex\+Count}!piolot\+::\+Mesh@{piolot\+::\+Mesh}}
+\subsubsection{\texorpdfstring{vertex\+Count}{vertexCount}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Mesh\+::vertex\+Count\hspace{0.3cm}{\ttfamily [protected]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/dev/\+Piolot/\+Engine/Mesh.\+h\item 
-C\+:/dev/\+Piolot/\+Engine/Mesh.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_mesh_8h}{Mesh.\+h}}\item 
+\mbox{\hyperlink{_mesh_8cpp}{Mesh.\+cpp}}\end{DoxyCompactItemize}

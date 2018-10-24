@@ -92,9 +92,11 @@ $(document).ready(function(){initNavTree('classpiolot_1_1_scene.html','');});
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classpiolot_1_1_scene-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">piolot::Scene Class Reference</div>  </div>
+<div class="title">piolot::Scene Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_scene_8h_source.html">Scene.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for piolot::Scene:</div>
 <div class="dyncontent">
@@ -107,49 +109,404 @@ Inheritance diagram for piolot::Scene:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af42469b97e0c1006bec5d384223db148"><td class="memItemLeft" align="right" valign="top"><a id="af42469b97e0c1006bec5d384223db148"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Scene</b> (std::shared_ptr&lt; <a class="el" href="class_window.html">Window</a> &gt; _window)</td></tr>
+<tr class="memitem:af42469b97e0c1006bec5d384223db148"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_scene.html#af42469b97e0c1006bec5d384223db148">Scene</a> (std::shared_ptr&lt; <a class="el" href="class_window.html">Window</a> &gt; _window)</td></tr>
 <tr class="separator:af42469b97e0c1006bec5d384223db148"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae05b812e9f1caa80526a79a03ab456e1"><td class="memItemLeft" align="right" valign="top"><a id="ae05b812e9f1caa80526a79a03ab456e1"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OnUpdate</b> (float _deltaTime, float _totalTime)</td></tr>
-<tr class="separator:ae05b812e9f1caa80526a79a03ab456e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d634dd8b2f281052f034740644c1aa3"><td class="memItemLeft" align="right" valign="top"><a id="a6d634dd8b2f281052f034740644c1aa3"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OnRender</b> ()</td></tr>
-<tr class="separator:a6d634dd8b2f281052f034740644c1aa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedea470f1c3485d76ef0681e4a503584"><td class="memItemLeft" align="right" valign="top"><a id="aedea470f1c3485d76ef0681e4a503584"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OnImguiRender</b> ()</td></tr>
-<tr class="separator:aedea470f1c3485d76ef0681e4a503584"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73af83e23a36087989538d25216bb1f8"><td class="memItemLeft" align="right" valign="top"><a id="a73af83e23a36087989538d25216bb1f8"></a>
-std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_camera.html">piolot::Camera</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ActiveCamera</b> () const</td></tr>
-<tr class="separator:a73af83e23a36087989538d25216bb1f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2edd824436ee0c877ee03573c90f3002"><td class="memItemLeft" align="right" valign="top"><a id="a2edd824436ee0c877ee03573c90f3002"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ActiveCamera</b> (std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_camera.html">piolot::Camera</a> &gt; val)</td></tr>
-<tr class="separator:a2edd824436ee0c877ee03573c90f3002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab1c2430f0f2317c0ae5b8fa8edc6fff"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_scene.html#aab1c2430f0f2317c0ae5b8fa8edc6fff">~Scene</a> ()=default</td></tr>
+<tr class="separator:aab1c2430f0f2317c0ae5b8fa8edc6fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6871dbb3f61a724a166fd83c3c1dc3a3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___virtual.html#ga6871dbb3f61a724a166fd83c3c1dc3a3">InitEntities</a> ()=0</td></tr>
+<tr class="memdesc:ga6871dbb3f61a724a166fd83c3c1dc3a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to be overwritten to Initialize the Entities.  <a href="group___virtual.html#ga6871dbb3f61a724a166fd83c3c1dc3a3">More...</a><br /></td></tr>
+<tr class="separator:ga6871dbb3f61a724a166fd83c3c1dc3a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae05b812e9f1caa80526a79a03ab456e1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___virtual.html#gae05b812e9f1caa80526a79a03ab456e1">OnUpdate</a> (float _deltaTime, float _totalTime)</td></tr>
+<tr class="separator:gae05b812e9f1caa80526a79a03ab456e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa3f6f2cb0dce355d890c8b43a2f11f2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___virtual.html#gaaa3f6f2cb0dce355d890c8b43a2f11f2">OnRender</a> ()=0</td></tr>
+<tr class="separator:gaaa3f6f2cb0dce355d890c8b43a2f11f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaedea470f1c3485d76ef0681e4a503584"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___virtual.html#gaedea470f1c3485d76ef0681e4a503584">OnImguiRender</a> ()</td></tr>
+<tr class="memdesc:gaedea470f1c3485d76ef0681e4a503584"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render the ImGUI Stuff.  <a href="group___virtual.html#gaedea470f1c3485d76ef0681e4a503584">More...</a><br /></td></tr>
+<tr class="separator:gaedea470f1c3485d76ef0681e4a503584"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56d2c68922b38f97554ae4edde21f718"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_scene.html#a56d2c68922b38f97554ae4edde21f718">ActivateCamera</a> (std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_camera.html">Camera</a> &gt; _val)</td></tr>
+<tr class="memdesc:a56d2c68922b38f97554ae4edde21f718"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activate the passed <a class="el" href="classpiolot_1_1_camera.html">Camera</a>.  <a href="#a56d2c68922b38f97554ae4edde21f718">More...</a><br /></td></tr>
+<tr class="separator:a56d2c68922b38f97554ae4edde21f718"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0d71d1ad7c27872086d9f82ee7be7fb"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_camera.html">Camera</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_scene.html#ac0d71d1ad7c27872086d9f82ee7be7fb">GetActiveCamera</a> () const</td></tr>
+<tr class="memdesc:ac0d71d1ad7c27872086d9f82ee7be7fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the ActiveCamera.  <a href="#ac0d71d1ad7c27872086d9f82ee7be7fb">More...</a><br /></td></tr>
+<tr class="separator:ac0d71d1ad7c27872086d9f82ee7be7fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a250749bf646c4ab0349bd98e515b0d5b"><td class="memItemLeft" align="right" valign="top"><a id="a250749bf646c4ab0349bd98e515b0d5b"></a>
-std::shared_ptr&lt; <a class="el" href="class_window.html">Window</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>window</b></td></tr>
+<tr class="memitem:a250749bf646c4ab0349bd98e515b0d5b"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_window.html">Window</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_scene.html#a250749bf646c4ab0349bd98e515b0d5b">window</a></td></tr>
+<tr class="memdesc:a250749bf646c4ab0349bd98e515b0d5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Shared Pointer for the <a class="el" href="class_window.html" title="Window Class. Initialize this for opening the window. Cleanup to exit. ">Window</a>.  <a href="#a250749bf646c4ab0349bd98e515b0d5b">More...</a><br /></td></tr>
 <tr class="separator:a250749bf646c4ab0349bd98e515b0d5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a980ee452f49233f7b95fa4643e383ae9"><td class="memItemLeft" align="right" valign="top"><a id="a980ee452f49233f7b95fa4643e383ae9"></a>
-std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_camera.html">Camera</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>activeCamera</b></td></tr>
+<tr class="memitem:a980ee452f49233f7b95fa4643e383ae9"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_camera.html">Camera</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_scene.html#a980ee452f49233f7b95fa4643e383ae9">activeCamera</a></td></tr>
+<tr class="memdesc:a980ee452f49233f7b95fa4643e383ae9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classpiolot_1_1_camera.html">Camera</a> that is currently Active.  <a href="#a980ee452f49233f7b95fa4643e383ae9">More...</a><br /></td></tr>
 <tr class="separator:a980ee452f49233f7b95fa4643e383ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fe090e6f4c7747ebf8a675f93985409"><td class="memItemLeft" align="right" valign="top"><a id="a3fe090e6f4c7747ebf8a675f93985409"></a>
-std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_camera.html">Camera</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>cameras</b></td></tr>
-<tr class="separator:a3fe090e6f4c7747ebf8a675f93985409"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbfcb0b896570a28a7f2ed83c7426518"><td class="memItemLeft" align="right" valign="top"><a id="acbfcb0b896570a28a7f2ed83c7426518"></a>
-std::vector&lt; std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_entity.html">Entity</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>entities</b></td></tr>
-<tr class="separator:acbfcb0b896570a28a7f2ed83c7426518"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03ce910c0242bb786e797d54bbffd54f"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_camera.html">Camera</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_scene.html#a03ce910c0242bb786e797d54bbffd54f">cameras</a></td></tr>
+<tr class="memdesc:a03ce910c0242bb786e797d54bbffd54f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Map of all the Cameras that are currently in the <a class="el" href="classpiolot_1_1_scene.html">Scene</a>.  <a href="#a03ce910c0242bb786e797d54bbffd54f">More...</a><br /></td></tr>
+<tr class="separator:a03ce910c0242bb786e797d54bbffd54f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac85cd14260516aaaac3dacab4138a662"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classpiolot_1_1_entity.html">Entity</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_scene.html#ac85cd14260516aaaac3dacab4138a662">entities</a></td></tr>
+<tr class="memdesc:ac85cd14260516aaaac3dacab4138a662"><td class="mdescLeft">&#160;</td><td class="mdescRight">All the Entities.  <a href="#ac85cd14260516aaaac3dacab4138a662">More...</a><br /></td></tr>
+<tr class="separator:ac85cd14260516aaaac3dacab4138a662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6253e5cbedc67830e76d6da04c0b4371"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classpiolot_1_1_animated_entity.html">AnimatedEntity</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_scene.html#a6253e5cbedc67830e76d6da04c0b4371">animatedEntities</a></td></tr>
+<tr class="memdesc:a6253e5cbedc67830e76d6da04c0b4371"><td class="mdescLeft">&#160;</td><td class="mdescRight">All the Entities with Animations.  <a href="#a6253e5cbedc67830e76d6da04c0b4371">More...</a><br /></td></tr>
+<tr class="separator:a6253e5cbedc67830e76d6da04c0b4371"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62abd7ccaa90a04e1f9738de7b2f96d3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classpiolot_1_1_entity.html">Entity</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_scene.html#a62abd7ccaa90a04e1f9738de7b2f96d3">selectedEntities</a></td></tr>
+<tr class="memdesc:a62abd7ccaa90a04e1f9738de7b2f96d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raw Pointers to the Selected Entities.  <a href="#a62abd7ccaa90a04e1f9738de7b2f96d3">More...</a><br /></td></tr>
+<tr class="separator:a62abd7ccaa90a04e1f9738de7b2f96d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb5dae5e574ec94da2b1192070e91327"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classpiolot_1_1_entity.html">Entity</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_scene.html#afb5dae5e574ec94da2b1192070e91327">tempEntities</a></td></tr>
+<tr class="memdesc:afb5dae5e574ec94da2b1192070e91327"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raw Pointers to the Temporary Entities.  <a href="#afb5dae5e574ec94da2b1192070e91327">More...</a><br /></td></tr>
+<tr class="separator:afb5dae5e574ec94da2b1192070e91327"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10140d7b13ab259d8770d9cf44ab8829"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_scene.html#a10140d7b13ab259d8770d9cf44ab8829">totalTime</a></td></tr>
+<tr class="memdesc:a10140d7b13ab259d8770d9cf44ab8829"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total time since the <a class="el" href="class_window.html" title="Window Class. Initialize this for opening the window. Cleanup to exit. ">Window</a> Opened.  <a href="#a10140d7b13ab259d8770d9cf44ab8829">More...</a><br /></td></tr>
+<tr class="separator:a10140d7b13ab259d8770d9cf44ab8829"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3714002379b5e74cc24d947757f4af4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_scene.html#ac3714002379b5e74cc24d947757f4af4">deltaTime</a></td></tr>
+<tr class="memdesc:ac3714002379b5e74cc24d947757f4af4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The time elapsed since the last frame.  <a href="#ac3714002379b5e74cc24d947757f4af4">More...</a><br /></td></tr>
+<tr class="separator:ac3714002379b5e74cc24d947757f4af4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="af42469b97e0c1006bec5d384223db148"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af42469b97e0c1006bec5d384223db148">&#9670;&nbsp;</a></span>Scene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">piolot::Scene::Scene </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_window.html">Window</a> &gt;&#160;</td>
+          <td class="paramname"><em>_window</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aab1c2430f0f2317c0ae5b8fa8edc6fff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab1c2430f0f2317c0ae5b8fa8edc6fff">&#9670;&nbsp;</a></span>~Scene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual piolot::Scene::~Scene </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a56d2c68922b38f97554ae4edde21f718"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56d2c68922b38f97554ae4edde21f718">&#9670;&nbsp;</a></span>ActivateCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Scene::ActivateCamera </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_camera.html">Camera</a> &gt;&#160;</td>
+          <td class="paramname"><em>_val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Activate the passed <a class="el" href="classpiolot_1_1_camera.html">Camera</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>The <a class="el" href="classpiolot_1_1_camera.html">Camera</a> to Activate </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac0d71d1ad7c27872086d9f82ee7be7fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0d71d1ad7c27872086d9f82ee7be7fb">&#9670;&nbsp;</a></span>GetActiveCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classpiolot_1_1_camera.html">Camera</a>&gt; piolot::Scene::GetActiveCamera </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the ActiveCamera. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns a pointer to the Current Active <a class="el" href="classpiolot_1_1_camera.html">Camera</a> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a980ee452f49233f7b95fa4643e383ae9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a980ee452f49233f7b95fa4643e383ae9">&#9670;&nbsp;</a></span>activeCamera</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classpiolot_1_1_camera.html">Camera</a>&gt; piolot::Scene::activeCamera</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The <a class="el" href="classpiolot_1_1_camera.html">Camera</a> that is currently Active. </p>
+
+</div>
+</div>
+<a id="a6253e5cbedc67830e76d6da04c0b4371"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6253e5cbedc67830e76d6da04c0b4371">&#9670;&nbsp;</a></span>animatedEntities</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::unique_ptr&lt;<a class="el" href="classpiolot_1_1_animated_entity.html">AnimatedEntity</a>&gt; &gt; piolot::Scene::animatedEntities</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>All the Entities with Animations. </p>
+<p>The <a class="el" href="classpiolot_1_1_scene.html">Scene</a> owns them. When you delete the <a class="el" href="classpiolot_1_1_scene.html">Scene</a>, the entities are deleted. </p>
+
+</div>
+</div>
+<a id="a03ce910c0242bb786e797d54bbffd54f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03ce910c0242bb786e797d54bbffd54f">&#9670;&nbsp;</a></span>cameras</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;std::string, std::shared_ptr&lt;<a class="el" href="classpiolot_1_1_camera.html">Camera</a>&gt; &gt; piolot::Scene::cameras</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The Map of all the Cameras that are currently in the <a class="el" href="classpiolot_1_1_scene.html">Scene</a>. </p>
+<p>We use Unordered Map because when we disable the UI, we have a slight performance benefit for the UnOrdered Map. This is definitely worse when you have the UI Enabled. </p>
+
+</div>
+</div>
+<a id="ac3714002379b5e74cc24d947757f4af4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3714002379b5e74cc24d947757f4af4">&#9670;&nbsp;</a></span>deltaTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float piolot::Scene::deltaTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The time elapsed since the last frame. </p>
+
+</div>
+</div>
+<a id="ac85cd14260516aaaac3dacab4138a662"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac85cd14260516aaaac3dacab4138a662">&#9670;&nbsp;</a></span>entities</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::unique_ptr&lt;<a class="el" href="classpiolot_1_1_entity.html">Entity</a>&gt; &gt; piolot::Scene::entities</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>All the Entities. </p>
+<p>The <a class="el" href="classpiolot_1_1_scene.html">Scene</a> owns them. When you delete the <a class="el" href="classpiolot_1_1_scene.html">Scene</a>, the entities are deleted. </p>
+
+</div>
+</div>
+<a id="a62abd7ccaa90a04e1f9738de7b2f96d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62abd7ccaa90a04e1f9738de7b2f96d3">&#9670;&nbsp;</a></span>selectedEntities</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="classpiolot_1_1_entity.html">Entity</a> *&gt; piolot::Scene::selectedEntities</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Raw Pointers to the Selected Entities. </p>
+<p>These selected entities can be destroyed even though they are selected. So, we just copy the addresses. </p>
+
+</div>
+</div>
+<a id="afb5dae5e574ec94da2b1192070e91327"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb5dae5e574ec94da2b1192070e91327">&#9670;&nbsp;</a></span>tempEntities</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::unique_ptr&lt;<a class="el" href="classpiolot_1_1_entity.html">Entity</a>&gt; &gt; piolot::Scene::tempEntities</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Raw Pointers to the Temporary Entities. </p>
+<p>These entities are cleared every frame, after they are drawn. </p>
+
+</div>
+</div>
+<a id="a10140d7b13ab259d8770d9cf44ab8829"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10140d7b13ab259d8770d9cf44ab8829">&#9670;&nbsp;</a></span>totalTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float piolot::Scene::totalTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Total time since the <a class="el" href="class_window.html" title="Window Class. Initialize this for opening the window. Cleanup to exit. ">Window</a> Opened. </p>
+<p>Populated by using glfwgettime() function. </p><dl class="section see"><dt>See also</dt><dd><a href="https://www.glfw.org/docs/3.0/group__time.html">https://www.glfw.org/docs/3.0/group__time.html</a> </dd></dl>
+
+</div>
+</div>
+<a id="a250749bf646c4ab0349bd98e515b0d5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a250749bf646c4ab0349bd98e515b0d5b">&#9670;&nbsp;</a></span>window</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_window.html">Window</a>&gt; piolot::Scene::window</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The Shared Pointer for the <a class="el" href="class_window.html" title="Window Class. Initialize this for opening the window. Cleanup to exit. ">Window</a>. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/dev/Piolot/Engine/<a class="el" href="_scene_8h_source.html">Scene.h</a></li>
+<li><a class="el" href="_scene_8h_source.html">Scene.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>piolot</b></li><li class="navelem"><a class="el" href="classpiolot_1_1_scene.html">Scene</a></li>
+    <li class="navelem"><a class="el" href="namespacepiolot.html">piolot</a></li><li class="navelem"><a class="el" href="classpiolot_1_1_scene.html">Scene</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>

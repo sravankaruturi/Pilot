@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['getinstance',['getInstance',['../classpiolot_1_1_asset_manager.html#a5bcfd6d2719bcada7f5865eb6e39664b',1,'piolot::AssetManager']]],
-  ['getmouseposition',['GetMousePosition',['../group___getters.html#ga65b02b0e52540d4c2c9d13689f4ec45a',1,'Window']]],
-  ['glshader',['GLShader',['../classpiolot_1_1_g_l_shader.html#a9280ae5003e53461f898dd18b7685eab',1,'piolot::GLShader']]],
-  ['guirender',['GuiRender',['../classpiolot_1_1_asset_manager.html#a00d1b6635e14cfdf2a618fff3ad61416',1,'piolot::AssetManager']]]
+  ['deletetiles',['DeleteTiles',['../classpiolot_1_1_terrain.html#af2bc3eb0ea909a0fd96b6c11aeb29c8a',1,'piolot::Terrain']]],
+  ['displaycameradetailsimgui',['DisplayCameraDetailsImgui',['../classpiolot_1_1_camera.html#aa9172dabf1f037963c8f93f7b774cd9e',1,'piolot::Camera']]],
+  ['displaydetailsimgui',['DisplayDetailsImgui',['../classpiolot_1_1_entity.html#acc08eed4d3e1185dfc3fb396720443e5',1,'piolot::Entity']]],
+  ['draw',['Draw',['../structpiolot_1_1_im_gui_log.html#adaab8c65a0a76e8b434ae0edc4834a36',1,'piolot::ImGuiLog']]]
 ];

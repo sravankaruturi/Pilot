@@ -1,0 +1,174 @@
+\hypertarget{classpiolot_1_1_animated_entity}{}\section{piolot\+:\+:Animated\+Entity Class Reference}
+\label{classpiolot_1_1_animated_entity}\index{piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}}
+
+
+\mbox{\hyperlink{classpiolot_1_1_entity}{Entity}} which uses the Animations Stored.  
+
+
+
+
+{\ttfamily \#include $<$Animated\+Entity.\+h$>$}
+
+Inheritance diagram for piolot\+:\+:Animated\+Entity\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classpiolot_1_1_animated_entity}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classpiolot_1_1_animated_entity_ada8db1e8e54e8fc3bef18529ca63b68b}{Set\+Animation\+Total\+Time}} (float \+\_\+animation\+Total\+Time)
+\item 
+\mbox{\hyperlink{classpiolot_1_1_animated_entity_a683b381fca2c7d94196fbf44bbc9911b}{Animated\+Entity}} ()=default
+\begin{DoxyCompactList}\small\item\em This function is used when you are loading in Animated Entities from the File. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classpiolot_1_1_animated_entity_ac94067c874bde16328f24b613e67e516}{Animated\+Entity}} (const std\+::string \&\+\_\+entity\+Name, const std\+::string \&\+\_\+object\+Path, const std\+::string \&\+\_\+shader\+Name, glm\+::vec3 \+\_\+bbox\+Least=glm\+::vec3(-\/1, -\/1, -\/1), glm\+::vec3 \+\_\+bbox\+High=glm\+::vec3(1, 1, 1))
+\item 
+\mbox{\hyperlink{classpiolot_1_1_animated_entity_a49a3fe0f59734e48cb70804fc3c5ef9c}{$\sim$\+Animated\+Entity}} ()=default
+\item 
+void \mbox{\hyperlink{classpiolot_1_1_animated_entity_ac136308002d8df68468bf489aa1a584c}{Play\+Animation}} (float \+\_\+delta\+Time, float \+\_\+current\+Time)
+\begin{DoxyCompactList}\small\item\em Update the Bone Transforms based on the Time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_animated_entity_ad616db0c5f74205e41257a5c3d71a16b}{Update}} (float \+\_\+delta\+Time)
+\begin{DoxyCompactList}\small\item\em Update the \mbox{\hyperlink{classpiolot_1_1_entity}{Entity}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_animated_entity_a087000fec2d12db05ca9e07676318ed2}{Render}} ()
+\item 
+void \mbox{\hyperlink{classpiolot_1_1_animated_entity_af3d37876b5baa074f3298a3448191a67}{Save\+To\+File}} (std\+::ofstream \&\+\_\+out)
+\begin{DoxyCompactList}\small\item\em Save the \mbox{\hyperlink{classpiolot_1_1_entity}{Entity}} to the Output Stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_animated_entity_a618a360c064a9abe9589ab1d7fbb9882}{Load\+From\+File}} (std\+::ifstream \&\+\_\+in)
+\begin{DoxyCompactList}\small\item\em Load the \mbox{\hyperlink{classpiolot_1_1_entity}{Entity}} from the Input Stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ glm\+::mat4 $>$ \mbox{\hyperlink{classpiolot_1_1_animated_entity_a002c9ba662ea33457cbf1c569e2ae115}{bone\+Matrices}}
+\item 
+float \mbox{\hyperlink{classpiolot_1_1_animated_entity_a3970cbb96b13a871416c42974b21a732}{animation\+Total\+Time}} = 0.\+0f
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{classpiolot_1_1_entity}{Entity}} which uses the Animations Stored. 
+
+You cannot convert an \mbox{\hyperlink{classpiolot_1_1_entity}{Entity}} to and from \mbox{\hyperlink{classpiolot_1_1_animated_entity}{Animated\+Entity}} and expect it to work. The \mbox{\hyperlink{structpiolot_1_1_vertex_data}{Vertex\+Data}} would be different. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_animated_entity_a683b381fca2c7d94196fbf44bbc9911b}\label{classpiolot_1_1_animated_entity_a683b381fca2c7d94196fbf44bbc9911b}} 
+\index{piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}!Animated\+Entity@{Animated\+Entity}}
+\index{Animated\+Entity@{Animated\+Entity}!piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}}
+\subsubsection{\texorpdfstring{Animated\+Entity()}{AnimatedEntity()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily piolot\+::\+Animated\+Entity\+::\+Animated\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+This function is used when you are loading in Animated Entities from the File. 
+
+\mbox{\Hypertarget{classpiolot_1_1_animated_entity_ac94067c874bde16328f24b613e67e516}\label{classpiolot_1_1_animated_entity_ac94067c874bde16328f24b613e67e516}} 
+\index{piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}!Animated\+Entity@{Animated\+Entity}}
+\index{Animated\+Entity@{Animated\+Entity}!piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}}
+\subsubsection{\texorpdfstring{Animated\+Entity()}{AnimatedEntity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily piolot\+::\+Animated\+Entity\+::\+Animated\+Entity (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{\+\_\+entity\+Name,  }\item[{const std\+::string \&}]{\+\_\+object\+Path,  }\item[{const std\+::string \&}]{\+\_\+shader\+Name,  }\item[{glm\+::vec3}]{\+\_\+bbox\+Least = {\ttfamily glm\+:\+:vec3(-\/1,~-\/1,~-\/1)},  }\item[{glm\+::vec3}]{\+\_\+bbox\+High = {\ttfamily glm\+:\+:vec3(1,~1,~1)} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_animated_entity_a49a3fe0f59734e48cb70804fc3c5ef9c}\label{classpiolot_1_1_animated_entity_a49a3fe0f59734e48cb70804fc3c5ef9c}} 
+\index{piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}!````~Animated\+Entity@{$\sim$\+Animated\+Entity}}
+\index{````~Animated\+Entity@{$\sim$\+Animated\+Entity}!piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}}
+\subsubsection{\texorpdfstring{$\sim$\+Animated\+Entity()}{~AnimatedEntity()}}
+{\footnotesize\ttfamily piolot\+::\+Animated\+Entity\+::$\sim$\+Animated\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_animated_entity_a618a360c064a9abe9589ab1d7fbb9882}\label{classpiolot_1_1_animated_entity_a618a360c064a9abe9589ab1d7fbb9882}} 
+\index{piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}!Load\+From\+File@{Load\+From\+File}}
+\index{Load\+From\+File@{Load\+From\+File}!piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}}
+\subsubsection{\texorpdfstring{Load\+From\+File()}{LoadFromFile()}}
+{\footnotesize\ttfamily void piolot\+::\+Animated\+Entity\+::\+Load\+From\+File (\begin{DoxyParamCaption}\item[{std\+::ifstream \&}]{\+\_\+in }\end{DoxyParamCaption})}
+
+
+
+Load the \mbox{\hyperlink{classpiolot_1_1_entity}{Entity}} from the Input Stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+in} & The Input Stream \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_animated_entity_ac136308002d8df68468bf489aa1a584c}\label{classpiolot_1_1_animated_entity_ac136308002d8df68468bf489aa1a584c}} 
+\index{piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}!Play\+Animation@{Play\+Animation}}
+\index{Play\+Animation@{Play\+Animation}!piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}}
+\subsubsection{\texorpdfstring{Play\+Animation()}{PlayAnimation()}}
+{\footnotesize\ttfamily void piolot\+::\+Animated\+Entity\+::\+Play\+Animation (\begin{DoxyParamCaption}\item[{float}]{\+\_\+delta\+Time,  }\item[{float}]{\+\_\+current\+Time }\end{DoxyParamCaption})}
+
+
+
+Update the Bone Transforms based on the Time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+delta\+Time} & Delta\+Time \\
+\hline
+{\em \+\_\+current\+Time} & The time since it was initialized. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_animated_entity_a087000fec2d12db05ca9e07676318ed2}\label{classpiolot_1_1_animated_entity_a087000fec2d12db05ca9e07676318ed2}} 
+\index{piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}!Render@{Render}}
+\index{Render@{Render}!piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily void piolot\+::\+Animated\+Entity\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_animated_entity_af3d37876b5baa074f3298a3448191a67}\label{classpiolot_1_1_animated_entity_af3d37876b5baa074f3298a3448191a67}} 
+\index{piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}!Save\+To\+File@{Save\+To\+File}}
+\index{Save\+To\+File@{Save\+To\+File}!piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}}
+\subsubsection{\texorpdfstring{Save\+To\+File()}{SaveToFile()}}
+{\footnotesize\ttfamily void piolot\+::\+Animated\+Entity\+::\+Save\+To\+File (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{\+\_\+out }\end{DoxyParamCaption})}
+
+
+
+Save the \mbox{\hyperlink{classpiolot_1_1_entity}{Entity}} to the Output Stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+out} & The Output Stream \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_animated_entity_ada8db1e8e54e8fc3bef18529ca63b68b}\label{classpiolot_1_1_animated_entity_ada8db1e8e54e8fc3bef18529ca63b68b}} 
+\index{piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}!Set\+Animation\+Total\+Time@{Set\+Animation\+Total\+Time}}
+\index{Set\+Animation\+Total\+Time@{Set\+Animation\+Total\+Time}!piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}}
+\subsubsection{\texorpdfstring{Set\+Animation\+Total\+Time()}{SetAnimationTotalTime()}}
+{\footnotesize\ttfamily void piolot\+::\+Animated\+Entity\+::\+Set\+Animation\+Total\+Time (\begin{DoxyParamCaption}\item[{float}]{\+\_\+animation\+Total\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_animated_entity_ad616db0c5f74205e41257a5c3d71a16b}\label{classpiolot_1_1_animated_entity_ad616db0c5f74205e41257a5c3d71a16b}} 
+\index{piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}!Update@{Update}}
+\index{Update@{Update}!piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void piolot\+::\+Animated\+Entity\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{\+\_\+delta\+Time }\end{DoxyParamCaption})}
+
+
+
+Update the \mbox{\hyperlink{classpiolot_1_1_entity}{Entity}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+delta\+Time} & Delta\+Time\\
+\hline
+\end{DoxyParams}
+Updates the Matrices. 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_animated_entity_a3970cbb96b13a871416c42974b21a732}\label{classpiolot_1_1_animated_entity_a3970cbb96b13a871416c42974b21a732}} 
+\index{piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}!animation\+Total\+Time@{animation\+Total\+Time}}
+\index{animation\+Total\+Time@{animation\+Total\+Time}!piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}}
+\subsubsection{\texorpdfstring{animation\+Total\+Time}{animationTotalTime}}
+{\footnotesize\ttfamily float piolot\+::\+Animated\+Entity\+::animation\+Total\+Time = 0.\+0f\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_animated_entity_a002c9ba662ea33457cbf1c569e2ae115}\label{classpiolot_1_1_animated_entity_a002c9ba662ea33457cbf1c569e2ae115}} 
+\index{piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}!bone\+Matrices@{bone\+Matrices}}
+\index{bone\+Matrices@{bone\+Matrices}!piolot\+::\+Animated\+Entity@{piolot\+::\+Animated\+Entity}}
+\subsubsection{\texorpdfstring{bone\+Matrices}{boneMatrices}}
+{\footnotesize\ttfamily std\+::vector$<$glm\+::mat4$>$ piolot\+::\+Animated\+Entity\+::bone\+Matrices\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_animated_entity_8h}{Animated\+Entity.\+h}}\item 
+\mbox{\hyperlink{_animated_entity_8cpp}{Animated\+Entity.\+cpp}}\end{DoxyCompactItemize}

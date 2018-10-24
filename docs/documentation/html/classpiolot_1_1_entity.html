@@ -96,134 +96,1220 @@ $(document).ready(function(){initNavTree('classpiolot_1_1_entity.html','');});
 <div class="title">piolot::Entity Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_entity_8h_source.html">Entity.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for piolot::Entity:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classpiolot_1_1_entity.png" usemap="#piolot::Entity_map" alt=""/>
   <map id="piolot::Entity_map" name="piolot::Entity_map">
-<area href="classpiolot_1_1_terrain.html" alt="piolot::Terrain" shape="rect" coords="0,56,89,80"/>
+<area href="classpiolot_1_1_animated_entity.html" title="Entity which uses the Animations Stored. " alt="piolot::AnimatedEntity" shape="rect" coords="0,56,131,80"/>
+<area href="classpiolot_1_1_terrain.html" title="Container of all Terrain functions. Is Derived from Entity. " alt="piolot::Terrain" shape="rect" coords="141,56,272,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afcf183909460f962951d9775126e35dc"><td class="memItemLeft" align="right" valign="top"><a id="afcf183909460f962951d9775126e35dc"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetEntityName</b> () const</td></tr>
+<tr class="memitem:afa9c74b8c025139367a3f3fbfe431692"><td class="memItemLeft" align="right" valign="top">glm::ivec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#afa9c74b8c025139367a3f3fbfe431692">GetTargetPosition</a> () const</td></tr>
+<tr class="separator:afa9c74b8c025139367a3f3fbfe431692"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8effc8fb437b50228b6467556236a043"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a8effc8fb437b50228b6467556236a043">setTargetNode</a> (const glm::ivec2 &amp;_targetNode)</td></tr>
+<tr class="separator:a8effc8fb437b50228b6467556236a043"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcf183909460f962951d9775126e35dc"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#afcf183909460f962951d9775126e35dc">GetEntityName</a> () const</td></tr>
 <tr class="separator:afcf183909460f962951d9775126e35dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b458394b15a68f6ecf19e79b60f8730"><td class="memItemLeft" align="right" valign="top"><a id="a4b458394b15a68f6ecf19e79b60f8730"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetEntityName</b> (const std::string &amp;entity_name)</td></tr>
+<tr class="memitem:a4b458394b15a68f6ecf19e79b60f8730"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a4b458394b15a68f6ecf19e79b60f8730">SetEntityName</a> (const std::string &amp;entity_name)</td></tr>
 <tr class="separator:a4b458394b15a68f6ecf19e79b60f8730"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c52edf232af06086a4058c46d2cb783"><td class="memItemLeft" align="right" valign="top"><a id="a1c52edf232af06086a4058c46d2cb783"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetShaderName</b> (const std::string &amp;shader_name)</td></tr>
+<tr class="memitem:a1c52edf232af06086a4058c46d2cb783"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a1c52edf232af06086a4058c46d2cb783">SetShaderName</a> (const std::string &amp;shader_name)</td></tr>
 <tr class="separator:a1c52edf232af06086a4058c46d2cb783"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2f2a9ae6613e02d69129e5346884f4e"><td class="memItemLeft" align="right" valign="top"><a id="ae2f2a9ae6613e02d69129e5346884f4e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsSelectedInScene</b> () const</td></tr>
+<tr class="memitem:ae2f2a9ae6613e02d69129e5346884f4e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#ae2f2a9ae6613e02d69129e5346884f4e">IsSelectedInScene</a> () const</td></tr>
 <tr class="separator:ae2f2a9ae6613e02d69129e5346884f4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab989dc8df66c461663c431993b5b2334"><td class="memItemLeft" align="right" valign="top"><a id="ab989dc8df66c461663c431993b5b2334"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetSelectedInScene</b> (bool _selectedInScene)</td></tr>
+<tr class="memitem:ab989dc8df66c461663c431993b5b2334"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#ab989dc8df66c461663c431993b5b2334">SetSelectedInScene</a> (bool _selectedInScene)</td></tr>
 <tr class="separator:ab989dc8df66c461663c431993b5b2334"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71f340517f503b0187e96e3f0097fdbc"><td class="memItemLeft" align="right" valign="top"><a id="a71f340517f503b0187e96e3f0097fdbc"></a>
-const <a class="el" href="classpiolot_1_1_bounding_box.html">BoundingBox</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetBoundingBox</b> () const</td></tr>
+<tr class="memitem:a71f340517f503b0187e96e3f0097fdbc"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classpiolot_1_1_bounding_box.html">BoundingBox</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a71f340517f503b0187e96e3f0097fdbc">GetBoundingBox</a> () const</td></tr>
 <tr class="separator:a71f340517f503b0187e96e3f0097fdbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95f3ad12bcec709938fb35633d51a3f5"><td class="memItemLeft" align="right" valign="top"><a id="a95f3ad12bcec709938fb35633d51a3f5"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetShaderName</b> () const</td></tr>
+<tr class="memitem:a95f3ad12bcec709938fb35633d51a3f5"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a95f3ad12bcec709938fb35633d51a3f5">GetShaderName</a> () const</td></tr>
 <tr class="separator:a95f3ad12bcec709938fb35633d51a3f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a575051c2dffebde6948c421bb9153c3c"><td class="memItemLeft" align="right" valign="top"><a id="a575051c2dffebde6948c421bb9153c3c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetObjectName</b> (const std::string &amp;_objectName)</td></tr>
+<tr class="memitem:a575051c2dffebde6948c421bb9153c3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a575051c2dffebde6948c421bb9153c3c">SetObjectName</a> (const std::string &amp;_objectName)</td></tr>
 <tr class="separator:a575051c2dffebde6948c421bb9153c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2eeb2cd5d0daf98c49b0e2d2d6227e6d"><td class="memItemLeft" align="right" valign="top"><a id="a2eeb2cd5d0daf98c49b0e2d2d6227e6d"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetObjectName</b> () const</td></tr>
+<tr class="memitem:a2eeb2cd5d0daf98c49b0e2d2d6227e6d"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a2eeb2cd5d0daf98c49b0e2d2d6227e6d">GetObjectName</a> () const</td></tr>
 <tr class="separator:a2eeb2cd5d0daf98c49b0e2d2d6227e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c38cdd359bfab2de36e2478d368a27e"><td class="memItemLeft" align="right" valign="top"><a id="a9c38cdd359bfab2de36e2478d368a27e"></a>
-const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetPosition</b> () const</td></tr>
+<tr class="memitem:a9c38cdd359bfab2de36e2478d368a27e"><td class="memItemLeft" align="right" valign="top">const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a9c38cdd359bfab2de36e2478d368a27e">GetPosition</a> () const</td></tr>
 <tr class="separator:a9c38cdd359bfab2de36e2478d368a27e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cd721f2ff085908999d9c100bbaf214"><td class="memItemLeft" align="right" valign="top"><a id="a4cd721f2ff085908999d9c100bbaf214"></a>
-const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetRotation</b> () const</td></tr>
+<tr class="memitem:a4cd721f2ff085908999d9c100bbaf214"><td class="memItemLeft" align="right" valign="top">const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a4cd721f2ff085908999d9c100bbaf214">GetRotation</a> () const</td></tr>
 <tr class="separator:a4cd721f2ff085908999d9c100bbaf214"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5530a0639da344c0e8f86c2176fa4a6"><td class="memItemLeft" align="right" valign="top"><a id="ac5530a0639da344c0e8f86c2176fa4a6"></a>
-const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetScale</b> () const</td></tr>
+<tr class="memitem:ac5530a0639da344c0e8f86c2176fa4a6"><td class="memItemLeft" align="right" valign="top">const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#ac5530a0639da344c0e8f86c2176fa4a6">GetScale</a> () const</td></tr>
 <tr class="separator:ac5530a0639da344c0e8f86c2176fa4a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b0a54f38fa54989ad1c237d40fabcb0"><td class="memItemLeft" align="right" valign="top"><a id="a6b0a54f38fa54989ad1c237d40fabcb0"></a>
-const glm::mat4 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetModelMatrix</b> () const</td></tr>
+<tr class="memitem:a6b0a54f38fa54989ad1c237d40fabcb0"><td class="memItemLeft" align="right" valign="top">const glm::mat4 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a6b0a54f38fa54989ad1c237d40fabcb0">GetModelMatrix</a> () const</td></tr>
 <tr class="separator:a6b0a54f38fa54989ad1c237d40fabcb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a025d60f0f6de447381d9ab2211986075"><td class="memItemLeft" align="right" valign="top"><a id="a025d60f0f6de447381d9ab2211986075"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsMatrixDirty</b> () const</td></tr>
+<tr class="memitem:a025d60f0f6de447381d9ab2211986075"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a025d60f0f6de447381d9ab2211986075">IsMatrixDirty</a> () const</td></tr>
 <tr class="separator:a025d60f0f6de447381d9ab2211986075"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af80fc92eb9232113046c602d5daa1a76"><td class="memItemLeft" align="right" valign="top"><a id="af80fc92eb9232113046c602d5daa1a76"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetPosition</b> (const glm::vec3 &amp;_position)</td></tr>
+<tr class="memitem:aefccda157de60277a141d865982a089b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#aefccda157de60277a141d865982a089b">SaveToFile</a> (std::ofstream &amp;_out)</td></tr>
+<tr class="memdesc:aefccda157de60277a141d865982a089b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the <a class="el" href="classpiolot_1_1_entity.html">Entity</a> to the OutputStream.  <a href="#aefccda157de60277a141d865982a089b">More...</a><br /></td></tr>
+<tr class="separator:aefccda157de60277a141d865982a089b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9906217e32eb3550d57fa526ed7fe60f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a9906217e32eb3550d57fa526ed7fe60f">LoadFromFile</a> (std::ifstream &amp;_in)</td></tr>
+<tr class="memdesc:a9906217e32eb3550d57fa526ed7fe60f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the <a class="el" href="classpiolot_1_1_entity.html">Entity</a> from the InputStream.  <a href="#a9906217e32eb3550d57fa526ed7fe60f">More...</a><br /></td></tr>
+<tr class="separator:a9906217e32eb3550d57fa526ed7fe60f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4084ce43ed70e5a9ec1f51d811cdcead"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a4084ce43ed70e5a9ec1f51d811cdcead">SetInitialPosition</a> (const glm::vec3 &amp;_position, <a class="el" href="classpiolot_1_1_terrain.html">Terrain</a> *_terrain)</td></tr>
+<tr class="memdesc:a4084ce43ed70e5a9ec1f51d811cdcead"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Position Initially and sets the Target node to the current Node.  <a href="#a4084ce43ed70e5a9ec1f51d811cdcead">More...</a><br /></td></tr>
+<tr class="separator:a4084ce43ed70e5a9ec1f51d811cdcead"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af80fc92eb9232113046c602d5daa1a76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#af80fc92eb9232113046c602d5daa1a76">SetPosition</a> (const glm::vec3 &amp;_position)</td></tr>
 <tr class="separator:af80fc92eb9232113046c602d5daa1a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2d789ed80e63f1bcad90d003ea15e94"><td class="memItemLeft" align="right" valign="top"><a id="ae2d789ed80e63f1bcad90d003ea15e94"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetRotation</b> (const glm::vec3 &amp;_rotation)</td></tr>
+<tr class="memitem:ae2d789ed80e63f1bcad90d003ea15e94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#ae2d789ed80e63f1bcad90d003ea15e94">SetRotation</a> (const glm::vec3 &amp;_rotation)</td></tr>
 <tr class="separator:ae2d789ed80e63f1bcad90d003ea15e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16d7b329d92ebdc78178e460c7cee6dc"><td class="memItemLeft" align="right" valign="top"><a id="a16d7b329d92ebdc78178e460c7cee6dc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetScale</b> (const glm::vec3 &amp;_scale)</td></tr>
+<tr class="memitem:a16d7b329d92ebdc78178e460c7cee6dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a16d7b329d92ebdc78178e460c7cee6dc">SetScale</a> (const glm::vec3 &amp;_scale)</td></tr>
 <tr class="separator:a16d7b329d92ebdc78178e460c7cee6dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7fc7ed3219c928da4bce17e1e504733"><td class="memItemLeft" align="right" valign="top"><a id="ae7fc7ed3219c928da4bce17e1e504733"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (const std::string &amp;_objectPath, const std::string &amp;_shaderName)</td></tr>
-<tr class="separator:ae7fc7ed3219c928da4bce17e1e504733"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35aed98e4aedd0aa64ee512f83d912ec"><td class="memItemLeft" align="right" valign="top"><a id="a35aed98e4aedd0aa64ee512f83d912ec"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Update</b> (float _deltaTime)</td></tr>
+<tr class="memitem:af79da1eeca5dbb28414ca7e54e6c6d42"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#af79da1eeca5dbb28414ca7e54e6c6d42">Entity</a> ()=default</td></tr>
+<tr class="separator:af79da1eeca5dbb28414ca7e54e6c6d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6a8344aece7f5c4b63f46623f5bed18"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#ad6a8344aece7f5c4b63f46623f5bed18">Entity</a> (const std::string &amp;_entityName, const std::string &amp;_objectPath, const std::string &amp;_shaderName, glm::vec3 _boundingBoxLeast=glm::vec3(-1, -1, -1), glm::vec3 _boundingBoxHighest=glm::vec3(1, 1, 1))</td></tr>
+<tr class="separator:ad6a8344aece7f5c4b63f46623f5bed18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7264c4056ad0f48408e1edfab38fe4e8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a7264c4056ad0f48408e1edfab38fe4e8">~Entity</a> ()=default</td></tr>
+<tr class="separator:a7264c4056ad0f48408e1edfab38fe4e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35aed98e4aedd0aa64ee512f83d912ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a35aed98e4aedd0aa64ee512f83d912ec">Update</a> (float _deltaTime)</td></tr>
 <tr class="separator:a35aed98e4aedd0aa64ee512f83d912ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b7f0caf16313208ca115504a2453a12"><td class="memItemLeft" align="right" valign="top"><a id="a9b7f0caf16313208ca115504a2453a12"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Render</b> ()</td></tr>
+<tr class="memitem:a9b7f0caf16313208ca115504a2453a12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a9b7f0caf16313208ca115504a2453a12">Render</a> ()</td></tr>
 <tr class="separator:a9b7f0caf16313208ca115504a2453a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affee050e5904bd4dff3239804bea6e7e"><td class="memItemLeft" align="right" valign="top"><a id="affee050e5904bd4dff3239804bea6e7e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>CheckIfMouseOvered</b> (const glm::vec3 _cameraPosition, const glm::vec3 _mouseRayDirection, float &amp;_distance) const</td></tr>
+<tr class="memitem:affee050e5904bd4dff3239804bea6e7e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#affee050e5904bd4dff3239804bea6e7e">CheckIfMouseOvered</a> (const glm::vec3 _cameraPosition, const glm::vec3 _mouseRayDirection, float &amp;_distance) const</td></tr>
+<tr class="memdesc:affee050e5904bd4dff3239804bea6e7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this <a class="el" href="classpiolot_1_1_entity.html">Entity</a> has been hovered on.  <a href="#affee050e5904bd4dff3239804bea6e7e">More...</a><br /></td></tr>
 <tr class="separator:affee050e5904bd4dff3239804bea6e7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc08eed4d3e1185dfc3fb396720443e5"><td class="memItemLeft" align="right" valign="top"><a id="acc08eed4d3e1185dfc3fb396720443e5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DisplayDetailsImgui</b> ()</td></tr>
+<tr class="memitem:acc08eed4d3e1185dfc3fb396720443e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#acc08eed4d3e1185dfc3fb396720443e5">DisplayDetailsImgui</a> ()</td></tr>
+<tr class="memdesc:acc08eed4d3e1185dfc3fb396720443e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display this <a class="el" href="classpiolot_1_1_entity.html">Entity</a>'s details in ImGUI.  <a href="#acc08eed4d3e1185dfc3fb396720443e5">More...</a><br /></td></tr>
 <tr class="separator:acc08eed4d3e1185dfc3fb396720443e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a100b4699f74f506217c4d545f5a81f58"><td class="memItemLeft" align="right" valign="top"><a id="a100b4699f74f506217c4d545f5a81f58"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateMatrices</b> ()</td></tr>
+<tr class="memitem:a100b4699f74f506217c4d545f5a81f58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a100b4699f74f506217c4d545f5a81f58">UpdateMatrices</a> ()</td></tr>
+<tr class="memdesc:a100b4699f74f506217c4d545f5a81f58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the Model Matrix.  <a href="#a100b4699f74f506217c4d545f5a81f58">More...</a><br /></td></tr>
 <tr class="separator:a100b4699f74f506217c4d545f5a81f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:aa2eeb64fbf3f1445b2895ac680ba7e36"><td class="memItemLeft" align="right" valign="top"><a id="aa2eeb64fbf3f1445b2895ac680ba7e36"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>shaderName</b></td></tr>
+<tr class="memitem:aa2eeb64fbf3f1445b2895ac680ba7e36"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#aa2eeb64fbf3f1445b2895ac680ba7e36">shaderName</a></td></tr>
+<tr class="memdesc:aa2eeb64fbf3f1445b2895ac680ba7e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Name of the Shader.  <a href="#aa2eeb64fbf3f1445b2895ac680ba7e36">More...</a><br /></td></tr>
 <tr class="separator:aa2eeb64fbf3f1445b2895ac680ba7e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a133cd55e173decca797dde8d6c4714d3"><td class="memItemLeft" align="right" valign="top"><a id="a133cd55e173decca797dde8d6c4714d3"></a>
-<a class="el" href="classpiolot_1_1_bounding_box.html">BoundingBox</a>&#160;</td><td class="memItemRight" valign="bottom"><b>boundingBox</b></td></tr>
-<tr class="separator:a133cd55e173decca797dde8d6c4714d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50e4d7090890c7bedc3dffa1fe4d3dc9"><td class="memItemLeft" align="right" valign="top"><a id="a50e4d7090890c7bedc3dffa1fe4d3dc9"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>selectedInScene</b> = false</td></tr>
+<tr class="memitem:a50e4d7090890c7bedc3dffa1fe4d3dc9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a50e4d7090890c7bedc3dffa1fe4d3dc9">selectedInScene</a> = false</td></tr>
 <tr class="separator:a50e4d7090890c7bedc3dffa1fe4d3dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdc85c4db87446266e0e04392d54cd11"><td class="memItemLeft" align="right" valign="top"><a id="acdc85c4db87446266e0e04392d54cd11"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>entityName</b></td></tr>
+<tr class="memitem:acdc85c4db87446266e0e04392d54cd11"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#acdc85c4db87446266e0e04392d54cd11">entityName</a></td></tr>
 <tr class="separator:acdc85c4db87446266e0e04392d54cd11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a453c36793cfbab8662e28a8c10986432"><td class="memItemLeft" align="right" valign="top"><a id="a453c36793cfbab8662e28a8c10986432"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>objectName</b></td></tr>
+<tr class="memitem:a453c36793cfbab8662e28a8c10986432"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a453c36793cfbab8662e28a8c10986432">objectName</a></td></tr>
 <tr class="separator:a453c36793cfbab8662e28a8c10986432"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1996e97527821230db17bc0c93a9ba26"><td class="memItemLeft" align="right" valign="top"><a id="a1996e97527821230db17bc0c93a9ba26"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>position</b> {}</td></tr>
+<tr class="memitem:a1996e97527821230db17bc0c93a9ba26"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a1996e97527821230db17bc0c93a9ba26">position</a> {}</td></tr>
 <tr class="separator:a1996e97527821230db17bc0c93a9ba26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad490e079062ae866cbd14afbc768c37f"><td class="memItemLeft" align="right" valign="top"><a id="ad490e079062ae866cbd14afbc768c37f"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>rotation</b> {0.0f, 0.0f, 0.0f}</td></tr>
+<tr class="memitem:ad490e079062ae866cbd14afbc768c37f"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#ad490e079062ae866cbd14afbc768c37f">rotation</a> { 0.0f, 0.0f, 0.0f }</td></tr>
 <tr class="separator:ad490e079062ae866cbd14afbc768c37f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80bbefe25b4316190caf5d8cc77bd125"><td class="memItemLeft" align="right" valign="top"><a id="a80bbefe25b4316190caf5d8cc77bd125"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>scale</b> {1.0f, 1.0f, 1.0f}</td></tr>
+<tr class="memitem:a80bbefe25b4316190caf5d8cc77bd125"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a80bbefe25b4316190caf5d8cc77bd125">scale</a> { 1.0f, 1.0f, 1.0f }</td></tr>
 <tr class="separator:a80bbefe25b4316190caf5d8cc77bd125"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abca37f3906e85c0f184f1c2ffe627a7e"><td class="memItemLeft" align="right" valign="top"><a id="abca37f3906e85c0f184f1c2ffe627a7e"></a>
-glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>modelMatrix</b> {}</td></tr>
+<tr class="memitem:abca37f3906e85c0f184f1c2ffe627a7e"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#abca37f3906e85c0f184f1c2ffe627a7e">modelMatrix</a> {}</td></tr>
 <tr class="separator:abca37f3906e85c0f184f1c2ffe627a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8f4e05ad6742e55a3ed3792d21c3282"><td class="memItemLeft" align="right" valign="top"><a id="ae8f4e05ad6742e55a3ed3792d21c3282"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>matrixDirty</b> = true</td></tr>
+<tr class="memitem:ae8f4e05ad6742e55a3ed3792d21c3282"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#ae8f4e05ad6742e55a3ed3792d21c3282">matrixDirty</a> = true</td></tr>
 <tr class="separator:ae8f4e05ad6742e55a3ed3792d21c3282"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6c2e3e5d992af3ce7411667ffaca70f"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#ac6c2e3e5d992af3ce7411667ffaca70f">boundingBoxLeastVertex</a> {-1, -1, -1}</td></tr>
+<tr class="separator:ac6c2e3e5d992af3ce7411667ffaca70f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19516d394f36d44c42e742403ff04341"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a19516d394f36d44c42e742403ff04341">boundingBoxHighVertex</a> {1, 1, 1}</td></tr>
+<tr class="separator:a19516d394f36d44c42e742403ff04341"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a133cd55e173decca797dde8d6c4714d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classpiolot_1_1_bounding_box.html">BoundingBox</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a133cd55e173decca797dde8d6c4714d3">boundingBox</a></td></tr>
+<tr class="separator:a133cd55e173decca797dde8d6c4714d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5038500567bdea17e4c1a4070a7ccef3"><td class="memItemLeft" align="right" valign="top">glm::ivec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_entity.html#a5038500567bdea17e4c1a4070a7ccef3">targetNode</a> {}</td></tr>
+<tr class="memdesc:a5038500567bdea17e4c1a4070a7ccef3"><td class="mdescLeft">&#160;</td><td class="mdescRight">End Node for the Pathing.  <a href="#a5038500567bdea17e4c1a4070a7ccef3">More...</a><br /></td></tr>
+<tr class="separator:a5038500567bdea17e4c1a4070a7ccef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="af79da1eeca5dbb28414ca7e54e6c6d42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af79da1eeca5dbb28414ca7e54e6c6d42">&#9670;&nbsp;</a></span>Entity() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">piolot::Entity::Entity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6a8344aece7f5c4b63f46623f5bed18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6a8344aece7f5c4b63f46623f5bed18">&#9670;&nbsp;</a></span>Entity() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">piolot::Entity::Entity </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>_entityName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>_objectPath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>_shaderName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>_boundingBoxLeast</em> = <code>glm::vec3(&#160;-1,&#160;-1,&#160;-1&#160;)</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>_boundingBoxHighest</em> = <code>glm::vec3(&#160;1,&#160;1,&#160;1&#160;)</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7264c4056ad0f48408e1edfab38fe4e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7264c4056ad0f48408e1edfab38fe4e8">&#9670;&nbsp;</a></span>~Entity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">piolot::Entity::~Entity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="affee050e5904bd4dff3239804bea6e7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affee050e5904bd4dff3239804bea6e7e">&#9670;&nbsp;</a></span>CheckIfMouseOvered()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool piolot::Entity::CheckIfMouseOvered </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec3&#160;</td>
+          <td class="paramname"><em>_cameraPosition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3&#160;</td>
+          <td class="paramname"><em>_mouseRayDirection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float &amp;&#160;</td>
+          <td class="paramname"><em>_distance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if this <a class="el" href="classpiolot_1_1_entity.html">Entity</a> has been hovered on. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_cameraPosition</td><td>The Active <a class="el" href="classpiolot_1_1_camera.html">Camera</a> Position </td></tr>
+    <tr><td class="paramname">_mouseRayDirection</td><td>Mouse <a class="el" href="classpiolot_1_1_ray.html">Ray</a> Direction, from the Mouse pointer, inward. </td></tr>
+    <tr><td class="paramname">_distance</td><td>The Distance between the <a class="el" href="classpiolot_1_1_camera.html">Camera</a> and this <a class="el" href="classpiolot_1_1_entity.html">Entity</a>. This is updated and stored at this reference. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if it hits the <a class="el" href="classpiolot_1_1_entity.html">Entity</a> and False if it doesn't </dd></dl>
+
+</div>
+</div>
+<a id="acc08eed4d3e1185dfc3fb396720443e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc08eed4d3e1185dfc3fb396720443e5">&#9670;&nbsp;</a></span>DisplayDetailsImgui()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Entity::DisplayDetailsImgui </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Display this <a class="el" href="classpiolot_1_1_entity.html">Entity</a>'s details in ImGUI. </p>
+
+</div>
+</div>
+<a id="a71f340517f503b0187e96e3f0097fdbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71f340517f503b0187e96e3f0097fdbc">&#9670;&nbsp;</a></span>GetBoundingBox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classpiolot_1_1_bounding_box.html">BoundingBox</a>&amp; piolot::Entity::GetBoundingBox </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afcf183909460f962951d9775126e35dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcf183909460f962951d9775126e35dc">&#9670;&nbsp;</a></span>GetEntityName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string piolot::Entity::GetEntityName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6b0a54f38fa54989ad1c237d40fabcb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b0a54f38fa54989ad1c237d40fabcb0">&#9670;&nbsp;</a></span>GetModelMatrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const glm::mat4&amp; piolot::Entity::GetModelMatrix </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2eeb2cd5d0daf98c49b0e2d2d6227e6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eeb2cd5d0daf98c49b0e2d2d6227e6d">&#9670;&nbsp;</a></span>GetObjectName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string&amp; piolot::Entity::GetObjectName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9c38cdd359bfab2de36e2478d368a27e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c38cdd359bfab2de36e2478d368a27e">&#9670;&nbsp;</a></span>GetPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const glm::vec3&amp; piolot::Entity::GetPosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4cd721f2ff085908999d9c100bbaf214"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cd721f2ff085908999d9c100bbaf214">&#9670;&nbsp;</a></span>GetRotation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const glm::vec3&amp; piolot::Entity::GetRotation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac5530a0639da344c0e8f86c2176fa4a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5530a0639da344c0e8f86c2176fa4a6">&#9670;&nbsp;</a></span>GetScale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const glm::vec3&amp; piolot::Entity::GetScale </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a95f3ad12bcec709938fb35633d51a3f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95f3ad12bcec709938fb35633d51a3f5">&#9670;&nbsp;</a></span>GetShaderName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string&amp; piolot::Entity::GetShaderName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afa9c74b8c025139367a3f3fbfe431692"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa9c74b8c025139367a3f3fbfe431692">&#9670;&nbsp;</a></span>GetTargetPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::ivec2 piolot::Entity::GetTargetPosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a025d60f0f6de447381d9ab2211986075"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a025d60f0f6de447381d9ab2211986075">&#9670;&nbsp;</a></span>IsMatrixDirty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool piolot::Entity::IsMatrixDirty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae2f2a9ae6613e02d69129e5346884f4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2f2a9ae6613e02d69129e5346884f4e">&#9670;&nbsp;</a></span>IsSelectedInScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool piolot::Entity::IsSelectedInScene </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9906217e32eb3550d57fa526ed7fe60f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9906217e32eb3550d57fa526ed7fe60f">&#9670;&nbsp;</a></span>LoadFromFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Entity::LoadFromFile </td>
+          <td>(</td>
+          <td class="paramtype">std::ifstream &amp;&#160;</td>
+          <td class="paramname"><em>_in</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Load the <a class="el" href="classpiolot_1_1_entity.html">Entity</a> from the InputStream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_in</td><td>The Input Stream </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9b7f0caf16313208ca115504a2453a12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b7f0caf16313208ca115504a2453a12">&#9670;&nbsp;</a></span>Render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Entity::Render </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aefccda157de60277a141d865982a089b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefccda157de60277a141d865982a089b">&#9670;&nbsp;</a></span>SaveToFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Entity::SaveToFile </td>
+          <td>(</td>
+          <td class="paramtype">std::ofstream &amp;&#160;</td>
+          <td class="paramname"><em>_out</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Save the <a class="el" href="classpiolot_1_1_entity.html">Entity</a> to the OutputStream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_out</td><td>The Output Stream. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4b458394b15a68f6ecf19e79b60f8730"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b458394b15a68f6ecf19e79b60f8730">&#9670;&nbsp;</a></span>SetEntityName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Entity::SetEntityName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>entity_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4084ce43ed70e5a9ec1f51d811cdcead"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4084ce43ed70e5a9ec1f51d811cdcead">&#9670;&nbsp;</a></span>SetInitialPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Entity::SetInitialPosition </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>_position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classpiolot_1_1_terrain.html">Terrain</a> *&#160;</td>
+          <td class="paramname"><em>_terrain</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the Position Initially and sets the Target node to the current Node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_position</td><td>Set the Initial Position on the <a class="el" href="classpiolot_1_1_terrain.html" title="Container of all Terrain functions. Is Derived from Entity. ">Terrain</a>. </td></tr>
+    <tr><td class="paramname">_terrain</td><td>The <a class="el" href="classpiolot_1_1_terrain.html" title="Container of all Terrain functions. Is Derived from Entity. ">Terrain</a> Pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a575051c2dffebde6948c421bb9153c3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a575051c2dffebde6948c421bb9153c3c">&#9670;&nbsp;</a></span>SetObjectName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Entity::SetObjectName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>_objectName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af80fc92eb9232113046c602d5daa1a76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af80fc92eb9232113046c602d5daa1a76">&#9670;&nbsp;</a></span>SetPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Entity::SetPosition </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>_position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae2d789ed80e63f1bcad90d003ea15e94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2d789ed80e63f1bcad90d003ea15e94">&#9670;&nbsp;</a></span>SetRotation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Entity::SetRotation </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>_rotation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a16d7b329d92ebdc78178e460c7cee6dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16d7b329d92ebdc78178e460c7cee6dc">&#9670;&nbsp;</a></span>SetScale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Entity::SetScale </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>_scale</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab989dc8df66c461663c431993b5b2334"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab989dc8df66c461663c431993b5b2334">&#9670;&nbsp;</a></span>SetSelectedInScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Entity::SetSelectedInScene </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>_selectedInScene</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1c52edf232af06086a4058c46d2cb783"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c52edf232af06086a4058c46d2cb783">&#9670;&nbsp;</a></span>SetShaderName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Entity::SetShaderName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>shader_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8effc8fb437b50228b6467556236a043"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8effc8fb437b50228b6467556236a043">&#9670;&nbsp;</a></span>setTargetNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Entity::setTargetNode </td>
+          <td>(</td>
+          <td class="paramtype">const glm::ivec2 &amp;&#160;</td>
+          <td class="paramname"><em>_targetNode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35aed98e4aedd0aa64ee512f83d912ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35aed98e4aedd0aa64ee512f83d912ec">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Entity::Update </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_deltaTime</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a100b4699f74f506217c4d545f5a81f58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a100b4699f74f506217c4d545f5a81f58">&#9670;&nbsp;</a></span>UpdateMatrices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Entity::UpdateMatrices </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Update the Model Matrix. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a133cd55e173decca797dde8d6c4714d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a133cd55e173decca797dde8d6c4714d3">&#9670;&nbsp;</a></span>boundingBox</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classpiolot_1_1_bounding_box.html">BoundingBox</a> piolot::Entity::boundingBox</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a19516d394f36d44c42e742403ff04341"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19516d394f36d44c42e742403ff04341">&#9670;&nbsp;</a></span>boundingBoxHighVertex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 piolot::Entity::boundingBoxHighVertex {1, 1, 1}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac6c2e3e5d992af3ce7411667ffaca70f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6c2e3e5d992af3ce7411667ffaca70f">&#9670;&nbsp;</a></span>boundingBoxLeastVertex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 piolot::Entity::boundingBoxLeastVertex {-1, -1, -1}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acdc85c4db87446266e0e04392d54cd11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdc85c4db87446266e0e04392d54cd11">&#9670;&nbsp;</a></span>entityName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string piolot::Entity::entityName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae8f4e05ad6742e55a3ed3792d21c3282"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8f4e05ad6742e55a3ed3792d21c3282">&#9670;&nbsp;</a></span>matrixDirty</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool piolot::Entity::matrixDirty = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abca37f3906e85c0f184f1c2ffe627a7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abca37f3906e85c0f184f1c2ffe627a7e">&#9670;&nbsp;</a></span>modelMatrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::mat4 piolot::Entity::modelMatrix {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a453c36793cfbab8662e28a8c10986432"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a453c36793cfbab8662e28a8c10986432">&#9670;&nbsp;</a></span>objectName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string piolot::Entity::objectName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1996e97527821230db17bc0c93a9ba26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1996e97527821230db17bc0c93a9ba26">&#9670;&nbsp;</a></span>position</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 piolot::Entity::position {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad490e079062ae866cbd14afbc768c37f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad490e079062ae866cbd14afbc768c37f">&#9670;&nbsp;</a></span>rotation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 piolot::Entity::rotation { 0.0f, 0.0f, 0.0f }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a80bbefe25b4316190caf5d8cc77bd125"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80bbefe25b4316190caf5d8cc77bd125">&#9670;&nbsp;</a></span>scale</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 piolot::Entity::scale { 1.0f, 1.0f, 1.0f }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a50e4d7090890c7bedc3dffa1fe4d3dc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50e4d7090890c7bedc3dffa1fe4d3dc9">&#9670;&nbsp;</a></span>selectedInScene</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool piolot::Entity::selectedInScene = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa2eeb64fbf3f1445b2895ac680ba7e36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2eeb64fbf3f1445b2895ac680ba7e36">&#9670;&nbsp;</a></span>shaderName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string piolot::Entity::shaderName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The Name of the Shader. </p>
+
+</div>
+</div>
+<a id="a5038500567bdea17e4c1a4070a7ccef3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5038500567bdea17e4c1a4070a7ccef3">&#9670;&nbsp;</a></span>targetNode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::ivec2 piolot::Entity::targetNode {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>End Node for the Pathing. </p>
+<p>We use the Current Position as the Start Position. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/dev/Piolot/Engine/<a class="el" href="_entity_8h_source.html">Entity.h</a></li>
-<li>C:/dev/Piolot/Engine/Entity.cpp</li>
+<li><a class="el" href="_entity_8h_source.html">Entity.h</a></li>
+<li><a class="el" href="_entity_8cpp.html">Entity.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>piolot</b></li><li class="navelem"><a class="el" href="classpiolot_1_1_entity.html">Entity</a></li>
+    <li class="navelem"><a class="el" href="namespacepiolot.html">piolot</a></li><li class="navelem"><a class="el" href="classpiolot_1_1_entity.html">Entity</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>

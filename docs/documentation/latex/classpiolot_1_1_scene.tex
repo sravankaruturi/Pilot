@@ -1,5 +1,9 @@
 \hypertarget{classpiolot_1_1_scene}{}\section{piolot\+:\+:Scene Class Reference}
 \label{classpiolot_1_1_scene}\index{piolot\+::\+Scene@{piolot\+::\+Scene}}
+
+
+{\ttfamily \#include $<$Scene.\+h$>$}
+
 Inheritance diagram for piolot\+:\+:Scene\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,41 +13,187 @@ Inheritance diagram for piolot\+:\+:Scene\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_scene_af42469b97e0c1006bec5d384223db148}\label{classpiolot_1_1_scene_af42469b97e0c1006bec5d384223db148}} 
-{\bfseries Scene} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_window}{Window}} $>$ \+\_\+window)
+\mbox{\hyperlink{classpiolot_1_1_scene_af42469b97e0c1006bec5d384223db148}{Scene}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_window}{Window}} $>$ \+\_\+window)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_scene_ae05b812e9f1caa80526a79a03ab456e1}\label{classpiolot_1_1_scene_ae05b812e9f1caa80526a79a03ab456e1}} 
-virtual void {\bfseries On\+Update} (float \+\_\+delta\+Time, float \+\_\+total\+Time)
+virtual \mbox{\hyperlink{classpiolot_1_1_scene_aab1c2430f0f2317c0ae5b8fa8edc6fff}{$\sim$\+Scene}} ()=default
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_scene_a6d634dd8b2f281052f034740644c1aa3}\label{classpiolot_1_1_scene_a6d634dd8b2f281052f034740644c1aa3}} 
-virtual void {\bfseries On\+Render} ()
+virtual void \mbox{\hyperlink{group___virtual_ga6871dbb3f61a724a166fd83c3c1dc3a3}{Init\+Entities}} ()=0
+\begin{DoxyCompactList}\small\item\em Function to be overwritten to Initialize the Entities. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group___virtual_gae05b812e9f1caa80526a79a03ab456e1}{On\+Update}} (float \+\_\+delta\+Time, float \+\_\+total\+Time)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_scene_aedea470f1c3485d76ef0681e4a503584}\label{classpiolot_1_1_scene_aedea470f1c3485d76ef0681e4a503584}} 
-virtual void {\bfseries On\+Imgui\+Render} ()
+virtual void \mbox{\hyperlink{group___virtual_gaaa3f6f2cb0dce355d890c8b43a2f11f2}{On\+Render}} ()=0
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_scene_a73af83e23a36087989538d25216bb1f8}\label{classpiolot_1_1_scene_a73af83e23a36087989538d25216bb1f8}} 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_camera}{piolot\+::\+Camera}} $>$ {\bfseries Active\+Camera} () const
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_scene_a2edd824436ee0c877ee03573c90f3002}\label{classpiolot_1_1_scene_a2edd824436ee0c877ee03573c90f3002}} 
-void {\bfseries Active\+Camera} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_camera}{piolot\+::\+Camera}} $>$ val)
-\end{DoxyCompactItemize}
+virtual void \mbox{\hyperlink{group___virtual_gaedea470f1c3485d76ef0681e4a503584}{On\+Imgui\+Render}} ()
+\begin{DoxyCompactList}\small\item\em Render the Im\+G\+UI Stuff. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_scene_a56d2c68922b38f97554ae4edde21f718}{Activate\+Camera}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_camera}{Camera}} $>$ \+\_\+val)
+\begin{DoxyCompactList}\small\item\em Activate the passed \mbox{\hyperlink{classpiolot_1_1_camera}{Camera}}. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_camera}{Camera}} $>$ \mbox{\hyperlink{classpiolot_1_1_scene_ac0d71d1ad7c27872086d9f82ee7be7fb}{Get\+Active\+Camera}} () const
+\begin{DoxyCompactList}\small\item\em Get the Active\+Camera. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_scene_a250749bf646c4ab0349bd98e515b0d5b}\label{classpiolot_1_1_scene_a250749bf646c4ab0349bd98e515b0d5b}} 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_window}{Window}} $>$ {\bfseries window}
-\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_window}{Window}} $>$ \mbox{\hyperlink{classpiolot_1_1_scene_a250749bf646c4ab0349bd98e515b0d5b}{window}}
+\begin{DoxyCompactList}\small\item\em The Shared Pointer for the \mbox{\hyperlink{class_window}{Window}}. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_camera}{Camera}} $>$ \mbox{\hyperlink{classpiolot_1_1_scene_a980ee452f49233f7b95fa4643e383ae9}{active\+Camera}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classpiolot_1_1_camera}{Camera}} that is currently Active. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_camera}{Camera}} $>$ $>$ \mbox{\hyperlink{classpiolot_1_1_scene_a03ce910c0242bb786e797d54bbffd54f}{cameras}}
+\begin{DoxyCompactList}\small\item\em The Map of all the Cameras that are currently in the \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}}. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_entity}{Entity}} $>$ $>$ \mbox{\hyperlink{classpiolot_1_1_scene_ac85cd14260516aaaac3dacab4138a662}{entities}}
+\begin{DoxyCompactList}\small\item\em All the Entities. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_animated_entity}{Animated\+Entity}} $>$ $>$ \mbox{\hyperlink{classpiolot_1_1_scene_a6253e5cbedc67830e76d6da04c0b4371}{animated\+Entities}}
+\begin{DoxyCompactList}\small\item\em All the Entities with Animations. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classpiolot_1_1_entity}{Entity}} $\ast$ $>$ \mbox{\hyperlink{classpiolot_1_1_scene_a62abd7ccaa90a04e1f9738de7b2f96d3}{selected\+Entities}}
+\begin{DoxyCompactList}\small\item\em Raw Pointers to the Selected Entities. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_entity}{Entity}} $>$ $>$ \mbox{\hyperlink{classpiolot_1_1_scene_afb5dae5e574ec94da2b1192070e91327}{temp\+Entities}}
+\begin{DoxyCompactList}\small\item\em Raw Pointers to the Temporary Entities. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classpiolot_1_1_scene_a10140d7b13ab259d8770d9cf44ab8829}{total\+Time}}
+\begin{DoxyCompactList}\small\item\em Total time since the \mbox{\hyperlink{class_window}{Window}} Opened. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classpiolot_1_1_scene_ac3714002379b5e74cc24d947757f4af4}{delta\+Time}}
+\begin{DoxyCompactList}\small\item\em The time elapsed since the last frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_scene_af42469b97e0c1006bec5d384223db148}\label{classpiolot_1_1_scene_af42469b97e0c1006bec5d384223db148}} 
+\index{piolot\+::\+Scene@{piolot\+::\+Scene}!Scene@{Scene}}
+\index{Scene@{Scene}!piolot\+::\+Scene@{piolot\+::\+Scene}}
+\subsubsection{\texorpdfstring{Scene()}{Scene()}}
+{\footnotesize\ttfamily piolot\+::\+Scene\+::\+Scene (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_window}{Window}} $>$}]{\+\_\+window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_scene_aab1c2430f0f2317c0ae5b8fa8edc6fff}\label{classpiolot_1_1_scene_aab1c2430f0f2317c0ae5b8fa8edc6fff}} 
+\index{piolot\+::\+Scene@{piolot\+::\+Scene}!````~Scene@{$\sim$\+Scene}}
+\index{````~Scene@{$\sim$\+Scene}!piolot\+::\+Scene@{piolot\+::\+Scene}}
+\subsubsection{\texorpdfstring{$\sim$\+Scene()}{~Scene()}}
+{\footnotesize\ttfamily virtual piolot\+::\+Scene\+::$\sim$\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_scene_a56d2c68922b38f97554ae4edde21f718}\label{classpiolot_1_1_scene_a56d2c68922b38f97554ae4edde21f718}} 
+\index{piolot\+::\+Scene@{piolot\+::\+Scene}!Activate\+Camera@{Activate\+Camera}}
+\index{Activate\+Camera@{Activate\+Camera}!piolot\+::\+Scene@{piolot\+::\+Scene}}
+\subsubsection{\texorpdfstring{Activate\+Camera()}{ActivateCamera()}}
+{\footnotesize\ttfamily void piolot\+::\+Scene\+::\+Activate\+Camera (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_camera}{Camera}} $>$}]{\+\_\+val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Activate the passed \mbox{\hyperlink{classpiolot_1_1_camera}{Camera}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & The \mbox{\hyperlink{classpiolot_1_1_camera}{Camera}} to Activate \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_scene_ac0d71d1ad7c27872086d9f82ee7be7fb}\label{classpiolot_1_1_scene_ac0d71d1ad7c27872086d9f82ee7be7fb}} 
+\index{piolot\+::\+Scene@{piolot\+::\+Scene}!Get\+Active\+Camera@{Get\+Active\+Camera}}
+\index{Get\+Active\+Camera@{Get\+Active\+Camera}!piolot\+::\+Scene@{piolot\+::\+Scene}}
+\subsubsection{\texorpdfstring{Get\+Active\+Camera()}{GetActiveCamera()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classpiolot_1_1_camera}{Camera}}$>$ piolot\+::\+Scene\+::\+Get\+Active\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Active\+Camera. 
+
+\begin{DoxyReturn}{Returns}
+Returns a pointer to the Current Active \mbox{\hyperlink{classpiolot_1_1_camera}{Camera}} 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
 \mbox{\Hypertarget{classpiolot_1_1_scene_a980ee452f49233f7b95fa4643e383ae9}\label{classpiolot_1_1_scene_a980ee452f49233f7b95fa4643e383ae9}} 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_camera}{Camera}} $>$ {\bfseries active\+Camera}
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_scene_a3fe090e6f4c7747ebf8a675f93985409}\label{classpiolot_1_1_scene_a3fe090e6f4c7747ebf8a675f93985409}} 
-std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_camera}{Camera}} $>$ $>$ {\bfseries cameras}
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_scene_acbfcb0b896570a28a7f2ed83c7426518}\label{classpiolot_1_1_scene_acbfcb0b896570a28a7f2ed83c7426518}} 
-std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_entity}{Entity}} $>$ $>$ {\bfseries entities}
-\end{DoxyCompactItemize}
+\index{piolot\+::\+Scene@{piolot\+::\+Scene}!active\+Camera@{active\+Camera}}
+\index{active\+Camera@{active\+Camera}!piolot\+::\+Scene@{piolot\+::\+Scene}}
+\subsubsection{\texorpdfstring{active\+Camera}{activeCamera}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classpiolot_1_1_camera}{Camera}}$>$ piolot\+::\+Scene\+::active\+Camera\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The \mbox{\hyperlink{classpiolot_1_1_camera}{Camera}} that is currently Active. 
+
+\mbox{\Hypertarget{classpiolot_1_1_scene_a6253e5cbedc67830e76d6da04c0b4371}\label{classpiolot_1_1_scene_a6253e5cbedc67830e76d6da04c0b4371}} 
+\index{piolot\+::\+Scene@{piolot\+::\+Scene}!animated\+Entities@{animated\+Entities}}
+\index{animated\+Entities@{animated\+Entities}!piolot\+::\+Scene@{piolot\+::\+Scene}}
+\subsubsection{\texorpdfstring{animated\+Entities}{animatedEntities}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classpiolot_1_1_animated_entity}{Animated\+Entity}}$>$ $>$ piolot\+::\+Scene\+::animated\+Entities\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+All the Entities with Animations. 
+
+The \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}} owns them. When you delete the \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}}, the entities are deleted. \mbox{\Hypertarget{classpiolot_1_1_scene_a03ce910c0242bb786e797d54bbffd54f}\label{classpiolot_1_1_scene_a03ce910c0242bb786e797d54bbffd54f}} 
+\index{piolot\+::\+Scene@{piolot\+::\+Scene}!cameras@{cameras}}
+\index{cameras@{cameras}!piolot\+::\+Scene@{piolot\+::\+Scene}}
+\subsubsection{\texorpdfstring{cameras}{cameras}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classpiolot_1_1_camera}{Camera}}$>$ $>$ piolot\+::\+Scene\+::cameras\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The Map of all the Cameras that are currently in the \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}}. 
+
+We use Unordered Map because when we disable the UI, we have a slight performance benefit for the Un\+Ordered Map. This is definitely worse when you have the UI Enabled. \mbox{\Hypertarget{classpiolot_1_1_scene_ac3714002379b5e74cc24d947757f4af4}\label{classpiolot_1_1_scene_ac3714002379b5e74cc24d947757f4af4}} 
+\index{piolot\+::\+Scene@{piolot\+::\+Scene}!delta\+Time@{delta\+Time}}
+\index{delta\+Time@{delta\+Time}!piolot\+::\+Scene@{piolot\+::\+Scene}}
+\subsubsection{\texorpdfstring{delta\+Time}{deltaTime}}
+{\footnotesize\ttfamily float piolot\+::\+Scene\+::delta\+Time\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The time elapsed since the last frame. 
+
+\mbox{\Hypertarget{classpiolot_1_1_scene_ac85cd14260516aaaac3dacab4138a662}\label{classpiolot_1_1_scene_ac85cd14260516aaaac3dacab4138a662}} 
+\index{piolot\+::\+Scene@{piolot\+::\+Scene}!entities@{entities}}
+\index{entities@{entities}!piolot\+::\+Scene@{piolot\+::\+Scene}}
+\subsubsection{\texorpdfstring{entities}{entities}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classpiolot_1_1_entity}{Entity}}$>$ $>$ piolot\+::\+Scene\+::entities\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+All the Entities. 
+
+The \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}} owns them. When you delete the \mbox{\hyperlink{classpiolot_1_1_scene}{Scene}}, the entities are deleted. \mbox{\Hypertarget{classpiolot_1_1_scene_a62abd7ccaa90a04e1f9738de7b2f96d3}\label{classpiolot_1_1_scene_a62abd7ccaa90a04e1f9738de7b2f96d3}} 
+\index{piolot\+::\+Scene@{piolot\+::\+Scene}!selected\+Entities@{selected\+Entities}}
+\index{selected\+Entities@{selected\+Entities}!piolot\+::\+Scene@{piolot\+::\+Scene}}
+\subsubsection{\texorpdfstring{selected\+Entities}{selectedEntities}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classpiolot_1_1_entity}{Entity}} $\ast$$>$ piolot\+::\+Scene\+::selected\+Entities\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Raw Pointers to the Selected Entities. 
+
+These selected entities can be destroyed even though they are selected. So, we just copy the addresses. \mbox{\Hypertarget{classpiolot_1_1_scene_afb5dae5e574ec94da2b1192070e91327}\label{classpiolot_1_1_scene_afb5dae5e574ec94da2b1192070e91327}} 
+\index{piolot\+::\+Scene@{piolot\+::\+Scene}!temp\+Entities@{temp\+Entities}}
+\index{temp\+Entities@{temp\+Entities}!piolot\+::\+Scene@{piolot\+::\+Scene}}
+\subsubsection{\texorpdfstring{temp\+Entities}{tempEntities}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classpiolot_1_1_entity}{Entity}}$>$ $>$ piolot\+::\+Scene\+::temp\+Entities\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Raw Pointers to the Temporary Entities. 
+
+These entities are cleared every frame, after they are drawn. \mbox{\Hypertarget{classpiolot_1_1_scene_a10140d7b13ab259d8770d9cf44ab8829}\label{classpiolot_1_1_scene_a10140d7b13ab259d8770d9cf44ab8829}} 
+\index{piolot\+::\+Scene@{piolot\+::\+Scene}!total\+Time@{total\+Time}}
+\index{total\+Time@{total\+Time}!piolot\+::\+Scene@{piolot\+::\+Scene}}
+\subsubsection{\texorpdfstring{total\+Time}{totalTime}}
+{\footnotesize\ttfamily float piolot\+::\+Scene\+::total\+Time\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Total time since the \mbox{\hyperlink{class_window}{Window}} Opened. 
+
+Populated by using glfwgettime() function. \begin{DoxySeeAlso}{See also}
+\href{https://www.glfw.org/docs/3.0/group__time.html}{\tt https\+://www.\+glfw.\+org/docs/3.\+0/group\+\_\+\+\_\+time.\+html} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classpiolot_1_1_scene_a250749bf646c4ab0349bd98e515b0d5b}\label{classpiolot_1_1_scene_a250749bf646c4ab0349bd98e515b0d5b}} 
+\index{piolot\+::\+Scene@{piolot\+::\+Scene}!window@{window}}
+\index{window@{window}!piolot\+::\+Scene@{piolot\+::\+Scene}}
+\subsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_window}{Window}}$>$ piolot\+::\+Scene\+::window\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The Shared Pointer for the \mbox{\hyperlink{class_window}{Window}}. 
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/dev/\+Piolot/\+Engine/Scene.\+h\end{DoxyCompactItemize}
+\mbox{\hyperlink{_scene_8h}{Scene.\+h}}\end{DoxyCompactItemize}

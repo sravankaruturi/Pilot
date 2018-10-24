@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['isobjectloaded',['IsObjectLoaded',['../classpiolot_1_1_asset_manager.html#a120535d011b245328a45a1d85f181cc0',1,'piolot::AssetManager']]],
-  ['istextureloaded',['IsTextureLoaded',['../classpiolot_1_1_asset_manager.html#acc9c8e5aff5c4b93faa151e0efb012f3',1,'piolot::AssetManager']]]
+  ['entity',['Entity',['../classpiolot_1_1_entity.html#af79da1eeca5dbb28414ca7e54e6c6d42',1,'piolot::Entity::Entity()=default'],['../classpiolot_1_1_entity.html#ad6a8344aece7f5c4b63f46623f5bed18',1,'piolot::Entity::Entity(const std::string &amp;_entityName, const std::string &amp;_objectPath, const std::string &amp;_shaderName, glm::vec3 _boundingBoxLeast=glm::vec3(-1, -1, -1), glm::vec3 _boundingBoxHighest=glm::vec3(1, 1, 1))']]]
 ];

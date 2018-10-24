@@ -1,44 +1,118 @@
 \hypertarget{classpiolot_1_1_ray}{}\section{piolot\+:\+:Ray Class Reference}
 \label{classpiolot_1_1_ray}\index{piolot\+::\+Ray@{piolot\+::\+Ray}}
+
+
+{\ttfamily \#include $<$Ray.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_ray_a800439dfd7597c519c4e6d5b6336a655}\label{classpiolot_1_1_ray_a800439dfd7597c519c4e6d5b6336a655}} 
-{\bfseries Ray} (glm\+::vec3 \+\_\+origin, glm\+::vec3 \+\_\+direction)
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_ray_aaf69eb0891c1e0e884eba2475707a12e}{Get\+Origin}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_ray_ada7c74126da4e4c8c0c7a63ae36c1ced}\label{classpiolot_1_1_ray_ada7c74126da4e4c8c0c7a63ae36c1ced}} 
-void {\bfseries Update} (const glm\+::mat4 \+\_\+view\+Matrix, const glm\+::mat4 \+\_\+projection\+Matrix, const glm\+::vec3 \+\_\+colour)
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_ray_a6dc423ac6188032c31b72279c14bbe98}{Get\+Direction}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_ray_a7ecae233c62860e006b474b293c1e6ca}\label{classpiolot_1_1_ray_a7ecae233c62860e006b474b293c1e6ca}} 
-void {\bfseries Render} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_g_l_shader}{G\+L\+Shader}} $>$ \+\_\+shader, glm\+::vec3 \+\_\+colour) const
+\mbox{\hyperlink{classpiolot_1_1_ray_a800439dfd7597c519c4e6d5b6336a655}{Ray}} (glm\+::vec3 \+\_\+origin, glm\+::vec3 \+\_\+direction)
+\item 
+void \mbox{\hyperlink{classpiolot_1_1_ray_ada7c74126da4e4c8c0c7a63ae36c1ced}{Update}} (const glm\+::mat4 \+\_\+view\+Matrix, const glm\+::mat4 \+\_\+projection\+Matrix, const glm\+::vec3 \+\_\+colour)
+\item 
+void \mbox{\hyperlink{classpiolot_1_1_ray_a7ecae233c62860e006b474b293c1e6ca}{Render}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_g_l_shader}{G\+L\+Shader}} $>$ \+\_\+shader, glm\+::vec3 \+\_\+colour) const
 \end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_ray_a6c21a81fd81741cca7f823e87fed1aef}\label{classpiolot_1_1_ray_a6c21a81fd81741cca7f823e87fed1aef}} 
-void {\bfseries Update\+Buffers} ()
+void \mbox{\hyperlink{classpiolot_1_1_ray_a6c21a81fd81741cca7f823e87fed1aef}{Update\+Buffers}} ()
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_ray_a0db15f5545f46a7cf172a6cd8010e7c4}\label{classpiolot_1_1_ray_a0db15f5545f46a7cf172a6cd8010e7c4}} 
-glm\+::vec3 {\bfseries origin}
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_ray_a0db15f5545f46a7cf172a6cd8010e7c4}{origin}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_ray_aaef1fc006491be8684d1786d2584b5fb}\label{classpiolot_1_1_ray_aaef1fc006491be8684d1786d2584b5fb}} 
-glm\+::vec3 {\bfseries direction}
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_ray_aaef1fc006491be8684d1786d2584b5fb}{direction}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_ray_a92517c7821a901e1b9c883f6635472cb}\label{classpiolot_1_1_ray_a92517c7821a901e1b9c883f6635472cb}} 
-unsigned int {\bfseries vbo}
+unsigned int \mbox{\hyperlink{classpiolot_1_1_ray_a92517c7821a901e1b9c883f6635472cb}{vbo}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_ray_a2b5e91b97506c618aef3b26c463f9788}\label{classpiolot_1_1_ray_a2b5e91b97506c618aef3b26c463f9788}} 
-unsigned int {\bfseries vao}
+unsigned int \mbox{\hyperlink{classpiolot_1_1_ray_a2b5e91b97506c618aef3b26c463f9788}{vao}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_ray_adb40c4fbcb029550c160a892842c40cc}\label{classpiolot_1_1_ray_adb40c4fbcb029550c160a892842c40cc}} 
-std\+::vector$<$ glm\+::vec3 $>$ {\bfseries vertices}
+std\+::vector$<$ glm\+::vec3 $>$ \mbox{\hyperlink{classpiolot_1_1_ray_adb40c4fbcb029550c160a892842c40cc}{vertices}}
 \end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_ray_a800439dfd7597c519c4e6d5b6336a655}\label{classpiolot_1_1_ray_a800439dfd7597c519c4e6d5b6336a655}} 
+\index{piolot\+::\+Ray@{piolot\+::\+Ray}!Ray@{Ray}}
+\index{Ray@{Ray}!piolot\+::\+Ray@{piolot\+::\+Ray}}
+\subsubsection{\texorpdfstring{Ray()}{Ray()}}
+{\footnotesize\ttfamily piolot\+::\+Ray\+::\+Ray (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+origin,  }\item[{glm\+::vec3}]{\+\_\+direction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_ray_a6dc423ac6188032c31b72279c14bbe98}\label{classpiolot_1_1_ray_a6dc423ac6188032c31b72279c14bbe98}} 
+\index{piolot\+::\+Ray@{piolot\+::\+Ray}!Get\+Direction@{Get\+Direction}}
+\index{Get\+Direction@{Get\+Direction}!piolot\+::\+Ray@{piolot\+::\+Ray}}
+\subsubsection{\texorpdfstring{Get\+Direction()}{GetDirection()}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Ray\+::\+Get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_ray_aaf69eb0891c1e0e884eba2475707a12e}\label{classpiolot_1_1_ray_aaf69eb0891c1e0e884eba2475707a12e}} 
+\index{piolot\+::\+Ray@{piolot\+::\+Ray}!Get\+Origin@{Get\+Origin}}
+\index{Get\+Origin@{Get\+Origin}!piolot\+::\+Ray@{piolot\+::\+Ray}}
+\subsubsection{\texorpdfstring{Get\+Origin()}{GetOrigin()}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Ray\+::\+Get\+Origin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_ray_a7ecae233c62860e006b474b293c1e6ca}\label{classpiolot_1_1_ray_a7ecae233c62860e006b474b293c1e6ca}} 
+\index{piolot\+::\+Ray@{piolot\+::\+Ray}!Render@{Render}}
+\index{Render@{Render}!piolot\+::\+Ray@{piolot\+::\+Ray}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily void piolot\+::\+Ray\+::\+Render (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classpiolot_1_1_g_l_shader}{G\+L\+Shader}} $>$}]{\+\_\+shader,  }\item[{glm\+::vec3}]{\+\_\+colour }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classpiolot_1_1_ray_ada7c74126da4e4c8c0c7a63ae36c1ced}\label{classpiolot_1_1_ray_ada7c74126da4e4c8c0c7a63ae36c1ced}} 
+\index{piolot\+::\+Ray@{piolot\+::\+Ray}!Update@{Update}}
+\index{Update@{Update}!piolot\+::\+Ray@{piolot\+::\+Ray}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void piolot\+::\+Ray\+::\+Update (\begin{DoxyParamCaption}\item[{const glm\+::mat4}]{\+\_\+view\+Matrix,  }\item[{const glm\+::mat4}]{\+\_\+projection\+Matrix,  }\item[{const glm\+::vec3}]{\+\_\+colour }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpiolot_1_1_ray_a6c21a81fd81741cca7f823e87fed1aef}\label{classpiolot_1_1_ray_a6c21a81fd81741cca7f823e87fed1aef}} 
+\index{piolot\+::\+Ray@{piolot\+::\+Ray}!Update\+Buffers@{Update\+Buffers}}
+\index{Update\+Buffers@{Update\+Buffers}!piolot\+::\+Ray@{piolot\+::\+Ray}}
+\subsubsection{\texorpdfstring{Update\+Buffers()}{UpdateBuffers()}}
+{\footnotesize\ttfamily void piolot\+::\+Ray\+::\+Update\+Buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_ray_aaef1fc006491be8684d1786d2584b5fb}\label{classpiolot_1_1_ray_aaef1fc006491be8684d1786d2584b5fb}} 
+\index{piolot\+::\+Ray@{piolot\+::\+Ray}!direction@{direction}}
+\index{direction@{direction}!piolot\+::\+Ray@{piolot\+::\+Ray}}
+\subsubsection{\texorpdfstring{direction}{direction}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Ray\+::direction\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_ray_a0db15f5545f46a7cf172a6cd8010e7c4}\label{classpiolot_1_1_ray_a0db15f5545f46a7cf172a6cd8010e7c4}} 
+\index{piolot\+::\+Ray@{piolot\+::\+Ray}!origin@{origin}}
+\index{origin@{origin}!piolot\+::\+Ray@{piolot\+::\+Ray}}
+\subsubsection{\texorpdfstring{origin}{origin}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Ray\+::origin\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_ray_a2b5e91b97506c618aef3b26c463f9788}\label{classpiolot_1_1_ray_a2b5e91b97506c618aef3b26c463f9788}} 
+\index{piolot\+::\+Ray@{piolot\+::\+Ray}!vao@{vao}}
+\index{vao@{vao}!piolot\+::\+Ray@{piolot\+::\+Ray}}
+\subsubsection{\texorpdfstring{vao}{vao}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Ray\+::vao\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_ray_a92517c7821a901e1b9c883f6635472cb}\label{classpiolot_1_1_ray_a92517c7821a901e1b9c883f6635472cb}} 
+\index{piolot\+::\+Ray@{piolot\+::\+Ray}!vbo@{vbo}}
+\index{vbo@{vbo}!piolot\+::\+Ray@{piolot\+::\+Ray}}
+\subsubsection{\texorpdfstring{vbo}{vbo}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Ray\+::vbo\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_ray_adb40c4fbcb029550c160a892842c40cc}\label{classpiolot_1_1_ray_adb40c4fbcb029550c160a892842c40cc}} 
+\index{piolot\+::\+Ray@{piolot\+::\+Ray}!vertices@{vertices}}
+\index{vertices@{vertices}!piolot\+::\+Ray@{piolot\+::\+Ray}}
+\subsubsection{\texorpdfstring{vertices}{vertices}}
+{\footnotesize\ttfamily std\+::vector$<$glm\+::vec3$>$ piolot\+::\+Ray\+::vertices\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/dev/\+Piolot/\+Engine/Ray.\+h\item 
-C\+:/dev/\+Piolot/\+Engine/Ray.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_ray_8h}{Ray.\+h}}\item 
+\mbox{\hyperlink{_ray_8cpp}{Ray.\+cpp}}\end{DoxyCompactItemize}

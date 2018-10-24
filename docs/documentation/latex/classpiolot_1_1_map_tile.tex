@@ -1,55 +1,218 @@
 \hypertarget{classpiolot_1_1_map_tile}{}\section{piolot\+:\+:Map\+Tile Class Reference}
 \label{classpiolot_1_1_map_tile}\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+
+
+This represents a Tile in the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}.  
+
+
+
+
+{\ttfamily \#include $<$Terrain.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpiolot_1_1_map_tile_af673d44bd4ea54b760d423bdf4730194}{Map\+Tile}} ()=default
+\item 
+glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_map_tile_a7c9e9f16474de4e82689811afc1ac123}{Get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Converts the Tile Position to a Vec3 and returns it. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_map_tile_ab1585fe7db159adb817540c7aa23729a}\label{classpiolot_1_1_map_tile_ab1585fe7db159adb817540c7aa23729a}} 
-int {\bfseries tile\+IndexX}
+int \mbox{\hyperlink{classpiolot_1_1_map_tile_ab1585fe7db159adb817540c7aa23729a}{tile\+IndexX}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_map_tile_ad32071e9a413708d23c3ff98a49a654a}\label{classpiolot_1_1_map_tile_ad32071e9a413708d23c3ff98a49a654a}} 
-int {\bfseries tile\+IndexZ}
+int \mbox{\hyperlink{classpiolot_1_1_map_tile_ad32071e9a413708d23c3ff98a49a654a}{tile\+IndexZ}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_map_tile_a20153a41995e1fc00ae404bb0beea51d}\label{classpiolot_1_1_map_tile_a20153a41995e1fc00ae404bb0beea51d}} 
-float {\bfseries tile\+PosX}
+float \mbox{\hyperlink{classpiolot_1_1_map_tile_a20153a41995e1fc00ae404bb0beea51d}{tile\+PosX}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_map_tile_a2581410650fd7b09bf27aada53a652e7}\label{classpiolot_1_1_map_tile_a2581410650fd7b09bf27aada53a652e7}} 
-float {\bfseries tile\+PosZ}
+float \mbox{\hyperlink{classpiolot_1_1_map_tile_a2581410650fd7b09bf27aada53a652e7}{tile\+PosZ}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_map_tile_aadf32877f16a8e69a591c64084da2667}\label{classpiolot_1_1_map_tile_aadf32877f16a8e69a591c64084da2667}} 
-float {\bfseries tile\+PosY}
+float \mbox{\hyperlink{classpiolot_1_1_map_tile_aadf32877f16a8e69a591c64084da2667}{tile\+PosY}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_map_tile_a0a8329aad9563449e69940e754c0eab7}\label{classpiolot_1_1_map_tile_a0a8329aad9563449e69940e754c0eab7}} 
-float {\bfseries nav\+Cost} = 0.\+0f
+float \mbox{\hyperlink{classpiolot_1_1_map_tile_a0a8329aad9563449e69940e754c0eab7}{nav\+Cost}} = 0.\+0f
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_map_tile_a917058380d87af864438c30f3a65c774}\label{classpiolot_1_1_map_tile_a917058380d87af864438c30f3a65c774}} 
-bool {\bfseries nav\+Walkable} = true
+bool \mbox{\hyperlink{classpiolot_1_1_map_tile_a917058380d87af864438c30f3a65c774}{nav\+Walkable}} = true
+\begin{DoxyCompactList}\small\item\em Is the Tile walkable or does it have any static elements attached to it. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classpiolot_1_1_map_tile_ac30c95a0900b0b204d002fac6206934b}{nav\+Obstacle}} = false
+\begin{DoxyCompactList}\small\item\em Is there a dynamic obstacle in the path. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ \mbox{\hyperlink{classpiolot_1_1_map_tile_acc1c622d4a9446293840af35180f61d7}{nav\+Neighbours}} \mbox{[}8\mbox{]}
+\begin{DoxyCompactList}\small\item\em Pointers to the Neighbours of this Tile. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classpiolot_1_1_map_tile_ace07e3f8b0ef22f37759d1dd37e54a03}{nav\+Neighbour\+Count}} = 0
+\begin{DoxyCompactList}\small\item\em Number of Neighbours. Should be in between 3 and 8. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classpiolot_1_1_map_tile_ad26177f9ff510ea762454933534bcfd1}{nav\+Open}}
+\begin{DoxyCompactList}\small\item\em Does this tile belong to the Open\+Set. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classpiolot_1_1_map_tile_a272716e88eca5a971db3a3f9ea2ccf47}{nav\+Closed}}
+\begin{DoxyCompactList}\small\item\em Does this tile belong in the Closed Set. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ \mbox{\hyperlink{classpiolot_1_1_map_tile_aadab9080952f11ef7566b63b46a842a0}{nav\+Parent}} = nullptr
+\begin{DoxyCompactList}\small\item\em Which Tile did you arrive at this tile, from? \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classpiolot_1_1_map_tile_ac7792c3dfdb53cabaf7e444910067818}{nav\+F\+Cost}} = 0
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_map_tile_acc1c622d4a9446293840af35180f61d7}\label{classpiolot_1_1_map_tile_acc1c622d4a9446293840af35180f61d7}} 
-\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ {\bfseries nav\+Neighbours} \mbox{[}8\mbox{]}
+float \mbox{\hyperlink{classpiolot_1_1_map_tile_a87c3aae25887660abd0cb4ee3ee9b973}{nav\+G\+Cost}} = 0
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_map_tile_ace07e3f8b0ef22f37759d1dd37e54a03}\label{classpiolot_1_1_map_tile_ace07e3f8b0ef22f37759d1dd37e54a03}} 
-int {\bfseries nav\+Neighbour\+Count} = 0
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_map_tile_ad26177f9ff510ea762454933534bcfd1}\label{classpiolot_1_1_map_tile_ad26177f9ff510ea762454933534bcfd1}} 
-bool {\bfseries nav\+Open}
-\item 
+int \mbox{\hyperlink{classpiolot_1_1_map_tile_a1968deb3bc5f0c4ff4eb05995eff6fd7}{nav\+Tile\+Set}}
+\begin{DoxyCompactList}\small\item\em The Tile\+Set that this Tile belongs to. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This represents a Tile in the \mbox{\hyperlink{classpiolot_1_1_terrain}{Terrain}}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_map_tile_af673d44bd4ea54b760d423bdf4730194}\label{classpiolot_1_1_map_tile_af673d44bd4ea54b760d423bdf4730194}} 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!Map\+Tile@{Map\+Tile}}
+\index{Map\+Tile@{Map\+Tile}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{Map\+Tile()}{MapTile()}}
+{\footnotesize\ttfamily piolot\+::\+Map\+Tile\+::\+Map\+Tile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_map_tile_a7c9e9f16474de4e82689811afc1ac123}\label{classpiolot_1_1_map_tile_a7c9e9f16474de4e82689811afc1ac123}} 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!Get\+Position@{Get\+Position}}
+\index{Get\+Position@{Get\+Position}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{Get\+Position()}{GetPosition()}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Map\+Tile\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Converts the Tile Position to a Vec3 and returns it. 
+
+\begin{DoxyReturn}{Returns}
+Position as a Vec3 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
 \mbox{\Hypertarget{classpiolot_1_1_map_tile_a272716e88eca5a971db3a3f9ea2ccf47}\label{classpiolot_1_1_map_tile_a272716e88eca5a971db3a3f9ea2ccf47}} 
-bool {\bfseries nav\+Closed}
-\item 
-\mbox{\Hypertarget{classpiolot_1_1_map_tile_aadab9080952f11ef7566b63b46a842a0}\label{classpiolot_1_1_map_tile_aadab9080952f11ef7566b63b46a842a0}} 
-\mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}} $\ast$ {\bfseries nav\+Parent} = nullptr
-\item 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!nav\+Closed@{nav\+Closed}}
+\index{nav\+Closed@{nav\+Closed}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{nav\+Closed}{navClosed}}
+{\footnotesize\ttfamily bool piolot\+::\+Map\+Tile\+::nav\+Closed}
+
+
+
+Does this tile belong in the Closed Set. 
+
+\mbox{\Hypertarget{classpiolot_1_1_map_tile_a0a8329aad9563449e69940e754c0eab7}\label{classpiolot_1_1_map_tile_a0a8329aad9563449e69940e754c0eab7}} 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!nav\+Cost@{nav\+Cost}}
+\index{nav\+Cost@{nav\+Cost}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{nav\+Cost}{navCost}}
+{\footnotesize\ttfamily float piolot\+::\+Map\+Tile\+::nav\+Cost = 0.\+0f}
+
 \mbox{\Hypertarget{classpiolot_1_1_map_tile_ac7792c3dfdb53cabaf7e444910067818}\label{classpiolot_1_1_map_tile_ac7792c3dfdb53cabaf7e444910067818}} 
-float {\bfseries nav\+F\+Cost} = 0
-\item 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!nav\+F\+Cost@{nav\+F\+Cost}}
+\index{nav\+F\+Cost@{nav\+F\+Cost}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{nav\+F\+Cost}{navFCost}}
+{\footnotesize\ttfamily float piolot\+::\+Map\+Tile\+::nav\+F\+Cost = 0}
+
 \mbox{\Hypertarget{classpiolot_1_1_map_tile_a87c3aae25887660abd0cb4ee3ee9b973}\label{classpiolot_1_1_map_tile_a87c3aae25887660abd0cb4ee3ee9b973}} 
-float {\bfseries nav\+G\+Cost} = 0
-\item 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!nav\+G\+Cost@{nav\+G\+Cost}}
+\index{nav\+G\+Cost@{nav\+G\+Cost}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{nav\+G\+Cost}{navGCost}}
+{\footnotesize\ttfamily float piolot\+::\+Map\+Tile\+::nav\+G\+Cost = 0}
+
+\mbox{\Hypertarget{classpiolot_1_1_map_tile_ace07e3f8b0ef22f37759d1dd37e54a03}\label{classpiolot_1_1_map_tile_ace07e3f8b0ef22f37759d1dd37e54a03}} 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!nav\+Neighbour\+Count@{nav\+Neighbour\+Count}}
+\index{nav\+Neighbour\+Count@{nav\+Neighbour\+Count}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{nav\+Neighbour\+Count}{navNeighbourCount}}
+{\footnotesize\ttfamily int piolot\+::\+Map\+Tile\+::nav\+Neighbour\+Count = 0}
+
+
+
+Number of Neighbours. Should be in between 3 and 8. 
+
+\mbox{\Hypertarget{classpiolot_1_1_map_tile_acc1c622d4a9446293840af35180f61d7}\label{classpiolot_1_1_map_tile_acc1c622d4a9446293840af35180f61d7}} 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!nav\+Neighbours@{nav\+Neighbours}}
+\index{nav\+Neighbours@{nav\+Neighbours}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{nav\+Neighbours}{navNeighbours}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}}$\ast$ piolot\+::\+Map\+Tile\+::nav\+Neighbours\mbox{[}8\mbox{]}}
+
+
+
+Pointers to the Neighbours of this Tile. 
+
+\mbox{\Hypertarget{classpiolot_1_1_map_tile_ac30c95a0900b0b204d002fac6206934b}\label{classpiolot_1_1_map_tile_ac30c95a0900b0b204d002fac6206934b}} 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!nav\+Obstacle@{nav\+Obstacle}}
+\index{nav\+Obstacle@{nav\+Obstacle}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{nav\+Obstacle}{navObstacle}}
+{\footnotesize\ttfamily bool piolot\+::\+Map\+Tile\+::nav\+Obstacle = false}
+
+
+
+Is there a dynamic obstacle in the path. 
+
+\mbox{\Hypertarget{classpiolot_1_1_map_tile_ad26177f9ff510ea762454933534bcfd1}\label{classpiolot_1_1_map_tile_ad26177f9ff510ea762454933534bcfd1}} 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!nav\+Open@{nav\+Open}}
+\index{nav\+Open@{nav\+Open}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{nav\+Open}{navOpen}}
+{\footnotesize\ttfamily bool piolot\+::\+Map\+Tile\+::nav\+Open}
+
+
+
+Does this tile belong to the Open\+Set. 
+
+\mbox{\Hypertarget{classpiolot_1_1_map_tile_aadab9080952f11ef7566b63b46a842a0}\label{classpiolot_1_1_map_tile_aadab9080952f11ef7566b63b46a842a0}} 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!nav\+Parent@{nav\+Parent}}
+\index{nav\+Parent@{nav\+Parent}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{nav\+Parent}{navParent}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpiolot_1_1_map_tile}{Map\+Tile}}$\ast$ piolot\+::\+Map\+Tile\+::nav\+Parent = nullptr}
+
+
+
+Which Tile did you arrive at this tile, from? 
+
 \mbox{\Hypertarget{classpiolot_1_1_map_tile_a1968deb3bc5f0c4ff4eb05995eff6fd7}\label{classpiolot_1_1_map_tile_a1968deb3bc5f0c4ff4eb05995eff6fd7}} 
-int {\bfseries nav\+Tile\+Set}
-\end{DoxyCompactItemize}
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!nav\+Tile\+Set@{nav\+Tile\+Set}}
+\index{nav\+Tile\+Set@{nav\+Tile\+Set}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{nav\+Tile\+Set}{navTileSet}}
+{\footnotesize\ttfamily int piolot\+::\+Map\+Tile\+::nav\+Tile\+Set}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+
+The Tile\+Set that this Tile belongs to. 
+
+If two tiles belong to two different Tile Sets, there exists no path between them. \mbox{\Hypertarget{classpiolot_1_1_map_tile_a917058380d87af864438c30f3a65c774}\label{classpiolot_1_1_map_tile_a917058380d87af864438c30f3a65c774}} 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!nav\+Walkable@{nav\+Walkable}}
+\index{nav\+Walkable@{nav\+Walkable}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{nav\+Walkable}{navWalkable}}
+{\footnotesize\ttfamily bool piolot\+::\+Map\+Tile\+::nav\+Walkable = true}
+
+
+
+Is the Tile walkable or does it have any static elements attached to it. 
+
+\mbox{\Hypertarget{classpiolot_1_1_map_tile_ab1585fe7db159adb817540c7aa23729a}\label{classpiolot_1_1_map_tile_ab1585fe7db159adb817540c7aa23729a}} 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!tile\+IndexX@{tile\+IndexX}}
+\index{tile\+IndexX@{tile\+IndexX}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{tile\+IndexX}{tileIndexX}}
+{\footnotesize\ttfamily int piolot\+::\+Map\+Tile\+::tile\+IndexX}
+
+\mbox{\Hypertarget{classpiolot_1_1_map_tile_ad32071e9a413708d23c3ff98a49a654a}\label{classpiolot_1_1_map_tile_ad32071e9a413708d23c3ff98a49a654a}} 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!tile\+IndexZ@{tile\+IndexZ}}
+\index{tile\+IndexZ@{tile\+IndexZ}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{tile\+IndexZ}{tileIndexZ}}
+{\footnotesize\ttfamily int piolot\+::\+Map\+Tile\+::tile\+IndexZ}
+
+\mbox{\Hypertarget{classpiolot_1_1_map_tile_a20153a41995e1fc00ae404bb0beea51d}\label{classpiolot_1_1_map_tile_a20153a41995e1fc00ae404bb0beea51d}} 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!tile\+PosX@{tile\+PosX}}
+\index{tile\+PosX@{tile\+PosX}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{tile\+PosX}{tilePosX}}
+{\footnotesize\ttfamily float piolot\+::\+Map\+Tile\+::tile\+PosX}
+
+\mbox{\Hypertarget{classpiolot_1_1_map_tile_aadf32877f16a8e69a591c64084da2667}\label{classpiolot_1_1_map_tile_aadf32877f16a8e69a591c64084da2667}} 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!tile\+PosY@{tile\+PosY}}
+\index{tile\+PosY@{tile\+PosY}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{tile\+PosY}{tilePosY}}
+{\footnotesize\ttfamily float piolot\+::\+Map\+Tile\+::tile\+PosY}
+
+\mbox{\Hypertarget{classpiolot_1_1_map_tile_a2581410650fd7b09bf27aada53a652e7}\label{classpiolot_1_1_map_tile_a2581410650fd7b09bf27aada53a652e7}} 
+\index{piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}!tile\+PosZ@{tile\+PosZ}}
+\index{tile\+PosZ@{tile\+PosZ}!piolot\+::\+Map\+Tile@{piolot\+::\+Map\+Tile}}
+\subsubsection{\texorpdfstring{tile\+PosZ}{tilePosZ}}
+{\footnotesize\ttfamily float piolot\+::\+Map\+Tile\+::tile\+PosZ}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/dev/\+Piolot/\+Engine/Terrain.\+h\end{DoxyCompactItemize}
+\mbox{\hyperlink{_terrain_8h}{Terrain.\+h}}\item 
+\mbox{\hyperlink{_terrain_8cpp}{Terrain.\+cpp}}\end{DoxyCompactItemize}

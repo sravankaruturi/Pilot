@@ -12,11 +12,11 @@ This class is used to create a simple cuboid around the Objects as a Bounding Bo
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-const glm\+::vec3 \& {\bfseries Get\+Minimum\+Point} () const
+const glm\+::vec3 \& \mbox{\hyperlink{group___getters_ga1534921bb22645320614b4cf02268906}{Get\+Minimum\+Point}} () const
 \item 
-const glm\+::vec3 \& {\bfseries Get\+Maximum\+Point} () const
+const glm\+::vec3 \& \mbox{\hyperlink{group___getters_gafd9222c8fb47c5484c873ace9d66a37d}{Get\+Maximum\+Point}} () const
 \item 
-unsigned int {\bfseries Get\+Vertices\+Size} () const
+unsigned int \mbox{\hyperlink{group___getters_ga57651f343f21133fc6c89c8c5619ed84}{Get\+Vertices\+Size}} () const
 \item 
 \mbox{\hyperlink{group___getters_ga699e27e8e646be7a0a47f89abb35778d}{Bounding\+Box}} (glm\+::vec3 \+\_\+minimum\+Point=glm\+::vec3(-\/0.\+2f, -\/0.\+2f, -\/0.\+2f), glm\+::vec3 \+\_\+maximum\+Point=glm\+::vec3(0.\+2f, 0.\+2f, 0.\+2f))
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
@@ -27,19 +27,14 @@ void \mbox{\hyperlink{group___getters_ga3ef9f966674be7fa0448d388b7a3d776}{Render
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_bounding_box_a9e1b1896cdc55746ab9903241c358dc4}\label{classpiolot_1_1_bounding_box_a9e1b1896cdc55746ab9903241c358dc4}} 
 glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_bounding_box_a9e1b1896cdc55746ab9903241c358dc4}{minimum\+Point}}
 \begin{DoxyCompactList}\small\item\em The Minimum point of the Cuboid in 3D Space. Typically, the Bottom, Left, -\/Z Point. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classpiolot_1_1_bounding_box_a4b6af7e1b8cb46c8967a8921146097bd}\label{classpiolot_1_1_bounding_box_a4b6af7e1b8cb46c8967a8921146097bd}} 
 glm\+::vec3 \mbox{\hyperlink{classpiolot_1_1_bounding_box_a4b6af7e1b8cb46c8967a8921146097bd}{maximum\+Point}}
 \begin{DoxyCompactList}\small\item\em The Maximum point of the Cuboid. Typically, the Right, Top, +Z Point. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classpiolot_1_1_bounding_box_ae57572db987c9f1185ad73febc8fbc28}\label{classpiolot_1_1_bounding_box_ae57572db987c9f1185ad73febc8fbc28}} 
 std\+::vector$<$ glm\+::vec3 $>$ \mbox{\hyperlink{classpiolot_1_1_bounding_box_ae57572db987c9f1185ad73febc8fbc28}{vertices}}
 \begin{DoxyCompactList}\small\item\em The Vertices for the Cuboid. Will be computed based on the Min and Max Points. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classpiolot_1_1_bounding_box_ad5ea73dcadf0d25c07cc8ff3761db4e3}\label{classpiolot_1_1_bounding_box_ad5ea73dcadf0d25c07cc8ff3761db4e3}} 
 unsigned int \mbox{\hyperlink{classpiolot_1_1_bounding_box_ad5ea73dcadf0d25c07cc8ff3761db4e3}{V\+AO}}
 \begin{DoxyCompactList}\small\item\em Vertex Array \mbox{\hyperlink{classpiolot_1_1_object}{Object}} ID. Used for Rendering the B\+Box. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classpiolot_1_1_bounding_box_a4c8c26e00dff9f14709bc2803b38a0bf}\label{classpiolot_1_1_bounding_box_a4c8c26e00dff9f14709bc2803b38a0bf}} 
 unsigned int \mbox{\hyperlink{classpiolot_1_1_bounding_box_a4c8c26e00dff9f14709bc2803b38a0bf}{V\+BO}}
 \begin{DoxyCompactList}\small\item\em Vertex Buffer \mbox{\hyperlink{classpiolot_1_1_object}{Object}} ID. Used for Rendering the B\+Box. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -47,7 +42,60 @@ unsigned int \mbox{\hyperlink{classpiolot_1_1_bounding_box_a4c8c26e00dff9f14709b
 \subsection{Detailed Description}
 This class is used to create a simple cuboid around the Objects as a Bounding Box. 
 
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_bounding_box_a4b6af7e1b8cb46c8967a8921146097bd}\label{classpiolot_1_1_bounding_box_a4b6af7e1b8cb46c8967a8921146097bd}} 
+\index{piolot\+::\+Bounding\+Box@{piolot\+::\+Bounding\+Box}!maximum\+Point@{maximum\+Point}}
+\index{maximum\+Point@{maximum\+Point}!piolot\+::\+Bounding\+Box@{piolot\+::\+Bounding\+Box}}
+\subsubsection{\texorpdfstring{maximum\+Point}{maximumPoint}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Bounding\+Box\+::maximum\+Point\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The Maximum point of the Cuboid. Typically, the Right, Top, +Z Point. 
+
+\mbox{\Hypertarget{classpiolot_1_1_bounding_box_a9e1b1896cdc55746ab9903241c358dc4}\label{classpiolot_1_1_bounding_box_a9e1b1896cdc55746ab9903241c358dc4}} 
+\index{piolot\+::\+Bounding\+Box@{piolot\+::\+Bounding\+Box}!minimum\+Point@{minimum\+Point}}
+\index{minimum\+Point@{minimum\+Point}!piolot\+::\+Bounding\+Box@{piolot\+::\+Bounding\+Box}}
+\subsubsection{\texorpdfstring{minimum\+Point}{minimumPoint}}
+{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Bounding\+Box\+::minimum\+Point\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The Minimum point of the Cuboid in 3D Space. Typically, the Bottom, Left, -\/Z Point. 
+
+\mbox{\Hypertarget{classpiolot_1_1_bounding_box_ad5ea73dcadf0d25c07cc8ff3761db4e3}\label{classpiolot_1_1_bounding_box_ad5ea73dcadf0d25c07cc8ff3761db4e3}} 
+\index{piolot\+::\+Bounding\+Box@{piolot\+::\+Bounding\+Box}!V\+AO@{V\+AO}}
+\index{V\+AO@{V\+AO}!piolot\+::\+Bounding\+Box@{piolot\+::\+Bounding\+Box}}
+\subsubsection{\texorpdfstring{V\+AO}{VAO}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Bounding\+Box\+::\+V\+AO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Vertex Array \mbox{\hyperlink{classpiolot_1_1_object}{Object}} ID. Used for Rendering the B\+Box. 
+
+\mbox{\Hypertarget{classpiolot_1_1_bounding_box_a4c8c26e00dff9f14709bc2803b38a0bf}\label{classpiolot_1_1_bounding_box_a4c8c26e00dff9f14709bc2803b38a0bf}} 
+\index{piolot\+::\+Bounding\+Box@{piolot\+::\+Bounding\+Box}!V\+BO@{V\+BO}}
+\index{V\+BO@{V\+BO}!piolot\+::\+Bounding\+Box@{piolot\+::\+Bounding\+Box}}
+\subsubsection{\texorpdfstring{V\+BO}{VBO}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+Bounding\+Box\+::\+V\+BO\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Vertex Buffer \mbox{\hyperlink{classpiolot_1_1_object}{Object}} ID. Used for Rendering the B\+Box. 
+
+\mbox{\Hypertarget{classpiolot_1_1_bounding_box_ae57572db987c9f1185ad73febc8fbc28}\label{classpiolot_1_1_bounding_box_ae57572db987c9f1185ad73febc8fbc28}} 
+\index{piolot\+::\+Bounding\+Box@{piolot\+::\+Bounding\+Box}!vertices@{vertices}}
+\index{vertices@{vertices}!piolot\+::\+Bounding\+Box@{piolot\+::\+Bounding\+Box}}
+\subsubsection{\texorpdfstring{vertices}{vertices}}
+{\footnotesize\ttfamily std\+::vector$<$glm\+::vec3$>$ piolot\+::\+Bounding\+Box\+::vertices\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The Vertices for the Cuboid. Will be computed based on the Min and Max Points. 
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/dev/\+Piolot/\+Engine/Bounding\+Box.\+h\item 
-C\+:/dev/\+Piolot/\+Engine/Bounding\+Box.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_bounding_box_8h}{Bounding\+Box.\+h}}\item 
+\mbox{\hyperlink{_bounding_box_8cpp}{Bounding\+Box.\+cpp}}\end{DoxyCompactItemize}

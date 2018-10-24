@@ -14,13 +14,10 @@ The Class that is used to load shaders in Open\+GL.
 \item 
 \mbox{\hyperlink{classpiolot_1_1_g_l_shader_a9280ae5003e53461f898dd18b7685eab}{G\+L\+Shader}} (const char $\ast$\+\_\+vertex\+Path, const char $\ast$\+\_\+fragment\+Path)
 \begin{DoxyCompactList}\small\item\em Loads the shader at the specified path. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_a1ed833e8b2ade593d5c820981121bfbb}\label{classpiolot_1_1_g_l_shader_a1ed833e8b2ade593d5c820981121bfbb}} 
-{\bfseries G\+L\+Shader} (const char $\ast$\+\_\+file\+Path)
+\mbox{\hyperlink{classpiolot_1_1_g_l_shader_a1ed833e8b2ade593d5c820981121bfbb}{G\+L\+Shader}} (const char $\ast$\+\_\+file\+Path)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_a7bf14037e4f1f1e5b6af344da08d6430}\label{classpiolot_1_1_g_l_shader_a7bf14037e4f1f1e5b6af344da08d6430}} 
 \mbox{\hyperlink{classpiolot_1_1_g_l_shader_a7bf14037e4f1f1e5b6af344da08d6430}{$\sim$\+G\+L\+Shader}} ()=default
 \begin{DoxyCompactList}\small\item\em Default Destructor. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_a624427668ba51101fe898e12731069bf}\label{classpiolot_1_1_g_l_shader_a624427668ba51101fe898e12731069bf}} 
 void \mbox{\hyperlink{classpiolot_1_1_g_l_shader_a624427668ba51101fe898e12731069bf}{use}} ()
 \begin{DoxyCompactList}\small\item\em Use the Program. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classpiolot_1_1_g_l_shader_a8f3349b73adbb3f7d85b847ffc39d0f3}{set\+Bool}} (const std\+::string \&\+\_\+name, bool \+\_\+value)
@@ -33,27 +30,26 @@ void \mbox{\hyperlink{classpiolot_1_1_g_l_shader_a47d614244dc667768a36b9cea1675e
 \begin{DoxyCompactList}\small\item\em Set a Uniform Value. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classpiolot_1_1_g_l_shader_a293369149f4ad507543cb0fcd783afd1}{set\+Vec3}} (const std\+::string \&\+\_\+name, float \+\_\+x, float \+\_\+y, float \+\_\+z)
 \begin{DoxyCompactList}\small\item\em Set a Uniform Value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_g_l_shader_a700a4f95289f10e63c5d2bc0719d99e3}{set\+Vec4}} (const std\+::string \&\+\_\+name, float \+\_\+x, float \+\_\+y, float \+\_\+z, float \+\_\+w)
+\begin{DoxyCompactList}\small\item\em Set a Uniform Value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classpiolot_1_1_g_l_shader_a1f9299d4a1401de2901306e26d020a51}{set\+Vec4}} (const std\+::string \&\+\_\+name, glm\+::vec4 \+\_\+vec\+Input)
+\begin{DoxyCompactList}\small\item\em Set a Uniform Value. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classpiolot_1_1_g_l_shader_a56d846ae1d7c6adc579c5de37db02546}{set\+Mat4}} (const std\+::string \&\+\_\+name, const glm\+::mat4 \&\+\_\+mat)
 \begin{DoxyCompactList}\small\item\em Set a Uniform Value. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classpiolot_1_1_g_l_shader_ab2badc2b316c708bf6ea7a4ff39db254}{Check\+Compile\+Errors}} (unsigned int \+\_\+shader\+Id, std\+::string \+\_\+type)
 \begin{DoxyCompactList}\small\item\em Check for any Compilation Errors and report. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_ac5bf2e67deb4f816e82a50bbe1f168dd}\label{classpiolot_1_1_g_l_shader_ac5bf2e67deb4f816e82a50bbe1f168dd}} 
-int {\bfseries Get\+Uniform\+Location} (const std\+::string \&\+\_\+name)
+int \mbox{\hyperlink{classpiolot_1_1_g_l_shader_ac5bf2e67deb4f816e82a50bbe1f168dd}{Get\+Uniform\+Location}} (const std\+::string \&\+\_\+name)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_a7f05981084b76212d3ee92c71e002fb2}\label{classpiolot_1_1_g_l_shader_a7f05981084b76212d3ee92c71e002fb2}} 
 unsigned int \mbox{\hyperlink{classpiolot_1_1_g_l_shader_a7f05981084b76212d3ee92c71e002fb2}{shader\+Id}}
 \begin{DoxyCompactList}\small\item\em The Shader ID that you get once you load the Shader. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_af6cacc0e6d324c39ec3b862dc0ff29a8}\label{classpiolot_1_1_g_l_shader_af6cacc0e6d324c39ec3b862dc0ff29a8}} 
-std\+::string {\bfseries shader\+Name}
+std\+::string \mbox{\hyperlink{classpiolot_1_1_g_l_shader_af6cacc0e6d324c39ec3b862dc0ff29a8}{shader\+Name}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_aa99f7e5b6b76e8796824278578e4172d}\label{classpiolot_1_1_g_l_shader_aa99f7e5b6b76e8796824278578e4172d}} 
-bool {\bfseries compile\+Status} = true
+bool \mbox{\hyperlink{classpiolot_1_1_g_l_shader_aa99f7e5b6b76e8796824278578e4172d}{compile\+Status}} = true
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_adde3ba01aacd0c60bd495ca3b220a1dd}\label{classpiolot_1_1_g_l_shader_adde3ba01aacd0c60bd495ca3b220a1dd}} 
-std\+::unordered\+\_\+map$<$ std\+::string, int $>$ {\bfseries uniform\+Locations}
+std\+::unordered\+\_\+map$<$ std\+::string, int $>$ \mbox{\hyperlink{classpiolot_1_1_g_l_shader_adde3ba01aacd0c60bd495ca3b220a1dd}{uniform\+Locations}}
 \end{DoxyCompactItemize}
 
 
@@ -64,7 +60,7 @@ The Class that is used to load shaders in Open\+GL.
 \mbox{\Hypertarget{classpiolot_1_1_g_l_shader_a9280ae5003e53461f898dd18b7685eab}\label{classpiolot_1_1_g_l_shader_a9280ae5003e53461f898dd18b7685eab}} 
 \index{piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}!G\+L\+Shader@{G\+L\+Shader}}
 \index{G\+L\+Shader@{G\+L\+Shader}!piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}}
-\subsubsection{\texorpdfstring{G\+L\+Shader()}{GLShader()}}
+\subsubsection{\texorpdfstring{G\+L\+Shader()}{GLShader()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily piolot\+::\+G\+L\+Shader\+::\+G\+L\+Shader (\begin{DoxyParamCaption}\item[{const char $\ast$}]{\+\_\+vertex\+Path,  }\item[{const char $\ast$}]{\+\_\+fragment\+Path }\end{DoxyParamCaption})}
 
 
@@ -85,7 +81,23 @@ Loads the shader at the specified path.
 \item Creates the Program and links the shaders.
 \item Deletes the Shaders once the Program is successfully created.
 \item Outputs any errors to the debug file. 
-\end{DoxyItemize}
+\end{DoxyItemize}\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_a1ed833e8b2ade593d5c820981121bfbb}\label{classpiolot_1_1_g_l_shader_a1ed833e8b2ade593d5c820981121bfbb}} 
+\index{piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}!G\+L\+Shader@{G\+L\+Shader}}
+\index{G\+L\+Shader@{G\+L\+Shader}!piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}}
+\subsubsection{\texorpdfstring{G\+L\+Shader()}{GLShader()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily piolot\+::\+G\+L\+Shader\+::\+G\+L\+Shader (\begin{DoxyParamCaption}\item[{const char $\ast$}]{\+\_\+file\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_a7bf14037e4f1f1e5b6af344da08d6430}\label{classpiolot_1_1_g_l_shader_a7bf14037e4f1f1e5b6af344da08d6430}} 
+\index{piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}!````~G\+L\+Shader@{$\sim$\+G\+L\+Shader}}
+\index{````~G\+L\+Shader@{$\sim$\+G\+L\+Shader}!piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}}
+\subsubsection{\texorpdfstring{$\sim$\+G\+L\+Shader()}{~GLShader()}}
+{\footnotesize\ttfamily piolot\+::\+G\+L\+Shader\+::$\sim$\+G\+L\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default Destructor. 
+
+
 
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{classpiolot_1_1_g_l_shader_ab2badc2b316c708bf6ea7a4ff39db254}\label{classpiolot_1_1_g_l_shader_ab2badc2b316c708bf6ea7a4ff39db254}} 
@@ -105,6 +117,12 @@ Check for any Compilation Errors and report.
 {\em \+\_\+type} & The Type, Can be either P\+R\+O\+G\+R\+AM or S\+H\+A\+D\+ER. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_ac5bf2e67deb4f816e82a50bbe1f168dd}\label{classpiolot_1_1_g_l_shader_ac5bf2e67deb4f816e82a50bbe1f168dd}} 
+\index{piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}!Get\+Uniform\+Location@{Get\+Uniform\+Location}}
+\index{Get\+Uniform\+Location@{Get\+Uniform\+Location}!piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}}
+\subsubsection{\texorpdfstring{Get\+Uniform\+Location()}{GetUniformLocation()}}
+{\footnotesize\ttfamily int piolot\+::\+G\+L\+Shader\+::\+Get\+Uniform\+Location (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 \mbox{\Hypertarget{classpiolot_1_1_g_l_shader_a8f3349b73adbb3f7d85b847ffc39d0f3}\label{classpiolot_1_1_g_l_shader_a8f3349b73adbb3f7d85b847ffc39d0f3}} 
 \index{piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}!set\+Bool@{set\+Bool}}
 \index{set\+Bool@{set\+Bool}!piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}}
@@ -211,9 +229,90 @@ Set a Uniform Value.
 {\em \+\_\+z} & Value.\+z \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_a700a4f95289f10e63c5d2bc0719d99e3}\label{classpiolot_1_1_g_l_shader_a700a4f95289f10e63c5d2bc0719d99e3}} 
+\index{piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}!set\+Vec4@{set\+Vec4}}
+\index{set\+Vec4@{set\+Vec4}!piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}}
+\subsubsection{\texorpdfstring{set\+Vec4()}{setVec4()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void piolot\+::\+G\+L\+Shader\+::set\+Vec4 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{\+\_\+name,  }\item[{float}]{\+\_\+x,  }\item[{float}]{\+\_\+y,  }\item[{float}]{\+\_\+z,  }\item[{float}]{\+\_\+w }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set a Uniform Value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+name} & The Uniform Name \\
+\hline
+{\em \+\_\+x} & Value.\+x \\
+\hline
+{\em \+\_\+y} & Value.\+y \\
+\hline
+{\em \+\_\+z} & Value.\+z \\
+\hline
+{\em \+\_\+w} & Value.\+w \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_a1f9299d4a1401de2901306e26d020a51}\label{classpiolot_1_1_g_l_shader_a1f9299d4a1401de2901306e26d020a51}} 
+\index{piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}!set\+Vec4@{set\+Vec4}}
+\index{set\+Vec4@{set\+Vec4}!piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}}
+\subsubsection{\texorpdfstring{set\+Vec4()}{setVec4()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void piolot\+::\+G\+L\+Shader\+::set\+Vec4 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{\+\_\+name,  }\item[{glm\+::vec4}]{\+\_\+vec\+Input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set a Uniform Value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+name} & The Uniform Name \\
+\hline
+{\em \+\_\+vec\+Input} & The Vector. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_a624427668ba51101fe898e12731069bf}\label{classpiolot_1_1_g_l_shader_a624427668ba51101fe898e12731069bf}} 
+\index{piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}!use@{use}}
+\index{use@{use}!piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}}
+\subsubsection{\texorpdfstring{use()}{use()}}
+{\footnotesize\ttfamily void piolot\+::\+G\+L\+Shader\+::use (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Use the Program. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_aa99f7e5b6b76e8796824278578e4172d}\label{classpiolot_1_1_g_l_shader_aa99f7e5b6b76e8796824278578e4172d}} 
+\index{piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}!compile\+Status@{compile\+Status}}
+\index{compile\+Status@{compile\+Status}!piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}}
+\subsubsection{\texorpdfstring{compile\+Status}{compileStatus}}
+{\footnotesize\ttfamily bool piolot\+::\+G\+L\+Shader\+::compile\+Status = true}
+
+\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_a7f05981084b76212d3ee92c71e002fb2}\label{classpiolot_1_1_g_l_shader_a7f05981084b76212d3ee92c71e002fb2}} 
+\index{piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}!shader\+Id@{shader\+Id}}
+\index{shader\+Id@{shader\+Id}!piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}}
+\subsubsection{\texorpdfstring{shader\+Id}{shaderId}}
+{\footnotesize\ttfamily unsigned int piolot\+::\+G\+L\+Shader\+::shader\+Id}
+
+
+
+The Shader ID that you get once you load the Shader. 
+
+\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_af6cacc0e6d324c39ec3b862dc0ff29a8}\label{classpiolot_1_1_g_l_shader_af6cacc0e6d324c39ec3b862dc0ff29a8}} 
+\index{piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}!shader\+Name@{shader\+Name}}
+\index{shader\+Name@{shader\+Name}!piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}}
+\subsubsection{\texorpdfstring{shader\+Name}{shaderName}}
+{\footnotesize\ttfamily std\+::string piolot\+::\+G\+L\+Shader\+::shader\+Name}
+
+\mbox{\Hypertarget{classpiolot_1_1_g_l_shader_adde3ba01aacd0c60bd495ca3b220a1dd}\label{classpiolot_1_1_g_l_shader_adde3ba01aacd0c60bd495ca3b220a1dd}} 
+\index{piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}!uniform\+Locations@{uniform\+Locations}}
+\index{uniform\+Locations@{uniform\+Locations}!piolot\+::\+G\+L\+Shader@{piolot\+::\+G\+L\+Shader}}
+\subsubsection{\texorpdfstring{uniform\+Locations}{uniformLocations}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, int $>$ piolot\+::\+G\+L\+Shader\+::uniform\+Locations}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/dev/\+Piolot/\+Engine/G\+L\+Shader.\+h\item 
-C\+:/dev/\+Piolot/\+Engine/G\+L\+Shader.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_g_l_shader_8h}{G\+L\+Shader.\+h}}\item 
+\mbox{\hyperlink{_g_l_shader_8cpp}{G\+L\+Shader.\+cpp}}\end{DoxyCompactItemize}

@@ -1,34 +1,79 @@
 \hypertarget{structpiolot_1_1_vertex_data}{}\section{piolot\+:\+:Vertex\+Data Struct Reference}
 \label{structpiolot_1_1_vertex_data}\index{piolot\+::\+Vertex\+Data@{piolot\+::\+Vertex\+Data}}
+
+
+{\ttfamily \#include $<$Object.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{structpiolot_1_1_vertex_data_ab5710817488ea549782c284288dfe42b}\label{structpiolot_1_1_vertex_data_ab5710817488ea549782c284288dfe42b}} 
 \mbox{\hyperlink{structpiolot_1_1_vertex_data_ab5710817488ea549782c284288dfe42b}{Vertex\+Data}} ()=default
 \begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{structpiolot_1_1_vertex_data_ae69924bb32a5d744c5978787936ec50c}\label{structpiolot_1_1_vertex_data_ae69924bb32a5d744c5978787936ec50c}} 
-glm\+::vec3 \mbox{\hyperlink{structpiolot_1_1_vertex_data_ae69924bb32a5d744c5978787936ec50c}{position}} = glm\+::vec3(0.f, 0.f, 0.f)
-\begin{DoxyCompactList}\small\item\em A Vector 3, Position. \end{DoxyCompactList}\item 
-glm\+::vec3 \mbox{\hyperlink{structpiolot_1_1_vertex_data_a5cb8263b64bf377f3cb1dc876b71b183}{tex\+Coord}} = glm\+::vec3(0.f, 0.f, 0.\+0f)
-\begin{DoxyCompactList}\small\item\em Normal, A Vector3. \end{DoxyCompactList}\end{DoxyCompactItemize}
+long \mbox{\hyperlink{structpiolot_1_1_vertex_data_a78e01f3bbe046b60050981d73418f65c}{header}} = 11100000
+\item 
+glm\+::vec4 \mbox{\hyperlink{structpiolot_1_1_vertex_data_aa2301ef8c411743410ea63808f5da434}{position}} = glm\+::vec4(0.f, 0.f, 0.f, 0.f)
+\begin{DoxyCompactList}\small\item\em A Vector 3, Position. And Appended with a Zero. \end{DoxyCompactList}\item 
+glm\+::vec4 \mbox{\hyperlink{structpiolot_1_1_vertex_data_acfb0b716a15091828ffb47dc07617460}{normal}} = glm\+::vec4(0.f, 0.f, 0.f, 0.f)
+\begin{DoxyCompactList}\small\item\em Normal, A Vector3., Appended with a Zero. \end{DoxyCompactList}\item 
+glm\+::vec4 \mbox{\hyperlink{structpiolot_1_1_vertex_data_ab3cf53f6a2dac9617bd2f39df13af149}{tex\+Coord}} = glm\+::vec4(0.f, 0.f, 0.\+0f, 0.\+0f)
+\begin{DoxyCompactList}\small\item\em UV Co-\/ordinates, A Vector2. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structpiolot_1_1_vertex_data_ab5710817488ea549782c284288dfe42b}\label{structpiolot_1_1_vertex_data_ab5710817488ea549782c284288dfe42b}} 
+\index{piolot\+::\+Vertex\+Data@{piolot\+::\+Vertex\+Data}!Vertex\+Data@{Vertex\+Data}}
+\index{Vertex\+Data@{Vertex\+Data}!piolot\+::\+Vertex\+Data@{piolot\+::\+Vertex\+Data}}
+\subsubsection{\texorpdfstring{Vertex\+Data()}{VertexData()}}
+{\footnotesize\ttfamily piolot\+::\+Vertex\+Data\+::\+Vertex\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default Constructor. 
+
 
 
 \subsection{Member Data Documentation}
-\mbox{\Hypertarget{structpiolot_1_1_vertex_data_a5cb8263b64bf377f3cb1dc876b71b183}\label{structpiolot_1_1_vertex_data_a5cb8263b64bf377f3cb1dc876b71b183}} 
+\mbox{\Hypertarget{structpiolot_1_1_vertex_data_a78e01f3bbe046b60050981d73418f65c}\label{structpiolot_1_1_vertex_data_a78e01f3bbe046b60050981d73418f65c}} 
+\index{piolot\+::\+Vertex\+Data@{piolot\+::\+Vertex\+Data}!header@{header}}
+\index{header@{header}!piolot\+::\+Vertex\+Data@{piolot\+::\+Vertex\+Data}}
+\subsubsection{\texorpdfstring{header}{header}}
+{\footnotesize\ttfamily long piolot\+::\+Vertex\+Data\+::header = 11100000}
+
+\mbox{\Hypertarget{structpiolot_1_1_vertex_data_acfb0b716a15091828ffb47dc07617460}\label{structpiolot_1_1_vertex_data_acfb0b716a15091828ffb47dc07617460}} 
+\index{piolot\+::\+Vertex\+Data@{piolot\+::\+Vertex\+Data}!normal@{normal}}
+\index{normal@{normal}!piolot\+::\+Vertex\+Data@{piolot\+::\+Vertex\+Data}}
+\subsubsection{\texorpdfstring{normal}{normal}}
+{\footnotesize\ttfamily glm\+::vec4 piolot\+::\+Vertex\+Data\+::normal = glm\+::vec4(0.f, 0.f, 0.f, 0.f)}
+
+
+
+Normal, A Vector3., Appended with a Zero. 
+
+\mbox{\Hypertarget{structpiolot_1_1_vertex_data_aa2301ef8c411743410ea63808f5da434}\label{structpiolot_1_1_vertex_data_aa2301ef8c411743410ea63808f5da434}} 
+\index{piolot\+::\+Vertex\+Data@{piolot\+::\+Vertex\+Data}!position@{position}}
+\index{position@{position}!piolot\+::\+Vertex\+Data@{piolot\+::\+Vertex\+Data}}
+\subsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily glm\+::vec4 piolot\+::\+Vertex\+Data\+::position = glm\+::vec4(0.f, 0.f, 0.f, 0.f)}
+
+
+
+A Vector 3, Position. And Appended with a Zero. 
+
+\mbox{\Hypertarget{structpiolot_1_1_vertex_data_ab3cf53f6a2dac9617bd2f39df13af149}\label{structpiolot_1_1_vertex_data_ab3cf53f6a2dac9617bd2f39df13af149}} 
 \index{piolot\+::\+Vertex\+Data@{piolot\+::\+Vertex\+Data}!tex\+Coord@{tex\+Coord}}
 \index{tex\+Coord@{tex\+Coord}!piolot\+::\+Vertex\+Data@{piolot\+::\+Vertex\+Data}}
 \subsubsection{\texorpdfstring{tex\+Coord}{texCoord}}
-{\footnotesize\ttfamily glm\+::vec3 piolot\+::\+Vertex\+Data\+::tex\+Coord = glm\+::vec3(0.f, 0.f, 0.\+0f)}
+{\footnotesize\ttfamily glm\+::vec4 piolot\+::\+Vertex\+Data\+::tex\+Coord = glm\+::vec4(0.f, 0.f, 0.\+0f, 0.\+0f)}
 
 
 
-Normal, A Vector3. 
+UV Co-\/ordinates, A Vector2. 
 
-UV Co-\/ordinates, A Vector2 
+
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/dev/\+Piolot/\+Engine/Object.\+h\end{DoxyCompactItemize}
+\mbox{\hyperlink{_object_8h}{Object.\+h}}\end{DoxyCompactItemize}

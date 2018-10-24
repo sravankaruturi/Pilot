@@ -96,131 +96,981 @@ $(document).ready(function(){initNavTree('classpiolot_1_1_camera.html','');});
 <div class="title">piolot::Camera Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_camera_8h_source.html">Camera.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:afba5e0e4539ee7666e8354842c4988e0"><td class="memItemLeft" align="right" valign="top"><a id="afba5e0e4539ee7666e8354842c4988e0"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>camera_movement</b> { <b>forward</b>, 
-<b>back</b>, 
-<b>rightside</b>, 
-<b>leftside</b>
+<tr class="memitem:afba5e0e4539ee7666e8354842c4988e0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#afba5e0e4539ee7666e8354842c4988e0">camera_movement</a> { <a class="el" href="classpiolot_1_1_camera.html#afba5e0e4539ee7666e8354842c4988e0a0cb80fe1877fddc4afdeb7bb00785842">forward</a>, 
+<a class="el" href="classpiolot_1_1_camera.html#afba5e0e4539ee7666e8354842c4988e0a54badf21a866512cc17c36e2cf1b4aa6">back</a>, 
+<a class="el" href="classpiolot_1_1_camera.html#afba5e0e4539ee7666e8354842c4988e0a4f24534e1ab495cce0a63f8e28fda1b9">rightside</a>, 
+<a class="el" href="classpiolot_1_1_camera.html#afba5e0e4539ee7666e8354842c4988e0a25379d6baed208220bc99d359283c5e8">leftside</a>
  }</td></tr>
 <tr class="separator:afba5e0e4539ee7666e8354842c4988e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae4322f03375c71eae72b7238a1c4ac12"><td class="memItemLeft" align="right" valign="top"><a id="ae4322f03375c71eae72b7238a1c4ac12"></a>
-std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetCameraName</b> ()</td></tr>
+<tr class="memitem:ae4322f03375c71eae72b7238a1c4ac12"><td class="memItemLeft" align="right" valign="top">std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#ae4322f03375c71eae72b7238a1c4ac12">GetCameraName</a> ()</td></tr>
 <tr class="separator:ae4322f03375c71eae72b7238a1c4ac12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c525f53bc93d1627261d40674e96104"><td class="memItemLeft" align="right" valign="top"><a id="a7c525f53bc93d1627261d40674e96104"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Camera</b> (std::string _cameraName=&quot;default&quot;, glm::vec3 _position=glm::vec3(0, 0, 10), glm::vec3 _front=glm::vec3(0, 0, -1), glm::vec3 _worldUp=glm::vec3(0, 1, 0), CameraType _type=perspective, float _movementSpeed=default_camera_speed, float _mouseSensitivity=default_camera_mouse_sensitivity)</td></tr>
+<tr class="memitem:a7c525f53bc93d1627261d40674e96104"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a7c525f53bc93d1627261d40674e96104">Camera</a> (std::string _cameraName=&quot;default&quot;, glm::vec3 _position=glm::vec3(0, 0, 10), glm::vec3 _front=glm::vec3(0, 0, -1), glm::vec3 _worldUp=glm::vec3(0, 1, 0), <a class="el" href="namespacepiolot.html#a8ffac0a73d973fb66879963da5defc90">CameraType</a> _type=<a class="el" href="namespacepiolot.html#a8ffac0a73d973fb66879963da5defc90a2306e17263193ee4e70fe9756faef528">perspective</a>, float _movementSpeed=<a class="el" href="namespacepiolot.html#ad09978d4f33e2559089adbc964c31992">default_camera_speed</a>, float _mouseSensitivity=<a class="el" href="namespacepiolot.html#a748a31cf105e50f2a20ccaba5fd374d3">default_camera_mouse_sensitivity</a>)</td></tr>
 <tr class="separator:a7c525f53bc93d1627261d40674e96104"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c12125ca134fdf776a296c0fac4a79f"><td class="memItemLeft" align="right" valign="top"><a id="a9c12125ca134fdf776a296c0fac4a79f"></a>
-glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetPosition</b> ()</td></tr>
+<tr class="memitem:a0d693a4be11bfc98a2cb46c4363ed00f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a0d693a4be11bfc98a2cb46c4363ed00f">~Camera</a> ()=default</td></tr>
+<tr class="separator:a0d693a4be11bfc98a2cb46c4363ed00f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c12125ca134fdf776a296c0fac4a79f"><td class="memItemLeft" align="right" valign="top">glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a9c12125ca134fdf776a296c0fac4a79f">GetPosition</a> ()</td></tr>
 <tr class="separator:a9c12125ca134fdf776a296c0fac4a79f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84ff7b1edc39841dddc485fb9e641bf1"><td class="memItemLeft" align="right" valign="top"><a id="a84ff7b1edc39841dddc485fb9e641bf1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetPosition</b> (const glm::vec3 &amp;_position)</td></tr>
+<tr class="memitem:a84ff7b1edc39841dddc485fb9e641bf1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a84ff7b1edc39841dddc485fb9e641bf1">SetPosition</a> (const glm::vec3 &amp;_position)</td></tr>
 <tr class="separator:a84ff7b1edc39841dddc485fb9e641bf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a428b0f65c9f2b3b5c5c028a96fb1f7"><td class="memItemLeft" align="right" valign="top"><a id="a6a428b0f65c9f2b3b5c5c028a96fb1f7"></a>
-const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetFront</b> () const</td></tr>
+<tr class="memitem:a6a428b0f65c9f2b3b5c5c028a96fb1f7"><td class="memItemLeft" align="right" valign="top">const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a6a428b0f65c9f2b3b5c5c028a96fb1f7">GetFront</a> () const</td></tr>
 <tr class="separator:a6a428b0f65c9f2b3b5c5c028a96fb1f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6151125f42016135376a60182acb63ef"><td class="memItemLeft" align="right" valign="top"><a id="a6151125f42016135376a60182acb63ef"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetFront</b> (const glm::vec3 &amp;_front)</td></tr>
+<tr class="memitem:a6151125f42016135376a60182acb63ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a6151125f42016135376a60182acb63ef">SetFront</a> (const glm::vec3 &amp;_front)</td></tr>
 <tr class="separator:a6151125f42016135376a60182acb63ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ce10517ad9161abf65b827d1884d785"><td class="memItemLeft" align="right" valign="top"><a id="a9ce10517ad9161abf65b827d1884d785"></a>
-const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetUp</b> () const</td></tr>
+<tr class="memitem:a9ce10517ad9161abf65b827d1884d785"><td class="memItemLeft" align="right" valign="top">const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a9ce10517ad9161abf65b827d1884d785">GetUp</a> () const</td></tr>
 <tr class="separator:a9ce10517ad9161abf65b827d1884d785"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a970d1203b54bb2323f9cbb994366d3b4"><td class="memItemLeft" align="right" valign="top"><a id="a970d1203b54bb2323f9cbb994366d3b4"></a>
-const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetRight</b> () const</td></tr>
+<tr class="memitem:a970d1203b54bb2323f9cbb994366d3b4"><td class="memItemLeft" align="right" valign="top">const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a970d1203b54bb2323f9cbb994366d3b4">GetRight</a> () const</td></tr>
 <tr class="separator:a970d1203b54bb2323f9cbb994366d3b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe3908486ce13772bf593a666869667a"><td class="memItemLeft" align="right" valign="top"><a id="afe3908486ce13772bf593a666869667a"></a>
-const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetWorldUp</b> () const</td></tr>
+<tr class="memitem:afe3908486ce13772bf593a666869667a"><td class="memItemLeft" align="right" valign="top">const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#afe3908486ce13772bf593a666869667a">GetWorldUp</a> () const</td></tr>
 <tr class="separator:afe3908486ce13772bf593a666869667a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad270b37d787605772644f35b844992b0"><td class="memItemLeft" align="right" valign="top"><a id="ad270b37d787605772644f35b844992b0"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>GetMovementSpeed</b> () const</td></tr>
+<tr class="memitem:ad270b37d787605772644f35b844992b0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#ad270b37d787605772644f35b844992b0">GetMovementSpeed</a> () const</td></tr>
 <tr class="separator:ad270b37d787605772644f35b844992b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf2988ab05281a6a1404207a76957ad6"><td class="memItemLeft" align="right" valign="top"><a id="aaf2988ab05281a6a1404207a76957ad6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetMovementSpeed</b> (float _movementSpeed)</td></tr>
+<tr class="memitem:aaf2988ab05281a6a1404207a76957ad6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#aaf2988ab05281a6a1404207a76957ad6">SetMovementSpeed</a> (float _movementSpeed)</td></tr>
 <tr class="separator:aaf2988ab05281a6a1404207a76957ad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f9b65c8df717b82c3b7193457ce71f0"><td class="memItemLeft" align="right" valign="top"><a id="a4f9b65c8df717b82c3b7193457ce71f0"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>GetMouseSensitivity</b> () const</td></tr>
+<tr class="memitem:a4f9b65c8df717b82c3b7193457ce71f0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a4f9b65c8df717b82c3b7193457ce71f0">GetMouseSensitivity</a> () const</td></tr>
 <tr class="separator:a4f9b65c8df717b82c3b7193457ce71f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade560e16d6c3775dab0637873e66e762"><td class="memItemLeft" align="right" valign="top"><a id="ade560e16d6c3775dab0637873e66e762"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetMouseSensitivity</b> (float _mouseSensitivity)</td></tr>
+<tr class="memitem:ade560e16d6c3775dab0637873e66e762"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#ade560e16d6c3775dab0637873e66e762">SetMouseSensitivity</a> (float _mouseSensitivity)</td></tr>
 <tr class="separator:ade560e16d6c3775dab0637873e66e762"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad57c30f9e3f381a492b38566eab4b905"><td class="memItemLeft" align="right" valign="top"><a id="ad57c30f9e3f381a492b38566eab4b905"></a>
-const glm::mat4 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetViewMatrix</b> () const</td></tr>
+<tr class="memitem:ad57c30f9e3f381a492b38566eab4b905"><td class="memItemLeft" align="right" valign="top">const glm::mat4 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#ad57c30f9e3f381a492b38566eab4b905">GetViewMatrix</a> () const</td></tr>
 <tr class="separator:ad57c30f9e3f381a492b38566eab4b905"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf17d4592d4d144ea3deab9d8d5d836d"><td class="memItemLeft" align="right" valign="top"><a id="adf17d4592d4d144ea3deab9d8d5d836d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetViewMatrix</b> (const glm::mat4 &amp;_viewMatrix)</td></tr>
+<tr class="memitem:adf17d4592d4d144ea3deab9d8d5d836d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#adf17d4592d4d144ea3deab9d8d5d836d">SetViewMatrix</a> (const glm::mat4 &amp;_viewMatrix)</td></tr>
 <tr class="separator:adf17d4592d4d144ea3deab9d8d5d836d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9172dabf1f037963c8f93f7b774cd9e"><td class="memItemLeft" align="right" valign="top"><a id="aa9172dabf1f037963c8f93f7b774cd9e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DisplayCameraDetailsImgui</b> ()</td></tr>
+<tr class="memitem:aa9172dabf1f037963c8f93f7b774cd9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#aa9172dabf1f037963c8f93f7b774cd9e">DisplayCameraDetailsImgui</a> ()</td></tr>
 <tr class="separator:aa9172dabf1f037963c8f93f7b774cd9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55a4d1a5773d240f08c766e6566591b3"><td class="memItemLeft" align="right" valign="top"><a id="a55a4d1a5773d240f08c766e6566591b3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ProcessKeyboard</b> (camera_movement _direction, float _deltaTime)</td></tr>
+<tr class="memitem:a55a4d1a5773d240f08c766e6566591b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a55a4d1a5773d240f08c766e6566591b3">ProcessKeyboard</a> (<a class="el" href="classpiolot_1_1_camera.html#afba5e0e4539ee7666e8354842c4988e0">camera_movement</a> _direction, float _deltaTime)</td></tr>
 <tr class="separator:a55a4d1a5773d240f08c766e6566591b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6e18ad2ee8ca787ffe5fa35a01dd16b"><td class="memItemLeft" align="right" valign="top"><a id="ae6e18ad2ee8ca787ffe5fa35a01dd16b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ProcessMouseMovement</b> (float _xoffset, float _yoffset)</td></tr>
+<tr class="memitem:ae6e18ad2ee8ca787ffe5fa35a01dd16b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#ae6e18ad2ee8ca787ffe5fa35a01dd16b">ProcessMouseMovement</a> (float _xoffset, float _yoffset)</td></tr>
 <tr class="separator:ae6e18ad2ee8ca787ffe5fa35a01dd16b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f2dd8513b5f87e438e2721bd32b22c0"><td class="memItemLeft" align="right" valign="top"><a id="a6f2dd8513b5f87e438e2721bd32b22c0"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>GetMouseRayDirection</b> (float _mouseX, float _mouseY, int _windowWidth, int _windowHeight, glm::mat4 _projectionMatrix)</td></tr>
+<tr class="memitem:a6f2dd8513b5f87e438e2721bd32b22c0"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a6f2dd8513b5f87e438e2721bd32b22c0">GetMouseRayDirection</a> (float _mouseX, float _mouseY, int _windowWidth, int _windowHeight, glm::mat4 _projectionMatrix)</td></tr>
 <tr class="separator:a6f2dd8513b5f87e438e2721bd32b22c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e5675563dc81e8526c012e54cb92c9f"><td class="memItemLeft" align="right" valign="top"><a id="a3e5675563dc81e8526c012e54cb92c9f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateVectors</b> ()</td></tr>
+<tr class="memitem:a3e5675563dc81e8526c012e54cb92c9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a3e5675563dc81e8526c012e54cb92c9f">UpdateVectors</a> ()</td></tr>
 <tr class="separator:a3e5675563dc81e8526c012e54cb92c9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93e6bf77b4c9a6a1402a4866dc2590e9"><td class="memItemLeft" align="right" valign="top"><a id="a93e6bf77b4c9a6a1402a4866dc2590e9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateMatrices</b> ()</td></tr>
+<tr class="memitem:a93e6bf77b4c9a6a1402a4866dc2590e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a93e6bf77b4c9a6a1402a4866dc2590e9">UpdateMatrices</a> ()</td></tr>
 <tr class="separator:a93e6bf77b4c9a6a1402a4866dc2590e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd25ede2299da256764a59e991a8e25a"><td class="memItemLeft" align="right" valign="top"><a id="abd25ede2299da256764a59e991a8e25a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SaveToStream</b> (std::ofstream &amp;_out)</td></tr>
+<tr class="memitem:abd25ede2299da256764a59e991a8e25a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#abd25ede2299da256764a59e991a8e25a">SaveToStream</a> (std::ofstream &amp;_out)</td></tr>
 <tr class="separator:abd25ede2299da256764a59e991a8e25a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acca1f703bec64c28d501760920cf8d57"><td class="memItemLeft" align="right" valign="top"><a id="acca1f703bec64c28d501760920cf8d57"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>LoadFromStream</b> (std::ifstream &amp;_in)</td></tr>
+<tr class="memitem:acca1f703bec64c28d501760920cf8d57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#acca1f703bec64c28d501760920cf8d57">LoadFromStream</a> (std::ifstream &amp;_in)</td></tr>
 <tr class="separator:acca1f703bec64c28d501760920cf8d57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a4552a5cf81a5a8ed249f632e157947a1"><td class="memItemLeft" align="right" valign="top"><a id="a4552a5cf81a5a8ed249f632e157947a1"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>position</b></td></tr>
+<tr class="memitem:a4552a5cf81a5a8ed249f632e157947a1"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a4552a5cf81a5a8ed249f632e157947a1">position</a></td></tr>
 <tr class="separator:a4552a5cf81a5a8ed249f632e157947a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2adfedf79a032c96798b7d6e01755b5a"><td class="memItemLeft" align="right" valign="top"><a id="a2adfedf79a032c96798b7d6e01755b5a"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>front</b></td></tr>
+<tr class="memitem:a2adfedf79a032c96798b7d6e01755b5a"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a2adfedf79a032c96798b7d6e01755b5a">front</a></td></tr>
 <tr class="separator:a2adfedf79a032c96798b7d6e01755b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31ccd695a741d232fa4592d7713de37e"><td class="memItemLeft" align="right" valign="top"><a id="a31ccd695a741d232fa4592d7713de37e"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>up</b></td></tr>
+<tr class="memitem:a31ccd695a741d232fa4592d7713de37e"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a31ccd695a741d232fa4592d7713de37e">up</a></td></tr>
 <tr class="separator:a31ccd695a741d232fa4592d7713de37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20ee1dceb691bb4eefda7a792a6de7c5"><td class="memItemLeft" align="right" valign="top"><a id="a20ee1dceb691bb4eefda7a792a6de7c5"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>right</b></td></tr>
+<tr class="memitem:a20ee1dceb691bb4eefda7a792a6de7c5"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a20ee1dceb691bb4eefda7a792a6de7c5">right</a></td></tr>
 <tr class="separator:a20ee1dceb691bb4eefda7a792a6de7c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae722f7d01f68b23b82feb2adb74b90c2"><td class="memItemLeft" align="right" valign="top"><a id="ae722f7d01f68b23b82feb2adb74b90c2"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>worldUp</b></td></tr>
+<tr class="memitem:ae722f7d01f68b23b82feb2adb74b90c2"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#ae722f7d01f68b23b82feb2adb74b90c2">worldUp</a></td></tr>
 <tr class="separator:ae722f7d01f68b23b82feb2adb74b90c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92aadc4b56ef9667081ecb52b2d7bc42"><td class="memItemLeft" align="right" valign="top"><a id="a92aadc4b56ef9667081ecb52b2d7bc42"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>movementSpeed</b> = 0.0f</td></tr>
+<tr class="memitem:a92aadc4b56ef9667081ecb52b2d7bc42"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a92aadc4b56ef9667081ecb52b2d7bc42">movementSpeed</a> = 0.0f</td></tr>
 <tr class="separator:a92aadc4b56ef9667081ecb52b2d7bc42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade10b624b272d00a83fdc969da8755f9"><td class="memItemLeft" align="right" valign="top"><a id="ade10b624b272d00a83fdc969da8755f9"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>mouseSensitivity</b> = 0.0f</td></tr>
+<tr class="memitem:ade10b624b272d00a83fdc969da8755f9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#ade10b624b272d00a83fdc969da8755f9">mouseSensitivity</a> = 0.0f</td></tr>
 <tr class="separator:ade10b624b272d00a83fdc969da8755f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f9352500ba36f03f6a384cc28579a95"><td class="memItemLeft" align="right" valign="top"><a id="a8f9352500ba36f03f6a384cc28579a95"></a>
-glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>viewMatrix</b></td></tr>
+<tr class="memitem:a8f9352500ba36f03f6a384cc28579a95"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a8f9352500ba36f03f6a384cc28579a95">viewMatrix</a></td></tr>
 <tr class="separator:a8f9352500ba36f03f6a384cc28579a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acada09a9b00303c10c694c386fa05f87"><td class="memItemLeft" align="right" valign="top"><a id="acada09a9b00303c10c694c386fa05f87"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>cameraName</b></td></tr>
+<tr class="memitem:acada09a9b00303c10c694c386fa05f87"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#acada09a9b00303c10c694c386fa05f87">cameraName</a></td></tr>
 <tr class="separator:acada09a9b00303c10c694c386fa05f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a782c913d63204fd8e22c17111dc1921f"><td class="memItemLeft" align="right" valign="top"><a id="a782c913d63204fd8e22c17111dc1921f"></a>
-CameraType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="memitem:a782c913d63204fd8e22c17111dc1921f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacepiolot.html#a8ffac0a73d973fb66879963da5defc90">CameraType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_camera.html#a782c913d63204fd8e22c17111dc1921f">type</a></td></tr>
 <tr class="separator:a782c913d63204fd8e22c17111dc1921f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="afba5e0e4539ee7666e8354842c4988e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afba5e0e4539ee7666e8354842c4988e0">&#9670;&nbsp;</a></span>camera_movement</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classpiolot_1_1_camera.html#afba5e0e4539ee7666e8354842c4988e0">piolot::Camera::camera_movement</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="afba5e0e4539ee7666e8354842c4988e0a0cb80fe1877fddc4afdeb7bb00785842"></a>forward&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afba5e0e4539ee7666e8354842c4988e0a54badf21a866512cc17c36e2cf1b4aa6"></a>back&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afba5e0e4539ee7666e8354842c4988e0a4f24534e1ab495cce0a63f8e28fda1b9"></a>rightside&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afba5e0e4539ee7666e8354842c4988e0a25379d6baed208220bc99d359283c5e8"></a>leftside&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a7c525f53bc93d1627261d40674e96104"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c525f53bc93d1627261d40674e96104">&#9670;&nbsp;</a></span>Camera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">piolot::Camera::Camera </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>_cameraName</em> = <code>&quot;default&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>_position</em> = <code>glm::vec3(0,&#160;0,&#160;10)</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>_front</em> = <code>glm::vec3(0,&#160;0,&#160;-1)</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>_worldUp</em> = <code>glm::vec3(0,&#160;1,&#160;0)</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacepiolot.html#a8ffac0a73d973fb66879963da5defc90">CameraType</a>&#160;</td>
+          <td class="paramname"><em>_type</em> = <code><a class="el" href="namespacepiolot.html#a8ffac0a73d973fb66879963da5defc90a2306e17263193ee4e70fe9756faef528">perspective</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_movementSpeed</em> = <code><a class="el" href="namespacepiolot.html#ad09978d4f33e2559089adbc964c31992">default_camera_speed</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_mouseSensitivity</em> = <code><a class="el" href="namespacepiolot.html#a748a31cf105e50f2a20ccaba5fd374d3">default_camera_mouse_sensitivity</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d693a4be11bfc98a2cb46c4363ed00f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d693a4be11bfc98a2cb46c4363ed00f">&#9670;&nbsp;</a></span>~Camera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">piolot::Camera::~Camera </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa9172dabf1f037963c8f93f7b774cd9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9172dabf1f037963c8f93f7b774cd9e">&#9670;&nbsp;</a></span>DisplayCameraDetailsImgui()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Camera::DisplayCameraDetailsImgui </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4322f03375c71eae72b7238a1c4ac12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4322f03375c71eae72b7238a1c4ac12">&#9670;&nbsp;</a></span>GetCameraName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string&amp; piolot::Camera::GetCameraName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6a428b0f65c9f2b3b5c5c028a96fb1f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a428b0f65c9f2b3b5c5c028a96fb1f7">&#9670;&nbsp;</a></span>GetFront()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const glm::vec3&amp; piolot::Camera::GetFront </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6f2dd8513b5f87e438e2721bd32b22c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f2dd8513b5f87e438e2721bd32b22c0">&#9670;&nbsp;</a></span>GetMouseRayDirection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 piolot::Camera::GetMouseRayDirection </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_mouseX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_mouseY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_windowWidth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_windowHeight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::mat4&#160;</td>
+          <td class="paramname"><em>_projectionMatrix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f9b65c8df717b82c3b7193457ce71f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f9b65c8df717b82c3b7193457ce71f0">&#9670;&nbsp;</a></span>GetMouseSensitivity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float piolot::Camera::GetMouseSensitivity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad270b37d787605772644f35b844992b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad270b37d787605772644f35b844992b0">&#9670;&nbsp;</a></span>GetMovementSpeed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float piolot::Camera::GetMovementSpeed </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9c12125ca134fdf776a296c0fac4a79f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c12125ca134fdf776a296c0fac4a79f">&#9670;&nbsp;</a></span>GetPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3&amp; piolot::Camera::GetPosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a970d1203b54bb2323f9cbb994366d3b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a970d1203b54bb2323f9cbb994366d3b4">&#9670;&nbsp;</a></span>GetRight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const glm::vec3&amp; piolot::Camera::GetRight </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9ce10517ad9161abf65b827d1884d785"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ce10517ad9161abf65b827d1884d785">&#9670;&nbsp;</a></span>GetUp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const glm::vec3&amp; piolot::Camera::GetUp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad57c30f9e3f381a492b38566eab4b905"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad57c30f9e3f381a492b38566eab4b905">&#9670;&nbsp;</a></span>GetViewMatrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const glm::mat4&amp; piolot::Camera::GetViewMatrix </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afe3908486ce13772bf593a666869667a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe3908486ce13772bf593a666869667a">&#9670;&nbsp;</a></span>GetWorldUp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const glm::vec3&amp; piolot::Camera::GetWorldUp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acca1f703bec64c28d501760920cf8d57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acca1f703bec64c28d501760920cf8d57">&#9670;&nbsp;</a></span>LoadFromStream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Camera::LoadFromStream </td>
+          <td>(</td>
+          <td class="paramtype">std::ifstream &amp;&#160;</td>
+          <td class="paramname"><em>_in</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a55a4d1a5773d240f08c766e6566591b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55a4d1a5773d240f08c766e6566591b3">&#9670;&nbsp;</a></span>ProcessKeyboard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Camera::ProcessKeyboard </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classpiolot_1_1_camera.html#afba5e0e4539ee7666e8354842c4988e0">camera_movement</a>&#160;</td>
+          <td class="paramname"><em>_direction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_deltaTime</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae6e18ad2ee8ca787ffe5fa35a01dd16b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6e18ad2ee8ca787ffe5fa35a01dd16b">&#9670;&nbsp;</a></span>ProcessMouseMovement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Camera::ProcessMouseMovement </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_xoffset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_yoffset</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd25ede2299da256764a59e991a8e25a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd25ede2299da256764a59e991a8e25a">&#9670;&nbsp;</a></span>SaveToStream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Camera::SaveToStream </td>
+          <td>(</td>
+          <td class="paramtype">std::ofstream &amp;&#160;</td>
+          <td class="paramname"><em>_out</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6151125f42016135376a60182acb63ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6151125f42016135376a60182acb63ef">&#9670;&nbsp;</a></span>SetFront()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Camera::SetFront </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>_front</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ade560e16d6c3775dab0637873e66e762"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade560e16d6c3775dab0637873e66e762">&#9670;&nbsp;</a></span>SetMouseSensitivity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Camera::SetMouseSensitivity </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_mouseSensitivity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaf2988ab05281a6a1404207a76957ad6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf2988ab05281a6a1404207a76957ad6">&#9670;&nbsp;</a></span>SetMovementSpeed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Camera::SetMovementSpeed </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_movementSpeed</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a84ff7b1edc39841dddc485fb9e641bf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84ff7b1edc39841dddc485fb9e641bf1">&#9670;&nbsp;</a></span>SetPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Camera::SetPosition </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>_position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf17d4592d4d144ea3deab9d8d5d836d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf17d4592d4d144ea3deab9d8d5d836d">&#9670;&nbsp;</a></span>SetViewMatrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Camera::SetViewMatrix </td>
+          <td>(</td>
+          <td class="paramtype">const glm::mat4 &amp;&#160;</td>
+          <td class="paramname"><em>_viewMatrix</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a93e6bf77b4c9a6a1402a4866dc2590e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93e6bf77b4c9a6a1402a4866dc2590e9">&#9670;&nbsp;</a></span>UpdateMatrices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Camera::UpdateMatrices </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3e5675563dc81e8526c012e54cb92c9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e5675563dc81e8526c012e54cb92c9f">&#9670;&nbsp;</a></span>UpdateVectors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Camera::UpdateVectors </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="acada09a9b00303c10c694c386fa05f87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acada09a9b00303c10c694c386fa05f87">&#9670;&nbsp;</a></span>cameraName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string piolot::Camera::cameraName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2adfedf79a032c96798b7d6e01755b5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2adfedf79a032c96798b7d6e01755b5a">&#9670;&nbsp;</a></span>front</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 piolot::Camera::front</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ade10b624b272d00a83fdc969da8755f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade10b624b272d00a83fdc969da8755f9">&#9670;&nbsp;</a></span>mouseSensitivity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float piolot::Camera::mouseSensitivity = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a92aadc4b56ef9667081ecb52b2d7bc42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92aadc4b56ef9667081ecb52b2d7bc42">&#9670;&nbsp;</a></span>movementSpeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float piolot::Camera::movementSpeed = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4552a5cf81a5a8ed249f632e157947a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4552a5cf81a5a8ed249f632e157947a1">&#9670;&nbsp;</a></span>position</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 piolot::Camera::position</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a20ee1dceb691bb4eefda7a792a6de7c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20ee1dceb691bb4eefda7a792a6de7c5">&#9670;&nbsp;</a></span>right</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 piolot::Camera::right</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a782c913d63204fd8e22c17111dc1921f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a782c913d63204fd8e22c17111dc1921f">&#9670;&nbsp;</a></span>type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacepiolot.html#a8ffac0a73d973fb66879963da5defc90">CameraType</a> piolot::Camera::type</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a31ccd695a741d232fa4592d7713de37e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31ccd695a741d232fa4592d7713de37e">&#9670;&nbsp;</a></span>up</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 piolot::Camera::up</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f9352500ba36f03f6a384cc28579a95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f9352500ba36f03f6a384cc28579a95">&#9670;&nbsp;</a></span>viewMatrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::mat4 piolot::Camera::viewMatrix</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae722f7d01f68b23b82feb2adb74b90c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae722f7d01f68b23b82feb2adb74b90c2">&#9670;&nbsp;</a></span>worldUp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 piolot::Camera::worldUp</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/dev/Piolot/Engine/<a class="el" href="_camera_8h_source.html">Camera.h</a></li>
-<li>C:/dev/Piolot/Engine/Camera.cpp</li>
+<li><a class="el" href="_camera_8h_source.html">Camera.h</a></li>
+<li><a class="el" href="_camera_8cpp.html">Camera.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>piolot</b></li><li class="navelem"><a class="el" href="classpiolot_1_1_camera.html">Camera</a></li>
+    <li class="navelem"><a class="el" href="namespacepiolot.html">piolot</a></li><li class="navelem"><a class="el" href="classpiolot_1_1_camera.html">Camera</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>

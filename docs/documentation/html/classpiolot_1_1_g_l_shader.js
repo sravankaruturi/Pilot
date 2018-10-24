@@ -11,6 +11,8 @@ var classpiolot_1_1_g_l_shader =
     [ "setMat4", "classpiolot_1_1_g_l_shader.html#a56d846ae1d7c6adc579c5de37db02546", null ],
     [ "setVec3", "classpiolot_1_1_g_l_shader.html#a47d614244dc667768a36b9cea1675eca", null ],
     [ "setVec3", "classpiolot_1_1_g_l_shader.html#a293369149f4ad507543cb0fcd783afd1", null ],
+    [ "setVec4", "classpiolot_1_1_g_l_shader.html#a700a4f95289f10e63c5d2bc0719d99e3", null ],
+    [ "setVec4", "classpiolot_1_1_g_l_shader.html#a1f9299d4a1401de2901306e26d020a51", null ],
     [ "use", "classpiolot_1_1_g_l_shader.html#a624427668ba51101fe898e12731069bf", null ],
     [ "compileStatus", "classpiolot_1_1_g_l_shader.html#aa99f7e5b6b76e8796824278578e4172d", null ],
     [ "shaderId", "classpiolot_1_1_g_l_shader.html#a7f05981084b76212d3ee92c71e002fb2", null ],

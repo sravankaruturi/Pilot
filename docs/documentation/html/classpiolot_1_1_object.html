@@ -96,52 +96,450 @@ $(document).ready(function(){initNavTree('classpiolot_1_1_object.html','');});
 <div class="title">piolot::Object Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_object_8h_source.html">Object.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a592cb508bd914b41bff868e2a9b648f5"><td class="memItemLeft" align="right" valign="top"><a id="a592cb508bd914b41bff868e2a9b648f5"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetObjectName</b> () const</td></tr>
+<tr class="memitem:ab948ad199b42e7182b6bc4b21cd68d9b"><td class="memItemLeft" align="right" valign="top">float &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#ab948ad199b42e7182b6bc4b21cd68d9b">GetLastAnimationUpdateTime</a> ()</td></tr>
+<tr class="separator:ab948ad199b42e7182b6bc4b21cd68d9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39a9f4b026f1e1d97cde05b131fd56d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a39a9f4b026f1e1d97cde05b131fd56d8">SetLastAnimationUpdateTime</a> (float _lastAnimationUpdateTime)</td></tr>
+<tr class="separator:a39a9f4b026f1e1d97cde05b131fd56d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5539388d51bad81ce2e253122c02b0ef"><td class="memItemLeft" align="right" valign="top">const glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a5539388d51bad81ce2e253122c02b0ef">GetLeastVertex</a> () const</td></tr>
+<tr class="separator:a5539388d51bad81ce2e253122c02b0ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7704fb8d510eb5a4f02d7cbe6eced9f"><td class="memItemLeft" align="right" valign="top">const glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#ac7704fb8d510eb5a4f02d7cbe6eced9f">GetHighestVertex</a> () const</td></tr>
+<tr class="separator:ac7704fb8d510eb5a4f02d7cbe6eced9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a592cb508bd914b41bff868e2a9b648f5"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a592cb508bd914b41bff868e2a9b648f5">GetObjectName</a> () const</td></tr>
 <tr class="separator:a592cb508bd914b41bff868e2a9b648f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05e280baf87f9780e5de1c24849b862c"><td class="memItemLeft" align="right" valign="top"><a id="a05e280baf87f9780e5de1c24849b862c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Object</b> (const std::string &amp;_name, std::vector&lt; std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_mesh.html">Mesh</a> &gt;&gt; _meshes)</td></tr>
+<tr class="memitem:a05e280baf87f9780e5de1c24849b862c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a05e280baf87f9780e5de1c24849b862c">Object</a> (const std::string &amp;_name, std::vector&lt; std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_mesh.html">Mesh</a> &gt;&gt; _meshes)</td></tr>
 <tr class="separator:a05e280baf87f9780e5de1c24849b862c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add3cd7bb280395a43069e872b384ac97"><td class="memItemLeft" align="right" valign="top"><a id="add3cd7bb280395a43069e872b384ac97"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Object</b> (const std::string &amp;_objectPath)</td></tr>
+<tr class="memitem:add3cd7bb280395a43069e872b384ac97"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#add3cd7bb280395a43069e872b384ac97">Object</a> (const std::string &amp;_objectPath)</td></tr>
 <tr class="separator:add3cd7bb280395a43069e872b384ac97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac452c0e8843e6a1bc64b4e7eae031cf"><td class="memItemLeft" align="right" valign="top"><a id="aac452c0e8843e6a1bc64b4e7eae031cf"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Render</b> (std::string shaderName)</td></tr>
+<tr class="memitem:ad6983e37a5ffc74726c4605454643f23"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#ad6983e37a5ffc74726c4605454643f23">~Object</a> ()</td></tr>
+<tr class="separator:ad6983e37a5ffc74726c4605454643f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac452c0e8843e6a1bc64b4e7eae031cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#aac452c0e8843e6a1bc64b4e7eae031cf">Render</a> (std::string shaderName)</td></tr>
 <tr class="separator:aac452c0e8843e6a1bc64b4e7eae031cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3126fb80869e1a5b02ef43eb27e69ce"><td class="memItemLeft" align="right" valign="top"><a id="ab3126fb80869e1a5b02ef43eb27e69ce"></a>
-std::vector&lt; std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_mesh.html">piolot::Mesh</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetMeshes</b> () const</td></tr>
+<tr class="memitem:ab3126fb80869e1a5b02ef43eb27e69ce"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_mesh.html">piolot::Mesh</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#ab3126fb80869e1a5b02ef43eb27e69ce">GetMeshes</a> () const</td></tr>
 <tr class="separator:ab3126fb80869e1a5b02ef43eb27e69ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe2585d95f1cb2b388ea3bdf7868b968"><td class="memItemLeft" align="right" valign="top"><a id="abe2585d95f1cb2b388ea3bdf7868b968"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetMeshes</b> (std::vector&lt; std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_mesh.html">piolot::Mesh</a> &gt;&gt; val)</td></tr>
+<tr class="memitem:abe2585d95f1cb2b388ea3bdf7868b968"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#abe2585d95f1cb2b388ea3bdf7868b968">SetMeshes</a> (std::vector&lt; std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_mesh.html">piolot::Mesh</a> &gt;&gt; val)</td></tr>
 <tr class="separator:abe2585d95f1cb2b388ea3bdf7868b968"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cc3243f893c5978ab600201f799feb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a7cc3243f893c5978ab600201f799feb0">MeshDetailsImGUI</a> ()</td></tr>
+<tr class="separator:a7cc3243f893c5978ab600201f799feb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3eda47bd353a782ed6fa85fd44bf0ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#af3eda47bd353a782ed6fa85fd44bf0ec">BoneTransform</a> (float _totalTime, std::vector&lt; glm::mat4 &gt; &amp;_matrices)</td></tr>
+<tr class="memdesc:af3eda47bd353a782ed6fa85fd44bf0ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function would load the final Transformation Matrices ( transposed and Ready for OpenGL ) for a particular animation at a given time, from the start of the animation.  <a href="#af3eda47bd353a782ed6fa85fd44bf0ec">More...</a><br /></td></tr>
+<tr class="separator:af3eda47bd353a782ed6fa85fd44bf0ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4fa72eb5f53481b0daf2d99decec169"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#ae4fa72eb5f53481b0daf2d99decec169">CopyBoneMatrices</a> (std::vector&lt; glm::mat4 &gt; &amp;_matrices)</td></tr>
+<tr class="separator:ae4fa72eb5f53481b0daf2d99decec169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:ab361363059783f44a48c24529aef482e"><td class="memItemLeft" align="right" valign="top"><a id="ab361363059783f44a48c24529aef482e"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>directory</b></td></tr>
+<tr class="memitem:ab361363059783f44a48c24529aef482e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#ab361363059783f44a48c24529aef482e">directory</a></td></tr>
 <tr class="separator:ab361363059783f44a48c24529aef482e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1995f97bb181bf6aeee850052c01dd24"><td class="memItemLeft" align="right" valign="top"><a id="a1995f97bb181bf6aeee850052c01dd24"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>objectName</b></td></tr>
+<tr class="memitem:a1995f97bb181bf6aeee850052c01dd24"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a1995f97bb181bf6aeee850052c01dd24">objectName</a></td></tr>
 <tr class="separator:a1995f97bb181bf6aeee850052c01dd24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a26c60e9239d03e7c31a243c0325934"><td class="memItemLeft" align="right" valign="top"><a id="a4a26c60e9239d03e7c31a243c0325934"></a>
-std::vector&lt; std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_mesh.html">Mesh</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>meshes</b></td></tr>
+<tr class="memitem:a4a26c60e9239d03e7c31a243c0325934"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_mesh.html">Mesh</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a4a26c60e9239d03e7c31a243c0325934">meshes</a></td></tr>
 <tr class="separator:a4a26c60e9239d03e7c31a243c0325934"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c3cdbb5520b6ff452a9d248bb359cbd"><td class="memItemLeft" align="right" valign="top">Assimp::Importer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a5c3cdbb5520b6ff452a9d248bb359cbd">assimpImporter</a></td></tr>
+<tr class="memdesc:a5c3cdbb5520b6ff452a9d248bb359cbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Assimp Importer.  <a href="#a5c3cdbb5520b6ff452a9d248bb359cbd">More...</a><br /></td></tr>
+<tr class="separator:a5c3cdbb5520b6ff452a9d248bb359cbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a169e800bae7a051cac9c2e11477a78f9"><td class="memItemLeft" align="right" valign="top">const aiScene *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a169e800bae7a051cac9c2e11477a78f9">assimpScene</a></td></tr>
+<tr class="memdesc:a169e800bae7a051cac9c2e11477a78f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the Assimp <a class="el" href="classpiolot_1_1_scene.html">Scene</a> Variable to keep track of the Animations.  <a href="#a169e800bae7a051cac9c2e11477a78f9">More...</a><br /></td></tr>
+<tr class="separator:a169e800bae7a051cac9c2e11477a78f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d00c3e5c9727dfd9c9937ba401470d7"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a7d00c3e5c9727dfd9c9937ba401470d7">boneMapping</a></td></tr>
+<tr class="memdesc:a7d00c3e5c9727dfd9c9937ba401470d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A map to keep track of the Bones in the <a class="el" href="classpiolot_1_1_object.html">Object</a>.  <a href="#a7d00c3e5c9727dfd9c9937ba401470d7">More...</a><br /></td></tr>
+<tr class="separator:a7d00c3e5c9727dfd9c9937ba401470d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cab740496f8e838feb4268b36180ed7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structpiolot_1_1_bone_info.html">BoneInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a0cab740496f8e838feb4268b36180ed7">boneData</a></td></tr>
+<tr class="memdesc:a0cab740496f8e838feb4268b36180ed7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This contains details regarding the Bone Transformations for all the Bones.  <a href="#a0cab740496f8e838feb4268b36180ed7">More...</a><br /></td></tr>
+<tr class="separator:a0cab740496f8e838feb4268b36180ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0a2a51c6614bfb552ee12801643ece2"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#ad0a2a51c6614bfb552ee12801643ece2">numberOfBonesLoaded</a> = 0</td></tr>
+<tr class="memdesc:ad0a2a51c6614bfb552ee12801643ece2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of Bones Loaded by our Engine.  <a href="#ad0a2a51c6614bfb552ee12801643ece2">More...</a><br /></td></tr>
+<tr class="separator:ad0a2a51c6614bfb552ee12801643ece2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30772cbf9aaab4c5871df82581b8d117"><td class="memItemLeft" align="right" valign="top">aiMatrix4x4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a30772cbf9aaab4c5871df82581b8d117">globalInverseTransform</a></td></tr>
+<tr class="memdesc:a30772cbf9aaab4c5871df82581b8d117"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Inverse of the Global Transform Matrix. Used to calculate the Final Transformation Matrices of the Bones.  <a href="#a30772cbf9aaab4c5871df82581b8d117">More...</a><br /></td></tr>
+<tr class="separator:a30772cbf9aaab4c5871df82581b8d117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44fd0867a8daca738c9b798181e9c48b"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a44fd0867a8daca738c9b798181e9c48b">leastVertex</a> {}</td></tr>
+<tr class="separator:a44fd0867a8daca738c9b798181e9c48b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6862a74fc8184327a0f763578f4a7532"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a6862a74fc8184327a0f763578f4a7532">highestVertex</a> {}</td></tr>
+<tr class="separator:a6862a74fc8184327a0f763578f4a7532"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addfd3a255444e86bab978e3e9ee27d37"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#addfd3a255444e86bab978e3e9ee27d37">lastAnimationUpdateTime</a> = 0.0f</td></tr>
+<tr class="memdesc:addfd3a255444e86bab978e3e9ee27d37"><td class="mdescLeft">&#160;</td><td class="mdescRight">This keeps track of when this particular object was animated last.  <a href="#addfd3a255444e86bab978e3e9ee27d37">More...</a><br /></td></tr>
+<tr class="separator:addfd3a255444e86bab978e3e9ee27d37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:ace45406ebc032ac05e6b9bb388ebc3c2"><td class="memItemLeft" align="right" valign="top"><a id="ace45406ebc032ac05e6b9bb388ebc3c2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ProcessNode</b> (aiNode *_node, const aiScene *_scene, std::vector&lt; std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_mesh.html">Mesh</a> &gt;&gt; &amp;_meshes)</td></tr>
+<tr class="memitem:ace45406ebc032ac05e6b9bb388ebc3c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#ace45406ebc032ac05e6b9bb388ebc3c2">ProcessNode</a> (aiNode *_node, const aiScene *_scene, std::vector&lt; std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_mesh.html">Mesh</a> &gt;&gt; &amp;_meshes)</td></tr>
 <tr class="separator:ace45406ebc032ac05e6b9bb388ebc3c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab917dddc7f767962960e607ada13a4d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#ab917dddc7f767962960e607ada13a4d5">ProcessAndAddMesh</a> (aiMesh *_mesh, const aiScene *_scene)</td></tr>
 <tr class="separator:ab917dddc7f767962960e607ada13a4d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87d3fb79aa882718cf10d72f85a397dc"><td class="memItemLeft" align="right" valign="top"><a id="a87d3fb79aa882718cf10d72f85a397dc"></a>
-std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>LoadMaterialTextures</b> (aiMaterial *_mat, aiTextureType _type)</td></tr>
+<tr class="memitem:a87d3fb79aa882718cf10d72f85a397dc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a87d3fb79aa882718cf10d72f85a397dc">LoadMaterialTextures</a> (aiMaterial *_mat, aiTextureType _type)</td></tr>
 <tr class="separator:a87d3fb79aa882718cf10d72f85a397dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fb805f24099b9084e70ec083c25d253"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a0fb805f24099b9084e70ec083c25d253">ProcessNodeHierarchyAnimation</a> (float _animationTime, const aiNode *_node, const aiMatrix4x4 &amp;_parentTransform)</td></tr>
+<tr class="memdesc:a0fb805f24099b9084e70ec083c25d253"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process the Node Hierarchy for details regarding the Animation.  <a href="#a0fb805f24099b9084e70ec083c25d253">More...</a><br /></td></tr>
+<tr class="separator:a0fb805f24099b9084e70ec083c25d253"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63011b95040a4fab1f2514258c70b35a"><td class="memItemLeft" align="right" valign="top">const aiNodeAnim *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiolot_1_1_object.html#a63011b95040a4fab1f2514258c70b35a">FindNodeAnim</a> (const aiAnimation *_animation, const std::string &amp;_nodeName)</td></tr>
+<tr class="memdesc:a63011b95040a4fab1f2514258c70b35a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the Node Animation Details Pointer using the Model Animation and the Node Name.  <a href="#a63011b95040a4fab1f2514258c70b35a">More...</a><br /></td></tr>
+<tr class="separator:a63011b95040a4fab1f2514258c70b35a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a05e280baf87f9780e5de1c24849b862c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05e280baf87f9780e5de1c24849b862c">&#9670;&nbsp;</a></span>Object() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">piolot::Object::Object </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_mesh.html">Mesh</a> &gt;&gt;&#160;</td>
+          <td class="paramname"><em>_meshes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add3cd7bb280395a43069e872b384ac97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add3cd7bb280395a43069e872b384ac97">&#9670;&nbsp;</a></span>Object() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">piolot::Object::Object </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>_objectPath</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6983e37a5ffc74726c4605454643f23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6983e37a5ffc74726c4605454643f23">&#9670;&nbsp;</a></span>~Object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">piolot::Object::~Object </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="af3eda47bd353a782ed6fa85fd44bf0ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3eda47bd353a782ed6fa85fd44bf0ec">&#9670;&nbsp;</a></span>BoneTransform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Object::BoneTransform </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_totalTime</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; glm::mat4 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_matrices</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function would load the final Transformation Matrices ( transposed and Ready for OpenGL ) for a particular animation at a given time, from the start of the animation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_totalTime</td><td>Time elapsed since the start of the Animation </td></tr>
+    <tr><td class="paramname">_matrices</td><td>Matrices to load the Bone Matrices in </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae4fa72eb5f53481b0daf2d99decec169"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4fa72eb5f53481b0daf2d99decec169">&#9670;&nbsp;</a></span>CopyBoneMatrices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Object::CopyBoneMatrices </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; glm::mat4 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_matrices</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63011b95040a4fab1f2514258c70b35a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63011b95040a4fab1f2514258c70b35a">&#9670;&nbsp;</a></span>FindNodeAnim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const aiNodeAnim * piolot::Object::FindNodeAnim </td>
+          <td>(</td>
+          <td class="paramtype">const aiAnimation *&#160;</td>
+          <td class="paramname"><em>_animation</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>_nodeName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Find the Node Animation Details Pointer using the Model Animation and the Node Name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_animation</td><td>The Animation of the <a class="el" href="classpiolot_1_1_mesh.html">Mesh</a> we are currently looking for </td></tr>
+    <tr><td class="paramname">_nodeName</td><td>The Node Name that we currently want the animation details for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The Node Animation Details. </dd></dl>
+
+</div>
+</div>
+<a id="ac7704fb8d510eb5a4f02d7cbe6eced9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7704fb8d510eb5a4f02d7cbe6eced9f">&#9670;&nbsp;</a></span>GetHighestVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const glm::vec3 piolot::Object::GetHighestVertex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab948ad199b42e7182b6bc4b21cd68d9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab948ad199b42e7182b6bc4b21cd68d9b">&#9670;&nbsp;</a></span>GetLastAnimationUpdateTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float&amp; piolot::Object::GetLastAnimationUpdateTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5539388d51bad81ce2e253122c02b0ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5539388d51bad81ce2e253122c02b0ef">&#9670;&nbsp;</a></span>GetLeastVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const glm::vec3 piolot::Object::GetLeastVertex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3126fb80869e1a5b02ef43eb27e69ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3126fb80869e1a5b02ef43eb27e69ce">&#9670;&nbsp;</a></span>GetMeshes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="classpiolot_1_1_mesh.html">piolot::Mesh</a>&gt; &gt; piolot::Object::GetMeshes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a592cb508bd914b41bff868e2a9b648f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a592cb508bd914b41bff868e2a9b648f5">&#9670;&nbsp;</a></span>GetObjectName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string&amp; piolot::Object::GetObjectName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a87d3fb79aa882718cf10d72f85a397dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87d3fb79aa882718cf10d72f85a397dc">&#9670;&nbsp;</a></span>LoadMaterialTextures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; piolot::Object::LoadMaterialTextures </td>
+          <td>(</td>
+          <td class="paramtype">aiMaterial *&#160;</td>
+          <td class="paramname"><em>_mat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">aiTextureType&#160;</td>
+          <td class="paramname"><em>_type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7cc3243f893c5978ab600201f799feb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cc3243f893c5978ab600201f799feb0">&#9670;&nbsp;</a></span>MeshDetailsImGUI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Object::MeshDetailsImGUI </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ab917dddc7f767962960e607ada13a4d5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab917dddc7f767962960e607ada13a4d5">&#9670;&nbsp;</a></span>ProcessAndAddMesh()</h2>
 
@@ -175,22 +573,469 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
   </tr>
 </table>
 </div><div class="memdoc">
-<ul>
-<li>Normals */ </li>
-</ul>
+
+</div>
+</div>
+<a id="ace45406ebc032ac05e6b9bb388ebc3c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace45406ebc032ac05e6b9bb388ebc3c2">&#9670;&nbsp;</a></span>ProcessNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Object::ProcessNode </td>
+          <td>(</td>
+          <td class="paramtype">aiNode *&#160;</td>
+          <td class="paramname"><em>_node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const aiScene *&#160;</td>
+          <td class="paramname"><em>_scene</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_mesh.html">Mesh</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>_meshes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0fb805f24099b9084e70ec083c25d253"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fb805f24099b9084e70ec083c25d253">&#9670;&nbsp;</a></span>ProcessNodeHierarchyAnimation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Object::ProcessNodeHierarchyAnimation </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_animationTime</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const aiNode *&#160;</td>
+          <td class="paramname"><em>_node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const aiMatrix4x4 &amp;&#160;</td>
+          <td class="paramname"><em>_parentTransform</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Process the Node Hierarchy for details regarding the Animation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_animationTime</td><td>Time in seconds </td></tr>
+    <tr><td class="paramname">_node</td><td>Current Node </td></tr>
+    <tr><td class="paramname">_parentTransform</td><td>The Transform of the Parent w.r.t the <a class="el" href="classpiolot_1_1_object.html">Object</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aac452c0e8843e6a1bc64b4e7eae031cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac452c0e8843e6a1bc64b4e7eae031cf">&#9670;&nbsp;</a></span>Render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Object::Render </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>shaderName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a39a9f4b026f1e1d97cde05b131fd56d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39a9f4b026f1e1d97cde05b131fd56d8">&#9670;&nbsp;</a></span>SetLastAnimationUpdateTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Object::SetLastAnimationUpdateTime </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_lastAnimationUpdateTime</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abe2585d95f1cb2b388ea3bdf7868b968"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe2585d95f1cb2b388ea3bdf7868b968">&#9670;&nbsp;</a></span>SetMeshes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void piolot::Object::SetMeshes </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classpiolot_1_1_mesh.html">piolot::Mesh</a> &gt;&gt;&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a5c3cdbb5520b6ff452a9d248bb359cbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c3cdbb5520b6ff452a9d248bb359cbd">&#9670;&nbsp;</a></span>assimpImporter</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Assimp::Importer piolot::Object::assimpImporter</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The Assimp Importer. </p>
+<p>We need the imported <a class="el" href="classpiolot_1_1_object.html">Object</a> because, as soon as this runs out of scope, the  variable would be freed. </p>
+
+</div>
+</div>
+<a id="a169e800bae7a051cac9c2e11477a78f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a169e800bae7a051cac9c2e11477a78f9">&#9670;&nbsp;</a></span>assimpScene</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const aiScene* piolot::Object::assimpScene</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This is the Assimp <a class="el" href="classpiolot_1_1_scene.html">Scene</a> Variable to keep track of the Animations. </p>
+<p>This is the easiest way to keep track of Animations instead of writing an entirely new class and functions based on that. </p>
+
+</div>
+</div>
+<a id="a0cab740496f8e838feb4268b36180ed7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cab740496f8e838feb4268b36180ed7">&#9670;&nbsp;</a></span>boneData</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structpiolot_1_1_bone_info.html">BoneInfo</a>&gt; piolot::Object::boneData</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This contains details regarding the Bone Transformations for all the Bones. </p>
+<p>If you need a particular bone, get the index of that bone from the BoneMapping.</p>
+<dl class="section see"><dt>See also</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a7d00c3e5c9727dfd9c9937ba401470d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d00c3e5c9727dfd9c9937ba401470d7">&#9670;&nbsp;</a></span>boneMapping</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, unsigned int&gt; piolot::Object::boneMapping</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A map to keep track of the Bones in the <a class="el" href="classpiolot_1_1_object.html">Object</a>. </p>
+<p>String &ndash;&gt; Key &ndash;&gt; Bone Name. unsigned int &ndash;&gt; Value &ndash;&gt; Index of this particular bone in the Bone Data. </p>
+
+</div>
+</div>
+<a id="ab361363059783f44a48c24529aef482e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab361363059783f44a48c24529aef482e">&#9670;&nbsp;</a></span>directory</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string piolot::Object::directory</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a30772cbf9aaab4c5871df82581b8d117"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30772cbf9aaab4c5871df82581b8d117">&#9670;&nbsp;</a></span>globalInverseTransform</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">aiMatrix4x4 piolot::Object::globalInverseTransform</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The Inverse of the Global Transform Matrix. Used to calculate the Final Transformation Matrices of the Bones. </p>
+
+</div>
+</div>
+<a id="a6862a74fc8184327a0f763578f4a7532"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6862a74fc8184327a0f763578f4a7532">&#9670;&nbsp;</a></span>highestVertex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 piolot::Object::highestVertex {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="addfd3a255444e86bab978e3e9ee27d37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addfd3a255444e86bab978e3e9ee27d37">&#9670;&nbsp;</a></span>lastAnimationUpdateTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float piolot::Object::lastAnimationUpdateTime = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This keeps track of when this particular object was animated last. </p>
+<p>By Keeping track of this, if we have multiple animated entities sharing the animation, they can use the same <a class="el" href="classpiolot_1_1_object.html">Object</a>. If we have two different entities playing different animation, we can create a new object for them. </p>
+
+</div>
+</div>
+<a id="a44fd0867a8daca738c9b798181e9c48b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44fd0867a8daca738c9b798181e9c48b">&#9670;&nbsp;</a></span>leastVertex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 piolot::Object::leastVertex {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4a26c60e9239d03e7c31a243c0325934"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a26c60e9239d03e7c31a243c0325934">&#9670;&nbsp;</a></span>meshes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="classpiolot_1_1_mesh.html">Mesh</a>&gt; &gt; piolot::Object::meshes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0a2a51c6614bfb552ee12801643ece2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0a2a51c6614bfb552ee12801643ece2">&#9670;&nbsp;</a></span>numberOfBonesLoaded</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int piolot::Object::numberOfBonesLoaded = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of Bones Loaded by our Engine. </p>
+<p>If this is different from the Actual Number of Bones in Assimp, we have a problem. </p>
+
+</div>
+</div>
+<a id="a1995f97bb181bf6aeee850052c01dd24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1995f97bb181bf6aeee850052c01dd24">&#9670;&nbsp;</a></span>objectName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string piolot::Object::objectName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/dev/Piolot/Engine/<a class="el" href="_object_8h_source.html">Object.h</a></li>
-<li>C:/dev/Piolot/Engine/Object.cpp</li>
+<li><a class="el" href="_object_8h_source.html">Object.h</a></li>
+<li><a class="el" href="_object_8cpp.html">Object.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>piolot</b></li><li class="navelem"><a class="el" href="classpiolot_1_1_object.html">Object</a></li>
+    <li class="navelem"><a class="el" href="namespacepiolot.html">piolot</a></li><li class="navelem"><a class="el" href="classpiolot_1_1_object.html">Object</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>

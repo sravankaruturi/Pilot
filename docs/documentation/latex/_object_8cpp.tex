@@ -1,0 +1,33 @@
+\hypertarget{_object_8cpp}{}\section{Object.\+cpp File Reference}
+\label{_object_8cpp}\index{Object.\+cpp@{Object.\+cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}assimp/postprocess.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Object.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Asset\+Manager.\+h\char`\"{}}\newline
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacepiolot}{piolot}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacepiolot_a2458e8951ed1473d866e7a5567a3342a}{piolot\+::convert\+\_\+aimatrix\+\_\+to\+\_\+glm}} (glm\+::mat4 \&\+\_\+glm\+Mat4, const ai\+Matrix4x4 \&\+\_\+ai\+Matrix)
+\item 
+void \mbox{\hyperlink{namespacepiolot_a3ccd1d151ed200e3777ef66fae46f2cf}{piolot\+::convert\+\_\+aimatrix\+\_\+to\+\_\+glm}} (glm\+::mat4 \&\+\_\+glm\+Mat4, const ai\+Matrix3x3 \&\+\_\+ai\+Matrix)
+\item 
+glm\+::mat4 \mbox{\hyperlink{namespacepiolot_a935ff41053563f29ec150b73a083a3b8}{piolot\+::get\+\_\+glm\+\_\+matrix}} (const ai\+Matrix4x4 \&\+\_\+ai\+Matrix)
+\item 
+unsigned int \mbox{\hyperlink{namespacepiolot_a568b9e7ad3c877dcd9b32fa4e6f6c9e1}{piolot\+::find\+\_\+scaling}} (float \+\_\+animation\+Time, const ai\+Node\+Anim $\ast$\+\_\+node\+Anim)
+\item 
+unsigned int \mbox{\hyperlink{namespacepiolot_a3573afdd46fe4ac83df06c50a0dfe0f3}{piolot\+::find\+\_\+rotation}} (float \+\_\+animation\+Time, const ai\+Node\+Anim $\ast$\+\_\+node\+Anim)
+\item 
+unsigned int \mbox{\hyperlink{namespacepiolot_aec1ad7fb84906e9bbeb5f140d8b9a0b6}{piolot\+::find\+\_\+position}} (float \+\_\+animation\+Time, const ai\+Node\+Anim $\ast$\+\_\+node\+Anim)
+\item 
+void \mbox{\hyperlink{namespacepiolot_a1e5ba3095d4e569745a7e0aa844faa11}{piolot\+::calc\+\_\+interpolated\+\_\+position}} (ai\+Vector3D \&\+\_\+out, float \+\_\+animation\+Time, const ai\+Node\+Anim $\ast$\+\_\+node\+Anim)
+\item 
+void \mbox{\hyperlink{namespacepiolot_a22a267ba7b419acc67701bad790e186f}{piolot\+::\+Calc\+Interpolated\+Rotation}} (ai\+Quaternion \&\+\_\+out, float \+\_\+animation\+Time, const ai\+Node\+Anim $\ast$\+\_\+node\+Anim)
+\item 
+void \mbox{\hyperlink{namespacepiolot_a66a046124f1f3d518e9f66ad63de5f51}{piolot\+::\+Calc\+Interpolated\+Scaling}} (ai\+Vector3D \&\+\_\+out, float \+\_\+animation\+Time, const ai\+Node\+Anim $\ast$\+\_\+node\+Anim)
+\end{DoxyCompactItemize}

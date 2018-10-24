@@ -1,6 +1,8 @@
 var classpiolot_1_1_ray =
 [
     [ "Ray", "classpiolot_1_1_ray.html#a800439dfd7597c519c4e6d5b6336a655", null ],
+    [ "GetDirection", "classpiolot_1_1_ray.html#a6dc423ac6188032c31b72279c14bbe98", null ],
+    [ "GetOrigin", "classpiolot_1_1_ray.html#aaf69eb0891c1e0e884eba2475707a12e", null ],
     [ "Render", "classpiolot_1_1_ray.html#a7ecae233c62860e006b474b293c1e6ca", null ],
     [ "Update", "classpiolot_1_1_ray.html#ada7c74126da4e4c8c0c7a63ae36c1ced", null ],
     [ "UpdateBuffers", "classpiolot_1_1_ray.html#a6c21a81fd81741cca7f823e87fed1aef", null ],

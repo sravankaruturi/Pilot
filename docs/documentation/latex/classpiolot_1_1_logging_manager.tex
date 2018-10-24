@@ -1,40 +1,90 @@
 \hypertarget{classpiolot_1_1_logging_manager}{}\section{piolot\+:\+:Logging\+Manager Class Reference}
 \label{classpiolot_1_1_logging_manager}\index{piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}}
+
+
+{\ttfamily \#include $<$Logging\+Manager.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_logging_manager_aa0a0a7241a2d993282a18d7a8bded2ac}\label{classpiolot_1_1_logging_manager_aa0a0a7241a2d993282a18d7a8bded2ac}} 
-void {\bfseries Set\+Im\+Gui\+Logger} (\mbox{\hyperlink{structpiolot_1_1_im_gui_log}{Im\+Gui\+Log}} $\ast$\+\_\+logger)
+void \mbox{\hyperlink{classpiolot_1_1_logging_manager_aa0a0a7241a2d993282a18d7a8bded2ac}{Set\+Im\+Gui\+Logger}} (\mbox{\hyperlink{structpiolot_1_1_im_gui_log}{Im\+Gui\+Log}} $\ast$\+\_\+logger)
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_logging_manager_a1678abfa124029b3825887e4730c6e82}\label{classpiolot_1_1_logging_manager_a1678abfa124029b3825887e4730c6e82}} 
-void {\bfseries Add\+To\+Log} (std\+::string \+\_\+data, Log\+Type \+\_\+type=P\+E\+\_\+\+L\+O\+G\+\_\+\+I\+N\+FO)
+void \mbox{\hyperlink{classpiolot_1_1_logging_manager_a1678abfa124029b3825887e4730c6e82}{Add\+To\+Log}} (std\+::string \+\_\+data, \mbox{\hyperlink{namespacepiolot_a23b501c43e72ecf3dbf1146b2919c3a3}{Log\+Type}} \+\_\+type=\mbox{\hyperlink{namespacepiolot_a23b501c43e72ecf3dbf1146b2919c3a3af05c0e3d779fea0be15a1edd4814b4d9}{P\+E\+\_\+\+L\+O\+G\+\_\+\+I\+N\+FO}})
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_logging_manager_a07a9311aef0e303169a6b2bbc1c62e9c}\label{classpiolot_1_1_logging_manager_a07a9311aef0e303169a6b2bbc1c62e9c}} 
-void {\bfseries Clear\+Log} ()
+void \mbox{\hyperlink{classpiolot_1_1_logging_manager_a07a9311aef0e303169a6b2bbc1c62e9c}{Clear\+Log}} ()
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_logging_manager_a3f59696c7ffafedf86c62bf497543b63}\label{classpiolot_1_1_logging_manager_a3f59696c7ffafedf86c62bf497543b63}} 
-std\+::string {\bfseries Get\+Log} () const
+std\+::string \mbox{\hyperlink{classpiolot_1_1_logging_manager_a3f59696c7ffafedf86c62bf497543b63}{Get\+Log}} () const
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_logging_manager_a29156d923419bb4104d6f05784accb97}\label{classpiolot_1_1_logging_manager_a29156d923419bb4104d6f05784accb97}} 
-void {\bfseries Render} (bool $\ast$\+\_\+window\+Bool)
+void \mbox{\hyperlink{classpiolot_1_1_logging_manager_a29156d923419bb4104d6f05784accb97}{Render}} (bool $\ast$\+\_\+window\+Bool)
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_logging_manager_a365a705c958728e638d446e55c3d721f}\label{classpiolot_1_1_logging_manager_a365a705c958728e638d446e55c3d721f}} 
-static \mbox{\hyperlink{classpiolot_1_1_logging_manager}{Logging\+Manager}} \& {\bfseries Get\+Instance} ()
+static \mbox{\hyperlink{classpiolot_1_1_logging_manager}{Logging\+Manager}} \& \mbox{\hyperlink{classpiolot_1_1_logging_manager_a365a705c958728e638d446e55c3d721f}{Get\+Instance}} ()
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_logging_manager_a09a47d777f82d02c4420fc1832317e2b}\label{classpiolot_1_1_logging_manager_a09a47d777f82d02c4420fc1832317e2b}} 
-std\+::string {\bfseries log}
+std\+::string \mbox{\hyperlink{classpiolot_1_1_logging_manager_a09a47d777f82d02c4420fc1832317e2b}{log}}
 \item 
-\mbox{\Hypertarget{classpiolot_1_1_logging_manager_a931c51fe236e3856d28b450d250cea8d}\label{classpiolot_1_1_logging_manager_a931c51fe236e3856d28b450d250cea8d}} 
-\mbox{\hyperlink{structpiolot_1_1_im_gui_log}{Im\+Gui\+Log}} $\ast$ {\bfseries imgui\+Logger} = nullptr
+\mbox{\hyperlink{structpiolot_1_1_im_gui_log}{Im\+Gui\+Log}} $\ast$ \mbox{\hyperlink{classpiolot_1_1_logging_manager_a931c51fe236e3856d28b450d250cea8d}{imgui\+Logger}} = nullptr
 \end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_logging_manager_a1678abfa124029b3825887e4730c6e82}\label{classpiolot_1_1_logging_manager_a1678abfa124029b3825887e4730c6e82}} 
+\index{piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}!Add\+To\+Log@{Add\+To\+Log}}
+\index{Add\+To\+Log@{Add\+To\+Log}!piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}}
+\subsubsection{\texorpdfstring{Add\+To\+Log()}{AddToLog()}}
+{\footnotesize\ttfamily void piolot\+::\+Logging\+Manager\+::\+Add\+To\+Log (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+data,  }\item[{\mbox{\hyperlink{namespacepiolot_a23b501c43e72ecf3dbf1146b2919c3a3}{Log\+Type}}}]{\+\_\+type = {\ttfamily \mbox{\hyperlink{namespacepiolot_a23b501c43e72ecf3dbf1146b2919c3a3af05c0e3d779fea0be15a1edd4814b4d9}{P\+E\+\_\+\+L\+O\+G\+\_\+\+I\+N\+FO}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_logging_manager_a07a9311aef0e303169a6b2bbc1c62e9c}\label{classpiolot_1_1_logging_manager_a07a9311aef0e303169a6b2bbc1c62e9c}} 
+\index{piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}!Clear\+Log@{Clear\+Log}}
+\index{Clear\+Log@{Clear\+Log}!piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}}
+\subsubsection{\texorpdfstring{Clear\+Log()}{ClearLog()}}
+{\footnotesize\ttfamily void piolot\+::\+Logging\+Manager\+::\+Clear\+Log (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_logging_manager_a365a705c958728e638d446e55c3d721f}\label{classpiolot_1_1_logging_manager_a365a705c958728e638d446e55c3d721f}} 
+\index{piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}}
+\subsubsection{\texorpdfstring{Get\+Instance()}{GetInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classpiolot_1_1_logging_manager}{Logging\+Manager}}\& piolot\+::\+Logging\+Manager\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_logging_manager_a3f59696c7ffafedf86c62bf497543b63}\label{classpiolot_1_1_logging_manager_a3f59696c7ffafedf86c62bf497543b63}} 
+\index{piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}!Get\+Log@{Get\+Log}}
+\index{Get\+Log@{Get\+Log}!piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}}
+\subsubsection{\texorpdfstring{Get\+Log()}{GetLog()}}
+{\footnotesize\ttfamily std\+::string piolot\+::\+Logging\+Manager\+::\+Get\+Log (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_logging_manager_a29156d923419bb4104d6f05784accb97}\label{classpiolot_1_1_logging_manager_a29156d923419bb4104d6f05784accb97}} 
+\index{piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}!Render@{Render}}
+\index{Render@{Render}!piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily void piolot\+::\+Logging\+Manager\+::\+Render (\begin{DoxyParamCaption}\item[{bool $\ast$}]{\+\_\+window\+Bool }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_logging_manager_aa0a0a7241a2d993282a18d7a8bded2ac}\label{classpiolot_1_1_logging_manager_aa0a0a7241a2d993282a18d7a8bded2ac}} 
+\index{piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}!Set\+Im\+Gui\+Logger@{Set\+Im\+Gui\+Logger}}
+\index{Set\+Im\+Gui\+Logger@{Set\+Im\+Gui\+Logger}!piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}}
+\subsubsection{\texorpdfstring{Set\+Im\+Gui\+Logger()}{SetImGuiLogger()}}
+{\footnotesize\ttfamily void piolot\+::\+Logging\+Manager\+::\+Set\+Im\+Gui\+Logger (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpiolot_1_1_im_gui_log}{Im\+Gui\+Log}} $\ast$}]{\+\_\+logger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classpiolot_1_1_logging_manager_a931c51fe236e3856d28b450d250cea8d}\label{classpiolot_1_1_logging_manager_a931c51fe236e3856d28b450d250cea8d}} 
+\index{piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}!imgui\+Logger@{imgui\+Logger}}
+\index{imgui\+Logger@{imgui\+Logger}!piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}}
+\subsubsection{\texorpdfstring{imgui\+Logger}{imguiLogger}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structpiolot_1_1_im_gui_log}{Im\+Gui\+Log}}$\ast$ piolot\+::\+Logging\+Manager\+::imgui\+Logger = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpiolot_1_1_logging_manager_a09a47d777f82d02c4420fc1832317e2b}\label{classpiolot_1_1_logging_manager_a09a47d777f82d02c4420fc1832317e2b}} 
+\index{piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}!log@{log}}
+\index{log@{log}!piolot\+::\+Logging\+Manager@{piolot\+::\+Logging\+Manager}}
+\subsubsection{\texorpdfstring{log}{log}}
+{\footnotesize\ttfamily std\+::string piolot\+::\+Logging\+Manager\+::log\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/dev/\+Piolot/\+Engine/Logging\+Manager.\+h\end{DoxyCompactItemize}
+\mbox{\hyperlink{_logging_manager_8h}{Logging\+Manager.\+h}}\end{DoxyCompactItemize}
