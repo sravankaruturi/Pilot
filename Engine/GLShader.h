@@ -114,6 +114,30 @@ namespace piolot
 		}
 
 		/**
+		* \brief Set a Uniform Value
+		* \param _name The Uniform Name
+		* \param _x	Value.x
+		* \param _y Value.y
+		* \param _z Value.z
+		* \param _w Value.w
+		*/
+		void setVec4(const std::string &_name, float _x, float _y, float _z, float _w)
+		{
+			const auto loc = GetUniformLocation(_name);
+			PE_GL(glUniform4f(loc, _x, _y, _z, _w));
+		}
+
+		/**
+		* \brief Set a Uniform Value
+		* \param _name The Uniform Name
+		* \param _vecInput The Vector.
+		*/
+		void setVec4(const std::string &_name, glm::vec4 _vecInput)
+		{
+			this->setVec4(_name, _vecInput.x, _vecInput.y, _vecInput.z, _vecInput.w);
+		}
+
+		/**
 		* \brief Set a Uniform Value.
 		* \param _name The Uniform Name
 		* \param _mat The Uniform Value.

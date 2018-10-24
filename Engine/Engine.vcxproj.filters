@@ -99,6 +99,9 @@
     <ClCompile Include="AnimatedEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TestSceneUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -224,6 +227,9 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="Shaders\bob_lamp.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\buildingPlacer.shader">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

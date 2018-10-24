@@ -78,6 +78,11 @@ namespace piolot {
 
 		// Debug the Ray.
 		Ray cameraRay{glm::vec3(), glm::vec3()};
+
+		/**
+		 * \brief The Projection Matrix.
+		 */
+		glm::mat4 projectionMatrix;
 		
 
 
@@ -120,6 +125,9 @@ namespace piolot {
 		 * \param _fileName The Filename to load. As specific as you can get, with the extension.
 		 */
 		void LoadScene(const char * _fileName);
+
+		void RayPicking();
+		
 
 	};
 

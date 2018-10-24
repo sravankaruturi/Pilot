@@ -290,6 +290,8 @@ namespace piolot {
 		 */
 		void HighlightNode(unsigned int _x, unsigned int _z);
 
+		bool CanPlaceHere(unsigned int _x, unsigned int _z);
+
 		/**
 		 * \brief Clear any highlights we made in the previous frame.
 		 */
@@ -378,8 +380,9 @@ namespace piolot {
 		 */
 		void GetMouseRayPoint(Ray _ray, float _granularity = 0.5f);
 
-		// TODO: Change this to use Obstacles instead of Walkable, since that is more intuitive and conforms to our Standards.
-		void SetTerrainNodeNotWalkable(glm::ivec2 _nodeIndices);
+
+		void SetTerrainNodeObstacle(glm::ivec2 _nodeIndices);
+
 
 	};
 

@@ -150,6 +150,7 @@
     <ClCompile Include="TerrainTests.cpp" />
     <ClCompile Include="tests.cpp" />
     <ClCompile Include="TestScene.cpp" />
+    <ClCompile Include="TestSceneUtils.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -192,6 +193,7 @@
     <None Include="Shaders\bbox.frag" />
     <None Include="Shaders\bbox.vert" />
     <None Include="Shaders\bob_lamp.shader" />
+    <None Include="Shaders\buildingPlacer.shader" />
     <None Include="Shaders\failing_test.frag" />
     <None Include="Shaders\failing_test.vert" />
     <None Include="Shaders\good_test.frag" />
