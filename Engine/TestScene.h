@@ -103,6 +103,9 @@ namespace piolot {
 		 */
 		void OnUpdate(float _deltaTime, float _totalTime) override;
 
+		/**
+		 * \brief Render the Scene
+		 */
 		void OnRender() override;
 
 		/**

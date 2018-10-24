@@ -37,8 +37,19 @@ namespace piolot {
 
 		~AnimatedEntity() = default;
 
+		/**
+		 * \brief Update the Bone Transforms based on the Time.
+		 * \param _deltaTime DeltaTime
+		 * \param _currentTime The time since it was initialized.
+		 */
 		void PlayAnimation(float _deltaTime, float _currentTime);
 
+		/**
+		 * \brief Update the Entity
+		 * \param _deltaTime DeltaTime
+		 * 
+		 * Updates the Matrices.
+		 */
 		void Update(float _deltaTime);
 
 		void Render();

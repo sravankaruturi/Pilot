@@ -12,6 +12,11 @@
 
 namespace piolot {
 
+	glm::vec3 MapTile::GetPosition() const
+	{
+		return glm::vec3(tilePosX, tilePosY, tilePosZ);
+	}
+
 	glm::vec3 Terrain::ComputeGridNormal(const int _x, const int _z)
 	{
 
@@ -218,13 +223,11 @@ namespace piolot {
 		return return_vec;
 	}
 
-	void Terrain::HighlightNode(const unsigned _x, const unsigned _z)
+	void Terrain::HighlightNode(unsigned int _x, unsigned int _z)
 	{
-
 		this->vertices[_x * nodeCountZ + _z].colour = glm::vec4(yellow, 1.0f);
 		this->vertices[_x * nodeCountZ + _z].texCoord.z = 1.0f;
 		areVerticesDirty = true;
-
 	}
 
 	bool Terrain::CanPlaceHere(unsigned _x, unsigned _z)

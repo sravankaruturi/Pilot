@@ -13,6 +13,9 @@ namespace piolot
 	{
 
 	protected:
+		/**
+		 * \brief The Name of the Shader
+		 */
 		std::string shaderName;
 
 		bool selectedInScene = false;
@@ -136,6 +139,11 @@ namespace piolot
 		 */
 		void LoadFromFile(std::ifstream& _in);
 
+		/**
+		 * \brief Sets the Position Initially and sets the Target node to the current Node.
+		 * \param _position Set the Initial Position on the Terrain.
+		 * \param _terrain The Terrain Pointer
+		 */
 		void SetInitialPosition(const glm::vec3& _position, Terrain * _terrain);
 
 		void SetPosition(const glm::vec3& _position)
@@ -158,6 +166,9 @@ namespace piolot
 
 	protected:
 
+		/**
+		 * \brief Update the Model Matrix.
+		 */
 		void UpdateMatrices();
 
 	public:
@@ -170,8 +181,18 @@ namespace piolot
 		void Update(float _deltaTime);
 		void Render();
 
+		/**
+		 * \brief Check if this Entity has been hovered on.
+		 * \param _cameraPosition The Active Camera Position
+		 * \param _mouseRayDirection Mouse Ray Direction, from the Mouse pointer, inward.
+		 * \param _distance The Distance between the Camera and this Entity. This is updated and stored at this reference.
+		 * \return Returns true if it hits the Entity and False if it doesn't
+		 */
 		bool CheckIfMouseOvered(const glm::vec3 _cameraPosition, const glm::vec3 _mouseRayDirection, float& _distance) const;
 
+		/**
+		 * \brief Display this Entity's details in ImGUI.
+		 */
 		void DisplayDetailsImgui();
 
 	};
