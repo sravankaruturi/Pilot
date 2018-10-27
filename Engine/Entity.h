@@ -46,6 +46,19 @@ namespace piolot
 		glm::ivec2 targetNode{};
 
 	public:
+
+		/**
+		* \brief Which Team do you belong to
+		*/
+		int team = 0;
+
+		/**
+		* \brief Health
+		*/
+		float health = 10;
+
+		bool attackingMode = false;
+
 		glm::ivec2 GetTargetPosition() const
 		{
 			return targetNode;

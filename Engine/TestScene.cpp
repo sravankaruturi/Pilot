@@ -93,6 +93,9 @@ namespace piolot {
 			animatedEntity->SetAnimationTotalTime(0.75f);
 		}
 
+		// We have the pointer to the last Entitity.
+		animatedEntity->team = 1;
+
 		//ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
 		ASMGR.objects.at("KB_Punches")->GetMeshes()[0]->textureNames.push_back("akai_diffuse");
 		ASMGR.objects.at("Medieval_House")->GetMeshes()[0]->textureNames.push_back("building_diffuse");
@@ -108,7 +111,10 @@ namespace piolot {
 	void TestScene::OnUpdate(float _deltaTime, float _totalTime)
 	{
 
+		testTerrain->ResetOccupiedBy();
+
 		Scene::OnUpdate(_deltaTime, _totalTime);
+		
 
 		if (window->IsKeyPressedOrHeld(GLFW_KEY_C))
 		{
@@ -134,6 +140,8 @@ namespace piolot {
 			it->SetPosition(temp_position);
 
 			it->Update(_deltaTime);
+			
+			testTerrain->GetTileFromIndices(testTerrain->GetNodeIndicesFromPos(it->GetPosition()))->occupiedBy = it->team;
 		}
 
 		for (const auto& it : animatedEntities)
@@ -614,6 +622,19 @@ namespace piolot {
 			int entity_counter = 0;
 
 			glm::ivec2 target_node = testTerrain->pointedNodeIndices;
+
+			// Check if the Target node already has an Entity. If so, we need to attack.
+			// TODO: We need a better representation of the Maptiles and the Entities in them, so that we can use that for the likes of this.
+			if ( testTerrain->GetTileFromIndices(target_node)->occupiedBy != selectedEntities.back()->team)
+			{
+				// Move to that tile, and attack.
+				// To Attack, we set them to be in attacking mode.
+				for ( auto it: selectedEntities)
+				{
+					it->attackingMode = true;
+					// You go there, and attack.
+				}
+			}
 
 			for (int row_counter = 0; row_counter < number_of_rows; row_counter++) {
 				for (int column_counter = 0; column_counter < number_of_columns; column_counter++) {
