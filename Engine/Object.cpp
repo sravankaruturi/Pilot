@@ -278,8 +278,8 @@ namespace piolot
 
 		int selected_animation_index = 0;
 
-		if (assimpScene->mNumAnimations > 2) {
-			selected_animation_index = 2;
+		if (assimpScene->mNumAnimations > 14) {
+			selected_animation_index = 14;
 		}
 
 		// TODO: Check if valid scene, before accessing Animations here.

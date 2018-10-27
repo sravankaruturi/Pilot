@@ -80,7 +80,7 @@ namespace piolot {
 		std::shared_ptr<Texture> building_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("Medieval_House/Medieval_House_Diff.png"), false);
 		ASMGR.AddToTextures("building_diffuse", building_diffuse);
 
-		for (int i = 0; i < 1; i++)
+		for (int i = 0; i < 2; i++)
 		{
 
 			animatedEntities.push_back(std::make_unique<AnimatedEntity>("archer", "archer/KB_Punches.fbx", "bob_lamp", glm::vec3(-30, 0, -30), glm::vec3(30, 180, 30)));
