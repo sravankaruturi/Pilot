@@ -80,10 +80,10 @@ namespace piolot {
 		std::shared_ptr<Texture> building_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("Medieval_House/Medieval_House_Diff.png"), false);
 		ASMGR.AddToTextures("building_diffuse", building_diffuse);
 
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 1; i++)
 		{
 
-			animatedEntities.push_back(std::make_unique<AnimatedEntity>("archer", "archer/archer_walking.fbx", "bob_lamp", glm::vec3(-30, 0, -30), glm::vec3(30, 180, 30)));
+			animatedEntities.push_back(std::make_unique<AnimatedEntity>("archer", "archer/KB_Punches.fbx", "bob_lamp", glm::vec3(-30, 0, -30), glm::vec3(30, 180, 30)));
 
 			animatedEntity = animatedEntities[i + 1].get();
 			animatedEntity->SetInitialPosition(glm::vec3(2.0, 0.0, (i + 1)), testTerrain.get());
@@ -93,7 +93,8 @@ namespace piolot {
 			animatedEntity->SetAnimationTotalTime(0.75f);
 		}
 
-		ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
+		//ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
+		ASMGR.objects.at("KB_Punches")->GetMeshes()[0]->textureNames.push_back("akai_diffuse");
 		ASMGR.objects.at("Medieval_House")->GetMeshes()[0]->textureNames.push_back("building_diffuse");
 
 		buildingPlacer = std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "buildingPlacer");

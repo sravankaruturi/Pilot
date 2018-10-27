@@ -75,7 +75,7 @@ namespace piolot
 		return 0;
 	}
 
-	unsigned int find_position(float _animationTime, const aiNodeAnim* _nodeAnim)
+	unsigned int find_position(float& _animationTime, const aiNodeAnim* _nodeAnim)
 	{
 		PE_ASSERT(_nodeAnim->mNumPositionKeys > 0);
 		for (unsigned int i = 0; i < _nodeAnim->mNumPositionKeys - 1; i++) {
@@ -84,12 +84,16 @@ namespace piolot
 			}
 		}
 
+		// The Very first time, that we start playing the animation, maybe set it to zero.
+		_animationTime = 0;
+		return 0;
+
 		// It should never reach here.
 		PE_ASSERT(0);
 		return 0;
 	}
 
-	void calc_interpolated_position(aiVector3D& _out, float _animationTime, const aiNodeAnim* _nodeAnim)
+	void calc_interpolated_position(aiVector3D& _out, float& _animationTime, const aiNodeAnim* _nodeAnim)
 	{
 		if (_nodeAnim->mNumPositionKeys == 1) {
 			// There is only one Position.
@@ -274,12 +278,16 @@ namespace piolot
 
 		int selected_animation_index = 0;
 
+		if (assimpScene->mNumAnimations > 2) {
+			selected_animation_index = 2;
+		}
+
 		// TODO: Check if valid scene, before accessing Animations here.
 		const auto ticks_per_second = assimpScene->mAnimations[selected_animation_index]->mTicksPerSecond != 0 ? assimpScene->mAnimations[0]->mTicksPerSecond : 25.0f;
 		auto time_in_ticks = _totalTime * ticks_per_second;
 		auto animation_time = fmod(time_in_ticks, assimpScene->mAnimations[selected_animation_index]->mDuration);
 
-		ProcessNodeHierarchyAnimation(animation_time, assimpScene->mRootNode, root_node_matrix);
+		ProcessNodeHierarchyAnimation(animation_time, assimpScene->mRootNode, selected_animation_index, root_node_matrix);
 
 		// For now, set them to Identity.
 		for (auto i = 0; i < numberOfBonesLoaded; i++) {
@@ -588,11 +596,11 @@ namespace piolot
 		return textures;
 	}
 
-	void Object::ProcessNodeHierarchyAnimation(float _animationTime, const aiNode* _node,
+	void Object::ProcessNodeHierarchyAnimation(float _animationTime, const aiNode* _node, const int _animationIndex,
 		const aiMatrix4x4& _parentTransform)
 	{
 
-		auto selectedAnimationIndex = 0;
+		auto selectedAnimationIndex = _animationIndex;
 
 		std::string node_name = _node->mName.data;
 
@@ -640,7 +648,7 @@ namespace piolot
 		}
 
 		for (auto i = 0; i < _node->mNumChildren; i++) {
-			ProcessNodeHierarchyAnimation(_animationTime, _node->mChildren[i], global_transformation);
+			ProcessNodeHierarchyAnimation(_animationTime, _node->mChildren[i], selectedAnimationIndex , global_transformation);
 		}
 
 	}
