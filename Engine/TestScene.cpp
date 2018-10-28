@@ -141,21 +141,49 @@ namespace piolot {
 
 			it->Update(_deltaTime);
 			
-			testTerrain->GetTileFromIndices(testTerrain->GetNodeIndicesFromPos(it->GetPosition()))->occupiedBy = it.get();
+			testTerrain->GetTileFromIndices(
+				testTerrain->GetNodeIndicesFromPos(it->GetPosition())
+			)->occupiedBy = it.get();
 		}
 
+		std::vector<unsigned int> to_be_deleted_entities_indices;
+		unsigned int i = 0;
 		for (const auto& it : animatedEntities)
 		{
 			temp_position = it->GetPosition();
 			temp_position.y = testTerrain->GetHeightAtPos(temp_position.x, temp_position.z);
 			it->SetPosition(temp_position);
 
-			// If You are actually attacing someone and they move, you are supposed to update the position.
+			// If You are actually attacking someone and they move, you are supposed to update the position.
 
 			it->Update(_deltaTime);
 			it->PlayAnimation(_deltaTime, _totalTime);
 
 			testTerrain->GetTileFromIndices(testTerrain->GetNodeIndicesFromPos(it->GetPosition()))->occupiedBy = it.get();
+
+			// Now if you are supposed to attack, then attack every frame gradually. We should eventually change it to something like attack every 1 move or something like that.
+			// We have to make sure that no other person is attacking this target.
+			// We have to wait if someone else is attacking the same target.
+			// So we can take a hit from every attacker we have which is atmost one. We do not deal with the attack targets so much as the attacker itself.
+			if (it->attacker != nullptr) {
+				it->health -= _deltaTime;
+			}
+
+			if (it->health <= 0) {
+				// Die.
+				// Add the Index to the to die list.
+				// Get the Index
+				to_be_deleted_entities_indices.push_back(i);
+			}
+
+			i++;
+		}
+
+		for ( unsigned int i = 0 ; i < to_be_deleted_entities_indices.size() ; i++)
+		{
+			const unsigned int j = to_be_deleted_entities_indices[i];
+			animatedEntities.erase(animatedEntities.begin() + j - i);
+			// We have to subtract with i because every delete shortens the vector itself.
 		}
 
 		buildingPlacer->Update(_deltaTime);
@@ -169,6 +197,16 @@ namespace piolot {
 		/* Find Paths for each entity */
 		for (auto& it : animatedEntities)
 		{
+
+			// Make sure that the Target Node is up to date  if the Target moves around.
+			if( it->attackingMode && it->attackTarget != nullptr)
+			{
+				it->setTargetNode(
+					testTerrain->GetNodeIndicesFromPos(
+						it->attackTarget->GetPosition()
+					)
+				);
+			}
 
 			glm::vec3 startPosition = it->GetPosition();
 			glm::ivec2 end_node = it->GetTargetPosition();
@@ -188,7 +226,7 @@ namespace piolot {
 				//testTerrain->HighlightNode(it->tileIndexX, it->tileIndexZ);
 			}
 
-			if (it->attackingMode) {
+			if (it->attackingMode && !path.empty()) {
 				// If you are attacking, you stop one tile before the actual target.
 				path.pop_back();
 			}
