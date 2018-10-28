@@ -80,7 +80,7 @@ namespace piolot {
 		std::shared_ptr<Texture> building_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("Medieval_House/Medieval_House_Diff.png"), false);
 		ASMGR.AddToTextures("building_diffuse", building_diffuse);
 
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < 5; i++)
 		{
 
 			animatedEntities.push_back(std::make_unique<AnimatedEntity>("archer", "archer/KB_Punches.fbx", "bob_lamp", glm::vec3(-30, 0, -30), glm::vec3(30, 180, 30)));
@@ -182,10 +182,21 @@ namespace piolot {
 		for ( unsigned int i = 0 ; i < to_be_deleted_entities_indices.size() ; i++)
 		{
 			const unsigned int j = to_be_deleted_entities_indices[i];
+
+			// Check if the selected Entities consist that, and remove that??
+			for (unsigned int k = 0; k < selectedEntities.size(); k++)
+			{
+				if (selectedEntities[k] == animatedEntities[j - i].get())
+				{
+					selectedEntities.erase(selectedEntities.begin() + k);
+				}
+			}
+
 			// Update the attackers, target.
 			animatedEntities[j - i]->attacker->attackTarget = nullptr;
 			animatedEntities[j - i]->attacker->attackingMode = false;
 			animatedEntities.erase(animatedEntities.begin() + j - i);
+
 			// We have to subtract with i because every delete shortens the vector itself.
 		}
 
@@ -221,11 +232,6 @@ namespace piolot {
 			std::string log_temp = "The path b/w the tiles, ";
 
 			log_temp += Vec3ToString(startPosition) + " and " + Vec3ToString(endPosition) + " has " + std::to_string(path.size()) + " nodes";
-
-			for (auto it : path)
-			{
-				//testTerrain->HighlightNode(it->tileIndexX, it->tileIndexZ);
-			}
 
 			if (it->attackingMode && !path.empty()) {
 				// If you are attacking, you stop one tile before the actual target.

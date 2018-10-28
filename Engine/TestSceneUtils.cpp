@@ -279,7 +279,7 @@ void piolot::TestScene::OnImguiRender(ImGuiControlVariables& _vars)
 		ImGui::BeginGroup();
 
 		{
-			if (!selectedEntities.empty()) {
+			if (!selectedEntities.empty() && selectedEntities[0] != nullptr) {
 				ImGui::BeginChild("Details", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
 
 				ImGui::Text(selectedEntities[0]->GetEntityName().c_str());
