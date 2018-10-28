@@ -182,13 +182,14 @@ namespace piolot {
 		for ( unsigned int i = 0 ; i < to_be_deleted_entities_indices.size() ; i++)
 		{
 			const unsigned int j = to_be_deleted_entities_indices[i];
+			// Update the attackers, target.
+			animatedEntities[j - i]->attacker->attackTarget = nullptr;
+			animatedEntities[j - i]->attacker->attackingMode = false;
 			animatedEntities.erase(animatedEntities.begin() + j - i);
 			// We have to subtract with i because every delete shortens the vector itself.
 		}
 
 		buildingPlacer->Update(_deltaTime);
-
-		AnimatedEntity * animated_entitiy = animatedEntities[1].get();
 
 		testTerrain->ClearColours();
 
@@ -230,6 +231,20 @@ namespace piolot {
 				// If you are attacking, you stop one tile before the actual target.
 				path.pop_back();
 			}
+
+			if ( it->attackingMode ){
+
+				// Close enough
+				if (path.size() < 2 && it->attackTarget->attacker == nullptr)
+				{
+					it->attackTarget->attacker = it.get();
+				}else if (path.size() > 2 && it->attackTarget->attacker == it.get())
+				{
+					it->attackTarget->attacker = nullptr;
+				}
+			}
+
+			// To remove attackers.. Each entity can check if the attacker still exists and is still attacking?
 
 			totalTimeCounterForPathing += _deltaTime;
 
