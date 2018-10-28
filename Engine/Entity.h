@@ -47,6 +47,8 @@ namespace piolot
 
 	public:
 
+		// Game Play Elements 
+
 		/**
 		* \brief Which Team do you belong to
 		*/
@@ -57,7 +59,25 @@ namespace piolot
 		*/
 		float health = 10;
 
+		/**
+		 * \brief Moving to Attack, or Attacking
+		 */
 		bool attackingMode = false;
+
+		/**
+		 * \brief Being Attacked By Someone
+		 */
+		bool beingAttacked = false;
+
+		/**
+		 * \brief Who is Attacking you
+		 */
+		Entity * attacker = nullptr;
+
+		/**
+		 * \brief Who should I attack
+		 */
+		Entity * attackTarget = nullptr;
 
 		glm::ivec2 GetTargetPosition() const
 		{

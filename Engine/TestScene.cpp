@@ -141,7 +141,7 @@ namespace piolot {
 
 			it->Update(_deltaTime);
 			
-			testTerrain->GetTileFromIndices(testTerrain->GetNodeIndicesFromPos(it->GetPosition()))->occupiedBy = it->team;
+			testTerrain->GetTileFromIndices(testTerrain->GetNodeIndicesFromPos(it->GetPosition()))->occupiedBy = it.get();
 		}
 
 		for (const auto& it : animatedEntities)
@@ -150,8 +150,12 @@ namespace piolot {
 			temp_position.y = testTerrain->GetHeightAtPos(temp_position.x, temp_position.z);
 			it->SetPosition(temp_position);
 
+			// If You are actually attacing someone and they move, you are supposed to update the position.
+
 			it->Update(_deltaTime);
 			it->PlayAnimation(_deltaTime, _totalTime);
+
+			testTerrain->GetTileFromIndices(testTerrain->GetNodeIndicesFromPos(it->GetPosition()))->occupiedBy = it.get();
 		}
 
 		buildingPlacer->Update(_deltaTime);
@@ -182,6 +186,11 @@ namespace piolot {
 			for (auto it : path)
 			{
 				//testTerrain->HighlightNode(it->tileIndexX, it->tileIndexZ);
+			}
+
+			if (it->attackingMode) {
+				// If you are attacking, you stop one tile before the actual target.
+				path.pop_back();
 			}
 
 			totalTimeCounterForPathing += _deltaTime;
@@ -625,7 +634,8 @@ namespace piolot {
 
 			// Check if the Target node already has an Entity. If so, we need to attack.
 			// TODO: We need a better representation of the Maptiles and the Entities in them, so that we can use that for the likes of this.
-			if ( testTerrain->GetTileFromIndices(target_node)->occupiedBy != selectedEntities.back()->team)
+			// todo: tHIS IS failing for some reason?? One of the functions is not working properly.
+			if ( testTerrain->GetTileFromIndices(target_node)->occupiedBy != nullptr/* && testTerrain->GetTileFromIndices(target_node)->occupiedBy->team != selectedEntities.back()->team*/)
 			{
 				// Move to that tile, and attack.
 				// To Attack, we set them to be in attacking mode.
@@ -633,6 +643,16 @@ namespace piolot {
 				{
 					it->attackingMode = true;
 					// You go there, and attack.
+
+					it->attackTarget = testTerrain->GetTileFromIndices(target_node)->occupiedBy;
+
+				}
+			}
+			else {
+				for (auto it : selectedEntities)
+				{
+					it->attackingMode = false;
+					it->attackTarget = nullptr;
 				}
 			}
 

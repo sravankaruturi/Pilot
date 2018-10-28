@@ -197,10 +197,21 @@ void piolot::TestScene::OnImguiRender(ImGuiControlVariables& _vars)
 
 		}
 		else {
-			ImGui::Text("No Entity selected to debug pathing,");
+			ImGui::Text("No Entity selected to debug pathing.");
 		}
 
+		ImGui::Separator();
 
+		ImGui::Text("Fighting Variables");
+
+		if (!selectedEntities.empty()) {
+
+			ImGui::Checkbox("Attacking Mode: ", &(selectedEntities[0]->attackingMode));
+
+		}
+		else {
+			ImGui::Text("No Entity selected to debug Fighting.");
+		}
 
 		ImGui::End();
 

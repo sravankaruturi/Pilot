@@ -78,16 +78,11 @@ namespace piolot {
 		float navGCost = 0;
 
 		/**
-		 * \brief Signify which kind of entity occupies this Tile.
+		 * \brief A Pointer to the Entity occupying this tile.
 		 * 
-		 * We use this for prinitng mini maps, checking if we can move through a tile ( if it contains enemies. )
-		 * 0 -- None
-		 * 1 -- Team 1, Unit
-		 * 2 -- Team 2, Unit
-		 * 11 -- Team 1, Building
-		 * 22 -- Team 2, Building
+		 * Entities update this every frame, so that we can use them directly later on in the same frame.
 		 */
-		int occupiedBy = 0;
+		Entity * occupiedBy = nullptr;
 
 		/**
 		 * \brief The TileSet that this Tile belongs to.
