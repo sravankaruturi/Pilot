@@ -57,18 +57,26 @@ namespace piolot {
 	void TestScene::InitEntities()
 	{
 
+		LOGGER.AddToLog("Initializing Entities...");
+
 		/* Initialize Cameras */
 		cameras.insert_or_assign("First", std::make_shared<Camera>("First", glm::vec3(0, 5, 10), glm::vec3(0.5, -0.5, -0.5), glm::vec3(0, 1, 0)));
 		cameras.insert_or_assign("Second", std::make_shared<Camera>("Second", glm::vec3(10, 5, 10), glm::vec3(-0.5, -0.5, -0.5), glm::vec3(0, 1, 0)));
 
 		ActivateCamera(cameras.at("First"));
 
+		LOGGER.AddToLog("Cameras Initialized...");
+
 		//entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
 		entities.push_back(std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test"));
+		LOGGER.AddToLog("Loaded the Medieval House");
+
 		const float building_scaling_factor = 256.0f;
 		entities[0]->SetScale(glm::vec3(1.0f / building_scaling_factor, 1.0f / building_scaling_factor, 1.0f / building_scaling_factor));
 
 		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
+		LOGGER.AddToLog("Loaded Bob");
+
 		AnimatedEntity * animatedEntity = animatedEntities[0].get();
 		animatedEntity->SetInitialPosition(glm::vec3(4.0, 0.0, 2.0), testTerrain.get());
 		animatedEntity->SetScale(glm::vec3(0.0125f, 0.0125f, 0.0125f));
@@ -84,6 +92,7 @@ namespace piolot {
 		{
 
 			animatedEntities.push_back(std::make_unique<AnimatedEntity>("archer", "archer/KB_Punches.fbx", "bob_lamp", glm::vec3(-30, 0, -30), glm::vec3(30, 180, 30)));
+			LOGGER.AddToLog("Pushed an Archer on to the Animated Entities");
 
 			animatedEntity = animatedEntities[i + 1].get();
 			animatedEntity->SetInitialPosition(glm::vec3(2.0, 0.0, (i + 1)), testTerrain.get());
@@ -108,6 +117,8 @@ namespace piolot {
 		ASMGR.shaders.at("buildingPlacer")->use();
 		ASMGR.shaders.at("buildingPlacer")->setVec4("u_Colour0", 0, 1, 0, 1);
 
+		LOGGER.AddToLog("Finished Initializing Entities..");
+
 	}
 
 	void TestScene::OnUpdate(float _deltaTime, float _totalTime)
@@ -129,9 +140,6 @@ namespace piolot {
 		for (auto& it : cameras) {
 			it.second->UpdateVectors();
 		}
-
-		// Reset the Obstacle flag for all the terrain tiles here.
-		// testTerrain->ResetObstacles();
 
 		// I can update all the Positions here.
 		glm::vec3 temp_position{};
@@ -310,10 +318,6 @@ namespace piolot {
 		glm::mat4 projection_matrices[4] = { persp_projection_matrix, ortho_projection_matrix, ortho_projection_matrix, ortho_projection_matrix };
 		glm::mat4 view_matrices[4] = { this->activeCamera->GetViewMatrix() };
 
-		/*view_matrices[1] = glm::lookAt(glm::vec3(8, 0, 0), glm::vec3(), glm::vec3(0, 1, 0));
-		view_matrices[2] = glm::lookAt(glm::vec3(0, 8, 0), glm::vec3(), glm::vec3(0, 0, 1));;
-		view_matrices[3] = glm::lookAt(glm::vec3(0, 0, 8), glm::vec3(), glm::vec3(0, 1, 0));;*/
-
 		view_matrices[0] = viewportsDetails[0].camera->GetViewMatrix();
 		view_matrices[1] = viewportsDetails[1].camera->GetViewMatrix();
 		view_matrices[2] = viewportsDetails[2].camera->GetViewMatrix();
@@ -366,10 +370,6 @@ namespace piolot {
 			it->Render();
 		}
 
-		/*for (const auto& it: tempEntities)
-		{
-			it->Render();
-		}*/
 		if ( isPlacingMode)
 		{
 			buildingPlacer->Render();
@@ -379,13 +379,9 @@ namespace piolot {
 
 		testTerrain->Render();
 
-		//testGrid.Render();
-
 	}
 
 	
-
-	// TODO: This is Broken. Fix this. This doesn't save the Animation Data.
 	void TestScene::SaveScene(const char * _fileName)
 	{
 
@@ -565,7 +561,6 @@ namespace piolot {
 				ray_start = this->activeCamera->GetPosition();
 
 				// Multiple Viewport
-				// TODO: Fix This.
 				float updated_x, updated_y;
 
 				updated_x = (window->mouseX > window->GetWidth() / 2.0f) ? window->mouseX - window->GetWidth() / 2.0f : window->mouseX;
@@ -697,8 +692,6 @@ namespace piolot {
 			glm::ivec2 target_node = testTerrain->pointedNodeIndices;
 
 			// Check if the Target node already has an Entity. If so, we need to attack.
-			// TODO: We need a better representation of the Maptiles and the Entities in them, so that we can use that for the likes of this.
-			// todo: tHIS IS failing for some reason?? One of the functions is not working properly.
 			if ( testTerrain->GetTileFromIndices(target_node)->occupiedBy != nullptr/* && testTerrain->GetTileFromIndices(target_node)->occupiedBy->team != selectedEntities.back()->team*/)
 			{
 				// Move to that tile, and attack.
