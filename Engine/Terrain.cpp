@@ -279,8 +279,8 @@ namespace piolot {
 	void Terrain::ClearColours()
 	{
 
-		auto all_tile_sets = GetAllTileSets();
-		auto number_tile_sets = all_tile_sets.size();
+		/*auto all_tile_sets = GetAllTileSets();
+		auto number_tile_sets = all_tile_sets.size();*/
 
 		for (auto i = 0; i < nodeCountX; i++) {
 			for (auto j = 0; j < nodeCountZ; j++) {
