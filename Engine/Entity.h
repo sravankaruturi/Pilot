@@ -8,6 +8,48 @@ namespace piolot
 {
 
 	class Terrain;
+	class Entity;
+
+	/**
+	 * \brief This contains all the data required for the actual Gameplay.
+	 */
+	struct GamePlayComponent
+	{
+		/**
+		* \brief Which Team do you belong to
+		*/
+		int team = 0;
+
+		/**
+		* \brief Health
+		*/
+		float health = 10;
+
+		/**
+		* \brief Moving to Attack, or Attacking
+		*/
+		bool attackingMode = false;
+
+		/**
+		* \brief Being Attacked By Someone
+		*/
+		bool beingAttacked = false;
+
+		/**
+		* \brief Who is Attacking you
+		*/
+		Entity * attacker = nullptr;
+
+		/**
+		* \brief Who should I attack
+		*/
+		Entity * attackTarget = nullptr;
+
+		/**
+		 * \brief Movement Speed
+		 */
+		float movementSpeed = 1.0f;
+	};
 
 	class Entity
 	{
@@ -47,37 +89,10 @@ namespace piolot
 
 	public:
 
-		// Game Play Elements 
-
 		/**
-		* \brief Which Team do you belong to
-		*/
-		int team = 0;
-
-		/**
-		* \brief Health
-		*/
-		float health = 10;
-
-		/**
-		 * \brief Moving to Attack, or Attacking
+		 * \brief The GamePlay Component.
 		 */
-		bool attackingMode = false;
-
-		/**
-		 * \brief Being Attacked By Someone
-		 */
-		bool beingAttacked = false;
-
-		/**
-		 * \brief Who is Attacking you
-		 */
-		Entity * attacker = nullptr;
-
-		/**
-		 * \brief Who should I attack
-		 */
-		Entity * attackTarget = nullptr;
+		GamePlayComponent gPlay;
 
 		glm::ivec2 GetTargetPosition() const
 		{

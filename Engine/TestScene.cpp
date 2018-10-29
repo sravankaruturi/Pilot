@@ -94,7 +94,7 @@ namespace piolot {
 		}
 
 		// We have the pointer to the last Entitity.
-		animatedEntity->team = 1;
+		animatedEntity->gPlay.team = 1;
 
 		//ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
 		ASMGR.objects.at("KB_Punches")->GetMeshes()[0]->textureNames.push_back("akai_diffuse");
@@ -165,11 +165,11 @@ namespace piolot {
 			// We have to make sure that no other person is attacking this target.
 			// We have to wait if someone else is attacking the same target.
 			// So we can take a hit from every attacker we have which is atmost one. We do not deal with the attack targets so much as the attacker itself.
-			if (it->attacker != nullptr) {
-				it->health -= _deltaTime;
+			if (it->gPlay.attacker != nullptr) {
+				it->gPlay.health -= _deltaTime;
 			}
 
-			if (it->health <= 0) {
+			if (it->gPlay.health <= 0) {
 				// Die.
 				// Add the Index to the to die list.
 				// Get the Index
@@ -193,8 +193,8 @@ namespace piolot {
 			}
 
 			// Update the attackers, target.
-			animatedEntities[j - i]->attacker->attackTarget = nullptr;
-			animatedEntities[j - i]->attacker->attackingMode = false;
+			animatedEntities[j - i]->gPlay.attacker->gPlay.attackTarget = nullptr;
+			animatedEntities[j - i]->gPlay.attacker->gPlay.attackingMode = false;
 			animatedEntities.erase(animatedEntities.begin() + j - i);
 
 			// We have to subtract with i because every delete shortens the vector itself.
@@ -211,11 +211,11 @@ namespace piolot {
 		{
 
 			// Make sure that the Target Node is up to date  if the Target moves around.
-			if( it->attackingMode && it->attackTarget != nullptr)
+			if( it->gPlay.attackingMode && it->gPlay.attackTarget != nullptr)
 			{
 				it->setTargetNode(
 					testTerrain->GetNodeIndicesFromPos(
-						it->attackTarget->GetPosition()
+						it->gPlay.attackTarget->GetPosition()
 					)
 				);
 			}
@@ -233,20 +233,20 @@ namespace piolot {
 
 			log_temp += Vec3ToString(startPosition) + " and " + Vec3ToString(endPosition) + " has " + std::to_string(path.size()) + " nodes";
 
-			if (it->attackingMode && !path.empty()) {
+			if (it->gPlay.attackingMode && !path.empty()) {
 				// If you are attacking, you stop one tile before the actual target.
 				path.pop_back();
 			}
 
-			if ( it->attackingMode ){
+			if ( it->gPlay.attackingMode ){
 
 				// Close enough
-				if (path.size() < 2 && it->attackTarget->attacker == nullptr)
+				if (path.size() < 2 && it->gPlay.attackTarget->gPlay.attacker == nullptr)
 				{
-					it->attackTarget->attacker = it.get();
-				}else if (path.size() > 2 && it->attackTarget->attacker == it.get())
+					it->gPlay.attackTarget->gPlay.attacker = it.get();
+				}else if (path.size() > 2 && it->gPlay.attackTarget->gPlay.attacker == it.get())
 				{
-					it->attackTarget->attacker = nullptr;
+					it->gPlay.attackTarget->gPlay.attacker = nullptr;
 				}
 			}
 
@@ -263,11 +263,11 @@ namespace piolot {
 				// Look for the Next Node.
 				auto next_tile = path.back();
 
-				const auto speed = 1.f;
+				
 
 				// Traverse the Distance b/w them * deltaTime. --> You complete the distance two nodes in 1 second.
 				glm::vec3 current_position = it->GetPosition();
-				glm::vec3 final_position = current_position + ((next_tile->GetPosition() - current_position) * _deltaTime * speed);
+				glm::vec3 final_position = current_position + ((next_tile->GetPosition() - current_position) * _deltaTime * it->gPlay.movementSpeed);
 
 				// Get the Rotation, about, y ,axis, with both the nodes.
 				// Get the Vector, Target Node - Current Node.
@@ -700,18 +700,18 @@ namespace piolot {
 				// To Attack, we set them to be in attacking mode.
 				for ( auto it: selectedEntities)
 				{
-					it->attackingMode = true;
+					it->gPlay.attackingMode = true;
 					// You go there, and attack.
 
-					it->attackTarget = testTerrain->GetTileFromIndices(target_node)->occupiedBy;
+					it->gPlay.attackTarget = testTerrain->GetTileFromIndices(target_node)->occupiedBy;
 
 				}
 			}
 			else {
 				for (auto it : selectedEntities)
 				{
-					it->attackingMode = false;
-					it->attackTarget = nullptr;
+					it->gPlay.attackingMode = false;
+					it->gPlay.attackTarget = nullptr;
 				}
 			}
 

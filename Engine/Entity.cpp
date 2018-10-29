@@ -156,7 +156,7 @@ namespace piolot
 		ImGui::DragInt2("Target Node", glm::value_ptr(this->targetNode));
 
 		ImGui::Separator();
-		ImGui::DragFloat("Health: ", &this->health);
+		ImGui::DragFloat("Health: ", &this->gPlay.health);
 
 	}
 

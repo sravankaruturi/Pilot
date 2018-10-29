@@ -206,7 +206,7 @@ void piolot::TestScene::OnImguiRender(ImGuiControlVariables& _vars)
 
 		if (!selectedEntities.empty()) {
 
-			ImGui::Checkbox("Attacking Mode: ", &(selectedEntities[0]->attackingMode));
+			ImGui::Checkbox("Attacking Mode: ", &(selectedEntities[0]->gPlay.attackingMode));
 
 		}
 		else {
