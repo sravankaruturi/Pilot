@@ -93,6 +93,8 @@ namespace piolot {
 			animatedEntity->SetAnimationTotalTime(0.75f);
 		}
 
+		animatedEntity->gPlay.health = 20;
+
 		// We have the pointer to the last Entitity.
 		animatedEntity->gPlay.team = 1;
 
@@ -244,6 +246,9 @@ namespace piolot {
 				if (path.size() < 2 && it->gPlay.attackTarget->gPlay.attacker == nullptr)
 				{
 					it->gPlay.attackTarget->gPlay.attacker = it.get();
+					// That object immediately starts attacking the current player.
+					it->gPlay.attackTarget->gPlay.attackingMode = true;
+					it->gPlay.attackTarget->gPlay.attackTarget = it.get();
 				}else if (path.size() > 2 && it->gPlay.attackTarget->gPlay.attacker == it.get())
 				{
 					it->gPlay.attackTarget->gPlay.attacker = nullptr;
