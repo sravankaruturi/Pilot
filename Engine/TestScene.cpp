@@ -74,13 +74,14 @@ namespace piolot {
 		const float building_scaling_factor = 256.0f;
 		entities[0]->SetScale(glm::vec3(1.0f / building_scaling_factor, 1.0f / building_scaling_factor, 1.0f / building_scaling_factor));
 
-		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
+		/*animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
 		LOGGER.AddToLog("Loaded Bob");
 
 		AnimatedEntity * animatedEntity = animatedEntities[0].get();
 		animatedEntity->SetInitialPosition(glm::vec3(4.0, 0.0, 2.0), testTerrain.get());
 		animatedEntity->SetScale(glm::vec3(0.0125f, 0.0125f, 0.0125f));
-		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
+		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));*/
+		AnimatedEntity * animated_entity;
 
 		std::shared_ptr<Texture> archer_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("archer/akai_diffuse.png"), false);
 		ASMGR.AddToTextures("akai_diffuse", archer_diffuse);
@@ -91,29 +92,37 @@ namespace piolot {
 		std::shared_ptr<Texture> knight_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("RTSDemo/Materials/DemoTexture.png"), false);
 		ASMGR.AddToTextures("knight_demo", knight_diffuse);
 
-		for (int i = 0; i < 1; i++)
+		std::shared_ptr<Object> knightWalkAnimation = std::make_shared<Object>(MODEL_FOLDER + std::string("RTSDemo/Walking.fbx"));
+		knightWalkAnimation->GetMeshes()[0]->textureNames[0] = ("knight_demo");
+		ASMGR.AddToObjects("Walking", knightWalkAnimation);
+
+		std::shared_ptr<Object> knightDyingAnimation = std::make_shared<Object>(MODEL_FOLDER + std::string("RTSDemo/Dying.fbx"));
+		knightDyingAnimation->GetMeshes()[0]->textureNames[0] = ("knight_demo");
+		ASMGR.AddToObjects("Dying", knightDyingAnimation);
+
+		std::shared_ptr<Object> knightIdleAnimation = std::make_shared<Object>(MODEL_FOLDER + std::string("RTSDemo/HappyIdle.fbx"));
+		knightIdleAnimation->GetMeshes()[0]->textureNames[0] = ("knight_demo");
+		ASMGR.AddToObjects("HappyIdle", knightIdleAnimation);
+
+		std::shared_ptr<Object> knightSwordAnimation = std::make_shared<Object>(MODEL_FOLDER + std::string("RTSDemo/SwordAndShieldSlash.fbx"));
+		knightSwordAnimation->GetMeshes()[0]->textureNames[0] = ("knight_demo");
+		ASMGR.AddToObjects("SwordAndShieldSlash", knightSwordAnimation);
+
+
+		for (int i = 0; i < 4; i++)
 		{
 
-			animatedEntities.push_back(std::make_unique<AnimatedEntity>("knight", "RTSDemo/Dying.fbx", "bob_lamp", glm::vec3(-30, -0, -30), glm::vec3(30, 60, 30)));
+			animatedEntities.push_back(std::make_unique<AnimatedEntity>("knight", "RTSDemo/HappyIdle.fbx", "bob_lamp", glm::vec3(-30, -0, -30), glm::vec3(30, 60, 30)));
 			LOGGER.AddToLog("Pushed an Archer on to the Animated Entities");
 
-			animatedEntity = animatedEntities[i + 1].get();
-			animatedEntity->SetInitialPosition(glm::vec3(2.0, 0.0, (i + 1)), testTerrain.get());
+			animated_entity = animatedEntities[i].get();
+			animated_entity->SetInitialPosition(glm::vec3(2.0, 0.0, (i + 1)), testTerrain.get());
 			const float scale_factor = 64.f;
-			animatedEntity->SetScale(glm::vec3(1 / scale_factor));
-			animatedEntity->SetRotation(glm::vec3(-0, 0.0f, 0.00f));
-			animatedEntity->SetAnimationTotalTime(0.75f);
+			animated_entity->SetScale(glm::vec3(1 / scale_factor));
+			animated_entity->SetRotation(glm::vec3(-0, 0.0f, 0.00f));
+			animated_entity->SetAnimationTotalTime(0.75f);
 		}
 
-		animatedEntity->gPlay.health = 20;
-
-		// We have the pointer to the last Entitity.
-		animatedEntity->gPlay.team = 1;
-
-		//ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
-		//ASMGR.objects.at("KB_Punches")->GetMeshes()[0]->textureNames.push_back("akai_diffuse");
-
-		ASMGR.objects.at("Dying")->GetMeshes()[0]->textureNames[0] = ("knight_demo");
 		ASMGR.objects.at("Medieval_House")->GetMeshes()[0]->textureNames.push_back("building_diffuse");
 
 		buildingPlacer = std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "buildingPlacer");
@@ -124,11 +133,6 @@ namespace piolot {
 
 		LOGGER.AddToLog("Finished Initializing Entities..");
 
-		std::shared_ptr<Object> knightWalkAnimation = std::make_shared<Object>(MODEL_FOLDER + std::string("RTSDemo/Walking.fbx"));
-		knightWalkAnimation->GetMeshes()[0]->textureNames[0] = ("knight_demo");
-		ASMGR.AddToObjects("Walking", knightWalkAnimation);
-
-		animatedEntity->SetObjectName("Walking");
 
 	}
 
@@ -268,9 +272,38 @@ namespace piolot {
 					// That object immediately starts attacking the current player.
 					it->gPlay.attackTarget->gPlay.attackingMode = true;
 					it->gPlay.attackTarget->gPlay.attackTarget = it.get();
+					if ( "SwordAndShieldSlash" != it->GetObjectName() && "Dying" != it->GetObjectName())
+					{
+						it->SetAnimationTotalTime(0);
+						it->SetObjectName("SwordAndShieldSlash");
+					}
 				}else if (path.size() > 2 && it->gPlay.attackTarget->gPlay.attacker == it.get())
 				{
 					it->gPlay.attackTarget->gPlay.attacker = nullptr;
+
+					if ("Walking" != it->GetObjectName())
+					{
+						it->SetAnimationTotalTime(0);
+						it->SetObjectName("Walking");
+					}
+				}
+			}else
+			{
+				if (path.empty())
+				{
+					if ("HappyIdle" != it->GetObjectName() && "Dying" != it->GetObjectName())
+					{
+						it->SetAnimationTotalTime(0);
+						it->SetObjectName("HappyIdle");
+					}
+				}
+				else
+				{
+					if ("Walking" != it->GetObjectName())
+					{
+						it->SetAnimationTotalTime(0);
+						it->SetObjectName("Walking");
+					}
 				}
 			}
 
@@ -317,8 +350,8 @@ namespace piolot {
 
 		if (_totalTime > 30.0f && _totalTime < 30.0f + _deltaTime * 2)
 		{
-			animatedEntities[1]->SetAnimationTotalTime(0);
-			animatedEntities[1]->SetObjectName("Dying");
+			animatedEntities[0]->SetAnimationTotalTime(0);
+			animatedEntities[0]->SetObjectName("Dying");
 		}
 
 		testTerrain->Update(_deltaTime, _totalTime);

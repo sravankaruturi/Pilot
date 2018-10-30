@@ -679,8 +679,14 @@ namespace piolot
 
 	void Object::CopyBoneMatrices(std::vector<glm::mat4>& _matrices)
 	{
-		for (int i = 0; i < _matrices.size(); i++) {
+		for ( int i = 0 ; i < boneData.size(); i++)
+		{
 			_matrices[i] = glm::transpose(get_glm_matrix(boneData[i].final_transformation));
+		}
+
+		for ( int i = boneData.size(); i < _matrices.size(); i++)
+		{
+			_matrices[i] = glm::mat4(1.0f);
 		}
 	}
 }
