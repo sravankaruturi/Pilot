@@ -24,6 +24,11 @@ namespace piolot {
 
 		Object * current_object = ASMGR.objects.at(objectName).get();
 
+		if ( 0 == current_object->AssimpScene()->mNumAnimations)
+		{
+			return;
+		}
+
 		float animation_time = current_object->GetLastAnimationUpdateTime();
 
 		if ( _currentTime - animation_time >= _deltaTime) {

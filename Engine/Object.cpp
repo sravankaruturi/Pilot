@@ -282,6 +282,14 @@ namespace piolot
 			selected_animation_index = 14;
 		}
 
+		if ( 0 == assimpScene->mNumAnimations )
+		{
+			for (auto i = 0; i < numberOfBonesLoaded; i++) {
+				_matrices[i] = glm::mat4(1.0f);
+			}
+			return;
+		}
+
 		// TODO: Check if valid scene, before accessing Animations here.
 		const auto ticks_per_second = assimpScene->mAnimations[selected_animation_index]->mTicksPerSecond != 0 ? assimpScene->mAnimations[0]->mTicksPerSecond : 25.0f;
 		auto time_in_ticks = _totalTime * ticks_per_second;

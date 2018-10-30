@@ -197,6 +197,12 @@ namespace piolot
 		float lastAnimationUpdateTime = 0.0f;
 
 	public:
+
+		const aiScene* AssimpScene() const
+		{
+			return assimpScene;
+		}
+
 		float& GetLastAnimationUpdateTime()
 		{
 			return lastAnimationUpdateTime;
