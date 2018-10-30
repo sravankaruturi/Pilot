@@ -22,8 +22,15 @@ namespace piolot {
 	void AnimatedEntity::PlayAnimation(float _deltaTime, float _currentTime)
 	{
 
-		Object * current_object = ASMGR.objects.at(objectName).get();
-
+		Object * current_object;
+		if ( currentAnimationObject == nullptr)
+		{
+			current_object = ASMGR.objects.at(objectName).get();
+		}else
+		{
+			current_object = currentAnimationObject.get();
+		}
+		
 		if ( 0 == current_object->AssimpScene()->mNumAnimations)
 		{
 			return;

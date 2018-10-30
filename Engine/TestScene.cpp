@@ -94,14 +94,14 @@ namespace piolot {
 		for (int i = 0; i < 1; i++)
 		{
 
-			animatedEntities.push_back(std::make_unique<AnimatedEntity>("knight", "RTSDemo/ToonRTS_demo_Knight.FBX", "bob_lamp", glm::vec3(-30, -15, 0), glm::vec3(30, 15, 60)));
+			animatedEntities.push_back(std::make_unique<AnimatedEntity>("knight", "RTSDemo/Dying.fbx", "bob_lamp", glm::vec3(-30, -0, -30), glm::vec3(30, 60, 30)));
 			LOGGER.AddToLog("Pushed an Archer on to the Animated Entities");
 
 			animatedEntity = animatedEntities[i + 1].get();
 			animatedEntity->SetInitialPosition(glm::vec3(2.0, 0.0, (i + 1)), testTerrain.get());
 			const float scale_factor = 64.f;
 			animatedEntity->SetScale(glm::vec3(1 / scale_factor));
-			animatedEntity->SetRotation(glm::vec3(-90.0f, 0.0f, 0.00f));
+			animatedEntity->SetRotation(glm::vec3(-0, 0.0f, 0.00f));
 			animatedEntity->SetAnimationTotalTime(0.75f);
 		}
 
@@ -113,7 +113,7 @@ namespace piolot {
 		//ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
 		//ASMGR.objects.at("KB_Punches")->GetMeshes()[0]->textureNames.push_back("akai_diffuse");
 
-		ASMGR.objects.at("ToonRTS_demo_Knight")->GetMeshes()[0]->textureNames[0] = "knight_demo";
+		ASMGR.objects.at("Dying")->GetMeshes()[0]->textureNames[0] = ("knight_demo");
 		ASMGR.objects.at("Medieval_House")->GetMeshes()[0]->textureNames.push_back("building_diffuse");
 
 		buildingPlacer = std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "buildingPlacer");
@@ -123,6 +123,12 @@ namespace piolot {
 		ASMGR.shaders.at("buildingPlacer")->setVec4("u_Colour0", 0, 1, 0, 1);
 
 		LOGGER.AddToLog("Finished Initializing Entities..");
+
+		std::shared_ptr<Object> knightWalkAnimation = std::make_shared<Object>(MODEL_FOLDER + std::string("RTSDemo/animations/WK_heavy_infantry_06_combat_walk.FBX"));
+		ASMGR.AddToObjects("WK_heavy_infantry_06_combat_walk", knightWalkAnimation);
+
+		/*animatedEntity->animationObjects.push_back(knightWalkAnimation);
+		animatedEntity->currentAnimationObject = knightWalkAnimation;*/
 
 	}
 
