@@ -94,7 +94,7 @@ namespace piolot {
 		for (int i = 0; i < 1; i++)
 		{
 
-			animatedEntities.push_back(std::make_unique<AnimatedEntity>("knight", "RTSDemo/ToonRTS_demo_Knight.FBX", "bob_lamp", glm::vec3(-30, 0, -30), glm::vec3(30, 180, 30)));
+			animatedEntities.push_back(std::make_unique<AnimatedEntity>("knight", "RTSDemo/ToonRTS_demo_Knight.FBX", "bob_lamp", glm::vec3(-30, -15, 0), glm::vec3(30, 15, 60)));
 			LOGGER.AddToLog("Pushed an Archer on to the Animated Entities");
 
 			animatedEntity = animatedEntities[i + 1].get();
@@ -112,6 +112,7 @@ namespace piolot {
 
 		//ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
 		//ASMGR.objects.at("KB_Punches")->GetMeshes()[0]->textureNames.push_back("akai_diffuse");
+
 		ASMGR.objects.at("ToonRTS_demo_Knight")->GetMeshes()[0]->textureNames[0] = "knight_demo";
 		ASMGR.objects.at("Medieval_House")->GetMeshes()[0]->textureNames.push_back("building_diffuse");
 
