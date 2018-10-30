@@ -124,11 +124,11 @@ namespace piolot {
 
 		LOGGER.AddToLog("Finished Initializing Entities..");
 
-		std::shared_ptr<Object> knightWalkAnimation = std::make_shared<Object>(MODEL_FOLDER + std::string("RTSDemo/animations/WK_heavy_infantry_06_combat_walk.FBX"));
-		ASMGR.AddToObjects("WK_heavy_infantry_06_combat_walk", knightWalkAnimation);
+		std::shared_ptr<Object> knightWalkAnimation = std::make_shared<Object>(MODEL_FOLDER + std::string("RTSDemo/Walking.fbx"));
+		knightWalkAnimation->GetMeshes()[0]->textureNames[0] = ("knight_demo");
+		ASMGR.AddToObjects("Walking", knightWalkAnimation);
 
-		/*animatedEntity->animationObjects.push_back(knightWalkAnimation);
-		animatedEntity->currentAnimationObject = knightWalkAnimation;*/
+		animatedEntity->SetObjectName("Walking");
 
 	}
 
@@ -313,6 +313,12 @@ namespace piolot {
 				totalTimeCounterForPathing = 0.0f;
 			}
 
+		}
+
+		if (_totalTime > 30.0f && _totalTime < 30.0f + _deltaTime * 2)
+		{
+			animatedEntities[1]->SetAnimationTotalTime(0);
+			animatedEntities[1]->SetObjectName("Dying");
 		}
 
 		testTerrain->Update(_deltaTime, _totalTime);
