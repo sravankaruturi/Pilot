@@ -127,12 +127,12 @@ namespace piolot {
 
 		buildingPlacer = std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "buildingPlacer");
 		//buildingPlacer->SetPosition(glm::vec3(0.0f));
+
 		buildingPlacer->SetScale(glm::vec3(1.0f / building_scaling_factor, 1.0f / building_scaling_factor, 1.0f / building_scaling_factor) * 1.01f);
 		ASMGR.shaders.at("buildingPlacer")->use();
 		ASMGR.shaders.at("buildingPlacer")->setVec4("u_Colour0", 0, 1, 0, 1);
 
 		LOGGER.AddToLog("Finished Initializing Entities..");
-
 
 	}
 
@@ -171,7 +171,7 @@ namespace piolot {
 			)->occupiedBy = it.get();
 		}
 
-		std::vector<unsigned int> to_be_deleted_entities_indices;
+		
 		unsigned int i = 0;
 		for (const auto& it : animatedEntities)
 		{
@@ -195,18 +195,30 @@ namespace piolot {
 			}
 
 			if (it->gPlay.health <= 0) {
+
+				bool already_included = false;
+				for ( auto j : toBeDeletedEntitiesIndices)
+				{
+					already_included |= (j.first == i);
+				}
+
 				// Die.
 				// Add the Index to the to die list.
 				// Get the Index
-				to_be_deleted_entities_indices.push_back(i);
+				if ( !already_included )
+				{
+					toBeDeletedEntitiesIndices.push_back(std::pair<unsigned int, float>(i, _totalTime));
+					it->SetObjectName("Dying");
+				}
+
 			}
 
 			i++;
 		}
 
-		for ( unsigned int i = 0 ; i < to_be_deleted_entities_indices.size() ; i++)
+		for ( unsigned int i = 0 ; i < toBeDeletedEntitiesIndices.size() ; i++)
 		{
-			const unsigned int j = to_be_deleted_entities_indices[i];
+			const unsigned int j = toBeDeletedEntitiesIndices[i].first;
 
 			// Check if the selected Entities consist that, and remove that??
 			for (unsigned int k = 0; k < selectedEntities.size(); k++)
@@ -217,11 +229,19 @@ namespace piolot {
 				}
 			}
 
-			// Update the attackers, target.
-			animatedEntities[j - i]->gPlay.attacker->gPlay.attackTarget = nullptr;
-			animatedEntities[j - i]->gPlay.attacker->gPlay.attackingMode = false;
-			animatedEntities.erase(animatedEntities.begin() + j - i);
-
+			// TODO: Delete using Shared Pointers. 
+			// TODO: Have a new list of Shared Pointers for the Entities that are set to be deleted. That way, we can loop through that instead of all the stuff.
+			// TODO: Reorgranize the Code into the Engine and the Game.
+			if ( _totalTime > toBeDeletedEntitiesIndices[i].second + 2.0f)
+			{
+				// Update the attackers, target.
+				animatedEntities[j - i]->gPlay.attacker->gPlay.attackTarget = nullptr;
+				animatedEntities[j - i]->gPlay.attacker->gPlay.attackingMode = false;
+				animatedEntities.erase(animatedEntities.begin() + j - i);
+				toBeDeletedEntitiesIndices.erase(toBeDeletedEntitiesIndices.begin() + i);
+				i--;
+			}
+			
 			// We have to subtract with i because every delete shortens the vector itself.
 		}
 
@@ -346,12 +366,6 @@ namespace piolot {
 				totalTimeCounterForPathing = 0.0f;
 			}
 
-		}
-
-		if (_totalTime > 30.0f && _totalTime < 30.0f + _deltaTime * 2)
-		{
-			animatedEntities[0]->SetAnimationTotalTime(0);
-			animatedEntities[0]->SetObjectName("Dying");
 		}
 
 		testTerrain->Update(_deltaTime, _totalTime);
