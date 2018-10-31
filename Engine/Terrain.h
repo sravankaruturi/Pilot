@@ -78,6 +78,13 @@ namespace piolot {
 		float navGCost = 0;
 
 		/**
+		 * \brief A Pointer to the Entity occupying this tile.
+		 * 
+		 * Entities update this every frame, so that we can use them directly later on in the same frame.
+		 */
+		Entity * occupiedBy = nullptr;
+
+		/**
 		 * \brief The TileSet that this Tile belongs to.
 		 * 
 		 * If two tiles belong to two different Tile Sets, there exists no path between them.
@@ -275,6 +282,14 @@ namespace piolot {
 		 */
 		float GetHeightForNode(const int& _x, const int& _z);
 
+
+		/**
+		 * \brief Get the Indices of the Node Corresponding to this Position
+		 * \param _position Position Vector3
+		 * \return Node Indices
+		 */
+		glm::ivec2 GetNodeIndicesFromPos(const glm::vec3 _position);
+
 		/**
 		 * \brief Get the Indices of the Node corresponding to this Position
 		 * \param _x Position X
@@ -310,6 +325,13 @@ namespace piolot {
 		 * \return A Vector of Tiles, the path to take.
 		 */
 		std::vector<MapTile *> GetPathFromPositions(glm::vec3, glm::vec3);
+
+		/**
+		 * \brief Get the Node at the Node Indices
+		 * \param _nodeIndices Node Indices Vec2
+		 * \return Pointer to the Tile at the _nodeIndices
+		 */
+		MapTile * GetTileFromIndices(glm::ivec2 _nodeIndices);
 
 		/**
 		 * \brief Get the Node at (x, z)
@@ -367,6 +389,11 @@ namespace piolot {
 		 * \brief Resets the Obstacle during Path.
 		 */
 		void ResetObstacles();
+
+		/**
+		 * \brief Reset all the tiles to, Occupied by none
+		 */
+		void ResetOccupiedBy();
 
 		/* Terrain Debug */
 		bool terrainDebug = false;

@@ -197,10 +197,21 @@ void piolot::TestScene::OnImguiRender(ImGuiControlVariables& _vars)
 
 		}
 		else {
-			ImGui::Text("No Entity selected to debug pathing,");
+			ImGui::Text("No Entity selected to debug pathing.");
 		}
 
+		ImGui::Separator();
 
+		ImGui::Text("Fighting Variables");
+
+		if (!selectedEntities.empty()) {
+
+			ImGui::Checkbox("Attacking Mode: ", &(selectedEntities[0]->gPlay.attackingMode));
+
+		}
+		else {
+			ImGui::Text("No Entity selected to debug Fighting.");
+		}
 
 		ImGui::End();
 
@@ -268,7 +279,7 @@ void piolot::TestScene::OnImguiRender(ImGuiControlVariables& _vars)
 		ImGui::BeginGroup();
 
 		{
-			if (!selectedEntities.empty()) {
+			if (!selectedEntities.empty() && selectedEntities[0] != nullptr) {
 				ImGui::BeginChild("Details", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
 
 				ImGui::Text(selectedEntities[0]->GetEntityName().c_str());

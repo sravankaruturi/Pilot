@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Entity.h"
+#include "Object.h"
 
 // You need to change this in the Shaders as well if you change it here.
 #define MAX_NUMBER_OF_BONES_PER_ENTITY		128
@@ -24,6 +25,16 @@ namespace piolot {
 		float animationTotalTime = 0.0f;
 
 	public:
+
+		/**
+		* \brief This can be where we load all the animations that are stored in a separate file.
+		*/
+		std::vector<std::shared_ptr<Object>> animationObjects;
+
+		/**
+		* \brief We Get the Bone Matrices from the current Animation Object.
+		*/
+		std::shared_ptr<Object> currentAnimationObject = nullptr;
 
 		// Testing purposes.
 		void SetAnimationTotalTime(float _animationTotalTime) { animationTotalTime = _animationTotalTime; }

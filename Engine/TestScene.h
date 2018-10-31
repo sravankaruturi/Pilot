@@ -83,8 +83,6 @@ namespace piolot {
 		 * \brief The Projection Matrix.
 		 */
 		glm::mat4 projectionMatrix;
-		
-
 
 	public:
 

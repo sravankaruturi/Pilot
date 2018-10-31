@@ -57,22 +57,30 @@ namespace piolot {
 	void TestScene::InitEntities()
 	{
 
+		LOGGER.AddToLog("Initializing Entities...");
+
 		/* Initialize Cameras */
 		cameras.insert_or_assign("First", std::make_shared<Camera>("First", glm::vec3(0, 5, 10), glm::vec3(0.5, -0.5, -0.5), glm::vec3(0, 1, 0)));
 		cameras.insert_or_assign("Second", std::make_shared<Camera>("Second", glm::vec3(10, 5, 10), glm::vec3(-0.5, -0.5, -0.5), glm::vec3(0, 1, 0)));
 
 		ActivateCamera(cameras.at("First"));
 
-		//entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
-		entities.push_back(std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test"));
+		LOGGER.AddToLog("Cameras Initialized...");
+
+		entities.push_back(std::make_shared<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test"));
+		LOGGER.AddToLog("Loaded the Medieval House");
+
 		const float building_scaling_factor = 256.0f;
 		entities[0]->SetScale(glm::vec3(1.0f / building_scaling_factor, 1.0f / building_scaling_factor, 1.0f / building_scaling_factor));
 
-		animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
+		/*animatedEntities.push_back(std::make_unique<AnimatedEntity>("bob", "boblamp/boblampclean.md5mesh", "bob_lamp", glm::vec3(-10, -10, 0), glm::vec3(10, 10, -60)));
+		LOGGER.AddToLog("Loaded Bob");
+
 		AnimatedEntity * animatedEntity = animatedEntities[0].get();
 		animatedEntity->SetInitialPosition(glm::vec3(4.0, 0.0, 2.0), testTerrain.get());
 		animatedEntity->SetScale(glm::vec3(0.0125f, 0.0125f, 0.0125f));
-		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));
+		animatedEntity->SetRotation(glm::vec3(90.f, 0.0f, 0.00f));*/
+		AnimatedEntity * animated_entity;
 
 		std::shared_ptr<Texture> archer_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("archer/akai_diffuse.png"), false);
 		ASMGR.AddToTextures("akai_diffuse", archer_diffuse);
@@ -80,34 +88,60 @@ namespace piolot {
 		std::shared_ptr<Texture> building_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("Medieval_House/Medieval_House_Diff.png"), false);
 		ASMGR.AddToTextures("building_diffuse", building_diffuse);
 
-		for (int i = 0; i < 10; i++)
+		std::shared_ptr<Texture> knight_diffuse = std::make_shared<Texture>(MODEL_FOLDER + std::string("RTSDemo/Materials/DemoTexture.png"), false);
+		ASMGR.AddToTextures("knight_demo", knight_diffuse);
+
+		std::shared_ptr<Object> knightWalkAnimation = std::make_shared<Object>(MODEL_FOLDER + std::string("RTSDemo/Walking.fbx"));
+		knightWalkAnimation->GetMeshes()[0]->textureNames[0] = ("knight_demo");
+		ASMGR.AddToObjects("Walking", knightWalkAnimation);
+
+		std::shared_ptr<Object> knightDyingAnimation = std::make_shared<Object>(MODEL_FOLDER + std::string("RTSDemo/Dying.fbx"));
+		knightDyingAnimation->GetMeshes()[0]->textureNames[0] = ("knight_demo");
+		ASMGR.AddToObjects("Dying", knightDyingAnimation);
+
+		std::shared_ptr<Object> knightIdleAnimation = std::make_shared<Object>(MODEL_FOLDER + std::string("RTSDemo/HappyIdle.fbx"));
+		knightIdleAnimation->GetMeshes()[0]->textureNames[0] = ("knight_demo");
+		ASMGR.AddToObjects("HappyIdle", knightIdleAnimation);
+
+		std::shared_ptr<Object> knightSwordAnimation = std::make_shared<Object>(MODEL_FOLDER + std::string("RTSDemo/SwordAndShieldSlash.fbx"));
+		knightSwordAnimation->GetMeshes()[0]->textureNames[0] = ("knight_demo");
+		ASMGR.AddToObjects("SwordAndShieldSlash", knightSwordAnimation);
+
+
+		for (int i = 0; i < 4; i++)
 		{
 
-			animatedEntities.push_back(std::make_unique<AnimatedEntity>("archer", "archer/archer_walking.fbx", "bob_lamp", glm::vec3(-30, 0, -30), glm::vec3(30, 180, 30)));
+			animatedEntities.push_back(std::make_shared<AnimatedEntity>("knight", "RTSDemo/HappyIdle.fbx", "bob_lamp", glm::vec3(-30, -0, -30), glm::vec3(30, 60, 30)));
+			LOGGER.AddToLog("Pushed an Archer on to the Animated Entities");
 
-			animatedEntity = animatedEntities[i + 1].get();
-			animatedEntity->SetInitialPosition(glm::vec3(2.0, 0.0, (i + 1)), testTerrain.get());
-			const float scale_factor = 256.f;
-			animatedEntity->SetScale(glm::vec3(1 / scale_factor));
-			animatedEntity->SetRotation(glm::vec3(0, 0.0f, 0.00f));
-			animatedEntity->SetAnimationTotalTime(0.75f);
+			animated_entity = animatedEntities[i].get();
+			animated_entity->SetInitialPosition(glm::vec3(2.0, 0.0, (i + 1)), testTerrain.get());
+			const float scale_factor = 64.f;
+			animated_entity->SetScale(glm::vec3(1 / scale_factor));
+			animated_entity->SetRotation(glm::vec3(-0, 0.0f, 0.00f));
+			animated_entity->SetAnimationTotalTime(0.75f);
 		}
 
-		ASMGR.objects.at("archer_walking")->GetMeshes()[0]->textureNames[0] = "akai_diffuse";
 		ASMGR.objects.at("Medieval_House")->GetMeshes()[0]->textureNames.push_back("building_diffuse");
 
 		buildingPlacer = std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "buildingPlacer");
 		//buildingPlacer->SetPosition(glm::vec3(0.0f));
+
 		buildingPlacer->SetScale(glm::vec3(1.0f / building_scaling_factor, 1.0f / building_scaling_factor, 1.0f / building_scaling_factor) * 1.01f);
 		ASMGR.shaders.at("buildingPlacer")->use();
 		ASMGR.shaders.at("buildingPlacer")->setVec4("u_Colour0", 0, 1, 0, 1);
+
+		LOGGER.AddToLog("Finished Initializing Entities..");
 
 	}
 
 	void TestScene::OnUpdate(float _deltaTime, float _totalTime)
 	{
 
+		testTerrain->ResetOccupiedBy();
+
 		Scene::OnUpdate(_deltaTime, _totalTime);
+		
 
 		if (window->IsKeyPressedOrHeld(GLFW_KEY_C))
 		{
@@ -121,9 +155,6 @@ namespace piolot {
 			it.second->UpdateVectors();
 		}
 
-		// Reset the Obstacle flag for all the terrain tiles here.
-		// testTerrain->ResetObstacles();
-
 		// I can update all the Positions here.
 		glm::vec3 temp_position{};
 		for (const auto& it : entities) {
@@ -133,21 +164,66 @@ namespace piolot {
 			it->SetPosition(temp_position);
 
 			it->Update(_deltaTime);
+			
+			testTerrain->GetTileFromIndices(
+				testTerrain->GetNodeIndicesFromPos(it->GetPosition())
+			)->occupiedBy = it.get();
 		}
 
-		for (const auto& it : animatedEntities)
+		
+		for (auto i = 0 ; i < animatedEntities.size() ; i++)
 		{
+
+			auto it = animatedEntities[i];
+
 			temp_position = it->GetPosition();
 			temp_position.y = testTerrain->GetHeightAtPos(temp_position.x, temp_position.z);
 			it->SetPosition(temp_position);
 
+			// If You are actually attacking someone and they move, you are supposed to update the position.
+
 			it->Update(_deltaTime);
 			it->PlayAnimation(_deltaTime, _totalTime);
+
+			testTerrain->GetTileFromIndices(testTerrain->GetNodeIndicesFromPos(it->GetPosition()))->occupiedBy = it.get();
+
+			// Now if you are supposed to attack, then attack every frame gradually. We should eventually change it to something like attack every 1 move or something like that.
+			// We have to make sure that no other person is attacking this target.
+			// We have to wait if someone else is attacking the same target.
+			// So we can take a hit from every attacker we have which is atmost one. We do not deal with the attack targets so much as the attacker itself.
+			if (it->gPlay.attacker != nullptr) {
+				it->gPlay.health -= _deltaTime;
+			}
+
+			if (it->gPlay.health <= 0) {
+				tbdAnimatedEntities.push_back(std::pair<std::shared_ptr<AnimatedEntity>, float>(it, _totalTime));
+				
+				it->gPlay.attacker->gPlay.attackTarget = nullptr;
+				it->gPlay.attacker->gPlay.attackingMode = false;
+
+				it->SetObjectName("Dying");
+				it->SetAnimationTotalTime(0.0f);
+
+				animatedEntities.erase(animatedEntities.begin() + i);
+				i--;
+			}
+		}
+
+		for (auto i = 0; i < tbdAnimatedEntities.size(); i++) {
+
+			auto it = tbdAnimatedEntities[i];
+
+			(it.first)->Update(_deltaTime);
+			(it.first)->PlayAnimation(_deltaTime, _totalTime);
+
+			if (_totalTime > it.second + tbdTimer) {
+				tbdAnimatedEntities.erase(tbdAnimatedEntities.begin() + i);
+				i--;
+			}
+
 		}
 
 		buildingPlacer->Update(_deltaTime);
-
-		AnimatedEntity * animated_entitiy = animatedEntities[1].get();
 
 		testTerrain->ClearColours();
 
@@ -156,6 +232,16 @@ namespace piolot {
 		/* Find Paths for each entity */
 		for (auto& it : animatedEntities)
 		{
+
+			// Make sure that the Target Node is up to date  if the Target moves around.
+			if( it->gPlay.attackingMode && it->gPlay.attackTarget != nullptr)
+			{
+				it->setTargetNode(
+					testTerrain->GetNodeIndicesFromPos(
+						it->gPlay.attackTarget->GetPosition()
+					)
+				);
+			}
 
 			glm::vec3 startPosition = it->GetPosition();
 			glm::ivec2 end_node = it->GetTargetPosition();
@@ -170,10 +256,56 @@ namespace piolot {
 
 			log_temp += Vec3ToString(startPosition) + " and " + Vec3ToString(endPosition) + " has " + std::to_string(path.size()) + " nodes";
 
-			for (auto it : path)
-			{
-				//testTerrain->HighlightNode(it->tileIndexX, it->tileIndexZ);
+			if (it->gPlay.attackingMode && !path.empty()) {
+				// If you are attacking, you stop one tile before the actual target.
+				path.pop_back();
 			}
+
+			if ( it->gPlay.attackingMode ){
+
+				// Close enough
+				if (path.size() < 2 && it->gPlay.attackTarget->gPlay.attacker == nullptr)
+				{
+					it->gPlay.attackTarget->gPlay.attacker = it.get();
+					// That object immediately starts attacking the current player.
+					it->gPlay.attackTarget->gPlay.attackingMode = true;
+					it->gPlay.attackTarget->gPlay.attackTarget = it.get();
+					if ( "SwordAndShieldSlash" != it->GetObjectName() && "Dying" != it->GetObjectName())
+					{
+						it->SetAnimationTotalTime(0);
+						it->SetObjectName("SwordAndShieldSlash");
+					}
+				}else if (path.size() > 2 && it->gPlay.attackTarget->gPlay.attacker == it.get())
+				{
+					it->gPlay.attackTarget->gPlay.attacker = nullptr;
+
+					if ("Walking" != it->GetObjectName())
+					{
+						it->SetAnimationTotalTime(0);
+						it->SetObjectName("Walking");
+					}
+				}
+			}else
+			{
+				if (path.empty())
+				{
+					if ("HappyIdle" != it->GetObjectName() && "Dying" != it->GetObjectName())
+					{
+						it->SetAnimationTotalTime(0);
+						it->SetObjectName("HappyIdle");
+					}
+				}
+				else
+				{
+					if ("Walking" != it->GetObjectName())
+					{
+						it->SetAnimationTotalTime(0);
+						it->SetObjectName("Walking");
+					}
+				}
+			}
+
+			// To remove attackers.. Each entity can check if the attacker still exists and is still attacking?
 
 			totalTimeCounterForPathing += _deltaTime;
 
@@ -186,11 +318,11 @@ namespace piolot {
 				// Look for the Next Node.
 				auto next_tile = path.back();
 
-				const auto speed = 1.f;
+				
 
 				// Traverse the Distance b/w them * deltaTime. --> You complete the distance two nodes in 1 second.
 				glm::vec3 current_position = it->GetPosition();
-				glm::vec3 final_position = current_position + ((next_tile->GetPosition() - current_position) * _deltaTime * speed);
+				glm::vec3 final_position = current_position + ((next_tile->GetPosition() - current_position) * _deltaTime * it->gPlay.movementSpeed);
 
 				// Get the Rotation, about, y ,axis, with both the nodes.
 				// Get the Vector, Target Node - Current Node.
@@ -227,10 +359,6 @@ namespace piolot {
 
 		glm::mat4 projection_matrices[4] = { persp_projection_matrix, ortho_projection_matrix, ortho_projection_matrix, ortho_projection_matrix };
 		glm::mat4 view_matrices[4] = { this->activeCamera->GetViewMatrix() };
-
-		/*view_matrices[1] = glm::lookAt(glm::vec3(8, 0, 0), glm::vec3(), glm::vec3(0, 1, 0));
-		view_matrices[2] = glm::lookAt(glm::vec3(0, 8, 0), glm::vec3(), glm::vec3(0, 0, 1));;
-		view_matrices[3] = glm::lookAt(glm::vec3(0, 0, 8), glm::vec3(), glm::vec3(0, 1, 0));;*/
 
 		view_matrices[0] = viewportsDetails[0].camera->GetViewMatrix();
 		view_matrices[1] = viewportsDetails[1].camera->GetViewMatrix();
@@ -284,10 +412,10 @@ namespace piolot {
 			it->Render();
 		}
 
-		/*for (const auto& it: tempEntities)
-		{
-			it->Render();
-		}*/
+		for (const auto& it : tbdAnimatedEntities) {
+			it.first->Render();
+		}
+
 		if ( isPlacingMode)
 		{
 			buildingPlacer->Render();
@@ -297,13 +425,8 @@ namespace piolot {
 
 		testTerrain->Render();
 
-		//testGrid.Render();
-
 	}
-
 	
-
-	// TODO: This is Broken. Fix this. This doesn't save the Animation Data.
 	void TestScene::SaveScene(const char * _fileName)
 	{
 
@@ -483,7 +606,6 @@ namespace piolot {
 				ray_start = this->activeCamera->GetPosition();
 
 				// Multiple Viewport
-				// TODO: Fix This.
 				float updated_x, updated_y;
 
 				updated_x = (window->mouseX > window->GetWidth() / 2.0f) ? window->mouseX - window->GetWidth() / 2.0f : window->mouseX;
@@ -613,6 +735,28 @@ namespace piolot {
 			int entity_counter = 0;
 
 			glm::ivec2 target_node = testTerrain->pointedNodeIndices;
+
+			// Check if the Target node already has an Entity. If so, we need to attack.
+			if ( testTerrain->GetTileFromIndices(target_node)->occupiedBy != nullptr/* && testTerrain->GetTileFromIndices(target_node)->occupiedBy->team != selectedEntities.back()->team*/)
+			{
+				// Move to that tile, and attack.
+				// To Attack, we set them to be in attacking mode.
+				for ( auto it: selectedEntities)
+				{
+					it->gPlay.attackingMode = true;
+					// You go there, and attack.
+
+					it->gPlay.attackTarget = testTerrain->GetTileFromIndices(target_node)->occupiedBy;
+
+				}
+			}
+			else {
+				for (auto it : selectedEntities)
+				{
+					it->gPlay.attackingMode = false;
+					it->gPlay.attackTarget = nullptr;
+				}
+			}
 
 			for (int row_counter = 0; row_counter < number_of_rows; row_counter++) {
 				for (int column_counter = 0; column_counter < number_of_columns; column_counter++) {

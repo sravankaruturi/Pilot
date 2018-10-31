@@ -208,6 +208,11 @@ namespace piolot {
 		return tiles[_x][_z].tilePosY;
 	}
 
+	glm::ivec2 Terrain::GetNodeIndicesFromPos(const glm::vec3 _position)
+	{
+		return this->GetNodeIndicesFromPos(_position.x, _position.z);
+	}
+
 	glm::ivec2 Terrain::GetNodeIndicesFromPos(const float& _x, const float& _z) const
 	{
 		glm::ivec2 return_vec(glm::min(int(_x / gridLength), int(nodeCountX - 1)), glm::min(int(_z / gridBreadth), int(nodeCountZ - 1)));
@@ -274,8 +279,8 @@ namespace piolot {
 	void Terrain::ClearColours()
 	{
 
-		auto all_tile_sets = GetAllTileSets();
-		auto number_tile_sets = all_tile_sets.size();
+		/*auto all_tile_sets = GetAllTileSets();
+		auto number_tile_sets = all_tile_sets.size();*/
 
 		for (auto i = 0; i < nodeCountX; i++) {
 			for (auto j = 0; j < nodeCountZ; j++) {
@@ -456,6 +461,11 @@ namespace piolot {
 
 
 
+	}
+
+	MapTile* Terrain::GetTileFromIndices(glm::ivec2 _nodeIndices)
+	{
+		return this->GetTileFromIndices(_nodeIndices.x, _nodeIndices.y);
 	}
 
 	MapTile* Terrain::GetTileFromIndices(int _x, int _y)
@@ -691,6 +701,16 @@ namespace piolot {
 		{
 			for (int j = 0; j < nodeCountZ; j++) {
 				tiles[i][j].navObstacle = false;
+			}
+		}
+	}
+
+	void Terrain::ResetOccupiedBy()
+	{
+		for (int i = 0; i < nodeCountX; i++)
+		{
+			for (int j = 0; j < nodeCountZ; j++) {
+				tiles[i][j].occupiedBy = 0;
 			}
 		}
 	}

@@ -155,6 +155,9 @@ namespace piolot
 		ImGui::Text("Pathing Debug");
 		ImGui::DragInt2("Target Node", glm::value_ptr(this->targetNode));
 
+		ImGui::Separator();
+		ImGui::DragFloat("Health: ", &this->gPlay.health);
+
 	}
 
 }
