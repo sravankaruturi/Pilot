@@ -7,7 +7,7 @@
 
 /* Let us implement one animation per Entity for now. We can extend this later on to hold more animations. */
 
-namespace piolot {
+namespace pilot {
 
 	/**
 	 * \brief Entity which uses the Animations Stored.
@@ -15,7 +15,7 @@ namespace piolot {
 	 * You cannot convert an Entity to and from AnimatedEntity and expect it to work.
 	 * The VertexData would be different.
 	 */
-	class AnimatedEntity : public piolot::Entity
+	class AnimatedEntity : public pilot::Entity
 	{
 
 	protected:

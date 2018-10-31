@@ -2,9 +2,9 @@
 #include <string>
 #include "GUIHelpers.h"
 
-#define LOGGER piolot::LoggingManager::GetInstance()
+#define LOGGER pilot::LoggingManager::GetInstance()
 
-namespace piolot {
+namespace pilot {
 
 	enum LogType {
 		PE_LOG_INFO,

@@ -16,7 +16,7 @@
 
 #define		NAME_LENGTH_TO_FILE		20
 
-namespace piolot {
+namespace pilot {
 
 	static void test_scene_resize(GLFWwindow * _window, int)
 	{

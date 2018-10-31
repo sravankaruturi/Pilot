@@ -8,7 +8,7 @@
 #include "Mesh.h"
 #include "Entity.h"
 
-using namespace piolot;
+using namespace pilot;
 
 class AllTests : public ::testing::Test
 {

@@ -1,7 +1,7 @@
 #pragma once
 #include "../EngineDeps/external_files/ImGUI/imgui.h"
 
-namespace piolot {
+namespace pilot {
 
 	struct ImGuiLog
 	{

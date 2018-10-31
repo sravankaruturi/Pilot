@@ -4,7 +4,7 @@
 #include "BoundingBox.h"
 #include <glm/detail/_vectorize.hpp>
 
-namespace piolot
+namespace pilot
 {
 
 	class Terrain;
@@ -197,6 +197,12 @@ namespace piolot
 		void SetPosition(const glm::vec3& _position)
 		{
 			position = _position;
+			matrixDirty = true;
+		}
+
+		void SetPosition(float _a, float _b, float _c)
+		{
+			position = glm::vec3(_a, _b, _c);
 			matrixDirty = true;
 		}
 

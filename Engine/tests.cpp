@@ -62,11 +62,11 @@ int main(int argc, char ** argv)
 		// Setup style
 		ImGui::StyleColorsDark();
 
-		piolot::ImGuiLog imgui_logger;
+		pilot::ImGuiLog imgui_logger;
 		LOGGER.SetImGuiLogger(&imgui_logger);
 #endif
 
-		piolot::TestScene test_scene(window);
+		pilot::TestScene test_scene(window);
 
 		float time = glfwGetTime();
 
@@ -89,22 +89,22 @@ int main(int argc, char ** argv)
 				// Try Letting Imgui Handle the Inputs for Now.. We need to change this..
 				if (window->IsKeyPressedOrHeld(GLFW_KEY_W))
 				{
-					test_scene.GetActiveCamera()->ProcessKeyboard(piolot::Camera::forward, delta_time);
+					test_scene.GetActiveCamera()->ProcessKeyboard(pilot::Camera::forward, delta_time);
 				}
 
 				if (window->IsKeyPressedOrHeld(GLFW_KEY_S))
 				{
-					test_scene.GetActiveCamera()->ProcessKeyboard(piolot::Camera::back, delta_time);
+					test_scene.GetActiveCamera()->ProcessKeyboard(pilot::Camera::back, delta_time);
 				}
 
 				if (window->IsKeyPressedOrHeld(GLFW_KEY_A))
 				{
-					test_scene.GetActiveCamera()->ProcessKeyboard(piolot::Camera::leftside, delta_time);
+					test_scene.GetActiveCamera()->ProcessKeyboard(pilot::Camera::leftside, delta_time);
 				}
 
 				if (window->IsKeyPressedOrHeld(GLFW_KEY_D))
 				{
-					test_scene.GetActiveCamera()->ProcessKeyboard(piolot::Camera::rightside, delta_time);
+					test_scene.GetActiveCamera()->ProcessKeyboard(pilot::Camera::rightside, delta_time);
 				}
 
 				if (window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1))
@@ -152,7 +152,7 @@ int main(int argc, char ** argv)
 			ImGui_ImplOpenGL3_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
 
-			piolot::ImGuiControlVariables test_scene_vars = {
+			pilot::ImGuiControlVariables test_scene_vars = {
 				display_multiple_views
 			};
 

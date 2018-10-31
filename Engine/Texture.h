@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <string>
 
-namespace piolot
+namespace pilot
 {
 
 	class Texture

@@ -20,9 +20,9 @@
 #define DBG_NEW new
 #endif
 
-#define ASMGR piolot::AssetManager::getInstance()
+#define ASMGR pilot::AssetManager::getInstance()
 
-namespace piolot
+namespace pilot
 {
 
 	class Object;

@@ -3,7 +3,7 @@
 #include <sstream>
 #include <iostream>
 
-namespace piolot
+namespace pilot
 {
 	GLShader::GLShader(const char* _vertexPath, const char* _fragmentPath)
 	{

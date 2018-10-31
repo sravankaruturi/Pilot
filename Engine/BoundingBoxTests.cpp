@@ -8,14 +8,14 @@
 TEST_F(AllTests, BoundingBoxInitializationCheck)
 {
 
-	piolot::BoundingBox bbox = piolot::BoundingBox(glm::vec3(-1.0f, -1.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+	pilot::BoundingBox bbox = pilot::BoundingBox(glm::vec3(-1.0f, -1.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
 	EXPECT_EQ(bbox.GetVerticesSize(), 24);
 
 }
 
 TEST_F(AllTests, BoundingBoxRayCollisionCheck)
 {
-	piolot::BoundingBox bbox = piolot::BoundingBox(glm::vec3(-1.0f, -1.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+	pilot::BoundingBox bbox = pilot::BoundingBox(glm::vec3(-1.0f, -1.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
 	EXPECT_EQ(bbox.GetVerticesSize(), 24);
 
 	glm::vec3 rayOrigin(0.0f, 0.0f, 10.0f);
@@ -32,7 +32,7 @@ TEST_F(AllTests, BoundingBoxRayCollisionCheck)
 TEST_F(AllTests, BoundingBoxRayCollisionCheckWhenMoved)
 {
 	
-	piolot::BoundingBox bbox = piolot::BoundingBox(glm::vec3(-1.0f, -1.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+	pilot::BoundingBox bbox = pilot::BoundingBox(glm::vec3(-1.0f, -1.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
 	EXPECT_EQ(bbox.GetVerticesSize(), 24);
 
 	glm::vec3 rayOrigin(0.0f, 0.0f, 10.0f);
@@ -63,7 +63,7 @@ TEST_F(AllTests, BoundingBoxRayCollisionCheckWhenMoved)
 TEST_F(AllTests, BoundingBoxCollisionCheckWhenScaled)
 {
 	
-	piolot::BoundingBox bbox = piolot::BoundingBox(glm::vec3(-1.0f, -1.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+	pilot::BoundingBox bbox = pilot::BoundingBox(glm::vec3(-1.0f, -1.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
 	EXPECT_EQ(bbox.GetVerticesSize(), 24);
 
 	glm::vec3 rayOrigin(0.0f, 0.0f, 10.0f);

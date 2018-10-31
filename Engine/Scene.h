@@ -9,7 +9,7 @@
 
 class Window;
 
-namespace piolot {
+namespace pilot {
 
 	class Scene
 	{

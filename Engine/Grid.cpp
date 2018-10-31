@@ -2,7 +2,7 @@
 #include "AssetManager.h"
 #include "Colours.h"
 
-namespace piolot {
+namespace pilot {
 
 	// TODO: This way of drawing grid uses multiple buffers. One fro each ray, which is quite stupid considering we draw this as a single entity most of the time.
 	// TODO: Fix this.

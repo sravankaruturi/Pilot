@@ -3,7 +3,7 @@
 #include "GLShader.h"
 #include "AssetManager.h"
 
-namespace piolot
+namespace pilot
 {
 
 	// This assumes, and is hardcoded to make sure that all the values passed in are vec4s. Pad stuff if you need smaller vectors.

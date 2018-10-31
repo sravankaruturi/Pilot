@@ -6,7 +6,7 @@
 #include <glm/mat4x4.hpp>
 #include <memory>
 
-namespace piolot {
+namespace pilot {
 
 	class GLShader;
 

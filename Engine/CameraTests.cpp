@@ -21,7 +21,7 @@ protected:
 	// World Up is along the Y Axis.
 	glm::vec3 world_up = glm::vec3(0, 1, 0);
 
-	piolot::Camera c = piolot::Camera("Test", position, front, world_up);
+	pilot::Camera c = pilot::Camera("Test", position, front, world_up);
 
 };
 
@@ -104,7 +104,7 @@ TEST_F(CameraTests, ViewMatrixCheck)
 
 TEST_F(CameraTests, CheckCameraMovement)
 {
-	c.ProcessKeyboard(piolot::Camera::forward, 1.0f);
+	c.ProcessKeyboard(pilot::Camera::forward, 1.0f);
 	// The position should be at - default speed along Z Axis.
 	glm::vec3 camera_position = c.GetPosition();
 	EXPECT_FLOAT_EQ(camera_position.x, 0);

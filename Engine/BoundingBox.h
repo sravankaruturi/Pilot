@@ -3,7 +3,7 @@
 #include <vector>
 #include <glm/mat4x2.hpp>
 
-namespace piolot
+namespace pilot
 {
 	
 	/**

@@ -10,7 +10,7 @@
 
 #define UNPASSABLE_NAV_COST_LIMIT		1.0f
 
-namespace piolot {
+namespace pilot {
 
 	glm::vec3 MapTile::GetPosition() const
 	{

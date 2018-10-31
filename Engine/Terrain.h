@@ -5,7 +5,7 @@
 
 #include <fstream>
 
-namespace piolot {
+namespace pilot {
 	class Ray;
 
 	/**

@@ -4,7 +4,7 @@
 #include "Grid.h"
 #include "Terrain.h"
 
-namespace piolot {
+namespace pilot {
 	
 	struct ImGuiControlVariables
 	{

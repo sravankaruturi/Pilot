@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <memory>
 
-namespace piolot
+namespace pilot
 {
 
 	class GLShader;

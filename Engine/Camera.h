@@ -6,7 +6,7 @@
 #include <utility>
 #include <fstream>
 
-namespace piolot
+namespace pilot
 {
 
 	const float default_camera_speed = 2.0f;

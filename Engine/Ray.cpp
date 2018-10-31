@@ -3,7 +3,7 @@
 #include "PE_GL.h"
 #include "AssetManager.h"
 
-namespace piolot {
+namespace pilot {
 
 	// TODO: We are updating Buffers every frame. This is seriously expensive as we draw the grid,
 	void Ray::UpdateBuffers()

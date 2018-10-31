@@ -8,7 +8,7 @@
 
 #include "Terrain.h"
 
-namespace piolot
+namespace pilot
 {
 	void Entity::SaveToFile(std::ofstream& _out)
 	{

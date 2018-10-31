@@ -6,7 +6,7 @@
 #include "../EngineDeps/external_files/stb/stb_image.h"
 #endif
 
-namespace piolot
+namespace pilot
 {
 	Texture::Texture(const std::string& _imagePath, bool _flip_image)
 	{

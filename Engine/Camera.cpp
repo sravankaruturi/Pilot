@@ -3,7 +3,7 @@
 #include "GLShader.h"
 #include "SaveSceneHelpers.h"
 
-namespace piolot
+namespace pilot
 {
 	void Camera::DisplayCameraDetailsImgui()
 	{

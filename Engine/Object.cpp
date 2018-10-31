@@ -6,7 +6,7 @@
 #include "AssetManager.h"
 
 
-namespace piolot
+namespace pilot
 {
 
 	void convert_aimatrix_to_glm(glm::mat4& _glmMat4, const aiMatrix4x4& _aiMatrix) {

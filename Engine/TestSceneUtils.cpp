@@ -7,7 +7,7 @@
 #include "AssetManager.h"
 
 
-void piolot::TestScene::OnImguiRender(ImGuiControlVariables& _vars)
+void pilot::TestScene::OnImguiRender(ImGuiControlVariables& _vars)
 {
 
 	ImGui::NewFrame();

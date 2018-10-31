@@ -2,7 +2,7 @@
 #include "PE_GL.h"
 #include "AssetManager.h"
 
-namespace piolot
+namespace pilot
 {
 	BoundingBox::BoundingBox(glm::vec3 _minimumPoint, glm::vec3 _maximumPoint)
 	: minimumPoint(_minimumPoint),

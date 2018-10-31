@@ -3,7 +3,7 @@
 #include "Ray.h"
 
 
-namespace piolot {
+namespace pilot {
 
 	class Grid
 	{

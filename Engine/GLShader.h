@@ -7,7 +7,7 @@
 #include <unordered_map>
 #include "LoggingManager.h"
 
-namespace piolot
+namespace pilot
 {
 	/**
 	* \brief The Class that is used to load shaders in OpenGL.

@@ -15,7 +15,7 @@
 #define MAX_BONE_WEIGHTS_PER_VERTEX			8
 
 /*This is the list of all the meshes and the materials in it.*/
-namespace piolot
+namespace pilot
 {
 
 	/**
@@ -232,10 +232,10 @@ namespace piolot
 
 		void Render(std::string shaderName);
 
-		std::vector<std::shared_ptr<piolot::Mesh>> GetMeshes() const { 
+		std::vector<std::shared_ptr<pilot::Mesh>> GetMeshes() const { 
 			return meshes; 
 		}
-		void SetMeshes(std::vector<std::shared_ptr<piolot::Mesh>> val) { meshes = val; }
+		void SetMeshes(std::vector<std::shared_ptr<pilot::Mesh>> val) { meshes = val; }
 
 		void MeshDetailsImGUI();
 
