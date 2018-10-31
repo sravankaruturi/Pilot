@@ -70,6 +70,12 @@ namespace piolot {
 		entities.push_back(std::make_shared<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test"));
 		LOGGER.AddToLog("Loaded the Medieval House");
 
+		entities.push_back(std::make_shared<Entity>("tree", "Trees/tree_pineSmall_square2.fbx", "notexture_good"));
+		entities.back()->SetPosition(3, 3, 2);
+		entities.back()->SetScale(glm::vec3(1 / 32.f, 1 / 32.f, 1 / 32.f));
+		ASMGR.objects.at("tree_pineSmall_square2")->GetMeshes()[0]->textureNames.clear();
+		LOGGER.AddToLog("Loaded the Tree");
+
 		const float building_scaling_factor = 256.0f;
 		entities[0]->SetScale(glm::vec3(1.0f / building_scaling_factor, 1.0f / building_scaling_factor, 1.0f / building_scaling_factor));
 

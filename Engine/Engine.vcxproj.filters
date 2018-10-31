@@ -232,5 +232,8 @@
     <None Include="Shaders\buildingPlacer.shader">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="Shaders\notexture_good.shader">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
