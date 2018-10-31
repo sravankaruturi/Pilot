@@ -38,14 +38,24 @@ namespace piolot {
 		 * 
 		 * The Scene owns them. When you delete the Scene, the entities are deleted.
 		 */
-		std::vector<std::unique_ptr<Entity>> entities;
+		std::vector<std::shared_ptr<Entity>> entities;
 
 		/**
 		 * \brief All the Entities with Animations.
 		 * 
 		 * The Scene owns them. When you delete the Scene, the entities are deleted.
 		 */
-		std::vector<std::unique_ptr<AnimatedEntity>> animatedEntities;
+		std::vector<std::shared_ptr<AnimatedEntity>> animatedEntities;
+
+		/**
+		 * \brief Number of seconds to wait before erasing the To be Deleted Entities.
+		 */
+		float tbdTimer = 5.0f;
+
+		/**
+		 * \brief Entities Marked For Deletion, and the time, they were loaded.
+		 */
+		std::vector<std::pair<std::shared_ptr<AnimatedEntity>, float>> tbdAnimatedEntities;
 
 		/**
 		 * \brief Raw Pointers to the Selected Entities.

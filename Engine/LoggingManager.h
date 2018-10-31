@@ -52,7 +52,7 @@ namespace piolot {
 				imguiLogger->AddLog(str_to_log.c_str());
 			}
 
-			std::cout << str_to_log << std::endl;
+			std::cout << str_to_log;
 		}
 
 		void ClearLog() {

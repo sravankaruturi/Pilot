@@ -67,8 +67,7 @@ namespace piolot {
 
 		LOGGER.AddToLog("Cameras Initialized...");
 
-		//entities.push_back(std::make_shared<Entity>("tree", "lowpolytree/lowpolytree.obj", "good_test"));
-		entities.push_back(std::make_unique<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test"));
+		entities.push_back(std::make_shared<Entity>("building", "Medieval_House/Medieval_House.obj", "good_test"));
 		LOGGER.AddToLog("Loaded the Medieval House");
 
 		const float building_scaling_factor = 256.0f;
@@ -112,7 +111,7 @@ namespace piolot {
 		for (int i = 0; i < 4; i++)
 		{
 
-			animatedEntities.push_back(std::make_unique<AnimatedEntity>("knight", "RTSDemo/HappyIdle.fbx", "bob_lamp", glm::vec3(-30, -0, -30), glm::vec3(30, 60, 30)));
+			animatedEntities.push_back(std::make_shared<AnimatedEntity>("knight", "RTSDemo/HappyIdle.fbx", "bob_lamp", glm::vec3(-30, -0, -30), glm::vec3(30, 60, 30)));
 			LOGGER.AddToLog("Pushed an Archer on to the Animated Entities");
 
 			animated_entity = animatedEntities[i].get();
@@ -172,9 +171,11 @@ namespace piolot {
 		}
 
 		
-		unsigned int i = 0;
-		for (const auto& it : animatedEntities)
+		for (auto i = 0 ; i < animatedEntities.size() ; i++)
 		{
+
+			auto it = animatedEntities[i];
+
 			temp_position = it->GetPosition();
 			temp_position.y = testTerrain->GetHeightAtPos(temp_position.x, temp_position.z);
 			it->SetPosition(temp_position);
@@ -195,54 +196,31 @@ namespace piolot {
 			}
 
 			if (it->gPlay.health <= 0) {
+				tbdAnimatedEntities.push_back(std::pair<std::shared_ptr<AnimatedEntity>, float>(it, _totalTime));
+				
+				it->gPlay.attacker->gPlay.attackTarget = nullptr;
+				it->gPlay.attacker->gPlay.attackingMode = false;
 
-				bool already_included = false;
-				for ( auto j : toBeDeletedEntitiesIndices)
-				{
-					already_included |= (j.first == i);
-				}
+				it->SetObjectName("Dying");
+				it->SetAnimationTotalTime(0.0f);
 
-				// Die.
-				// Add the Index to the to die list.
-				// Get the Index
-				if ( !already_included )
-				{
-					toBeDeletedEntitiesIndices.push_back(std::pair<unsigned int, float>(i, _totalTime));
-					it->SetObjectName("Dying");
-				}
-
-			}
-
-			i++;
-		}
-
-		for ( unsigned int i = 0 ; i < toBeDeletedEntitiesIndices.size() ; i++)
-		{
-			const unsigned int j = toBeDeletedEntitiesIndices[i].first;
-
-			// Check if the selected Entities consist that, and remove that??
-			for (unsigned int k = 0; k < selectedEntities.size(); k++)
-			{
-				if (selectedEntities[k] == animatedEntities[j - i].get())
-				{
-					selectedEntities.erase(selectedEntities.begin() + k);
-				}
-			}
-
-			// TODO: Delete using Shared Pointers. 
-			// TODO: Have a new list of Shared Pointers for the Entities that are set to be deleted. That way, we can loop through that instead of all the stuff.
-			// TODO: Reorgranize the Code into the Engine and the Game.
-			if ( _totalTime > toBeDeletedEntitiesIndices[i].second + 2.0f)
-			{
-				// Update the attackers, target.
-				animatedEntities[j - i]->gPlay.attacker->gPlay.attackTarget = nullptr;
-				animatedEntities[j - i]->gPlay.attacker->gPlay.attackingMode = false;
-				animatedEntities.erase(animatedEntities.begin() + j - i);
-				toBeDeletedEntitiesIndices.erase(toBeDeletedEntitiesIndices.begin() + i);
+				animatedEntities.erase(animatedEntities.begin() + i);
 				i--;
 			}
-			
-			// We have to subtract with i because every delete shortens the vector itself.
+		}
+
+		for (auto i = 0; i < tbdAnimatedEntities.size(); i++) {
+
+			auto it = tbdAnimatedEntities[i];
+
+			(it.first)->Update(_deltaTime);
+			(it.first)->PlayAnimation(_deltaTime, _totalTime);
+
+			if (_totalTime > it.second + tbdTimer) {
+				tbdAnimatedEntities.erase(tbdAnimatedEntities.begin() + i);
+				i--;
+			}
+
 		}
 
 		buildingPlacer->Update(_deltaTime);
@@ -434,6 +412,10 @@ namespace piolot {
 			it->Render();
 		}
 
+		for (const auto& it : tbdAnimatedEntities) {
+			it.first->Render();
+		}
+
 		if ( isPlacingMode)
 		{
 			buildingPlacer->Render();
@@ -444,7 +426,6 @@ namespace piolot {
 		testTerrain->Render();
 
 	}
-
 	
 	void TestScene::SaveScene(const char * _fileName)
 	{

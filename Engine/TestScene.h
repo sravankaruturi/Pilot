@@ -84,11 +84,6 @@ namespace piolot {
 		 */
 		glm::mat4 projectionMatrix;
 
-		/**
-		 * \brief We store the entities that we want to destroy here.
-		 */
-		std::vector<std::pair<unsigned int, float>> toBeDeletedEntitiesIndices;
-
 	public:
 
 		explicit TestScene(std::shared_ptr<Window> _window);
