@@ -127,7 +127,8 @@ namespace pilot {
 		void RayPicking();
 
 		void RunScene() override;
-		
+
+		void HandleInputs() override;
 
 	};
 

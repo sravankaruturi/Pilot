@@ -786,6 +786,7 @@ namespace pilot {
 			deltaTime = glfwGetTime() - totalTime;
 			totalTime = glfwGetTime();
 
+			this->HandleInputs();
 
 			PE_GL(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
 			PE_GL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
@@ -813,6 +814,48 @@ namespace pilot {
 			this->OnRender();
 
 			window->Update(deltaTime);
+
+		}
+
+	}
+
+	void TestScene::HandleInputs()
+	{
+
+		window->HandleInput();
+		shutDown = glfwWindowShouldClose(window->GetWindow());
+
+		{
+			// Try Letting Imgui Handle the Inputs for Now.. We need to change this..
+			if (window->IsKeyPressedOrHeld(GLFW_KEY_W))
+			{
+				this->GetActiveCamera()->ProcessKeyboard(pilot::Camera::forward, deltaTime);
+			}
+
+			if (window->IsKeyPressedOrHeld(GLFW_KEY_S))
+			{
+				this->GetActiveCamera()->ProcessKeyboard(pilot::Camera::back, deltaTime);
+			}
+
+			if (window->IsKeyPressedOrHeld(GLFW_KEY_A))
+			{
+				this->GetActiveCamera()->ProcessKeyboard(pilot::Camera::leftside, deltaTime);
+			}
+
+			if (window->IsKeyPressedOrHeld(GLFW_KEY_D))
+			{
+				this->GetActiveCamera()->ProcessKeyboard(pilot::Camera::rightside, deltaTime);
+			}
+
+			if (window->IsMouseButtonPressed(GLFW_MOUSE_BUTTON_1))
+			{
+				this->GetActiveCamera()->ProcessMouseMovement(window->mouseOffsetX, window->mouseOffsetY);
+			}
+
+			if (window->IsKeyPressedAndReleased(GLFW_KEY_SPACE))
+			{
+				displayMultipleViews = !displayMultipleViews;
+			}
 
 		}
 
