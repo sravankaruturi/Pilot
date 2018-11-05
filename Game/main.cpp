@@ -1,3 +1,14 @@
+#define Testing 1
+
+#if Testing
+#include "../Engine/Animation.h"
+int main(int _argc, char ** _argv)
+{
+	pilot::Animation a = pilot::Animation("Z:/IGMProfile/Desktop/Projects/Piolot/Engine/Assets/Models/RTSDemo/animations/WK_heavy_infantry_04_charge.FBX");
+}
+
+#else
+
 #include <cstdio>
 #include "../Engine/TestScene.h"
 #include "../Engine/Window.h"
@@ -19,3 +30,5 @@ int main(int _argc, char ** _argv)
 
 	return 0;
 }
+
+#endif

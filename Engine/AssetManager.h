@@ -26,6 +26,7 @@ namespace pilot
 {
 
 	class Object;
+	class Animation;
 
 	class AssetManager
 	{
@@ -91,6 +92,8 @@ namespace pilot
 		* \brief A Map of all the Renderables loaded.
 		*/
 		std::map<std::string, std::shared_ptr<Object>> objects;
+
+		std::map<std::string, std::shared_ptr<Animation>> animations;
 
 		/**
 		* \brief The Shader Directory from where all the shaders are loaded.
@@ -223,6 +226,11 @@ namespace pilot
 		bool IsObjectLoaded(std::string _key)
 		{
 			return (!(objects.find(_key) == objects.end()));
+		}
+
+		bool IsAnimationLoaded(std::string _key)
+		{
+			return (!(animations.find(_key) == animations.end()));
 		}
 
 		/**

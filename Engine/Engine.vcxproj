@@ -134,6 +134,7 @@
     <ClCompile Include="..\EngineDeps\external_files\ImGUI\imgui_impl_glfw.cpp" />
     <ClCompile Include="..\EngineDeps\external_files\ImGUI\imgui_impl_opengl3.cpp" />
     <ClCompile Include="AnimatedEntity.cpp" />
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BoundingBox.cpp" />
     <ClCompile Include="BoundingBoxTests.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="..\EngineDeps\external_files\ImGUI\stb_truetype.h" />
     <ClInclude Include="AllTests.h" />
     <ClInclude Include="AnimatedEntity.h" />
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="BoundingBox.h" />
     <ClInclude Include="Camera.h" />
