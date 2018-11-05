@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include <glm/detail/type_vec3.hpp>
+#include "glm/detail/type_vec3.hpp"
 #include <glm/mat4x4.hpp>
 #include <glad/glad.h>
 #include <string>

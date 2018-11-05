@@ -125,6 +125,8 @@ namespace pilot {
 		void LoadScene(const char * _fileName);
 
 		void RayPicking();
+
+		void RunScene() override;
 		
 
 	};

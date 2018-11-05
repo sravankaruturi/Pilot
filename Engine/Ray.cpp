@@ -9,8 +9,6 @@ namespace pilot {
 	void Ray::UpdateBuffers()
 	{
 
-		vertices.clear();
-
 		// Empty the vertices.
 		vertices.clear();
 

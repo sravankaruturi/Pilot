@@ -84,6 +84,16 @@ namespace pilot {
 		 */
 		float deltaTime;
 
+		/**
+		 * \brief Should the Scene Display Multiple Views.
+		 */
+		bool displayMultipleViews = false;
+
+		/**
+		 * \brief Should we shut the Scene down?
+		 */
+		bool shutDown = false;
+
 	public:
 
 		explicit Scene(std::shared_ptr<Window> _window);
@@ -130,6 +140,11 @@ namespace pilot {
 		 * \return Returns a pointer to the Current Active Camera
 		 */
 		std::shared_ptr<Camera> GetActiveCamera() const { return activeCamera; }
+
+		/**
+		 * \brief This must be implemented.
+		 */
+		virtual void RunScene() = 0;
 		
 	};
 

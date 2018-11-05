@@ -108,15 +108,15 @@ namespace pilot {
 		ASMGR.AddToObjects("SwordAndShieldSlash", knightSwordAnimation);
 
 
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 30; i++)
 		{
 
 			animatedEntities.push_back(std::make_shared<AnimatedEntity>("knight", "RTSDemo/HappyIdle.fbx", "bob_lamp", glm::vec3(-30, -0, -30), glm::vec3(30, 60, 30)));
 			LOGGER.AddToLog("Pushed an Archer on to the Animated Entities");
 
 			animated_entity = animatedEntities[i].get();
-			animated_entity->SetInitialPosition(glm::vec3(2.0, 0.0, (i + 1)), testTerrain.get());
-			const float scale_factor = 64.f;
+			animated_entity->SetInitialPosition(glm::vec3(2.0  + ( i % 2 ) * 3.0f, 0.0, (i + 1) / 2), testTerrain.get());
+			const float scale_factor = 128.f;
 			animated_entity->SetScale(glm::vec3(1 / scale_factor));
 			animated_entity->SetRotation(glm::vec3(-0, 0.0f, 0.00f));
 			animated_entity->SetAnimationTotalTime(0.75f);
@@ -772,6 +772,47 @@ namespace pilot {
 
 				}
 			}
+
+		}
+
+	}
+
+	void TestScene::RunScene()
+	{
+
+		while (!shutDown)
+		{
+
+			deltaTime = glfwGetTime() - totalTime;
+			totalTime = glfwGetTime();
+
+
+			PE_GL(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
+			PE_GL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
+
+			if (displayMultipleViews)
+			{
+				auto w2 = window->GetWidth() / 2;
+				auto h2 = window->GetHeight() / 2;
+
+				PE_GL(glViewportIndexedf(0, 0, 0, w2, h2));
+				PE_GL(glViewportIndexedf(1, w2, 0, w2, h2));
+				PE_GL(glViewportIndexedf(2, 0, h2, w2, h2));
+				PE_GL(glViewportIndexedf(3, w2, h2, w2, h2));
+			}
+			else
+			{
+				PE_GL(glViewportIndexedf(0, 0, 0, window->GetWidth(), window->GetHeight()));
+				PE_GL(glViewportIndexedf(1, 0, 0, 0, 0));
+				PE_GL(glViewportIndexedf(2, 0, 0, 0, 0));
+				PE_GL(glViewportIndexedf(3, 0, 0, 0, 0));
+			}
+
+			this->OnUpdate(deltaTime, totalTime);
+
+			this->OnRender();
+
+			window->Update(deltaTime);
 
 		}
 
