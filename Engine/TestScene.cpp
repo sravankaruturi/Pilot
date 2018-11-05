@@ -32,11 +32,6 @@ namespace pilot {
 		: Scene(_window)
 	{
 
-		ASMGR.ClearAllData();
-
-		ASMGR.LoadShaders();
-		ASMGR.LoadTextures();
-
 		// We need to wait for the Shaders to be loaded to call this function.
 		testGrid.Init();
 
@@ -822,8 +817,7 @@ namespace pilot {
 	void TestScene::HandleInputs()
 	{
 
-		window->HandleInput();
-		shutDown = glfwWindowShouldClose(window->GetWindow());
+		Scene::HandleInputs();
 
 		{
 			// Try Letting Imgui Handle the Inputs for Now.. We need to change this..

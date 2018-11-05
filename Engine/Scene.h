@@ -96,6 +96,11 @@ namespace pilot {
 
 	public:
 
+		bool ShutDown() const
+		{
+			return shutDown;
+		}
+
 		explicit Scene(std::shared_ptr<Window> _window);
 		virtual ~Scene() = default;
 
@@ -145,12 +150,11 @@ namespace pilot {
 		 * \brief This must be implemented.
 		 */
 		virtual void RunScene() = 0;
+
+		/**
+		 * \brief This must be implemented by the Sub Class.
+		 */
+		virtual void HandleInputs();
 		
 	};
-
-	inline Scene::Scene(std::shared_ptr<Window> _window)
-		: window(_window)
-	{
-
-	}
 }
