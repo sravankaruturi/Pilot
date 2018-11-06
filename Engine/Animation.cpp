@@ -224,6 +224,8 @@ namespace pilot
 
 		animNode = FindNodeAnim(p_animation, assimpScene->mRootNode->mName.data);
 
+		globalTransform = assimpScene->mRootNode->mTransformation;
+
 		// TODO: Store the Number of Bones, in the numberOfBonesLoaded Variable.
 
 
@@ -248,6 +250,7 @@ namespace pilot
 		_matrices.resize(numberOfBonesLoaded);
 
 		aiMatrix4x4 root_node_matrix;
+		
 
 		animationIndex = 0;
 
@@ -307,11 +310,21 @@ namespace pilot
 			CalcInterpolatedScaling(scaling, _animationTime, animNode);
 			scaling_matrix = aiMatrix4x4::Scaling(scaling, scaling_matrix);
 
-			//node_transformation = scaling_matrix * rotation_matrix * translation_matrix;
 			node_transformation = translation_matrix * rotation_matrix * scaling_matrix;
 		}
 
 		const aiMatrix4x4 global_transformation = _parentTransform * node_transformation;
+
+		if ( boneMapping.find(node_name) != boneMapping.end())
+		{
+			auto bone_index = boneMapping[node_name];
+			boneData[bone_index].final_transformation = globalTransform * global_transformation * boneData[bone_index].bone_offset;
+		}
+
+		for ( auto i = 0 ; i < _node->mNumChildren; i++)
+		{
+			ProcessNodeHierarchyAnimation(_animationTime, _node->mChildren[i], global_transformation);
+		}
 
 	}
 }

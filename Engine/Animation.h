@@ -49,6 +49,16 @@ namespace pilot
 		*/
 		std::vector<BoneInfo> boneData;
 
+		/**
+		* \brief A map to keep track of the Bones in the Object.
+		*
+		* String --> Key --> Bone Name.
+		* unsigned int --> Value --> Index of this particular bone in the Bone Data.
+		*/
+		std::map<std::string, unsigned int> boneMapping;
+
+		aiMatrix4x4 globalTransform;
+
 		unsigned int animationIndex = 0;
 
 		const aiNodeAnim * animNode;

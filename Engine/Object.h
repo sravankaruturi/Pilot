@@ -219,15 +219,6 @@ namespace pilot
 		std::vector<std::string> LoadMaterialTextures(aiMaterial* _mat, aiTextureType _type);
 
 		/**
-		 * \brief Process the Node Hierarchy for details regarding the Animation
-		 * \param _animationTime Time in seconds
-		 * \param _node Current Node
-		 * \param _animationIndex Which animation do you want to play?
-		 * \param _parentTransform The Transform of the Parent w.r.t the Object
-		 */
-		void ProcessNodeHierarchyAnimation(float _animationTime, const aiNode * _node, const int _animationIndex, const aiMatrix4x4& _parentTransform);
-
-		/**
 		 * \brief Find the Node Animation Details Pointer using the Model Animation and the Node Name.
 		 * \param _animation The Animation of the Mesh we are currently looking for
 		 * \param _nodeName The Node Name that we currently want the animation details for.

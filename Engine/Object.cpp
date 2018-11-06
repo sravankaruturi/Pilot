@@ -422,36 +422,6 @@ namespace pilot
 		return textures;
 	}
 
-	void Object::ProcessNodeHierarchyAnimation(float _animationTime, const aiNode* _node, const int _animationIndex,
-		const aiMatrix4x4& _parentTransform)
-	{
-
-		auto selectedAnimationIndex = _animationIndex;
-
-		std::string node_name = _node->mName.data;
-
-		const aiAnimation * p_animation = assimpScene->mAnimations[selectedAnimationIndex];
-
-		aiMatrix4x4 node_transformation = _node->mTransformation;
-
-		const aiNodeAnim * node_anim = FindNodeAnim(p_animation, node_name);
-
-
-		if (boneMapping.find(node_name) != boneMapping.end()) {
-
-			// Update the Global Transformation.
-			auto bone_index = boneMapping[node_name];
-
-			boneData[bone_index].final_transformation = globalInverseTransform * global_transformation * boneData[bone_index].bone_offset;
-			//boneInfoData[bone_index].finalTransformation = boneInfoData[bone_index].boneOffset * global_transformation * globalInverseTransform;
-		}
-
-		for (auto i = 0; i < _node->mNumChildren; i++) {
-			ProcessNodeHierarchyAnimation(_animationTime, _node->mChildren[i], selectedAnimationIndex , global_transformation);
-		}
-
-	}
-
 	const aiNodeAnim* Object::FindNodeAnim(const aiAnimation* _animation, const std::string& _nodeName)
 	{
 
