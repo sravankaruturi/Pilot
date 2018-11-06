@@ -1,7 +1,7 @@
 ﻿#include "AnimatedEntity.h"
 #include "AssetManager.h"
 #include "Object.h"
-
+#include "Animation.h"
 #include <fstream>
 
 namespace pilot {
@@ -19,29 +19,17 @@ namespace pilot {
 
 	}
 
-	void AnimatedEntity::PlayAnimation(float _deltaTime, float _currentTime)
+	void AnimatedEntity::PlayAnimation(float _deltaTime, float _currentTime, Animation * _animation)
 	{
-
-		Object * current_object;
-		if ( currentAnimationObject == nullptr)
-		{
-			current_object = ASMGR.objects.at(objectName).get();
-		}else
-		{
-			current_object = currentAnimationObject.get();
-		}
 		
-		if ( 0 == current_object->AssimpScene()->mNumAnimations)
-		{
-			return;
-		}
+		PE_ASSERT(0 < _animation->AssimpScene()->mNumAnimations);
 
-		float animation_time = current_object->GetLastAnimationUpdateTime();
+		float animation_time = _animation->GetLastUpdateTime();
 
 		if ( _currentTime - animation_time >= _deltaTime) {
 			animationTotalTime += _deltaTime;
 
-			current_object->BoneTransform(animationTotalTime, this->boneMatrices);
+			_animation->BoneTransform(animationTotalTime, this->boneMatrices);
 			current_object->SetLastAnimationUpdateTime(_currentTime);
 		}
 		else {

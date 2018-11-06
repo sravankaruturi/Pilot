@@ -5,193 +5,14 @@
 #include "Object.h"
 #include "AssetManager.h"
 
+// You need to change this in the Shaders as well if you change it here.
+#ifndef MAX_NUMBER_OF_BONES_PER_ENTITY
+#define MAX_NUMBER_OF_BONES_PER_ENTITY		128
+#endif // !MAX_NUMBER_OF_BONES_PER_ENTITY
+
 
 namespace pilot
 {
-
-	void convert_aimatrix_to_glm(glm::mat4& _glmMat4, const aiMatrix4x4& _aiMatrix) {
-
-		for (auto i = 0; i < 4; i++) {
-			for (auto j = 0; j < 4; j++) {
-				_glmMat4[i][j] = _aiMatrix[i][j];
-			}
-		}
-
-	}
-
-	// This just copies. This function doesn't transpose matrices.
-	void convert_aimatrix_to_glm(glm::mat4& _glmMat4, const aiMatrix3x3& _aiMatrix) {
-
-		for (auto i = 0; i < 3; i++) {
-			for (auto j = 0; j < 3; j++) {
-				_glmMat4[i][j] = _aiMatrix[i][j];
-			}
-		}
-
-		// The rest would be zero, other than the 4,4.
-		_glmMat4[0][3] = 0.0f;
-		_glmMat4[1][3] = 0.0f;
-		_glmMat4[2][3] = 0.0f;
-
-		_glmMat4[3][0] = 0.0f;
-		_glmMat4[3][1] = 0.0f;
-		_glmMat4[3][2] = 0.0f;
-
-		_glmMat4[3][3] = 1.0f;
-
-	}
-
-	glm::mat4 get_glm_matrix(const aiMatrix4x4& _aiMatrix) {
-		glm::mat4 return_matrix;
-		convert_aimatrix_to_glm(return_matrix, _aiMatrix);
-		return return_matrix;
-	}
-
-	unsigned int find_scaling(float _animationTime, const aiNodeAnim* _nodeAnim)
-	{
-		PE_ASSERT(_nodeAnim->mNumScalingKeys > 0);
-		for (unsigned int i = 0; i < _nodeAnim->mNumScalingKeys - 1; i++) {
-			if (_animationTime < (float)_nodeAnim->mScalingKeys[i + 1].mTime) {
-				return i;
-			}
-		}
-
-		// It should never reach here.
-		PE_ASSERT(0);
-		return 0;
-	}
-
-	unsigned int find_rotation(float _animationTime, const aiNodeAnim* _nodeAnim)
-	{
-		PE_ASSERT(_nodeAnim->mNumRotationKeys > 0);
-		for (unsigned int i = 0; i < _nodeAnim->mNumRotationKeys - 1; i++) {
-			if (_animationTime < (float)_nodeAnim->mRotationKeys[i + 1].mTime) {
-				return i;
-			}
-		}
-
-		// It should never reach here.
-		PE_ASSERT(0);
-		return 0;
-	}
-
-	unsigned int find_position(float& _animationTime, const aiNodeAnim* _nodeAnim)
-	{
-		PE_ASSERT(_nodeAnim->mNumPositionKeys > 0);
-		for (unsigned int i = 0; i < _nodeAnim->mNumPositionKeys - 1; i++) {
-			if (_animationTime < (float)_nodeAnim->mPositionKeys[i + 1].mTime) {
-				return i;
-			}
-		}
-
-		// The Very first time, that we start playing the animation, maybe set it to zero.
-		_animationTime = 0;
-		return 0;
-
-		// It should never reach here.
-		PE_ASSERT(0);
-		return 0;
-	}
-
-	void calc_interpolated_position(aiVector3D& _out, float& _animationTime, const aiNodeAnim* _nodeAnim)
-	{
-		if (_nodeAnim->mNumPositionKeys == 1) {
-			// There is only one Position.
-			_out = _nodeAnim->mPositionKeys[0].mValue;
-			return;
-		}
-
-		unsigned int position_index = find_position(_animationTime, _nodeAnim);
-		unsigned int next_pos_index = position_index + 1;
-		PE_ASSERT(next_pos_index < _nodeAnim->mNumPositionKeys);
-
-		// The Difference between two key frames.
-		float delta_time = (float)(_nodeAnim->mPositionKeys[next_pos_index].mTime - _nodeAnim->mPositionKeys[position_index].mTime);
-
-		// The Factor by which the current frame has transitioned into the next frame.
-		float factor = (_animationTime - (float)_nodeAnim->mPositionKeys[position_index].mTime) / delta_time;
-
-		//if ( factor < 0.0f )
-		//{
-		//	factor = 0.0f;
-		//}
-
-		PE_ASSERT(factor >= 0.0f && factor <= 1.0f);
-
-		const auto start = _nodeAnim->mPositionKeys[position_index].mValue;
-		const auto end = _nodeAnim->mPositionKeys[next_pos_index].mValue;
-
-		_out = start + factor * (end - start);
-
-	}
-
-	void CalcInterpolatedRotation(aiQuaternion& _out, float _animationTime, const aiNodeAnim* _nodeAnim)
-	{
-
-		if (_nodeAnim->mNumRotationKeys == 1) {
-			// There is only one Position.
-			_out = _nodeAnim->mRotationKeys[0].mValue;
-			return;
-		}
-
-		unsigned int rotation_index = find_rotation(_animationTime, _nodeAnim);
-		unsigned int next_rot_index = rotation_index + 1;
-		PE_ASSERT(next_rot_index < _nodeAnim->mNumRotationKeys);
-
-		// The Difference between two key frames.
-		float delta_time = (float)(_nodeAnim->mRotationKeys[next_rot_index].mTime - _nodeAnim->mRotationKeys[rotation_index].mTime);
-
-		// The Factor by which the current frame has transitioned into the next frame.
-		float factor = (_animationTime - (float)_nodeAnim->mRotationKeys[rotation_index].mTime) / delta_time;
-
-		//if ( factor < 0.0f)
-		//{
-		//	factor = 0.0f;
-		//}
-
-		PE_ASSERT(factor >= 0.0f && factor <= 1.0f);
-
-		const auto start = _nodeAnim->mRotationKeys[rotation_index].mValue;
-		const auto end = _nodeAnim->mRotationKeys[next_rot_index].mValue;
-
-		aiQuaternion::Interpolate(_out, start, end, factor);
-
-		_out = _out.Normalize();
-
-	}
-
-	void CalcInterpolatedScaling(aiVector3D& _out, float _animationTime, const aiNodeAnim* _nodeAnim)
-	{
-
-		if (_nodeAnim->mNumScalingKeys == 1) {
-			_out = _nodeAnim->mScalingKeys[0].mValue;
-			return;
-		}
-
-		auto scaling_index = find_scaling(_animationTime, _nodeAnim);
-		auto nex_sca_index = scaling_index + 1;
-
-		PE_ASSERT(nex_sca_index < _nodeAnim->mNumScalingKeys);
-
-		auto delta_time = (float)(_nodeAnim->mScalingKeys[nex_sca_index].mTime - _nodeAnim->mScalingKeys[scaling_index].mTime);
-
-		auto factor = (_animationTime - (float)_nodeAnim->mScalingKeys[scaling_index].mTime) / delta_time;
-
-		//if( factor < 0.0f)
-		//{
-		//	factor = 0.0f;
-		//}
-		PE_ASSERT(factor >= 0.0f && factor <= 1.0f);
-
-		auto start = _nodeAnim->mScalingKeys[scaling_index].mValue;
-		auto end = _nodeAnim->mScalingKeys[nex_sca_index].mValue;
-
-		_out = start + factor * (end - start);
-
-	}
-
-
-
 
 	Object::Object(const std::string& _name, std::vector<std::shared_ptr<Mesh>> _meshes)
 		: objectName(_name), meshes(_meshes)
@@ -394,9 +215,6 @@ namespace pilot
 				if (boneMapping.find(bone_name) == boneMapping.end())
 				{
 					bone_index = numberOfBonesLoaded;
-					BoneInfo bi;
-					bi.bone_offset = _mesh->mBones[j]->mOffsetMatrix;
-					boneData.push_back(bi);
 					boneMapping[bone_name] = bone_index;
 					numberOfBonesLoaded++;
 				}
@@ -410,7 +228,7 @@ namespace pilot
 					unsigned int local_vertex_id = _mesh->mBones[j]->mWeights[k].mVertexId;
 					float weight = _mesh->mBones[j]->mWeights[k].mWeight;
 					vertex_bone_data[local_vertex_id].AddBoneData(bone_index, weight);
-					if (bone_index > 128)
+					if (bone_index > MAX_NUMBER_OF_BONES_PER_ENTITY)
 					{
 						// This shouldn't happen usually.
 						PE_ASSERT(0);
@@ -618,33 +436,6 @@ namespace pilot
 
 		const aiNodeAnim * node_anim = FindNodeAnim(p_animation, node_name);
 
-		if (node_anim) {
-
-			//glm::mat4 transformation_matrix(1.0f);
-
-			aiMatrix4x4 translation_matrix;
-			aiMatrix4x4 scaling_matrix;
-
-			aiVector3D translation;
-			calc_interpolated_position(translation, _animationTime, node_anim);
-
-			translation_matrix = aiMatrix4x4::Translation(translation, translation_matrix);
-
-			aiQuaternion rotation;
-			CalcInterpolatedRotation(rotation, _animationTime, node_anim);
-
-			const aiMatrix4x4 rotation_matrix = aiMatrix4x4(rotation.GetMatrix());
-
-			aiVector3D scaling;
-			CalcInterpolatedScaling(scaling, _animationTime, node_anim);
-			scaling_matrix = aiMatrix4x4::Scaling(scaling, scaling_matrix);
-
-			//node_transformation = scaling_matrix * rotation_matrix * translation_matrix;
-			node_transformation = translation_matrix * rotation_matrix * scaling_matrix;
-
-		}
-
-		const aiMatrix4x4 global_transformation = _parentTransform * node_transformation;
 
 		if (boneMapping.find(node_name) != boneMapping.end()) {
 

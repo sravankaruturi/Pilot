@@ -9,6 +9,8 @@
 
 namespace pilot {
 
+	class Animation;
+
 	/**
 	 * \brief Entity which uses the Animations Stored.
 	 *
@@ -53,7 +55,7 @@ namespace pilot {
 		 * \param _deltaTime DeltaTime
 		 * \param _currentTime The time since it was initialized.
 		 */
-		void PlayAnimation(float _deltaTime, float _currentTime);
+		void PlayAnimation(float _deltaTime, float _currentTime, Animation * _animation);
 
 		/**
 		 * \brief Update the Entity
