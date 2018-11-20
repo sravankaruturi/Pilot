@@ -1,3 +1,5 @@
+Note: Development has been moved to https://github.com/sravankaruturi/Vermin
+
 # Pilot Game Engine
 
 An OpenGL Game Engine.
